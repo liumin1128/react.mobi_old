@@ -1,3 +1,6 @@
-import React from 'react'
+import React from 'react';
+import Login from '../components/login';
 
-export default () => <div>index</div>
+export default () => (<div>
+  <Login />
+</div>);
