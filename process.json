@@ -1,0 +1,14 @@
+{
+    "apps": [
+      {
+        "name": "react.mobi",
+        "script": "server.js",
+        "watch": "../",
+        "log_date_format": "YYYY-MM-DD HH:mm Z",
+        "env": {
+          "NODE_ENV": "production"
+        }
+      }
+    ]
+  }
+  
