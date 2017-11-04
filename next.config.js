@@ -3,7 +3,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { ANALYZE } = process.env;
 
 module.exports = {
-  webpack(config) {
+  webpack(config, { dev }) {
     if (ANALYZE) {
       config.plugins.push(new BundleAnalyzerPlugin({
         analyzerMode: 'server',
@@ -11,6 +11,16 @@ module.exports = {
         openAnalyzer: true,
       }));
     }
+
+    if (dev) {
+      return config;
+    }
+
+    config.resolve.alias = {
+      react: 'preact-compat/dist/preact-compat',
+      'react-dom': 'preact-compat/dist/preact-compat',
+    };
+
     return config;
   },
 };

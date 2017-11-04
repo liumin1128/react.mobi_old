@@ -1,7 +1,7 @@
 import 'isomorphic-fetch';
 import es6promise from 'es6-promise';
 import store from 'store';
-import { APIURL } from '../config';
+import { APIURL } from '../constants/api';
 
 es6promise.polyfill();
 
