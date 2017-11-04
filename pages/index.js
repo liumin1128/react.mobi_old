@@ -21,11 +21,11 @@ class Index extends PureComponent {
         <Login />
         <h1 className="h1">index</h1>
         <style jsx>{`
-        .h1 {
-          color: red;
-          font-size: 30px;
-        }
-      `}</style>
+          .h1 {
+            color: red;
+            font-size: 30px;
+          }
+        `}</style>
       </div>
     );
   }
