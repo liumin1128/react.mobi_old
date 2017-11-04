@@ -3,7 +3,8 @@
         "dev": "next",
         "look": "next start",
         "build": "next build",
-        "start": "next -p 8000"
+        "start": "next -p 8000",
+        "analyze": "cross-env ANALYZE=1 next build"
     },
     "dependencies": {
         "es6-promise": "^4.1.1",
@@ -24,6 +25,7 @@
         "babel-eslint": "^8.0.1",
         "babel-plugin-import": "^1.6.2",
         "babel-plugin-inline-react-svg": "^0.4.0",
+        "cross-env": "^5.1.1",
         "eslint": "^4.10.0",
         "eslint-config-airbnb": "^16.1.0",
         "eslint-plugin-import": "^2.8.0",
