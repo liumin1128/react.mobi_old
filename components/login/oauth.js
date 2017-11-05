@@ -11,6 +11,12 @@ export default () => (<div>
       <a href="https://api.react.mobi/oauth/wechat">
         <IconButton src="http://img.react.mobi/icon/wechat.svg" />
       </a>
+      <a href="https://api.react.mobi/oauth/qq">
+        <IconButton src="http://img.react.mobi/icon/qq.svg" />
+      </a>
+      <a href="https://api.react.mobi/oauth/weibo">
+        <IconButton src="http://img.react.mobi/icon/weibo.svg" />
+      </a>
     </div>
   </fieldset>
   <style jsx>{`
