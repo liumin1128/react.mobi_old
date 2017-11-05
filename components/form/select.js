@@ -2,26 +2,24 @@ import React, { PureComponent } from 'react';
 
 export default class extends PureComponent {
   render() {
-    return (<div className="box">
-      <input
-        {...this.props}
-        ref={(c) => { this.input = c; }}
-        className="input"
-      />
+    const { children, ...set } = this.props;
+    return (<select
+      {...set}
+      ref={(c) => { this.select = c; }}
+      className="select"
+    >
+      {children}
       <style jsx>{`
-        .box {
-          width: 100%;
-        }
-        .input {
+        .select {
           box-sizing: border-box;
-          padding: 10px;
+          padding: 0 10px;
           font-size: 14px;
           display: block;
-          height: 40px;
-          line-heiht: 40px;
           width: 100%;
+          height: 40px;
           border: 1px rgba(0,0,0,0.05) solid;
           margin-bottom: 16px;
+          background: #fff;
         }
         .error {
           font-size: 12px;
@@ -29,6 +27,7 @@ export default class extends PureComponent {
         }
       `}
       </style>
-    </div>);
+    </select>
+    );
   }
 }

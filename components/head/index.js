@@ -23,7 +23,8 @@ export default ({ children }) => (<Head>
       margin: 0;
       padding: 0;
     }
-    input {
+    input, select, textarea, option {
+      backgrund: #fff;
       -webkit-user-select: auto;
       -webkit-touch-callout: auto;
       border-radius: 0;

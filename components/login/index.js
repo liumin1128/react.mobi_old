@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
 import Input from '../form/input';
 import Button from '../form/button';
+import Select from '../form/select';
 import SleepButton from '../form/sleep-button';
 import request from '../../utils/request';
+import { PHONE_COUNTRIY } from '../../constants/common';
+import { VERIFY_PHONE } from '../../constants/api';
 
 export default class extends PureComponent {
   constructor(props) {
@@ -26,6 +29,7 @@ export default class extends PureComponent {
           alert('干啥，填手机号呀');
         }
       } catch (error) {
+        alert('验证码发送失败');
         console.log('发送验证码error');
         console.log(error);
       }
@@ -35,9 +39,10 @@ export default class extends PureComponent {
       const nickname = this.nickname.input.value;
       const phone = this.phone.input.value;
       const code = this.code.input.value;
-      if (nickname && phone && code) {
-        console.log('nickname, phone, code');
-        console.log(nickname, phone, code);
+      const country = this.country.select.value;
+      if (nickname && phone && code && country) {
+        console.log('nickname, phone, code, country');
+        console.log(nickname, phone, code, country);
       } else {
         alert('不能为空');
       }
@@ -45,22 +50,36 @@ export default class extends PureComponent {
   }
   render() {
     return (<div className="login">
-      <Input
-        ref={(c) => { this.nickname = c; }}
-        name="nickname"
-        placeholder="昵称"
-      />
-      <Input
-        ref={(c) => { this.phone = c; }}
-        name="phone"
-        placeholder="手机号"
-      />
-      <div className="input-code">
-        <Input
-          name="code"
-          ref={(c) => { this.code = c; }}
-          placeholder="验证码"
-        />
+      <Input ref={(c) => { this.nickname = c; }} placeholder="昵称" />
+      <div className="flex">
+        <Select
+          style={{ maxWidth: 100 }}
+          ref={(c) => { this.country = c; }}
+          placeholder="昵称"
+          onChange={(val) => {
+            console.log(val);
+            const country = this.country.select.value;
+            if (country === '火星') {
+              alert('你是认真的吗？');
+              this.country.select.value = '+86';
+            }
+          }}
+        >
+          {
+            PHONE_COUNTRIY.map(({ code, name }) =>
+              (<option key={code} value={code}>
+                {name}
+              </option>))
+
+          }
+          <option value={'火星'} >
+            火星
+          </option>
+        </Select>
+        <Input style={{ borderLeft: 0 }} ref={(c) => { this.phone = c; }} placeholder="手机号" />
+      </div>
+      <div className="flex">
+        <Input ref={(c) => { this.code = c; }} placeholder="验证码" />
         <SleepButton
           ref={(c) => { this.sleep = c; }}
           onClick={this.sentSms}
@@ -80,7 +99,7 @@ export default class extends PureComponent {
         .login {
           padding: 16px;
         }
-        .input-code {
+        .flex {
           display: flex;
           width: 100%;
         }
