@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Input from '../form/input';
 import Button from '../form/button';
 import Select from '../form/select';
+import Oauth from './oauth';
 import SleepButton from '../form/sleep-button';
 import request from '../../utils/request';
 import { PHONE_COUNTRIY } from '../../constants/common';
@@ -70,7 +71,6 @@ export default class extends PureComponent {
               (<option key={code} value={code}>
                 {name}
               </option>))
-
           }
           <option value={'火星'} >
             火星
@@ -97,6 +97,7 @@ export default class extends PureComponent {
       >
         确认
       </Button>
+      <Oauth />
       <style jsx>{`
         .login {
           padding: 16px;

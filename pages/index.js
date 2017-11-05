@@ -19,7 +19,6 @@ class Index extends PureComponent {
           <meta name="description" content="注册" className="next-head" />
         </Head>
         <Login />
-        <h1 className="h1">index</h1>
         <style jsx>{`
           .h1 {
             color: red;
