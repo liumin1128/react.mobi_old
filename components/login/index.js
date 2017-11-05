@@ -23,35 +23,33 @@ export default class extends PureComponent {
           console.log('data');
           console.log(data);
           if (data && data.status === 'ok') {
-            alert('验证码已发送');
+            toast('验证码已发送');
             this.sleep.sleep(60);
           } else {
-            alert('验证码发送失败');
+            toast('验证码发送失败');
           }
         } else {
-          alert('干啥，填手机号呀');
+          toast('干啥，填手机号呀');
         }
       } catch (error) {
-        alert('验证码发送失败');
+        toast('验证码发送失败');
         console.log('发送验证码error');
         console.log(error);
       }
       // const data = await request(VERIFY_PHONE, {  });
     };
     this.submit = () => {
-      toast.warn('Warning Notification !', {
-        position: toast.POSITION.BOTTOM_LEFT,
-      });
-      // const nickname = this.nickname.input.value;
-      // const phone = this.phone.input.value;
-      // const code = this.code.input.value;
-      // const country = this.country.select.value;
-      // if (nickname && phone && code && country) {
-      //   console.log('nickname, phone, code, country');
-      //   console.log(nickname, phone, code, country);
-      // } else {
-      //   // alert('不能为空');
-      // }
+      // toast('Warning Notification !');
+      const nickname = this.nickname.input.value;
+      const phone = this.phone.input.value;
+      const code = this.code.input.value;
+      const country = this.country.select.value;
+      if (nickname && phone && code && country) {
+        console.log('nickname, phone, code, country');
+        console.log(nickname, phone, code, country);
+      } else {
+        toast('不能为空');
+      }
     };
   }
   render() {
@@ -67,7 +65,7 @@ export default class extends PureComponent {
             console.log(val);
             const country = this.country.select.value;
             if (country === '火星') {
-              alert('你是认真的吗？');
+              toast('你是认真的吗？');
               this.country.select.value = '+86';
             }
           }}

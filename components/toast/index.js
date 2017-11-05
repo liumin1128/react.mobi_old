@@ -5,7 +5,12 @@ export default class extends Component {
   render() {
     return (
       <div>
-        <ToastContainer />
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar
+          closeButton={false}
+        />
         <style global jsx>{`
         @keyframes toastify-bounceInRight {
           from,
