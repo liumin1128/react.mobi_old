@@ -12,7 +12,16 @@ export default ({
   during = 600,
   rippleColor = 'rgba(0, 0, 0, .3)',
 }) => (
-  <Ripples during={during} style={{ height: 40, boxShadow: '0px 1px 1px rgba(0, 0, 0, .1)', ...style }} color={rippleColor}>
+  <Ripples
+    during={during}
+    style={{
+    height: 40,
+    boxShadow: '0px 1px 1px rgba(0, 0, 0, .1)',
+    margin: 0,
+    ...style,
+  }}
+    color={rippleColor}
+  >
     <button
       type="button"
       disabled={disabled}
@@ -39,7 +48,8 @@ export default ({
         height: 40px;
         white-space: nowrap;
         text-overflow:ellipsis;
-        // overflow:hidden;
+        margin: 0;
+        overflow:hidden;
       }
       .button:focus{
         outline:0;

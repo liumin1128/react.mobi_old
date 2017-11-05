@@ -28,6 +28,7 @@ export default ({ children }) => (<Head>
       -webkit-user-select: auto;
       -webkit-touch-callout: auto;
       border-radius: 0;
+      box-sizing: border-box;
     }
     body {
       // background-color: #fafbfc;
@@ -43,11 +44,6 @@ export default ({ children }) => (<Head>
     a {
       color: #292525;
       text-decoration: none
-    }
-
-    h1,h2,h3,h4,h5,h6,p{
-      margin: 0;
-      padding: 0;
     }
   `}</style>
   {children}

@@ -50,7 +50,6 @@ export default class extends PureComponent {
   }
   render() {
     return (<div className="login">
-      <Button>测试</Button>
       <Input ref={(c) => { this.nickname = c; }} placeholder="昵称" />
       <div className="flex">
         <Select
