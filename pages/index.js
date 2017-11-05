@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Login from '../components/login';
 import Head from '../components/head';
 import { reduxPage } from '../store';
+import Toast from '../components/toast';
 
 class Index extends PureComponent {
   // static async getInitialProps({ query, store }) {
@@ -19,6 +20,7 @@ class Index extends PureComponent {
           <meta name="description" content="注册" className="next-head" />
         </Head>
         <Login />
+        <Toast />
         <style jsx>{`
           .h1 {
             color: red;

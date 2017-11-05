@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { toast } from 'react-toastify';
 import Input from '../form/input';
 import Button from '../form/button';
 import Select from '../form/select';
@@ -38,21 +39,23 @@ export default class extends PureComponent {
       // const data = await request(VERIFY_PHONE, {  });
     };
     this.submit = () => {
-      const nickname = this.nickname.input.value;
-      const phone = this.phone.input.value;
-      const code = this.code.input.value;
-      const country = this.country.select.value;
-      if (nickname && phone && code && country) {
-        console.log('nickname, phone, code, country');
-        console.log(nickname, phone, code, country);
-      } else {
-        // alert('不能为空');
-      }
+      toast.warn('Warning Notification !', {
+        position: toast.POSITION.BOTTOM_LEFT,
+      });
+      // const nickname = this.nickname.input.value;
+      // const phone = this.phone.input.value;
+      // const code = this.code.input.value;
+      // const country = this.country.select.value;
+      // if (nickname && phone && code && country) {
+      //   console.log('nickname, phone, code, country');
+      //   console.log(nickname, phone, code, country);
+      // } else {
+      //   // alert('不能为空');
+      // }
     };
   }
   render() {
     return (<div className="login">
-
       <Logo />
       <Input ref={(c) => { this.nickname = c; }} placeholder="昵称" />
       <div className="flex">
@@ -92,6 +95,7 @@ export default class extends PureComponent {
         </SleepButton>
       </div>
       <Button
+        onClick={this.submit}
         type="primary"
         block
         style={{ width: '100%' }}
