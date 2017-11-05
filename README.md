@@ -1,4 +1,4 @@
-yarn add next@latest react@latest react-dom@latest es6-promise isomorphic-fetch marked next-redux-wrapper react react-dom react-headroom react-redux react-waypoint redux store styled-jsx
+yarn add next@latest react@latest react-dom@latest es6-promise isomorphic-fetch marked next-redux-wrapper react react-dom react-headroom react-redux react-waypoint redux store styled-jsx react-modal react-toastify
 
 yarn add material-ui@next jss jss-preset-default react-jss material-ui-icons
 

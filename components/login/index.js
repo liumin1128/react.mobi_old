@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { toast } from 'react-toastify';
+import { connect } from 'react-redux';
 import Input from '../form/input';
 import Button from '../form/button';
 import Select from '../form/select';
@@ -9,7 +10,20 @@ import SleepButton from '../form/sleep-button';
 import request from '../../utils/request';
 import { PHONE_COUNTRIY } from '../../constants/common';
 import { VERIFY_PHONE } from '../../constants/api';
+import Modal from '../modal';
 
+@connect(({ common }) => ({
+  loginModalVisible: common.loginModalVisible,
+}), (dispatch, ownProps) => ({
+  close() {
+    dispatch({
+      type: 'common/save',
+      payload: {
+        loginModalVisible: false,
+      },
+    });
+  },
+}))
 export default class extends PureComponent {
   constructor(props) {
     super(props);
@@ -53,7 +67,10 @@ export default class extends PureComponent {
     };
   }
   render() {
-    return (<div className="login">
+    const { loginModalVisible, close } = this.props;
+    console.log('loginModalVisible');
+    console.log(loginModalVisible);
+    return (<Modal visible={loginModalVisible} onClose={close}><div className="login">
       <Logo />
       <Input ref={(c) => { this.nickname = c; }} placeholder="昵称" />
       <div className="flex">
@@ -115,6 +132,6 @@ export default class extends PureComponent {
           width: 100px;
         }
       `}</style>
-    </div>);
+    </div></Modal>);
   }
 }

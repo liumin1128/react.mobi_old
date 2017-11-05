@@ -12,15 +12,27 @@ class Index extends PureComponent {
   //   });
   //   return query;
   // }
+  constructor(props) {
+    super(props);
+    this.test = () => {
+      this.props.dispatch({
+        type: 'common/save',
+        payload: {
+          loginModalVisible: true,
+        },
+      });
+    };
+  }
   render() {
     return (
       <div>
         <Head>
-          <title>999</title>
+          <title>本王今年八岁</title>
           <meta name="description" content="注册" className="next-head" />
         </Head>
         <Login />
         <Toast />
+        <button onClick={this.test}>8888</button>
         <style jsx>{`
           .h1 {
             color: red;
