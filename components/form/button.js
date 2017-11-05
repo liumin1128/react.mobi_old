@@ -32,8 +32,7 @@ export default ({
         cursor: pointer;
         filter:chroma(color=#000000);
         outline：none;
-        height: 36px;
-
+        height: 40px;
         white-space: nowrap;
         text-overflow:ellipsis;
         // overflow:hidden;
@@ -46,7 +45,7 @@ export default ({
         color: #333;
       }
       .primary {
-        background: #4893ff;
+        background: #409EFF;
         color: #fff;
       }
       .disabled {

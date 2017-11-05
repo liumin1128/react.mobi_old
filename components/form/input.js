@@ -14,12 +14,12 @@ export default class extends PureComponent {
       }
       .input {
         box-sizing: border-box;
-        padding: 8px;
-        font-size: 16px;
+        padding: 10px;
+        font-size: 14px;
         display: block;
         width: 100%;
         border: 1px rgba(0,0,0,0.05) solid;
-        margin-bottom: 8px;
+        margin-bottom: 16px;
       }
       .error {
         font-size: 12px;

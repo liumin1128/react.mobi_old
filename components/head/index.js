@@ -5,10 +5,49 @@ export default ({ children }) => (<Head>
   <meta charSet="UTF-8" />
   <title>本王今年八岁</title>
   <meta name="description" content={'description'} />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" sizes="192x192" href="/static/touch-icon.png" />
-  <link rel="apple-touch-icon" href="/static/touch-icon.png" />
-  <link rel="mask-icon" href="/static/favicon-mask.svg" color="#49B882" />
-  <link rel="icon" href="/static/favicon.ico" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+  <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link rel="apple-touch-icon-precomposed" href="icon.png" />
+  <link rel="apple-touch-startup-image" sizes="2048x1496" href="" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <style>{`
+    * {
+      -webkit-tap-highlight-color:rgba(255,255,255,0);
+      border-width: thin;
+      -webkit-appearance: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      margin: 0;
+      padding: 0;
+    }
+    input {
+      -webkit-user-select: auto;
+      -webkit-touch-callout: auto;
+      border-radius: 0;
+    }
+    body {
+      // background-color: #fafbfc;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      font-family: -apple-system, BlinkMacSystemFont, PingFang-SC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', Arial, sans-serif;
+      max-width: 450px;
+      margin: 0 auto;
+      background: #fafbfc;
+      position: relative;
+    }
+
+    a {
+      color: #292525;
+      text-decoration: none
+    }
+
+    h1,h2,h3,h4,h5,h6,p{
+      margin: 0;
+      padding: 0;
+    }
+  `}</style>
   {children}
 </Head>);
