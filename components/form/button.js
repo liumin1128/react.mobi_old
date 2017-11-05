@@ -17,7 +17,7 @@ export default ({
         button
         ${type}
         ${block ? 'block' : ''}
-        ${disabled ? 'disabled' : ''}
+        ${loading || disabled ? 'disabled' : ''}
         ${loading ? 'loading' : ''}
       `}
     style={{ ...style }}
@@ -55,7 +55,7 @@ export default ({
       }
       .loading {
         cursor: not-allowed
-        opacity: 0.9;
+        opacity: 0.7;
       }
       .block {
         display: block;

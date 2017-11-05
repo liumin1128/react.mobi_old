@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
-export default ({
-  input, placeholder, type, style,
-}) => (
-  <div className="box">
-    <input style={style} className="input" placeholder={placeholder} type={type} />
-    <style jsx>{`
+export default class extends PureComponent {
+  render() {
+    return (<div className="box">
+      <input
+        {...this.props}
+        ref={(c) => { this.input = c; }}
+        className="input"
+      />
+      <style jsx>{`
       .box {
         width: 100%;
       }
@@ -23,6 +26,7 @@ export default ({
         color: red;
       }
     `}
-    </style>
-  </div>
-);
+      </style>
+    </div>);
+  }
+}

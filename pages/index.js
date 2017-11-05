@@ -4,13 +4,13 @@ import Head from '../components/head';
 import { reduxPage } from '../store';
 
 class Index extends PureComponent {
-  static async getInitialProps({ query, store }) {
-    await store.dispatch({
-      type: 'say/init',
-      payload: query,
-    });
-    return query;
-  }
+  // static async getInitialProps({ query, store }) {
+  //   await store.dispatch({
+  //     type: 'say/init',
+  //     payload: query,
+  //   });
+  //   return query;
+  // }
   render() {
     return (
       <div>
