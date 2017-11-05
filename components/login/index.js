@@ -3,6 +3,7 @@ import Input from '../form/input';
 import Button from '../form/button';
 import Select from '../form/select';
 import Oauth from './oauth';
+import Logo from './logo';
 import SleepButton from '../form/sleep-button';
 import request from '../../utils/request';
 import { PHONE_COUNTRIY } from '../../constants/common';
@@ -51,6 +52,8 @@ export default class extends PureComponent {
   }
   render() {
     return (<div className="login">
+
+      <Logo />
       <Input ref={(c) => { this.nickname = c; }} placeholder="昵称" />
       <div className="flex">
         <Select

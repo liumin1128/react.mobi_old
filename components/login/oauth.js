@@ -6,10 +6,10 @@ export default () => (<div>
     <legend className="legend">社交账号登录</legend>
     <div className="flex">
       <a href="https://api.react.mobi/oauth/github">
-        <IconButton src="http://img.react.mobi/github.svg" />
+        <IconButton src="http://img.react.mobi/icon/github.svg" />
       </a>
       <a href="https://api.react.mobi/oauth/wechat">
-        <IconButton src="http://img.react.mobi/wechat.svg" />
+        <IconButton src="http://img.react.mobi/icon/wechat.svg" />
       </a>
     </div>
   </fieldset>
@@ -19,7 +19,7 @@ export default () => (<div>
       border: none;
       fons-size: 12px;
       border-top: 1px solid rgba(0,0,0,0.1);
-      margin-top: 10px;
+      margin-top: 30px;
     }
     .legend {
       font-size: 12px;
