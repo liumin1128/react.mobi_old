@@ -10,8 +10,8 @@ export default ({
   <Ripples
     during={during}
     style={{
-      width: 30,
-      height: 30,
+      width: 40,
+      height: 40,
       padding: 10,
       borderRadius: 100,
     ...style,

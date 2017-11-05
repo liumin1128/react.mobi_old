@@ -20,6 +20,7 @@ export default ({ children }) => (<Head>
       user-select: none;
       -webkit-user-select: none;
       -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
       margin: 0;
       padding: 0;
     }

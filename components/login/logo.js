@@ -11,7 +11,7 @@ export default () => (<div className="box">
       margin-bottom: 0;
     }
     .h1 {
-      font-size: 20px;
+      font-size: 10px;
       color: #409EFF;
       margin: 40px;
       margin-top: 10px;
