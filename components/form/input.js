@@ -20,7 +20,8 @@ export default class extends PureComponent {
           height: 40px;
           line-heiht: 40px;
           width: 100%;
-          border: 1px rgba(0,0,0,0.05) solid;
+          border: 0;
+          box-shadow: 0px 0px 1px rgba(0, 0, 0, .1);
           margin-bottom: 16px;
         }
         .error {

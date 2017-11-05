@@ -18,6 +18,7 @@ export default ({
     height: 40,
     boxShadow: '0px 1px 1px rgba(0, 0, 0, .1)',
     margin: 0,
+    boxSizing: 'border-box',
     ...style,
   }}
     color={rippleColor}
@@ -45,7 +46,7 @@ export default ({
         cursor: pointer;
         filter:chroma(color=#000000);
         outline：none;
-        height: 40px;
+        height: 100%;
         white-space: nowrap;
         text-overflow:ellipsis;
         margin: 0;
