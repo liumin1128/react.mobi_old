@@ -44,12 +44,13 @@ export default class extends PureComponent {
         console.log('nickname, phone, code, country');
         console.log(nickname, phone, code, country);
       } else {
-        alert('不能为空');
+        // alert('不能为空');
       }
     };
   }
   render() {
     return (<div className="login">
+      <Button>测试</Button>
       <Input ref={(c) => { this.nickname = c; }} placeholder="昵称" />
       <div className="flex">
         <Select
@@ -83,7 +84,7 @@ export default class extends PureComponent {
         <SleepButton
           ref={(c) => { this.sleep = c; }}
           onClick={this.sentSms}
-          style={{ marginLeft: 8, fontSize: 12, minWidth: 120 }}
+          style={{ fontSize: 12, minWidth: 120 }}
         >
           获取验证码
         </SleepButton>
@@ -91,7 +92,9 @@ export default class extends PureComponent {
       <Button
         type="primary"
         block
-        onClick={this.submit}
+        style={{ width: '100%' }}
+        rippleColor="rgba(255, 255, 255, .3)"
+        during={1000}
       >
         确认
       </Button>

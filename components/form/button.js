@@ -1,4 +1,5 @@
 import React from 'react';
+import Ripples from 'react-ripples';
 
 export default ({
   children,
@@ -8,22 +9,25 @@ export default ({
   disabled,
   onClick,
   block,
+  during = 600,
+  rippleColor = 'rgba(0, 0, 0, .3)',
 }) => (
-  <button
-    type="button"
-    disabled={disabled}
-    onClick={onClick}
-    className={`
-        button
-        ${type}
-        ${block ? 'block' : ''}
-        ${loading || disabled ? 'disabled' : ''}
-        ${loading ? 'loading' : ''}
-      `}
-    style={{ ...style }}
-  >
-    {children}
-    <style jsx>{`
+  <Ripples during={during} style={{ height: 40, boxShadow: '0px 1px 1px rgba(0, 0, 0, .1)', ...style }} color={rippleColor}>
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+      className={`
+      button
+      ${type}
+      ${block ? 'block' : ''}
+      ${loading || disabled ? 'disabled' : ''}
+      ${loading ? 'loading' : ''}
+    `}
+      style={{ ...style }}
+    >
+      {children}
+      <style jsx>{`
       .button {
         border: none;
         background: red;
@@ -60,7 +64,10 @@ export default ({
         display: block;
         width: 100%;
       }
-    `}</style>
-  </button>
+  `}</style>
+    </button>
+  </Ripples>
+
+
 );
 
