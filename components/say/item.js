@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import TimeAgo from 'timeago-react';
+// import TimeAgo from 'timeago-react';
+import { timeago } from '../../utils';
 
 
 export default ({
@@ -11,7 +12,7 @@ export default ({
       <img src={user && user.avatarUrl} className="avatar" alt="" />
       <div >
         <h1 className="name">{user && user.nickName}</h1>
-        <p className="created"><TimeAgo datetime={createdAt} locale="zh_CN" /></p>
+        <p className="created">{timeago(createdAt)}</p>
       </div>
     </div>
     <Link href={`/say/detail?id=${_id}`}>

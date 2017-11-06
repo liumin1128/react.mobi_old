@@ -5491,7 +5491,7 @@ timeago-react@^1.2.2:
   dependencies:
     timeago.js "^3.0.1"
 
-timeago.js@^3.0.1:
+timeago.js@^3.0.1, timeago.js@^3.0.2:
   version "3.0.2"
   resolved "http://registry.npm.taobao.org/timeago.js/download/timeago.js-3.0.2.tgz#32a67e7c0d887ea42ca588d3aae26f77de5e76cc"
   dependencies:
