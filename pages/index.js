@@ -4,6 +4,7 @@ import Register from '../components/login/register';
 import Head from '../components/head';
 import { reduxPage } from '../store';
 import Toast from '../components/toast';
+import SayList from '../components/say/list';
 
 class Index extends PureComponent {
   // static async getInitialProps({ query, store }) {
@@ -40,6 +41,7 @@ class Index extends PureComponent {
           <meta name="description" content="注册" className="next-head" />
         </Head>
         <Login />
+        <SayList />
         <Register />
         <Toast />
         <button onClick={this.test}>登录</button>

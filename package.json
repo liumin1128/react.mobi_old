@@ -26,7 +26,8 @@
         "redux-effect": "^0.1.2",
         "redux-form": "^7.1.2",
         "store": "^2.0.12",
-        "styled-jsx": "^2.1.2"
+        "styled-jsx": "^2.1.2",
+        "timeago-react": "^1.2.2"
     },
     "devDependencies": {
         "babel-eslint": "^8.0.1",
