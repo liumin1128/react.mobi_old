@@ -1,6 +1,7 @@
 export default {
   namespace: 'common',
   initState: {
-    loginModalVisible: true,
+    loginModalVisible: false,
+    registerModalVisible: false,
   },
 };
