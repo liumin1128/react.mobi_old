@@ -1,12 +1,12 @@
 import 'isomorphic-fetch';
 import es6promise from 'es6-promise';
-import store from 'store';
 import { APIURL } from '../constants/api';
+import { getStorage } from '../utils';
 
 es6promise.polyfill();
 
 export default (url, params = {}) => {
-  const token = store.get('token');
+  const token = getStorage('token');
   const options = {
     headers: {
       Accept: 'application/json',

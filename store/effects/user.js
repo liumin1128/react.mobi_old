@@ -1,13 +1,16 @@
 import { toast } from 'react-toastify';
-import request from '../../utils/request';
+import { request, setStorage } from '../../utils';
 
 class User {
   login = async ({ payload }, { getState, dispatch }) => {
     try {
-      const { status, message, ...others } = await request('user/login', payload);
+      const {
+        status, message, token, userInfo,
+      } = await request('user/login', payload);
       if (status === 200) {
-        toast.success('登录成功');
-        await dispatch({ type: 'user/save', payload: others });
+        toast.success(`${userInfo.nickname} 死鬼，你可回来了！`);
+        await setStorage('token', token);
+        await dispatch({ type: 'user/save', payload: userInfo });
         await dispatch({ type: 'common/save', payload: { loginModalVisible: false } });
       } else {
         toast.error(message);
@@ -22,10 +25,13 @@ class User {
   }
   register = async ({ payload }, { getState, dispatch }) => {
     try {
-      const { status, message, ...others } = await request('user/register', payload);
+      const {
+        status, message, token, userInfo,
+      } = await request('user/register', payload);
       if (status === 200) {
         toast.success('注册成功');
-        await dispatch({ type: 'user/save', payload: others });
+        await setStorage('token', token);
+        await dispatch({ type: 'user/save', payload: userInfo });
         await dispatch({ type: 'common/save', payload: { registerModalVisible: false } });
       } else {
         toast.error(message);
