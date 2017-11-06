@@ -2,18 +2,18 @@ import React, { PureComponent } from 'react';
 import Login from '../components/login';
 import Register from '../components/login/register';
 import Head from '../components/head';
-import { reduxPage } from '../store';
 import Toast from '../components/toast';
 import SayList from '../components/say/list';
+import { reduxPage } from '../store';
 
 class Index extends PureComponent {
-  // static async getInitialProps({ query, store }) {
-  //   await store.dispatch({
-  //     type: 'say/init',
-  //     payload: query,
-  //   });
-  //   return query;
-  // }
+  static async getInitialProps({ query, store }) {
+    await store.dispatch({
+      type: 'say/init',
+      payload: query,
+    });
+    return query;
+  }
   constructor(props) {
     super(props);
     this.test = () => {

@@ -3,7 +3,6 @@ import Link from 'next/link';
 // import TimeAgo from 'timeago-react';
 import { timeago } from '../../utils';
 
-
 export default ({
   title, _id, content, photos, user, createdAt,
 }) => (
@@ -11,7 +10,7 @@ export default ({
     <div className="flex">
       <img src={user && user.avatarUrl} className="avatar" alt="" />
       <div >
-        <h1 className="name">{user && user.nickName}</h1>
+        <h1 className="name">{user && user.nickname}</h1>
         <p className="created">{timeago(createdAt)}</p>
       </div>
     </div>

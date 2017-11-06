@@ -1,13 +1,15 @@
 import List from './list';
-import request from '../../utils/request';
+import { request, toast } from '../../utils';
 
 class Say extends List {
   create = async ({ payload, cb }, { getState, dispatch }) => {
     try {
       await request('say/create', payload);
       await dispatch({ type: 'say/init' });
+      toast('发布成功');
       if (cb) await cb();
     } catch (error) {
+      toast('好像哪里出错了');
       console.log(error);
     }
   }

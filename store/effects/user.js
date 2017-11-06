@@ -1,5 +1,4 @@
-import { toast } from 'react-toastify';
-import { request, setStorage } from '../../utils';
+import { request, setStorage, toast } from '../../utils';
 
 class User {
   login = async ({ payload }, { getState, dispatch }) => {
