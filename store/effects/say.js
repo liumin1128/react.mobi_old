@@ -1,12 +1,13 @@
 import List from './list';
-import { request, toast } from '../../utils';
+import { request, toast, Router } from '../../utils';
 
 class Say extends List {
   create = async ({ payload, cb }, { getState, dispatch }) => {
     try {
       await request('say/create', payload);
       await dispatch({ type: 'say/init' });
-      toast('发布成功');
+      await toast('发布成功');
+      await Router.push('/');
       if (cb) await cb();
     } catch (error) {
       toast('好像哪里出错了');
