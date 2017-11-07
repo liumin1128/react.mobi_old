@@ -10,6 +10,7 @@
         "es6-promise": "^4.1.1",
         "isomorphic-fetch": "^2.2.1",
         "marked": "^0.3.6",
+        "material-ui-icons": "^1.0.0-beta.17",
         "next": "^4.1.4",
         "next-redux-wrapper": "^1.3.4",
         "preact": "^8.2.6",
