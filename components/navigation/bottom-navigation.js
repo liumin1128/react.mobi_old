@@ -30,7 +30,7 @@ export default class extends PureComponent {
   render() {
     const { showLabels } = this.state;
     return (<div className="navbottom">
-      {this.nav.map(i => <BottomNavigationButton showLabels={showLabels} {...i} />)}
+      {this.nav.map(i => <BottomNavigationButton onChange={Router.push} showLabels={showLabels} {...i} />)}
       <style jsx>{`
         .navbottom {
           position: fixed;
