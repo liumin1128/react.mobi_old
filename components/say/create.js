@@ -1,5 +1,5 @@
 import React from 'react';
-import { PureComponent, connect } from '../../utils';
+import { PureComponent, connect, toast } from '../../utils';
 import Input from '../form/input';
 import Button from '../form/button';
 
@@ -8,19 +8,22 @@ class Post extends PureComponent {
     super(props);
     this.submit = (values) => {
       const content = this.content.input.value;
-      this.props.dispatch({
-        type: 'say/create',
-        payload: {
-          content,
-        },
-      });
+      if (content) {
+        this.props.dispatch({
+          type: 'say/create',
+          payload: {
+            content,
+          },
+        });
+      } else {
+        toast('什么也没写');
+      }
     };
   }
   render() {
     const { post } = this.props;
     return (
-      <div>
-        <h1>66</h1>
+      <div className="post">
         <Input type="textarea" ref={(c) => { this.content = c; }} placeholder="想说什么？" />
         <Button
           onClick={this.submit}

@@ -5,6 +5,7 @@
 /dll
 /.next
 /next
+/dump.rdb
 
 # production
 /dist

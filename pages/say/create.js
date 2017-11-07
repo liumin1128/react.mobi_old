@@ -10,7 +10,6 @@ class Index extends PureComponent {
       <div>
         <Head />
         <Toast />
-        <h1>444</h1>
         <Create />
       </div>
     );
