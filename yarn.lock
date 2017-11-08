@@ -5375,6 +5375,10 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/strip-json-comments/download/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
+styled-jsx-plugin-sass@^0.2.1:
+  version "0.2.1"
+  resolved "http://registry.npm.taobao.org/styled-jsx-plugin-sass/download/styled-jsx-plugin-sass-0.2.1.tgz#e6fd9861954206b928bd13a947277f3f10f73a36"
+
 styled-jsx@2.1.1:
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/styled-jsx/download/styled-jsx-2.1.1.tgz#e7481c7554df50d605cdc84a4e53c58fec3449b5"

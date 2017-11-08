@@ -1,9 +1,9 @@
 import React from 'react';
 
 export default ({
-  color = 'rgba(0, 0, 0, 0.05)',
+  color = 'rgba(64,158,255, 0.1)',
   size = 1,
-  width = 2,
+  width = 1,
 }) => (<div>
   <div className="loader" />
   <style jsx>{`
@@ -20,7 +20,7 @@ export default ({
       border-top: .${width}em solid ${color};
       border-right: .${width}em solid ${color};
       border-bottom: .${width}em solid ${color};
-      border-left: .${width}em solid #409EFF;
+      border-left: .${width}em solid rgba(64,158,255, 0.5);
       -webkit-transform: translateZ(0);
       -ms-transform: translateZ(0);
       transform: translateZ(0);
