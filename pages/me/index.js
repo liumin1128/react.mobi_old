@@ -11,8 +11,8 @@ class Index extends PureComponent {
   render() {
     return (
       <div>
-        <h1>m3</h1>
         <User />
+        <h1>m3</h1>
       </div>
     );
   }

@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import effect from 'redux-effect';
 import reducers from './reducers';
 import effects from './effects';
+import widthRoot from '../components/hoc';
 
 const reducer = combineReducers({
   ...reducers,
@@ -23,5 +24,5 @@ export const store = (initialState = {}) => {
 
 // store.dispatch({ type: 'user/getUserInfo' });
 
-export const reduxPage = comp => withRedux(store)(comp);
+export const reduxPage = comp => withRedux(store)(widthRoot(comp));
 
