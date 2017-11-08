@@ -1,5 +1,5 @@
 import React from 'react';
-import { PureComponent, Router } from '../../utils';
+import { PureComponent, Link } from '../../utils';
 import BottomNavigationButton from './bottom-navigation-button';
 
 export default class extends PureComponent {
@@ -24,13 +24,22 @@ export default class extends PureComponent {
     }, {
       label: '发现',
       icon: 'explore',
-      value: '/user',
+      value: '/user2',
     }];
   }
   render() {
     const { showLabels } = this.state;
     return (<div className="navbottom">
-      {this.nav.map(i => <BottomNavigationButton onChange={Router.push} showLabels={showLabels} {...i} />)}
+      {this.nav.map(({ value, ...other }) => (
+        <Link href={value}>
+          <BottomNavigationButton
+            {...other}
+            key={value}
+            onChange={this.test}
+            showLabels={showLabels}
+          />
+        </Link>
+      ))}
       <style jsx>{`
         .navbottom {
           position: fixed;
@@ -39,7 +48,7 @@ export default class extends PureComponent {
           width: 100%;
           background: #fff;
           box-shadow: 0 0 3px rgba(0,0,0,0.1);
-          height: 60px;
+          height: 55px;
           display: flex;
         }
       `}</style>

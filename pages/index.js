@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import FloatButton from '../components/button/float-bottom';
 import Login from '../components/login';
 import Register from '../components/login/register';
 import Head from '../components/head';
@@ -41,6 +42,7 @@ class Index extends PureComponent {
           <title>本王今年八岁</title>
           <meta name="description" content="注册" className="next-head" />
         </Head>
+        <FloatButton />
         <Login />
         <SayList />
         <Register />

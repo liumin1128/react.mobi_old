@@ -1,4 +1,5 @@
 export { default as Router } from 'next/router';
+export { default as Link } from 'next/link';
 export { connect } from 'react-redux';
 export { toast } from 'react-toastify';
 export { default as request } from './request';

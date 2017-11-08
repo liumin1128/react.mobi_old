@@ -8,13 +8,9 @@ export default ({
   <Button
     style={{
       background: 'none',
-      width: 'auto',
-      height: 'auto',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flex: 1,
-      ...style,
+      width: size + 15,
+      height: size + 15,
+      padding: 15,
     }}
     {...other}
   >
