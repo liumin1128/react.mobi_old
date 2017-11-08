@@ -9,6 +9,7 @@ export default ({ children }) => (
         max-width: 760px;
         margin: 0 auto;
         // background: #f3f4f7;
+        background: rgba(255,0,0,0.1);
       }
       @media (min-width: 1110px){
         .main{

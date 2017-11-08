@@ -10,6 +10,7 @@ export default ({ children }) => (
       .container {
         margin: 0 auto;
         max-width: 1110px;
+        background: rgba(0,0,0,0.1);
       }
       .row div {
         position: relative;
