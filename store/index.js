@@ -12,12 +12,16 @@ const reducer = combineReducers({
 });
 
 export const store = (initialState = {}) => {
-  return createStore(
+  const temp = createStore(
     reducer,
     initialState,
     composeWithDevTools(applyMiddleware(effect(effects))),
   );
+  console.log('xxxxxx创建store');
+  return temp;
 };
+
+// store.dispatch({ type: 'user/getUserInfo' });
 
 export const reduxPage = comp => withRedux(store)(comp);
 

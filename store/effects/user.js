@@ -41,6 +41,15 @@ class User {
       toast.error(error.message);
     }
   }
+  getUserInfo = async ({ payload }, { dispatch }) => {
+    try {
+      const { status, userInfo } = await request('user/getUserInfo', payload);
+      console.log('status, userInfo');
+      console.log(status, userInfo);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 export default new User({ name: 'user' });

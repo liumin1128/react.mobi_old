@@ -24,7 +24,7 @@ export default class extends PureComponent {
     }, {
       label: '发现',
       icon: 'explore',
-      value: '/user2',
+      value: '/me',
     }];
   }
   render() {

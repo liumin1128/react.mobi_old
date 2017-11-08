@@ -9,4 +9,5 @@ export default {
   'say/create': say.create,
   'user/login': user.login,
   'user/register': user.register,
+  'user/getUserInfo': user.getUserInfo,
 };
