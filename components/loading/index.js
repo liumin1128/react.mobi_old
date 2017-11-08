@@ -7,13 +7,12 @@ import Loading from './loading';
 export default ({ isEnd, onEnter, onLeave }) => (<div className="flex">
   {
     isEnd ?
-      // <p className="label">没有更多啦</p> :
-      <Loading /> :
+      <p className="label">没有更多啦</p> :
       <Waypoint
         onEnter={onEnter}
         onLeave={onLeave}
       >
-        <Loading />
+        <div><Loading /></div>
       </Waypoint>
   }
   <style jsx>{`
