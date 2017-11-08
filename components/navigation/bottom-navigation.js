@@ -31,10 +31,10 @@ export default class extends PureComponent {
     const { showLabels } = this.state;
     return (<div className="navbottom">
       {this.nav.map(({ value, ...other }) => (
-        <Link href={value}>
+        <Link href={value} key={value}>
           <BottomNavigationButton
             {...other}
-            key={value}
+
             onChange={this.test}
             showLabels={showLabels}
           />

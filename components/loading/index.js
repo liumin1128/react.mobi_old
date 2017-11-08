@@ -2,16 +2,18 @@
 
 import React from 'react';
 import Waypoint from 'react-waypoint';
+import Loading from './loading';
 
 export default ({ isEnd, onEnter, onLeave }) => (<div className="flex">
   {
     isEnd ?
-      <p className="label">没有更多啦</p> :
+      // <p className="label">没有更多啦</p> :
+      <Loading /> :
       <Waypoint
         onEnter={onEnter}
         onLeave={onLeave}
       >
-        <div />
+        <Loading />
       </Waypoint>
   }
   <style jsx>{`
