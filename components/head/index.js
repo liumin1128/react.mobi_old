@@ -46,6 +46,12 @@ export default ({ children }) => (<Head>
       color: #292525;
       text-decoration: none
     }
+
+    @media (min-width: 768px){
+      body {
+        margin-top: 55px;
+      }
+    }
   `}</style>
   {children}
 </Head>);

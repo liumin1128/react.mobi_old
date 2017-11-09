@@ -4,6 +4,7 @@ import Container from './container';
 import Main from './main';
 import Sider from './sider';
 import Head from '../head';
+import Nav from '../navigation';
 
 export default class extends PureComponent {
   render() {
@@ -14,6 +15,7 @@ export default class extends PureComponent {
         <Main>{ children }</Main>
         <Sider />
       </Container>
+      <Nav />
     </div>);
   }
 }

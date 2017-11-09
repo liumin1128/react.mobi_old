@@ -5,7 +5,6 @@ import Register from '../components/login/register';
 import Head from '../components/head';
 import Toast from '../components/toast';
 import SayList from '../components/say/list';
-import NavBottom from '../components/navigation/bottom';
 import { reduxPage } from '../store';
 
 class Index extends PureComponent {
@@ -49,7 +48,6 @@ class Index extends PureComponent {
         <Toast />
         <button onClick={this.test}>登录</button>
         <button onClick={this.test2}>注册</button>
-        <NavBottom />
         <style jsx>{`
           .h1 {
             color: red;
