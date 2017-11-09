@@ -9,7 +9,7 @@ export default ({ children }) => (
         clear: both;
         max-width: 760px;
         margin: 0 auto;
-        background: rgba(255,255,0,0.1);
+        // background: rgba(255,255,0,0.1);
       }
       @media (max-width: 769px){
         .side{

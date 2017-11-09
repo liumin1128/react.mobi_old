@@ -21,7 +21,7 @@ export default ({ isEnd, onEnter, onLeave }) => (<div className="flex">
       justify-content: center;
       align-items: center;
       padding: 10px;
-      border-top: 1px #eee dashed;
+      // border-top: 1px #eee dashed;
       margin-bottom: 100px;
     }
     .label {

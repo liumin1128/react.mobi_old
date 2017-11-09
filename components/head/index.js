@@ -36,7 +36,7 @@ export default ({ children }) => (<Head>
       font-weight: 400;
       -webkit-font-smoothing: antialiased;
       font-family: -apple-system, BlinkMacSystemFont, PingFang-SC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', Arial, sans-serif;
-      max-width: 450px;
+      // max-width: 450px;
       margin: 0 auto;
       background: #fafbfc;
       position: relative;

@@ -1,9 +1,9 @@
 {
-    "presets": [
-      "next/babel"
-    ],
-    "plugins": [
-      "inline-react-svg",
-      "transform-decorators-legacy"
-    ]
-  }
+  "presets": [
+    "next/babel"
+  ],
+  "plugins": [
+    "inline-react-svg",
+    "transform-decorators-legacy"
+  ]
+}
