@@ -4,7 +4,8 @@
         "look": "next start",
         "build": "next build",
         "start": "next -p 8000",
-        "analyze": "cross-env ANALYZE=1 next build"
+        "analyze": "cross-env ANALYZE=1 next build",
+        "pm2": "pm2 start ./process.json"
     },
     "dependencies": {
         "es6-promise": "^4.1.1",
