@@ -14,16 +14,16 @@ export default class extends PureComponent {
       value: '/',
       active: true,
     }, {
-      label: '发现',
-      icon: 'explore',
+      label: '收藏',
+      icon: 'favorite',
       value: '/say/create',
     }, {
-      label: '发现',
-      icon: 'explore',
+      label: '消息',
+      icon: 'message',
       value: '/user',
     }, {
-      label: '发现',
-      icon: 'explore',
+      label: '我',
+      icon: 'account',
       value: '/me',
     }];
   }

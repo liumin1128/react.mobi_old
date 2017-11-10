@@ -44,8 +44,11 @@ class User {
   getUserInfo = async ({ payload }, { dispatch }) => {
     try {
       const { status, userInfo } = await request('user/getUserInfo', payload);
-      console.log('status, userInfo');
-      console.log(status, userInfo);
+      if (status === 200) {
+        await dispatch({ type: 'user/save', payload: { userInfo } });
+      }
+      // console.log('status, userInfo');
+      // console.log(status, userInfo);
     } catch (error) {
       console.log(error);
     }
