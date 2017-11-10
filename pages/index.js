@@ -15,6 +15,7 @@ class Index extends PureComponent {
     });
     return query;
   }
+
   constructor(props) {
     super(props);
     this.test = () => {

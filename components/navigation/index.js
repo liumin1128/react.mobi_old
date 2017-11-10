@@ -1,7 +1,10 @@
 import React from 'react';
-import { PureComponent, Link } from '../../utils';
+import { PureComponent, Link, connect } from '../../utils';
 import BottomNavigationButton from './bottom-navigation-button';
 
+@connect(({ common }) => ({
+  currentPath: common.currentPath,
+}))
 export default class extends PureComponent {
   constructor(props) {
     super(props);
@@ -12,7 +15,6 @@ export default class extends PureComponent {
       label: '发现',
       icon: 'explore',
       value: '/',
-      active: true,
     }, {
       label: '收藏',
       icon: 'favorite',
@@ -29,13 +31,16 @@ export default class extends PureComponent {
   }
   render() {
     const { showLabels } = this.state;
+    const { currentPath = 'xxx' } = this.props;
     return (
       <div className="nav">
+        {currentPath}
         <div className="navbottom">
           {this.nav.map(({ value, ...other }) => (
             <Link href={value} key={value}>
               <BottomNavigationButton
                 {...other}
+                active={currentPath === value}
                 onChange={this.test}
                 showLabels={showLabels}
               />

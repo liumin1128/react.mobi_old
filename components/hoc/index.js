@@ -9,8 +9,13 @@ export default (BaseComponent) => {
       }
       return {};
     }
+    componentWillMount() {
+      console.log('this.props.url.pathname');
+      console.log(this.props.url.pathname);
+      this.props.dispatch({ type: 'common/save', payload: { currentPath: this.props.url.pathname } });
+    }
     render() {
-      return (<Layout>
+      return (<Layout >
         <BaseComponent {...this.props} />
       </Layout>);
     }

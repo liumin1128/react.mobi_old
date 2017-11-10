@@ -8,7 +8,7 @@ export default ({
   showLabels,
   value,
   label,
-  size = 30,
+  size = 27,
   color = '#2196f3',
   icon,
   src,
