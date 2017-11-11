@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from '../../utils';
 import Icon from '../icon';
+import Avatar from '../avatar';
 
 @connect(({ user }) => ({
   user,
@@ -14,8 +15,6 @@ export default class extends PureComponent {
   render() {
     const { user } = this.props;
     const { userInfo = {} } = user;
-    console.log('user');
-    console.log(user);
     return (
       <div className="me">
 
@@ -24,7 +23,7 @@ export default class extends PureComponent {
             <h1 className="nickname">{userInfo.nickname}</h1>
             <p className="meta">用户简洁</p>
           </div>
-          <img src={userInfo.avatarUrl || 'http://img.react.mobi/icon/mine.svg'} alt="" className="avatar" />
+          <Avatar src={userInfo.avatarUrl} size={75} />
         </div>
 
         <div className="ul">
