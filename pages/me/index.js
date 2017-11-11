@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { reduxPage } from '../../store';
+import { reduxMainPage } from '../../store';
 import { User } from '../../components';
 
 class Index extends PureComponent {
@@ -12,5 +12,5 @@ class Index extends PureComponent {
   }
 }
 
-export default reduxPage(Index);
+export default reduxMainPage(Index);
 

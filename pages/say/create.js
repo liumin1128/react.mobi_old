@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { reduxPage } from '../../store';
+import { reduxMainPage } from '../../store';
 import Create from '../../components/say/create';
 import Head from '../../components/head';
 import Toast from '../../components/toast';
@@ -16,5 +16,5 @@ class Index extends PureComponent {
   }
 }
 
-export default reduxPage(Index);
+export default reduxMainPage(Index);
 

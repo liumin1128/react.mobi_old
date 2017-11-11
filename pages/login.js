@@ -16,7 +16,7 @@ class Login extends Component {
     Router.push('/');
   }
   render() {
-    const { token } = this.props;
+    const { token } = this.props.url.query;
     return (<div>
       <p>{token}</p>
       <h1>登录成功</h1>

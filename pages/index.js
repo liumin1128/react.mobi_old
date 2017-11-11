@@ -5,7 +5,7 @@ import Register from '../components/login/register';
 import Head from '../components/head';
 import Toast from '../components/toast';
 import SayList from '../components/say/list';
-import { reduxPage } from '../store';
+import { reduxMainPage } from '../store';
 
 class Index extends PureComponent {
   static async getInitialProps({ query, store }) {
@@ -60,5 +60,5 @@ class Index extends PureComponent {
   }
 }
 
-export default reduxPage(Index);
+export default reduxMainPage(Index);
 
