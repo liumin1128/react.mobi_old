@@ -5,14 +5,8 @@ import { User } from '../../components';
 class Index extends PureComponent {
   render() {
     return (
-      <div className="uc">
+      <div>
         <User />
-        <h1>m3</h1>
-        <style jsx>{`
-          .uc {
-            // padding: 10px;
-          }
-        `}</style>
       </div>
     );
   }
