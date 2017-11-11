@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { reduxMainPage } from '../../store';
-import { User, Nvigation } from '../../components';
+import { Nvigation } from '../../components';
+import User from '../../components/user';
 
 class Index extends PureComponent {
   render() {
