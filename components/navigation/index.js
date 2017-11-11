@@ -47,9 +47,11 @@ export default class extends PureComponent {
             </Link>
           ))}
         </div>
-        <div className="navtop">
-          <h1>header</h1>
-        </div>
+        {
+        //   <div className="navtop">
+        //   <h1>header</h1>
+        // </div>
+      }
         <style jsx>{`
           .navbottom {
             position: fixed;

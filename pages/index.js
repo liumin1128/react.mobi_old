@@ -1,9 +1,5 @@
 import React, { PureComponent } from 'react';
-import FloatButton from '../components/button/float-bottom';
-import Login from '../components/login';
-import Register from '../components/login/register';
-import Head from '../components/head';
-import Toast from '../components/toast';
+import { Nvigation, FloatButton } from '../components';
 import SayList from '../components/say/list';
 import { reduxMainPage } from '../store';
 
@@ -38,15 +34,9 @@ class Index extends PureComponent {
   render() {
     return (
       <div>
-        <Head>
-          <title>本王今年八岁</title>
-          <meta name="description" content="注册" className="next-head" />
-        </Head>
         <FloatButton />
-        <Login />
         <SayList />
-        <Register />
-        <Toast />
+        <Nvigation />
         <button onClick={this.test}>登录</button>
         <button onClick={this.test2}>注册</button>
         <style jsx>{`
