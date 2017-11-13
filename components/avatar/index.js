@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ src, nickname, size = 100 }) => (<div className="avatar" >
+export default ({ src, nickname = '?', size = 100 }) => (<div className="avatar" >
   {src ? <img className="avatar" src={src} alt="" /> : <span className="nickname">{nickname[0]}</span>}
   <style jsx>{`
     .avatar {
@@ -17,6 +17,7 @@ export default ({ src, nickname, size = 100 }) => (<div className="avatar" >
       text-align: center;
       line-height: ${size}px;
       font-width: bold;
+      font-size: ${size / 2}px;
       color: rgba(255,0,0,.3);
     }
   `}</style>
