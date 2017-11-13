@@ -1,4 +1,4 @@
-import { request, setStorage, getStorage, toast } from '../../utils';
+import { request, setStorage, getStorage, toast, Router } from '../../utils';
 
 class User {
   login = async ({ payload }, { getState, dispatch }) => {
@@ -56,7 +56,7 @@ class User {
   requireAuth = async ({ payload }, { dispatch }) => {
     const token = getStorage('token');
     if (!token) {
-      await dispatch({ type: 'common/save', payload: { registerModalVisible: true } });
+      Router.push('/user/login');
     }
   }
 }

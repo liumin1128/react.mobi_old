@@ -5,19 +5,9 @@ import Input from '../form/input';
 import Button from '../form/button';
 import Oauth from './oauth';
 import Logo from './logo';
-import Modal from '../modal';
 
 @connect(({ common }) => ({
-  loginModalVisible: common.loginModalVisible,
 }), (dispatch, ownProps) => ({
-  close() {
-    dispatch({
-      type: 'common/save',
-      payload: {
-        loginModalVisible: false,
-      },
-    });
-  },
   login(values) {
     dispatch({
       type: 'user/login',
@@ -42,10 +32,10 @@ export default class extends PureComponent {
     };
   }
   render() {
-    const { loginModalVisible, close } = this.props;
+    const { loginModalVisible } = this.props;
     console.log('loginModalVisible');
     console.log(loginModalVisible);
-    return (<Modal visible={loginModalVisible} onClose={close}><div className="login">
+    return (<div className="login">
       <Logo />
       <Input ref={(c) => { this.username = c; }} placeholder="手机号或邮箱" />
       <Input ref={(c) => { this.password = c; }} placeholder="密码" />
@@ -72,6 +62,6 @@ export default class extends PureComponent {
           width: 100px;
         }
       `}</style>
-    </div></Modal>);
+    </div>);
   }
 }
