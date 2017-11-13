@@ -6,7 +6,7 @@ import effect from 'redux-effect';
 import reducers from './reducers';
 import effects from './effects';
 import MainPage from '../components/hoc/main-page';
-import BlankPage from '../components/hoc/blank-page';
+// import BlankPage from '../components/hoc/blank-page';
 
 const reducer = combineReducers({
   ...reducers,

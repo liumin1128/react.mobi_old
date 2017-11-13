@@ -4,6 +4,14 @@ import { Nvigation } from '../../components';
 import User from '../../components/user';
 
 class Index extends PureComponent {
+  componentWillMount() {
+    console.log('this.props');
+    console.log(this.props);
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'user/requireAuth',
+    });
+  }
   render() {
     return (
       <div>

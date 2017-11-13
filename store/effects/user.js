@@ -1,4 +1,4 @@
-import { request, setStorage, toast } from '../../utils';
+import { request, setStorage, getStorage, toast } from '../../utils';
 
 class User {
   login = async ({ payload }, { getState, dispatch }) => {
@@ -51,6 +51,12 @@ class User {
       // console.log(status, userInfo);
     } catch (error) {
       console.log(error);
+    }
+  }
+  requireAuth = async ({ payload }, { dispatch }) => {
+    const token = getStorage('token');
+    if (!token) {
+      await dispatch({ type: 'common/save', payload: { registerModalVisible: true } });
     }
   }
 }
