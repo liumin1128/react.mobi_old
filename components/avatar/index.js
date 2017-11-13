@@ -1,11 +1,23 @@
 import React from 'react';
 
-export default ({ src, size = 100 }) => (<div>
-  <img src={src} alt="" />
+export default ({ src, nickname, size = 100 }) => (<div className="avatar" >
+  {src ? <img className="avatar" src={src} alt="" /> : <span className="nickname">{nickname[0]}</span>}
   <style jsx>{`
-    width: ${size}px;
-    height: ${size}px;
-    border-radius: 1000px;
-    background: rgba(0,0,0,0.1);
+    .avatar {
+      width: ${size}px;
+      height: ${size}px;
+      border-radius: 100%;
+      background: rgba(0,0,0,0.05);
+      border: none;
+    }
+    .nickname {
+      width: 100%;
+      height: 100%;
+      display: block;
+      text-align: center;
+      line-height: ${size}px;
+      font-width: bold;
+      color: rgba(255,0,0,.3);
+    }
   `}</style>
 </div>);
