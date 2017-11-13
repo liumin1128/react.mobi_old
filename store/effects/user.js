@@ -56,7 +56,8 @@ class User {
   requireAuth = async ({ payload }, { dispatch }) => {
     const token = getStorage('token');
     if (!token) {
-      Router.push('/user/login');
+      await dispatch({ type: 'common/save', payload: { loginModalVisible: true } });
+      // Router.push('/user/login');
     }
   }
 }

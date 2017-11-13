@@ -1,4 +1,4 @@
-export { default as Router } from './router';
+export { default as Router } from 'next/router';
 export { default as Link } from 'next/link';
 export { default as dynamic } from 'next/dynamic';
 export { connect } from 'react-redux';
