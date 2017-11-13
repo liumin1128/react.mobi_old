@@ -1,17 +1,12 @@
 import React, { PureComponent } from 'react';
-
+import { dynamic } from '../../utils';
 import Container from './container';
 import Main from './main';
 import Sider from './sider';
 import Head from '../head';
 import Toast from '../toast';
-import Register from '../login/register';
 
-import { Router } from '../../utils';
-
-Router.onRouteChangeStart = (url) => {
-  console.log('App is changing to: ', url);
-};
+const DynamicLogin = dynamic(import('../modal/login'));
 
 export default class extends PureComponent {
   render() {
@@ -23,7 +18,7 @@ export default class extends PureComponent {
         <Sider />
       </Container>
       <Toast />
-      <Register />
+      <DynamicLogin />
     </div>);
   }
 }
