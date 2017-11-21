@@ -75,6 +75,11 @@ export default class extends PureComponent {
             className="input"
             type="text"
             onChange={this.onChange}
+            onFocus={() => {
+              setInterval(() => {
+                document.body.scrollTop = document.body.scrollHeight;
+              }, 100);
+            }}
           />
           <Button
             style={{
@@ -107,7 +112,7 @@ export default class extends PureComponent {
         }
         .comment-bottom {
           display: flex;
-          padding: 8px;
+          padding: 4px 8px;
         }
         .comment-bottom .input {
           box-sizing: border-box;
