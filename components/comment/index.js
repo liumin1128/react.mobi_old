@@ -4,6 +4,7 @@ import Creater from '../user/avatar-nickname-meta';
 import Loading from '../loading';
 import FixedButtom from '../fixed/bottom';
 import Button from '../button';
+import { setTimeout } from 'timers';
 
 @connect(({ comment }) => ({
   list: comment.list,
@@ -76,7 +77,7 @@ export default class extends PureComponent {
             type="text"
             onChange={this.onChange}
             onFocus={() => {
-              setInterval(() => {
+              setTimeout(() => {
                 document.body.scrollTop = document.body.scrollHeight;
               }, 100);
             }}
