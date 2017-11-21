@@ -34,7 +34,7 @@ export default class extends PureComponent {
               nickname={i.user.nickname}
               createdAt={i.createdAt}
             />
-            <content>{i.content}</content>
+            <div className="content">{i.content}</div>
           </div>))
         }
       </div>
@@ -45,6 +45,10 @@ export default class extends PureComponent {
       />
       <button onClick={this.comment}>77777</button>
       <style jsx>{`
+        .content {
+          font-size: 14px;
+          margin-top: 8px;
+        }
         .comments {
           padding: 0px;
         }
