@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from '../../utils';
+import Creater from '../user/avatar-nickname-meta';
 
 @connect(({ comment }) => ({
   list: comment.list,
@@ -9,7 +10,7 @@ export default class extends PureComponent {
     super(props);
     this.comment = () => {
       const { id, dispatch } = this.props;
-      dispatch({ type: 'comment/create', payload: { content: 'xxxxxxx', id } });
+      dispatch({ type: 'comment/create', payload: { content: '2121', id } });
     };
   }
   componentWillMount() {
@@ -19,9 +20,24 @@ export default class extends PureComponent {
   render() {
     const { id, list = [] } = this.props;
     return (<div>
-      <h1>{id}</h1>
-      <h1>{list.length}</h1>
+      <div className="comments card">
+        {
+          list.map(i => (<div>
+            <Creater
+              avatarUrl={i.user.avatarUrl}
+              nickname={i.user.nickname}
+              createdAt={i.createdAt}
+            />
+            <content>{i.content}</content>
+          </div>))
+        }
+      </div>
       <button onClick={this.comment}>77777</button>
+      <style jsx>{`
+        .comments {
+          padding: 16px;
+        }
+      `}</style>
     </div>);
   }
 }

@@ -12,19 +12,19 @@ export default ({ avatarUrl, nickname, createdAt }) => (<div>
 
   </div>
   <style jsx>{`
-  .meta {
-    margin-left: 8px;
-  }
-  .name {
-    font-size: 14px;
-  }
-  .createdAt {
-    font-size: 12px;
-  }
-  .flex {
-    display: flex;
-    align-items: center;
-  }
-`}
+    .meta {
+      margin-left: 8px;
+    }
+    .name {
+      font-size: 14px;
+    }
+    .createdAt {
+      font-size: 12px;
+    }
+    .flex {
+      display: flex;
+      align-items: center;
+    }
+  `}
   </style>
 </div>);
