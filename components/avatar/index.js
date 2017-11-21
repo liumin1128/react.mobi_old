@@ -18,7 +18,7 @@ export default ({ src, nickname = '?', size = 100 }) => (<div className="avatar"
       line-height: ${size}px;
       font-width: bold;
       font-size: ${size / 2}px;
-      color: rgba(255,0,0,.3);
+      color: rgba(0,0,0,.3);
     }
   `}</style>
 </div>);

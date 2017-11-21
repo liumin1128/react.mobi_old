@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { reduxMainPage } from '../../store';
+import Detail from '../../routes/say/detail';
 
 class Index extends PureComponent {
   static async getInitialProps({ query, store }) {
@@ -18,7 +19,7 @@ class Index extends PureComponent {
   render() {
     return (
       <div>
-        <h1>detail</h1>
+        <Detail />
       </div>
     );
   }
