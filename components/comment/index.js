@@ -79,7 +79,7 @@ export default class extends PureComponent {
             onFocus={() => {
               setTimeout(() => {
                 document.body.scrollTop = document.body.scrollHeight;
-              }, 100);
+              }, 600);
             }}
           />
           <Button
