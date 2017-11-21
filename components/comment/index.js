@@ -47,7 +47,7 @@ export default class extends PureComponent {
   }
   componentWillMount() {
     const { id, dispatch } = this.props;
-    dispatch({ type: 'comment/init', payload: { id } });
+    dispatch({ type: 'comment/init', query: { id } });
   }
   render() {
     const { list = [], isEnd } = this.props;

@@ -73,7 +73,7 @@ export default ({
         margin-left: 8px;
       }
       .body {
-        padding: 10px;
+        padding: 0 16px;
       }
       .cover {
         width: 100%;
@@ -96,7 +96,7 @@ export default ({
       .flex {
         display: flex;
         align-items: center;
-        padding: 10px;
+        padding: 16px;
       }
     `}
     </style>
