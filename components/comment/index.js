@@ -103,6 +103,7 @@ export default class extends PureComponent {
         .content {
           font-size: 14px;
           margin-top: 8px;
+          padding-left: 48px;
         }
         .comments {
           padding: 0px;
