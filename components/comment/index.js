@@ -80,6 +80,7 @@ export default class extends PureComponent {
             style={{
               width: 80,
               fontSize: 12,
+              height: 40,
               fontWeight: 'bolder',
               background: 'none',
               color: '#2196f3',
@@ -106,7 +107,7 @@ export default class extends PureComponent {
         }
         .comment-bottom {
           display: flex;
-          padding: 4px 8px;
+          padding: 8px;
         }
         .comment-bottom .input {
           box-sizing: border-box;
