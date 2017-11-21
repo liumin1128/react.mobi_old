@@ -51,6 +51,11 @@ export default ({ children }) => (<Head>
         margin-top: 55px;
       }
     }
+    .card {
+      background: #fff;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 28px 0 rgba(137,157,197,.12);
+    }
   `}</style>
   {children}
 </Head>);
