@@ -114,8 +114,8 @@ export default class extends PureComponent {
           font-size: 14px;
           display: block;
           border-radius: 3px;
-          height: 30px;
-          line-height: 30px;
+          height: 40px;
+          line-height: 40px;
           padding: 0 10px;
           width: 100%;
           border: 0;
