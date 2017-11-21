@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from '../../utils';
-import { Creater } from '../../components';
+import { Creater, Comment } from '../../components';
 
 @connect(({ say: { detail } }) => ({
   detail,
@@ -19,6 +19,9 @@ export default class extends PureComponent {
         />
         <div className="content">{detail.content}</div>
       </div>
+
+      <Comment id={detail._id} />
+
       <style jsx>{`
         .body {
           padding: 0px;
