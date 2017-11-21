@@ -7,7 +7,7 @@ class Comment extends List {
       const { status } = await request('comment/create', payload);
       if (status === 200) {
         await dispatch({ type: 'comment/init', payload: { id: payload.id } });
-        await toast('发布成功');
+        await toast('评论成功');
         if (cb) await cb();
       } else if (status === 401) {
         toast.error('您还没登录哦');

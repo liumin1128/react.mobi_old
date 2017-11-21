@@ -42,7 +42,7 @@ export default class extends PureComponent {
           font-size: 14px;
           display: block;
           height: 40px;
-          line-heiht: 40px;
+          line-height: 40px;
           width: 100%;
           border: 0;
           box-shadow: 0px 0px 1px rgba(0, 0, 0, .1);
