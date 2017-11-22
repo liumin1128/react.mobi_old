@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from '../../utils';
 import Creater from '../../components/user/avatar-nickname-meta';
 import CommentList from '../../components/comment/list';
+import CommentCreateModal from '../../components/comment/create';
 
 @connect(({ say: { detail } }) => ({
   detail,
@@ -27,6 +28,7 @@ export default class extends PureComponent {
       </div>
 
       <CommentList id={detail._id} />
+      <CommentCreateModal />
 
       <style jsx>{`
         .body {

@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { Nvigation, FloatButton } from '../components';
 import SayList from '../components/say/list';
 import { reduxMainPage } from '../store';
 
@@ -34,10 +33,7 @@ class Index extends PureComponent {
   render() {
     return (
       <div>
-        <FloatButton />
         <SayList />
-        <Nvigation />
-
         <style jsx>{`
           .h1 {
             color: red;
