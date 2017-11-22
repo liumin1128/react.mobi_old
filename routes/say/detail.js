@@ -28,6 +28,7 @@ export default class extends PureComponent {
                 type: 'comment/save',
                 payload: {
                   createCommentModalVisible: true,
+                  createCommentObjectId: detail._id,
                 },
               });
             }}
