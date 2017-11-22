@@ -37,8 +37,7 @@ class Index extends PureComponent {
         <FloatButton />
         <SayList />
         <Nvigation />
-        <button onClick={this.test}>登录</button>
-        <button onClick={this.test2}>注册</button>
+
         <style jsx>{`
           .h1 {
             color: red;

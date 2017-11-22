@@ -4,8 +4,7 @@ import Creater from '../user/avatar-nickname-meta';
 import Loading from '../loading';
 import FixedButtom from '../fixed/bottom';
 import Button from '../button';
-import { setTimeout } from 'timers';
-
+import SmallModal from '../modal/small';
 @connect(({ comment }) => ({
   list: comment.list,
   isEnd: comment.isEnd,
@@ -69,26 +68,30 @@ export default class extends PureComponent {
         isEnd={isEnd}
         onEnter={this.more}
       />
-      <FixedButtom>
-        <div className="comment-bottom">
-          <input
-            ref={(c) => { this.input = c; }}
-            className="input"
-            type="text"
-            onChange={this.onChange}
-            onFocus={() => {
-              setTimeout(() => {
-                document.body.scrollTop = document.body.scrollHeight;
-              }, 600);
-            }}
-          />
+      <SmallModal visible>
+        <div className="modal-comment-top">
           <Button
             style={{
-              width: 80,
               fontSize: 12,
               height: 40,
               fontWeight: 'bolder',
               background: 'none',
+              padding: '0 16px',
+              // color: '#2196f3',
+            }}
+            onClick={this.comment}
+            disabled={!content}
+            className="button"
+          >
+            取消
+          </Button>
+          <Button
+            style={{
+              fontSize: 12,
+              height: 40,
+              fontWeight: 'bolder',
+              background: 'none',
+              padding: '0 16px',
               color: '#2196f3',
             }}
             onClick={this.comment}
@@ -98,7 +101,18 @@ export default class extends PureComponent {
             发布
           </Button>
         </div>
-      </FixedButtom>
+        <div className="modal-comment-textarea">
+          <textarea
+            ref={(c) => { this.input = c; }}
+            type="text"
+            onChange={this.onChange}
+            rows={5}
+            placeholder="说点什么？"
+          />
+        </div>
+
+      </SmallModal>
+
       <style jsx>{`
         .content {
           font-size: 14px;
@@ -112,22 +126,19 @@ export default class extends PureComponent {
           border-top: 1px rgba(0,0,0,0.05) solid;
           padding: 16px;
         }
-        .comment-bottom {
+        .modal-comment-top {
           display: flex;
-          padding: 4px 8px;
+          justify-content: space-between;
         }
-        .comment-bottom .input {
-          box-sizing: border-box;
-          background: rgba(0,0,0,0.05);
-          font-size: 14px;
-          display: block;
-          border-radius: 3px;
-          height: 40px;
-          line-height: 40px;
-          padding: 0 10px;
+        .modal-comment-textarea {
+          padding: 0 16px;
+          border: 1px rgba(0,0,0,0.05) solid;
+          border-width: 1px 0 1px 0;
+        }
+        .modal-comment-textarea textarea {
           width: 100%;
-          border: 0;
-          box-shadow: 0px 0px 1px rgba(0, 0, 0, .1);
+          border: none;
+          padding: 4px 0;
         }
       `}</style>
     </div>);
