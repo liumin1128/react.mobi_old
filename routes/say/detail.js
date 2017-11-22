@@ -9,9 +9,7 @@ import CommentCreateModal from '../../components/comment/create';
 }))
 export default class extends PureComponent {
   render() {
-    const { detail } = this.props;
-    console.log('detail');
-    console.log(detail);
+    const { detail, dispatch } = this.props;
     return (<div className="body">
       <div className="detail card">
         <Creater
@@ -23,7 +21,17 @@ export default class extends PureComponent {
         <div className="footer">
           <div className="action">喜欢</div>
           <div className="action">打call</div>
-          <div className="action">评论</div>
+          <button
+            className="action"
+            onClick={() => {
+              dispatch({
+                type: 'comment/save',
+                payload: {
+                  createCommentModalVisible: true,
+                },
+              });
+            }}
+          >评论</button>
         </div>
       </div>
 

@@ -1,12 +1,13 @@
 import { reducerFactory } from './default';
 import common from './common';
+import comment from './comment';
 
 export default reducerFactory([
-  common,
   'say',
   'user',
   'article',
-  'comment',
   'loading',
   'navigation',
+  comment,
+  common,
 ]);

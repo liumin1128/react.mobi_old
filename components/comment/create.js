@@ -11,7 +11,15 @@ export default class extends PureComponent {
     super(props);
     this.state = {
       content: '',
-      visible: true,
+    };
+    this.close = () => {
+      const { dispatch } = this.props;
+      dispatch({
+        type: 'comment/save',
+        payload: {
+          createCommentModalVisible: false,
+        },
+      });
     };
     this.comment = () => {
       const { content } = this.state;
@@ -23,8 +31,8 @@ export default class extends PureComponent {
           this.input.value = '';
           this.setState({
             content: '',
-            visible: false,
           });
+          this.close();
         },
       });
     };
@@ -43,12 +51,9 @@ export default class extends PureComponent {
       }, 20);
     };
   }
-  componentWillMount() {
-    const { id, dispatch } = this.props;
-    dispatch({ type: 'comment/init', query: { id } });
-  }
   render() {
-    const { content, visible } = this.state;
+    const { content } = this.state;
+    const { visible, dispatch } = this.props;
     return (<div>
       <SmallModal visible={visible}>
         <div className="modal-comment-top">
@@ -57,13 +62,8 @@ export default class extends PureComponent {
               fontSize: 14,
               background: 'none',
               padding: '16px 18px',
-              // color: '#2196f3',
             }}
-            onClick={() => {
-              this.setState({
-                visible: false,
-              });
-            }}
+            onClick={this.close}
             className="button"
           >
             取消
