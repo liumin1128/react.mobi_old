@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from '../../utils';
-import { Creater, Comment } from '../../components';
+import Creater from '../../components/user/avatar-nickname-meta';
+import CommentList from '../../components/comment/list';
 
 @connect(({ say: { detail } }) => ({
   detail,
@@ -18,9 +19,14 @@ export default class extends PureComponent {
           createdAt={detail.createdAt}
         />
         <div className="content">{detail.content}</div>
+        <div className="footer">
+          <div className="action">喜欢</div>
+          <div className="action">打call</div>
+          <div className="action">评论</div>
+        </div>
       </div>
 
-      <Comment id={detail._id} />
+      <CommentList id={detail._id} />
 
       <style jsx>{`
         .body {
@@ -37,6 +43,15 @@ export default class extends PureComponent {
         }
         .body img {
           width: 100%;
+        }
+        .footer {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          margin-top: 16px;
+        }
+        .footer .action {
+          font-size: 12px;
         }
       `}</style>
     </div>);
