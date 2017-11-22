@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { connect } from '../../utils';
 import Creater from '../user/avatar-nickname-meta';
 import Loading from '../loading';
-import FixedButtom from '../fixed/bottom';
 import Button from '../button';
 import SmallModal from '../modal/small';
 @connect(({ comment }) => ({
@@ -14,6 +13,7 @@ export default class extends PureComponent {
     super(props);
     this.state = {
       content: '',
+      visible: false,
     };
     this.comment = () => {
       const { content } = this.state;
@@ -25,6 +25,7 @@ export default class extends PureComponent {
           this.input.value = '';
           this.setState({
             content: '',
+            visible: false,
           });
         },
       });
@@ -50,7 +51,7 @@ export default class extends PureComponent {
   }
   render() {
     const { list = [], isEnd } = this.props;
-    const { content } = this.state;
+    const { content, visible } = this.state;
     return (<div>
       <div className="comments card">
         {
@@ -68,30 +69,29 @@ export default class extends PureComponent {
         isEnd={isEnd}
         onEnter={this.more}
       />
-      <SmallModal visible>
+      <SmallModal visible={visible}>
         <div className="modal-comment-top">
           <Button
             style={{
-              fontSize: 12,
-              height: 40,
-              fontWeight: 'bolder',
+              fontSize: 14,
               background: 'none',
-              padding: '0 16px',
+              padding: '16px 18px',
               // color: '#2196f3',
             }}
-            onClick={this.comment}
-            disabled={!content}
+            onClick={() => {
+              this.setState({
+                visible: false,
+              });
+            }}
             className="button"
           >
             取消
           </Button>
           <Button
             style={{
-              fontSize: 12,
-              height: 40,
-              fontWeight: 'bolder',
+              fontSize: 14,
               background: 'none',
-              padding: '0 16px',
+              padding: '16px 18px',
               color: '#2196f3',
             }}
             onClick={this.comment}
@@ -131,14 +131,14 @@ export default class extends PureComponent {
           justify-content: space-between;
         }
         .modal-comment-textarea {
-          padding: 0 16px;
+          padding: 16px;
           border: 1px rgba(0,0,0,0.05) solid;
           border-width: 1px 0 1px 0;
         }
         .modal-comment-textarea textarea {
           width: 100%;
           border: none;
-          padding: 4px 0;
+          font-size: 14px;
         }
       `}</style>
     </div>);
