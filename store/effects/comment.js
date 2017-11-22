@@ -6,7 +6,7 @@ class Comment extends List {
     try {
       const { status } = await request('comment/create', payload);
       if (status === 200) {
-        await dispatch({ type: 'comment/init', payload: { id: payload.id } });
+        await dispatch({ type: 'comment/init', query: { id: payload.id } });
         await toast('评论成功');
         if (cb) await cb();
       } else if (status === 401) {

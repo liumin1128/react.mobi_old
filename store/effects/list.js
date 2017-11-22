@@ -35,7 +35,12 @@ export default class {
         return;
       }
       const page = (list.length / pageSize) + 1;
-      const { data, isEnd } = await request(`${this.name}/list`, { page, pageSize });
+      const { data, isEnd } = await request(`${this.name}/list`, {
+        ...this.defaultQuery,
+        ...query,
+        page,
+        pageSize,
+      });
       await dispatch({ type: `${this.name}/save`, payload: { list: list.concat(data), isEnd } });
     } catch (error) {
       console.log(error);

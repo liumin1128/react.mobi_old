@@ -11,13 +11,14 @@ export default class extends PureComponent {
     super(props);
     this.more = () => {
       const { id, dispatch } = this.props;
+      console.log(id);
       dispatch({
         type: 'comment/more',
-        payload: { id },
+        query: { id },
       });
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     const { id, dispatch } = this.props;
     dispatch({ type: 'comment/init', query: { id } });
   }

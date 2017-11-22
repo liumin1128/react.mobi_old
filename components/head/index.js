@@ -41,6 +41,10 @@ export default ({ children }) => (<Head>
       position: relative;
     }
 
+    body,html {
+      background: #f5f5fa;
+    }
+
     a {
       color: #292525;
       text-decoration: none
