@@ -25,6 +25,9 @@ export default class extends PureComponent {
     this.comment = () => {
       const { content } = this.state;
       const { id, dispatch } = this.props;
+      console.log('content');
+      console.log(content);
+      if (!content) return;
       dispatch({
         type: 'comment/create',
         payload: { content, id },
