@@ -4,6 +4,7 @@ import Button from '../button';
 import SmallModal from '../modal/small';
 @connect(({ comment }) => ({
   id: comment.createCommentObjectId,
+  replyTo: comment.createCommentReplyId,
   visible: comment.createCommentModalVisible,
 }))
 export default class extends PureComponent {
@@ -18,19 +19,20 @@ export default class extends PureComponent {
         type: 'comment/save',
         payload: {
           createCommentModalVisible: false,
-          createCommentObjectId: null,
+          createCommentObjectId: undefined,
+          createCommentReplyId: undefined,
         },
       });
     };
     this.comment = () => {
       const { content } = this.state;
-      const { id, dispatch } = this.props;
+      const { id, dispatch, replyTo } = this.props;
       console.log('content');
       console.log(content);
       if (!content) return;
       dispatch({
         type: 'comment/create',
-        payload: { content, id },
+        payload: { replyTo, content, id },
         cb: () => {
           this.input.value = '';
           this.setState({

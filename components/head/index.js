@@ -31,6 +31,7 @@ export default ({ children }) => (<Head>
       -webkit-touch-callout: auto;
       border-radius: 0;
       box-sizing: border-box;
+      outline:none;
     }
     body {
       font-weight: 400;

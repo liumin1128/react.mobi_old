@@ -23,7 +23,7 @@ export default class extends PureComponent {
     dispatch({ type: 'comment/init', query: { id } });
   }
   render() {
-    const { list = [], isEnd } = this.props;
+    const { list = [], isEnd, dispatch } = this.props;
     return (<div>
       <div className="comments card">
         {
@@ -33,6 +33,20 @@ export default class extends PureComponent {
               nickname={i.user.nickname}
               createdAt={i.createdAt}
             />
+            <div className="action">
+              <button
+                onClick={() => {
+                dispatch({
+                  type: 'comment/save',
+                  payload: {
+                    createCommentModalVisible: true,
+                    createCommentObjectId: i.id,
+                    createCommentReplyId: i._id,
+                  },
+                });
+              }}
+              >评论</button>
+            </div>
             <div className="content">{i.content}</div>
           </div>))
         }
@@ -53,6 +67,12 @@ export default class extends PureComponent {
         .comment-item {
           border-top: 1px rgba(0,0,0,0.05) solid;
           padding: 16px;
+          position: relative;
+        }
+        .action {
+          position: absolute;
+          right: 20px;
+          top: 20px;
         }
       `}</style>
     </div>);
