@@ -14,6 +14,7 @@ export default {
   'comment/more': comment.more,
   'comment/create': comment.create,
   'comment/thumb': comment.thumb,
+  'comment/delete': comment.delete,
   // 用户
   'user/login': user.login,
   'user/register': user.register,

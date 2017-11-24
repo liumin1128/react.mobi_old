@@ -52,11 +52,22 @@ export default class extends PureComponent {
                     type: 'comment/thumb',
                     payload: {
                       id: i.id,
-                      objId: i._id,
+                      _id: i._id,
                     },
                   });
                 }}
               >赞</button>
+              <button
+                onClick={() => {
+                dispatch({
+                  type: 'comment/delete',
+                  payload: {
+                    id: i.id,
+                    _id: i._id,
+                  },
+                });
+              }}
+              >删除</button>
             </div>
             <div className="content">{i.content}</div>
             {
