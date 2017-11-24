@@ -46,8 +46,23 @@ export default class extends PureComponent {
                 });
               }}
               >评论</button>
+              <button
+                onClick={() => {
+                  dispatch({
+                    type: 'comment/thumb',
+                    payload: {
+                      id: i.id,
+                      objId: i._id,
+                    },
+                  });
+                }}
+              >赞</button>
             </div>
             <div className="content">{i.content}</div>
+            {
+              // i.reply.map(r =>
+              // <div className="content">{r.content}</div>)
+            }
           </div>))
         }
       </div>
