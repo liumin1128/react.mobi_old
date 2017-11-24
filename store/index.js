@@ -7,6 +7,7 @@ import reducers from './reducers';
 import effects from './effects';
 import MainPage from '../components/hoc/main-page';
 // import BlankPage from '../components/hoc/blank-page';
+import { getStorage } from '../utils';
 
 const reducer = combineReducers({
   ...reducers,
@@ -19,7 +20,12 @@ export const store = (initialState = {}) => {
     initialState,
     composeWithDevTools(applyMiddleware(effect(effects))),
   );
-  console.log('xxxxxx创建store');
+  const token = getStorage('token');
+  if (token) {
+    temp.dispatch({
+      type: 'user/getUserInfo',
+    });
+  }
   return temp;
 };
 
