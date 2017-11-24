@@ -2,9 +2,10 @@ import React, { PureComponent } from 'react';
 import { connect } from '../../utils';
 import Creater from '../user/avatar-nickname-meta';
 import Loading from '../loading';
-@connect(({ comment }) => ({
+@connect(({ comment, user }) => ({
   list: comment.list,
   isEnd: comment.isEnd,
+  userInfo: user.userInfo || {},
 }))
 export default class extends PureComponent {
   constructor(props) {
@@ -23,7 +24,10 @@ export default class extends PureComponent {
     dispatch({ type: 'comment/init', query: { id } });
   }
   render() {
-    const { list = [], isEnd, dispatch } = this.props;
+    const {
+      list = [], isEnd, dispatch, userInfo,
+    } = this.props;
+
     return (<div>
       <div className="comments card">
         {
@@ -57,7 +61,7 @@ export default class extends PureComponent {
                   });
                 }}
               >赞{i.likes}</button>
-              <button
+              {userInfo._id === i.user._id && <button
                 onClick={() => {
                 dispatch({
                   type: 'comment/delete',
@@ -67,7 +71,8 @@ export default class extends PureComponent {
                   },
                 });
               }}
-              >删除</button>
+              >删除</button>}
+
             </div>
             <div className="content">{i.content}</div>
             {
