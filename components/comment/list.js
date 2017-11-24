@@ -45,7 +45,7 @@ export default class extends PureComponent {
                   },
                 });
               }}
-              >评论</button>
+              >评论{i.replies}</button>
               <button
                 onClick={() => {
                   dispatch({
@@ -56,7 +56,7 @@ export default class extends PureComponent {
                     },
                   });
                 }}
-              >赞</button>
+              >赞{i.likes}</button>
               <button
                 onClick={() => {
                 dispatch({
