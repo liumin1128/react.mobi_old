@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import SayList from '../components/say/list';
+import Nvigation from '../components/navigation';
+import AddButton from '../components/button/float-bottom';
 import { reduxMainPage } from '../store';
 
 class Index extends PureComponent {
@@ -34,6 +36,8 @@ class Index extends PureComponent {
     return (
       <div>
         <SayList />
+        <Nvigation />
+        <AddButton />
         <style jsx>{`
           .h1 {
             color: red;
