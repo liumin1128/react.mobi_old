@@ -34,7 +34,6 @@ export default class extends PureComponent {
     const { currentPath = 'xxx' } = this.props;
     return (
       <div className="nav">
-        {currentPath}
         <div className="navbottom">
           {this.nav.map(({ value, ...other }) => (
             <Link href={value} key={value}>
