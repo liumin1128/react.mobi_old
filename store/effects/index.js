@@ -1,8 +1,13 @@
 import say from './say';
+import article from './article';
 import user from './user';
 import comment from './comment';
 
 export default {
+  // 文章
+  'article/init': article.init,
+  'article/detail': article.detail,
+  'article/more': article.more,
   // 说说
   'say/init': say.init,
   'say/detail': say.detail,
