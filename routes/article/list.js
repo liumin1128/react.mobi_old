@@ -8,12 +8,17 @@ import Item from './item';
 export default class extends PureComponent {
   render() {
     const { list = [] } = this.props;
-    return (<div >
+    return (<div className="article-list">
       {
         list.map(i => (<div key={i._id} >
           <Item {...i} />
         </div>))
       }
+      <style jsx>{`
+        .article-list {
+          padding: 16px;
+        }
+      `}</style>
     </div>);
   }
 }

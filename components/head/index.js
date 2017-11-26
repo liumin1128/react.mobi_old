@@ -14,6 +14,41 @@ export default ({ children }) => (<Head>
   <link rel="apple-touch-icon" href="icon.png" />
 
   <style>{`
+
+  html {
+    // overflow: hidden !important;
+  }
+
+  body {
+    font-family: PingFang SC, RobotoDraft, Roboto, "Helvetica Neue", Helvetica, Arial, STHeiti, "华文黑体", "Microsoft YaHei", "微软雅黑", sans-serif;
+    // overflow: hidden;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  select,
+  html,
+  textarea,
+  input {
+    font-family: PingFang SC, RobotoDraft, Roboto, "Helvetica Neue", Helvetica, Arial, STHeiti, "华文黑体", "Microsoft YaHei", "微软雅黑", sans-serif;
+    background-color: #fff;
+  }
+
+  img {
+    user-select: none;
+  }
+
+  hr {
+    width: 100%;
+    border: none;
+    height: 1px;
+  }
+
+  :focus {
+    outline: none;
+  }
+
     * {
       -webkit-tap-highlight-color:rgba(255,255,255,0);
       border-width: thin;
@@ -36,14 +71,18 @@ export default ({ children }) => (<Head>
     body {
       font-weight: 400;
       -webkit-font-smoothing: antialiased;
-      font-family: -apple-system, BlinkMacSystemFont, PingFang-SC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', Arial, sans-serif;
+      // font-family: -apple-system, BlinkMacSystemFont, PingFang-SC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', Arial, sans-serif;
       margin: 0 auto;
+      font-family: PingFang SC,RobotoDraft,Roboto,Helvetica Neue,Helvetica,Arial,STHeiti,华文黑体,Microsoft YaHei,微软雅黑,sans-serif;
       background: #fafbfc;
       position: relative;
+      color: #3e464b;
     }
 
     body,html {
-      background: #f5f5fa;
+      // background: #f5f5fa;
+      color: rgba(0,0,0,0.87);
+      background-color: rgb(250,250,250);
     }
 
     a {
@@ -60,6 +99,14 @@ export default ({ children }) => (<Head>
       background: #fff;
       margin-bottom: 16px;
       box-shadow: 0 10px 28px 0 rgba(137,157,197,.12);
+      cursor: pointer;
+      display: block;
+      background-color: #fdfdfd;
+    }
+    .nowrap {
+      white-space: nowrap;
+      text-overflow:ellipsis;
+      overflow:hidden;
     }
   `}</style>
   {children}
