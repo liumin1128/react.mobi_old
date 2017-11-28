@@ -12,6 +12,7 @@ export default class Error extends React.Component {
         {this.props.statusCode
           ? `An error ${this.props.statusCode} occurred on server`
           : 'An error occurred on client'}
+        <p>{JSON.stringify(this.props)}</p>
         <a href="/">回到首页</a>
       </p>
     );
