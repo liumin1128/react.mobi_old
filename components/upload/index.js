@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Upload from 'rc-upload';
-import getQiniuToken from '../../components/hoc/getQiniuToken';
 import { getFileItem } from './utils';
 
 const QINIUURL = 'http://img.react.mobi';
@@ -11,15 +10,7 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fileList: [{
-        percent: 0,
-        response: {
-          hash: 'FgcBsIpozoTPQZ0dr9E3Lmiz9wfW',
-          key: 'FgcBsIpozoTPQZ0dr9E3Lmiz9wfW',
-        },
-        status: 'done',
-        uid: 'rc-upload-1512298958348-2',
-      }],
+      fileList: [],
       destroyed: false,
     };
   }

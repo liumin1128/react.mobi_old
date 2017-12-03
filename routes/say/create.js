@@ -4,10 +4,14 @@ import Input from '../../components/form/input';
 import Button from '../../components/form/button';
 import Upload from '../../components/upload';
 
-class Post extends PureComponent {
+@connect(({ common }) => ({
+  qiniuToken: common.qiniuToken,
+}))
+export default class Post extends PureComponent {
   constructor(props) {
     super(props);
     this.submit = () => {
+      // console.log(this.photos.getValue());
       const photos = this.photos.getValue();
       const content = this.content.input.value;
       if (content) {
@@ -23,7 +27,14 @@ class Post extends PureComponent {
       }
     };
   }
+  componentWillMount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'common/getQiniuToken',
+    });
+  }
   render() {
+    const { qiniuToken } = this.props;
     return (
       <div className="post">
         <Input
@@ -42,6 +53,7 @@ class Post extends PureComponent {
           确认
         </Button>
         <Upload
+          qiniuToken={qiniuToken}
           ref={(c) => { this.photos = c; }}
         />
         <style jsx>
@@ -60,4 +72,3 @@ class Post extends PureComponent {
   }
 }
 
-export default connect()(Post);

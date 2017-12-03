@@ -8,12 +8,15 @@ function mapStateToProps({ say }) {
 }
 
 export default connect(mapStateToProps)(({
-  title, content, photos, id,
+  title, content, photos = [], id,
 }) => {
   return (<div className="body">
     <h1>{title}</h1>
     <img src={photos[0]} className="cover" alt="" />
     <div className="content">{content}</div>
+    {
+      photos.map(i => <img src={i} className="cover" alt="" />)
+    }
     <Comment id={id} />
     <style jsx>{`
       .body {

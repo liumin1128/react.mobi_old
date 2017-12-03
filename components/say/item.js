@@ -6,7 +6,12 @@ import Avatar from '../avatar';
 import { timeago } from '../../utils';
 
 export default ({
-  title, _id, content, photos, user, createdAt,
+  title,
+  _id,
+  content,
+  photos = [],
+  user,
+  createdAt,
 }) => (
   <div className="item">
     <div className="flex">
@@ -20,8 +25,7 @@ export default ({
       <a>
         <div>
           {
-            photos && photos.length === 1 &&
-              <img src={photos[0]} className="cover" alt="" />
+            photos.map(i => <img src={i} className="cover" alt="" />)
           }
           {
           (title || content) &&
