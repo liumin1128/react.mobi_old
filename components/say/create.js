@@ -2,6 +2,7 @@ import React from 'react';
 import { PureComponent, connect, toast } from '../../utils';
 import Input from '../form/input';
 import Button from '../form/button';
+import Upload from '../../components/upload';
 
 class Post extends PureComponent {
   constructor(props) {
@@ -35,6 +36,8 @@ class Post extends PureComponent {
         >
           确认
         </Button>
+        22
+        <Upload />
         <style jsx>
           {`
         .post {

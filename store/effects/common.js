@@ -13,6 +13,10 @@ class Common extends List {
       console.log(error);
     }
   }
+  getQiniuToken = async ({ payload, cb }, { getState, dispatch }) => {
+    const { token } = await request('common/getQiniuToken');
+    await dispatch({ type: 'common/save', payload: { qiniuToken: token } });
+  }
 }
 
 export default new Common({ name: 'common' });

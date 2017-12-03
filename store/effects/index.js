@@ -2,6 +2,7 @@ import say from './say';
 import article from './article';
 import user from './user';
 import comment from './comment';
+import common from './common';
 
 export default {
   // 文章
@@ -25,4 +26,5 @@ export default {
   'user/register': user.register,
   'user/getUserInfo': user.getUserInfo,
   'user/requireAuth': user.requireAuth,
+  'common/getQiniuToken': common.getQiniuToken,
 };
