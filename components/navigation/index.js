@@ -18,7 +18,7 @@ export default class extends PureComponent {
     }, {
       label: '收藏',
       icon: 'favorite',
-      value: '/favorite',
+      value: '/article',
     }, {
       label: '消息',
       icon: 'message',

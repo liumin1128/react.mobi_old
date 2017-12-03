@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { reduxMainPage } from '../../store';
 import ArticleList from '../../routes/article/list';
+import Nvigation from '../../components/navigation';
 
 class Index extends PureComponent {
   // static async getInitialProps({ query, store }) {
@@ -39,6 +40,7 @@ class Index extends PureComponent {
     return (
       <div>
         <ArticleList />
+        <Nvigation />
         <style jsx>{`
           .h1 {
             color: red;
