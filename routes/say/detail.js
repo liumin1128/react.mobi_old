@@ -18,6 +18,9 @@ export default class extends PureComponent {
           createdAt={detail.createdAt}
         />
         <div className="content">{detail.content}</div>
+        {
+          detail.photos && detail.photos.map(i => <img key={i} src={i} className="cover" alt="" />)
+        }
         <div className="footer">
           <div className="action">喜欢</div>
           <div className="action">打call</div>

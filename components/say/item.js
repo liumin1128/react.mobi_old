@@ -25,7 +25,7 @@ export default ({
       <a>
         <div>
           {
-            photos.map(i => <img src={i} className="cover" alt="" />)
+            photos.map(i => <img key={i} src={i} className="cover" alt="" />)
           }
           {
           (title || content) &&
