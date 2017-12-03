@@ -1,19 +1,21 @@
 import React from 'react';
 import { PureComponent, connect, toast } from '../../utils';
-import Input from '../form/input';
-import Button from '../form/button';
+import Input from '../../components/form/input';
+import Button from '../../components/form/button';
 import Upload from '../../components/upload';
 
 class Post extends PureComponent {
   constructor(props) {
     super(props);
-    this.submit = (values) => {
+    this.submit = () => {
+      const photos = this.photos.getValue();
       const content = this.content.input.value;
       if (content) {
         this.props.dispatch({
           type: 'say/create',
           payload: {
             content,
+            photos,
           },
         });
       } else {
@@ -22,10 +24,13 @@ class Post extends PureComponent {
     };
   }
   render() {
-    const { post } = this.props;
     return (
       <div className="post">
-        <Input type="textarea" ref={(c) => { this.content = c; }} placeholder="想说什么？" />
+        <Input
+          type="textarea"
+          ref={(c) => { this.content = c; }}
+          placeholder="想说什么？"
+        />
         <Button
           onClick={this.submit}
           type="primary"
@@ -36,8 +41,9 @@ class Post extends PureComponent {
         >
           确认
         </Button>
-        22
-        <Upload />
+        <Upload
+          ref={(c) => { this.photos = c; }}
+        />
         <style jsx>
           {`
         .post {

@@ -6,7 +6,7 @@ import { getFileItem } from './utils';
 const QINIUURL = 'http://img.react.mobi';
 const QINIU_UPLOADURL = 'http://up-z1.qiniu.com';
 
-@getQiniuToken
+// @getQiniuToken
 export default class extends Component {
   constructor(props) {
     super(props);
@@ -36,10 +36,18 @@ export default class extends Component {
     }
     const { onChange } = this.props;
     if (fileList.findIndex(i => i.status !== 'done') === -1) {
-      const value = fileList.map(i => i.response.key);
+      const value = fileList.map(i => `${QINIUURL}/${i.response.key}`);
       if (onChange) {
         onChange(value);
       }
+    }
+  }
+  getValue = () => {
+    const { fileList } = this.state;
+    if (fileList.findIndex(i => i.status !== 'done') === -1) {
+      return fileList.map(i => `${QINIUURL}/${i.response.key}`);
+    } else {
+      return [];
     }
   }
   clearProgressTimer() {
@@ -56,7 +64,10 @@ export default class extends Component {
     fileList.splice(idx1, 1);
     this.setState({ fileList });
   }
+
   render() {
+    console.log('this.props');
+    console.log(this.props);
     const { qiniuToken: token } = this.props;
     if (this.state.destroyed) {
       return null;
@@ -64,10 +75,10 @@ export default class extends Component {
     return (<div className="photos">
       {
         this.state.fileList.map(i => (
-          <div className="item">
+          <div className="item" key={i.uid}>
             <div
               className="item-content"
-              style={{ 'background-image': i.status === 'done' ? `url(${QINIUURL}/${i.response.key})` : undefined }}
+              style={{ backgroundImage: i.status === 'done' ? `url(${QINIUURL}/${i.response.key})` : undefined }}
             />
             <button
               className="item-remove"
@@ -85,10 +96,10 @@ export default class extends Component {
         supportServerRender
         style={{ display: 'inline-block' }}
         beforeUpload={(file) => {
-          console.log('beforeUpload', file);
+          // console.log('beforeUpload', file);
         }}
         onStart={(file) => {
-          console.log('onStart');
+          // console.log('onStart');
           const nextFileList = this.state.fileList.concat();
           const targetItem = {
             ...file,
@@ -102,9 +113,9 @@ export default class extends Component {
           });
         }}
         onSuccess={(response, file) => {
-            console.log('onSuccess');
+            // console.log('onSuccess');
             const { fileList } = this.state;
-            console.log(fileList);
+            // console.log(fileList);
             this.clearProgressTimer();
             try {
               if (typeof response === 'string') {

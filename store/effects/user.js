@@ -7,10 +7,11 @@ class User {
         status, message, token, userInfo,
       } = await request('user/login', payload);
       if (status === 200) {
-        toast.success(`${userInfo.nickname} 死鬼，你可回来了！`);
+        toast.success(`${userInfo.nickname} 死鬼，你咋才回来！`);
         await setStorage('token', token);
         await dispatch({ type: 'user/save', payload: userInfo });
         await dispatch({ type: 'common/save', payload: { loginModalVisible: false } });
+        await Router.push('/');
       } else {
         toast.error(message);
       }
@@ -20,7 +21,6 @@ class User {
       console.log(error);
       toast.error('用户名或密码错误');
     }
-    // await Router.push('/');
   }
   register = async ({ payload }, { getState, dispatch }) => {
     try {

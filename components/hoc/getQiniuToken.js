@@ -13,8 +13,23 @@ export default function (WrappedComponent) {
         type: 'common/getQiniuToken',
       });
     }
+    getWrappedInstance = () => {
+      if (this.props.widthRef) {
+        return this.wrappedInstance;
+      }
+    }
+    setWrappedInstance = (ref) => {
+      this.wrappedInstance = ref;
+    }
     render() {
-      return <WrappedComponent {...this.props} />;
+      const props = {
+        ...this.props,
+      };
+
+      if (this.props.withRef) {
+        props.ref = this.setWrappedInstance;
+      }
+      return <WrappedComponent {...props} />;
     }
   };
 }
