@@ -3,7 +3,7 @@ import Upload from 'rc-upload';
 import { getFileItem } from './utils';
 
 const QINIUURL = 'http://img.react.mobi';
-const QINIU_UPLOADURL = 'https://up-z1.qiniu.com';
+const QINIU_UPLOADURL = 'https://upload-z1.qiniup.com';
 
 // @getQiniuToken
 export default class extends Component {
