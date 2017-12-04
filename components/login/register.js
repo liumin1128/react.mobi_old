@@ -10,7 +10,6 @@ import SleepButton from '../form/sleep-button';
 import request from '../../utils/request';
 import { PHONE_COUNTRIY } from '../../constants/common';
 import { VERIFY_PHONE } from '../../constants/api';
-import Modal from '../modal';
 
 @connect(({ common }) => ({
   registerModalVisible: common.registerModalVisible,
@@ -76,16 +75,16 @@ export default class extends PureComponent {
     };
   }
   render() {
-    const { registerModalVisible, close } = this.props;
-    return (<Modal visible={registerModalVisible} onClose={close}><div className="login">
-      <Logo />
-      <Input ref={(c) => { this.nickname = c; }} placeholder="昵称" />
-      <div className="flex">
-        <Select
-          style={{ maxWidth: 100 }}
-          ref={(c) => { this.country = c; }}
-          placeholder="昵称"
-          onChange={(val) => {
+    return (
+      <div className="login">
+        <Logo />
+        <Input ref={(c) => { this.nickname = c; }} placeholder="昵称" />
+        <div className="flex">
+          <Select
+            style={{ maxWidth: 100 }}
+            ref={(c) => { this.country = c; }}
+            placeholder="昵称"
+            onChange={(val) => {
             console.log(val);
             const country = this.country.select.value;
             if (country === '火星') {
@@ -93,41 +92,41 @@ export default class extends PureComponent {
               this.country.select.value = '+86';
             }
           }}
-        >
-          {
+          >
+            {
             PHONE_COUNTRIY.map(({ code, name }) =>
               (<option key={code} value={code}>
                 {name}
               </option>))
           }
-          <option value={'火星'} >
+            <option value={'火星'} >
             火星
           </option>
-        </Select>
-        <Input style={{ borderLeft: 0 }} ref={(c) => { this.phone = c; }} placeholder="手机号" />
-      </div>
-      <div className="flex">
-        <Input ref={(c) => { this.code = c; }} placeholder="验证码" />
-        <SleepButton
-          ref={(c) => { this.sleep = c; }}
-          onClick={this.sentSms}
-          style={{ fontSize: 12, minWidth: 120 }}
-        >
+          </Select>
+          <Input style={{ borderLeft: 0 }} ref={(c) => { this.phone = c; }} placeholder="手机号" />
+        </div>
+        <div className="flex">
+          <Input ref={(c) => { this.code = c; }} placeholder="验证码" />
+          <SleepButton
+            ref={(c) => { this.sleep = c; }}
+            onClick={this.sentSms}
+            style={{ fontSize: 12, minWidth: 120 }}
+          >
           获取验证码
         </SleepButton>
-      </div>
-      <Button
-        onClick={this.submit}
-        type="primary"
-        block
-        style={{ width: '100%' }}
-        rippleColor="rgba(255, 255, 255, .3)"
-        during={1000}
-      >
+        </div>
+        <Button
+          onClick={this.submit}
+          type="primary"
+          block
+          style={{ width: '100%' }}
+          rippleColor="rgba(255, 255, 255, .3)"
+          during={1000}
+        >
         确认
       </Button>
-      <Oauth />
-      <style jsx>{`
+        <Oauth />
+        <style jsx>{`
         .login {
           padding: 16px;
         }
@@ -139,6 +138,6 @@ export default class extends PureComponent {
           width: 100px;
         }
       `}</style>
-    </div></Modal>);
+      </div>);
   }
 }
