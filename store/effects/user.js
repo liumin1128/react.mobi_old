@@ -8,7 +8,7 @@ class User {
       } = await request('user/login', payload);
       if (status === 200) {
         toast.success(`${userInfo.nickname} 死鬼，你咋才回来！`);
-        await setStorage('token', token);
+        await setStorage('reactmobitoken', token);
         await dispatch({ type: 'user/save', payload: userInfo });
         await dispatch({ type: 'common/save', payload: { loginModalVisible: false } });
         await Router.push('/');
@@ -29,7 +29,7 @@ class User {
       } = await request('user/register', payload);
       if (status === 200) {
         toast.success('注册成功');
-        await setStorage('token', token);
+        await setStorage('reactmobitoken', token);
         await dispatch({ type: 'user/save', payload: userInfo });
         await dispatch({ type: 'common/save', payload: { registerModalVisible: false } });
       } else {
@@ -54,7 +54,7 @@ class User {
     }
   }
   requireAuth = async ({ payload }, { dispatch }) => {
-    const token = getStorage('token');
+    const token = getStorage('reactmobitoken');
     if (!token) {
       await dispatch({ type: 'common/save', payload: { loginModalVisible: true } });
       // Router.push('/user/login');

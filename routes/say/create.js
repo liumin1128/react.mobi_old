@@ -39,8 +39,13 @@ export default class Post extends PureComponent {
       <div className="post">
         <Input
           type="textarea"
+          style={{ margin: 0 }}
           ref={(c) => { this.content = c; }}
           placeholder="想说什么？"
+        />
+        <Upload
+          qiniuToken={qiniuToken}
+          ref={(c) => { this.photos = c; }}
         />
         <Button
           onClick={this.submit}
@@ -52,10 +57,6 @@ export default class Post extends PureComponent {
         >
           确认
         </Button>
-        <Upload
-          qiniuToken={qiniuToken}
-          ref={(c) => { this.photos = c; }}
-        />
         <style jsx>
           {`
         .post {

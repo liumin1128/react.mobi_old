@@ -9,7 +9,7 @@ class Login extends Component {
   // }
   componentDidMount() {
     const { token } = this.props.url.query;
-    setStorage('token', token);
+    setStorage('reactmobitoken', token);
     this.props.dispatch({
       type: 'user/getUserInfo',
     });

@@ -160,7 +160,7 @@ export default class extends Component {
           position: relative;
           margin: 8px 8px 0 0;
           border-radius: 5px;
-          box-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+          box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
         }
         .item-content {
           width: 100%;

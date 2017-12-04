@@ -20,7 +20,7 @@ export const store = (initialState = {}) => {
     initialState,
     composeWithDevTools(applyMiddleware(effect(effects))),
   );
-  const token = getStorage('token');
+  const token = getStorage('reactmobitoken');
   if (token) {
     temp.dispatch({
       type: 'user/getUserInfo',

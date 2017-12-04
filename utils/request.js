@@ -6,7 +6,7 @@ import { getStorage } from '../utils';
 es6promise.polyfill();
 
 export default (url, params = {}) => {
-  const token = getStorage('token');
+  const token = getStorage('reactmobitoken');
   const options = {
     headers: {
       Accept: 'application/json',
