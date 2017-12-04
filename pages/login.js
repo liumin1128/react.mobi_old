@@ -1,28 +1,16 @@
-import React, { Component } from 'react';
-import Router from 'next/router';
-import { setStorage } from '../utils';
-import { reduxPage } from '../store';
+import React, { PureComponent } from 'react';
+import Login from '../components/login';
+import { reduxMainPage } from '../store';
 
-class Login extends Component {
-  // static async getInitialProps({ query }) {
-  //   return query;
-  // }
-  componentDidMount() {
-    const { token } = this.props.url.query;
-    setStorage('reactmobitoken', token);
-    this.props.dispatch({
-      type: 'user/getUserInfo',
-    });
-    Router.push('/');
-  }
+class Index extends PureComponent {
   render() {
-    const { token } = this.props.url.query;
-    return (<div>
-      <p>{token}</p>
-      <h1>登录成功</h1>
-    </div>);
+    return (
+      <div>
+        <Login />
+      </div>
+    );
   }
 }
 
-export default reduxPage(Login);
+export default reduxMainPage(Index);
 

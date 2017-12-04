@@ -15,11 +15,11 @@ export default ({ children }) => (
       .row div {
         position: relative;
       }
-      @media (min-width: 768px){
-        .container {
-          padding-top: 32px;
-        }
-      }
+      // @media (min-width: 768px){
+      //   .container {
+      //     // padding-top: 32px;
+      //   }
+      // }
 
       @media (min-width: 1110px){
         .row {

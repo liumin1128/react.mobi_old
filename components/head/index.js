@@ -15,9 +15,6 @@ export default ({ children }) => (<Head>
 
   <style>{`
 
-  html {
-    // overflow: hidden !important;
-  }
 
   body {
     font-family: PingFang SC, RobotoDraft, Roboto, "Helvetica Neue", Helvetica, Arial, STHeiti, "华文黑体", "Microsoft YaHei", "微软雅黑", sans-serif;
@@ -76,13 +73,15 @@ export default ({ children }) => (<Head>
       font-family: PingFang SC,RobotoDraft,Roboto,Helvetica Neue,Helvetica,Arial,STHeiti,华文黑体,Microsoft YaHei,微软雅黑,sans-serif;
       background: #fafbfc;
       position: relative;
-      color: #3e464b;
+      // color: #3e464b;
     }
 
     body,html {
       // background: #f5f5fa;
-      color: rgba(0,0,0,0.87);
+      // color: rgba(0,0,0,0.87);
       background-color: rgb(250,250,250);
+      color: rgba(0,0,0,.34);
+
     }
 
     a {
