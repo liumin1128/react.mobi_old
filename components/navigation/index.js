@@ -164,7 +164,7 @@ export default class extends PureComponent {
             color: rgba(0,0,0,.34);
           }
           .nav2 .btn.active {
-            border-bottom: 2px #2196f3 solid;
+            border-bottom: 4px #2196f3 solid;
             box-sizing: border-box;
             color: #2196f3;
           }

@@ -70,7 +70,7 @@ export default ({
       }
       .item {
         background: #fff;
-        margin-bottom: 16px;
+        margin-top: 16px;
         box-shadow: 0 10px 28px 0 rgba(137,157,197,.12);
       }
       .meta {
