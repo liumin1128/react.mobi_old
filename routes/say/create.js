@@ -39,7 +39,7 @@ export default class Post extends PureComponent {
       <div className="post">
         <Input
           type="textarea"
-          style={{ margin: 0 }}
+          style={{ margin: 0, borderRadius: 5, padding: '0 8px 8px 8px' }}
           ref={(c) => { this.content = c; }}
           placeholder="想说什么？"
         />

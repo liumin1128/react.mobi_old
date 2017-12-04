@@ -185,6 +185,7 @@ export default class extends Component {
         }
         .add {
           // border: 1px rgba(0,0,0,0.1) solid;
+          background-color: #fff;
           background-size: 50% auto;
           background-repeat: no-repeat;
           background-position: 50% 50%;
