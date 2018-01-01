@@ -1,0 +1,68 @@
+a {
+  text-decoration: none;
+}
+
+/* wangEditeContent */
+
+.wangEditeContent {
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  margin-top: 5px;
+  font-family: PingFang SC, Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, PingFang-SC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', Arial, sans-serif;
+  font-size: 16px;
+  color: #4a4a4a;
+  font-weight: 400;
+  line-height: 26px;
+  word-break: normal;
+  word-wrap: break-word;
+}
+
+.wangEditeContent img {
+  width: 100%;
+  margin: 0 auto;
+  display:block;
+}
+
+.wangEditeContent p {
+  margin: 0 0 10px 0;
+  line-height: 26px;
+  width: 100%;
+  text-align: justify;
+}
+
+.detail-box {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.detail-cover {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.detail-title {
+  margin-bottom: 15px;
+  margin-top: 0;
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 1.40625;
+  font-family: -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,Arial,sans-serif;
+}
+
+@media (max-width: 768px){
+  .detail-box {
+    padding:0 8px;
+    box-sizing: border-box;
+  }
+}
+
+/* headroom */
+.headroom--unpinned {
+  position: fixed;
+  transform: translateY(-100%);
+  opacity: 0;
+}
