@@ -11,15 +11,13 @@ export default class {
   }
   init = async ({ query }, { getState, dispatch }) => {
     try {
-      // const { [this.name]: state } = await getState();
-      // let { list = [] } = state;
-      // if (list.length === 0) {
+      const { [this.name]: state } = await getState();
+      const { list = [] } = state;
+      if (list.length !== 0) {
+        console.log('列表数据已存在');
+        return;
+      }
       const { data, isEnd } = await request(`/${this.name}/list`, { ...this.defaultQuery, ...query });
-      // } else {
-      //   console.log('列表数据已存在');
-      // }
-      console.log('data');
-      console.log(data);
       await dispatch({ type: `${this.name}/save`, payload: { list: data, isEnd } });
     } catch (error) {
       console.log(error);
