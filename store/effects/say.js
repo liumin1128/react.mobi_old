@@ -4,8 +4,7 @@ import { request, toast, Router } from '../../utils';
 class Say extends List {
   create = async ({ payload, cb }, { getState, dispatch }) => {
     try {
-      console.log('xxxxxxxxxxxxiiiiiii');
-      const { status } = await request('/say/create', payload);
+      const { status } = await request('/say/create', payload, { method: 'GET' });
       if (status === 200) {
         await dispatch({ type: 'say/init' });
         await toast('发布成功');
