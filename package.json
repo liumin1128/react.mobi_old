@@ -8,6 +8,7 @@
     "pm2": "pm2 start ./process.json"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "es6-promise": "^4.2.2",
     "material-ui": "^1.0.0-beta.26",
     "material-ui-icons": "^1.0.0-beta.17",

@@ -1,25 +1,30 @@
-import 'isomorphic-fetch';
+import axios from 'axios';
 import es6promise from 'es6-promise';
 import { API_URL } from '../constants/api';
 
 es6promise.polyfill();
 
-export default (url, params = {}, options) => {
-  const option = {
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+const instance = axios.create({
+  baseURL: API_URL,
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  method: 'POST',
+  timeout: 6000,
+});
+
+export default (url, data, options) => {
+  return instance({
     method: 'POST',
-    body: JSON.stringify({ ...params }),
+    url,
+    data,
     ...options,
-  };
-  return fetch(API_URL + url, option)
+  })
     .then((response) => {
-      return response.json();
-    })
-    .catch((err) => {
-      console.log('request请求服务器出错');
-      console.log(err);
+      console.log('response');
+      console.log(response);
+      return response.data;
     });
+  // .catch((error) => { console.log(error); });
 };
