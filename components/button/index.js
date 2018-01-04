@@ -26,13 +26,16 @@ const styles = {
 @withStyles(styles)
 export default class extends PureComponent {
   render() {
-    const { classes, loading, children } = this.props;
+    const {
+      classes, loading, children, ...other
+    } = this.props;
     return (<Button
       disabled={loading}
       classes={{
-      root: classes.root, // className, e.g. `OverridesClasses-root-X`
-      label: classes.label, // className, e.g. `OverridesClasses-label-X`
-    }}
+        root: classes.root, // className, e.g. `OverridesClasses-root-X`
+        label: classes.label, // className, e.g. `OverridesClasses-label-X`
+      }}
+      {...other}
     >
       {loading && <CircularProgress
         size={18}

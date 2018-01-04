@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
-import Checkbox from 'material-ui/Checkbox';
-import { FormGroup, FormControlLabel } from 'material-ui/Form';
+import { Field, reduxForm } from 'redux-form';
+import { isTel } from '../../utils/common';
 // import { MenuItem } from 'material-ui/Menu';
 // import Select from 'material-ui/Select';
 import Input from '../../components/input';
@@ -12,6 +12,10 @@ const styles = (theme) => {
   console.log('theme');
   console.log(theme);
   return {
+    input: {
+      width: '100%',
+      marginBottom: 16,
+    },
     formRoot: {
       padding: 32,
       '@media (min-width:600px)': {
@@ -19,14 +23,6 @@ const styles = (theme) => {
         // border: '1px red solid',
         margin: '0 auto',
       },
-    },
-    input: {
-      marginBottom: 16,
-      width: '100%',
-      // border: '1px solid #ced4da',
-      // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-      // padding: 1,
-      // borderRadius: 3,
     },
     phone: {
       flex: 1,
@@ -38,44 +34,79 @@ const styles = (theme) => {
   };
 };
 
-@connect(({ news }) => ({
-  current: news.current,
-}))
+const renderField = (field) => {
+  // console.log('field');
+  console.log(field);
+  const {
+    input, label, meta: { touched, error, dirty }, ...other
+  } = field;
+  return (<div>
+    <Input {...input} {...other} />
+
+  </div>);
+};
+
+const validate = (values) => {
+  console.log(values);
+  const errors = {};
+  const requiredFields = [
+    'username',
+    'password',
+  ];
+  requiredFields.forEach((field) => {
+    if (!values[field]) {
+      errors[field] = '不能为空';
+    }
+  });
+  if (
+    values.email &&
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+  ) {
+    errors.email = 'Invalid email address';
+  }
+  // if (
+  //   values.username &&
+  //   !isTel(values.username)
+  // ) {
+  //   errors.username = '手机号格式不正确';
+  // }
+  return errors;
+};
+
+@connect()
 @withStyles(styles)
+@reduxForm({ form: 'contact', validate })
 export default class extends PureComponent {
+  submit = (values) => {
+    const { dispatch } = this.props;
+    dispatch({ type: 'user/login', payload: values });
+  }
   render() {
-    const { classes } = this.props;
+    const {
+      classes, handleSubmit, pristine, reset, submitting,
+    } = this.props;
+
+    console.log('xxxxxxxxx');
     return (<div>
       <section>
         <div className={classes.formRoot}>
-          <FormGroup>
-            {
-            // <div className={classes.phone}>
-            //   <Select className={classes.select} value={10} displayEmpty name="age">
-            //     <MenuItem value="">
-            //       <em>None</em>
-            //     </MenuItem>
-            //     <MenuItem value={10}>Ten</MenuItem>
-            //     <MenuItem value={20}>Twenty</MenuItem>
-            //     <MenuItem value={30}>Thirty</MenuItem>
-            //   </Select>
-            //   <Input className={classes.input} placeholder="手机号" />
-            // </div>
-          }
-            <Input className={classes.input} placeholder="手机号" />
-            <Input className={classes.input} placeholder="密码" />
-            <FormControlLabel
-              control={
-                <Checkbox
-              // checked={this.state.checkedF}
-              // onChange={this.handleChange('checkedF')}
-                  value="checkedF"
-                />
-              }
-              label="记住密码"
+          <form onSubmit={handleSubmit(this.submit)}>
+            <Field
+              name="username"
+              component={renderField}
+              type="text"
+              placeholder="手机号"
+              className={classes.input}
             />
-          </FormGroup>
-          <Button>登录</Button>
+            <Field
+              name="password"
+              component={renderField}
+              type="password"
+              placeholder="密码"
+              className={classes.input}
+            />
+            <Button type="submit">登录</Button>
+          </form>
         </div>
       </section>
     </div>);

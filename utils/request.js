@@ -22,8 +22,8 @@ export default (url, data, options) => {
     ...options,
   })
     .then((response) => {
-      console.log('response');
-      console.log(response);
+      // console.log('response');
+      // console.log(response);
       return response.data;
     });
   // .catch((error) => { console.log(error); });

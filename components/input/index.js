@@ -3,6 +3,10 @@ import { withStyles } from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 
 const styles = theme => ({
+  // input: {
+  //   width: '100%',
+  //   marginBottom: 16,
+  // },
   textFieldRoot: {
     padding: 0,
     'label + &': {
@@ -33,8 +37,9 @@ const styles = theme => ({
 export default class extends PureComponent {
   render() {
     const { classes, ...other } = this.props;
-    return (<div className={classes.container}>
+    return (
       <TextField
+        // className={classes.input}
         InputProps={{
           disableUnderline: true,
           classes: {
@@ -48,6 +53,6 @@ export default class extends PureComponent {
         }}
         {...other}
       />
-    </div>);
+    );
   }
 }

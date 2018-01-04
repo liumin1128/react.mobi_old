@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import { reducer as reduxFormReducer } from 'redux-form';
 import { reducerFactory } from '../utils';
 
-export default combineReducers(reducerFactory([
+const easyReducers = reducerFactory([
   {
     namespace: 'loading',
     props: {
@@ -40,5 +41,10 @@ export default combineReducers(reducerFactory([
     },
   },
   'user',
-]));
+]);
+
+export default combineReducers({
+  ...easyReducers,
+  form: reduxFormReducer,
+});
 
