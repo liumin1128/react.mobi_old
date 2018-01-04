@@ -2,15 +2,14 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import { Field, reduxForm } from 'redux-form';
-import { isTel } from '../../utils/common';
 // import { MenuItem } from 'material-ui/Menu';
 // import Select from 'material-ui/Select';
 import Input from '../../components/input';
 import Button from '../../components/button';
 
 const styles = (theme) => {
-  console.log('theme');
-  console.log(theme);
+  // console.log('theme');
+  // console.log(theme);
   return {
     input: {
       width: '100%',
@@ -36,7 +35,7 @@ const styles = (theme) => {
 
 const renderField = (field) => {
   // console.log('field');
-  console.log(field);
+  // console.log(field);
   const {
     input, label, meta: { touched, error, dirty }, ...other
   } = field;
@@ -47,7 +46,7 @@ const renderField = (field) => {
 };
 
 const validate = (values) => {
-  console.log(values);
+  // console.log(values);
   const errors = {};
   const requiredFields = [
     'username',

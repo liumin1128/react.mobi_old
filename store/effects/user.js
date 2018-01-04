@@ -1,4 +1,5 @@
-import { request, setStorage, getStorage, toast, Router } from '../../utils';
+import { request, setStorage, getStorage, Router } from '../../utils';
+import Snackbar from '../../components/snackbar';
 
 class User {
   login = async ({ payload }, { getState, dispatch }) => {
@@ -7,19 +8,21 @@ class User {
         status, message, token, userInfo,
       } = await request('user/login', payload);
       if (status === 200) {
-        toast.success(`${userInfo.nickname} 死鬼，你咋才回来！`);
+        Snackbar.success();
+        // toast.success(`${userInfo.nickname} 死鬼，你咋才回来！`);
         await setStorage('reactmobitoken', token);
         await dispatch({ type: 'user/save', payload: userInfo });
         await dispatch({ type: 'common/save', payload: { loginModalVisible: false } });
         await Router.push('/');
       } else {
-        toast.error(message);
+        Snackbar.success({ message });
+        // toast.error(message);
       }
       // await dispatch({ type: 'user/init' });
     } catch (error) {
       console.log('登录错误');
       console.log(error);
-      toast.error('用户名或密码错误');
+      // toast.error('用户名或密码错误');
     }
   }
   register = async ({ payload }, { getState, dispatch }) => {
@@ -28,17 +31,17 @@ class User {
         status, message, token, userInfo,
       } = await request('user/register', payload);
       if (status === 200) {
-        toast.success('注册成功');
+        // toast.success('注册成功');
         await setStorage('reactmobitoken', token);
         await dispatch({ type: 'user/save', payload: userInfo });
         await dispatch({ type: 'common/save', payload: { registerModalVisible: false } });
       } else {
-        toast.error(message);
+        // toast.error(message);
       }
     } catch (error) {
       console.log('注册失败');
       console.log(error);
-      toast.error(error.message);
+      // toast.error(error.message);
     }
   }
   getUserInfo = async ({ payload }, { dispatch }) => {
