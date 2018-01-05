@@ -1,8 +1,18 @@
+import dynamic from 'next/dynamic';
 import { request, setStorage, getStorage, Router } from '../../utils';
 import Snackbar from '../../components/snackbar';
-import { withReduxSaga } from '../index';
-import Login from '../../container/login/test';
-import { domRender } from '../../utils/react';
+import modal from '../../components/hoc/modal';
+// import Login from '../../container/login/index';
+
+const Login = dynamic(
+  import('../../container/login'),
+  {
+    ssr: false,
+    // loading: () => (<div>
+    //   <CircularProgress size={20} />
+    // </div>),
+  },
+);
 
 class User {
   login = async ({ payload }, { getState, dispatch }) => {
@@ -61,7 +71,7 @@ class User {
   }
   checkAuth = async ({ payload, cb }, { dispatch }) => {
     if (cb) await cb();
-    domRender(withReduxSaga(Login));
+    modal(Login);
     // const token = getStorage('reactmobitoken');
     // if (!token) {
     //   await dispatch({ type: 'common/save', payload: { loginModalVisible: true } });

@@ -1,13 +1,7 @@
 import React, { PureComponent } from 'react';
 import dynamic from 'next/dynamic';
 import Button from 'material-ui/Button';
-import TextField from 'material-ui/TextField';
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from 'material-ui/Dialog';
+import Dialog from 'material-ui/Dialog';
 import { withStyles } from 'material-ui/styles';
 import Slide from 'material-ui/transitions/Slide';
 import withRoot from '../../components/material-ui/withRoot';
@@ -16,7 +10,7 @@ function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     flexGrow: 1,
   },
@@ -50,7 +44,6 @@ export default class extends PureComponent {
 
   render() {
     const { destory } = this.props;
-    const { open } = this.state;
     return (
       <div>
         <Button onClick={this.handleClickOpen}>Open form dialog</Button>
