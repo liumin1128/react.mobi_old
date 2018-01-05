@@ -1,50 +1,20 @@
 import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
 import { reducerFactory } from '../utils';
+import say from './say';
+import news from './news';
+import loading from './loading';
 
-const easyReducers = reducerFactory([
-  {
-    namespace: 'loading',
-    props: {
-      save(state = {}, action) {
-        return {
-          ...state,
-          [action.key]: action.status,
-        };
-      },
-    },
-  },
-  {
-    namespace: 'news',
-    initState: { list: [], isEnd: false },
-    props: {
-      put({ list, ...other }, { payload }) {
-        return {
-          ...other,
-          list: list.concat(payload.list),
-          isEnd: payload.isEnd,
-        };
-      },
-    },
-  },
-  {
-    namespace: 'say',
-    initState: { list: [], isEnd: false, current: {} },
-    props: {
-      put({ list, ...other }, { payload }) {
-        return {
-          ...other,
-          list: list.concat(payload.list),
-          isEnd: payload.isEnd,
-        };
-      },
-    },
-  },
+const reducers = reducerFactory([
+  loading,
+  news,
+  say,
   'user',
+  'comment',
 ]);
 
 export default combineReducers({
-  ...easyReducers,
+  ...reducers,
   form: reduxFormReducer,
 });
 

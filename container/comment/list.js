@@ -1,0 +1,33 @@
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { withStyles } from 'material-ui/styles';
+import Item from './item';
+
+const styles = theme => ({
+  card: {
+    // maxWidth: 400,
+    flexGrow: 1,
+    marginBottom: 32,
+    boxShadow: '0 10px 28px 0 rgba(137,157,197,.12)',
+  },
+});
+
+@connect(({ comment = {} }) => ({
+  list: comment.list,
+  isEnd: comment.isEnd,
+}))
+@withStyles(styles)
+export default class extends PureComponent {
+  componentWillMount() {
+    const { id, dispatch } = this.props;
+    dispatch({ type: 'comment/init', query: { id } });
+  }
+  render() {
+    const { list = [] } = this.props;
+    return (<div>
+      {
+        list.map(i => <Item key={i._id} {...i} />)
+      }
+    </div>);
+  }
+}

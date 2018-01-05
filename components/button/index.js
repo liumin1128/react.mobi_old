@@ -15,6 +15,17 @@ const styles = {
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)',
     marginBottom: 16,
   },
+  disabled: {
+    width: '100%',
+    borderRadius: 3,
+    border: 0,
+    // color: 'white',
+    height: 48,
+    padding: '0 30px',
+    marginBottom: 16,
+    // cursor: 'not-allowed',
+    // background: 'linear-gradient(45deg, #FA96AC 30%, #FFB995 90%)',
+  },
   label: {
     textTransform: 'capitalize',
   },
@@ -23,16 +34,18 @@ const styles = {
   },
 };
 
+
 @withStyles(styles)
 export default class extends PureComponent {
   render() {
     const {
-      classes, loading, children, ...other
+      classes, disabled, loading, children, ...other
     } = this.props;
     return (<Button
-      disabled={loading}
+      disabled={disabled || loading}
+      raised
       classes={{
-        root: classes.root, // className, e.g. `OverridesClasses-root-X`
+        root: disabled ? classes.disabled : classes.root, // className, e.g. `OverridesClasses-root-X`
         label: classes.label, // className, e.g. `OverridesClasses-label-X`
       }}
       {...other}
