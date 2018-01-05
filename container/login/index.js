@@ -95,6 +95,7 @@ export default class extends PureComponent {
               component={renderField}
               type="text"
               placeholder="手机号"
+              // autoFocus
               className={classes.input}
             />
             <Field
@@ -104,7 +105,7 @@ export default class extends PureComponent {
               placeholder="密码"
               className={classes.input}
             />
-            <Button type="submit">登录</Button>
+            <Button focusRipple type="submit">登录</Button>
           </form>
         </div>
       </section>

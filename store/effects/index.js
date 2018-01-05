@@ -25,6 +25,6 @@ export default {
   'user/login': user.login,
   'user/register': user.register,
   'user/getUserInfo': user.getUserInfo,
-  'user/requireAuth': user.requireAuth,
+  'user/checkAuth': user.checkAuth,
   'common/getQiniuToken': common.getQiniuToken,
 };

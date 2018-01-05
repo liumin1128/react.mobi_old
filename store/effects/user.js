@@ -1,5 +1,8 @@
 import { request, setStorage, getStorage, Router } from '../../utils';
 import Snackbar from '../../components/snackbar';
+import { withReduxSaga } from '../index';
+import Login from '../../container/login/test';
+import { domRender } from '../../utils/react';
 
 class User {
   login = async ({ payload }, { getState, dispatch }) => {
@@ -56,12 +59,14 @@ class User {
       console.log(error);
     }
   }
-  requireAuth = async ({ payload }, { dispatch }) => {
-    const token = getStorage('reactmobitoken');
-    if (!token) {
-      await dispatch({ type: 'common/save', payload: { loginModalVisible: true } });
-      // Router.push('/user/login');
-    }
+  checkAuth = async ({ payload, cb }, { dispatch }) => {
+    if (cb) await cb();
+    domRender(withReduxSaga(Login));
+    // const token = getStorage('reactmobitoken');
+    // if (!token) {
+    //   await dispatch({ type: 'common/save', payload: { loginModalVisible: true } });
+    //   // Router.push('/user/login');
+    // }
   }
 }
 

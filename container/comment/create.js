@@ -52,9 +52,21 @@ const renderField = (field) => {
 @withStyles(styles)
 @reduxForm({ form: 'comment', validate })
 export default class extends PureComponent {
-  submit = (values) => {
+  onFocus = () => {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'user/checkAuth',
+      cb: () => {
+        this.textareaRef.blur();
+      },
+    });
+  }
+  onSubmit = (values) => {
     const { dispatch, id } = this.props;
-    dispatch({ type: 'comment/create', payload: { id, ...values } });
+    dispatch({
+      type: 'comment/create',
+      payload: { id, ...values },
+    });
   }
   render() {
     const {
@@ -62,7 +74,8 @@ export default class extends PureComponent {
     } = this.props;
     return (
       <section>
-        <form onSubmit={handleSubmit(this.submit)}>
+        <button onClick={this.onFocus}>777</button>
+        <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className={classes.root}>
             <Field
               name="content"
@@ -70,8 +83,10 @@ export default class extends PureComponent {
               component={renderField}
               className={classes.textarea}
               multiline
+              inputRef={(c) => { this.textareaRef = c; }}
               rows={4}
               type="text"
+              onFocus={this.onFocus}
             />
             <Button
               disabled={formValues.syncErrors}
