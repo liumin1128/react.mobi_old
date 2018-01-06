@@ -56,6 +56,7 @@ export default class extends PureComponent {
       payload: { id },
       placeholder: '指点江山，激扬文字',
     });
+    console.log('xxxx');
     return (<div>
       <div className={classes.textarea}>
         <Test />

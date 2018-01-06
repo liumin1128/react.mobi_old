@@ -67,13 +67,15 @@ export default ({
         },
       });
     }
-    onSubmit = (values) => {
+    onSubmit = ({ content }) => {
       const { dispatch, reset } = this.props;
-      dispatch({
-        type: 'comment/create',
-        payload: { ...values, ...payload },
-        cb: reset,
-      });
+      if (content) {
+        dispatch({
+          type: 'comment/create',
+          payload: { content, ...payload },
+          cb: reset,
+        });
+      }
     }
     render() {
       const {
@@ -97,7 +99,7 @@ export default ({
               />
               <Button
                 // loading={loading}
-                disabled={formValues.syncErrors === undefined}
+                disabled={formValues.syncErrors !== undefined}
                 type="submit"
                 className={classes.button}
               >发送</Button>
