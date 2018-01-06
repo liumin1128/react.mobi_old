@@ -25,8 +25,13 @@ export default class extends PureComponent {
   }
   render() {
     const { list = [], id } = this.props;
+    const Test = Create({
+      key: id,
+      placeholder: '指点江山，激扬文字',
+
+    });
     return (<div>
-      <Create id={id} />
+      <Test />
       {
         list.map(i => <Item key={i._id} {...i} />)
       }

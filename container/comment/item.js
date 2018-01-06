@@ -5,9 +5,10 @@ import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
 import MoreVertIcon from 'material-ui-icons/MoreVert';
 import FavoriteIcon from 'material-ui-icons/Favorite';
-import ShareIcon from 'material-ui-icons/Share';
+import MessageIcon from 'material-ui-icons/Message';
 import Typography from 'material-ui/Typography';
 import timeago from '../../utils/timeago';
+import Create from './create';
 
 const styles = theme => ({
   root: {
@@ -26,12 +27,23 @@ const styles = theme => ({
 
 @withStyles(styles)
 export default class extends PureComponent {
+  state = {
+    open: false,
+  }
   render() {
     const {
-      classes, content, user, createdAt,
+      classes, content, user, createdAt, _id,
     } = this.props;
+    const { open } = this.state;
+
+    const Test = Create({
+      key: _id,
+      autoFocus: true,
+      placeholder: `回复：${user.nickname}`,
+    });
 
     return (<div className={classes.root}>
+
       <CardHeader
         className={classes.header}
         avatar={
@@ -43,10 +55,13 @@ export default class extends PureComponent {
         }
         action={[
           <IconButton>
-            <FavoriteIcon />
+            <FavoriteIcon style={{ fontSize: 18 }} />
           </IconButton>,
-          <IconButton>
-            <ShareIcon />
+          <IconButton onClick={() => {
+            this.setState({ open: !open });
+          }}
+          >
+            <MessageIcon style={{ fontSize: 18 }} />
           </IconButton>,
         ]}
         title={<i>{user.nickname}</i>}
@@ -56,6 +71,7 @@ export default class extends PureComponent {
         <Typography component="p">
           {content}
         </Typography>
+        {open && <Test />}
       </CardContent>
     </div>);
   }

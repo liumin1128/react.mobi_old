@@ -7,7 +7,6 @@ import Button from '../../components/button';
 
 const styles = () => ({
   root: {
-    padding: '0px 0px 0px 60px',
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
@@ -48,58 +47,61 @@ const renderField = (field) => {
   return (<Input {...input} {...other} />);
 };
 
-@connect(({ form }) => ({ formValues: form.comment }))
-@withStyles(styles)
-@reduxForm({ form: 'comment', validate })
-export default class extends PureComponent {
-  onFocus = () => {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'user/checkAuth',
-      cb: () => {
-        this.textareaRef.blur();
-      },
-    });
-  }
-  onSubmit = (values) => {
-    const { dispatch, id, reset } = this.props;
-    dispatch({
-      type: 'comment/create',
-      payload: { id, ...values },
-      cb: reset,
-    });
-  }
-  render() {
-    const {
-      classes, handleSubmit, formValues = {},
-    } = this.props;
 
-    console.log('this.props');
-    console.log(this.props);
-    return (
-      <section>
-        <button onClick={this.onFocus}>777</button>
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <div className={classes.root}>
-            <Field
-              name="content"
-              placeholder="畅所欲言"
-              component={renderField}
-              className={classes.textarea}
-              multiline
-              inputRef={(c) => { this.textareaRef = c; }}
-              rows={4}
-              type="text"
-              onFocus={this.onFocus}
-            />
-            <Button
-              disabled={formValues.syncErrors}
-              type="submit"
-              className={classes.button}
-            >发送</Button>
-          </div>
-        </form>
-      </section>
-    );
+export default ({
+  key, payload = {}, placeholder = '', autoFocus,
+}) => {
+  @connect(({ form: fromReducer }) => ({ formValues: fromReducer[key] }))
+  @withStyles(styles)
+  @reduxForm({ form: key, validate })
+  class C extends PureComponent {
+    onFocus = () => {
+      const { dispatch } = this.props;
+      dispatch({
+        type: 'user/checkAuth',
+        cb: () => {
+          this.textareaRef.blur();
+        },
+      });
+    }
+    onSubmit = (values) => {
+      const { dispatch, reset } = this.props;
+      dispatch({
+        type: 'comment/create',
+        payload: { payload, ...values },
+        cb: reset,
+      });
+    }
+    render() {
+      const {
+        classes, handleSubmit, formValues = {},
+      } = this.props;
+      return (
+        <section>
+          <form onSubmit={handleSubmit(this.onSubmit)}>
+            <div className={classes.root}>
+              <Field
+                name="content"
+                autoFocus={autoFocus}
+                placeholder={placeholder}
+                component={renderField}
+                className={classes.textarea}
+                multiline
+                inputRef={(c) => { this.textareaRef = c; }}
+                rows={4}
+                type="text"
+                onFocus={this.onFocus}
+              />
+              <Button
+                disabled={formValues.syncErrors}
+                type="submit"
+                className={classes.button}
+              >发送</Button>
+            </div>
+          </form>
+        </section>
+      );
+    }
   }
-}
+  return C;
+};
