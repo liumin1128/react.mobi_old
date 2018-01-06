@@ -82,6 +82,7 @@ export default class extends PureComponent {
     const { open, replyUser: _replyUser } = this.state;
     if (replyUser._id !== _replyUser._id) {
       this.setState({
+        open: true,
         replyUser,
       });
     } else {
@@ -94,6 +95,7 @@ export default class extends PureComponent {
   render() {
     const {
       classes, content, user, createdAt, _id, id, replies, replyList,
+      thumb, likes,
     } = this.props;
 
     const { open, replyUser } = this.state;
@@ -123,9 +125,12 @@ export default class extends PureComponent {
                 <MessageIcon className={classes.icon} />
                 <span className={classes.text}>{replies}</span>
               </IconButton>
-              <IconButton className={classes.button}>
+              <IconButton
+                onClick={() => { thumb({ _id }); }}
+                className={classes.button}
+              >
                 <FavoriteIcon className={classes.icon} />
-                <span className={classes.text}>0</span>
+                <span className={classes.text}>{likes}</span>
               </IconButton>
             </span>
           </div>
@@ -151,9 +156,12 @@ export default class extends PureComponent {
                             <MessageIcon className={classes.icon} />
                             <span className={classes.text}>{reply.replies}</span>
                           </IconButton>
-                          <IconButton className={classes.button}>
+                          <IconButton
+                            onClick={() => { thumb({ _id: reply._id }); }}
+                            className={classes.button}
+                          >
                             <FavoriteIcon className={classes.icon} />
-                            <span className={classes.text}>0</span>
+                            <span className={classes.text}>{reply.likes}</span>
                           </IconButton>
                         </span>
                       </div>

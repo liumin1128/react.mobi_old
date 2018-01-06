@@ -35,6 +35,7 @@ class Comment extends List {
   }
   thumb = async ({ payload, cb }, { getState, dispatch }) => {
     try {
+      await dispatch({ type: 'user/checkAuth' });
       const { id, _id } = payload;
       if (!id) snackbar.error('没有点赞对象？？？');
       const { status, message } = await request('comment/thumb', { id: _id });
@@ -49,7 +50,7 @@ class Comment extends List {
         snackbar.error(status);
       }
     } catch (error) {
-      snackbar('好像哪里出错了');
+      // snackbar('好像哪里出错了');
       console.log('error comment create');
       console.log(error);
     }

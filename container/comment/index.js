@@ -31,6 +31,10 @@ export default class extends PureComponent {
     const { id, dispatch } = this.props;
     dispatch({ type: 'comment/init', query: { id } });
   }
+  thumb = ({ _id }) => {
+    const { id, dispatch } = this.props;
+    dispatch({ type: 'comment/thumb', payload: { id, _id } });
+  }
   more = () => {
     const {
       dispatch, list = [], moreLoading, isEnd, id,
@@ -57,7 +61,12 @@ export default class extends PureComponent {
         <Test />
       </div>
       {
-        list.map(i => <Item key={i._id} id={id} {...i} />)
+        list.map(i => (<Item
+          key={i._id}
+          id={id}
+          thumb={this.thumb}
+          {...i}
+        />))
       }
       {list.length !== 0 && <Waypoint
         onEnter={this.more}

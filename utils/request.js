@@ -27,4 +27,8 @@ export default (url, data, options) => {
     .then((response) => {
       return response.data;
     });
+  // .catch((err) => {
+  //   console.log('request请求服务器出错');
+  //   console.log(err);
+  // });
 };

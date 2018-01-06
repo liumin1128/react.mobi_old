@@ -74,6 +74,9 @@ class User {
     if (!token) {
       if (cb) await cb();
       modal(Login);
+      return false;
+    } else {
+      return true;
     }
   }
 }
