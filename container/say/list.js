@@ -22,7 +22,7 @@ export default class extends PureComponent {
       this.setState({ page });
       dispatch({
         type: 'say/more',
-        payload: { page },
+        query: { page },
       });
     }
   }

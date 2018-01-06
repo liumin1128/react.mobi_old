@@ -132,13 +132,13 @@ export default class extends PureComponent {
           <div className={classes.replys}>
             {
               replyList && replyList.map(reply =>
-                (<div>
-                  <div className={classes.comment}>
+                (
+                  <div key={reply._id} className={classes.comment}>
                     <Avatar className={classes.avatar} src={reply.user.avatarUrl} />
                     <section className={classes.left}>
                       <h5 className={classes.nickname}>
                         <a>{reply.user.nickname}</a>
-                        {reply.replyUser && [<span> 回复 </span>, <a>{reply.replyUser.nickname}</a>]}
+                        {reply.replyUser && <div><span> 回复 </span><a>{reply.replyUser.nickname}</a></div>}
                       </h5>
                       <p className={classes.content}>{reply.content}</p>
                       <div className={classes.foot}>
@@ -159,7 +159,7 @@ export default class extends PureComponent {
                       </div>
                     </section>
                   </div>
-                </div>))
+                ))
             }
           </div>
           {open && <Test />}

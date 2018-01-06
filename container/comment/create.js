@@ -97,7 +97,7 @@ export default ({
               />
               <Button
                 // loading={loading}
-                disabled={formValues.syncErrors}
+                disabled={formValues.syncErrors === undefined}
                 type="submit"
                 className={classes.button}
               >发送</Button>
