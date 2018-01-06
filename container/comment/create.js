@@ -51,9 +51,9 @@ const renderField = (field) => {
 export default ({
   key, payload = {}, placeholder = '', autoFocus,
 }) => {
-  @connect(({ form: fromReducer, loading }) => ({
+  @connect(({ form: fromReducer }) => ({
     formValues: fromReducer[key],
-    loading: loading['comment/create'],
+    // loading: loading['comment/create'],
   }))
   @withStyles(styles)
   @reduxForm({ form: key, validate })
@@ -71,13 +71,13 @@ export default ({
       const { dispatch, reset } = this.props;
       dispatch({
         type: 'comment/create',
-        payload: { payload, ...values },
+        payload: { ...values, ...payload },
         cb: reset,
       });
     }
     render() {
       const {
-        classes, handleSubmit, formValues = {}, loading,
+        classes, handleSubmit, formValues = {},
       } = this.props;
       return (
         <section>
@@ -96,7 +96,7 @@ export default ({
                 onFocus={this.onFocus}
               />
               <Button
-                loading={loading}
+                // loading={loading}
                 disabled={formValues.syncErrors}
                 type="submit"
                 className={classes.button}

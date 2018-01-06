@@ -12,9 +12,7 @@ class Comment extends List {
       }
       const api = replyTo ? 'comment/reply' : 'comment/create';
 
-      const params = { id: replyTo || id, content };
-
-      const { status } = await request(api, params);
+      const { status } = await request(api, { id, content, replyTo });
 
       if (status === 200) {
         await dispatch({ type: 'comment/init', query: { id } });

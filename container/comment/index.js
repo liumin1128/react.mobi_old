@@ -27,13 +27,13 @@ export default class extends PureComponent {
     const { list = [], id } = this.props;
     const Test = Create({
       key: id,
+      payload: { id },
       placeholder: '指点江山，激扬文字',
-
     });
     return (<div>
       <Test />
       {
-        list.map(i => <Item key={i._id} {...i} />)
+        list.map(i => <Item id={id} key={i._id} {...i} />)
       }
     </div>);
   }

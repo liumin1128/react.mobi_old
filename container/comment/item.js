@@ -23,6 +23,9 @@ const styles = theme => ({
     paddingLeft: 72,
     paddingTop: 0,
   },
+  p: {
+    marginBottom: 16,
+  },
 });
 
 @withStyles(styles)
@@ -32,13 +35,14 @@ export default class extends PureComponent {
   }
   render() {
     const {
-      classes, content, user, createdAt, _id,
+      classes, content, user, createdAt, _id, id,
     } = this.props;
     const { open } = this.state;
 
     const Test = Create({
       key: _id,
       autoFocus: true,
+      payload: { id, replyTo: _id },
       placeholder: `回复：${user.nickname}`,
     });
 
@@ -68,7 +72,7 @@ export default class extends PureComponent {
         subheader={timeago(createdAt)}
       />
       <CardContent className={classes.content}>
-        <Typography component="p">
+        <Typography className={classes.p} component="p">
           {content}
         </Typography>
         {open && <Test />}
