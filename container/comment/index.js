@@ -11,6 +11,11 @@ const styles = theme => ({
     marginBottom: 32,
     boxShadow: '0 10px 28px 0 rgba(137,157,197,.12)',
   },
+  textarea: {
+    '@media (max-width: 768px)': {
+      padding: 16,
+    },
+  },
 });
 
 @connect(({ comment = {} }) => ({
@@ -24,14 +29,16 @@ export default class extends PureComponent {
     dispatch({ type: 'comment/init', query: { id } });
   }
   render() {
-    const { list = [], id } = this.props;
+    const { list = [], id, classes } = this.props;
     const Test = Create({
       key: id,
       payload: { id },
       placeholder: '指点江山，激扬文字',
     });
     return (<div>
-      <Test />
+      <div className={classes.textarea}>
+        <Test />
+      </div>
       {
         list.map(i => <Item id={id} key={i._id} {...i} />)
       }

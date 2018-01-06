@@ -12,9 +12,9 @@ const styles = () => ({
     flexDirection: 'column',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
-    '@media (max-width: 768px)': {
-      padding: '16px 16px 16px 72px',
-    },
+    // '@media (max-width: 768px)': {
+    //   padding: 16,
+    // },
   },
   textarea: {
     width: '100%',

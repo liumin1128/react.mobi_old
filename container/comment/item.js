@@ -35,7 +35,7 @@ export default class extends PureComponent {
   }
   render() {
     const {
-      classes, content, user, createdAt, _id, id,
+      classes, content, user, createdAt, _id, id, replies,
     } = this.props;
     const { open } = this.state;
 
@@ -65,7 +65,7 @@ export default class extends PureComponent {
             this.setState({ open: !open });
           }}
           >
-            <MessageIcon style={{ fontSize: 18 }} />
+            <MessageIcon style={{ fontSize: 18 }} /> {replies}
           </IconButton>,
         ]}
         title={<i>{user.nickname}</i>}
