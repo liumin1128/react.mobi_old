@@ -51,7 +51,10 @@ const renderField = (field) => {
 export default ({
   key, payload = {}, placeholder = '', autoFocus,
 }) => {
-  @connect(({ form: fromReducer }) => ({ formValues: fromReducer[key] }))
+  @connect(({ form: fromReducer, loading }) => ({
+    formValues: fromReducer[key],
+    loading: loading['comment/create'],
+  }))
   @withStyles(styles)
   @reduxForm({ form: key, validate })
   class C extends PureComponent {
@@ -74,7 +77,7 @@ export default ({
     }
     render() {
       const {
-        classes, handleSubmit, formValues = {},
+        classes, handleSubmit, formValues = {}, loading,
       } = this.props;
       return (
         <section>
@@ -93,6 +96,7 @@ export default ({
                 onFocus={this.onFocus}
               />
               <Button
+                loading={loading}
                 disabled={formValues.syncErrors}
                 type="submit"
                 className={classes.button}
