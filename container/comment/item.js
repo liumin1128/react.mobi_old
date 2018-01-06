@@ -102,7 +102,7 @@ export default class extends PureComponent {
       key: _id,
       autoFocus: true,
       payload: { id, replyTo: _id, replyUser: replyUser._id },
-      placeholder: `回复：${replyUser.nickname + replyUser._id}`,
+      placeholder: `回复：${replyUser.nickname}`,
     });
 
     return (<div className={classes.root}>
