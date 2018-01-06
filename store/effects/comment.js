@@ -70,6 +70,10 @@ class Comment extends List {
       console.log(error);
     }
   }
+
+  // getReplyList = async ({ payload, cb }, { getState, dispatch }) => {
+
+  // }
 }
 
 export default new Comment({ name: 'comment' });

@@ -11,19 +11,61 @@ import timeago from '../../utils/timeago';
 import Create from './create';
 
 const styles = theme => ({
-  root: {
-    '@media (min-width: 768px)': {
-      margin: -12,
+  comment: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    margin: '8px 0',
+  },
+  avatar: {
+    width: 48,
+    height: 48,
+    marginRight: 16,
+  },
+  left: {
+    width: '100%',
+  },
+  nickname: {
+    padding: 0,
+    margin: 0,
+    fontSize: 16,
+    lineHeight: 1.375,
+    marginBottom: 8,
+    color: '#9b9b9b',
+    '&>a': {
+      color: '#4a4a4a',
+      fontWeight: 700,
     },
   },
-  header: {
-    // padding: 8,
-  },
   content: {
-    paddingLeft: 72,
-    paddingTop: 0,
+    padding: 0,
+    margin: 0,
+    fontSize: 14,
+    color: '#4a4a4a',
+    lineHeight: 1.42857143,
   },
-  p: {
+  foot: {
+    padding: 0,
+    margin: 0,
+    fontSize: 12,
+    color: '#9b9b9b',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  button: {
+    fontSize: 12,
+    color: '#9b9b9b',
+  },
+  icon: {
+    marginRight: 4,
+  },
+  text: {
+    minWidth: 12,
+    textAlign: 'left',
+  },
+  replys: {
+    borderLeft: '4px solid #f0f0f1',
+    paddingLeft: 16,
     marginBottom: 16,
   },
 });
@@ -33,9 +75,13 @@ export default class extends PureComponent {
   state = {
     open: false,
   }
+  reply = () => {
+    const { open } = this.state;
+    this.setState({ open: !open });
+  }
   render() {
     const {
-      classes, content, user, createdAt, _id, id, replies,
+      classes, content, user, createdAt, _id, id, replies, replyList,
     } = this.props;
     const { open } = this.state;
 
@@ -47,36 +93,54 @@ export default class extends PureComponent {
     });
 
     return (<div className={classes.root}>
-
-      <CardHeader
-        className={classes.header}
-        avatar={
-          <Avatar
-            aria-label="Recipe"
-            src={user.avatarUrl}
-            className={classes.avatar}
-          />
-        }
-        action={[
-          <IconButton>
-            <FavoriteIcon style={{ fontSize: 18 }} />
-          </IconButton>,
-          <IconButton onClick={() => {
-            this.setState({ open: !open });
-          }}
-          >
-            <MessageIcon style={{ fontSize: 18 }} /> {replies}
-          </IconButton>,
-        ]}
-        title={<i>{user.nickname}</i>}
-        subheader={timeago(createdAt)}
-      />
-      <CardContent className={classes.content}>
-        <Typography className={classes.p} component="p">
-          {content}
-        </Typography>
-        {open && <Test />}
-      </CardContent>
+      <div className={classes.comment}>
+        <Avatar className={classes.avatar} src={user.avatarUrl} />
+        <section className={classes.left}>
+          <h5 className={classes.nickname}><a>{user.nickname}</a></h5>
+          <p className={classes.content}>{content}</p>
+          <div className={classes.foot}>
+            <span>{timeago(createdAt)}</span>
+            <span>
+              <IconButton onClick={this.reply} className={classes.button}>
+                <MessageIcon className={classes.icon} />
+                <span className={classes.text}>{replies}</span>
+              </IconButton>
+              <IconButton className={classes.button}>
+                <FavoriteIcon className={classes.icon} />
+                <span className={classes.text}>0</span>
+              </IconButton>
+            </span>
+          </div>
+          <div className={classes.replys}>
+            {
+              replyList && replyList.map(reply =>
+                (<div>
+                  <div className={classes.comment}>
+                    <Avatar className={classes.avatar} src={reply.user.avatarUrl} />
+                    <section className={classes.left}>
+                      <h5 className={classes.nickname}><a>{reply.user.nickname}</a></h5>
+                      <p className={classes.content}>{reply.content}</p>
+                      <div className={classes.foot}>
+                        <span>{timeago(reply.createdAt)}</span>
+                        <span>
+                          <IconButton className={classes.button}>
+                            <MessageIcon className={classes.icon} />
+                            <span className={classes.text}>{reply.replies}</span>
+                          </IconButton>
+                          <IconButton className={classes.button}>
+                            <FavoriteIcon className={classes.icon} />
+                            <span className={classes.text}>0</span>
+                          </IconButton>
+                        </span>
+                      </div>
+                    </section>
+                  </div>
+                </div>))
+            }
+          </div>
+          {open && <Test />}
+        </section>
+      </div>
     </div>);
   }
 }
