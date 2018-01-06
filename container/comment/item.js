@@ -7,7 +7,12 @@ import MessageIcon from 'material-ui-icons/Message';
 import timeago from '../../utils/timeago';
 import Create from './create';
 
-const styles = theme => ({
+const styles = () => ({
+  root: {
+    '@media (max-width: 768px)': {
+      margin: 16,
+    },
+  },
   comment: {
     display: 'flex',
     alignItems: 'flex-start',
@@ -74,11 +79,17 @@ export default class extends PureComponent {
     replyUser: {},
   }
   reply = ({ replyUser }) => {
-    const { open } = this.state;
-    this.setState({
-      open: !open,
-      replyUser,
-    });
+    const { open, replyUser: _replyUser } = this.state;
+    if (replyUser._id !== _replyUser._id) {
+      this.setState({
+        replyUser,
+      });
+    } else {
+      this.setState({
+        open: !open,
+        replyUser,
+      });
+    }
   }
   render() {
     const {
