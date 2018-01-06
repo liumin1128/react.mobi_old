@@ -77,15 +77,19 @@ const validate = (values) => {
 @reduxForm({ form: 'contact', validate })
 export default class extends PureComponent {
   submit = (values) => {
-    const { dispatch } = this.props;
-    dispatch({ type: 'user/login', payload: values });
+    const { dispatch, close } = this.props;
+    dispatch({
+      type: 'user/login',
+      payload: values,
+      cb: close,
+    });
   }
   render() {
     const {
       classes, handleSubmit, pristine, reset, submitting,
     } = this.props;
 
-    console.log('xxxxxxxxx');
+    console.log('xxxxxxxxx login xxxxxxxxxx');
     return (<div>
       <section>
         <div className={classes.formRoot}>
@@ -95,7 +99,7 @@ export default class extends PureComponent {
               component={renderField}
               type="text"
               placeholder="手机号"
-              // autoFocus
+              autoFocus
               className={classes.input}
             />
             <Field

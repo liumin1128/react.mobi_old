@@ -1,16 +1,13 @@
-// import React from 'react';
-import Snackbar from './snackbar';
 import Container from './container';
-// import Icon from '../icon';
 
-Snackbar.warn = props => Container({
-  type: 'warn',
-  ...props,
-});
+const snackbar = Object.assign(
+  (text, option) => Container({ message: text, ...option }),
+  {
+    error: (text, option) => Container({ message: text, type: 'error', ...option }),
+    success: (text, option) => Container({ message: text, type: 'success', ...option }),
+    info: (text, option) => Container({ message: text, type: 'info', ...option }),
+    warn: (text, option) => Container({ message: text, type: 'warn', ...option }),
+  },
+);
 
-Snackbar.success = props => Container({
-  type: 'success',
-  ...props,
-});
-
-export default Snackbar;
+export default snackbar;

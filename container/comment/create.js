@@ -62,16 +62,20 @@ export default class extends PureComponent {
     });
   }
   onSubmit = (values) => {
-    const { dispatch, id } = this.props;
+    const { dispatch, id, reset } = this.props;
     dispatch({
       type: 'comment/create',
       payload: { id, ...values },
+      cb: reset,
     });
   }
   render() {
     const {
       classes, handleSubmit, formValues = {},
     } = this.props;
+
+    console.log('this.props');
+    console.log(this.props);
     return (
       <section>
         <button onClick={this.onFocus}>777</button>

@@ -18,11 +18,9 @@ export default class extends PureComponent {
   state = {
     open: true,
   };
-
   handleClose = () => {
     this.setState({ open: false });
   };
-
   render() {
     const { destory, children } = this.props;
     return (

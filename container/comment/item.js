@@ -30,8 +30,7 @@ export default class extends PureComponent {
     const {
       classes, content, user, createdAt,
     } = this.props;
-    console.log('this.props');
-    console.log(this.props);
+
     return (<div className={classes.root}>
       <CardHeader
         className={classes.header}

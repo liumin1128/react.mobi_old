@@ -1,5 +1,5 @@
 import List from './list';
-import { request, toast, Router } from '../../utils';
+import { request, snackbar } from '../../utils';
 
 class Comment extends List {
   create = async ({ payload, cb }, { getState, dispatch }) => {
@@ -8,7 +8,7 @@ class Comment extends List {
       console.log(payload);
       const { id, content, replyTo } = payload;
       if (!id) {
-        return toast.error('没有评论对象？？？');
+        return snackbar.error('没有评论对象？？？');
       }
       const api = replyTo ? 'comment/reply' : 'comment/create';
 
@@ -18,15 +18,15 @@ class Comment extends List {
 
       if (status === 200) {
         await dispatch({ type: 'comment/init', query: { id } });
-        await toast('评论成功');
+        // await snackbar('评论成功');
         if (cb) await cb();
       } else if (status === 401) {
-        toast.error('您还没登录哦');
+        snackbar.error('您还没登录哦');
       } else {
-        toast.error(status);
+        snackbar.error(status);
       }
     } catch (error) {
-      toast('好像哪里出错了');
+      snackbar('好像哪里出错了');
       console.log('error comment create');
       console.log(error);
     }
@@ -34,20 +34,20 @@ class Comment extends List {
   thumb = async ({ payload, cb }, { getState, dispatch }) => {
     try {
       const { id, _id } = payload;
-      if (!id) toast.error('没有点赞对象？？？');
+      if (!id) snackbar.error('没有点赞对象？？？');
       const { status, message } = await request('comment/thumb', { id: _id });
 
       if (status === 200) {
         await dispatch({ type: 'comment/init', query: { id } });
-        await toast(message);
+        await snackbar(message);
         if (cb) await cb();
       } else if (status === 401) {
-        toast.error('您还没登录哦');
+        snackbar.error('您还没登录哦');
       } else {
-        toast.error(status);
+        snackbar.error(status);
       }
     } catch (error) {
-      toast('好像哪里出错了');
+      snackbar('好像哪里出错了');
       console.log('error comment create');
       console.log(error);
     }
@@ -55,19 +55,19 @@ class Comment extends List {
   delete = async ({ payload, cb }, { getState, dispatch }) => {
     try {
       const { id, _id } = payload;
-      if (!id) toast.error('没有点赞对象？？？');
+      if (!id) snackbar.error('没有点赞对象？？？');
       const { status, message } = await request('comment/delete', { id: _id });
       if (status === 200) {
         await dispatch({ type: 'comment/init', query: { id } });
-        await toast(message);
+        await snackbar(message);
         if (cb) await cb();
       } else if (status === 401) {
-        toast.error('您还没登录哦');
+        snackbar.error('您还没登录哦');
       } else {
-        toast.error(status);
+        snackbar.error(status);
       }
     } catch (error) {
-      toast('好像哪里出错了');
+      snackbar('好像哪里出错了');
       console.log('error comment create');
       console.log(error);
     }
