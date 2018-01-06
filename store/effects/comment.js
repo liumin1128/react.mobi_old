@@ -6,13 +6,17 @@ class Comment extends List {
     try {
       console.log('payload');
       console.log(payload);
-      const { id, content, replyTo } = payload;
+      const {
+        id, content, replyTo, replyUser,
+      } = payload;
       if (!id) {
         return snackbar.error('没有评论对象？？？');
       }
       const api = replyTo ? 'comment/reply' : 'comment/create';
 
-      const { status } = await request(api, { id, content, replyTo });
+      const { status } = await request(api, {
+        id, content, replyTo, replyUser,
+      });
 
       if (status === 200) {
         await dispatch({ type: 'comment/init', query: { id } });

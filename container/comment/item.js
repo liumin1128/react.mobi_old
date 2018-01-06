@@ -1,12 +1,9 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from 'material-ui/styles';
-import { CardHeader, CardContent } from 'material-ui/Card';
 import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
-import MoreVertIcon from 'material-ui-icons/MoreVert';
 import FavoriteIcon from 'material-ui-icons/Favorite';
 import MessageIcon from 'material-ui-icons/Message';
-import Typography from 'material-ui/Typography';
 import timeago from '../../utils/timeago';
 import Create from './create';
 
@@ -74,22 +71,27 @@ const styles = theme => ({
 export default class extends PureComponent {
   state = {
     open: false,
+    replyUser: {},
   }
-  reply = () => {
+  reply = ({ replyUser }) => {
     const { open } = this.state;
-    this.setState({ open: !open });
+    this.setState({
+      open: !open,
+      replyUser,
+    });
   }
   render() {
     const {
       classes, content, user, createdAt, _id, id, replies, replyList,
     } = this.props;
-    const { open } = this.state;
+
+    const { open, replyUser } = this.state;
 
     const Test = Create({
       key: _id,
       autoFocus: true,
-      payload: { id, replyTo: _id },
-      placeholder: `回复：${user.nickname}`,
+      payload: { id, replyTo: _id, replyUser: replyUser._id },
+      placeholder: `回复：${replyUser.nickname + replyUser._id}`,
     });
 
     return (<div className={classes.root}>
@@ -101,7 +103,12 @@ export default class extends PureComponent {
           <div className={classes.foot}>
             <span>{timeago(createdAt)}</span>
             <span>
-              <IconButton onClick={this.reply} className={classes.button}>
+              <IconButton
+                onClick={() => {
+                  this.reply({ replyUser: { nickname: user.nickname } });
+                }}
+                className={classes.button}
+              >
                 <MessageIcon className={classes.icon} />
                 <span className={classes.text}>{replies}</span>
               </IconButton>
@@ -118,12 +125,18 @@ export default class extends PureComponent {
                   <div className={classes.comment}>
                     <Avatar className={classes.avatar} src={reply.user.avatarUrl} />
                     <section className={classes.left}>
-                      <h5 className={classes.nickname}><a>{reply.user.nickname}</a></h5>
+                      <h5 className={classes.nickname}>
+                        <a>{reply.user.nickname}</a>
+                        {reply.replyUser && [<span> 回复 </span>, <a>{reply.replyUser.nickname}</a>]}
+                      </h5>
                       <p className={classes.content}>{reply.content}</p>
                       <div className={classes.foot}>
                         <span>{timeago(reply.createdAt)}</span>
                         <span>
-                          <IconButton className={classes.button}>
+                          <IconButton
+                            onClick={() => { this.reply({ replyUser: reply.user }); }}
+                            className={classes.button}
+                          >
                             <MessageIcon className={classes.icon} />
                             <span className={classes.text}>{reply.replies}</span>
                           </IconButton>
