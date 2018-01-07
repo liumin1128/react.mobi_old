@@ -13,6 +13,7 @@ import red from 'material-ui/colors/red';
 // import ShareIcon from 'material-ui-icons/Share';
 // import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import MoreVertIcon from 'material-ui-icons/MoreVert';
+import timeago from '../../utils/timeago';
 
 const styles = theme => ({
   card: {
@@ -50,7 +51,7 @@ class RecipeReviewCard extends React.Component {
 
   render() {
     const {
-      classes, title, content, photos, desc, _id,
+      classes, title, content, photos, desc, _id, user, createdAt,
     } = this.props;
 
     return (
@@ -58,17 +59,19 @@ class RecipeReviewCard extends React.Component {
         <Card className={classes.card}>
           <CardHeader
             avatar={
-              <Avatar aria-label="Recipe" className={classes.avatar}>
-                R
-              </Avatar>
+              <Avatar
+                aria-label={user.nickname}
+                className={classes.avatar}
+                src={user.avatarUrl}
+              />
             }
             action={
               <IconButton>
                 <MoreVertIcon />
               </IconButton>
             }
-            title="Shrimp and Chorizo Paella"
-            subheader="September 14, 2016"
+            title={user.nickname}
+            subheader={timeago(createdAt)}
           />
           <Link
             key={_id}
