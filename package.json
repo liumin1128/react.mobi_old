@@ -5,6 +5,7 @@
     "analyze": "cross-env ANALYZE=1 next build",
     "build": "next build",
     "start": "next -p 8000",
+    "server": "node server",
     "pm2": "pm2 start ./process.json"
   },
   "dependencies": {
