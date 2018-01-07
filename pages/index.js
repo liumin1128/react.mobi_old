@@ -49,7 +49,7 @@ export default class extends PureComponent {
               <NewsList />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <p />
+              <p style={{ background: '#ff0' }}>11</p>
             </Grid>
           </Grid>
         </div>
