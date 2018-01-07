@@ -37,6 +37,7 @@ const styles = {
     width: '100%',
     // border: '1px red solid',
     margin: '0 auto',
+    boxSizing: 'border-box',
   },
   navList: {
     flex: 1,

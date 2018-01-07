@@ -14,10 +14,17 @@ const styles = theme => ({
     margin: 'auto',
     marginTop: 32,
   },
-  paper: {
-    padding: 16,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
+  body: {
+    maxWidth: 700,
+    width: '100%',
+    margin: '0 auto',
+  },
+  nopadding: {
+    boxSizing: 'border-box',
+    width: '100%',
+    '@media (max-width: 960px)': {
+      margin: 0,
+    },
   },
 });
 
@@ -45,12 +52,16 @@ export default class extends PureComponent {
       <div>
         <AppBar />
         <div className={classes.root}>
-          <Grid container spacing={24}>
-            <Grid item xs={12} sm={8}>
-              <NewsList />
+          <Grid className={classes.nopadding} container spacing={24}>
+            <Grid item xs={12} sm={12} md={8}>
+              <div className={classes.body}>
+                <NewsList />
+              </div>
             </Grid>
-            <Grid item xs={12} sm={4}>
-              <Explore />
+            <Grid item xs={12} sm={12} md={4} >
+              <div className={classes.body}>
+                <Explore />
+              </div>
             </Grid>
           </Grid>
         </div>

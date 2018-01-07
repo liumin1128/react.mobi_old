@@ -7,6 +7,9 @@ import Link from 'next/link';
 import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
+  root: {
+    width: '100%',
+  },
   card: {
     boxShadow: '0 10px 28px 0 rgba(137,157,197,.12)',
     marginBottom: 32,
@@ -30,8 +33,7 @@ export default class extends PureComponent {
   }
   render() {
     const { classes } = this.props;
-    return (<div>
-
+    return (<div className={classes.root}>
       <Card className={classes.card}>
         <a
           rel="noopener noreferrer"
@@ -76,16 +78,6 @@ export default class extends PureComponent {
         </a>
       </Card>
 
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography type="headline" component="h2">
-            iFunny
-          </Typography>
-          <Typography component="p">
-            搞笑动图
-          </Typography>
-        </CardContent>
-      </Card>
     </div>);
   }
 }
