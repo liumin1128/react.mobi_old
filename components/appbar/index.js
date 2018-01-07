@@ -26,6 +26,10 @@ const styles = {
   appbar: {
     boxShadow: 'none',
   },
+  logo: {
+    width: 48,
+    height: 48,
+  },
 };
 
 @connect(({ user }) => ({
@@ -90,14 +94,14 @@ export default class extends PureComponent {
                 aria-label="Menu"
                 onClick={this.goBack}
               >
-                <Avatar alt="Adelle Charles" src="/static/logo.png" />
+                <img className={classes.logo} src="/static/logo.svg" alt="" />
               </IconButton>
               <Typography
                 type="title"
                 color="inherit"
                 className={classes.flex}
               >
-                华人生活网
+                盗火
               </Typography>
               {user._id
                 ? <IconButton

@@ -8,7 +8,7 @@ class MyDocument extends Document {
     return (
       <html lang="en" dir="ltr">
         <Head>
-          <title>华人生活网</title>
+          <title>盗火</title>
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
@@ -18,6 +18,7 @@ class MyDocument extends Document {
               'minimum-scale=1, width=device-width, height=device-height'
             }
           />
+
           {/*
             manifest.json provides metadata used when your web app is added to the
             homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
@@ -27,10 +28,17 @@ class MyDocument extends Document {
           <link href="/static/main.css" rel="stylesheet" />
           {/* PWA primary color */}
           <meta name="theme-color" content={this.props.stylesContext.theme.palette.primary[500]} />
+          <meta name="keywords" content="前端,分享,社区" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+          <meta name="apple-mobile-web-app-title" content="盗火" />
+          <meta content="telephone=no" name="format-detection" />
+          <link rel="icon" href="/static/favicon.ico" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
+
         </Head>
         <body>
           <Main />
