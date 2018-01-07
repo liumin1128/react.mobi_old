@@ -5,6 +5,7 @@ import { withReduxSaga } from '../store';
 import AppBar from '../components/appbar';
 import withRoot from '../components/material-ui/withRoot';
 import NewsList from '../container/say/list';
+import Explore from '../container/explore';
 
 const styles = theme => ({
   root: {
@@ -49,7 +50,7 @@ export default class extends PureComponent {
               <NewsList />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <p style={{ background: '#ff0' }}>11</p>
+              <Explore />
             </Grid>
           </Grid>
         </div>
