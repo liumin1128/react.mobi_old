@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import { Field, reduxForm } from 'redux-form';
 import Input from '../../components/input';
 import Button from '../../components/button';
+import snackbar from '../../components/snackbar';
 
 const styles = () => ({
   root: {
@@ -75,11 +76,13 @@ export default ({
           payload: { content, ...payload },
           cb: reset,
         });
+      } else {
+        snackbar.error('踌躇满志，厚积薄发');
       }
     }
     render() {
       const {
-        classes, handleSubmit, formValues = {},
+        classes, handleSubmit, formValues,
       } = this.props;
       return (
         <section>
@@ -99,7 +102,7 @@ export default ({
               />
               <Button
                 // loading={loading}
-                disabled={formValues.syncErrors !== undefined}
+                // disabled={!formValues || formValues.syncErrors !== undefined}
                 type="submit"
                 className={classes.button}
               >发送</Button>

@@ -99,7 +99,7 @@ export default class extends PureComponent {
               component={renderField}
               type="text"
               placeholder="手机号"
-              autoFocus
+              // autoFocus
               className={classes.input}
             />
             <Field
