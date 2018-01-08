@@ -19,8 +19,9 @@ const styles = theme => ({
     width: '100%',
     margin: '0 auto',
   },
-  nopadding: {
+  container: {
     boxSizing: 'border-box',
+    margin: 0,
     width: '100%',
     '@media (max-width: 960px)': {
       margin: 0,
@@ -52,7 +53,7 @@ export default class extends PureComponent {
       <div>
         <AppBar />
         <div className={classes.root}>
-          <Grid className={classes.nopadding} container spacing={24}>
+          <Grid className={classes.container} container spacing={24}>
             <Grid item xs={12} sm={12} md={8}>
               <div className={classes.body}>
                 <NewsList />

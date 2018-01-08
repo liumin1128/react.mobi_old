@@ -34,6 +34,7 @@ const styles = {
   },
   toolbar: {
     maxWidth: 1110,
+    padding: '0 12px',
     width: '100%',
     // border: '1px red solid',
     margin: '0 auto',
