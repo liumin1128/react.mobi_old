@@ -6,17 +6,23 @@ import { Field, reduxForm } from 'redux-form';
 // import Select from 'material-ui/Select';
 import Input from '../../components/input';
 import Button from '../../components/button';
+import Oauth from './oauth';
 
 const styles = (theme) => {
   // console.log('theme');
   // console.log(theme);
   return {
+    root: {
+      maxWidth: 360,
+      margin: '0 auto',
+      paddingTop: 32,
+    },
     input: {
       width: '100%',
       marginBottom: 16,
     },
     formRoot: {
-      padding: 32,
+      padding: '32px 16px',
       '@media (min-width:600px)': {
         maxWidth: 400,
         // border: '1px red solid',
@@ -41,7 +47,6 @@ const renderField = (field) => {
   } = field;
   return (<div>
     <Input {...input} {...other} />
-
   </div>);
 };
 
@@ -90,7 +95,7 @@ export default class extends PureComponent {
     } = this.props;
 
     console.log('xxxxxxxxx login xxxxxxxxxx');
-    return (<div>
+    return (<div className={classes.root}>
       <section>
         <div className={classes.formRoot}>
           <form onSubmit={handleSubmit(this.submit)}>
@@ -111,6 +116,8 @@ export default class extends PureComponent {
             />
             <Button focusRipple type="submit">登录</Button>
           </form>
+          <Oauth />
+
         </div>
       </section>
     </div>);
