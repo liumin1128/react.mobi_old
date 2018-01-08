@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from 'material-ui/styles';
+import Router from 'next/router';
 import { withReduxSaga } from '../../store';
 import withRoot from '../../components/material-ui/withRoot';
 
@@ -25,12 +26,13 @@ export default class extends PureComponent {
   // }
   componentDidMount() {
     const { dispatch, url } = this.props;
+    Router.push('/');
     dispatch({ type: 'user/getUserInfo', payload: url.query });
   }
   render() {
     return (
       <div>
-        <h1>登录成功</h1>
+        <p>登录成功</p>
       </div>
     );
   }

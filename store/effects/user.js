@@ -63,8 +63,6 @@ class User {
       if (status === 200) {
         await dispatch({ type: 'user/save', payload: { userInfo } });
       }
-      // console.log('status, userInfo');
-      // console.log(status, userInfo);
     } catch (error) {
       console.log(error);
     }
