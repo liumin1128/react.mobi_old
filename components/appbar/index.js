@@ -140,10 +140,10 @@ export default class extends PureComponent {
 
               <Hidden only={['sm', 'xs']}>
                 <div className={classes.navList}>
-                  <Button className={classes.nav} color="contrast">首页</Button>
-                  <Button className={classes.nav} color="contrast">文章</Button>
-                  <Button className={classes.nav} color="contrast">话题</Button>
-                  <Button className={classes.nav} color="contrast">发现</Button>
+                  <Button onClick={() => { Router.push('/'); }} className={classes.nav} color="contrast">首页</Button>
+                  <Button onClick={() => { Router.push('/article'); }} className={classes.nav} color="contrast">文章</Button>
+                  <Button onClick={() => { Router.push('/say'); }} className={classes.nav} color="contrast">话题</Button>
+                  <Button onClick={() => { Router.push('/expore'); }} className={classes.nav} color="contrast">发现</Button>
                 </div>
                 <Input
                   id="adornment-password"
