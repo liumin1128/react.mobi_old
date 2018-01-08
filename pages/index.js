@@ -15,13 +15,14 @@ const styles = theme => ({
     marginTop: 32,
   },
   body: {
-    maxWidth: 700,
+    maxWidth: 760,
     width: '100%',
     margin: '0 auto',
   },
   container: {
     boxSizing: 'border-box',
     margin: 0,
+    // border: '1px red solid',
     width: '100%',
     '@media (max-width: 960px)': {
       margin: 0,
