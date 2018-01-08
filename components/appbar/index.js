@@ -73,9 +73,7 @@ const styles = {
   },
 };
 
-@connect(({ user }) => ({
-  user,
-}))
+@connect(({ user }) => ({ user }))
 @withStyles(styles)
 export default class extends PureComponent {
   state = {
@@ -98,8 +96,9 @@ export default class extends PureComponent {
   }
 
   login = () => {
-    const { dispatch } = this.props;
-    dispatch({ type: 'user/login' });
+    // const { dispatch } = this.props;
+    // dispatch({ type: 'user/login' });
+    Router.push('/login');
   }
 
   render() {
