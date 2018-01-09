@@ -11,9 +11,14 @@ const styles = () => ({
   root: {
     flexGrow: 1,
     maxWidth: 380,
-    margin: '160px auto',
+    margin: '100px auto',
     background: '#fff',
     boxShadow: '0 10px 28px 0 rgba(137,157,197,.12)',
+    '@media (max-width: 768px)': {
+      margin: '0px auto',
+      boxShadow: 'none',
+      background: 'none',
+    },
   },
 });
 
