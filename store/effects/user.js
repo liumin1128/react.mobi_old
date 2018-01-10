@@ -61,6 +61,7 @@ class User {
     try {
       const { status, userInfo } = await request('user/getUserInfo', payload);
       if (status === 200) {
+        await setStorage('reactmobitoken', payload.token);
         await dispatch({ type: 'user/save', payload: { userInfo } });
       }
     } catch (error) {
