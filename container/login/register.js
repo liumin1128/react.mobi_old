@@ -134,6 +134,14 @@ export default class extends PureComponent {
               className={classes.phone}
             />
             <Field
+              name="code"
+              component={renderFieldCode}
+              type="text"
+              placeholder="验证码"
+              className={classes.code}
+              sentSMS={this.sentSMS}
+            />
+            <Field
               name="nickname"
               component={renderField}
               type="text"
@@ -153,14 +161,6 @@ export default class extends PureComponent {
               type="password"
               placeholder="请再次输入密码"
               className={classes.input}
-            />
-            <Field
-              name="code"
-              component={renderFieldCode}
-              type="text"
-              placeholder="验证码"
-              className={classes.code}
-              sentSMS={this.sentSMS}
             />
             <MyButton focusRipple type="submit">手机号登录</MyButton>
           </form>

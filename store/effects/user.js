@@ -38,16 +38,20 @@ class User {
       console.log(error);
     }
   }
-  register = async ({ payload }, { getState, dispatch }) => {
+  register = async ({ payload, cb }, { getState, dispatch }) => {
     try {
       const {
         status, message, token, userInfo,
       } = await request('user/register', payload);
       if (status === 200) {
-        // Snackbar.success('注册成功');
         Snackbar.success(message);
         await setStorage('reactmobitoken', token);
         await dispatch({ type: 'user/save', payload: userInfo });
+        if (cb) {
+          await cb();
+        } else {
+          await Router.push('/');
+        }
       } else {
         Snackbar.error(message);
       }
