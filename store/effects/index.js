@@ -27,4 +27,5 @@ export default {
   'user/getUserInfo': user.getUserInfo,
   'user/checkAuth': user.checkAuth,
   'common/getQiniuToken': common.getQiniuToken,
+  'common/sentSmsCode': common.sentSmsCode,
 };

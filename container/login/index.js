@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import { Field, reduxForm } from 'redux-form';
-// import { MenuItem } from 'material-ui/Menu';
-// import Select from 'material-ui/Select';
+import Link from 'next/link';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import Oauth from './oauth';
+import { renderField } from './renderFeild';
 
 const styles = (theme) => {
   // console.log('theme');
@@ -36,19 +36,19 @@ const styles = (theme) => {
     select: {
       width: 100,
     },
+    more: {
+      fontSize: 12,
+      display: 'flex',
+      justifyContent: 'space-between',
+      color: '#999',
+      marginTop: 16,
+      '& a': {
+        color: 'red',
+      },
+    },
   };
 };
 
-const renderField = (field) => {
-  // console.log('field');
-  // console.log(field);
-  const {
-    input, label, meta: { touched, error, dirty }, ...other
-  } = field;
-  return (<div>
-    <Input {...input} {...other} />
-  </div>);
-};
 
 const validate = (values) => {
   // console.log(values);
@@ -62,18 +62,6 @@ const validate = (values) => {
       errors[field] = '不能为空';
     }
   });
-  if (
-    values.email &&
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-  ) {
-    errors.email = 'Invalid email address';
-  }
-  // if (
-  //   values.username &&
-  //   !isTel(values.username)
-  // ) {
-  //   errors.username = '手机号格式不正确';
-  // }
   return errors;
 };
 
@@ -116,8 +104,11 @@ export default class extends PureComponent {
             />
             <Button focusRipple type="submit">登录</Button>
           </form>
+          <div className={classes.more} >
+            <span>忘记密码</span>
+            <Link href={'/login/register'} ><a>注册</a></Link>
+          </div>
           <Oauth />
-
         </div>
       </section>
     </div>);

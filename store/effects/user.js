@@ -44,17 +44,17 @@ class User {
         status, message, token, userInfo,
       } = await request('user/register', payload);
       if (status === 200) {
-        // toast.success('注册成功');
+        // Snackbar.success('注册成功');
+        Snackbar.success(message);
         await setStorage('reactmobitoken', token);
         await dispatch({ type: 'user/save', payload: userInfo });
-        await dispatch({ type: 'common/save', payload: { registerModalVisible: false } });
       } else {
-        // toast.error(message);
+        Snackbar.error(message);
       }
     } catch (error) {
       console.log('注册失败');
       console.log(error);
-      // toast.error(error.message);
+      Snackbar.error(error.message);
     }
   }
   getUserInfo = async ({ payload }, { dispatch }) => {
