@@ -35,19 +35,19 @@ export default class extends PureComponent {
         <div>
           <a href="https://api.react.mobi/oauth/github">
             <IconButton color="primary" className={classes.button} aria-label="Add to shopping cart">
-              <img className={classes.icon} src="http://img.react.mobi/icon/github.svg" alt="" />
+              <img className={classes.icon} src="https://imgs.react.mobi/icon/github.svg" alt="" />
             </IconButton>
           </a>
           <a href="https://api.react.mobi/oauth/wechat">
             <IconButton color="primary" className={classes.button} aria-label="Add to shopping cart">
-              <img className={classes.icon} src="http://img.react.mobi/icon/wechat.svg" alt="" />
+              <img className={classes.icon} src="https://imgs.react.mobi/icon/wechat.svg" alt="" />
             </IconButton>
           </a>
           <IconButton color="primary" className={classes.button} aria-label="Add to shopping cart">
-            <img className={classes.icon} src="http://img.react.mobi/icon/qq.svg" alt="" />
+            <img className={classes.icon} src="https://imgs.react.mobi/icon/qq.svg" alt="" />
           </IconButton>
           <IconButton color="primary" className={classes.button} aria-label="Add to shopping cart">
-            <img className={classes.icon} src="http://img.react.mobi/icon/weibo.svg" alt="" />
+            <img className={classes.icon} src="https://imgs.react.mobi/icon/weibo.svg" alt="" />
           </IconButton>
         </div>
       </fieldset>

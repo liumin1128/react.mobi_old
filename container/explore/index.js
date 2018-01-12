@@ -42,7 +42,7 @@ export default class extends PureComponent {
         >
           <CardMedia
             className={classes.media}
-            image="http://img.huarenmatch.com/FuujhVBnZl_H9EFD7IylDgbxSnn9"
+            image="https://cdn.huaren58.com/FuujhVBnZl_H9EFD7IylDgbxSnn9"
             title="Contemplative Reptile"
           />
           <CardContent>
@@ -64,7 +64,7 @@ export default class extends PureComponent {
         >
           <CardMedia
             className={classes.media}
-            image="http://img.huarenmatch.com/Fi4rWMTplit_TFIbxjlovY3EGsgN"
+            image="https://cdn.huaren58.com/Fi4rWMTplit_TFIbxjlovY3EGsgN"
             title="Contemplative Reptile"
           />
           <CardContent>
