@@ -166,7 +166,7 @@ export default class extends PureComponent {
           </form>
           <div className={classes.more} >
             <span>邮箱注册</span>
-            <Link href={'/login'} ><a>立即登录</a></Link>
+            <Link href={'/login'} ><a>已有账号立即登录</a></Link>
           </div>
         </div>
       </section>
