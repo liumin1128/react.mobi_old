@@ -10,7 +10,7 @@ import { renderField } from './renderFeild';
 const styles = (theme) => {
   return {
     root: {
-      maxWidth: 360,
+      width: 360,
       margin: '0 auto',
       paddingTop: 32,
     },

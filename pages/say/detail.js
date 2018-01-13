@@ -11,7 +11,7 @@ import Detail from '../../container/say/detail';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    maxWidth: 1110,
+    maxWidth: 1110 - 24,
     margin: 'auto',
     background: '#fff',
   },
