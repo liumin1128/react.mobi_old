@@ -3,14 +3,11 @@ import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import { Field, reduxForm } from 'redux-form';
 import Link from 'next/link';
-import Input from '../../components/input';
 import Button from '../../components/button';
 import Oauth from './oauth';
 import { renderField } from './renderFeild';
 
 const styles = (theme) => {
-  // console.log('theme');
-  // console.log(theme);
   return {
     root: {
       maxWidth: 360,
@@ -91,7 +88,7 @@ export default class extends PureComponent {
               name="username"
               component={renderField}
               type="text"
-              placeholder="手机号"
+              placeholder="手机号或邮箱"
               // autoFocus
               className={classes.input}
             />
