@@ -71,6 +71,13 @@ const styles = {
     width: 36,
     height: 36,
   },
+  center: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+  },
+  right: {
+  },
 };
 
 @connect(({ user }) => ({ user }))
@@ -126,9 +133,7 @@ export default class extends PureComponent {
             position="static"
           // color={theme === 'black' ? 'primary' : 'default'}
           >
-
             <Toolbar className={classes.toolbar} style={{ height: 64 }}>
-
               <IconButton
                 className={classes.menuButton}
                 color="contrast"
@@ -138,43 +143,51 @@ export default class extends PureComponent {
                 <img className={classes.logo} src="/static/logo.svg" alt="" />
               </IconButton>
 
-              <Hidden only={['sm', 'xs']}>
-                <div className={classes.navList}>
-                  <Button onClick={() => { Router.push('/'); }} className={classes.nav} color="contrast">首页</Button>
-                  <Button onClick={() => { Router.push('/article'); }} className={classes.nav} color="contrast">文章</Button>
-                  <Button onClick={() => { Router.push('/say'); }} className={classes.nav} color="contrast">话题</Button>
-                  <Button onClick={() => { Router.push('/explore'); }} className={classes.nav} color="contrast">发现</Button>
-                </div>
-                <Input
-                  id="adornment-password"
-                  color="contrast"
+              <div className={classes.center}>
+                <Hidden only={['sm', 'xs']}>
+                  <div className={classes.navList}>
+                    <Button onClick={() => { Router.push('/'); }} className={classes.nav} color="contrast">首页</Button>
+                    <Button onClick={() => { Router.push('/article'); }} className={classes.nav} color="contrast">文章</Button>
+                    <Button onClick={() => { Router.push('/say'); }} className={classes.nav} color="contrast">话题</Button>
+                    <Button onClick={() => { Router.push('/explore'); }} className={classes.nav} color="contrast">发现</Button>
+                  </div>
+                  <Input
+                    id="adornment-password"
+                    color="contrast"
                   // type="search"
-                  disableUnderline
-                  classes={{
+                    disableUnderline
+                    classes={{
                     root: classes.textFieldRoot,
                     input: classes.textFieldInput,
                     focused: classes.textFieldFocused, // className, e.g. `OverridesClasses-root-X`
                   }}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton className={classes.search} color="contrast">
-                        <SearchIcon />
-                      </IconButton>
-                    </InputAdornment>
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton className={classes.search} color="contrast">
+                          <SearchIcon />
+                        </IconButton>
+                      </InputAdornment>
                   }
-                />
-              </Hidden>
+                  />
+                </Hidden>
+              </div>
 
-              {user._id
-                ? <IconButton
-                  // className={classes.menuButton}
-                  color="contrast"
-                  aria-label="Menu"
-                >
-                  <Avatar alt="Adelle Charles" src={user.avatarUrl} />
-                </IconButton>
-                : <Button onClick={this.login} color="contrast">Login</Button>
-              }
+
+              <div className={classes.right}>
+                {user._id
+                  ? <IconButton
+                    // className={classes.menuButton}
+                    color="contrast"
+                    aria-label="Menu"
+                  >
+                    <Avatar alt="Adelle Charles" src={user.avatarUrl} />
+                  </IconButton>
+                  : <Button onClick={this.login} color="contrast">Login</Button>
+                }
+
+              </div>
+
+
             </Toolbar>
 
           </AppBar>
