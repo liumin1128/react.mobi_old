@@ -7,6 +7,7 @@ import news from './news';
 const reducers = reducerFactory([
   news,
   say,
+  'common',
   'loading',
   'user',
   'comment',
