@@ -77,6 +77,11 @@ const styles = {
     alignItems: 'center',
   },
   right: {
+    marginLeft: 16,
+  },
+  loged: {
+    display: 'flex',
+    alignItems: 'center',
   },
 };
 
@@ -138,7 +143,7 @@ export default class extends PureComponent {
                 className={classes.menuButton}
                 color="contrast"
                 aria-label="Menu"
-                onClick={this.goBack}
+                onClick={() => { Router.push('/'); }}
               >
                 <img className={classes.logo} src="/static/logo.svg" alt="" />
               </IconButton>
@@ -175,14 +180,17 @@ export default class extends PureComponent {
 
               <div className={classes.right}>
                 {userInfo._id
-                  ? <IconButton
-                    // className={classes.menuButton}
-                    color="contrast"
-                    aria-label="Menu"
-                  >
-                    <Avatar alt="Adelle Charles" src={userInfo.avatarUrl} />
-                  </IconButton>
-                  : <Button onClick={this.login} color="contrast">Login</Button>
+                  ? <div className={classes.loged}>
+                    <Button
+                      raised
+                      color="accent"
+                      onClick={() => { Router.push('/post'); }}
+                    >写文章</Button>
+                    <IconButton color="contrast" aria-label="Menu" >
+                      <Avatar alt="Adelle Charles" src={userInfo.avatarUrl} />
+                    </IconButton>
+                  </div>
+                  : <Button onClick={this.login} color="contrast">登录/注册</Button>
                 }
 
               </div>
