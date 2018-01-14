@@ -80,7 +80,7 @@ const styles = {
   },
 };
 
-@connect(({ user }) => ({ user }))
+@connect(({ user }) => ({ userInfo: user.userInfo }))
 @withStyles(styles)
 export default class extends PureComponent {
   state = {
@@ -92,9 +92,9 @@ export default class extends PureComponent {
     const { router } = Router;
     if (router && router.query && router.query.token) {
       console.log(router.query.token);
-      dispatch({ type: 'user/getUserInfo', payload: { token: router.query.token } });
+      dispatch({ type: 'user/saveOauthToken', payload: { token: router.query.token } });
     } else {
-      dispatch({ type: 'user/restore' });
+      dispatch({ type: 'user/getUserInfo' });
     }
   }
 
@@ -109,7 +109,7 @@ export default class extends PureComponent {
   }
 
   render() {
-    const { classes, user = {} } = this.props;
+    const { classes, userInfo = {} } = this.props;
     const { theme } = this.state;
     console.log(theme);
     return (
@@ -174,13 +174,13 @@ export default class extends PureComponent {
 
 
               <div className={classes.right}>
-                {user._id
+                {userInfo._id
                   ? <IconButton
                     // className={classes.menuButton}
                     color="contrast"
                     aria-label="Menu"
                   >
-                    <Avatar alt="Adelle Charles" src={user.avatarUrl} />
+                    <Avatar alt="Adelle Charles" src={userInfo.avatarUrl} />
                   </IconButton>
                   : <Button onClick={this.login} color="contrast">Login</Button>
                 }
