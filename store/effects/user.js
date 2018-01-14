@@ -24,7 +24,7 @@ class User {
       if (status === 200) {
         Snackbar.success(`${userInfo.nickname} 死鬼，你咋才来！`);
         await setStorage('reactmobitoken', token);
-        await dispatch({ type: 'user/save', payload: userInfo });
+        await dispatch({ type: 'user/save', payload: { userInfo } });
         if (cb) {
           await cb();
         } else {
@@ -46,7 +46,7 @@ class User {
       if (status === 200) {
         Snackbar.success(message);
         await setStorage('reactmobitoken', token);
-        await dispatch({ type: 'user/save', payload: userInfo });
+        await dispatch({ type: 'user/save', payload: { userInfo } });
         if (cb) {
           await cb();
         } else {
