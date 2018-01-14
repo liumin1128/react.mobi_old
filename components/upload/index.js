@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Upload from 'rc-upload';
-import getQiniuToken from '../hoc/getQiniuToken';
+// import getQiniuToken from '../hoc/getQiniuToken';
 import { getFileItem } from './utils';
 
 const QINIUURL = 'https://imgs.react.mobi';
 const QINIU_UPLOADURL = 'https://upload-z1.qiniup.com';
 
-@getQiniuToken
+// @getQiniuToken
 export default class extends Component {
   constructor(props) {
     super(props);
@@ -157,15 +157,16 @@ export default class extends Component {
           height: 70px;
           display: inline-block;
           position: relative;
-          margin: 8px 8px 0 0;
+          margin: 16px 16px 0 0;
+          border: 1px solid #ced4da;
           // border-radius: 5px;
-          box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+          // box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
         }
         .item-content {
           width: 100%;
           height: 100%;
           background-size: cover;
-          border-radius: 5px;
+          // border-radius: 5px;
         }
         .item-remove {
           background: none;

@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
 import { withReduxSaga } from '../../store';
 import withRoot from '../../components/material-ui/withRoot';
 import AppBar from '../../components/appbar';
-import Upload from '../../components/upload';
+import Create from '../../container/post';
 
 const styles = () => ({
   root: {
@@ -12,6 +11,12 @@ const styles = () => ({
     maxWidth: 1110 - 24,
     margin: 'auto',
     background: '#fff',
+  },
+  textarea: {
+    maxWidth: 700,
+    margin: '0 auto',
+    paddingTop: 60,
+    paddingBottom: 60,
   },
 });
 
@@ -24,10 +29,11 @@ export default class extends PureComponent {
     return (
       <div>
         <AppBar />
-        <Paper className={classes.root} elevation={4}>
-          <h1>666</h1>
-          <Upload />
-        </Paper>
+        <div className={classes.root}>
+          <div className={classes.textarea}>
+            <Create />
+          </div>
+        </div>
       </div>
     );
   }

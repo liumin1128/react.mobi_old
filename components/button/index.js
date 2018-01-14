@@ -17,7 +17,7 @@ const styles = {
   },
   disabled: {
     width: '100%',
-    borderRadius: 3,
+    // borderRadius: 3,
     border: 0,
     // color: 'white',
     height: 48,
