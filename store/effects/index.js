@@ -23,6 +23,7 @@ export default {
   'comment/delete': comment.delete,
   // 用户
   'user/login': user.login,
+  'user/logout': user.logout,
   'user/register': user.register,
   'user/getUserInfo': user.getUserInfo,
   'user/checkAuth': user.checkAuth,

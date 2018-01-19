@@ -64,7 +64,7 @@ export default class extends PureComponent {
     Router.push('/login');
   }
   render() {
-    const { classes, userInfo = {} } = this.props;
+    const { classes, userInfo = {}, dispatch } = this.props;
     const { anchorEl } = this.state;
     return (
       <div>
@@ -108,7 +108,11 @@ export default class extends PureComponent {
               <MenuItem disabled onClick={this.handleClose}>火炬</MenuItem>
               <MenuItem disabled onClick={this.handleClose}>设置和隐私</MenuItem>
               <MenuItem disabled onClick={this.handleClose}>帮助中心</MenuItem>
-              <MenuItem onClick={this.handleClose}>登出</MenuItem>
+              <MenuItem onClick={() => {
+                dispatch({ type: 'user/logout' });
+                this.setState({ anchorEl: null });
+              }}
+              >登出</MenuItem>
             </Menu>
           </div>
           : <Button onClick={this.login} color="contrast">登录/注册</Button>
