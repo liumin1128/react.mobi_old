@@ -8,7 +8,6 @@ const handle = app.getRequestHandler();
 
 const port = dev ? 8000 : 3102;
 
-// This is where we cache our rendered HTML pages
 const ssrCache = new LRUCache({
   max: 100,
   maxAge: 1000 * 60, // 1分钟
