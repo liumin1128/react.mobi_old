@@ -7,8 +7,6 @@ import { connect } from 'react-redux';
 export default class extends PureComponent {
   render() {
     const { current = {} } = this.props;
-    console.log('current');
-    console.log(current);
     const {
       title, photos = [], content, zanCount, from, updatedAt,
     } = current;

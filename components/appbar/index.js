@@ -11,6 +11,9 @@ import Avatar from 'material-ui/Avatar';
 import Button from 'material-ui/Button';
 import Input, { InputAdornment } from 'material-ui/Input';
 import Hidden from 'material-ui/Hidden';
+import Menu, { MenuItem } from 'material-ui/Menu';
+import User from './user';
+import Search from './search';
 
 const styles = {
   root: {
@@ -90,6 +93,15 @@ const styles = {
 export default class extends PureComponent {
   state = {
     theme: 'black',
+    anchorEl: null,
+  };
+
+  handleClick = (event) => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
   };
 
   componentWillMount() {
@@ -115,7 +127,7 @@ export default class extends PureComponent {
 
   render() {
     const { classes, userInfo = {} } = this.props;
-    const { theme } = this.state;
+    const { theme, anchorEl } = this.state;
     console.log(theme);
     return (
       <Headroom
@@ -156,45 +168,13 @@ export default class extends PureComponent {
                     <Button onClick={() => { Router.push('/say'); }} className={classes.nav} color="contrast">话题</Button>
                     <Button onClick={() => { Router.push('/explore'); }} className={classes.nav} color="contrast">发现</Button>
                   </div>
-                  <Input
-                    id="adornment-password"
-                    color="contrast"
-                  // type="search"
-                    disableUnderline
-                    classes={{
-                    root: classes.textFieldRoot,
-                    input: classes.textFieldInput,
-                    focused: classes.textFieldFocused, // className, e.g. `OverridesClasses-root-X`
-                  }}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton className={classes.search} color="contrast">
-                          <SearchIcon />
-                        </IconButton>
-                      </InputAdornment>
-                  }
-                  />
+                  <Search />
                 </Hidden>
               </div>
 
-
               <div className={classes.right}>
-                {userInfo._id
-                  ? <div className={classes.loged}>
-                    <Button
-                      raised
-                      color="accent"
-                      onClick={() => { Router.push('/post'); }}
-                    >写文章</Button>
-                    <IconButton color="contrast" aria-label="Menu" >
-                      <Avatar alt="Adelle Charles" src={userInfo.avatarUrl} />
-                    </IconButton>
-                  </div>
-                  : <Button onClick={this.login} color="contrast">登录/注册</Button>
-                }
-
+                <User />
               </div>
-
 
             </Toolbar>
 
