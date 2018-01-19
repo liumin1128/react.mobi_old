@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import Router from 'next/router';
-import { request, setStorage, getStorage } from '../../utils';
+import { request, setStorage, getStorage, removeStorage } from '../../utils';
 import Snackbar from '../../components/snackbar';
 import modal from '../../components/hoc/modal';
 // import Login from '../../container/login/index';
@@ -35,6 +35,14 @@ class User {
       }
     } catch (error) {
       console.log('登录错误');
+      console.log(error);
+    }
+  }
+  logout = async ({ payload, cb }, { getState, dispatch }) => {
+    try {
+      await removeStorage('reactmobitoken');
+      await dispatch({ type: 'user/save', payload: { userInfo: {} } });
+    } catch (error) {
       console.log(error);
     }
   }

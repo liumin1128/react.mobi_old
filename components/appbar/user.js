@@ -12,6 +12,27 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
   },
+  menu: {
+    minWidth: 200,
+  },
+  icon: {
+    marginRight: 0,
+  },
+  userInfo: {
+    padding: 16,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    minWidth: 160,
+    height: 70,
+  },
+  avatar: {
+    width: 60,
+    height: 60,
+  },
+  nickname: {
+    fontSize: 16,
+  },
 };
 
 @connect(({ user }) => ({ userInfo: user.userInfo }))
@@ -20,15 +41,6 @@ export default class extends PureComponent {
   state = {
     anchorEl: null,
   };
-
-  handleClick = (event) => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
   componentWillMount() {
     const { dispatch } = this.props;
     const { router } = Router;
@@ -39,15 +51,18 @@ export default class extends PureComponent {
       dispatch({ type: 'user/getUserInfo' });
     }
   }
-
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+  handleClick = (event) => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
   goBack = () => {
     window.history.back();
   }
-
   login = () => {
     Router.push('/login');
   }
-
   render() {
     const { classes, userInfo = {} } = this.props;
     const { anchorEl } = this.state;
@@ -75,28 +90,29 @@ export default class extends PureComponent {
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={this.handleClose}
-                // anchorOrigin={{
-                //   vertical: 'top',
-                //   horizontal: 'right',
-                // }}
-                // transformOrigin={{
-                //   vertical: 'bottom',
-                //   horizontal: 'right',
-                // }}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
             >
-              <Avatar alt="Adelle Charles" src={userInfo.avatarUrl} />
-              用户名@什么什么
-
-              <MenuItem onClick={this.handleClose}>个人资料</MenuItem>
-              <MenuItem onClick={this.handleClose}>我关注的</MenuItem>
-              <MenuItem onClick={this.handleClose}>火炬</MenuItem>
-              <MenuItem onClick={this.handleClose}>设置和隐私</MenuItem>
-              <MenuItem onClick={this.handleClose}>帮助中心</MenuItem>
+              <MenuItem className={classes.userInfo} onClick={this.handleClose}>
+                <Avatar src={userInfo.avatarUrl} />
+                <h1 className={classes.nickname}>{userInfo.nickname}</h1>
+              </MenuItem>
+              <MenuItem disabled onClick={this.handleClose}>个人资料</MenuItem>
+              <MenuItem disabled onClick={this.handleClose}>我关注的</MenuItem>
+              <MenuItem disabled onClick={this.handleClose}>火炬</MenuItem>
+              <MenuItem disabled onClick={this.handleClose}>设置和隐私</MenuItem>
+              <MenuItem disabled onClick={this.handleClose}>帮助中心</MenuItem>
               <MenuItem onClick={this.handleClose}>登出</MenuItem>
             </Menu>
           </div>
-            : <Button onClick={this.login} color="contrast">登录/注册</Button>
-          }
+          : <Button onClick={this.login} color="contrast">登录/注册</Button>
+        }
       </div>
     );
   }
