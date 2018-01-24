@@ -11,6 +11,7 @@ const reducers = reducerFactory([
   'loading',
   'user',
   'comment',
+  'article',
 ]);
 
 export default combineReducers({
