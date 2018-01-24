@@ -34,6 +34,10 @@ const styles = {
   logo: {
     width: 48,
     height: 48,
+    borderRadius: 0,
+    '&>img': {
+      width: 'auto',
+    },
   },
   toolbar: {
     maxWidth: 1110,
@@ -157,7 +161,7 @@ export default class extends PureComponent {
                 aria-label="Menu"
                 onClick={() => { Router.push('/'); }}
               >
-                <img className={classes.logo} src="/static/logo.svg" alt="" />
+                <Avatar className={classes.logo} src="/static/logo.svg" />
               </IconButton>
 
               <div className={classes.center}>

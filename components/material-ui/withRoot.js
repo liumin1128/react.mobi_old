@@ -4,18 +4,21 @@ import wrapDisplayName from 'recompose/wrapDisplayName';
 import getContext from './getContext';
 
 // Apply some reset
-const styles = theme => ({
-  '@global': {
-    html: {
-      background: theme.palette.background.default,
-      WebkitFontSmoothing: 'antialiased', // Antialiasing.
-      MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+const styles = (theme) => {
+  console.log(theme);
+  return {
+    '@global': {
+      html: {
+        background: theme.palette.background.default,
+        WebkitFontSmoothing: 'antialiased', // Antialiasing.
+        MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+      },
+      body: {
+        margin: 0,
+      },
     },
-    body: {
-      margin: 0,
-    },
-  },
-});
+  };
+};
 
 let AppWrapper = props => props.children;
 
