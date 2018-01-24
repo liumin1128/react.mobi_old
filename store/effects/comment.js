@@ -2,6 +2,14 @@ import List from './list';
 import { request, snackbar } from '../../utils';
 
 class Comment extends List {
+  refresh = async ({ query }, { getState, dispatch }) => {
+    try {
+      const { data, isEnd } = await request('/comment/list', { ...query });
+      await dispatch({ type: 'comment/save', payload: { list: data, isEnd } });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   create = async ({ payload, cb }, { getState, dispatch }) => {
     try {
       console.log('payload');
@@ -19,7 +27,7 @@ class Comment extends List {
       });
 
       if (status === 200) {
-        await dispatch({ type: 'comment/init', query: { id } });
+        await dispatch({ type: 'comment/refresh', query: { id } });
         // await snackbar('评论成功');
         if (cb) await cb();
       } else if (status === 401) {
@@ -41,7 +49,7 @@ class Comment extends List {
       const { status, message } = await request('comment/thumb', { id: _id });
 
       if (status === 200) {
-        await dispatch({ type: 'comment/init', query: { id } });
+        await dispatch({ type: 'comment/refresh', query: { id } });
         await snackbar(message);
         if (cb) await cb();
       } else if (status === 401) {
@@ -61,7 +69,7 @@ class Comment extends List {
       if (!id) snackbar.error('没有点赞对象？？？');
       const { status, message } = await request('comment/delete', { id: _id });
       if (status === 200) {
-        await dispatch({ type: 'comment/init', query: { id } });
+        await dispatch({ type: 'comment/refresh', query: { id } });
         await snackbar(message);
         if (cb) await cb();
       } else if (status === 401) {

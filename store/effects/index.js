@@ -16,6 +16,7 @@ export default {
   'say/create': say.create,
   // 评论
   'comment/init': comment.init,
+  'comment/refresh': comment.refresh,
   'comment/detail': comment.detail,
   'comment/more': comment.more,
   'comment/create': comment.create,
