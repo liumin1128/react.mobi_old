@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import Waypoint from 'react-waypoint';
 import NewsItem from './item';
 import Loading from '../../components/loading-button';
+import scrollTop from '../../components/hoc/scrollTop';
 
 @connect(({ say, loading }) => ({
   list: say.list,
   isEnd: say.isEnd,
   moreLoading: loading['say/more'],
 }))
+@scrollTop
 export default class extends PureComponent {
   state = {
     page: 1,

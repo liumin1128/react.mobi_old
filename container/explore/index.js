@@ -27,10 +27,6 @@ const styles = theme => ({
 }))
 @withStyles(styles)
 export default class extends PureComponent {
-  componentWillMount() {
-    const { id, dispatch } = this.props;
-    dispatch({ type: 'comment/init', query: { id } });
-  }
   render() {
     const { classes } = this.props;
     return (<div className={classes.root}>

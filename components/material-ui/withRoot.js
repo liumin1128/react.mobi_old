@@ -5,7 +5,7 @@ import getContext from './getContext';
 
 // Apply some reset
 const styles = (theme) => {
-  console.log(theme);
+  // console.log(theme);
   return {
     '@global': {
       html: {
