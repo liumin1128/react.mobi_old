@@ -5,11 +5,10 @@ import Item from './item';
 import Loading from '../../components/loading-button';
 import scrollTop from '../../components/hoc/scrollTop';
 
-@connect(({ article = {}, loading, scrollTop }) => ({
+@connect(({ article = {}, loading }) => ({
   list: article.list,
   isEnd: article.isEnd,
   moreLoading: loading['article/more'],
-  scrollTop,
 }))
 @scrollTop
 export default class extends PureComponent {

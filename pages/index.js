@@ -6,6 +6,7 @@ import AppBar from '../components/appbar';
 import withRoot from '../components/material-ui/withRoot';
 import NewsList from '../container/say/list';
 import Explore from '../container/explore';
+import scrollTop from '../components/hoc/scrollTop';
 
 const styles = theme => ({
   root: {
@@ -33,6 +34,7 @@ const styles = theme => ({
 @withReduxSaga
 @withRoot
 @withStyles(styles)
+@scrollTop
 export default class extends PureComponent {
   static async getInitialProps({ query, store }) {
     await store.dispatch({
