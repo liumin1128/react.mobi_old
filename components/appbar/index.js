@@ -2,18 +2,20 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Headroom from 'react-headroom';
 import Router from 'next/router';
+import dynamic from 'next/dynamic';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
-import SearchIcon from 'material-ui-icons/Search';
 import Avatar from 'material-ui/Avatar';
 import Button from 'material-ui/Button';
-import Input, { InputAdornment } from 'material-ui/Input';
 import Hidden from 'material-ui/Hidden';
-import Menu, { MenuItem } from 'material-ui/Menu';
-import User from './user';
 import Search from './search';
+
+
+const UserWithNoSSR = dynamic(import('./user'), {
+  ssr: false,
+});
 
 const styles = {
   root: {
@@ -100,25 +102,6 @@ export default class extends PureComponent {
     anchorEl: null,
   };
 
-  handleClick = (event) => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
-  componentWillMount() {
-    const { dispatch } = this.props;
-    const { router } = Router;
-    if (router && router.query && router.query.token) {
-      console.log(router.query.token);
-      dispatch({ type: 'user/saveOauthToken', payload: { token: router.query.token } });
-    } else {
-      dispatch({ type: 'user/getUserInfo' });
-    }
-  }
-
   goBack = () => {
     window.history.back();
   }
@@ -177,7 +160,7 @@ export default class extends PureComponent {
               </div>
 
               <div className={classes.right}>
-                <User />
+                <UserWithNoSSR />
               </div>
 
             </Toolbar>
