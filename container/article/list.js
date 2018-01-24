@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import Router from 'next/router';
 import Waypoint from 'react-waypoint';
 import Item from './item';
 import Loading from '../../components/loading-button';
-import { getScrollTop } from '../../utils/common';
+import scrollTop from '../../components/hoc/scrollTop';
 
 @connect(({ article = {}, loading, scrollTop }) => ({
   list: article.list,
@@ -12,21 +11,10 @@ import { getScrollTop } from '../../utils/common';
   moreLoading: loading['article/more'],
   scrollTop,
 }))
+@scrollTop
 export default class extends PureComponent {
   state = {
     page: 1,
-  }
-  componentDidMount() {
-    const { dispatch, scrollTop = {} } = this.props;
-    const { router } = Router;
-    const height = scrollTop[router.pathname];
-    window.scrollTo(0, height);
-    Router.onRouteChangeStart = () => {
-      dispatch({
-        type: 'scrollTop/save',
-        payload: { [router.pathname]: getScrollTop() },
-      });
-    };
   }
   more = () => {
     const {

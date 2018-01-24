@@ -1,5 +1,5 @@
-import request from '../../utils/request';
 import { stringify } from 'query-string';
+import request from '../../utils/request';
 
 const getTopics = async () => {
   const params = {
