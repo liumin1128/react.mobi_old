@@ -27,7 +27,7 @@ export default class extends PureComponent {
   componentDidMount() {
     const { dispatch, url } = this.props;
     Router.push('/');
-    dispatch({ type: 'user/getUserInfo', payload: url.query });
+    dispatch({ type: 'user/saveOauthToken', payload: url.query });
   }
   render() {
     return (
