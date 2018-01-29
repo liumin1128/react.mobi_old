@@ -61,9 +61,9 @@ class RecipeReviewCard extends React.Component {
           <CardHeader
             avatar={
               <Avatar
-                aria-label={user.nickname}
+                aria-label={(user || {}).nickname}
                 className={classes.avatar}
-                src={user.avatarUrl}
+                src={(user || {}).avatarUrl}
               />
             }
             action={
@@ -71,7 +71,7 @@ class RecipeReviewCard extends React.Component {
                 <MoreVertIcon />
               </IconButton>
             }
-            title={user.nickname}
+            title={(user || {}).nickname}
             subheader={timeago(createdAt)}
           />
           <Link
