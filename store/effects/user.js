@@ -73,9 +73,11 @@ class User {
     try {
       const token = await getStorage('reactmobitoken');
       if (token) {
-        const { status, userInfo } = await request('user/getUserInfo');
+        const { status, userInfo = {} } = await request('user/getUserInfo');
+        console.log('getUserInfouserInfo');
+        console.log(userInfo);
         if (status === 200) {
-          await dispatch({ type: 'user/save', payload: { userInfo } });
+          await dispatch({ type: 'user/save', payload: { userInfo: userInfo || {} } });
         }
       }
     } catch (error) {
@@ -83,6 +85,15 @@ class User {
     }
   }
   saveOauthToken = async ({ payload, cb }, { dispatch }) => {
+    console.log('saveOauthTokenpayload');
+    console.log('saveOauthTokenpayload');
+    console.log('saveOauthTokenpayload');
+    console.log('saveOauthTokenpayload');
+    console.log('saveOauthTokenpayload');
+    console.log(payload);
+    console.log(payload);
+    console.log(payload);
+    console.log(payload);
     console.log(payload);
     await setStorage('reactmobitoken', payload.token);
     await dispatch({ type: 'user/getUserInfo' });
