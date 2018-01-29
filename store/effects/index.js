@@ -28,6 +28,7 @@ export default {
   'user/register': user.register,
   'user/getUserInfo': user.getUserInfo,
   'user/checkAuth': user.checkAuth,
+  'user/saveOauthToken': user.saveOauthToken,
   'common/getQiniuToken': common.getQiniuToken,
   'common/sentSmsCode': common.sentSmsCode,
 };
