@@ -90,8 +90,9 @@ export default class extends PureComponent {
     console.log(content);
     if (content) {
       const photos = this.photos.getValue();
+
       const payload = { content };
-      if (photos > 0) {
+      if (photos.length > 0) {
         payload.photos = photos;
       }
       dispatch({
