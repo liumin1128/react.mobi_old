@@ -52,7 +52,7 @@ class RecipeReviewCard extends React.Component {
 
   render() {
     const {
-      classes, title, content, photos, desc, _id, user, createdAt,
+      classes, title, content, photos, desc, _id, user = {}, createdAt,
     } = this.props;
 
     return (
