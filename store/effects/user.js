@@ -83,6 +83,7 @@ class User {
     }
   }
   saveOauthToken = async ({ payload, cb }, { dispatch }) => {
+    console.log(payload);
     await setStorage('reactmobitoken', payload.token);
     await dispatch({ type: 'user/getUserInfo' });
   }

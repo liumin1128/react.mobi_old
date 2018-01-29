@@ -9,8 +9,8 @@ pwd
 # echo "Node 版本："
 # node -v
 
-echo "关闭pm2"
-pm2 delete react.mobi
+# echo "关闭pm2"
+# pm2 delete react.mobi
 
 echo "进入项目目录"
 PATH_OLD=`pwd`
