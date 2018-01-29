@@ -55,6 +55,9 @@ class RecipeReviewCard extends React.Component {
       classes, title, content, photos, desc, _id, user = {}, createdAt,
     } = this.props;
 
+    console.log('user');
+    console.log(user);
+
     return (
       <div>
         <Card className={classes.card}>
