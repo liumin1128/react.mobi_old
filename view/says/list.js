@@ -14,7 +14,7 @@ function PostList({
   return (<div>
 
     {
-      says.map(i => <Item {...i} />)
+      says.map(i => <Item key={i._id} {...i} />)
     }
 
     {!isEnd && <button onClick={() => loadMore()}>
