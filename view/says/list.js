@@ -25,8 +25,8 @@ function PostList({
 
 
 export const params = {
-  skip: 0,
-  first: 3,
+  skip: 1,
+  first: 5,
 };
 
 export default graphql(
