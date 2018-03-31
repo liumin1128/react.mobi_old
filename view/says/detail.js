@@ -1,60 +1,21 @@
-import React from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-import Item from './item';
+import React, { PureComponent } from 'react';
+import { Query } from 'react-apollo';
+import { connect } from 'react-redux';
+import { SAY_DETAIL } from '../../graphql/say';
 
-function PostList({ data: { loading, error, say } }) {
-  if (error) return 'error';
-  if (loading) return 'loading';
-  return (<div>
-    {say.content}
-  </div>);
+@connect()
+export default class SayDetail extends PureComponent {
+  render() {
+    const _id = this.props.query.id;
+    return (<Query query={SAY_DETAIL} variables={{ _id }}>
+      {({ loading, error, data: { say = {} } }) => {
+        if (loading) return 'Loading...';
+        if (error) return `Error! ${error.message}`;
+        return (
+          <div>{say.content}</div>
+        );
+      }}
+    </Query>);
+  }
 }
 
-export const allPosts = gql`
-  query($_id: String!) {
-    say(_id: $_id) {
-      __typename
-      _id
-      content
-      createdAt
-      user {
-        nickname
-        avatarUrl
-      }
-    }
-  }
-`;
-
-export default graphql(
-  allPosts,
-  {
-    options: {
-      variables: { _id: '59f83ebc0c14d24450c64605' },
-    },
-    props: ({ data }) => ({
-      data,
-      loadMore: () => {
-        console.log('data');
-        console.log(data);
-        return data.fetchMore({
-          variables: {
-            skip: data.says.length,
-          },
-          updateQuery: (previousResult, { fetchMoreResult }) => {
-            if (!fetchMoreResult) {
-              return previousResult;
-            }
-            return {
-              ...fetchMoreResult,
-              says: [
-                ...previousResult.says,
-                ...fetchMoreResult.says,
-              ],
-            };
-          },
-        });
-      },
-    }),
-  },
-)(PostList);

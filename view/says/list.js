@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
 import Item from './item';
+import { SAY_LIST } from '../../graphql/say';
 
 function PostList({
   data: {
@@ -23,23 +23,6 @@ function PostList({
   </div>);
 }
 
-export const allPosts = gql`
-  query($first: Int!, $skip: Int!) {
-    says(first: $first, skip: $skip) {
-      __typename
-      _id
-      content
-      createdAt
-      user {
-        nickname
-        avatarUrl
-      }
-    }
-    _saysMeta {
-      count
-    }
-  }
-`;
 
 export const params = {
   skip: 0,
@@ -47,7 +30,7 @@ export const params = {
 };
 
 export default graphql(
-  allPosts,
+  SAY_LIST,
   {
     options: {
       variables: params,
