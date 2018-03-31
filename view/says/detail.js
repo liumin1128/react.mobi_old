@@ -3,29 +3,17 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import Item from './item';
 
-function PostList({
-  data: {
-    loading, error, says, _saysMeta,
-  }, loadMore,
-}) {
+function PostList({ data: { loading, error, say } }) {
   if (error) return 'error';
   if (loading) return 'loading';
-  const isEnd = _saysMeta.count <= says.length;
   return (<div>
-
-    {
-      says.map(i => <Item {...i} />)
-    }
-
-    {!isEnd && <button onClick={() => loadMore()}>
-      {loading ? 'Loading...' : 'Show More'}
-    </button>}
+    {say.content}
   </div>);
 }
 
 export const allPosts = gql`
-  query($first: Int!, $skip: Int!) {
-    says(first: $first, skip: $skip) {
+  query($_id: String!) {
+    say(_id: $_id) {
       __typename
       _id
       content
@@ -35,22 +23,14 @@ export const allPosts = gql`
         avatarUrl
       }
     }
-    _saysMeta {
-      count
-    }
   }
 `;
-
-export const params = {
-  skip: 0,
-  first: 3,
-};
 
 export default graphql(
   allPosts,
   {
     options: {
-      variables: params,
+      variables: { _id: '59f83ebc0c14d24450c64605' },
     },
     props: ({ data }) => ({
       data,
