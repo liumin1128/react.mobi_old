@@ -25,7 +25,7 @@ function PostList({
 
 
 export const params = {
-  skip: 1,
+  skip: 0,
   first: 5,
 };
 
