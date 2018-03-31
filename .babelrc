@@ -1,0 +1,31 @@
+{
+  "presets": [
+    [
+      "env", {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "ie >= 7"
+          ]
+        }
+      }
+    ],
+    "next/babel"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "transform-decorators-legacy",
+        "transform-runtime"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-decorators-legacy",
+        "transform-remove-console",
+        "transform-runtime"
+      ]
+    }
+  }
+}

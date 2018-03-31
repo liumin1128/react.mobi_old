@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-求助2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="13.9652336%" x2="50%" y2="87.1502793%" id="linearGradient-1">
+            <stop stop-color="#4A79FF" offset="0%"></stop>
+            <stop stop-color="#6AA8FF" offset="100%"></stop>
+        </linearGradient>
+        <ellipse id="path-2" cx="21.4537273" cy="21.3587849" rx="21.4537273" ry="21.3587849"></ellipse>
+        <filter x="-7.0%" y="-7.0%" width="114.0%" height="114.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.290196078   0 0 0 0 0.474509804   0 0 0 0 1  0 0 0 0.694265172 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPhone-8-Copy-4" transform="translate(-209.000000, -365.000000)" fill-rule="nonzero">
+            <g id="Group-8" transform="translate(26.000000, 275.000000)">
+                <g id="icon-求助2" transform="translate(185.303072, 92.496716)">
+                    <g id="Oval">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <g id="求助" transform="translate(9.479554, 9.934319)" fill="#FFFFFF">
+                        <g id="Group-6">
+                            <path d="M6.24171992,16.9692844 C6.34533299,17.6084889 6.62181451,18.1939163 7.04868686,18.6664751 C7.60860243,19.2912038 8.36376283,19.6601248 9.18443235,19.7155801 L10.1573827,18.9851507 C10.6999169,18.6629436 11.5518391,17.7211827 11.5518391,14.7584155 L11.5535603,12.696115 C11.5639554,8.96165912 11.577793,2.45234071 11.3791394,0.277241495 C10.3630563,2.73695993 8.56413768,11.1367583 8.56413768,15.0430347 L8.56413768,15.2417786 L8.40517431,15.3546124 L6.24171992,16.9692844 Z" id="Fill-1"></path>
+                            <path d="M12.4763917,0.277241495 C12.2776031,2.45055747 12.293162,8.95263803 12.3001482,12.6817792 L12.3035569,14.7584155 C12.3035569,16.2586455 12.5195245,17.4062134 12.948118,18.1742307 C13.0759974,18.4606681 13.2367158,18.6664751 13.4370907,18.8168617 L14.4825702,19.6009982 C15.0493371,19.4362756 15.5591336,19.1158518 15.9634946,18.6664751 C16.5216889,18.0470612 16.8205468,17.2486238 16.817138,16.4017942 L15.2912584,15.2649957 L15.2912584,15.0699582 C15.2929797,11.1385067 13.494196,2.73874317 12.4763917,0.277241495 Z" id="Fill-2"></path>
+                            <path d="M18.2202683,22.4027492 L23.5961665,22.4027492 C23.6271492,21.9014837 22.6958466,20.7914687 21.3929206,19.8158262 L17.765822,17.1090066 C17.6345,17.9556963 17.2664205,18.7417559 16.6979323,19.3753657 C16.3436904,19.7710355 15.9202269,20.0914593 15.4485342,20.325973 L18.2202683,22.4027492 Z" id="Fill-4"></path>
+                            <path d="M5.35868007,17.6281744 L2.42450645,19.8158262 C1.11813802,20.7950003 0.186734151,21.910365 0.223116851,22.408064 L5.59888014,22.4027492 L8.08032877,20.5426193 C7.40809258,20.3153435 6.79991424,19.9143241 6.31607158,19.3735826 C5.86506785,18.8741003 5.54008732,18.2780433 5.35868007,17.6281744 Z" id="Fill-5"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

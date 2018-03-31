@@ -1,0 +1,30 @@
+{
+  "name": "华人生活网，天涯若比邻",
+  "short_name": "华人生活网",
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#2196F3",
+  "background_color": "#fafafa",
+  "icons": [
+    {
+      "src": "/static/logo.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/static/logo.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/static/logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

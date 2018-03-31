@@ -1,0 +1,14 @@
+{
+    "apps": [
+      {
+        "name": "huaren58.com",
+        "script": "server.js",
+        "log_date_format": "YYYY-MM-DD HH:mm Z",
+        "cron_restart": "*/10 * * * *",
+        "instances": 2,
+        "env": {
+          "NODE_ENV": "production"
+        }
+      }
+    ]
+  }
