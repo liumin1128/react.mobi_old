@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from 'material-ui/styles';
-// import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
-import withRoot from '../material-ui/withRoot';
-import withData from '../lib/withData';
-import { withReduxRoot } from '../store';
-import SaysList from '../view/says/list';
+import withRoot from '../../material-ui/withRoot';
+import withData from '../../lib/withData';
+import { withReduxRoot } from '../../store';
+import SaysList from '../../view/says/list';
 
 const styles = () => ({
   root: {
