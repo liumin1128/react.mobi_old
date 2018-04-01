@@ -8,8 +8,8 @@ function PostList({
     loading, error, says, _saysMeta,
   }, loadMore,
 }) {
-  if (error) return 'error';
-  if (loading) return 'loading';
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
   const isEnd = _saysMeta.count <= says.length;
   return (<div>
 

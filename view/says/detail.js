@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
-import { connect } from 'react-redux';
 import { SAY_DETAIL } from '../../graphql/say';
 
-@connect()
 export default class SayDetail extends PureComponent {
   render() {
     const _id = this.props.query.id;
