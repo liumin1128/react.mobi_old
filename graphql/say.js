@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const SAY_DETAIL = gql`
-  query($_id: String!) {
+  query SayDetail($_id: String!) {
     say(_id: $_id) {
       __typename
       _id
@@ -16,7 +16,7 @@ export const SAY_DETAIL = gql`
 `;
 
 export const SAY_LIST = gql`
-  query($first: Int!, $skip: Int!) {
+  query SayList($first: Int!, $skip: Int!) {
     list: says(first: $first, skip: $skip) {
       __typename
       _id
