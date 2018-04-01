@@ -38,8 +38,6 @@ export default graphql(
     props: ({ data }) => ({
       data,
       loadMore: () => {
-        console.log('data');
-        console.log(data);
         return data.fetchMore({
           variables: {
             skip: data.list.length,
