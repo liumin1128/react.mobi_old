@@ -5,16 +5,16 @@ import { SAY_LIST } from '../../graphql/say';
 
 function PostList({
   data: {
-    loading, error, says, _saysMeta,
+    loading, error, list, meta,
   }, loadMore,
 }) {
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
-  const isEnd = _saysMeta.count <= says.length;
+  const isEnd = meta.count <= list.length;
   return (<div>
 
     {
-      says.map(i => <Item key={i._id} {...i} />)
+      list.map(i => <Item key={i._id} {...i} />)
     }
 
     {!isEnd && <button onClick={() => loadMore()}>
@@ -42,7 +42,7 @@ export default graphql(
         console.log(data);
         return data.fetchMore({
           variables: {
-            skip: data.says.length,
+            skip: data.list.length,
           },
           updateQuery: (previousResult, { fetchMoreResult }) => {
             if (!fetchMoreResult) {
@@ -50,9 +50,9 @@ export default graphql(
             }
             return {
               ...fetchMoreResult,
-              says: [
-                ...previousResult.says,
-                ...fetchMoreResult.says,
+              list: [
+                ...previousResult.list,
+                ...fetchMoreResult.list,
               ],
             };
           },
