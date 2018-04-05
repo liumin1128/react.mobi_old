@@ -34,6 +34,12 @@ const styles = () => ({
 @withRoot
 @withStyles(styles)
 export default class News extends PureComponent {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    const username = '18629974148';
+    const password = '123456';
+    dispatch({ type: 'user/login', payload: { username, password } });
+  }
   render() {
     const { classes, url } = this.props;
     return (

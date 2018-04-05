@@ -1,12 +1,12 @@
 import axios from 'axios';
 import es6promise from 'es6-promise';
-import { API_URL } from '../constants/api';
-import { getStorage } from '../utils';
+// import { API_URL } from '../constants/api';
+import { getStorage } from './store';
 
 es6promise.polyfill();
 
 const instance = axios.create({
-  baseURL: API_URL,
+  baseURL: 'https://api.react.mobi',
   method: 'POST',
   timeout: 6000,
 });

@@ -47,6 +47,7 @@
     "react-swipeable-views": "^0.12.13",
     "react-waypoint": "^8.0.1",
     "redux": "^3.7.2",
+    "rxjs": "^5.5.8",
     "store": "^2.0.12",
     "timeago.js": "^3.0.2"
   }

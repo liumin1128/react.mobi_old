@@ -8,11 +8,8 @@ function Submit({ createSay }) {
     event.preventDefault();
     const form = event.target;
     const formData = new window.FormData(form);
-    console.log('formData');
-    console.log(formData);
-    console.log(formData.get('content'));
-    createSay(formData.get('title'));
-
+    const content = formData.get('content');
+    createSay({ content });
     form.reset();
   }
 
@@ -37,8 +34,8 @@ const createSay = gql`
 
 export default graphql(createSay, {
   props: ({ mutate }) => ({
-    createSay: content => mutate({
-      variables: { input: { content: 'xxxxx' } },
+    createSay: ({ content }) => mutate({
+      variables: { input: { content } },
       refetchQueries: ['SayList'],
       // update: (proxy, { data: { item } }) => {
       //   console.log('proxy');
