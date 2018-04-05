@@ -11,7 +11,7 @@ export default (props) => {
       return <em>{children}</em>;
     case 'strikethrough':
       return <del>{children}</del>;
-    case 'underline':
+    case 'underlined':
       return <u>{children}</u>;
     default: return <p>{children}</p>;
   }

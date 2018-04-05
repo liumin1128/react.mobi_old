@@ -1,7 +1,11 @@
 import React, { PureComponent } from 'react';
+import dynamic from 'next/dynamic';
 import { graphql } from 'react-apollo';
 import { CREATE_ARTICLE } from '../../graphql/article';
-import Editor from '../../components/slate-editor';
+
+const Editor = dynamic(import('../../components/slate-editor'), {
+  ssr: false,
+});
 
 @graphql(CREATE_ARTICLE, {
   props: ({ mutate }) => ({
