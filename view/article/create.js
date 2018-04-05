@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { graphql } from 'react-apollo';
 import { CREATE_ARTICLE } from '../../graphql/article';
+import Editor from '../../components/slate-editor';
 
 @graphql(CREATE_ARTICLE, {
   props: ({ mutate }) => ({
@@ -24,12 +25,15 @@ export default class CreateArticle extends PureComponent {
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h1>创建文章</h1>
-        <input placeholder="title" name="title" type="text" required />
-        <input placeholder="content" name="content" type="text" required />
-        <button type="submit">Submit</button>
-      </form>
+      <div>
+        <Editor />
+        <form onSubmit={this.handleSubmit}>
+          <h1>创建文章</h1>
+          <input placeholder="title" name="title" type="text" required />
+          <input placeholder="content" name="content" type="text" required />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     );
   }
 }

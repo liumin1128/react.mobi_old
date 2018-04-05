@@ -32,6 +32,7 @@
     "es6-promise": "^4.2.4",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.8.0",
+    "immutable": "^3.8.2",
     "isomorphic-unfetch": "^2.0.0",
     "material-ui": "^1.0.0-beta.39",
     "material-ui-icons": "^1.0.0-beta.36",
@@ -48,6 +49,8 @@
     "react-waypoint": "^8.0.1",
     "redux": "^3.7.2",
     "rxjs": "^5.5.8",
+    "slate": "^0.33.4",
+    "slate-react": "^0.12.4",
     "store": "^2.0.12",
     "timeago.js": "^3.0.2"
   }
