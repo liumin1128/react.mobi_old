@@ -57,7 +57,9 @@ export default class News extends PureComponent {
             <Grid item xs={12} sm={12} md={4}>
               <div className={classes.body}>
                 <h1>777</h1>
-                <Link href="say/create"><a>post</a></Link>
+                <Link href="say/create"><a>say/create</a></Link>
+                <br />
+                <Link href="article/create"><a>article/create</a></Link>
               </div>
             </Grid>
           </Grid>

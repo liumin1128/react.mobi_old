@@ -36,3 +36,20 @@ export const ARTICLE_LIST = gql`
     }
   }
 `;
+
+export const CREATE_ARTICLE = gql`
+  mutation ($input: ArticleInput) {
+    item: createArticle(input: $input) {
+      __typename
+      _id
+      title
+      cover
+      content
+      createdAt
+      user {
+        nickname
+        avatarUrl
+      }
+    }
+  }
+`;

@@ -4,7 +4,7 @@ import Grid from 'material-ui/Grid';
 import withRoot from '../../material-ui/withRoot';
 import withData from '../../lib/withData';
 import { withReduxRoot } from '../../store';
-import Create from '../../view/says/create';
+import Create from '../../view/article/create';
 
 const styles = () => ({
   root: {
