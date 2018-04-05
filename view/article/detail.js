@@ -1,17 +1,17 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
-import { SAY_DETAIL } from '../../graphql/say';
+import { ARTICLE_DETAIL } from '../../graphql/article';
 
-export default class SayDetail extends PureComponent {
+export default class ArticleDetail extends PureComponent {
   render() {
     const _id = this.props.query.id;
-    return (<Query query={SAY_DETAIL} variables={{ _id }}>
+    return (<Query query={ARTICLE_DETAIL} variables={{ _id }}>
       {({ loading, error, data = {} }) => {
-        const { say = {} } = data;
+        const { article = {} } = data;
         if (loading) return 'Loading...';
         if (error) return `Error! ${error.message}`;
         return (
-          <div>{say.content}</div>
+          <div>{article.content}</div>
         );
       }}
     </Query>);
