@@ -1,10 +1,20 @@
 import React, { PureComponent } from 'react';
 import dynamic from 'next/dynamic';
+import { withStyles } from 'material-ui/styles';
 import { graphql } from 'react-apollo';
+import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
+
 import { CREATE_ARTICLE } from '../../graphql/article';
 
 const Editor = dynamic(import('../../components/slate-editor'), {
   ssr: false,
+});
+
+const styles = theme => ({
+  card: {
+    ...theme.card,
+    padding: 20,
+  },
 });
 
 @graphql(CREATE_ARTICLE, {
@@ -15,6 +25,7 @@ const Editor = dynamic(import('../../components/slate-editor'), {
     }),
   }),
 })
+@withStyles(styles)
 export default class CreateArticle extends PureComponent {
   handleSubmit = (event) => {
     event.preventDefault();
@@ -28,9 +39,12 @@ export default class CreateArticle extends PureComponent {
     form.reset();
   }
   render() {
+    const { classes } = this.props;
     return (
       <div>
-        <Editor />
+        <Card className={classes.card}>
+          <Editor />
+        </Card>
         <form onSubmit={this.handleSubmit}>
           <h1>创建文章</h1>
           <input placeholder="title" name="title" type="text" required />
