@@ -1,6 +1,8 @@
 import React from 'react';
 import { Editor } from 'slate-react';
 import { Value } from 'slate';
+import Head from 'next/head';
+
 import initialValue from './value.json';
 import renderNode from './renderNode';
 import renderMark from './renderMark';
@@ -20,15 +22,20 @@ export default class RichTextExample extends React.Component {
   render() {
     const { placeholder = 'Enter some text...' } = this.props;
     return (
-      <div>
-        <Mark
-          onChange={this.onChange}
-          value={this.state.value}
-        />
-        <Alignment
-          onChange={this.onChange}
-          value={this.state.value}
-        />
+      <div className="slate-editor editor">
+        <Head>
+          <link href="/static/slate-editor.css" rel="stylesheet" />
+        </Head>
+        <div className="menu toolbar-menu">
+          <Mark
+            onChange={this.onChange}
+            value={this.state.value}
+          />
+          <Alignment
+            onChange={this.onChange}
+            value={this.state.value}
+          />
+        </div>
         <Editor
           // schema={schema}
           // className={styles.slateEditorContent}

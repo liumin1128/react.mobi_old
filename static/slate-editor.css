@@ -1,0 +1,281 @@
+.slate-editor {
+  /**
+ * Icons.
+ */
+  /**
+ * App.
+ */
+  /**
+ * Example.
+ */
+}
+
+.slate-editor html,
+.slate-editor input,
+.slate-editor textarea {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.4;
+  background: #eee;
+}
+
+.slate-editor body {
+  margin: 0;
+}
+
+.slate-editor p {
+  margin: 0;
+}
+
+.slate-editor pre {
+  padding: 10px;
+  background-color: #eee;
+  white-space: pre-wrap;
+}
+
+.slate-editor :not(pre) > code {
+  font-family: monospace;
+  background-color: #eee;
+  padding: 3px;
+}
+
+.slate-editor img {
+  max-width: 100%;
+  max-height: 20em;
+}
+
+.slate-editor img.active {
+  box-shadow: 0 0 0 2px blue;
+}
+
+.slate-editor blockquote {
+  border-left: 2px solid #ddd;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 10px;
+  color: #aaa;
+  font-style: italic;
+}
+
+.slate-editor blockquote[dir='rtl'] {
+  border-left: none;
+  padding-left: 0;
+  padding-right: 10px;
+  border-right: 2px solid #ddd;
+}
+
+.slate-editor table {
+  border-collapse: collapse;
+}
+
+.slate-editor td {
+  padding: 10px;
+  border: 2px solid #ddd;
+}
+
+.slate-editor input {
+  box-sizing: border-box;
+  font-size: 0.85em;
+  width: 100%;
+  padding: 0.5em;
+  border: 2px solid #ddd;
+  background: #fafafa;
+}
+
+.slate-editor input:focus {
+  outline: 0;
+  border-color: blue;
+}
+
+.slate-editor .material-icons {
+  font-size: 18px;
+  vertical-align: text-bottom;
+}
+
+.slate-editor .nav {
+  padding: 10px 15px;
+  color: #aaa;
+  background: #000;
+}
+
+.slate-editor .nav-title {
+  margin-right: 0.5em;
+}
+
+.slate-editor .nav-links {
+  float: right;
+}
+
+.slate-editor .nav-link {
+  margin-left: 1em;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.slate-editor .nav-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.slate-editor .tabs {
+  padding: 15px 15px;
+  background-color: #222;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.slate-editor .tab {
+  color: #777;
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+.slate-editor .tab:hover {
+  background: #333;
+}
+
+.slate-editor .tab + .tab {
+  margin-left: 0.5em;
+}
+
+.slate-editor .tab.active {
+  color: white;
+  background: #333;
+}
+
+.slate-editor .example,
+.slate-editor .error {
+  max-width: 42em;
+  margin: 0 auto 20px;
+  padding: 20px;
+}
+
+.slate-editor .example {
+  background: #fff;
+}
+
+.slate-editor .error {
+  background: #fffae0;
+}
+
+.slate-editor .error .info {
+  background: #fbf1bd;
+  white-space: pre;
+  overflow-x: scroll;
+  margin-bottom: 0;
+}
+
+.slate-editor .editor > * > * + * {
+  margin-top: 1em;
+}
+
+.slate-editor .menu > * {
+  display: inline-block;
+}
+
+.slate-editor .menu > * + * {
+  margin-left: 15px;
+}
+
+.slate-editor .button {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.slate-editor .button[data-active='true'] {
+  color: black;
+}
+
+.slate-editor .toolbar-menu {
+  position: relative;
+  padding: 1px 18px 17px;
+  margin: 0 -20px;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+}
+
+.slate-editor .toolbar-menu .search {
+  position: relative;
+}
+
+.slate-editor .toolbar-menu .search-icon {
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  color: #ccc;
+}
+
+.slate-editor .toolbar-menu .search-box {
+  padding-left: 2em;
+  width: 100%;
+}
+
+.slate-editor .hover-menu {
+  padding: 8px 7px 6px;
+  position: absolute;
+  z-index: 1;
+  top: -10000px;
+  left: -10000px;
+  margin-top: -6px;
+  opacity: 0;
+  background-color: #222;
+  border-radius: 4px;
+  transition: opacity 0.75s;
+}
+
+.slate-editor .hover-menu .button {
+  color: #aaa;
+}
+
+.slate-editor .hover-menu .button[data-active='true'] {
+  color: #fff;
+}
+
+.slate-editor .emoji.selected {
+  outline: 2px solid blue;
+}
+
+.slate-editor .check-list-item + .check-list-item {
+  margin-top: 0;
+}
+
+.slate-editor .check-list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.slate-editor .check-list-item.checked {
+  opacity: 0.666;
+  text-decoration: line-through;
+}
+
+.slate-editor .check-list-item > span:first-child {
+  margin-right: 0.75em;
+}
+
+.slate-editor .check-list-item > span:last-child {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.slate-editor .check-list-item > span:last-child:focus {
+  outline: none;
+}
+
+.slate-editor .word-counter {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #ebebeb;
+  display: inline-block;
+}
