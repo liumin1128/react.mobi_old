@@ -9,8 +9,8 @@ import renderMark from './renderMark';
 import plugins from './plugins';
 import Alignment from './plugins/alignment';
 import Mark from './plugins/mark';
+import Block from './plugins/block';
 
-const DEFAULT_NODE = 'paragraph';
 
 export default class RichTextExample extends React.Component {
   state = {
@@ -28,6 +28,10 @@ export default class RichTextExample extends React.Component {
         </Head>
         <div className="menu toolbar-menu">
           <Mark
+            onChange={this.onChange}
+            value={this.state.value}
+          />
+          <Block
             onChange={this.onChange}
             value={this.state.value}
           />
