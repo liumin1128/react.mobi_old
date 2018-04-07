@@ -1,10 +1,11 @@
 import { isKeyHotkey } from 'is-hotkey';
-import { alignmentMarkStrategy } from './utils';
+import { strategy } from './utils';
 
 const rules = {
-  'mod+l': 'left',
-  'mod+c': 'center',
-  'mod+r': 'right',
+  'mod+b': 'bold',
+  'mod+`': 'code',
+  'mod+i': 'italic',
+  'mod+u': 'underline',
 };
 
 export default () => {
@@ -14,7 +15,7 @@ export default () => {
       const { type } = list.find(i => isKeyHotkey(i.key)(event)) || {};
       if (type) {
         event.preventDefault();
-        alignmentMarkStrategy(change, type);
+        strategy(change, type);
         return true;
       }
     },

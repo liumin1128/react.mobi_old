@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
 import { alignmentMarkStrategy, hasMark, getMark } from './utils';
 
-const Button = ({ value, onChange, changeState, className, style, type }) => {
-  console.log(hasMark(value));
+const Button = ({
+  value, onChange, changeState, className, style, type,
+}) => {
+  // console.log(hasMark(value));
   // console.log(getMark(value).data.get('align') === type);
   const active = hasMark(value) && getMark(value).data.get('align') === type;
   return (
