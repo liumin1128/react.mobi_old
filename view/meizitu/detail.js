@@ -8,6 +8,7 @@ const styles = theme => ({
   root: {
     '& > img': {
       width: '100%',
+      marginBottom: 32,
     },
   },
 });
