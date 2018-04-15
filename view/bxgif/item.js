@@ -19,6 +19,9 @@ const styles = theme => ({
   card: theme.card,
   media: {
     height: 300,
+    '@media (max-width: 700px)': {
+      height: 200,
+    },
   },
   expand: {
     transform: 'rotate(0deg)',

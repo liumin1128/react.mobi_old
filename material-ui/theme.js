@@ -7,6 +7,9 @@ export default createMuiTheme({
   palette: {
     primary: blue,
     secondary: red,
+    background: {
+      default: '#f3f4f7',
+    },
   },
   card: {
     boxShadow: '0 10px 28px 0 rgba(137,157,197,.12)',
