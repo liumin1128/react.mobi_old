@@ -17,9 +17,9 @@ function PostList({
     }
 
     {
-    //   !isEnd && <button onClick={() => loadMore()}>
-    //   {loading ? 'Loading...' : 'Show More'}
-    // </button>
+      <button onClick={() => loadMore()}>
+        {loading ? 'Loading...' : 'Show More'}
+      </button>
   }
   </div>);
 }
@@ -40,7 +40,7 @@ export default graphql(
       loadMore: () => {
         return data.fetchMore({
           variables: {
-            skip: data.list.length,
+            page: Math.floor(data.list.length / 39) + 1,
           },
           updateQuery: (previousResult, { fetchMoreResult }) => {
             if (!fetchMoreResult) {
