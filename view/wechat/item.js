@@ -18,7 +18,8 @@ import timeago from '../../utils/timeago';
 const styles = theme => ({
   card: { ...theme.card, marginBottom: 32 },
   media: {
-    height: 300,
+    width: 151,
+    height: 151,
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -51,29 +52,39 @@ class RecipeReviewCard extends React.Component {
     const {
       classes,
       title,
+      digest,
       cover,
+      createdAt,
       _id,
     } = this.props;
 
     return (
       <div>
         <Card className={classes.card}>
-          <Link key={_id} href={`/mzitu/detail?id=${_id}`}>
+          <Link key={_id} href={`/wechat/detail?id=${_id}`}>
             <a>
-              <CardMedia
-                className={classes.media}
-                image={`${cover}`}
-                title={title}
-              />
-              <CardContent>
-                <Typography
-                  className={classes.title}
-                  variant="headline"
-                  component="h2"
-                >
-                  {title}
-                </Typography>
-              </CardContent>
+              <div style={{ display: 'flex' }}>
+                <CardMedia
+                  className={classes.media}
+                  image={`${cover}`}
+                  title={title}
+                />
+                <CardContent>
+                  <Typography
+                    // className={classes.title}
+                    variant="headline"
+                    component="h2"
+                  >
+                    {title}
+                  </Typography>
+                  <Typography component="p">
+                    {digest}
+                  </Typography>
+                  <Typography component="p">
+                    {createdAt}
+                  </Typography>
+                </CardContent>
+              </div>
             </a>
           </Link>
         </Card>
