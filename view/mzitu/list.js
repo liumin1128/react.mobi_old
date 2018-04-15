@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
+import Grid from 'material-ui/Grid';
 import Item from './item';
 import { MZITU_LIST } from '../../graphql/mzitu';
 
@@ -11,10 +12,14 @@ function PostList({
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   return (<div>
+    <Grid container spacing={24}>
+      {
+        list.map(i => (<Grid item xs={6} sm={4}>
+          <Item key={i._id} {...i} />
+        </Grid>))
+      }
+    </Grid>
 
-    {
-      list.map(i => <Item key={i._id} {...i} />)
-    }
 
     {
     //   !isEnd && <button onClick={() => loadMore()}>
