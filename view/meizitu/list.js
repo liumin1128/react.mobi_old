@@ -20,7 +20,7 @@ function PostList({
       <button onClick={() => loadMore()}>
         {loading ? 'Loading...' : 'Show More'}
       </button>
-  }
+    }
   </div>);
 }
 
