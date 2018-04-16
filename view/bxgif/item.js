@@ -17,33 +17,20 @@ import timeago from '../../utils/timeago';
 
 const styles = theme => ({
   card: theme.card,
-  media: {
-    height: 300,
-    '@media (max-width: 700px)': {
-      height: 200,
-    },
-  },
   cover: {
     width: '100%',
     display: 'block',
   },
-  expand: {
-    transform: 'rotate(0deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
-  flexGrow: {
-    flex: '1 1 auto',
-  },
   title: {
-    fontSize: 16,
+    // fontSize: 16,
+  },
+  meta: {
+    marginTop: 4,
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  content: {
+    padding: 16,
   },
 });
 
@@ -59,6 +46,8 @@ class RecipeReviewCard extends React.Component {
       classes,
       title,
       cover,
+      createdAt,
+      total,
       _id,
     } = this.props;
 
@@ -69,15 +58,20 @@ class RecipeReviewCard extends React.Component {
             <a>
               <div>
                 <img src={cover} alt="" className={classes.cover} />
-                <CardContent>
+                <div className={classes.content}>
                   <Typography
                     className={classes.title}
-                    variant="headline"
-                    component="h2"
+                    // variant="headline"
+                    component="p"
                   >
                     {title}
                   </Typography>
-                </CardContent>
+
+                  <Typography className={classes.meta} color="textSecondary">
+                    <span>{`${total}`}</span>
+                    <span>{createdAt}</span>
+                  </Typography>
+                </div>
               </div>
             </a>
           </Link>

@@ -21,6 +21,9 @@ export const BXGIF_LIST = gql`
       _id
       title
       cover
+      comment
+      createdAt
+      total
     }
   }
 `;

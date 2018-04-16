@@ -12,13 +12,13 @@ function PostList({
 }) {
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
-  return (<div>
+  return (<div style={{ margin: '-4px' }}>
     <Masonry>
       {
         list.map(i => (<Grid
           key={i._id}
           style={{
-            padding: '16px 8px',
+            padding: '8px',
             display: 'inline-block',
           }}
           item
