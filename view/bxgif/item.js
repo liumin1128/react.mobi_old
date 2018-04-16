@@ -66,18 +66,20 @@ class RecipeReviewCard extends React.Component {
       <div>
         <Card className={classes.card}>
           <Link key={_id} href={`/bxgif/detail?id=${_id}`}>
-            <div>
-              <img src={cover} alt="" className={classes.cover} />
-              <CardContent>
-                <Typography
-                  className={classes.title}
-                  variant="headline"
-                  component="h2"
-                >
-                  {title}
-                </Typography>
-              </CardContent>
-            </div>
+            <a>
+              <div>
+                <img src={cover} alt="" className={classes.cover} />
+                <CardContent>
+                  <Typography
+                    className={classes.title}
+                    variant="headline"
+                    component="h2"
+                  >
+                    {title}
+                  </Typography>
+                </CardContent>
+              </div>
+            </a>
           </Link>
         </Card>
       </div>

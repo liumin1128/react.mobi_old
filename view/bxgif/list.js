@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import Grid from 'material-ui/Grid';
+import Masonry from '../../components/masonry';
 import Item from './item';
 import { BXGIF_LIST } from '../../graphql/bxgif';
 
@@ -12,20 +13,28 @@ function PostList({
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   return (<div>
-    <Grid container spacing={24}>
+    <Masonry>
       {
-        list.map(i => (<Grid item xs={6} sm={4}>
-          <Item key={i._id} {...i} />
+        list.map(i => (<Grid
+          key={i._id}
+          style={{
+            padding: '16px 8px',
+            display: 'inline-block',
+          }}
+          item
+          xs={6}
+          sm={4}
+        >
+          <Item {...i} />
         </Grid>))
       }
-    </Grid>
-
+    </Masonry>
 
     {
       <button onClick={() => loadMore()}>
         {loading ? 'Loading...' : 'Show More'}
       </button>
-  }
+    }
   </div>);
 }
 
