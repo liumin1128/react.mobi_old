@@ -6,7 +6,7 @@ export default class MyMasonry extends PureComponent {
     inited: false,
   }
   render() {
-    const { children } = this.props;
+    const { children, ...other } = this.props;
     const { inited } = this.state;
     return (<Masonry
       onImagesLoaded={() => {
@@ -14,6 +14,7 @@ export default class MyMasonry extends PureComponent {
           this.setState({ inited: true });
         }
       }}
+      {...other}
     >
       {inited && children}
     </Masonry>);

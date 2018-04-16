@@ -1,9 +1,11 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import Grid from 'material-ui/Grid';
+import Waypoint from 'react-waypoint';
 import Masonry from '../../components/masonry';
 import Item from './item';
 import { BXGIF_LIST } from '../../graphql/bxgif';
+import Button from '../../components/loading/button';
 
 function PostList({
   data: {
@@ -12,8 +14,8 @@ function PostList({
 }) {
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
-  return (<div style={{ margin: '-4px' }}>
-    <Masonry>
+  return (<div style={{ margin: '0px' }}>
+    <Masonry style={{ margin: '8px -8px' }}>
       {
         list.map(i => (<Grid
           key={i._id}
@@ -30,11 +32,13 @@ function PostList({
       }
     </Masonry>
 
-    {
-      <button onClick={() => loadMore()}>
-        {loading ? 'Loading...' : 'Show More'}
-      </button>
-    }
+    <Waypoint
+      onEnter={loadMore}
+    />
+    <Button onClick={() => loadMore()}>
+      加载更多
+    </Button>
+
   </div>);
 }
 
