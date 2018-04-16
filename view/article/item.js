@@ -16,13 +16,7 @@ import MoreVertIcon from 'material-ui-icons/MoreVert';
 import timeago from '../../utils/timeago';
 
 const styles = theme => ({
-  card: {
-    // maxWidth: 400,
-    flexGrow: 1,
-    marginBottom: 32,
-    // boxShadow: '0 10px 28px 0 rgba(137,157,197,.12)',
-    boxShadow: '0 10px 28px 0 rgba(137,157,197,.05)',
-  },
+  card: { ...theme.card, marginBottom: 32 },
   media: {
     height: 250,
   },
