@@ -26,6 +26,7 @@ function PostList({
           item
           xs={6}
           sm={4}
+          lg={3}
         >
           <Item {...i} />
         </Grid>))
