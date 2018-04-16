@@ -23,6 +23,10 @@ const styles = theme => ({
       height: 200,
     },
   },
+  cover: {
+    width: '100%',
+    display: 'block',
+  },
   expand: {
     transform: 'rotate(0deg)',
     transition: theme.transitions.create('transform', {
@@ -62,12 +66,8 @@ class RecipeReviewCard extends React.Component {
       <div>
         <Card className={classes.card}>
           <Link key={_id} href={`/bxgif/detail?id=${_id}`}>
-            <a>
-              <CardMedia
-                className={classes.media}
-                image={cover}
-                title={title}
-              />
+            <div>
+              <img src={cover} alt="" className={classes.cover} />
               <CardContent>
                 <Typography
                   className={classes.title}
@@ -77,7 +77,7 @@ class RecipeReviewCard extends React.Component {
                   {title}
                 </Typography>
               </CardContent>
-            </a>
+            </div>
           </Link>
         </Card>
       </div>
