@@ -6,7 +6,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dir: '.', dev });
 const handle = app.getRequestHandler();
 
-const port = dev ? 8000 : 3101;
+const port = dev ? 8000 : 3102;
 
 // This is where we cache our rendered HTML pages
 const ssrCache = new LRUCache({
