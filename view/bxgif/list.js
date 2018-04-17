@@ -46,26 +46,22 @@ function PostList({
 }
 
 
-export const params = {
-  skip: 0,
-};
-
 export default graphql(
   BXGIF_LIST,
   {
     options: {
-      variables: params,
+      variables: {
+        skip: 0,
+      },
     },
     props: ({ data }) => ({
       data,
-      loadMore: () => {
-        return data.fetchMore({
-          variables: {
-            skip: data.list.length + 30,
-          },
-          updateQuery,
-        });
-      },
+      loadMore: data.fetchMore({
+        variables: {
+          skip: data.list.length,
+        },
+        updateQuery,
+      }),
     }),
   },
 )(PostList);
