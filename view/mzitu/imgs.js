@@ -4,7 +4,7 @@ import Zmage from 'react-zmage';
 export default ({ list }) => (<div>
   {
     list.map(i => (<Zmage
-      set={list.map(j => ({ src: j }))}
+      // set={list.map(j => ({ src: j }))}
       src={i}
       alt=""
     />))
