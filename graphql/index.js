@@ -17,3 +17,16 @@ export const loadMore = (data) => {
     },
   });
 };
+
+export const updateQuery = (previousResult, { fetchMoreResult }) => {
+  if (!fetchMoreResult) {
+    return previousResult;
+  }
+  return {
+    ...fetchMoreResult,
+    list: [
+      ...previousResult.list,
+      ...fetchMoreResult.list,
+    ],
+  };
+};

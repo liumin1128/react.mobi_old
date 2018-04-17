@@ -5,6 +5,7 @@ import Waypoint from 'react-waypoint';
 import Masonry from '../../components/masonry';
 import Item from './item';
 import { BXGIF_LIST } from '../../graphql/bxgif';
+import { updateQuery } from '../../graphql';
 import Button from '../../components/loading/button';
 
 function PostList({
@@ -62,18 +63,7 @@ export default graphql(
           variables: {
             skip: data.list.length + 30,
           },
-          updateQuery: (previousResult, { fetchMoreResult }) => {
-            if (!fetchMoreResult) {
-              return previousResult;
-            }
-            return {
-              ...fetchMoreResult,
-              list: [
-                ...previousResult.list,
-                ...fetchMoreResult.list,
-              ],
-            };
-          },
+          updateQuery,
         });
       },
     }),
