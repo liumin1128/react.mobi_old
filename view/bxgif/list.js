@@ -18,26 +18,24 @@ function PostList({
   return (<div style={{ margin: '0px' }}>
     <Masonry style={{ margin: '8px -8px' }}>
       {
-        list.map(i => (<Grid
-          key={i._id}
-          style={{
-            padding: '8px',
-            width: '100%',
-            display: 'block',
-          }}
-          item
-          xs={6}
-          sm={4}
-          lg={3}
-        >
-          <Item {...i} />
-        </Grid>))
-      }
+      list.map(i => (<Grid
+        key={i._id}
+        style={{
+          padding: '8px',
+          width: '100%',
+          display: 'block',
+        }}
+        item
+        xs={6}
+        sm={4}
+        lg={3}
+      >
+        <Item {...i} />
+      </Grid>))
+    }
     </Masonry>
 
-    <Waypoint
-      onEnter={loadMore}
-    />
+
     <Button onClick={() => loadMore()}>
       加载更多
     </Button>
@@ -56,7 +54,7 @@ export default graphql(
     },
     props: ({ data }) => ({
       data,
-      loadMore: data.fetchMore({
+      loadMore: () => data.fetchMore({
         variables: {
           skip: data.list.length,
         },
