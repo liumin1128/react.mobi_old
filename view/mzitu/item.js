@@ -18,7 +18,7 @@ import timeago from '../../utils/timeago';
 const styles = theme => ({
   card: theme.card,
   media: {
-    height: 300,
+    // height: 300,
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -65,6 +65,7 @@ class RecipeReviewCard extends React.Component {
                 image={cover.src}
                 title={title}
               />
+              <img style={{ width: '100%' }} src={cover.src} alt="" />
               <CardContent>
                 <Typography
                   className={classes.title}

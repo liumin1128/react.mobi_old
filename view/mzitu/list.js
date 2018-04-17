@@ -14,7 +14,7 @@ function PostList({
   return (<div>
     <Grid container spacing={24}>
       {
-        list.map(i => (<Grid item xs={6} sm={4}>
+        list.map(i => (<Grid item xs={12} sm={6} md={4}>
           <Item key={i._id} {...i} />
         </Grid>))
       }
