@@ -88,7 +88,7 @@ function renderAndCache(req, res, pagePath, queryParams) {
         ssrCache.set(key, html);
       } else {
         console.log('发现错误！！！！！！！！！！');
-        // const shpath = '/root/huaren58.com/auto_build.sh';
+        // const shpath = '/root/react.mobi/auto_build.sh';
         // console.log(`将运行自启动脚本：${shpath}`);
         ssrCache.reset();
         // RunCmd('sh', [shpath], (result) => {

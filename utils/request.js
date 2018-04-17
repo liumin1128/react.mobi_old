@@ -28,7 +28,7 @@ instance.interceptors.response.use(undefined, (err) => {
 });
 
 export default (url, data, options) => {
-  const token = getStorage('huaren58.com.token');
+  const token = getStorage('react.mobi.token');
   return instance({
     method: 'POST',
     headers: {

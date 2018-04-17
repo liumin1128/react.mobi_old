@@ -1,9 +1,9 @@
 
-# scp -r /Users/liumin/Desktop/Dva/Admin.HuarenLife/dist root@45.79.93.51:/root/huaren58
+# scp -r /Users/liumin/Desktop/Dva/Admin.HuarenLife/dist root@45.79.93.51:/root/huarenShenghuo
 # DATA=$(date +%y%m%d)
 
 # SERVER="root@45.79.93.51"
-DIR="/root/huaren58.com"
+DIR="/root/react.mobi"
 # LOCAL_DIR="pages/*"
 
 # FILELIST=$(git diff --name-only HEAD~ HEAD)

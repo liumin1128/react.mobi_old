@@ -72,9 +72,9 @@ export function updataWechatShare(options = {}) {
   // console.log(options);
   const {
     title = '华人生活网是海外华人最大的中文分类信息和生活资讯门户网站',
-    link = 'https://www.huaren58.com/?&',
+    link = 'https://www.react.mobi/?&',
     // link = `${window.location.href.split('#')[0]}?&`,
-    imgUrl = 'https://www.huaren58.com/static/logo.png',
+    imgUrl = 'https://www.react.mobi/static/logo.png',
     desc = '华人生活网是海外华人最大的中文分类信息和生活资讯门户网站',
     type,
     dataUrl,
