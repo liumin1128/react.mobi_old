@@ -21,7 +21,8 @@ function PostList({
           key={i._id}
           style={{
             padding: '8px',
-            display: 'inline-block',
+            width: '100%',
+            display: 'block',
           }}
           item
           xs={6}
