@@ -1,8 +1,12 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
 import { withStyles } from 'material-ui/styles';
+import dynamic from 'next/dynamic';
 import { MZITU_DETAIL } from '../../graphql/mzitu';
 
+const DynamicComponentWithNoSSR = dynamic(import('./imgs'), {
+  ssr: false,
+});
 
 const styles = theme => ({
   root: {
@@ -17,6 +21,7 @@ export default class MeizituDetail extends PureComponent {
   render() {
     const _id = this.props.query.id;
     const { classes } = this.props;
+
     return (<Query query={MZITU_DETAIL} variables={{ _id }}>
       {({ loading, error, data = {} }) => {
         const { detail = {} } = data;
@@ -25,7 +30,8 @@ export default class MeizituDetail extends PureComponent {
         return (
           <div className={classes.root}>
             {detail.title}
-            {detail.pictures.map(i => <img src={i} alt="" />)}
+            <DynamicComponentWithNoSSR list={detail.pictures} />
+
           </div>
         );
       }}
