@@ -9,10 +9,10 @@ import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 import red from 'material-ui/colors/red';
-// import FavoriteIcon from 'material-ui-icons/Favorite';
-// import ShareIcon from 'material-ui-icons/Share';
-// import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
-import MoreVertIcon from 'material-ui-icons/MoreVert';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
+// import ShareIcon from '@material-ui/icons/Share';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import timeago from '../../utils/timeago';
 
 const styles = theme => ({
