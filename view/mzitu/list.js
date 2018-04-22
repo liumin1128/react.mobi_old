@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
 import Grid from 'material-ui/Grid';
-import Router from 'next/router';
 import Item from './item';
 import { MZITU_LIST } from '../../graphql/mzitu';
 import { updateQuery } from '../../graphql/index';
@@ -34,7 +33,12 @@ export default class MeizituDetail extends PureComponent {
           <div>
             <Grid container spacing={24}>
               {
-                list.map(i => (<Grid item xs={12} sm={6} md={4}>
+                list.map(i => (<Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                >
                   <Item key={i._id} {...i} />
                 </Grid>))
               }
