@@ -23,7 +23,7 @@ export default class MeizituDetail extends PureComponent {
 
         const loadMore = () => fetchMore({
           variables: {
-            page: Math.floor(list.length / 24) + 1,
+            page: (Math.floor(list.length / 24) || 1) + 1,
             search,
           },
           updateQuery,
