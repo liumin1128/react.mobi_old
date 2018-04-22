@@ -11,6 +11,8 @@ const styles = theme => ({
     '& > img': {
       width: '100%',
       marginBottom: 32,
+      boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.05)',
+      borderRadius: 3,
     },
   },
 });
@@ -29,8 +31,7 @@ export default class MeizituDetail extends PureComponent {
             {detail.title}
             {detail.pictures.map(i => (<LazyLoad
               debounce={300}
-              key={i.url}
-              height={i.height}
+              key={i}
               placeholder={<ContentLoader height={250}>
                 <rect x="0" y="0" rx="2" ry="2" width="400" height="150" />
                 <rect x="0" y="160" rx="2" ry="2" width="380" height="10" />
