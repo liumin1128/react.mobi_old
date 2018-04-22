@@ -16,6 +16,20 @@ export const MZITU_LIST = gql`
   }
 `;
 
+export const MZITU_TAGS = gql`
+  query mzituTags {
+    list: mzituTags {
+      __typename
+      _id
+      title
+      type
+      cover
+      tag
+      type
+    }
+  }
+`;
+
 export const MZITU_DETAIL = gql`
   query mzituPictures($_id: String!) {
     detail: mzituPictures(_id: $_id) {
