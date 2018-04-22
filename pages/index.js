@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles';
 // import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import withRoot from '../material-ui/withRoot';
-import withData from '../lib/withData';
+import apolloRoot from '../lib/apolloRoot';
 import reduxRoot from '../hoc/reduxRoot';
 import SaysList from '../view/says/list';
 
@@ -33,7 +33,7 @@ const styles = () => ({
 });
 
 @reduxRoot
-@withData
+@apolloRoot
 @withRoot
 @withStyles(styles)
 export default class News extends PureComponent {
