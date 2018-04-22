@@ -9,7 +9,8 @@ import { updateQuery } from '../../graphql/index';
 // @withStyles(styles)
 export default class MeizituDetail extends PureComponent {
   render() {
-    const { search, tag } = Router.router.query || {};
+    const { query = {} } = this.props;
+    const { search, tag } = query;
     return (
       <Query
         query={MZITU_LIST}
