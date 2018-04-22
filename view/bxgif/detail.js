@@ -9,8 +9,15 @@ import { BXGIF_DETAIL } from '../../graphql/bxgif';
 
 
 const styles = theme => ({
+  load: {
+    display: 'block',
+    maxWidth: 500,
+    marginBottom: 32,
+    margin: '0 auto',
+    padding: 24,
+  },
   card: {
-    maxWidth: 345,
+    maxWidth: 500,
     marginBottom: 32,
     margin: '0 auto',
   },
@@ -37,7 +44,7 @@ export default class MeizituDetail extends PureComponent {
                 debounce={300}
                 key={i.url}
                 height={i.height}
-                placeholder={<Code />}
+                placeholder={<Code className={classes.load} />}
               >
                 <Card className={classes.card}>
                   <CardMedia
