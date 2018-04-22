@@ -1,0 +1,82 @@
+import React, { PureComponent } from 'react';
+import { Query } from 'react-apollo';
+import Link from 'next/link';
+import Grid from 'material-ui/Grid';
+import { withStyles } from 'material-ui/styles';
+import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
+import Typography from 'material-ui/Typography';
+import { MZITU_TAGS } from '../../graphql/mzitu';
+
+const styles = theme => ({
+  media: {
+    height: 0,
+    paddingTop: '100%',
+  },
+  content: {
+    padding: 16,
+    textAlign: 'center',
+    '&:last-child': {
+      paddingBottom: 8,
+    },
+  },
+});
+
+@withStyles(styles)
+export default class MeizituDetail extends PureComponent {
+  render() {
+    const { classes } = this.props;
+    return (
+      <Query
+        query={MZITU_TAGS}
+      >
+        {({ loading, error, data = {} }) => {
+        if (loading) return 'Loading...';
+        if (error) return `Error! ${error.message}`;
+
+        const { list = [] } = data;
+
+        if (list.length === 0) return 'Loading...';
+
+        const ssss = Math.floor((list.length - 18) * Math.random());
+        const rrr = list.slice(ssss, ssss + 18);
+
+        return (
+          <div>
+            <Card>
+              <CardContent className={classes.content}>
+                <Grid container spacing={16}>
+                  {
+                    rrr
+                .map(i => (<Grid
+                  item
+                  xs={4}
+                >
+                  <Link href={`/mzitu?tag=${i.tag}`}>
+                    <a>
+
+                      <CardMedia
+                        className={classes.media}
+                        image={i.cover}
+                        title={i.title}
+                      />
+
+                      <Typography component="p">
+                        {i.title}
+                      </Typography>
+
+                    </a>
+                  </Link>
+                </Grid>
+                  ))
+              }
+                </Grid>
+              </CardContent>
+
+            </Card>
+          </div>
+        );
+      }}
+      </Query>);
+  }
+}
+

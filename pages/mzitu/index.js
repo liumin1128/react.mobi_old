@@ -6,6 +6,7 @@ import apolloRoot from '../../hoc/apolloRoot';
 import reduxRoot from '../../hoc/reduxRoot';
 import List from '../../view/mzitu/list';
 import SearchBar from '../../view/mzitu/searchBar';
+import Tags from '../../view/mzitu/tagsSmall';
 
 const styles = () => ({
   root: {
@@ -44,12 +45,15 @@ export default class News extends PureComponent {
       <div className={classes.root}>
         <div className={classes.root}>
           <Grid className={classes.container} container spacing={24}>
-            <Grid item xs={12} sm={12} md={12}>
+            <Grid item xs={12} sm={12} md={8}>
+              <div className={classes.body}>
+                <List query={query} />
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
               <div className={classes.body}>
                 <SearchBar />
-                {
-                  <List query={query} />
-                }
+                <Tags />
               </div>
             </Grid>
           </Grid>
