@@ -3,7 +3,7 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import withRoot from '../../material-ui/withRoot';
 import withData from '../../lib/withData';
-import { withReduxRoot } from '../../store';
+import { withRedux } from '../../store';
 import List from '../../view/wechat/list';
 
 const styles = () => ({
@@ -29,7 +29,7 @@ const styles = () => ({
   },
 });
 
-@withReduxRoot
+@withRedux
 @withData
 @withRoot
 @withStyles(styles)
