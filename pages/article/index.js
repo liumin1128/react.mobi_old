@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import styleRoot from '../../hoc/styleRoot';
-import apolloRoot from '../../lib/apolloRoot';
+import apolloRoot from '../../hoc/apolloRoot';
 import reduxRoot from '../../hoc/reduxRoot';
 import ArticleList from '../../view/article/list';
 

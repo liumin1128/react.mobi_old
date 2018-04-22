@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles';
 // import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import styleRoot from '../hoc/styleRoot';
-import apolloRoot from '../lib/apolloRoot';
+import apolloRoot from '../hoc/apolloRoot';
 import reduxRoot from '../hoc/reduxRoot';
 import SaysList from '../view/says/list';
 
