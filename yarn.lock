@@ -2480,6 +2480,10 @@ fill-range@^4.0.0:
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
 
+final-form@^4.5.2:
+  version "4.5.2"
+  resolved "http://registry.npm.taobao.org/final-form/download/final-form-4.5.2.tgz#f8a9518784bdc2f72e71548a42b04c640963ca49"
+
 finalhandler@1.1.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/finalhandler/download/finalhandler-1.1.0.tgz#ce0b6855b45853e791b2fcc680046d88253dd7f5"
@@ -4514,6 +4518,10 @@ react-event-listener@^0.5.1:
     fbjs "^0.8.16"
     prop-types "^15.6.0"
     warning "^3.0.0"
+
+react-final-form@^3.3.1:
+  version "3.3.1"
+  resolved "http://registry.npm.taobao.org/react-final-form/download/react-final-form-3.3.1.tgz#dbe40eec853a9c451e5a8deb3b02d948a2fb7e3c"
 
 react-headroom@^2.2.2:
   version "2.2.2"
