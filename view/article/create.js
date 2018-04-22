@@ -12,7 +12,6 @@ const Editor = dynamic(import('../../components/slate-editor'), {
 
 const styles = theme => ({
   card: {
-    ...theme.card,
     padding: 20,
   },
 });
