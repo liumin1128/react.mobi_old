@@ -34,7 +34,7 @@ export default class MeizituDetail extends PureComponent {
                 debounce={300}
                 key={i.url}
                 height={i.height}
-                placeholder={<ContentLoader height={300}>
+                placeholder={<ContentLoader height={250}>
                   <rect x="0" y="0" rx="2" ry="2" width="400" height="150" />
                   <rect x="0" y="160" rx="2" ry="2" width="380" height="10" />
                   <rect x="0" y="180" rx="2" ry="2" width="350" height="10" />
