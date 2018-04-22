@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware } from 'redux';
-import reduxWrapper from 'next-redux-wrapper';
 import effect from './utils/effect';
 import reducers from './reducers';
 import effects from './effects';
@@ -19,8 +18,4 @@ export function configureStore(initialState = {}) {
     bindMiddleware([effect(effects)]),
   );
   return store;
-}
-
-export function withRedux(BaseComponent) {
-  return reduxWrapper(configureStore)(BaseComponent);
 }

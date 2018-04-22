@@ -5,7 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import withRoot from '../material-ui/withRoot';
 import withData from '../lib/withData';
-import { withRedux } from '../store';
+import reduxRoot from '../hoc/reduxRoot';
 import SaysList from '../view/says/list';
 
 
@@ -32,7 +32,7 @@ const styles = () => ({
   },
 });
 
-@withRedux
+@reduxRoot
 @withData
 @withRoot
 @withStyles(styles)

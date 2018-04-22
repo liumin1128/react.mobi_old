@@ -3,7 +3,7 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import withRoot from '../../material-ui/withRoot';
 import withData from '../../lib/withData';
-import { withRedux } from '../../store';
+import reduxRoot from '../../hoc/reduxRoot';
 import ArticleList from '../../view/article/list';
 
 const styles = () => ({
@@ -29,7 +29,7 @@ const styles = () => ({
   },
 });
 
-@withRedux
+@reduxRoot
 @withData
 @withRoot
 @withStyles(styles)
