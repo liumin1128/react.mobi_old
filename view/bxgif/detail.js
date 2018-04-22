@@ -16,7 +16,6 @@ const styles = theme => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
   },
 });
 @withStyles(styles)
@@ -31,8 +30,8 @@ export default class MeizituDetail extends PureComponent {
         if (error) return `Error! ${error.message}`;
         return (
           <div className={classes.root}>
-
             <h3>{detail.title}</h3>
+            <br />
             {detail.list.map(i => (
               <LazyLoad
                 debounce={300}
