@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { withStyles } from 'material-ui/styles';
 // import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
-import withRoot from '../material-ui/withRoot';
+import styleRoot from '../hoc/styleRoot';
 import apolloRoot from '../lib/apolloRoot';
 import reduxRoot from '../hoc/reduxRoot';
 import SaysList from '../view/says/list';
@@ -34,7 +34,7 @@ const styles = () => ({
 
 @reduxRoot
 @apolloRoot
-@withRoot
+@styleRoot
 @withStyles(styles)
 export default class News extends PureComponent {
   // static async getInitialProps({ query, store }) {
