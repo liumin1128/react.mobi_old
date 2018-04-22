@@ -1,10 +1,3 @@
-// export default effects => store => next => async (action) => {
-//   if (typeof effects[action.type] === 'function') {
-//     return effects[action.type](action, store);
-//   }
-//   return next(action);
-// };
-
 export default effects => store => next => async (action) => {
   next(action);
   const key = Object.keys(effects).find((i) => {

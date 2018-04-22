@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "ls": "ls ./",
     "dev": "next",
     "deploy": "sh ./deploy.sh",
     "analyze": "cross-env ANALYZE=1 next build",
