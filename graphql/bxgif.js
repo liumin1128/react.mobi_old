@@ -9,6 +9,8 @@ export const BXGIF_DETAIL = gql`
       list {
         url
         title
+        width
+        height
       }
     }
   }

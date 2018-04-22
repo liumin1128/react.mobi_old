@@ -1,23 +1,22 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
 import { withStyles } from 'material-ui/styles';
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Typography from 'material-ui/Typography';
+import LazyLoad from 'react-lazyload';
+import ContentLoader, { Code } from 'react-content-loader';
 import { BXGIF_DETAIL } from '../../graphql/bxgif';
 
 
 const styles = theme => ({
-  item: {
-    // border: '1px red solid',
+  card: {
+    maxWidth: 345,
     marginBottom: 32,
-    '& > img': {
-      width: '100%',
-      display: 'block',
-      margin: '0 auto',
-    },
-    '& > p': {
-      textAlign: 'center',
-      fontSize: 12,
-      color: '#333',
-    },
+    margin: '0 auto',
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
   },
 });
 @withStyles(styles)
@@ -32,11 +31,30 @@ export default class MeizituDetail extends PureComponent {
         if (error) return `Error! ${error.message}`;
         return (
           <div className={classes.root}>
+
             <h3>{detail.title}</h3>
-            {detail.list.map(i => (<div className={classes.item}>
-              <img src={i.url} alt="" />
-              <p>{i.title}</p>
-            </div>))}
+            {detail.list.map(i => (
+              <LazyLoad
+                debounce={300}
+                key={i.url}
+                height={i.height}
+                placeholder={<Code />}
+              >
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.media}
+                    style={{ paddingTop: `${Math.floor((i.height / i.width) * 100)}%` }}
+                    image={i.url}
+                    title={`${i.width},${i.height}`}
+                  />
+                  <CardContent>
+                    <Typography component="p">
+                      {i.title}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </LazyLoad>
+            ))}
           </div>
         );
       }}

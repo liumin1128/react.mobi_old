@@ -4,6 +4,14 @@ import blue from 'material-ui/colors/blue';
 import red from 'material-ui/colors/red';
 
 export default createMuiTheme({
+  MuiPaper: {
+    elevation1: {
+      boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.05)',
+    },
+    elevation2: {
+      boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.05)',
+    },
+  },
   palette: {
     primary: blue,
     secondary: red,
