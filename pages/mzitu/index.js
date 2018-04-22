@@ -52,7 +52,7 @@ export default class News extends PureComponent {
               <div className={classes.body}>
                 <SearchBar />
                 {
-                  // <List />
+                  <List />
                 }
               </div>
             </Grid>

@@ -1,66 +1,52 @@
-import React from 'react';
-import { graphql } from 'react-apollo';
+import React, { PureComponent } from 'react';
+import { Query } from 'react-apollo';
 import Grid from 'material-ui/Grid';
+import Router from 'next/router';
 import Item from './item';
 import { MZITU_LIST } from '../../graphql/mzitu';
+import { updateQuery } from '../../graphql/index';
 
-function PostList({
-  data: {
-    loading, error, list,
-  }, loadMore,
-}) {
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
-  return (<div>
-    <Grid container spacing={24}>
-      {
-        list.map(i => (<Grid item xs={12} sm={6} md={4}>
-          <Item key={i._id} {...i} />
-        </Grid>))
-      }
-    </Grid>
+// @withStyles(styles)
+export default class MeizituDetail extends PureComponent {
+  render() {
+    const { search, tag } = Router.router.query || {};
+    return (
+      <Query
+        query={MZITU_LIST}
+        variables={{ search, tag }}
+      >
+        {({ loading, error, data = {}, fetchMore }) => {
+        if (loading) return 'Loading...';
+        if (error) return `Error! ${error.message}`;
 
+        const { list = [] } = data;
 
-    {
-      <button onClick={() => loadMore()}>
-        {loading ? 'Loading...' : 'Show More'}
-      </button>
+        const loadMore = () => fetchMore({
+          variables: {
+            page: Math.floor(list.length / 24) + 1,
+            search,
+          },
+          updateQuery,
+        });
+
+        return (
+          <div>
+            <Grid container spacing={24}>
+              {
+                list.map(i => (<Grid item xs={12} sm={6} md={4}>
+                  <Item key={i._id} {...i} />
+                </Grid>))
+              }
+            </Grid>
+            {
+              <button onClick={loadMore}>
+                {loading ? 'Loading...' : 'Show More'}
+              </button>
+            }
+          </div>
+        );
+      }}
+      </Query>);
   }
-  </div>);
 }
 
-
-export const params = {
-  page: 1,
-};
-
-export default graphql(
-  MZITU_LIST,
-  {
-    options: {
-      variables: params,
-    },
-    props: ({ data }) => ({
-      data,
-      loadMore: () => {
-        return data.fetchMore({
-          variables: {
-            page: Math.floor(data.list.length / 24) + 1,
-          },
-          updateQuery: (previousResult, { fetchMoreResult }) => {
-            if (!fetchMoreResult) {
-              return previousResult;
-            }
-            return {
-              ...fetchMoreResult,
-              list: [
-                ...previousResult.list,
-                ...fetchMoreResult.list,
-              ],
-            };
-          },
-        });
-      },
-    }),
-  },
-)(PostList);
