@@ -37,8 +37,8 @@ export default class MeizituDetail extends PureComponent {
 
         if (list.length === 0) return 'Loading...';
 
-        const ssss = Math.floor((list.length - 18) * Math.random());
-        const rrr = list.slice(ssss, ssss + 18);
+        const randomIdx = Math.floor((list.length - 18) * Math.random());
+        const result = list.slice(randomIdx, randomIdx + 18);
 
         return (
           <div>
@@ -46,29 +46,29 @@ export default class MeizituDetail extends PureComponent {
               <CardContent className={classes.content}>
                 <Grid container spacing={16}>
                   {
-                    rrr
-                .map(i => (<Grid
-                  item
-                  xs={4}
-                >
-                  <Link href={`/mzitu?tag=${i.tag}`}>
-                    <a>
+                    result
+                      .map(i => (<Grid
+                        item
+                        xs={4}
+                      >
+                        <Link href={`/mzitu?tag=${i.tag}`}>
+                          <a>
 
-                      <CardMedia
-                        className={classes.media}
-                        image={i.cover}
-                        title={i.title}
-                      />
+                            <CardMedia
+                              className={classes.media}
+                              image={i.cover}
+                              title={i.title}
+                            />
 
-                      <Typography component="p">
-                        {i.title}
-                      </Typography>
+                            <Typography component="p">
+                              {i.title}
+                            </Typography>
 
-                    </a>
-                  </Link>
-                </Grid>
-                  ))
-              }
+                          </a>
+                        </Link>
+                      </Grid>
+                        ))
+                      }
                 </Grid>
               </CardContent>
 
