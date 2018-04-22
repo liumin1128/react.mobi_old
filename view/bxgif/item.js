@@ -8,7 +8,6 @@ import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
-  card: theme.card,
   cover: {
     width: '100%',
     minHeight: 100,
