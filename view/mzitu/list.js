@@ -35,8 +35,8 @@ export default class MeizituDetail extends PureComponent {
               {
                 list.map(i => (<Grid
                   item
-                  xs={12}
-                  sm={6}
+                  xs={6}
+                  sm={4}
                   md={4}
                 >
                   <Item key={i._id} {...i} />
