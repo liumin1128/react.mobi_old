@@ -21,7 +21,6 @@ class MyDocument extends Document {
               'minimum-scale=1, width=device-width, height=device-height'
             }
           />
-          <link href="/static/normalize.css" rel="stylesheet" />
           <link href="/static/main.css" rel="stylesheet" />
           {/* PWA primary color */}
           <meta name="theme-color" content={pageContext.theme.palette.primary.main} />
