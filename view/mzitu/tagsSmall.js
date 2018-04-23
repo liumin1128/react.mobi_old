@@ -13,7 +13,6 @@ const styles = theme => ({
     paddingTop: '100%',
   },
   content: {
-    padding: 16,
     textAlign: 'center',
     '&:last-child': {
       paddingBottom: 8,
@@ -60,7 +59,7 @@ export default class MeizituDetail extends PureComponent {
                               title={i.title}
                             />
 
-                            <Typography component="p">
+                            <Typography style={{ marginTop: 4 }} color="textSecondary" component="p">
                               {i.title}
                             </Typography>
 
