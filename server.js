@@ -1,6 +1,7 @@
 const express = require('express');
 const next = require('next');
 const LRUCache = require('lru-cache');
+const minify = require('html-minifier');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dir: '.', dev });
@@ -82,6 +83,7 @@ function renderAndCache(req, res, pagePath, queryParams) {
 
   // If not let's render the page into HTML
   app.renderToHTML(req, res, pagePath, queryParams)
+    .then(html => minify(html))
     .then((html) => {
       if (html.indexOf('ERROR_0120_ERROR') === -1) {
         console.log(`新建存缓: ${key}`);
