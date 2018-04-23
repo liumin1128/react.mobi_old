@@ -34,13 +34,9 @@ const styles = () => ({
 @styleRoot
 @withStyles(styles)
 export default class News extends PureComponent {
-  // static async getInitialProps({ query, store }) {
-  //   await store.dispatch({ type: 'test', payload: query });
-  //   return query;
-  // }
-  // componentDidMount() {
-  //   console.log('xxx');
-  // }
+  static async getInitialProps({ query }) {
+    return { query };
+  }
   render() {
     const { classes } = this.props;
     return (

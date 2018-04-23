@@ -34,6 +34,9 @@ const styles = () => ({
 @styleRoot
 @withStyles(styles)
 export default class News extends PureComponent {
+  static async getInitialProps({ query }) {
+    return { query };
+  }
   componentDidMount() {
     const { dispatch } = this.props;
     const username = '18629974148';
@@ -41,7 +44,7 @@ export default class News extends PureComponent {
     dispatch({ type: 'user/login', payload: { username, password } });
   }
   render() {
-    const { classes, url } = this.props;
+    const { classes, query } = this.props;
     return (
       <div className={classes.root}>
         <div className={classes.root}>
