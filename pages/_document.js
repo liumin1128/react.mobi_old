@@ -31,12 +31,12 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" type="image/x-icon" />
           <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
+        <script src="/static/start.js" />
       </html>
     );
   }
