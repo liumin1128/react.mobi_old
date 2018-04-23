@@ -1,7 +1,7 @@
 const express = require('express');
 const next = require('next');
 const LRUCache = require('lru-cache');
-const minify = require('html-minifier');
+const { minify } = require('html-minifier');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dir: '.', dev });
