@@ -29,6 +29,9 @@ const styles = theme => ({
 export default class MeizituDetail extends PureComponent {
   render() {
     const _id = this.props.query.id;
+    console.log('this.props.query');
+    console.log(this.props.query);
+    console.log(this.props.query);
     const { classes } = this.props;
     return (<Query query={BXGIF_DETAIL} variables={{ _id }}>
       {({ loading, error, data = {} }) => {

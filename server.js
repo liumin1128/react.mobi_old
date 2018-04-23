@@ -21,16 +21,22 @@ app.prepare()
 
 
     // Use the `renderAndCache` utility defined below to serve pages
-    server.get('/', (req, res) => {
-      // console.log('> 捕获一个请求');
-      // console.log(req.url);
-      // req.url = '/';
-      renderAndCache(req, res, '/', {});
-    });
-
-    server.get('/news/detail', (req, res) => {
-      const queryParams = { id: req.query.id };
-      renderAndCache(req, res, '/news/detail', queryParams);
+    [
+      '/',
+      '/say',
+      '/say/detail',
+      '/article',
+      '/article/detail',
+      '/bxgif',
+      '/bxgif/detail',
+      '/mzitu',
+      '/mzitu/detail',
+      '/meizitu',
+      '/meizitu/detail',
+    ].map((i) => {
+      return server.get(i, (req, res) => {
+        renderAndCache(req, res, i, req.query);
+      });
     });
 
     server.use(express.static('public'));
