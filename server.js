@@ -83,7 +83,18 @@ function renderAndCache(req, res, pagePath, queryParams) {
 
   // If not let's render the page into HTML
   app.renderToHTML(req, res, pagePath, queryParams)
-    .then(html => minify(html))
+    .then(html => minify(html, {
+      // 引号
+      removeAttributeQuotes: true,
+      // 注释
+      removeComments: true,
+      // 空格
+      collapseWhitespace: true,
+      // 压缩html里的css
+      minifyCSS: true,
+      // 压缩html里的js
+      minifyJS: true,
+    }))
     .then((html) => {
       if (html.indexOf('ERROR_0120_ERROR') === -1) {
         console.log(`新建存缓: ${key}`);
