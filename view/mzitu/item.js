@@ -15,7 +15,7 @@ const styles = theme => ({
   media: {
     // height: 300,
     height: 0,
-    paddingTop: '177%',
+    paddingTop: '150%',
   },
   expand: {
     transform: 'rotate(0deg)',
