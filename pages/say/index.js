@@ -3,18 +3,18 @@ import Grid from 'material-ui/Grid';
 import styleRoot from '../../hoc/styleRoot';
 import apolloRoot from '../../hoc/apolloRoot';
 import reduxRoot from '../../hoc/reduxRoot';
-// import { queryProvider } from '../../hoc/getQuery';
+import { queryProvider } from '../../hoc/getQuery';
 import SaysList from '../../view/says/list';
 import Layout from '../../layout';
 
 @reduxRoot
 @apolloRoot
 @styleRoot
-// @queryProvider
+@queryProvider
 export default class News extends PureComponent {
-  static async getInitialProps({ query }) {
-    return { query };
-  }
+  // static async getInitialProps({ query }) {
+  //   return { query };
+  // }
   render() {
     return (
       <Layout>

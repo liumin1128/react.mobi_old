@@ -12,7 +12,7 @@ export function queryProvider(WrappedComponent) {
       return { ...props, query };
     }
     render() {
-      return (<RouterContext.Provider value={this.props.query}>
+      return (<RouterContext.Provider value={this.props}>
         <WrappedComponent {...this.props} />
       </RouterContext.Provider>);
     }
@@ -23,8 +23,8 @@ export function withQuery(WrappedComponent) {
   return function ThemedComponent(props) {
     return (
       <RouterContext.Consumer>
-        {(query) => {
-          return <WrappedComponent {...props} query={query} />;
+        {({ url }) => {
+          return <WrappedComponent {...props} url={url} />;
         }}
       </RouterContext.Consumer>
     );

@@ -12,6 +12,7 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Headroom from 'react-headroom';
 import Search from './search';
+import Tabs from './tabs';
 
 const styles = theme => ({
   root: {
@@ -62,12 +63,7 @@ function ButtonAppBar(props) {
               </IconButton>
             </Link>
             <Hidden className={`${classes.flex}`} implementation="css" only={['sm', 'xs']}>
-              <div>
-                <Link href="/"><Button className={classes.nav} color="inherit">首页</Button></Link>
-                <Link href="/article"><Button className={classes.nav} color="inherit">文章</Button></Link>
-                <Link href="/say"><Button className={classes.nav} color="inherit">话题</Button></Link>
-                <Link href="/ex"><Button className={classes.nav} color="inherit">发现</Button></Link>
-              </div>
+              <Tabs />
             </Hidden>
             <Button color="inherit">Login</Button>
           </Toolbar>
