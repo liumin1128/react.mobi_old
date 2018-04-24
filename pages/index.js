@@ -1,66 +1,27 @@
 import React, { PureComponent } from 'react';
-import Link from 'next/link';
-import { withStyles } from 'material-ui/styles';
-// import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import styleRoot from '../hoc/styleRoot';
 import apolloRoot from '../hoc/apolloRoot';
 import reduxRoot from '../hoc/reduxRoot';
+import getQuery from '../hoc/getQuery';
 import SaysList from '../view/says/list';
-
-
-const styles = () => ({
-  root: {
-    flexGrow: 1,
-    maxWidth: 1110,
-    margin: 'auto',
-    marginTop: 32,
-  },
-  body: {
-    maxWidth: 760,
-    width: '100%',
-    margin: '0 auto',
-  },
-  container: {
-    boxSizing: 'border-box',
-    margin: 0,
-    // border: '1px red solid',
-    width: '100%',
-    '@media (max-width: 960px)': {
-      margin: 0,
-    },
-  },
-});
 
 @reduxRoot
 @apolloRoot
 @styleRoot
-@withStyles(styles)
+@getQuery
 export default class News extends PureComponent {
-  static async getInitialProps({ query }) {
-    return { query };
-  }
   render() {
-    const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        <div className={classes.root}>
-          <Grid className={classes.container} container spacing={24}>
-            <Grid item xs={12} sm={12} md={8}>
-              <div className={classes.body}>
-                <SaysList />
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={12} md={4}>
-              <div className={classes.body}>
-                <h1>777</h1>
-                <Link href="say/create"><a>say/create</a></Link>
-                <br />
-                <Link href="article/create"><a>article/create</a></Link>
-              </div>
-            </Grid>
+      <div >
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={12} md={8}>
+            <SaysList />
           </Grid>
-        </div>
+          <Grid item xs={12} sm={12} md={4}>
+              2
+          </Grid>
+        </Grid>
       </div>
     );
   }
