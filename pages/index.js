@@ -5,6 +5,7 @@ import apolloRoot from '../hoc/apolloRoot';
 import reduxRoot from '../hoc/reduxRoot';
 import { queryProvider } from '../hoc/getQuery';
 import SaysList from '../view/says/list';
+import Layout from '../layout';
 
 @reduxRoot
 @apolloRoot
@@ -13,7 +14,7 @@ import SaysList from '../view/says/list';
 export default class News extends PureComponent {
   render() {
     return (
-      <div >
+      <Layout>
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} md={8}>
             <SaysList />
@@ -22,7 +23,7 @@ export default class News extends PureComponent {
               2
           </Grid>
         </Grid>
-      </div>
+      </Layout>
     );
   }
 }
