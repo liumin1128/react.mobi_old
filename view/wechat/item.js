@@ -16,7 +16,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import timeago from '../../utils/timeago';
 
 const styles = theme => ({
-  card: { marginBottom: 32 },
+  card: { marginBottom: theme.spacing.unit * 3 },
   media: {
     width: 151,
     height: 151,

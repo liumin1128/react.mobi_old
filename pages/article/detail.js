@@ -6,12 +6,12 @@ import apolloRoot from '../../hoc/apolloRoot';
 import reduxRoot from '../../hoc/reduxRoot';
 import ArticleDetail from '../../view/article/detail';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
     flexGrow: 1,
     maxWidth: 1110,
     margin: 'auto',
-    marginTop: 32,
+    marginTop: theme.spacing.unit * 3,
   },
   body: {
     maxWidth: 760,

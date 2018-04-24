@@ -11,6 +11,6 @@ export default class SearchBar extends PureComponent {
     });
   }
   render() {
-    return <div style={{ marginBottom: 32 }}><Search onSubmit={this.onSubmit} /></div>;
+    return <div style={{ marginBottom: theme.spacing.unit * 3 }}><Search onSubmit={this.onSubmit} /></div>;
   }
 }

@@ -19,7 +19,7 @@ const styles = theme => ({
   card: {
     // maxWidth: 400,
     flexGrow: 1,
-    marginBottom: 32,
+    marginBottom: theme.spacing.unit * 3,
     // boxShadow: '0 10px 28px 0 rgba(137,157,197,.12)',
     boxShadow: '0 10px 28px 0 rgba(137,157,197,.05)',
   },

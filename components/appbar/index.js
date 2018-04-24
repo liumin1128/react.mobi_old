@@ -14,7 +14,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     height: 64,
-    marginBottom: 32,
+    marginBottom: theme.spacing.unit * 3,
   },
   container: theme.container,
   toolbar: {

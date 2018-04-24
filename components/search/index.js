@@ -5,7 +5,7 @@ import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
 import { Form, Field } from 'react-final-form';
 import TextField from './textField';
 
-const styles = () => ({
+const styles = (theme) => ({
   root: {
     width: '100%',
   },

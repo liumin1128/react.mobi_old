@@ -8,7 +8,7 @@ const styles = theme => ({
   root: {
     '& > img': {
       width: '100%',
-      marginBottom: 32,
+      marginBottom: theme.spacing.unit * 3,
     },
   },
 });

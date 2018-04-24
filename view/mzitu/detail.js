@@ -10,7 +10,7 @@ const styles = theme => ({
   root: {
     '& > img': {
       width: '100%',
-      marginBottom: 32,
+      marginBottom: theme.spacing.unit * 3,
       boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.05)',
       borderRadius: 3,
     },

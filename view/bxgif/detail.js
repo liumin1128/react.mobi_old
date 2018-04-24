@@ -12,13 +12,13 @@ const styles = theme => ({
   load: {
     display: 'block',
     maxWidth: 500,
-    marginBottom: 32,
+    marginBottom: theme.spacing.unit * 3,
     margin: '0 auto',
     padding: 24,
   },
   card: {
     maxWidth: 500,
-    marginBottom: 32,
+    marginBottom: theme.spacing.unit * 3,
     margin: '0 auto',
   },
   media: {

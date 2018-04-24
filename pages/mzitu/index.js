@@ -8,12 +8,12 @@ import List from '../../view/mzitu/list';
 import SearchBar from '../../view/mzitu/searchBar';
 import Tags from '../../view/mzitu/tagsSmall';
 
-const styles = () => ({
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
     maxWidth: 1110,
     margin: 'auto',
-    marginTop: 32,
+    marginTop: theme.spacing.unit * 3,
   },
   body: {
     maxWidth: 760,
