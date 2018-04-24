@@ -93,9 +93,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@material-ui/icons@^1.0.0-beta.42":
-  version "1.0.0-beta.42"
-  resolved "http://registry.npm.taobao.org/@material-ui/icons/download/@material-ui/icons-1.0.0-beta.42.tgz#1e0e45e8f4de533071c7e4532508fa79bf1f29d9"
+"@material-ui/icons@^1.0.0-beta.43":
+  version "1.0.0-beta.43"
+  resolved "http://registry.npm.taobao.org/@material-ui/icons/download/@material-ui/icons-1.0.0-beta.43.tgz#38bba799a4e575de7eced4bd10a0afbd546e9b47"
   dependencies:
     recompose "^0.26.0"
 
@@ -2497,9 +2497,9 @@ fill-range@^4.0.0:
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
 
-final-form@^4.5.2:
-  version "4.5.2"
-  resolved "http://registry.npm.taobao.org/final-form/download/final-form-4.5.2.tgz#f8a9518784bdc2f72e71548a42b04c640963ca49"
+final-form@^4.6.1:
+  version "4.6.1"
+  resolved "http://registry.npm.taobao.org/final-form/download/final-form-4.6.1.tgz#e3f3058524c2eb8b950be452087ffe124e39554d"
 
 finalhandler@1.1.0:
   version "1.1.0"
@@ -2635,8 +2635,8 @@ fs.realpath@^1.0.0:
   resolved "http://registry.npm.taobao.org/fs.realpath/download/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
 fsevents@^1.1.2:
-  version "1.2.0"
-  resolved "http://registry.npm.taobao.org/fsevents/download/fsevents-1.2.0.tgz#e11a5ff285471e4cc43ab9cd09bb7986c565dcdc"
+  version "1.2.2"
+  resolved "http://registry.npm.taobao.org/fsevents/download/fsevents-1.2.2.tgz#4f598f0f69b273188ef4a62ca4e9e08ace314bbf"
   dependencies:
     nan "^2.9.2"
     node-pre-gyp "^0.9.0"
@@ -3614,9 +3614,9 @@ masonry-layout@^4.2.0:
     get-size "^2.0.2"
     outlayer "^2.1.0"
 
-material-ui@^1.0.0-beta.42:
-  version "1.0.0-beta.42"
-  resolved "http://registry.npm.taobao.org/material-ui/download/material-ui-1.0.0-beta.42.tgz#a0dea15fd433d521b41912802041eee8b3f30589"
+material-ui@^1.0.0-beta.43:
+  version "1.0.0-beta.43"
+  resolved "http://registry.npm.taobao.org/material-ui/download/material-ui-1.0.0-beta.43.tgz#21074fd0ef5f1735a54060dbfd060e6d46fd5ef5"
   dependencies:
     "@types/jss" "^9.3.0"
     "@types/react-transition-group" "^2.0.8"
@@ -4568,9 +4568,9 @@ react-event-listener@^0.5.1:
     prop-types "^15.6.0"
     warning "^3.0.0"
 
-react-final-form@^3.3.1:
-  version "3.3.1"
-  resolved "http://registry.npm.taobao.org/react-final-form/download/react-final-form-3.3.1.tgz#dbe40eec853a9c451e5a8deb3b02d948a2fb7e3c"
+react-final-form@^3.4.0:
+  version "3.4.0"
+  resolved "http://registry.npm.taobao.org/react-final-form/download/react-final-form-3.4.0.tgz#8ed2268d00bce5a1d328e75c1dee4ba18c023b24"
 
 react-headroom@^2.2.2:
   version "2.2.2"
