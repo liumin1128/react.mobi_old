@@ -3,9 +3,9 @@ import { Query } from 'react-apollo';
 import Item from './item';
 import { updateQuery } from '../../graphql/index';
 import { SAY_LIST } from '../../graphql/say';
-import { queryConsumer } from '../../hoc/getQuery';
+// import { withQuery } from '../../hoc/getQuery';
 
-@queryConsumer
+// @withQuery
 export default class SayList extends PureComponent {
   render() {
     const { query = {} } = this.props;

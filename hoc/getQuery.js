@@ -1,11 +1,15 @@
 import React, { PureComponent, createContext } from 'react';
 
-const RouterContext = React.createContext();
+export const RouterContext = createContext();
 
 export function queryProvider(WrappedComponent) {
   return class RouterContextProvider extends PureComponent {
     static async getInitialProps({ query }) {
-      return { query };
+      let props = {};
+      if (WrappedComponent.getInitialProps) {
+        props = await WrappedComponent.getInitialProps();
+      }
+      return { ...props, query };
     }
     render() {
       return (<RouterContext.Provider value={this.props.query}>
@@ -15,13 +19,15 @@ export function queryProvider(WrappedComponent) {
   };
 }
 
-export function queryConsumer(WrappedComponent) {
-  return class RouterContextConsumer extends PureComponent {
-    render() {
-      return (<RouterContext.Consumer>
-        {query => <WrappedComponent query={query} />}
-      </RouterContext.Consumer>);
-    }
+export function withQuery(WrappedComponent) {
+  return function ThemedComponent(props) {
+    return (
+      <RouterContext.Consumer>
+        {(query) => {
+          return <WrappedComponent {...props} query={query} />;
+        }}
+      </RouterContext.Consumer>
+    );
   };
 }
 
