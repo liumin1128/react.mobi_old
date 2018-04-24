@@ -10,9 +10,11 @@ const styles = theme => ({
 export default class News extends PureComponent {
   render() {
     const { classes, children } = this.props;
-    return (<div className={classes.root}>
+    return (<div>
       <Appbar />
-      {children}
+      <div className={classes.root}>
+        {children}
+      </div>
     </div>);
   }
 }

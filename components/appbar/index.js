@@ -8,12 +8,13 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Headroom from 'react-headroom';
 
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
     height: 64,
+    width: '100%',
     marginBottom: theme.spacing.unit * 3,
   },
   container: theme.container,
@@ -39,8 +40,14 @@ const styles = theme => ({
 function ButtonAppBar(props) {
   const { classes } = props;
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed">
+    <Headroom
+      className={classes.root}
+      // onUnpin={() => {
+      // }}
+      // onUnfix={() => {
+      // }}
+    >
+      <AppBar position="static">
         <div className={classes.container}>
           <Toolbar className={classes.toolbar}>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
@@ -53,7 +60,7 @@ function ButtonAppBar(props) {
           </Toolbar>
         </div>
       </AppBar>
-    </div>
+    </Headroom>
   );
 }
 
