@@ -3,45 +3,55 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
+import Avatar from 'material-ui/Avatar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-const styles = {
+
+const styles = theme => ({
   root: {
     flexGrow: 1,
-    // position: 'fixed',
-    // top: 0,
-    // left: 0,
-    // width: '100%',
-    // zIndex: 2,
     height: 64,
     marginBottom: 32,
+  },
+  container: theme.container,
+  toolbar: {
+    padding: 0,
+  },
+  logo: {
+    width: 48,
+    height: 48,
+    borderRadius: 0,
+    '&>img': {
+      width: 'auto',
+    },
   },
   flex: {
     flex: 1,
   },
   menuButton: {
-    marginLeft: -12,
     marginRight: 20,
   },
-};
+});
 
 function ButtonAppBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
-        <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="title" color="inherit" className={classes.flex}>
-            Title
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
+        <div className={classes.container}>
+          <Toolbar className={classes.toolbar}>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+              <Avatar className={classes.logo} src="/static/logo.svg" />
+            </IconButton>
+            <Typography variant="title" color="inherit" className={classes.flex}>
+              Title
+            </Typography>
+            <Button color="inherit">Login</Button>
+          </Toolbar>
+        </div>
       </AppBar>
     </div>
   );

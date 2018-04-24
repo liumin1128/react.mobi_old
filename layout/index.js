@@ -2,12 +2,8 @@ import React, { PureComponent } from 'react';
 import { withStyles } from 'material-ui/styles';
 import Appbar from '../components/appbar';
 
-const styles = () => ({
-  root: {
-    flexGrow: 1,
-    maxWidth: 1110,
-    margin: 'auto',
-  },
+const styles = theme => ({
+  root: theme.container,
 });
 
 @withStyles(styles)
