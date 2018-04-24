@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import Router from 'next/router';
 import Search from '../../components/search';
-import { Divider } from 'material-ui';
 
 export default class SearchBar extends PureComponent {
   onSubmit = (value) => {
