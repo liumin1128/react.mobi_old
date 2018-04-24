@@ -1,61 +1,39 @@
-import React from 'react';
-import { graphql } from 'react-apollo';
+import React, { PureComponent } from 'react';
+import { Query } from 'react-apollo';
 import Item from './item';
+import { updateQuery } from '../../graphql/index';
 import { SAY_LIST } from '../../graphql/say';
+import { queryConsumer } from '../../hoc/getQuery';
 
-function PostList({
-  data: {
-    loading, error, list, meta,
-  }, loadMore,
-}) {
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
-  const isEnd = meta.count <= list.length;
-  return (<div>
-
-    {
-      list.map(i => <Item key={i._id} {...i} />)
-    }
-
-    {!isEnd && <button onClick={() => loadMore()}>
-      {loading ? 'Loading...' : 'Show More'}
-    </button>}
-  </div>);
+@queryConsumer
+export default class SayList extends PureComponent {
+  render() {
+    const { query = {} } = this.props;
+    const { skip = 0, first = 5 } = query;
+    return (
+      <Query
+        query={SAY_LIST}
+        variables={{ skip, first }}
+      >
+        {({ loading, error, data = {}, fetchMore }) => {
+          if (loading) return 'Loading...';
+          if (error) return `Error! ${error.message}`;
+          const { list = [], meta } = data;
+          const isEnd = meta.count <= list.length;
+          const loadMore = () => fetchMore({
+            variables: { skip: list.length + skip },
+            updateQuery,
+          });
+          return (
+            <div>
+              {
+                list.map(i => <Item key={i._id} {...i} />)
+              }
+              {!isEnd && <button onClick={() => loadMore()}>
+                {loading ? 'Loading...' : 'Show More'}
+              </button>}
+            </div>);
+          }}
+      </Query>);
+  }
 }
-
-
-export const params = {
-  skip: 0,
-  first: 5,
-};
-
-export default graphql(
-  SAY_LIST,
-  {
-    options: {
-      variables: params,
-    },
-    props: ({ data }) => ({
-      data,
-      loadMore: () => {
-        return data.fetchMore({
-          variables: {
-            skip: data.list.length,
-          },
-          updateQuery: (previousResult, { fetchMoreResult }) => {
-            if (!fetchMoreResult) {
-              return previousResult;
-            }
-            return {
-              ...fetchMoreResult,
-              list: [
-                ...previousResult.list,
-                ...fetchMoreResult.list,
-              ],
-            };
-          },
-        });
-      },
-    }),
-  },
-)(PostList);
