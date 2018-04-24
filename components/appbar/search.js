@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
-import IconButton from 'material-ui/IconButton';
-import SearchIcon from 'material-ui-icons/Search';
+import IconButton from '@material-ui/icons/Search';
 import Input, { InputAdornment } from 'material-ui/Input';
 
 const styles = {
