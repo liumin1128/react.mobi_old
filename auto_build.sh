@@ -19,8 +19,11 @@ PATH_NEW=`pwd`
 echo "从 $PATH_OLD 切换到 $PATH_NEW"
 
 echo "正在从git同步代码"
-output1=`git fetch --all && git reset --hard origin/master && git pull`
-echo $output1
+# output1=`git fetch --all && git reset --hard origin/master && git pull`
+# echo $output1
+git fetch --all
+git reset --hard origin/v3
+git pull
 
 echo "正在下载依赖"
 output2=`yarn`
