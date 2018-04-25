@@ -14,7 +14,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Headroom from 'react-headroom';
 import Search from './search';
 import Tabs from './tabs';
-import modal from '../../hoc/modal';
 import Test from './test';
 import { modalConsumer } from '../../hoc/widthModal';
 
@@ -56,8 +55,8 @@ export default class MyAppBar extends PureComponent {
     classes: PropTypes.object.isRequired,
   };
   render() {
-    const { classes, add } = this.props;
-    console.log(this.props);
+    const { classes, modal } = this.props;
+    // console.log(this.props);
     return (
       <Headroom
         className={classes.root}
@@ -81,7 +80,7 @@ export default class MyAppBar extends PureComponent {
                 color="inherit"
                 onClick={() => {
                   // modal(Test, this.container);
-                  add(Test);
+                  modal(Test);
                 }}
               >Login</Button>
 

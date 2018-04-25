@@ -33,7 +33,7 @@ export function modalProvider(WrappedComponent) {
       // console.log(modals);
       return (<ModalContext.Provider
         value={{
-          add: (C) => {
+          modal: (C) => {
             this.setState({
               modals: [...modals, {
                 key: randomString(),
