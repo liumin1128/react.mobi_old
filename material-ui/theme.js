@@ -2,6 +2,8 @@ import { createMuiTheme } from 'material-ui/styles';
 import blue from 'material-ui/colors/blue';
 import red from 'material-ui/colors/red';
 
+const theme = createMuiTheme();
+
 export default createMuiTheme({
   overrides: {
     MuiPaper: {
@@ -29,5 +31,8 @@ export default createMuiTheme({
     maxWidth: 1110,
     width: '100%',
     margin: 'auto',
+    [theme.breakpoints.down('xs')]: {
+      overflow: 'hidden',
+    },
   },
 });

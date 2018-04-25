@@ -20,9 +20,6 @@ const styles = theme => ({
   media: {
     height: 250,
   },
-  content: {
-    padding: '0 24px',
-  },
   avatar: {
   },
   flexGrow: {
@@ -79,7 +76,7 @@ class RecipeReviewCard extends React.Component {
               //   />
               // )
             }
-              <CardContent className={classes.content}>
+              <CardContent>
                 <Typography type="headline" component="h2">
                   {title}
                 </Typography>
