@@ -17,14 +17,16 @@
     "development": {
       "plugins": [
         "transform-decorators-legacy",
-        "transform-runtime"
+        "transform-runtime",
+        ["lodash", { "id": "recompact" }]
       ]
     },
     "production": {
       "plugins": [
         "transform-decorators-legacy",
         "transform-remove-console",
-        "transform-runtime"
+        "transform-runtime",
+        ["lodash", { "id": "recompact" }]
       ]
     }
   }
