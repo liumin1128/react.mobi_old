@@ -13,6 +13,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Headroom from 'react-headroom';
 import Search from './search';
 import Tabs from './tabs';
+import modal from '../../hoc/modal';
 
 const styles = theme => ({
   root: {
@@ -65,7 +66,13 @@ function ButtonAppBar(props) {
             <Hidden className={`${classes.flex}`} implementation="css" only={['sm', 'xs']}>
               <Tabs />
             </Hidden>
-            <Button color="inherit">Login</Button>
+            <Button
+              color="inherit"
+              onClick={() => {
+              modal(() => <h1>111</h1>);
+            }}
+            >Login</Button>
+
           </Toolbar>
         </div>
       </AppBar>
