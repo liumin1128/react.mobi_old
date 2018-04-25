@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import Grid from 'material-ui/Grid';
+
 import styleRoot from '../../hoc/styleRoot';
 import apolloRoot from '../../hoc/apolloRoot';
 import reduxRoot from '../../hoc/reduxRoot';
@@ -7,6 +8,7 @@ import { queryProvider } from '../../hoc/getQuery';
 import { modalProvider } from '../../hoc/widthModal';
 import List from '../../view/says/list';
 import Layout from '../../layout';
+
 
 @reduxRoot
 @apolloRoot
