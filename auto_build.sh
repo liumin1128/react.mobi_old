@@ -13,9 +13,9 @@ pwd
 # pm2 delete react.mobi
 
 echo "进入项目目录"
-PATH_OLD=`pwd`
+pwd
 cd $PRO_DIR
-PATH_NEW=`pwd`
+pwd
 echo "从 $PATH_OLD 切换到 $PATH_NEW"
 
 echo "正在从git同步代码"
@@ -26,17 +26,13 @@ git reset --hard origin/v3
 git pull
 
 echo "正在下载依赖"
-output2=`yarn`
-echo $output2
+yarn
 
 echo "正在编译"
-output3=`yarn build`
-echo $output3
+yarn build
 
 echo "重启pm2"
-# pm2 restart react.mobi
-output4=`yarn pm2`
-echo $output4
+yarn pm2
 
 pm2 ls
 echo "项目已更新！"
