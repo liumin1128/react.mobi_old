@@ -4,6 +4,7 @@ import styleRoot from '../../hoc/styleRoot';
 import apolloRoot from '../../hoc/apolloRoot';
 import reduxRoot from '../../hoc/reduxRoot';
 import { queryProvider } from '../../hoc/getQuery';
+import { modalProvider } from '../../hoc/widthModal';
 import List from '../../view/says/list';
 import Layout from '../../layout';
 
@@ -11,6 +12,7 @@ import Layout from '../../layout';
 @apolloRoot
 @styleRoot
 @queryProvider
+@modalProvider
 export default class Says extends PureComponent {
   // static async getInitialProps({ query }) {
   //   return { query };

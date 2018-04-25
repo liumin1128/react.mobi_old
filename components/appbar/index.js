@@ -16,6 +16,7 @@ import Search from './search';
 import Tabs from './tabs';
 import modal from '../../hoc/modal';
 import Test from './test';
+import { modalConsumer } from '../../hoc/widthModal';
 
 const styles = theme => ({
   root: {
@@ -48,13 +49,15 @@ const styles = theme => ({
 });
 
 
+@modalConsumer
 @withStyles(styles)
 export default class MyAppBar extends PureComponent {
   static propTypes = {
     classes: PropTypes.object.isRequired,
   };
   render() {
-    const { classes } = this.props;
+    const { classes, add } = this.props;
+    console.log(this.props);
     return (
       <Headroom
         className={classes.root}
@@ -77,7 +80,8 @@ export default class MyAppBar extends PureComponent {
               <Button
                 color="inherit"
                 onClick={() => {
-                  modal(Test, this.container);
+                  // modal(Test, this.container);
+                  add(Test);
                 }}
               >Login</Button>
 
