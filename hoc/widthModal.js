@@ -1,12 +1,12 @@
 import React, { PureComponent, createContext } from 'react';
 import Dialog from 'material-ui/Dialog';
-import Fade from 'material-ui/transitions/Fade';
+import Slide from 'material-ui/transitions/Slide';
 import { randomString } from '../utils/common';
 
 export const ModalContext = createContext();
 
 function Transition(props) {
-  return <Fade direction="up" {...props} />;
+  return <Slide direction="up" {...props} />;
 }
 
 export function modalProvider(WrappedComponent) {
