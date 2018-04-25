@@ -1,4 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import List from '../../view/says/list';
 
-export default connect()(() => <h1>777</h1>);
+export default connect()(() => <List />);
