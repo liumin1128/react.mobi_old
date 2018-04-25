@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { withStyles } from 'material-ui/styles';
@@ -14,6 +15,7 @@ import Headroom from 'react-headroom';
 import Search from './search';
 import Tabs from './tabs';
 import modal from '../../hoc/modal';
+import Test from './test';
 
 const styles = theme => ({
   root: {
@@ -45,43 +47,49 @@ const styles = theme => ({
   },
 });
 
-function ButtonAppBar(props) {
-  const { classes } = props;
-  return (
-    <Headroom
-      className={classes.root}
-      // onUnpin={() => {
-      // }}
-      // onUnfix={() => {
-      // }}
-    >
-      <AppBar position="static">
-        <div className={classes.container}>
-          <Toolbar className={classes.toolbar}>
-            <Link href="/">
-              <IconButton className={classes.logoButton} color="inherit" aria-label="Menu">
-                <Avatar className={classes.logo} src="/static/logo.svg" />
-              </IconButton>
-            </Link>
-            <Hidden className={`${classes.flex}`} implementation="css" only={['sm', 'xs']}>
-              <Tabs />
-            </Hidden>
-            <Button
-              color="inherit"
-              onClick={() => {
-              modal(() => <h1>111</h1>);
-            }}
-            >Login</Button>
 
-          </Toolbar>
-        </div>
-      </AppBar>
-    </Headroom>
-  );
+@withStyles(styles)
+export default class MyAppBar extends PureComponent {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  render() {
+    const { classes } = this.props;
+    return (
+      <Headroom
+        className={classes.root}
+        // onUnpin={() => {
+        // }}
+        // onUnfix={() => {
+        // }}
+      >
+        <AppBar position="static">
+          <div className={classes.container}>
+            <Toolbar className={classes.toolbar}>
+              <Link href="/">
+                <IconButton className={classes.logoButton} color="inherit" aria-label="Menu">
+                  <Avatar className={classes.logo} src="/static/logo.svg" />
+                </IconButton>
+              </Link>
+              <Hidden className={`${classes.flex}`} implementation="css" only={['sm', 'xs']}>
+                <Tabs />
+              </Hidden>
+              <Button
+                color="inherit"
+                onClick={() => {
+                  modal(Test, this.container);
+                }}
+              >Login</Button>
+
+              <div
+                // className={classes.alert}
+                ref={(node) => { this.container = node; }}
+              />
+
+            </Toolbar>
+          </div>
+        </AppBar>
+      </Headroom>
+    );
+  }
 }
-
-ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(ButtonAppBar);

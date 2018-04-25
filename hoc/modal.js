@@ -23,16 +23,18 @@ export default function (WrappedComponent) {
     render() {
       const { destory } = this.props;
       return (
-        <Dialog
-          open={this.state.open}
-          keepMounted={false}
-          transition={Transition}
-          onClose={this.handleClose}
-          onExited={() => { if (destory) destory(); }}
-          aria-labelledby="form-dialog-title"
-        >
-          <WrappedComponent close={this.handleClose} />
-        </Dialog>
+        <div>
+          <Dialog
+            open={this.state.open}
+            keepMounted={false}
+            transition={Transition}
+            onClose={this.handleClose}
+            onExited={() => { if (destory) destory(); }}
+            aria-labelledby="form-dialog-title"
+          >
+            <WrappedComponent close={this.handleClose} />
+          </Dialog>
+        </div>
       );
     }
   }
