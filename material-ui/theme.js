@@ -8,10 +8,15 @@ export default createMuiTheme({
   overrides: {
     MuiPaper: {
       elevation1: {
-        boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.05)',
+        boxShadow: '0 3px 5px 0px rgba(0, 0, 0, 0.05)',
       },
       elevation2: {
-        boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.05)',
+        boxShadow: '0 3px 5px 0px rgba(0, 0, 0, 0.05)',
+        [theme.breakpoints.down('xs')]: {
+          // boxShadow: '0 1px 2px 1px rgba(0, 0, 0, 0.05)',
+          boxShadow: '0 2px 3px 0px rgba(0, 0, 0, 0.05)',
+          // boxShadow: 'none',
+        },
       },
     },
   },
