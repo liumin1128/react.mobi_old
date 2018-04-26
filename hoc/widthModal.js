@@ -26,8 +26,6 @@ export function modalProvider(WrappedComponent) {
     }
     render() {
       const { modals = [] } = this.state;
-      // console.log('modals');
-      // console.log(modals);
       return (<ModalContext.Provider
         value={{
           modal: (C) => {
