@@ -15,16 +15,13 @@ export function modalProvider(WrappedComponent) {
       modals: [],
     }
     handleClose = (key) => {
-      // console.log('key');
-      // console.log(key);
       const { modals = [] } = this.state;
       modals.find(i => i.key === key).open = false;
       this.setState({ modals: [...modals] });
     };
     destory = (key) => {
       const { modals = [] } = this.state;
-      const idx = modals.findIndex(i => i.key === key);
-      modals.splice(idx, 1);
+      modals.splice(modals.findIndex(i => i.key === key), 1);
       this.setState({ modals: [...modals] });
     }
     render() {
