@@ -21,6 +21,7 @@ export default class Login extends PureComponent {
     return errors;
   }
   render() {
+    const { close } = this.props;
     return (
       <Mutation mutation={USER_LOGIN}>
         {(userLogin, { loading, error, data = {} }) => {
@@ -36,6 +37,7 @@ export default class Login extends PureComponent {
                   if (status === 200) {
                     await setStorage(USER_TOKEN_KEY, token);
                     await setStorage(USER_INFO_KEY, userInfo);
+                    close();
                   }
                 }}
                 // initialValues={initialValue}
