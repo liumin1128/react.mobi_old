@@ -28,3 +28,16 @@ a {
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
+
+input:-webkit-autofill {
+  animation: autofill-fix 1s infinite;
+}
+
+@keyframes autofill-fix {
+  from {
+      background-color: transparent
+  }
+  to {
+      background-color: transparent
+  }
+}

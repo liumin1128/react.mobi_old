@@ -10,6 +10,16 @@ import { setStorage } from '../../utils/store';
 import snackbar from '../../components/snackbar';
 
 export default class Login extends PureComponent {
+  validate = (values) => {
+    const errors = {};
+    if (!values.username) {
+      errors.username = '用户名不能为空';
+    }
+    if (!values.password) {
+      errors.password = '密码不能为空';
+    }
+    return errors;
+  }
   render() {
     return (
       <Mutation mutation={USER_LOGIN}>
@@ -29,7 +39,7 @@ export default class Login extends PureComponent {
                   }
                 }}
                 // initialValues={initialValue}
-                // validate={this.validate}
+                validate={this.validate}
                 render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
                   <form onSubmit={handleSubmit}>
                     <Field
