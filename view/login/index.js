@@ -10,20 +10,17 @@ export default class Login extends PureComponent {
   render() {
     return (
       <Mutation mutation={USER_LOGIN}>
-        {({ userLogin, loading, error, data = {}, ...other }) => {
-          console.log('other');
-          console.log(other);
-          console.log('userLogin');
-          console.log(userLogin);
-          if (loading) return 'Loading...';
+        {(userLogin, { loading, error, data = {} }) => {
+          // if (loading) return 'Loading...';
           if (error) return `Error! ${error.message}`;
           return (
             <CardContent>
               <Form
-                onSubmit={(value) => {
+                onSubmit={async (value) => {
                   console.log('value');
                   console.log(value);
-                  userLogin({ variables: value });
+                  const { data: { result } } = await userLogin({ variables: value });
+                  console.log(result);
                 }}
                 // initialValues={initialValue}
                 // validate={this.validate}
