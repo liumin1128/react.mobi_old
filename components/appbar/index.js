@@ -6,11 +6,9 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Avatar from 'material-ui/Avatar';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
+import { CircularProgress } from 'material-ui/Progress';
 import Hidden from 'material-ui/Hidden';
 import IconButton from 'material-ui/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import Headroom from 'react-headroom';
 import Search from './search';
 import Tabs from './tabs';
@@ -18,6 +16,7 @@ import Tabs from './tabs';
 
 const UserWithNoSSR = dynamic(import('./user'), {
   ssr: false,
+  loading: () => <CircularProgress size={32} color="inherit" />,
 });
 
 const styles = theme => ({

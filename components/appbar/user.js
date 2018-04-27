@@ -5,7 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import Login from '../../view/login';
 import { modalConsumer } from '../../hoc/widthModal';
-import { getStorage } from '../../utils/store';
+import { getStorage, clearStorage, removeStorage } from '../../utils/store';
 import { STORE_USER_KEY } from '../../constants/base';
 
 @modalConsumer
@@ -21,6 +21,11 @@ export default class UserAvatar extends PureComponent {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+
+  logout = () => {
+    removeStorage(STORE_USER_KEY);
+    this.handleClose();
+  }
 
   render() {
     console.log('-------------------------------');
@@ -62,23 +67,21 @@ export default class UserAvatar extends PureComponent {
           horizontal: 'right',
         }}
       >
-        <MenuItem
-        // className={classes.userInfo}
-          onClick={this.handleClose}
-        >
-          <Avatar src={userInfo.avatarUrl} />
-          <h1 >{userInfo.nickname}</h1>
-        </MenuItem>
+        {
+        // <MenuItem
+        // // className={classes.userInfo}
+        //   onClick={this.handleClose}
+        // >
+        //   <Avatar src={userInfo.avatarUrl} />
+        //   <h1 >{userInfo.nickname}</h1>
+        // </MenuItem>
+       }
         <MenuItem disabled onClick={this.handleClose}>个人资料</MenuItem>
         <MenuItem disabled onClick={this.handleClose}>我关注的</MenuItem>
         <MenuItem disabled onClick={this.handleClose}>火炬</MenuItem>
         <MenuItem disabled onClick={this.handleClose}>设置和隐私</MenuItem>
         <MenuItem disabled onClick={this.handleClose}>帮助中心</MenuItem>
-        <MenuItem onClick={() => {
-          // dispatch({ type: 'user/logout' });
-          // this.setState({ anchorEl: null });
-          }}
-        >登出</MenuItem>
+        <MenuItem onClick={this.logout}>登出</MenuItem>
       </Menu>
     </Fragment>);
   }
