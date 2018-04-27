@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-
+import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { withStyles } from 'material-ui/styles';
@@ -14,7 +14,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Headroom from 'react-headroom';
 import Search from './search';
 import Tabs from './tabs';
-import UserAvatar from './user';
+// import UserAvatar from './user';
+
+const UserWithNoSSR = dynamic(import('./user'), {
+  ssr: false,
+});
 
 const styles = theme => ({
   root: {
@@ -74,7 +78,7 @@ export default class MyAppBar extends PureComponent {
               <Hidden className={`${classes.flex}`} implementation="css" only={['sm', 'xs']}>
                 <Tabs />
               </Hidden>
-              <UserAvatar />
+              <UserWithNoSSR />
             </Toolbar>
           </div>
         </AppBar>

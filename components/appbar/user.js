@@ -33,7 +33,7 @@ export default class UserAvatar extends PureComponent {
       >Login</Button>);
     }
     const { anchorEl } = this.state;
-    return (<div>
+    return (<Fragment>
       <IconButton
       // className={classes.logoButton}
         color="inherit"
@@ -80,6 +80,6 @@ export default class UserAvatar extends PureComponent {
           }}
         >登出</MenuItem>
       </Menu>
-    </div>);
+    </Fragment>);
   }
 }
