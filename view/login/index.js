@@ -5,7 +5,7 @@ import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import TextField from '../../components/form/textField';
 import { USER_LOGIN } from '../../graphql/user';
-import { USER_INFO_KEY, USER_TOKEN_KEY } from '../../constants/base';
+import { STORE_USER_KEY } from '../../constants/base';
 import { setStorage } from '../../utils/store';
 import snackbar from '../../components/snackbar';
 
@@ -35,8 +35,7 @@ export default class Login extends PureComponent {
                   const { status, message, userInfo, token } = result;
                   snackbar.error(message);
                   if (status === 200) {
-                    await setStorage(USER_TOKEN_KEY, token);
-                    await setStorage(USER_INFO_KEY, userInfo);
+                    await setStorage(STORE_USER_KEY, { token, userInfo });
                     close();
                   }
                 }}
