@@ -5,6 +5,9 @@ import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import TextField from '../../components/form/textField';
 import { USER_LOGIN } from '../../graphql/user';
+import { USER_INFO_KEY, USER_TOKEN_KEY } from '../../constants/base';
+import { setStorage } from '../../utils/store';
+import snackbar from '../../components/snackbar';
 
 export default class Login extends PureComponent {
   render() {
@@ -21,6 +24,14 @@ export default class Login extends PureComponent {
                   console.log(value);
                   const { data: { result } } = await userLogin({ variables: value });
                   console.log(result);
+                  const { status, message, userInfo, token } = result;
+                  if (status === 200) {
+                    await setStorage(USER_TOKEN_KEY, token);
+                    await setStorage(USER_INFO_KEY, userInfo);
+                  } else {
+                    // alert(message);
+                    snackbar.error(message);
+                  }
                 }}
                 // initialValues={initialValue}
                 // validate={this.validate}

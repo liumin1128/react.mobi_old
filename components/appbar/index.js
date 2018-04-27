@@ -14,8 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Headroom from 'react-headroom';
 import Search from './search';
 import Tabs from './tabs';
-import { modalConsumer } from '../../hoc/widthModal';
-import Login from '../../view/login';
+import UserAvatar from './user';
 
 const styles = theme => ({
   root: {
@@ -48,14 +47,13 @@ const styles = theme => ({
 });
 
 
-@modalConsumer
 @withStyles(styles)
 export default class MyAppBar extends PureComponent {
   static propTypes = {
     classes: PropTypes.object.isRequired,
   };
   render() {
-    const { classes, modal } = this.props;
+    const { classes } = this.props;
     // console.log(this.props);
     return (
       <Headroom
@@ -76,18 +74,8 @@ export default class MyAppBar extends PureComponent {
               <Hidden className={`${classes.flex}`} implementation="css" only={['sm', 'xs']}>
                 <Tabs />
               </Hidden>
-              <Button
-                color="inherit"
-                onClick={() => {
-                  // modal(Test, this.container);
-                  modal(Login);
-                }}
-              >Login</Button>
 
-              <div
-                // className={classes.alert}
-                ref={(node) => { this.container = node; }}
-              />
+              <UserAvatar />
 
             </Toolbar>
           </div>
