@@ -74,9 +74,7 @@ export default class MyAppBar extends PureComponent {
               <Hidden className={`${classes.flex}`} implementation="css" only={['sm', 'xs']}>
                 <Tabs />
               </Hidden>
-
               <UserAvatar />
-
             </Toolbar>
           </div>
         </AppBar>
