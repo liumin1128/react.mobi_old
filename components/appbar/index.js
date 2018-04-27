@@ -14,8 +14,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Headroom from 'react-headroom';
 import Search from './search';
 import Tabs from './tabs';
-import Test from './test';
 import { modalConsumer } from '../../hoc/widthModal';
+import Login from '../../view/login';
 
 const styles = theme => ({
   root: {
@@ -80,7 +80,7 @@ export default class MyAppBar extends PureComponent {
                 color="inherit"
                 onClick={() => {
                   // modal(Test, this.container);
-                  modal(Test);
+                  modal(Login);
                 }}
               >Login</Button>
 
