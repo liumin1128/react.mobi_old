@@ -20,17 +20,12 @@ export default class Login extends PureComponent {
             <CardContent>
               <Form
                 onSubmit={async (value) => {
-                  console.log('value');
-                  console.log(value);
                   const { data: { result } } = await userLogin({ variables: value });
-                  console.log(result);
                   const { status, message, userInfo, token } = result;
+                  snackbar.error(message);
                   if (status === 200) {
                     await setStorage(USER_TOKEN_KEY, token);
                     await setStorage(USER_INFO_KEY, userInfo);
-                  } else {
-                    // alert(message);
-                    snackbar.error(message);
                   }
                 }}
                 // initialValues={initialValue}
