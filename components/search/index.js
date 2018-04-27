@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import { withStyles } from 'material-ui/styles';
 import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
 import { Form, Field } from 'react-final-form';
-import TextField from './textField';
+import TextField from '../form/textField';
 
 const styles = theme => ({
   root: {
