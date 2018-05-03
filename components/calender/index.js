@@ -4,19 +4,26 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
-import { auto } from 'async';
+import TodayInHistory from './todayInHistory';
 
 moment.locale('zh-cn');
 // const localeData = moment.localeData();
 
+console.log(moment().format('MMDD'));
+
 const styles = theme => ({
   content: {
+    // padding: 16,
+  },
+  items: {
     display: 'flex',
     flexWrap: 'wrap',
-    padding: 16,
+    margin: '16px -16px',
   },
   item: {
     width: `${100 / 7}%`,
+    display: 'flex',
+    justifyContent: 'center',
   },
   button: {
     minHeight: 'auto',
@@ -26,6 +33,9 @@ const styles = theme => ({
     height: '2.5em',
     padding: 0,
   },
+  // title: {
+  //   fontSize: 16,
+  // },
 });
 
 @withStyles(styles)
@@ -40,27 +50,37 @@ export default class Calender extends PureComponent {
         today: time.isSame(moment(), 'day'),
       };
     });
-    console.log(list);
     const { classes } = this.props;
     return (<Card>
       <CardContent className={classes.content}>
-        {
-          list.map(({ value, label, thisMonth, today }) => (
-            <div
-              key={value}
-              className={classes.item}
-            >
-              <Button
-                className={classes.button}
-                variant={today ? 'raised' : ''}
-                color={today ? 'primary' : ''}
-                disabled={!thisMonth}
+        <Typography className={classes.title}>
+          前进！前进！不择手段的前进！——托马斯·维德
+        </Typography>
+        <Typography className={classes.title} color="textSecondary">
+          {moment().format('llll')}
+        </Typography>
+        <div className={classes.items}>
+          {
+            list.map(({ value, label, thisMonth, today }) => (
+              <div
+                key={value}
+                className={classes.item}
               >
-                {label}
-              </Button>
-            </div>
-            ))
-        }
+                <Button
+                  className={classes.button}
+                  variant={today ? 'raised' : ''}
+                  color={today ? 'primary' : ''}
+                  disabled={!thisMonth}
+                >
+                  {label}
+                </Button>
+              </div>
+              ))
+          }
+        </div>
+
+        <TodayInHistory />
+
       </CardContent>
     </Card>);
   }
