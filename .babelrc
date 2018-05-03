@@ -1,32 +1,24 @@
 {
   "presets": [
-    [
-      "env", {
-        "modules": false,
-        "targets": {
-          "browsers": [
-            "last 2 versions",
-            "ie >= 7"
-          ]
-        }
+    ["@babel/preset-env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["last 2 versions", "ie >= 7"]}
       }
     ],
+    ["@babel/preset-stage-2",{
+      "decoratorsLegacy": true
+    }],
     "next/babel"
   ],
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    ["lodash", { "id": "recompact" }]
+  ],
   "env": {
-    "development": {
-      "plugins": [
-        "transform-decorators-legacy",
-        "transform-runtime",
-        ["lodash", { "id": "recompact" }]
-      ]
-    },
     "production": {
       "plugins": [
-        "transform-decorators-legacy",
-        "transform-remove-console",
-        "transform-runtime",
-        ["lodash", { "id": "recompact" }]
+        "transform-remove-console"
       ]
     }
   }

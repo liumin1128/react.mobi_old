@@ -51,12 +51,14 @@ const styles = theme => ({
 
 
 @withStyles(styles)
-export default class MyAppBar extends PureComponent {
+export default class MyAppBar2 extends PureComponent {
   static propTypes = {
     classes: PropTypes.object.isRequired,
   };
   render() {
-    const { classes } = this.props;
+    console.log('this.props');
+    console.log(this.props);
+    const { classes = {} } = this.props;
     // console.log(this.props);
     return (
       <Headroom
