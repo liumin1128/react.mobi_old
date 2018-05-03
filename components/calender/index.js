@@ -33,14 +33,21 @@ const styles = theme => ({
     height: '2.5em',
     padding: 0,
   },
-  // title: {
-  //   fontSize: 16,
-  // },
 });
 
 @withStyles(styles)
 export default class Calender extends PureComponent {
+  state = {
+    date: moment().format('MMDD'),
+  }
+  setDate = (value) => {
+    this.setState({
+      date: moment.unix(value).format('MMDD'),
+    });
+  }
   render() {
+    const { date } = this.state;
+    const { classes } = this.props;
     const list = new Array(35).fill('').map((_, idx) => {
       const time = moment().weekday(idx - 1);
       return {
@@ -50,12 +57,8 @@ export default class Calender extends PureComponent {
         today: time.isSame(moment(), 'day'),
       };
     });
-    const { classes } = this.props;
     return (<Card>
       <CardContent className={classes.content}>
-        <Typography className={classes.title}>
-          前进！前进！不择手段的前进！——托马斯·维德
-        </Typography>
         <Typography className={classes.title} color="textSecondary">
           {moment().format('llll')}
         </Typography>
@@ -71,6 +74,7 @@ export default class Calender extends PureComponent {
                   variant={today ? 'raised' : ''}
                   color={today ? 'primary' : ''}
                   disabled={!thisMonth}
+                  onClick={() => this.setDate(value)}
                 >
                   {label}
                 </Button>
@@ -79,7 +83,7 @@ export default class Calender extends PureComponent {
           }
         </div>
 
-        <TodayInHistory />
+        <TodayInHistory date={date} />
 
       </CardContent>
     </Card>);
