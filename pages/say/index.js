@@ -3,6 +3,7 @@ import Grid from 'material-ui/Grid';
 import withRoot from '../../hoc';
 import List from '../../view/says/list';
 import Layout from '../../layout';
+import Calender from '../../components/calender';
 
 @withRoot
 export default class Says extends PureComponent {
@@ -17,7 +18,7 @@ export default class Says extends PureComponent {
             <List />
           </Grid>
           <Grid item xs={12} sm={12} md={4}>
-              2
+            <Calender />
           </Grid>
         </Grid>
       </Layout>
