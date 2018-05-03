@@ -9,8 +9,6 @@ import TodayInHistory from './todayInHistory';
 moment.locale('zh-cn');
 // const localeData = moment.localeData();
 
-console.log(moment().format('MMDD'));
-
 const styles = theme => ({
   content: {
     // padding: 16,
@@ -38,11 +36,11 @@ const styles = theme => ({
 @withStyles(styles)
 export default class Calender extends PureComponent {
   state = {
-    date: moment().format('MMDD'),
+    date: moment(),
   }
   setDate = (value) => {
     this.setState({
-      date: moment.unix(value).format('MMDD'),
+      date: moment(parseInt(value, 0)),
     });
   }
   render() {
@@ -55,8 +53,12 @@ export default class Calender extends PureComponent {
         label: time.date(),
         thisMonth: time.isSame(moment(), 'month'),
         today: time.isSame(moment(), 'day'),
+        selected: time.isSame(date.format('YYYY-MM-DD'), 'day'),
       };
     });
+    console.log('list');
+    console.log(list);
+    // console.log(date.format('YYYY-MM-DD'));
     return (<Card>
       <CardContent className={classes.content}>
         <Typography className={classes.title} color="textSecondary">
@@ -64,15 +66,15 @@ export default class Calender extends PureComponent {
         </Typography>
         <div className={classes.items}>
           {
-            list.map(({ value, label, thisMonth, today }) => (
+            list.map(({ value, label, thisMonth, today, selected }) => (
               <div
                 key={value}
                 className={classes.item}
               >
                 <Button
                   className={classes.button}
-                  variant={today ? 'raised' : ''}
-                  color={today ? 'primary' : ''}
+                  variant={(today || selected) ? 'raised' : ''}
+                  color={today ? 'primary' : (selected ? 'secondary' : '')}
                   disabled={!thisMonth}
                   onClick={() => this.setDate(value)}
                 >
@@ -83,7 +85,7 @@ export default class Calender extends PureComponent {
           }
         </div>
 
-        <TodayInHistory date={date} />
+        <TodayInHistory date={date.format('MMDD')} />
 
       </CardContent>
     </Card>);
