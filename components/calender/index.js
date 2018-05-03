@@ -54,9 +54,6 @@ export default class Calender extends PureComponent {
         selected: time.isSame(date.format('YYYY-MM-DD'), 'day'),
       };
     });
-    console.log('list');
-    console.log(list);
-    // console.log(date.format('YYYY-MM-DD'));
     return (<Card>
       <CardContent>
         <Typography color="textSecondary">
@@ -71,8 +68,8 @@ export default class Calender extends PureComponent {
               >
                 <Button
                   className={classes.button}
-                  variant={(today || selected) ? 'raised' : ''}
-                  color={today ? 'primary' : (selected ? 'secondary' : '')}
+                  variant={(today || selected) ? 'raised' : 'flat'}
+                  color={today ? 'primary' : (selected ? 'secondary' : 'default')}
                   disabled={!thisMonth}
                   onClick={() => this.setDate(value)}
                 >
