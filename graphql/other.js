@@ -7,7 +7,7 @@ export const TODAY_IN_HISTORY = gql`
       title
       year
       month
-      display: img
+      img
     }
   }
 `;

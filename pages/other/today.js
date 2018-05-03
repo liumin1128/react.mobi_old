@@ -3,7 +3,7 @@ import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import withRoot from '../../hoc';
 import Layout from '../../layout';
-import List from '../../components/calender/todayInHistory';
+import List from '../../components/calender/todayInHistoryWidthImg';
 
 @withRoot
 export default class TodayInHistory extends PureComponent {
@@ -15,7 +15,7 @@ export default class TodayInHistory extends PureComponent {
       <Layout>
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} md={12}>
-            <Typography variant="headline" component="h1" color="textSecondary">
+            <Typography variant="headline" component="h1">
               历史上的今天
             </Typography>
             <br />
