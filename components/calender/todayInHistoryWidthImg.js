@@ -2,15 +2,17 @@ import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
+import moment from 'moment';
+import Card, { CardContent } from 'material-ui/Card';
 import { TODAY_IN_HISTORY } from '../../graphql/other';
 
 const styles = theme => ({
   root: {
-    paddingLeft: 64,
+    paddingLeft: 48,
   },
   li: {
     borderLeft: '2px #ddd solid',
-    padding: '0 16px',
+    paddingLeft: 16,
     position: 'relative',
     listStyle: 'none',
 
@@ -48,37 +50,49 @@ export default class TodayInHistory extends PureComponent {
     const { date } = this.props;
     const { classes } = this.props;
     return (
-      <Query
-        query={TODAY_IN_HISTORY}
-        variables={{ date }}
-      >
-        {({ loading, error, data = {} }) => {
-          if (loading) return 'Loading...';
-          if (error) return `Error! ${error.message}`;
-          const { list = [] } = data;
+      <Card>
+        <CardContent>
+          <Typography variant="headline" component="h1">
+            历史上的今天
+          </Typography>
+          <Typography className={classes.title} color="textSecondary">
+            {moment().format('llll')}
+          </Typography>
+          <br />
+          <Query
+            query={TODAY_IN_HISTORY}
+            variables={{ date }}
+          >
+            {({ loading, error, data = {} }) => {
+      if (loading) return 'Loading...';
+      if (error) return `Error! ${error.message}`;
+      const { list = [] } = data;
 
-          return (
-            <ul className={classes.root}>
-              {
-                [...list]
-                .sort((x, y) => { return parseInt(x.year, 0) - parseInt(y.year, 0); })
-                  .map(i => (<li className={classes.li}>
-                    <span className={classes.time}>
-                      {i.year}
-                    </span>
-                    <span className={classes.dot} />
-                    <Typography key={i._id}>
-                      {i.title}
-                    </Typography>
-                    {i.img && <img className={classes.img} src={i.img} alt="" />}
+      return (
+        <ul className={classes.root}>
+          {
+            [...list]
+            .sort((x, y) => { return parseInt(x.year, 0) - parseInt(y.year, 0); })
+              .map(i => (<li className={classes.li}>
+                <span className={classes.time}>
+                  {i.year}
+                </span>
+                <span className={classes.dot} />
+                <Typography key={i._id}>
+                  {i.title}
+                </Typography>
+                {i.img && <img className={classes.img} src={i.img} alt="" />}
 
-                    <br />
-                    <br />
-                  </li>))
-              }
-            </ul>);
-          }}
-      </Query>);
+                <br />
+                <br />
+              </li>))
+          }
+        </ul>);
+      }}
+          </Query>
+        </CardContent>
+
+      </Card>);
   }
 }
 
