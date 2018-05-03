@@ -22,7 +22,7 @@ export default class TodayInHistory extends PureComponent {
                 [...list]
                 .sort((x, y) => { return parseInt(x.year, 0) - parseInt(y.year, 0); })
                   .map(i => (<Typography key={i._id} color="textSecondary">
-                    {`${i.year}:${i.title}`}
+                    {`${i.year}: ${i.title}`}
                   </Typography>))
               }
             </div>);
