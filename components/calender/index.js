@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import moment from 'moment';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
+import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import TodayInHistory from './todayInHistory';
@@ -10,13 +10,10 @@ moment.locale('zh-cn');
 // const localeData = moment.localeData();
 
 const styles = theme => ({
-  content: {
-    // padding: 16,
-  },
   items: {
     display: 'flex',
     flexWrap: 'wrap',
-    margin: '16px -16px',
+    margin: '16px -16px -16px',
   },
   item: {
     width: `${100 / 7}%`,
@@ -37,6 +34,7 @@ const styles = theme => ({
 export default class Calender extends PureComponent {
   state = {
     date: moment(),
+    open: false,
   }
   setDate = (value) => {
     this.setState({
@@ -44,7 +42,7 @@ export default class Calender extends PureComponent {
     });
   }
   render() {
-    const { date } = this.state;
+    const { date, open } = this.state;
     const { classes } = this.props;
     const list = new Array(35).fill('').map((_, idx) => {
       const time = moment().weekday(idx - 1);
@@ -60,8 +58,8 @@ export default class Calender extends PureComponent {
     console.log(list);
     // console.log(date.format('YYYY-MM-DD'));
     return (<Card>
-      <CardContent className={classes.content}>
-        <Typography className={classes.title} color="textSecondary">
+      <CardContent>
+        <Typography color="textSecondary">
           {moment().format('llll')}
         </Typography>
         <div className={classes.items}>
@@ -85,9 +83,25 @@ export default class Calender extends PureComponent {
           }
         </div>
 
-        <TodayInHistory date={date.format('MMDD')} />
 
       </CardContent>
+      <CardActions>
+        <Button
+          onClick={() => {
+              this.setState({
+                open: !open,
+              });
+            }}
+          size="small"
+          color="primary"
+        >
+            历史上的今天
+        </Button>
+      </CardActions>
+      {open && <CardContent>
+        <TodayInHistory date={date.format('MMDD')} />
+      </CardContent>}
+
     </Card>);
   }
 }

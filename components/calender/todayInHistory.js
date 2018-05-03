@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
+import Typography from 'material-ui/Typography';
 import { TODAY_IN_HISTORY } from '../../graphql/other';
 
 export default class TodayInHistory extends PureComponent {
@@ -20,9 +21,9 @@ export default class TodayInHistory extends PureComponent {
               {
                 [...list]
                 .sort((x, y) => { return parseInt(x.year, 0) - parseInt(y.year, 0); })
-                  .map(i => (<div key={i._id}>
+                  .map(i => (<Typography key={i._id} color="textSecondary">
                     {`${i.year}:${i.title}`}
-                  </div>))
+                  </Typography>))
               }
             </div>);
           }}
