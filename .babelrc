@@ -1,18 +1,11 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "modules": false,
-      "targets": {
-        "browsers": ["last 2 versions", "ie >= 7"]}
-      }
-    ],
-    ["@babel/preset-stage-2",{
-      "decoratorsLegacy": true
-    }],
+    "@babel/env",
     "next/babel"
   ],
   "plugins": [
-    "@babel/plugin-transform-runtime",
+    "@babel/transform-runtime",
+    "transform-decorators-legacy",
     ["lodash", { "id": "recompact" }]
   ],
   "env": {
