@@ -13,6 +13,7 @@ const styles = theme => ({
     padding: '0 16px',
     position: 'relative',
     listStyle: 'none',
+
   },
   time: {
     position: 'absolute',
@@ -20,6 +21,21 @@ const styles = theme => ({
     top: 0,
     fontSize: 14,
   },
+  dot: {
+    position: 'absolute',
+    width: 10,
+    height: 10,
+    display: 'block',
+    border: '2px #ddd solid',
+    left: '-6px',
+    top: '5px',
+    borderRadius: 10,
+    background: '#fff',
+    'li:hover &': {
+      border: `2px ${theme.palette.primary.main} solid`,
+    },
+  },
+
   img: {
     maxWidth: '100%',
     marginTop: 8,
@@ -50,6 +66,7 @@ export default class TodayInHistory extends PureComponent {
                     <span className={classes.time}>
                       {i.year}
                     </span>
+                    <span className={classes.dot} />
                     <Typography key={i._id}>
                       {i.title}
                     </Typography>
