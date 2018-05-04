@@ -44,6 +44,7 @@ export default class MeizituDetail extends PureComponent {
                 debounce={300}
                 key={i.url}
                 height={i.height}
+                unmountIfInvisible
                 placeholder={<Code className={classes.load} />}
               >
                 <Card className={classes.card}>
