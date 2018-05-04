@@ -12,7 +12,7 @@ const port = dev ? 8000 : 3102;
 // This is where we cache our rendered HTML pages
 const ssrCache = new LRUCache({
   max: 100,
-  maxAge: 1000 * 60 * 10, // 1分钟
+  maxAge: 1000 * 60 * 60 * 3, // 1分钟
 });
 
 app.prepare()
