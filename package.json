@@ -31,6 +31,8 @@
     "@material-ui/icons": "^1.0.0-beta.43",
     "apollo-boost": "^0.1.5",
     "axios": "^0.18.0",
+    "draft-js": "^0.10.5",
+    "draft-js-export-html": "^1.2.0",
     "es6-promise": "^4.2.4",
     "final-form": "^4.6.1",
     "graphql": "^0.13.2",
