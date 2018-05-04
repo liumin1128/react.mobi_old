@@ -1,27 +1,41 @@
 import React, { Component } from 'react';
+import Button from 'material-ui/Button';
+import { withStyles } from 'material-ui/styles';
 
+
+const styles = theme => ({
+  button: {
+    minHeight: 'auto',
+    minWidth: 'auto',
+    // width: 24,
+    // height: 24,
+    padding: 4,
+  },
+  unactive: {
+    color: '#ccc',
+  },
+  icon: {
+    fontSize: 24,
+  },
+});
+
+@withStyles(styles)
 export default class StyleButton extends Component {
-  constructor() {
-    super();
-    this.onToggle = (e) => {
-      e.preventDefault();
-      this.props.onToggle(this.props.style);
-    };
-  }
-
+  onToggle = () => {
+    this.props.onToggle(this.props.style);
+  };
   render() {
-    let className = 'RichEditor-styleButton';
-    if (this.props.active) {
-      className += ' RichEditor-activeButton';
-    }
-
+    const { icon: Icon, label, active, classes } = this.props;
     return (
-      <span
-        className={className}
-        onMouseDown={this.onToggle}
+      <Button
+        color={active ? 'primary' : 'default'}
+        aria-label={label}
+        onClick={this.onToggle}
+        className={classes.button}
+        // mini
       >
-        {this.props.label}
-      </span>
+        {Icon ? <Icon className={`${classes.icon} ${active ? '' : classes.unactive}`} /> : label}
+      </Button>
     );
   }
 }

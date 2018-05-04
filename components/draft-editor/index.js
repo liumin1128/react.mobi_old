@@ -239,6 +239,11 @@ export default class MyEditor extends PureComponent {
   }
 
   render() {
+    if (!global.window) {
+      return (<Head>
+        <link href="/static/draft-editor.css" rel="stylesheet" />
+      </Head>);
+    }
     const { editorState } = this.state;
     let className = 'RichEditor-editor';
     const contentState = editorState.getCurrentContent();
@@ -279,18 +284,12 @@ export default class MyEditor extends PureComponent {
           }}
         >un link</button>
 
-        <BlockStyleControls
-          editorState={editorState}
-          onToggle={this.toggleBlockType}
-        />
+
         <InlineStyleControls
           editorState={editorState}
           onToggle={this.toggleInlineStyle}
         />
-        <ColorControls
-          editorState={editorState}
-          onToggle={this.toggleColor}
-        />
+
         <div
           className={className}
           // onClick={this.focus}
