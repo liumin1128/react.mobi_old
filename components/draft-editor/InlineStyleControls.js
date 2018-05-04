@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
@@ -17,16 +17,16 @@ export default (props) => {
     .getCurrentInlineStyle();
 
   return (
-    <div className="RichEditor-controls">
+    <Fragment>
       {INLINE_STYLES.map(type =>
-        (<StyleButton
-          key={type.label}
-          icon={type.icon}
-          active={currentStyle.has(type.style)}
-          label={type.label}
-          onToggle={props.onToggle}
-          style={type.style}
-        />))}
-    </div>
+      (<StyleButton
+        key={type.label}
+        icon={type.icon}
+        active={currentStyle.has(type.style)}
+        label={type.label}
+        onToggle={props.onToggle}
+        style={type.style}
+      />))}
+    </Fragment>
   );
 };

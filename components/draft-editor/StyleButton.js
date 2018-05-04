@@ -9,7 +9,7 @@ const styles = theme => ({
     minWidth: 'auto',
     // width: 24,
     // height: 24,
-    padding: 4,
+    padding: 8,
   },
   unactive: {
     color: '#ccc',

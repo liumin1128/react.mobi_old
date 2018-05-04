@@ -258,37 +258,16 @@ export default class MyEditor extends PureComponent {
         <Head>
           <link href="/static/draft-editor.css" rel="stylesheet" />
         </Head>
-        <button onClick={this.getHtml}>gethtml</button>
-        <button
-          onClick={() => this.addMedia({
-            value: 'https://cdn.huaren58.com/FlKXUCac9xlIlMSS-EEkgmx_05HS?imageMogr2/thumbnail/!320x180r/gravity/Center/crop/320x180',
-            type: 'image',
-          })}
-        >插入图片</button>
-
-        <button
-          onClick={() => {
-            this.createEntity('test', 'IMMUTABLE');
-          }}
-        >插入块</button>
-
-        <button
-          onClick={() => {
-            this.promptForLink();
-          }}
-        >link</button>
-
-        <button
-          onClick={() => {
-            this.removeLink();
-          }}
-        >un link</button>
-
-
-        <InlineStyleControls
-          editorState={editorState}
-          onToggle={this.toggleInlineStyle}
-        />
+        <div className="RichEditor-controls">
+          <BlockStyleControls
+            editorState={editorState}
+            onToggle={this.toggleBlockType}
+          />
+          <InlineStyleControls
+            editorState={editorState}
+            onToggle={this.toggleInlineStyle}
+          />
+        </div>
 
         <div
           className={className}
