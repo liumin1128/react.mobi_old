@@ -36,6 +36,10 @@ const styles = theme => ({
     '&>img': {
       width: 'auto',
     },
+    [theme.breakpoints.down('xs')]: {
+      width: 40,
+      height: 40,
+    },
   },
   flex: {
     flex: 1,
@@ -56,10 +60,7 @@ export default class MyAppBar2 extends PureComponent {
     classes: PropTypes.object.isRequired,
   };
   render() {
-    console.log('this.props');
-    console.log(this.props);
     const { classes = {} } = this.props;
-    // console.log(this.props);
     return (
       <Headroom
         className={classes.root}
@@ -76,9 +77,12 @@ export default class MyAppBar2 extends PureComponent {
                   <Avatar className={classes.logo} src="/static/logo.svg" />
                 </IconButton>
               </Link>
-              <Hidden className={`${classes.flex}`} implementation="css" only={['sm', 'xs']}>
-                <Tabs />
-              </Hidden>
+              <div className={`${classes.flex}`}>
+                <Hidden className={`${classes.flex}`} implementation="css" only={['sm', 'xs']}>
+                  <Tabs />
+                </Hidden>
+              </div>
+
               <UserWithNoSSR />
             </Toolbar>
           </div>
