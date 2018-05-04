@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from 'material-ui/styles';
-import Appbar from '../components/appbar';
 
 const styles = theme => ({
   root: theme.container,
@@ -10,11 +9,10 @@ const styles = theme => ({
 export default class News extends PureComponent {
   render() {
     const { classes, children } = this.props;
-    return (<div>
-      <Appbar />
+    return (
       <div className={classes.root}>
         {children}
       </div>
-    </div>);
+    );
   }
 }
