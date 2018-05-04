@@ -43,7 +43,8 @@ export default class MeizituDetail extends PureComponent {
               <LazyLoad
                 debounce={300}
                 key={i.url}
-                height={i.height}
+                // height={i.height}
+                style={{ paddingTop: `${Math.floor((i.height / i.width) * 100)}%` }}
                 unmountIfInvisible
                 placeholder={<Code className={classes.load} />}
               >
