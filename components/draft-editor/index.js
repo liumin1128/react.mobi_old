@@ -88,6 +88,17 @@ export default class MyEditor extends PureComponent {
             spellCheck
           />
         </div>
+
+        {
+          <pre>
+            {JSON.stringify(this.getJson(), null, 2)}
+          </pre>
+        }
+        {
+          <pre>
+            {this.getHtml()}
+          </pre>
+        }
       </div>
     );
   }
