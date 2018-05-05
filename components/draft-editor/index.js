@@ -1,6 +1,6 @@
 import React, { PureComponent, createRef } from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
-// import Immutable from 'immutable';
+import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
 import Head from 'next/head';
 import InlineStyleControls from './InlineStyleControls';
 import BlockStyleControls from './BlockStyleControls';
@@ -13,6 +13,16 @@ export default class MyEditor extends PureComponent {
     this.editor = createRef();
     this.focus = () => this.editor.focus();
     this.onChange = editorState => this.setState({ editorState }, this.focus);
+  }
+  getHtml = () => {
+    const { editorState } = this.state;
+    const html = stateToHTML(editorState.getCurrentContent());
+    return html;
+  }
+  getJson = () => {
+    const { editorState } = this.state;
+    const raw = convertToRaw(editorState.getCurrentContent());
+    return raw;
   }
   toggleInlineStyle = (inlineStyle) => {
     this.onChange(RichUtils.toggleInlineStyle(
@@ -74,6 +84,7 @@ export default class MyEditor extends PureComponent {
             customStyleMap={this.customStyleMap}
             onChange={this.onChange}
             ref={(c) => { this.editor = c; }}
+            placeholder="输入文本..."
             spellCheck
           />
         </div>
