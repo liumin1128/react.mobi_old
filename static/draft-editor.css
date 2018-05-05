@@ -20,17 +20,24 @@ body {
   font-size: 16px;
   margin-top: 10px;
 }
+.RichEditor-root .RichEditor-menus {
+  /* margin: 0 -8px; */
+}
 
 .RichEditor-editor .public-DraftEditorPlaceholder-root,
 .RichEditor-editor .public-DraftEditor-content {
-  margin: 0 -15px -15px;
-  padding: 15px;
+  /* margin: 0 -15px -15px; */
+  /* padding: 15px; */
+  padding: 8px;
 }
 
 .RichEditor-editor .public-DraftEditor-content {
   min-height: 100px;
 }
 
+/* .RichEditor-editor .public-DraftEditor-content img {
+  min-height: 100px;
+} */
 
 .RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
   display: none;

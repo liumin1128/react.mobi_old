@@ -4,7 +4,10 @@ const Audio = (props) => {
   return (<audio
     controls
     src={props.src}
-    // style={styles.media}
+    // style={{
+    //   maxWidth: '100%',
+    //   border: '1px red solid',
+    // }}
   />);
 };
 
@@ -12,6 +15,13 @@ const Image = (props) => {
   return (<img
     src={props.src}
     // style={styles.media}
+    style={{
+      maxWidth: '100%',
+      margin: '0 auto',
+      maxHeight: 500,
+      display: 'block',
+      // border: '1px red solid',
+    }}
     alt=""
   />);
 };

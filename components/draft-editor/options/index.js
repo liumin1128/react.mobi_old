@@ -3,6 +3,7 @@ import MediaComponent from './Media';
 const blockStyleFn = (block) => {
   switch (block.getType()) {
     case 'blockquote': return 'RichEditor-blockquote';
+    case 'image': return 'RichEditor-image';
     default: return null;
   }
 };
@@ -13,6 +14,10 @@ const customStyleMap = {
     fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
     fontSize: 16,
     padding: 2,
+  },
+  image: {
+    maxWidth: '100%',
+    border: '1px red solid',
   },
 };
 

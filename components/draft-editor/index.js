@@ -51,9 +51,11 @@ export default class MyEditor extends PureComponent {
           <link href="/static/draft-editor.css" rel="stylesheet" />
         </Head>
 
-        <BlockStyleControls editorState={editorState} onChange={this.onChange} />
-        <InlineStyleControls editorState={editorState} onChange={this.onChange} />
-        <MediaControls editorState={editorState} onChange={this.onChange} />
+        <div className="RichEditor-menus">
+          <BlockStyleControls editorState={editorState} onChange={this.onChange} />
+          <InlineStyleControls editorState={editorState} onChange={this.onChange} />
+          <MediaControls editorState={editorState} onChange={this.onChange} />
+        </div>
 
         <div className={className} onClick={this.focus}>
           <Editor
