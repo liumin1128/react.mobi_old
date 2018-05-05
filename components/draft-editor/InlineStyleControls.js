@@ -9,7 +9,7 @@ const INLINE_STYLES = [
   { label: 'Bold', style: 'BOLD', icon: FormatBoldIcon },
   { label: 'Italic', style: 'ITALIC', icon: FormatItalicIcon },
   { label: 'Underline', style: 'UNDERLINE', icon: FormatUnderlinedIcon },
-  { label: 'Monospace', style: 'CODE', icon: CodeIcon },
+  // { label: 'Monospace', style: 'CODE', icon: CodeIcon },
 ];
 
 export default (props) => {

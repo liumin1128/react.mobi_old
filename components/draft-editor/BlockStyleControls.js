@@ -23,7 +23,7 @@ const BLOCK_TYPES = [
   { label: 'UL', style: 'unordered-list-item', icon: FormatListNumberedIcon },
   { label: 'OL', style: 'ordered-list-item', icon: FormatListBulletedIcon },
   { label: 'Code Block', style: 'code-block', icon: CodeBulletedIcon },
-  { label: 'MyCustomBlock', style: 'MyCustomBlock', icon: LooksOneIcon },
+  // { label: 'MyCustomBlock', style: 'MyCustomBlock', icon: LooksOneIcon },
 ];
 
 export default (props) => {
