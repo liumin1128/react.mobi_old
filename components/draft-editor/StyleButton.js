@@ -15,7 +15,7 @@ const styles = theme => ({
     color: '#ccc',
   },
   icon: {
-    fontSize: 24,
+    fontSize: 20,
   },
 });
 
