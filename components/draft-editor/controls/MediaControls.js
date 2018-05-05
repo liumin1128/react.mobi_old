@@ -3,6 +3,7 @@ import { EditorState, AtomicBlockUtils } from 'draft-js';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import PhotoIcon from '@material-ui/icons/Photo';
+import UploadImages from '../../upload/images';
 
 const styles = theme => ({
   button: {
@@ -41,18 +42,21 @@ export default class MediaButton extends Component {
   render() {
     const { editorState, onChange, classes } = this.props;
     return (
+
       <Button
         // color={active ? 'primary' : 'default'}
         // aria-label={label}
-        onClick={() => this.addMedia({
-          value: 'https://cdn.huaren58.com/FlKXUCac9xlIlMSS-EEkgmx_05HS?imageMogr2/thumbnail/!320x180r/gravity/Center/crop/320x180',
-          type: 'image',
-        })}
+          // onClick={() => this.addMedia({
+          //   value: 'https://cdn.huaren58.com/FlKXUCac9xlIlMSS-EEkgmx_05HS?imageMogr2/thumbnail/!320x180r/gravity/Center/crop/320x180',
+          //   type: 'image',
+          // })}
         className={classes.button}
-        // mini
       >
-        <PhotoIcon className={`${classes.icon} ${classes.unactive}`} />
+        <UploadImages onComplete={value => this.addMedia({ type: 'image', value })}>
+          <PhotoIcon className={`${classes.icon} ${classes.unactive}`} />
+        </UploadImages>
       </Button>
+
     );
   }
 }
