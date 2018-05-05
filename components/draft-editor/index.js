@@ -3,8 +3,10 @@ import Grid from 'material-ui/Grid';
 import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import Head from 'next/head';
-import InlineStyleControls from './InlineStyleControls';
-import BlockStyleControls from './BlockStyleControls';
+import InlineStyleControls from './controls/InlineStyleControls';
+import BlockStyleControls from './controls/BlockStyleControls';
+import MediaControls from './controls/MediaControls';
+import options from './options';
 
 
 export default class MyEditor extends PureComponent {
@@ -13,7 +15,10 @@ export default class MyEditor extends PureComponent {
     this.state = { editorState: EditorState.createEmpty() };
     this.editor = createRef();
     this.focus = () => this.editor.focus();
-    this.onChange = editorState => this.setState({ editorState }, this.focus);
+    this.onChange = editorState => this.setState(
+      { editorState },
+      () => setTimeout(() => this.focus(), 0),
+    );
   }
   getHtml = () => {
     const { editorState } = this.state;
@@ -25,21 +30,6 @@ export default class MyEditor extends PureComponent {
     const raw = convertToRaw(editorState.getCurrentContent());
     return raw;
   }
-
-  blockStyleFn = (block) => {
-    switch (block.getType()) {
-      case 'blockquote': return 'RichEditor-blockquote';
-      default: return null;
-    }
-  };
-  customStyleMap = {
-    CODE: {
-      backgroundColor: 'rgba(0, 0, 0, 0.05)',
-      fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-      fontSize: 16,
-      padding: 2,
-    },
-  };
 
   render() {
     if (!global.window) {
@@ -63,12 +53,12 @@ export default class MyEditor extends PureComponent {
 
         <BlockStyleControls editorState={editorState} onChange={this.onChange} />
         <InlineStyleControls editorState={editorState} onChange={this.onChange} />
+        <MediaControls editorState={editorState} onChange={this.onChange} />
 
         <div className={className} onClick={this.focus}>
           <Editor
+            {...options}
             editorState={editorState}
-            blockStyleFn={this.blockStyleFn}
-            customStyleMap={this.customStyleMap}
             onChange={this.onChange}
             ref={(c) => { this.editor = c; }}
             placeholder="输入文本..."
