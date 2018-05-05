@@ -255,9 +255,12 @@ export default class MyEditor extends PureComponent {
 
     return (
       <div className="RichEditor-root">
-        <Head>
-          <link href="/static/draft-editor.css" rel="stylesheet" />
-        </Head>
+
+        {
+          // <Head>
+          //   <link href="/static/draft-editor.css" rel="stylesheet" />
+          // </Head>
+        }
         <div className="RichEditor-controls">
           <BlockStyleControls
             editorState={editorState}
