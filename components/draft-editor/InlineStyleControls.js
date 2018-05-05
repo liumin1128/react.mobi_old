@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { RichUtils } from 'draft-js';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
@@ -12,9 +13,13 @@ const INLINE_STYLES = [
   // { label: 'Monospace', style: 'CODE', icon: CodeIcon },
 ];
 
-export default (props) => {
-  const currentStyle = props.editorState
-    .getCurrentInlineStyle();
+export default ({ editorState, onChange }) => {
+  const currentStyle = editorState.getCurrentInlineStyle();
+
+  const onToggle = inlineStyle => onChange(RichUtils.toggleInlineStyle(
+    editorState,
+    inlineStyle,
+  ));
 
   return (
     <Fragment>
@@ -24,7 +29,7 @@ export default (props) => {
         icon={type.icon}
         active={currentStyle.has(type.style)}
         label={type.label}
-        onToggle={props.onToggle}
+        onToggle={onToggle}
         style={type.style}
       />))}
     </Fragment>

@@ -25,18 +25,7 @@ export default class MyEditor extends PureComponent {
     const raw = convertToRaw(editorState.getCurrentContent());
     return raw;
   }
-  toggleInlineStyle = (inlineStyle) => {
-    this.onChange(RichUtils.toggleInlineStyle(
-      this.state.editorState,
-      inlineStyle,
-    ));
-  }
-  toggleBlockType = (blockType) => {
-    this.onChange(RichUtils.toggleBlockType(
-      this.state.editorState,
-      blockType,
-    ));
-  }
+
   blockStyleFn = (block) => {
     switch (block.getType()) {
       case 'blockquote': return 'RichEditor-blockquote';
@@ -51,6 +40,7 @@ export default class MyEditor extends PureComponent {
       padding: 2,
     },
   };
+
   render() {
     if (!global.window) {
       return (<Head>
@@ -70,14 +60,10 @@ export default class MyEditor extends PureComponent {
         <Head>
           <link href="/static/draft-editor.css" rel="stylesheet" />
         </Head>
-        <BlockStyleControls
-          editorState={editorState}
-          onToggle={this.toggleBlockType}
-        />
-        <InlineStyleControls
-          editorState={editorState}
-          onToggle={this.toggleInlineStyle}
-        />
+
+        <BlockStyleControls editorState={editorState} onChange={this.onChange} />
+        <InlineStyleControls editorState={editorState} onChange={this.onChange} />
+
         <div className={className} onClick={this.focus}>
           <Editor
             editorState={editorState}

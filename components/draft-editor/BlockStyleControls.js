@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { RichUtils } from 'draft-js';
 import LooksOneIcon from '@material-ui/icons/LooksOne';
 import LooksTwoIcon from '@material-ui/icons/LooksTwo';
 import Looks3Icon from '@material-ui/icons/Looks3';
@@ -26,13 +27,19 @@ const BLOCK_TYPES = [
   // { label: 'MyCustomBlock', style: 'MyCustomBlock', icon: LooksOneIcon },
 ];
 
-export default (props) => {
-  const { editorState } = props;
+export default ({ editorState, onChange }) => {
   const selection = editorState.getSelection();
+
   const blockType = editorState
     .getCurrentContent()
     .getBlockForKey(selection.getStartKey())
     .getType();
+
+  const onToggle = newblockType => onChange(RichUtils.toggleBlockType(
+    editorState,
+    newblockType,
+  ));
+
 
   return (
     <Fragment>
@@ -42,7 +49,7 @@ export default (props) => {
           icon={type.icon}
           active={type.style === blockType}
           label={type.label}
-          onToggle={props.onToggle}
+          onToggle={onToggle}
           style={type.style}
         />))}
     </Fragment>
