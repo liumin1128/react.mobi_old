@@ -6,13 +6,15 @@ import Head from 'next/head';
 import InlineStyleControls from './controls/InlineStyleControls';
 import BlockStyleControls from './controls/BlockStyleControls';
 import MediaControls from './controls/MediaControls';
+import LinkControls from './controls/LinkControls';
 import options from './options';
+import decorators from './decorators';
 
 
 export default class MyEditor extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = { editorState: EditorState.createEmpty() };
+    this.state = { editorState: EditorState.createEmpty(decorators) };
     this.editor = createRef();
     this.focus = () => this.editor.focus();
     this.onChange = editorState => this.setState(
@@ -54,6 +56,7 @@ export default class MyEditor extends PureComponent {
         <div className="RichEditor-menus">
           <BlockStyleControls editorState={editorState} onChange={this.onChange} />
           <InlineStyleControls editorState={editorState} onChange={this.onChange} />
+          <LinkControls editorState={editorState} onChange={this.onChange} />
           <MediaControls editorState={editorState} onChange={this.onChange} />
         </div>
 
