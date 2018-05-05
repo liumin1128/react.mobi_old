@@ -1,4 +1,5 @@
 import React, { PureComponent, createRef } from 'react';
+import Grid from 'material-ui/Grid';
 import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import Head from 'next/head';
@@ -90,15 +91,23 @@ export default class MyEditor extends PureComponent {
         </div>
 
         {
-          <pre>
-            {JSON.stringify(this.getJson(), null, 2)}
-          </pre>
+          <Grid container spacing={24}>
+            <Grid item md={4}>
+              <div dangerouslySetInnerHTML={{ __html: this.getHtml() }} />
+            </Grid>
+            <Grid item md={4}>
+              <pre>
+                {JSON.stringify(this.getJson(), null, 2)}
+              </pre>
+            </Grid>
+            <Grid item md={4}>
+              <pre>
+                {this.getHtml()}
+              </pre>
+            </Grid>
+          </Grid>
         }
-        {
-          <pre>
-            {this.getHtml()}
-          </pre>
-        }
+
       </div>
     );
   }
