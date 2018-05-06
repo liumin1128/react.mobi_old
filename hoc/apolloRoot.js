@@ -1,3 +1,3 @@
-import apolloRoot from '../lib/apolloRoot';
+import apolloRoot from './lib/apolloRoot';
 
 export default apolloRoot;

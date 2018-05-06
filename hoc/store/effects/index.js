@@ -1,6 +1,6 @@
-import request from '../../utils/request';
-import { setStorage } from '../../utils/store';
-import { USER_TOKEN_KEY } from '../../constants/base';
+import request from '../../../utils/request';
+import { setStorage } from '../../../utils/store';
+import { USER_TOKEN_KEY } from '../../../constants/base';
 
 export default {
   test: () => {

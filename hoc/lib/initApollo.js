@@ -5,8 +5,8 @@ import { onError } from 'apollo-link-error';
 import { withClientState } from 'apollo-link-state';
 import { ApolloLink } from 'apollo-link';
 import { Observable } from 'rxjs';
-import { getStorage } from '../utils/store';
-import { USER_TOKEN_KEY } from '../constants/base';
+import { getStorage } from '../../utils/store';
+import { USER_TOKEN_KEY } from '../../constants/base';
 
 let apolloClient = null;
 
