@@ -21,7 +21,8 @@ const styles = theme => ({
 
 @withStyles(styles)
 export default class StyleButton extends Component {
-  onToggle = () => {
+  onToggle = (e) => {
+    e.preventDefault();
     this.props.onToggle(this.props.style);
   };
   render() {
@@ -30,7 +31,7 @@ export default class StyleButton extends Component {
       <Button
         color={active ? 'primary' : 'default'}
         aria-label={label}
-        onClick={this.onToggle}
+        onMouseDown={this.onToggle}
         className={classes.button}
         // mini
       >
