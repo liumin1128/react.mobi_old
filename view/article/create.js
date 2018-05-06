@@ -3,17 +3,26 @@ import React, { PureComponent, Fragment, createRef } from 'react';
 import { withStyles } from 'material-ui/styles';
 import { graphql } from 'react-apollo';
 import { Form, Field } from 'react-final-form';
-import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
+import Color from 'color';
+import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Editor from '../../components/draft-editor';
 import TextField from '../../components/form/textField';
 import { CREATE_ARTICLE } from '../../graphql/article';
 import Appbar from './appbar';
 
+
 const styles = theme => ({
   root: {
     maxWidth: 700,
     margin: '0 auto',
+  },
+  media: {
+    // height: 300,
+    height: 0,
+    // paddingTop: '40%',
+    background: `linear-gradient(60deg, ${Color(theme.palette.primary.main).lighten(0.1)}, ${Color(theme.palette.primary.main).darken(0.1)})`,
+    // boxShadow: `0 4px 20px 0px ${Color(theme.palette.primary.main).alpha(0.3)}, 0 7px 10px -5px ${Color(theme.palette.primary.main).alpha(0.5)}`,
   },
 });
 
@@ -60,6 +69,14 @@ export default class CreateArticle extends PureComponent {
       <Fragment>
         <Appbar />
         <Card >
+          <CardMedia
+            className={classes.media}
+            style={{
+              // paddingTop: false ? '40%' : '10%',
+            }}
+            // image={'https://imgs.react.mobi/FmwTWWLlCqAAfbo1Bjo9ScjZmh50'}
+          />
+
           <CardContent>
             <div className={classes.root}>
               <Form
@@ -73,7 +90,7 @@ export default class CreateArticle extends PureComponent {
                       label="请输入标题"
                       type="text"
                       component={TextField}
-                      margin="normal"
+                      // margin="normal"
                       fullWidth
                     />
                     <br />
