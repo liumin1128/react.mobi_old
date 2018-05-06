@@ -51,11 +51,13 @@ export default class CreateArticle extends PureComponent {
                 <form onSubmit={handleSubmit}>
                   <Field
                     name="title"
-                    label="title"
+                    label="请输入标题"
                     type="text"
                     component={TextField}
                     margin="normal"
+                    fullWidth
                   />
+                  <br />
                   <br />
                   <Editor />
                   <br />

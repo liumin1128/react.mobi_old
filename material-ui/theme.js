@@ -6,6 +6,13 @@ const theme = createMuiTheme();
 
 export default createMuiTheme({
   overrides: {
+    MuiInput: {
+      underline: {
+        '&::before': {
+          background: '#ddd',
+        },
+      },
+    },
     MuiPaper: {
       elevation1: {
         boxShadow: '0 3px 5px 0px rgba(0, 0, 0, 0.05)',
