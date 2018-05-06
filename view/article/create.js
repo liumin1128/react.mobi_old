@@ -37,34 +37,32 @@ const styles = theme => ({
 @withStyles(styles)
 export default class CreateArticle extends PureComponent {
   state = {
-    cover: '',
+    cover: undefined,
   }
   editor = createRef()
-
-  handleSubmit = (values) => {
-    console.log('values');
-    console.log(values);
-    console.log(this.editor.getHtml());
-    // event.preventDefault();
-    // const form = event.target;
-    // const formData = new window.FormData(form);
-    // const content = formData.get('content');
-    // const title = formData.get('title');
-    // const cover = 'https://imgs.react.mobi/FmwTWWLlCqAAfbo1Bjo9ScjZmh50';
-    // // const { createArticle } = this.props;
-    // console.log('{ content, title, cover }');
-    // console.log({ content, title, cover });
-    // createArticle({ content, title, cover });
-    // form.reset();
+  handleSubmit = ({ title, tags }) => {
+    const { cover } = this.state;
+    const html = this.editor.getHtml();
+    const json = this.editor.getJson();
+    console.log(title, tags, html, json, cover);
+    const { createArticle } = this.props;
+    createArticle({
+      content: html,
+      rawData: JSON.stringify(json),
+      rawDataType: 'draft',
+      tags: tags.split(' '),
+      title,
+      cover,
+    });
   }
   validate = (values) => {
     const errors = {};
     if (!values.title) {
-      errors.title = '用户名不能为空';
+      errors.title = '文章标题不能留空';
     }
-    // if (!values.content) {
-    //   errors.content = '密码不能为空';
-    // }
+    if (!values.tags) {
+      errors.tags = '至少填写一个标签';
+    }
     return errors;
   }
   render() {
@@ -99,10 +97,19 @@ export default class CreateArticle extends PureComponent {
                   <form id="createArticleForm" onSubmit={handleSubmit}>
                     <Field
                       name="title"
-                      label="请输入标题"
+                      label="标题"
                       type="text"
                       component={TextField}
-                      // margin="normal"
+                      margin="normal"
+                      fullWidth
+                    />
+                    <Field
+                      name="tags"
+                      label="标签"
+                      type="text"
+                      placeholder="多个标签请用空格隔开"
+                      component={TextField}
+                      margin="normal"
                       fullWidth
                     />
                     <br />
