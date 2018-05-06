@@ -11,6 +11,9 @@ import Editor from '../../components/draft-editor';
 import TextField from '../../components/form/textField';
 import { CREATE_ARTICLE } from '../../graphql/article';
 import Appbar from './appbar';
+import { getStorage } from '../../utils/store';
+import { isServer } from '../../utils/common';
+import { STORE_USER_KEY } from '../../constants/base';
 
 const styles = theme => ({
   root: {
@@ -43,6 +46,13 @@ export default class CreateArticle extends PureComponent {
     return errors;
   }
   render() {
+    if (isServer()) {
+      return <Editor />;
+    }
+    const user = getStorage(STORE_USER_KEY);
+    if (!user || !user.token) {
+      return '尚未登录';
+    }
     const { classes } = this.props;
     const { cover } = this.state;
     return (
@@ -53,14 +63,18 @@ export default class CreateArticle extends PureComponent {
           const onSubmit = async ({ title, tags }) => {
             const html = this.editor.getHtml();
             const json = this.editor.getJson();
+            const input = {
+              content: html,
+              rawData: JSON.stringify(json),
+              rawDataType: 'draft',
+              tags: tags.split(' '),
+              title,
+              cover,
+            };
             try {
               const result = await createArticle({
-                content: html,
-                rawData: JSON.stringify(json),
-                rawDataType: 'draft',
-                tags: tags.split(' '),
-                title,
-                cover,
+                variables: { input },
+                refetchQueries: ['ArticleList'],
               });
               console.log('result');
               console.log(result);

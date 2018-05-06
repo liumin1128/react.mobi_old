@@ -7,7 +7,7 @@ import { ApolloLink } from 'apollo-link';
 import { Observable } from 'rxjs';
 import Snackbar from '../../components/snackbar';
 import { getStorage } from '../../utils/store';
-import { USER_TOKEN_KEY } from '../../constants/base';
+import { STORE_USER_KEY } from '../../constants/base';
 
 let apolloClient = null;
 
@@ -30,7 +30,9 @@ const cache = new InMemoryCache({
 
 
 const request = async (operation) => {
-  const token = await getStorage(USER_TOKEN_KEY);
+  const { token } = await getStorage(STORE_USER_KEY) || {};
+  console.log('token');
+  console.log(token);
   operation.setContext({
     headers: {
       Authorization: `bearer ${token}`,
