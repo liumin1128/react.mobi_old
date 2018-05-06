@@ -60,7 +60,7 @@ export default class MeizituDetail extends PureComponent {
         title: '福利图',
         content: '你懂得',
         cover: '',
-        url: '/meizitu',
+        url: '/mzitu',
       },
       {
         title: '历史上的今天',
