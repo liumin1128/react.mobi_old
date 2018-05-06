@@ -6,6 +6,9 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Avatar from 'material-ui/Avatar';
+import PhotoIcon from '@material-ui/icons/Photo';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import SaveIcon from '@material-ui/icons/Save';
 // import { CircularProgress } from 'material-ui/Progress';
 // import Hidden from 'material-ui/Hidden';
 import IconButton from 'material-ui/IconButton';
@@ -47,6 +50,9 @@ const styles = theme => ({
     fontSize: 16,
     height: 64,
   },
+  menuButton: {
+    marginRight: 0,
+  },
 });
 
 
@@ -68,14 +74,44 @@ export default class MyAppBar2 extends PureComponent {
                 </IconButton>
               </Link>
               <div className={`${classes.flex}`} />
-              <Button
+              <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                <PhotoIcon />
+              </IconButton>
+              <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                <LocalOfferIcon />
+              </IconButton>
+
+              <IconButton
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="Menu"
                 onClick={() => {
                   document
                   .getElementById('createArticleForm')
                   .dispatchEvent(new Event('submit', { cancelable: true }));
                 }}
-                color="inherit"
-              >保存</Button>
+              >
+                <SaveIcon />
+              </IconButton>
+              {
+
+
+//   <Button className={classes.button} variant="raised" size="small">
+//   <SaveIcon className={`${classes.leftIcon} ${classes.iconSmall}`} />
+//   保存
+// </Button>
+// <Button
+//   onClick={() => {
+//     document
+//     .getElementById('createArticleForm')
+//     .dispatchEvent(new Event('submit', { cancelable: true }));
+//   }}
+//   color="inherit"
+// >
+//   <SaveIcon className={`${classes.leftIcon} ${classes.iconSmall}`} />
+
+// 保存</Button>
+}
             </Toolbar>
           </div>
         </AppBar>
