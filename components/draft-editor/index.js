@@ -60,7 +60,7 @@ export default class MyEditor extends PureComponent {
           <MediaControls editorState={editorState} onChange={this.onChange} />
         </div>
 
-        <div className={className} onClick={this.focus}>
+        <div className={className}>
           <Editor
             {...options}
             editorState={editorState}
@@ -72,21 +72,21 @@ export default class MyEditor extends PureComponent {
         </div>
 
         {
-          <Grid container spacing={24}>
-            <Grid item md={4}>
-              <div dangerouslySetInnerHTML={{ __html: this.getHtml() }} />
-            </Grid>
-            <Grid item md={4}>
-              <pre>
-                {JSON.stringify(this.getJson(), null, 2)}
-              </pre>
-            </Grid>
-            <Grid item md={4}>
-              <pre>
-                {this.getHtml()}
-              </pre>
-            </Grid>
-          </Grid>
+          // <Grid container spacing={24}>
+          //   <Grid item md={4}>
+          //     <div dangerouslySetInnerHTML={{ __html: this.getHtml() }} />
+          //   </Grid>
+          //   <Grid item md={4}>
+          //     <pre>
+          //       {JSON.stringify(this.getJson(), null, 2)}
+          //     </pre>
+          //   </Grid>
+          //   <Grid item md={4}>
+          //     <pre>
+          //       {this.getHtml()}
+          //     </pre>
+          //   </Grid>
+          // </Grid>
         }
 
       </div>
