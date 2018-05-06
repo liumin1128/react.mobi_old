@@ -6,6 +6,7 @@ import { Form, Field } from 'react-final-form';
 import Color from 'color';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import Button from 'material-ui/Button';
+import Snackbar from '../../components/snackbar';
 import Editor from '../../components/draft-editor';
 import TextField from '../../components/form/textField';
 import { CREATE_ARTICLE } from '../../graphql/article';
@@ -52,16 +53,22 @@ export default class CreateArticle extends PureComponent {
           const onSubmit = async ({ title, tags }) => {
             const html = this.editor.getHtml();
             const json = this.editor.getJson();
-            const result = await createArticle({
-              content: html,
-              rawData: JSON.stringify(json),
-              rawDataType: 'draft',
-              tags: tags.split(' '),
-              title,
-              cover,
-            });
-            console.log('result');
-            console.log(result);
+            try {
+              const result = await createArticle({
+                content: html,
+                rawData: JSON.stringify(json),
+                rawDataType: 'draft',
+                tags: tags.split(' '),
+                title,
+                cover,
+              });
+              console.log('result');
+              console.log(result);
+            } catch (err) {
+              console.log('err');
+              console.log(err);
+              // Snackbar.error('文章发布失败');
+            }
           };
           return (
             <Fragment>
