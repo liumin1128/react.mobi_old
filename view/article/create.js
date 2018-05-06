@@ -27,16 +27,30 @@ const styles = theme => ({
 })
 @withStyles(styles)
 export default class CreateArticle extends PureComponent {
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new window.FormData(form);
-    const content = formData.get('content');
-    const title = formData.get('title');
-    const cover = 'https://imgs.react.mobi/FmwTWWLlCqAAfbo1Bjo9ScjZmh50';
-    const { createArticle } = this.props;
-    createArticle({ content, title, cover });
-    form.reset();
+  handleSubmit = (values) => {
+    console.log('values');
+    console.log(values);
+    // event.preventDefault();
+    // const form = event.target;
+    // const formData = new window.FormData(form);
+    // const content = formData.get('content');
+    // const title = formData.get('title');
+    // const cover = 'https://imgs.react.mobi/FmwTWWLlCqAAfbo1Bjo9ScjZmh50';
+    // // const { createArticle } = this.props;
+    // console.log('{ content, title, cover }');
+    // console.log({ content, title, cover });
+    // createArticle({ content, title, cover });
+    // form.reset();
+  }
+  validate = (values) => {
+    const errors = {};
+    if (!values.title) {
+      errors.title = '用户名不能为空';
+    }
+    // if (!values.content) {
+    //   errors.content = '密码不能为空';
+    // }
+    return errors;
   }
   render() {
     const { classes } = this.props;
@@ -48,10 +62,10 @@ export default class CreateArticle extends PureComponent {
             <div className={classes.root}>
               <Form
                 onSubmit={this.handleSubmit}
-              // initialValues={initialValue}
-              // validate={this.validate}
+                // initialValues={initialValue}
+                validate={this.validate}
                 render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
-                  <form onSubmit={handleSubmit}>
+                  <form id="createArticleForm" onSubmit={handleSubmit}>
                     <Field
                       name="title"
                       label="请输入标题"
@@ -62,17 +76,12 @@ export default class CreateArticle extends PureComponent {
                     />
                     <br />
                     <br />
-                    <Editor />
+
                     <br />
-                    <Button
-                    // variant="raised"
-                      color="primary"
-                      type="submit"
-                      size="large"
-                    >LET`S GO</Button>
                   </form>
               )}
               />
+              <Editor />
             </div>
           </CardContent>
         </Card>

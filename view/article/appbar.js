@@ -68,7 +68,14 @@ export default class MyAppBar2 extends PureComponent {
                 </IconButton>
               </Link>
               <div className={`${classes.flex}`} />
-              <Button color="inherit">保存</Button>
+              <Button
+                onClick={() => {
+                  document
+                  .getElementById('createArticleForm')
+                  .dispatchEvent(new Event('submit', { cancelable: true }));
+                }}
+                color="inherit"
+              >保存</Button>
             </Toolbar>
           </div>
         </AppBar>
