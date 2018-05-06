@@ -18,22 +18,20 @@ import timeago from '../../utils/timeago';
 const styles = theme => ({
   card: { marginBottom: theme.spacing.unit * 3 },
   media: {
-    height: 250,
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
+    paddingTop: '38%',
   },
   avatar: {
     backgroundColor: red[500],
   },
+  header: {
+    paddingBottom: 0,
+  },
   flexGrow: {
     flex: '1 1 auto',
+  },
+  title: {
+    fontSize: 16,
+    marginBottom: 8,
   },
 });
 
@@ -49,6 +47,7 @@ class RecipeReviewCard extends React.Component {
       classes,
       title,
       content,
+      cover,
       photos,
       desc,
       _id,
@@ -59,6 +58,11 @@ class RecipeReviewCard extends React.Component {
     return (
       <div>
         <Card className={classes.card}>
+          <CardMedia
+            className={classes.media}
+            image={cover}
+            style={{ paddingTop: cover ? '38%' : 0 }}
+          />
           <CardHeader
             avatar={
               <Avatar
@@ -74,6 +78,7 @@ class RecipeReviewCard extends React.Component {
             }
             title={(user || {}).nickname}
             subheader={timeago(createdAt)}
+            className={classes.header}
           />
           <Link key={_id} href={`/article/detail?id=${_id}`}>
             <a>
@@ -86,11 +91,11 @@ class RecipeReviewCard extends React.Component {
               //   />
               // )
             }
-              <CardContent>
-                <Typography type="headline" component="h2">
+              <CardContent >
+                <Typography className={classes.title} component="h2">
                   {title}
                 </Typography>
-                <Typography component="p">
+                <Typography component="p" color="textSecondary">
                   {desc ||
                     `${content
                       .replace(/<[^>]+>/g, '')

@@ -99,7 +99,7 @@ export default class CreateArticle extends PureComponent {
               <Card >
                 <CardMedia
                   className={classes.media}
-                  style={{ paddingTop: cover ? '40%' : 0 }}
+                  style={{ paddingTop: cover ? '38%' : 0 }}
                   image={cover}
                 />
                 <CardContent>

@@ -1,32 +1,28 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import Grid from 'material-ui/Grid';
-import styleRoot from '../../hoc/styleRoot';
-import apolloRoot from '../../hoc/apolloRoot';
-import reduxRoot from '../../hoc/reduxRoot';
-import { queryProvider } from '../../hoc/getQuery';
+import withRoot from '../../hoc';
 import List from '../../view/article/list';
 import Layout from '../../layout';
+import Calender from '../../components/calender';
+import Appbar from '../../components/appbar';
 
-@reduxRoot
-@apolloRoot
-@styleRoot
-@queryProvider
-export default class Articles extends PureComponent {
-  // static async getInitialProps({ query }) {
-  //   return { query };
-  // }
+@withRoot
+export default class Says extends PureComponent {
   render() {
     return (
-      <Layout>
-        <Grid container spacing={24}>
-          <Grid item xs={12} sm={12} md={8}>
-            <List />
+      <Fragment>
+        <Appbar />
+        <Layout>
+          <Grid container spacing={24}>
+            <Grid item xs={12} sm={12} md={8}>
+              <List />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+              <Calender />
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={12} md={4}>
-              2
-          </Grid>
-        </Grid>
-      </Layout>
+        </Layout>
+      </Fragment>
     );
   }
 }
