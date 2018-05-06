@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 // import dynamic from 'next/dynamic';
 import { withStyles } from 'material-ui/styles';
 import { graphql } from 'react-apollo';
@@ -8,6 +8,7 @@ import Button from 'material-ui/Button';
 import Editor from '../../components/draft-editor';
 import TextField from '../../components/form/textField';
 import { CREATE_ARTICLE } from '../../graphql/article';
+import Appbar from './appbar';
 
 const styles = theme => ({
   root: {
@@ -40,39 +41,43 @@ export default class CreateArticle extends PureComponent {
   render() {
     const { classes } = this.props;
     return (
-      <Card >
-        <CardContent>
-          <div className={classes.root}>
-            <Form
-              onSubmit={this.handleSubmit}
+      <Fragment>
+        <Appbar />
+        <Card >
+          <CardContent>
+            <div className={classes.root}>
+              <Form
+                onSubmit={this.handleSubmit}
               // initialValues={initialValue}
               // validate={this.validate}
-              render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
-                <form onSubmit={handleSubmit}>
-                  <Field
-                    name="title"
-                    label="请输入标题"
-                    type="text"
-                    component={TextField}
-                    margin="normal"
-                    fullWidth
-                  />
-                  <br />
-                  <br />
-                  <Editor />
-                  <br />
-                  <Button
+                render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
+                  <form onSubmit={handleSubmit}>
+                    <Field
+                      name="title"
+                      label="请输入标题"
+                      type="text"
+                      component={TextField}
+                      margin="normal"
+                      fullWidth
+                    />
+                    <br />
+                    <br />
+                    <Editor />
+                    <br />
+                    <Button
                     // variant="raised"
-                    color="primary"
-                    type="submit"
-                    size="large"
-                  >LET`S GO</Button>
-                </form>
+                      color="primary"
+                      type="submit"
+                      size="large"
+                    >LET`S GO</Button>
+                  </form>
               )}
-            />
-          </div>
-        </CardContent>
-      </Card>
+              />
+            </div>
+          </CardContent>
+        </Card>
+      </Fragment>
+
     );
   }
 }
