@@ -74,7 +74,7 @@ export default class MeizituDetail extends PureComponent {
         list.map(i => (<Card className={classes.card}>
           <CardMedia
             className={classes.media}
-            title="Contemplative Reptile"
+            title={i.title}
             style={{ paddingTop: i.cover ? '38%' : 0 }}
           />
           <CardContent className={classes.root}>
