@@ -31,8 +31,6 @@ const cache = new InMemoryCache({
 
 const request = async (operation) => {
   const { token } = await getStorage(STORE_USER_KEY) || {};
-  console.log('token');
-  console.log(token);
   operation.setContext({
     headers: {
       Authorization: `bearer ${token}`,
