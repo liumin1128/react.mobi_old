@@ -5,6 +5,7 @@ import { onError } from 'apollo-link-error';
 import { withClientState } from 'apollo-link-state';
 import { ApolloLink } from 'apollo-link';
 import { Observable } from 'rxjs';
+import Snackbar from '../../components/snackbar';
 import { getStorage } from '../../utils/store';
 import { USER_TOKEN_KEY } from '../../constants/base';
 
@@ -69,6 +70,7 @@ function create(initialState) {
         if (graphQLErrors) {
           console.log('graphQLErrors');
           console.log(graphQLErrors);
+          Snackbar.error(graphQLErrors[0].message);
           // sendToLoggingService(graphQLErrors);
         }
         if (networkError) {

@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment, createRef } from 'react';
-// import dynamic from 'next/dynamic';
+import { Mutation } from 'react-apollo';
 import { withStyles } from 'material-ui/styles';
 import { graphql } from 'react-apollo';
 import { Form, Field } from 'react-final-form';
@@ -10,7 +10,6 @@ import Editor from '../../components/draft-editor';
 import TextField from '../../components/form/textField';
 import { CREATE_ARTICLE } from '../../graphql/article';
 import Appbar from './appbar';
-
 
 const styles = theme => ({
   root: {
@@ -26,35 +25,12 @@ const styles = theme => ({
   },
 });
 
-@graphql(CREATE_ARTICLE, {
-  props: ({ mutate }) => ({
-    createArticle: input => mutate({
-      variables: { input },
-      refetchQueries: ['ArticleList'],
-    }),
-  }),
-})
 @withStyles(styles)
 export default class CreateArticle extends PureComponent {
   state = {
     cover: undefined,
   }
   editor = createRef()
-  handleSubmit = ({ title, tags }) => {
-    const { cover } = this.state;
-    const html = this.editor.getHtml();
-    const json = this.editor.getJson();
-    console.log(title, tags, html, json, cover);
-    const { createArticle } = this.props;
-    createArticle({
-      content: html,
-      rawData: JSON.stringify(json),
-      rawDataType: 'draft',
-      tags: tags.split(' '),
-      title,
-      cover,
-    });
-  }
   validate = (values) => {
     const errors = {};
     if (!values.title) {
@@ -69,62 +45,81 @@ export default class CreateArticle extends PureComponent {
     const { classes } = this.props;
     const { cover } = this.state;
     return (
-      <Fragment>
-        <Appbar
-          onSetCover={(data) => {
-            this.setState({ cover: data });
-          }}
-          onSave={() => {
-              document
-              .getElementById('createArticleForm')
-              .dispatchEvent(new Event('submit', { cancelable: true }));
-          }}
-        />
-        <Card >
-          <CardMedia
-            className={classes.media}
-            style={{ paddingTop: cover ? '40%' : 0 }}
-            image={cover}
-          />
-
-          <CardContent>
-            <div className={classes.root}>
-              <Form
-                onSubmit={this.handleSubmit}
-                // initialValues={initialValue}
-                validate={this.validate}
-                render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
-                  <form id="createArticleForm" onSubmit={handleSubmit}>
-                    <Field
-                      name="title"
-                      label="标题"
-                      type="text"
-                      component={TextField}
-                      margin="normal"
-                      fullWidth
-                    />
-                    <Field
-                      name="tags"
-                      label="标签"
-                      type="text"
-                      placeholder="多个标签请用空格隔开"
-                      component={TextField}
-                      margin="normal"
-                      fullWidth
-                    />
-                    <br />
-                    <br />
-                  </form>
-              )}
+      <Mutation mutation={CREATE_ARTICLE}>
+        {(createArticle, { loading, error, data = {} }) => {
+          // if (loading) return 'Loading...';
+          // if (error) return `Error! ${error.message}`;
+          const onSubmit = async ({ title, tags }) => {
+            const html = this.editor.getHtml();
+            const json = this.editor.getJson();
+            const result = await createArticle({
+              content: html,
+              rawData: JSON.stringify(json),
+              rawDataType: 'draft',
+              tags: tags.split(' '),
+              title,
+              cover,
+            });
+            console.log('result');
+            console.log(result);
+          };
+          return (
+            <Fragment>
+              <Appbar
+                onSetCover={(url) => {
+                  this.setState({ cover: url });
+                }}
+                onSave={() => {
+                    document
+                    .getElementById('createArticleForm')
+                    .dispatchEvent(new Event('submit', { cancelable: true }));
+                }}
               />
-              <Editor
-                ref={(c) => { this.editor = c; }}
-              />
-            </div>
-          </CardContent>
-        </Card>
-      </Fragment>
-
-    );
+              <Card >
+                <CardMedia
+                  className={classes.media}
+                  style={{ paddingTop: cover ? '40%' : 0 }}
+                  image={cover}
+                />
+                <CardContent>
+                  <div className={classes.root}>
+                    <Form
+                      onSubmit={onSubmit}
+                      // initialValues={initialValue}
+                      validate={this.validate}
+                      render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
+                        <form id="createArticleForm" onSubmit={handleSubmit}>
+                          <Field
+                            name="title"
+                            label="标题"
+                            type="text"
+                            component={TextField}
+                            margin="normal"
+                            fullWidth
+                          />
+                          <Field
+                            name="tags"
+                            label="标签"
+                            type="text"
+                            placeholder="多个标签请用空格隔开"
+                            component={TextField}
+                            margin="normal"
+                            fullWidth
+                          />
+                          <br />
+                          <br />
+                        </form>
+                    )}
+                    />
+                    <Editor
+                      ref={(c) => { this.editor = c; }}
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            </Fragment>
+          );
+        }}
+      </Mutation>);
   }
 }
