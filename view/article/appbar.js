@@ -13,6 +13,7 @@ import SaveIcon from '@material-ui/icons/Save';
 // import Hidden from 'material-ui/Hidden';
 import IconButton from 'material-ui/IconButton';
 import Button from 'material-ui/Button';
+import UploadImage from '../../components/upload/images';
 // import Headroom from 'react-headroom';
 // import Search from './search';
 // import Tabs from './tabs';
@@ -62,7 +63,7 @@ export default class MyAppBar2 extends PureComponent {
     classes: PropTypes.object.isRequired,
   };
   render() {
-    const { classes = {} } = this.props;
+    const { classes = {}, onSetCover, onSave } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="fixed">
@@ -74,44 +75,34 @@ export default class MyAppBar2 extends PureComponent {
                 </IconButton>
               </Link>
               <div className={`${classes.flex}`} />
-              <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                <PhotoIcon />
-              </IconButton>
+              <UploadImage onComplete={onSetCover}>
+                <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                  <PhotoIcon />
+                </IconButton>
+              </UploadImage>
               <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                 <LocalOfferIcon />
               </IconButton>
-
-              <IconButton
-                className={classes.menuButton}
-                color="inherit"
-                aria-label="Menu"
-                onClick={() => {
-                  document
-                  .getElementById('createArticleForm')
-                  .dispatchEvent(new Event('submit', { cancelable: true }));
-                }}
-              >
+              <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={onSave} >
                 <SaveIcon />
               </IconButton>
               {
+                //   <Button className={classes.button} variant="raised" size="small">
+                //   <SaveIcon className={`${classes.leftIcon} ${classes.iconSmall}`} />
+                //   保存
+                // </Button>
+                // <Button
+                //   onClick={() => {
+                //     document
+                //     .getElementById('createArticleForm')
+                //     .dispatchEvent(new Event('submit', { cancelable: true }));
+                //   }}
+                //   color="inherit"
+                // >
+                //   <SaveIcon className={`${classes.leftIcon} ${classes.iconSmall}`} />
 
-
-//   <Button className={classes.button} variant="raised" size="small">
-//   <SaveIcon className={`${classes.leftIcon} ${classes.iconSmall}`} />
-//   保存
-// </Button>
-// <Button
-//   onClick={() => {
-//     document
-//     .getElementById('createArticleForm')
-//     .dispatchEvent(new Event('submit', { cancelable: true }));
-//   }}
-//   color="inherit"
-// >
-//   <SaveIcon className={`${classes.leftIcon} ${classes.iconSmall}`} />
-
-// 保存</Button>
-}
+                // 保存</Button>
+              }
             </Toolbar>
           </div>
         </AppBar>

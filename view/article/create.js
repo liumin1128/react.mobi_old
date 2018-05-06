@@ -36,7 +36,11 @@ const styles = theme => ({
 })
 @withStyles(styles)
 export default class CreateArticle extends PureComponent {
+  state = {
+    cover: '',
+  }
   editor = createRef()
+
   handleSubmit = (values) => {
     console.log('values');
     console.log(values);
@@ -65,16 +69,24 @@ export default class CreateArticle extends PureComponent {
   }
   render() {
     const { classes } = this.props;
+    const { cover } = this.state;
     return (
       <Fragment>
-        <Appbar />
+        <Appbar
+          onSetCover={(data) => {
+            this.setState({ cover: data });
+          }}
+          onSave={() => {
+              document
+              .getElementById('createArticleForm')
+              .dispatchEvent(new Event('submit', { cancelable: true }));
+          }}
+        />
         <Card >
           <CardMedia
             className={classes.media}
-            style={{
-              // paddingTop: false ? '40%' : '10%',
-            }}
-            // image={'https://imgs.react.mobi/FmwTWWLlCqAAfbo1Bjo9ScjZmh50'}
+            style={{ paddingTop: cover ? '40%' : 0 }}
+            image={cover}
           />
 
           <CardContent>
