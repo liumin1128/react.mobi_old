@@ -1,11 +1,18 @@
 import { createMuiTheme } from 'material-ui/styles';
 import blue from 'material-ui/colors/blue';
 import red from 'material-ui/colors/red';
+import Color from 'color';
 
 const theme = createMuiTheme();
 
 export default createMuiTheme({
   overrides: {
+    MuiAppBar: {
+      root: {
+        background: `linear-gradient(60deg, ${Color('#2196f3').lighten(0.1)}, ${Color('#2196f3').darken(0.1)})`,
+        boxShadow: `0 4px 20px 0px ${Color('#2196f3').alpha(0.3)}, 0 7px 10px -5px ${Color('#2196f3').alpha(0.5)}`,
+      },
+    },
     MuiInput: {
       underline: {
         '&::before': {
