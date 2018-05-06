@@ -9,6 +9,7 @@ import MediaControls from './controls/MediaControls';
 import LinkControls from './controls/LinkControls';
 import options from './options';
 import decorators from './decorators';
+import { isServer } from '../../utils/common';
 
 export default class MyEditor extends PureComponent {
   constructor(props) {
@@ -28,9 +29,8 @@ export default class MyEditor extends PureComponent {
     const raw = convertToRaw(editorState.getCurrentContent());
     return raw;
   }
-
   render() {
-    if (!global.window) {
+    if (isServer()) {
       return (<Head>
         <link href="/static/draft-editor.css" rel="stylesheet" />
       </Head>);
@@ -45,9 +45,7 @@ export default class MyEditor extends PureComponent {
     }
     return (
       <div className="RichEditor-root">
-        <Head>
-          <link href="/static/draft-editor.css" rel="stylesheet" />
-        </Head>
+
 
         <div className="RichEditor-menus">
           <BlockStyleControls editorState={editorState} onChange={this.onChange} />

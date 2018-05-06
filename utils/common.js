@@ -7,6 +7,10 @@ export function isWeixin() {
   }
 }
 
+export function isServer() {
+  return typeof window === 'undefined' || typeof document === 'undefined';
+}
+
 export function isTel(Tel) {
   const re = new RegExp(/^((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)$/);
   const retu = Tel.match(re);
