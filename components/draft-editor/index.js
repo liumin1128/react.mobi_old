@@ -1,6 +1,6 @@
 import React, { PureComponent, createRef } from 'react';
 import Grid from 'material-ui/Grid';
-import { Editor, EditorState, convertToRaw } from 'draft-js';
+import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import Head from 'next/head';
 import InlineStyleControls from './controls/InlineStyleControls';
@@ -14,7 +14,10 @@ import { isServer } from '../../utils/common';
 export default class MyEditor extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = { editorState: EditorState.createEmpty(decorators) };
+    this.state = { editorState: this.props.content
+      ? EditorState.createEmpty(convertFromRaw(this.props.content), decorators)
+      : EditorState.createEmpty(decorators),
+    };
     this.editor = createRef();
     this.focus = () => this.editor.focus();
     this.onChange = editorState => this.setState({ editorState });

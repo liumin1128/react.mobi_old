@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent, Fragment, createRef } from 'react';
 // import dynamic from 'next/dynamic';
 import { withStyles } from 'material-ui/styles';
 import { graphql } from 'react-apollo';
@@ -27,9 +27,11 @@ const styles = theme => ({
 })
 @withStyles(styles)
 export default class CreateArticle extends PureComponent {
+  editor = createRef()
   handleSubmit = (values) => {
     console.log('values');
     console.log(values);
+    console.log(this.editor.getHtml());
     // event.preventDefault();
     // const form = event.target;
     // const formData = new window.FormData(form);
@@ -76,12 +78,12 @@ export default class CreateArticle extends PureComponent {
                     />
                     <br />
                     <br />
-
-                    <br />
                   </form>
               )}
               />
-              <Editor />
+              <Editor
+                ref={(c) => { this.editor = c; }}
+              />
             </div>
           </CardContent>
         </Card>
