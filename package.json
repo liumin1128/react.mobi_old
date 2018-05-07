@@ -41,7 +41,7 @@
     "html-minifier": "^3.5.15",
     "immutable": "^3.8.2",
     "isomorphic-unfetch": "^2.0.0",
-    "material-ui": "^1.0.0-beta.44",
+    "material-ui": "^1.0.0-beta.45",
     "next": "^6.0.0",
     "next-redux-wrapper": "^2.0.0-beta.4",
     "normalize.css": "^8.0.0",
