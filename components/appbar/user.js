@@ -7,7 +7,11 @@ import Login from '../../view/login';
 import { modalConsumer } from '../../hoc/widthModal';
 import { getStorage, clearStorage, removeStorage } from '../../utils/store';
 import { STORE_USER_KEY } from '../../constants/base';
+import { isServerSide } from '../../utils/common';
+import nossr from '../../hoc/nossr';
 
+
+@nossr
 @modalConsumer
 export default class UserAvatar extends PureComponent {
   state = {
@@ -28,6 +32,11 @@ export default class UserAvatar extends PureComponent {
   }
 
   render() {
+    if (isServerSide()) {
+      return (<Button
+        color="inherit"
+      >Login</Button>);
+    }
     console.log('-------------------------------');
     const { modal } = this.props;
     const { token, userInfo = {} } = getStorage(STORE_USER_KEY) || {};

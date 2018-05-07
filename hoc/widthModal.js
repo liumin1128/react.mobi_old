@@ -58,14 +58,19 @@ export function modalProvider(WrappedComponent) {
 }
 
 export function modalConsumer(WrappedComponent) {
-  return function ThemedComponent(props) {
-    return (
-      <ModalContext.Consumer>
-        {(value) => {
-          return <WrappedComponent {...props} {...value} />;
-        }}
-      </ModalContext.Consumer>
-    );
+  return class ThemedComponent extends PureComponent {
+    render() {
+      return (
+        <ModalContext.Consumer>
+          {(value) => {
+            return (<WrappedComponent
+              {...this.props}
+              {...value}
+            />);
+          }}
+        </ModalContext.Consumer>
+      );
+    }
   };
 }
 

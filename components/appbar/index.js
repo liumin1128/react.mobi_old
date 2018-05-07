@@ -12,12 +12,11 @@ import IconButton from 'material-ui/IconButton';
 import Headroom from 'react-headroom';
 import Search from './search';
 import Tabs from './tabs';
-// import UserAvatar from './user';
-
-const UserWithNoSSR = dynamic(import('./user'), {
-  ssr: false,
-  loading: () => <CircularProgress size={32} color="inherit" />,
-});
+import UserAvatar from './user';
+// const UserWithNoSSR = dynamic(import('./user'), {
+//   ssr: false,
+//   loading: () => <CircularProgress size={32} color="inherit" />,
+// });
 
 const styles = theme => ({
   root: {
@@ -82,8 +81,7 @@ export default class MyAppBar2 extends PureComponent {
                   <Tabs />
                 </Hidden>
               </div>
-
-              <UserWithNoSSR />
+              <UserAvatar />
             </Toolbar>
           </div>
         </AppBar>
