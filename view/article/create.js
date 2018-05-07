@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment, createRef } from 'react';
 import { Mutation } from 'react-apollo';
 import { withStyles } from 'material-ui/styles';
-import { graphql } from 'react-apollo';
+import Router from 'next/router';
 import { Form, Field } from 'react-final-form';
 import Color from 'color';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
@@ -78,6 +78,8 @@ export default class CreateArticle extends PureComponent {
               });
               console.log('result');
               console.log(result);
+              Snackbar.success('发布成功！');
+              Router.push('/article');
             } catch (err) {
               console.log('err');
               console.log(err);
