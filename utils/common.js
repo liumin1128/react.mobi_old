@@ -7,7 +7,7 @@ export function isWeixin() {
   }
 }
 
-export function isServer() {
+export function isServerSide() {
   return typeof window === 'undefined' || typeof document === 'undefined';
 }
 

@@ -9,7 +9,7 @@ import MediaControls from './controls/MediaControls';
 import LinkControls from './controls/LinkControls';
 import options from './options';
 import decorators from './decorators';
-import { isServer } from '../../utils/common';
+import { isServerSide } from '../../utils/common';
 
 export default class MyEditor extends PureComponent {
   constructor(props) {
@@ -33,7 +33,7 @@ export default class MyEditor extends PureComponent {
     return raw;
   }
   render() {
-    if (isServer()) {
+    if (isServerSide()) {
       return (<Head>
         <link href="/static/draft-editor.css" rel="stylesheet" />
       </Head>);

@@ -12,7 +12,7 @@ import TextField from '../../components/form/textField';
 import { CREATE_ARTICLE } from '../../graphql/article';
 import Appbar from './appbar';
 import { getStorage } from '../../utils/store';
-import { isServer } from '../../utils/common';
+import { isServerSide } from '../../utils/common';
 import { STORE_USER_KEY } from '../../constants/base';
 
 const styles = theme => ({
@@ -46,7 +46,7 @@ export default class CreateArticle extends PureComponent {
     return errors;
   }
   render() {
-    if (isServer()) {
+    if (isServerSide()) {
       return <Editor />;
     }
     const user = getStorage(STORE_USER_KEY);
