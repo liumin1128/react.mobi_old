@@ -68,12 +68,15 @@ function create(initialState) {
     link: ApolloLink.from([
       onError(({ graphQLErrors, networkError }) => {
         if (graphQLErrors) {
-          console.log('graphQLErrors');
-          console.log(graphQLErrors);
+          // console.log('graphQLErrors');
+          // console.log(graphQLErrors);
           Snackbar.error(graphQLErrors[0].message);
+          // throw new Error(graphQLErrors);
           // sendToLoggingService(graphQLErrors);
+          // throw graphQLErrors[0];
         }
         if (networkError) {
+          Snackbar.error('网络连接失败');
           console.log('logoutUser');
           console.log(networkError);
           // logoutUser();

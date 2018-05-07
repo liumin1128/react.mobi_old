@@ -66,7 +66,11 @@ export default class MySnackbar extends PureComponent {
         autoHideDuration={2000}
         onClose={this.handleClose}
         onExited={this.handleExited}
-        SnackbarContentProps={{
+        // SnackbarContentProps={{
+        //   className: classes.root,
+        //   'aria-describedby': 'message-id',
+        // }}
+        snackbarcontentprops={{
           className: classes.root,
           'aria-describedby': 'message-id',
         }}
