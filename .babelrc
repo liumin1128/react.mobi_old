@@ -10,6 +10,7 @@
   ],
   "env": {
     "production": {
+      "presets": ["minify"],
       "plugins": [
         "transform-remove-console"
       ]
