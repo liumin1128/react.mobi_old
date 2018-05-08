@@ -4,22 +4,24 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import LazyLoad from 'react-lazyload';
-import ContentLoader, { Code } from 'react-content-loader';
+// import ContentLoader, { Code } from 'react-content-loader';
 import { BXGIF_DETAIL } from '../../graphql/bxgif';
 
 
 const styles = theme => ({
-  load: {
-    display: 'block',
-    maxWidth: 500,
-    marginBottom: theme.spacing.unit * 3,
-    margin: '0 auto',
-    padding: 24,
-  },
   card: {
     maxWidth: 500,
     marginBottom: theme.spacing.unit * 3,
     margin: '0 auto',
+  },
+  load: {
+    padding: 0,
+    margin: '0 auto',
+    display: 'block',
+    width: '100%',
+    height: 0,
+    overflow: 'hidden',
+    background: 'rgba(0,0,0,0.05)',
   },
   media: {
     height: 0,
@@ -40,28 +42,35 @@ export default class MeizituDetail extends PureComponent {
             <h3>{detail.title}</h3>
             <br />
             {detail.list.map(i => (
-              <LazyLoad
-                debounce={300}
+
+              <Card
                 key={i.url}
-                // height={i.height}
-                style={{ paddingTop: `${Math.floor((i.height / i.width) * 100)}%` }}
-                unmountIfInvisible
-                placeholder={<Code className={classes.load} />}
+                className={classes.card}
               >
-                <Card className={classes.card}>
+                <LazyLoad
+                  debounce={300}
+                  unmountIfInvisible
+                  placeholder={
+                    <div
+                      style={{ paddingTop: `${Math.floor((i.height / i.width) * 100)}%` }}
+                      className={classes.load}
+                    />
+                  }
+                >
                   <CardMedia
                     className={classes.media}
                     style={{ paddingTop: `${Math.floor((i.height / i.width) * 100)}%` }}
                     image={i.url}
                     title={`${i.width},${i.height}`}
                   />
-                  <CardContent>
-                    <Typography component="p">
-                      {i.title}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </LazyLoad>
+                </LazyLoad>
+                <CardContent>
+                  <Typography component="p">
+                    {i.title}
+                  </Typography>
+                </CardContent>
+              </Card>
+
             ))}
           </div>
         );
