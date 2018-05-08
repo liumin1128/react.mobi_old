@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import Grid from 'material-ui/Grid';
 import withRoot from '../../hoc';
 import List from '../../view/explore/list';
-import Layout from '../../layout';
+import Layout from '../../components/layout';
 import Calender from '../../components/calender';
 import Appbar from '../../components/appbar';
 

@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import Grid from 'material-ui/Grid';
 import withRoot from '../../hoc';
-import Layout from '../../layout';
+import Layout from '../../components/layout';
 import Create from '../../view/article/create';
 
 @withRoot

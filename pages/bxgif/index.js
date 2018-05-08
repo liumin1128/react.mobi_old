@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Grid from 'material-ui/Grid';
 import List from '../../view/bxgif/list';
 import withRoot from '../../hoc';
-import Layout from '../../layout';
+import Layout from '../../components/layout';
 
 
 @withRoot

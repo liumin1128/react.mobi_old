@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from 'material-ui/styles';
-import { pageLoading } from '../hoc/pageLoading';
+import { pageLoading } from '../../hoc/pageLoading';
 
 const styles = theme => ({
   root: theme.container,
