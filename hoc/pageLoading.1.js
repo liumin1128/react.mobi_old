@@ -15,16 +15,16 @@ export function pageLoading(WrappedComponent) {
     }
     change = () => {
       const { pathname, pageLoader } = Router.router;
-      console.log('pageLoader.pageCache');
-      console.log(pageLoader.pageCache);
+      // console.log('pageLoader.pageCache');
+      // console.log(pageLoader.pageCache);
       this.setState({
         keys: Object.keys(pageLoader.pageCache),
       });
       Router.onRouteChangeStart = (url) => {
-        console.log('this.state.keys');
-        console.log(this.state.keys);
-        console.log('this.state.keys.indexOf(url) === -1');
-        console.log(this.state.keys.indexOf(url) === -1);
+        // console.log('this.state.keys');
+        // console.log(this.state.keys);
+        // console.log('this.state.keys.indexOf(url) === -1');
+        // console.log(this.state.keys.indexOf(url) === -1);
         if (this.state.keys.indexOf(url) === -1) {
           this.setState({
             show: false,
@@ -47,7 +47,7 @@ export function pageLoading(WrappedComponent) {
       };
     }
     render() {
-      console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+      // console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
       if (!this.state.show) {
         return (<Loading />);
       }
