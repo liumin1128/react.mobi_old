@@ -5,4 +5,10 @@ import reduxRoot from './reduxRoot';
 import { queryProvider } from './getQuery';
 import { modalProvider } from './widthModal';
 
-export default compose(reduxRoot, apolloRoot, styleRoot, queryProvider, modalProvider);
+export default compose(
+  reduxRoot,
+  apolloRoot,
+  styleRoot,
+  queryProvider,
+  modalProvider,
+);
