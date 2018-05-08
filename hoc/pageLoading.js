@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import Router from 'next/router';
-// import  from '..'
-// import { isServerSide } from '../utils/common';
+import Loading from '../components/loading/page';
 
 export function pageLoading(WrappedComponent) {
   return class PageLoadingComponent extends PureComponent {
@@ -29,14 +28,11 @@ export function pageLoading(WrappedComponent) {
       // };
     }
     render() {
-      const { loading = 'loading', ...other } = this.props;
       if (!this.state.show) {
-        return (<div>
-          {this.state.show ? '1111' : '2222'}
-        </div>);
+        return (<Loading />);
       }
       return (
-        <WrappedComponent {...other} />
+        <WrappedComponent {...this.props} />
       );
     }
   };
