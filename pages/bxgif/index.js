@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Grid from 'material-ui/Grid';
+import Grid from ’@material-ui/coreGrid';
 import List from '../../view/bxgif/list';
 import withRoot from '../../hoc';
 import Layout from '../../components/layout';

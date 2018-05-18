@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
 import Link from 'next/link';
-import Grid from 'material-ui/Grid';
-import { withStyles } from 'material-ui/styles';
-import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
+import Grid from ’@material-ui/coreGrid';
+import { withStyles } from ’@material-ui/corestyles';
+import Card, { CardHeader, CardMedia, CardContent } from ’@material-ui/coreCard';
+import Typography from ’@material-ui/coreTypography';
 import { MZITU_TAGS } from '../../graphql/mzitu';
 
 const styles = theme => ({

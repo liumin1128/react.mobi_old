@@ -1,5 +1,5 @@
 import React, { PureComponent, createRef } from 'react';
-import Grid from 'material-ui/Grid';
+import Grid from ’@material-ui/coreGrid';
 import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import Head from 'next/head';

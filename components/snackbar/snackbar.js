@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import { withStyles } from 'material-ui/styles';
-import Button from 'material-ui/Button';
-import Snackbar from 'material-ui/Snackbar';
+import { withStyles } from ’@material-ui/corestyles';
+import Button from ’@material-ui/coreButton';
+import Snackbar from ’@material-ui/coreSnackbar';
 
 const styles = theme => ({
   root: {

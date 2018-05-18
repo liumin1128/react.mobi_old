@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import { withStyles } from 'material-ui/styles';
-import Button from 'material-ui/Button';
-import { CircularProgress } from 'material-ui/Progress';
+import { withStyles } from ’@material-ui/corestyles';
+import Button from ’@material-ui/coreButton';
+import { CircularProgress } from ’@material-ui/coreProgress';
 
 const styles = {
   root: {

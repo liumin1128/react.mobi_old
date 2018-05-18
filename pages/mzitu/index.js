@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { withStyles } from 'material-ui/styles';
-import Grid from 'material-ui/Grid';
+import { withStyles } from ’@material-ui/corestyles';
+import Grid from ’@material-ui/coreGrid';
 import styleRoot from '../../hoc/styleRoot';
 import apolloRoot from '../../hoc/apolloRoot';
 import reduxRoot from '../../hoc/reduxRoot';

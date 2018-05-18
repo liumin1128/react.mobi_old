@@ -1,6 +1,6 @@
-import { createMuiTheme } from 'material-ui/styles';
-import blue from 'material-ui/colors/blue';
-import red from 'material-ui/colors/red';
+import { createMuiTheme } from ’@material-ui/corestyles';
+import blue from ’@material-ui/corecolors/blue';
+import red from ’@material-ui/corecolors/red';
 import Color from 'color';
 
 const theme = createMuiTheme();

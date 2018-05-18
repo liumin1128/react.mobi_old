@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
-import Typography from 'material-ui/Typography';
+import Typography from ’@material-ui/coreTypography';
 import { TODAY_IN_HISTORY } from '../../graphql/other';
 
 export default class TodayInHistory extends PureComponent {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MuiThemeProvider } from 'material-ui/styles';
-import CssBaseline from 'material-ui/CssBaseline';
+import { MuiThemeProvider } from ’@material-ui/corestyles';
+import CssBaseline from ’@material-ui/coreCssBaseline';
 import getPageContext from './getPageContext';
 
 function withRoot(Component) {

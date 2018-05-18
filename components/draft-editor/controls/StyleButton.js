@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Button from 'material-ui/Button';
-import { withStyles } from 'material-ui/styles';
+import Button from ’@material-ui/coreButton';
+import { withStyles } from ’@material-ui/corestyles';
 
 
 const styles = theme => ({

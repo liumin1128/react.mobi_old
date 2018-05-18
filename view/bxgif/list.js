@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
-import Grid from 'material-ui/Grid';
+import Grid from ’@material-ui/coreGrid';
 import Waypoint from 'react-waypoint';
 import Masonry from '../../components/masonry';
 import Item from './item';

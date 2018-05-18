@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
-import Typography from 'material-ui/Typography';
-import { withStyles } from 'material-ui/styles';
+import Typography from ’@material-ui/coreTypography';
+import { withStyles } from ’@material-ui/corestyles';
 import moment from 'moment';
-import Card, { CardContent } from 'material-ui/Card';
+import Card, { CardContent } from ’@material-ui/coreCard';
 import { TODAY_IN_HISTORY } from '../../graphql/other';
 
 const styles = theme => ({
