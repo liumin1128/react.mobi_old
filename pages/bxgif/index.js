@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import Grid from '@material-ui/core/Grid';
-import List from '../../view/bxgif/list';
-import withRoot from '../../hoc';
-import Layout from '../../components/layout';
+import List from '@/view/bxgif/list';
+import withRoot from '@/hoc';
+import Layout from '@/components/layout';
 
 
 @withRoot

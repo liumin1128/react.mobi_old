@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { SAY_LIST } from '../../graphql/say';
+import { SAY_LIST } from '@/graphql/say';
 
 function Submit({ createSay }) {
   function handleSubmit(event) {

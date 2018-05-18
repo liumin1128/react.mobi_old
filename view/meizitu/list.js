@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import Item from './item';
-import { MEIZITU_LIST } from '../../graphql/meizitu';
+import { MEIZITU_LIST } from '@/graphql/meizitu';
 
 function PostList({
   data: {

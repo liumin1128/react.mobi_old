@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import Grid from '@material-ui/core/Grid';
-import withRoot from '../../hoc';
-import Layout from '../../components/layout';
-import Detail from '../../view/bxgif/detail';
+import withRoot from '@/hoc';
+import Layout from '@/components/layout';
+import Detail from '@/view/bxgif/detail';
 
 @withRoot
 export default class News extends PureComponent {

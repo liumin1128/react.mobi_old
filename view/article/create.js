@@ -6,14 +6,14 @@ import { Form, Field } from 'react-final-form';
 import Color from 'color';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
-import Snackbar from '../../components/snackbar';
-import Editor from '../../components/draft-editor';
-import TextField from '../../components/form/textField';
-import { CREATE_ARTICLE } from '../../graphql/article';
+import Snackbar from '@/components/snackbar';
+import Editor from '@/components/draft-editor';
+import TextField from '@/components/form/textField';
+import { CREATE_ARTICLE } from '@/graphql/article';
 import Appbar from './appbar';
-import { getStorage } from '../../utils/store';
-import { isServerSide } from '../../utils/common';
-import { STORE_USER_KEY } from '../../constants/base';
+import { getStorage } from '@/utils/store';
+import { isServerSide } from '@/utils/common';
+import { STORE_USER_KEY } from '@/constants/base';
 
 const styles = theme => ({
   root: {

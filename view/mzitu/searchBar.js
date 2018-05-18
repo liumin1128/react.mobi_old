@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Router from 'next/router';
-import Search from '../../components/search';
+import Search from '@/components/search';
 
 export default class SearchBar extends PureComponent {
   onSubmit = (value) => {

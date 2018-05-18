@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
-import { ARTICLE_DETAIL } from '../../graphql/article';
+import { ARTICLE_DETAIL } from '@/graphql/article';
 
 export default class ArticleDetail extends PureComponent {
   render() {

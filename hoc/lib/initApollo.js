@@ -5,9 +5,9 @@ import { onError } from 'apollo-link-error';
 import { withClientState } from 'apollo-link-state';
 import { ApolloLink } from 'apollo-link';
 import { Observable } from 'rxjs';
-import Snackbar from '../../components/snackbar';
-import { getStorage } from '../../utils/store';
-import { STORE_USER_KEY } from '../../constants/base';
+import Snackbar from '@/components/snackbar';
+import { getStorage } from '@/utils/store';
+import { STORE_USER_KEY } from '@/constants/base';
 
 let apolloClient = null;
 

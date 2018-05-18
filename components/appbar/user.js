@@ -3,12 +3,12 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Menu, { MenuItem } from '@material-ui/core/Menu';
-import Login from '../../view/login';
-import { modalConsumer } from '../../hoc/widthModal';
-import { getStorage, clearStorage, removeStorage } from '../../utils/store';
-import { STORE_USER_KEY } from '../../constants/base';
-import { isServerSide } from '../../utils/common';
-import nossr from '../../hoc/nossr';
+import Login from '@/view/login';
+import { modalConsumer } from '@/hoc/widthModal';
+import { getStorage, clearStorage, removeStorage } from '@/utils/store';
+import { STORE_USER_KEY } from '@/constants/base';
+import { isServerSide } from '@/utils/common';
+import nossr from '@/hoc/nossr';
 
 
 @nossr

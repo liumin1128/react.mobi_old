@@ -13,7 +13,7 @@ import SaveIcon from '@material-ui/icons/Save';
 // import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-import UploadImage from '../../components/upload/images';
+import UploadImage from '@/components/upload/images';
 // import Headroom from 'react-headroom';
 // import Search from './search';
 // import Tabs from './tabs';

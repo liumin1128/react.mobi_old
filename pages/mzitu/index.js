@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import styleRoot from '../../hoc/styleRoot';
-import apolloRoot from '../../hoc/apolloRoot';
-import reduxRoot from '../../hoc/reduxRoot';
-import List from '../../view/mzitu/list';
-import SearchBar from '../../view/mzitu/searchBar';
-import Tags from '../../view/mzitu/tagsSmall';
+import styleRoot from '@/hoc/styleRoot';
+import apolloRoot from '@/hoc/apolloRoot';
+import reduxRoot from '@/hoc/reduxRoot';
+import List from '@/view/mzitu/list';
+import SearchBar from '@/view/mzitu/searchBar';
+import Tags from '@/view/mzitu/tagsSmall';
 
 const styles = (theme) => ({
   root: {

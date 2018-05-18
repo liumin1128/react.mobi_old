@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import styleRoot from '../../hoc/styleRoot';
-import apolloRoot from '../../hoc/apolloRoot';
-import reduxRoot from '../../hoc/reduxRoot';
-import Detail from '../../view/wechat/detail';
+import styleRoot from '@/hoc/styleRoot';
+import apolloRoot from '@/hoc/apolloRoot';
+import reduxRoot from '@/hoc/reduxRoot';
+import Detail from '@/view/wechat/detail';
 
 const styles = (theme) => ({
   root: {

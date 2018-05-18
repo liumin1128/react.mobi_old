@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { isServerSide } from '../utils/common';
+import { isServerSide } from '@/utils/common';
 
 export default (WrappedComponent) => {
   return class NossrComponent extends PureComponent {

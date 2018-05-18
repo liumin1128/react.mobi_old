@@ -1,10 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
-import withRoot from '../../hoc';
-import List from '../../view/says/list';
-import Layout from '../../components/layout';
-import Calender from '../../components/calender';
-import Appbar from '../../components/appbar';
+import withRoot from '@/hoc';
+import List from '@/view/says/list';
+import Layout from '@/components/layout';
+import Calender from '@/components/calender';
+import Appbar from '@/components/appbar';
 
 @withRoot
 export default class Says extends PureComponent {

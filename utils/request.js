@@ -1,6 +1,6 @@
 import axios from 'axios';
 import es6promise from 'es6-promise';
-// import { API_URL } from '../constants/api';
+// import { API_URL } from '@/constants/api';
 import { getStorage } from './store';
 
 es6promise.polyfill();

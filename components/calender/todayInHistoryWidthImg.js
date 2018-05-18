@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import moment from 'moment';
 import Card, { CardContent } from '@material-ui/core/Card';
-import { TODAY_IN_HISTORY } from '../../graphql/other';
+import { TODAY_IN_HISTORY } from '@/graphql/other';
 
 const styles = theme => ({
   root: {

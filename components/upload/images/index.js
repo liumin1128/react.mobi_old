@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Uploader, UploadField } from '@navjobs/upload';
-import uploadToQiniu from '../../../hoc/uploadToQiniu';
+import uploadToQiniu from '@/hoc/uploadToQiniu';
 
 @uploadToQiniu
 export default class UploadImages extends PureComponent {

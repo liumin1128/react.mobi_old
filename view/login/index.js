@@ -3,11 +3,11 @@ import { Mutation } from 'react-apollo';
 import { Form, Field } from 'react-final-form';
 import Card, { CardHeader, CardMedia, CardContent } from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
-import TextField from '../../components/form/textField';
-import { USER_LOGIN } from '../../graphql/user';
-import { STORE_USER_KEY } from '../../constants/base';
-import { setStorage } from '../../utils/store';
-import snackbar from '../../components/snackbar';
+import TextField from '@/components/form/textField';
+import { USER_LOGIN } from '@/graphql/user';
+import { STORE_USER_KEY } from '@/constants/base';
+import { setStorage } from '@/utils/store';
+import snackbar from '@/components/snackbar';
 
 export default class Login extends PureComponent {
   validate = (values) => {

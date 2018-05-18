@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Card, { CardHeader, CardMedia, CardContent } from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import { MZITU_TAGS } from '../../graphql/mzitu';
+import { MZITU_TAGS } from '@/graphql/mzitu';
 
 const styles = theme => ({
   media: {

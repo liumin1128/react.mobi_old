@@ -13,7 +13,7 @@ import red from '@material-ui/core/colors/red';
 // import ShareIcon from '@material-ui/icons/Share';
 // import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import timeago from '../../utils/timeago';
+import timeago from '@/utils/timeago';
 
 const styles = theme => ({
   card: {

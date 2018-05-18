@@ -2,11 +2,11 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import Grid from '@material-ui/core/Grid';
 import Waypoint from 'react-waypoint';
-import Masonry from '../../components/masonry';
+import Masonry from '@/components/masonry';
 import Item from './item';
-import { BXGIF_LIST } from '../../graphql/bxgif';
-import { updateQuery } from '../../graphql';
-import Button from '../../components/loading/button';
+import { BXGIF_LIST } from '@/graphql/bxgif';
+import { updateQuery } from '@/graphql';
+import Button from '@/components/loading/button';
 
 function PostList({
   data: {

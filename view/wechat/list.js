@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import Item from './item';
-import { WECHAT_LIST } from '../../graphql/wechat';
+import { WECHAT_LIST } from '@/graphql/wechat';
 
 function PostList({
   data: {

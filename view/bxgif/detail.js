@@ -5,7 +5,7 @@ import Card, { CardActions, CardContent, CardMedia } from '@material-ui/core/Car
 import Typography from '@material-ui/core/Typography';
 import LazyLoad from 'react-lazyload';
 // import ContentLoader, { Code } from 'react-content-loader';
-import { BXGIF_DETAIL } from '../../graphql/bxgif';
+import { BXGIF_DETAIL } from '@/graphql/bxgif';
 
 
 const styles = theme => ({

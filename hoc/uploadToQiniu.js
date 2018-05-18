@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { QINIUURL, QINIU_UPLOADURL } from '../constants/base';
+import { QINIUURL, QINIU_UPLOADURL } from '@/constants/base';
 
 export default function (WrappedComponent) {
   return @connect(({ common }) => ({

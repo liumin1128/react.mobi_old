@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import Router from 'next/router';
-import Loading from '../components/loading/page';
+import Loading from '@/components/loading/page';
 // import  from '..'
-// import { isServerSide } from '../utils/common';
+// import { isServerSide } from '@/utils/common';
 
 export function pageLoading(WrappedComponent) {
   return class PageLoadingComponent extends PureComponent {

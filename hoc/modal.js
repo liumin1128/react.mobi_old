@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
-import styleRoot from '../hoc/styleRoot';
-import reduxRoot from '../hoc/reduxRoot';
-import { domRender } from '../utils/react';
+import styleRoot from '@/hoc/styleRoot';
+import reduxRoot from '@/hoc/reduxRoot';
+import { domRender } from '@/utils/react';
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;

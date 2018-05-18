@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import LazyLoad from 'react-lazyload';
 import ContentLoader from 'react-content-loader';
 
-import { MZITU_DETAIL } from '../../graphql/mzitu';
+import { MZITU_DETAIL } from '@/graphql/mzitu';
 
 const styles = theme => ({
   root: {
