@@ -1,55 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { ApolloProvider, getDataFromTree } from 'react-apollo';
+// import { Component } from 'react'
 import Head from 'next/head';
+import { getDataFromTree } from 'react-apollo';
 import initApollo from './initApollo';
 
-// Gets the display name of a JSX component for dev tools
-function getComponentDisplayName(Component) {
-  return Component.displayName || Component.name || 'Unknown';
-}
-
-export default (ComposedComponent) => {
-  return class apolloRoot extends React.Component {
-    static displayName = `apolloRoot(${getComponentDisplayName(ComposedComponent)})`
-    static propTypes = {
-      serverState: PropTypes.object.isRequired,
-    }
-
+export default (App) => {
+  return class Apollo extends React.Component {
+    static displayName = 'withApollo(App)'
     static async getInitialProps(ctx) {
-      // Initial serverState with apollo (empty)
-      let serverState;
+      const { Component, router } = ctx;
 
-      // Evaluate the composed component's getInitialProps()
-      let composedInitialProps = {};
-      if (ComposedComponent.getInitialProps) {
-        composedInitialProps = await ComposedComponent.getInitialProps(ctx);
+      let appProps = {};
+      if (App.getInitialProps) {
+        appProps = await App.getInitialProps(ctx);
       }
+
+      const apolloState = {};
 
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
       const apollo = initApollo();
       try {
         // Run all GraphQL queries
-        // console.log('ctx.query');
-        // console.log(ctx.query);
-        await getDataFromTree(
-          <ComposedComponent ctx={ctx} {...composedInitialProps} />,
-          {
-            router: {
-              asPath: ctx.asPath,
-              pathname: ctx.pathname,
-              query: ctx.query,
-            },
-            client: apollo,
-          },
-        );
+        await getDataFromTree(<App
+          {...appProps}
+          Component={Component}
+          router={router}
+          apolloState={apolloState}
+          apolloClient={apollo}
+        />);
       } catch (error) {
-        console.log('initApollo error');
-        console.log(error);
         // Prevent Apollo Client GraphQL errors from crashing SSR.
         // Handle them in components via the data.error prop:
         // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
+        console.error('Error while running `getDataFromTree`', error);
       }
 
       if (!process.browser) {
@@ -59,38 +42,23 @@ export default (ComposedComponent) => {
       }
 
       // Extract query data from the Apollo store
-      serverState = {
-        apollo: {
-          data: apollo.cache.extract(),
-        },
-      };
-
-      // console.log('apollo.cache.extract()');
-      // console.log(apollo.cache.extract());
-
-      // console.log('apollo.cache.extract()');
-      // console.log(apollo.cache.extract());
+      apolloState.data = apollo.cache.extract();
 
       return {
-        serverState,
-        ...composedInitialProps,
+        ...appProps,
+        apolloState,
       };
     }
-
 
     constructor(props) {
       super(props);
-      this.apollo = initApollo(this.props.serverState.apollo.data);
+      // `getDataFromTree` renders the component first, the client is passed off as a property.
+      // After that rendering is done using Next's normal rendering pipeline
+      this.apolloClient = props.apolloClient || initApollo(props.apolloState.data);
     }
 
     render() {
-      // console.log('this.apollo');
-      // console.log(this.apollo);
-      return (
-        <ApolloProvider client={this.apollo}>
-          <ComposedComponent {...this.props} />
-        </ApolloProvider>
-      );
+      return <App {...this.props} apolloClient={this.apolloClient} />;
     }
   };
 };

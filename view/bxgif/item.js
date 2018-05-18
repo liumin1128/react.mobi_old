@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 // import classnames from 'classnames';
-import Card, { CardHeader, CardMedia, CardContent } from '@material-ui/core/Card';
+import Card from '@material-ui/core/Card'; import CardHeader from '@material-ui/core/CardHeader'; import CardContent from '@material-ui/core/CardContent'; import CardMedia from '@material-ui/core/CardMedia';
 
 import Typography from '@material-ui/core/Typography';
 
