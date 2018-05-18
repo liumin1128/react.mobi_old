@@ -9,7 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import PhotoIcon from '@material-ui/icons/Photo';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import SaveIcon from '@material-ui/icons/Save';
-// import { CircularProgress } from '@material-ui/core/Progress';
+// import CircularProgress from '@material-ui/core/CircularProgress';
 // import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';

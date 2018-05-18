@@ -1,6 +1,6 @@
 import React, { PureComponent, createContext } from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import Slide from '@material-ui/core/transitions/Slide';
+import Slide from '@material-ui/core/Slide';
 import { randomString } from '../utils/common';
 
 export const ModalContext = createContext();
