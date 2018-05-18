@@ -3,6 +3,8 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import JssProvider from 'react-jss/lib/JssProvider';
 import flush from 'styled-jsx/server';
 import getPageContext from '@/hoc/material-ui/getPageContext';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 class MyDocument extends Document {
   render() {
@@ -67,7 +69,10 @@ MyDocument.getInitialProps = (ctx) => {
       registry={pageContext.sheetsRegistry}
       generateClassName={pageContext.generateClassName}
     >
-      <Component pageContext={pageContext} {...props} />
+      <MuiThemeProvider theme={pageContext.theme} sheetsManager={pageContext.sheetsManager}>
+        <CssBaseline />
+        <Component pageContext={pageContext} {...props} />
+      </MuiThemeProvider>
     </JssProvider>
   ));
 
