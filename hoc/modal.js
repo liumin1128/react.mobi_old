@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import Dialog from ’@material-ui/coreDialog';
-import Slide from ’@material-ui/coretransitions/Slide';
+import Dialog from '@material-ui/core/Dialog';
+import Slide from '@material-ui/core/transitions/Slide';
 import styleRoot from '../hoc/styleRoot';
 import reduxRoot from '../hoc/reduxRoot';
 import { domRender } from '../utils/react';

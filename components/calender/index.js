@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import moment from 'moment';
-import { withStyles } from ’@material-ui/corestyles';
-import Card, { CardHeader, CardMedia, CardContent, CardActions } from ’@material-ui/coreCard';
-import Typography from ’@material-ui/coreTypography';
-import Button from ’@material-ui/coreButton';
+import { withStyles } from '@material-ui/core/styles';
+import Card, { CardHeader, CardMedia, CardContent, CardActions } from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import TodayInHistory from './todayInHistory';
 
 moment.locale('zh-cn');

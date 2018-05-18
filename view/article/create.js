@@ -1,11 +1,11 @@
 import React, { PureComponent, Fragment, createRef } from 'react';
 import { Mutation } from 'react-apollo';
-import { withStyles } from ’@material-ui/corestyles';
+import { withStyles } from '@material-ui/core/styles';
 import Router from 'next/router';
 import { Form, Field } from 'react-final-form';
 import Color from 'color';
-import Card, { CardHeader, CardMedia, CardContent, CardActions } from ’@material-ui/coreCard';
-import Button from ’@material-ui/coreButton';
+import Card, { CardHeader, CardMedia, CardContent, CardActions } from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 import Snackbar from '../../components/snackbar';
 import Editor from '../../components/draft-editor';
 import TextField from '../../components/form/textField';

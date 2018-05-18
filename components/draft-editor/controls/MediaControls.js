@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { EditorState, AtomicBlockUtils } from 'draft-js';
-import { withStyles } from ’@material-ui/corestyles';
-import Button from ’@material-ui/coreButton';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import PhotoIcon from '@material-ui/icons/Photo';
 import UploadImages from '../../upload/images';
 

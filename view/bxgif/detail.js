@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
-import { withStyles } from ’@material-ui/corestyles';
-import Card, { CardActions, CardContent, CardMedia } from ’@material-ui/coreCard';
-import Typography from ’@material-ui/coreTypography';
+import { withStyles } from '@material-ui/core/styles';
+import Card, { CardActions, CardContent, CardMedia } from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
 import LazyLoad from 'react-lazyload';
 // import ContentLoader, { Code } from 'react-content-loader';
 import { BXGIF_DETAIL } from '../../graphql/bxgif';

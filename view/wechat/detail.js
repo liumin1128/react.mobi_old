@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
-import { withStyles } from ’@material-ui/corestyles';
+import { withStyles } from '@material-ui/core/styles';
 import { WECHAT_DETAIL } from '../../graphql/wechat';
 
 

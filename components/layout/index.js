@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { withStyles } from ’@material-ui/corestyles';
+import { withStyles } from '@material-ui/core/styles';
 // import { pageLoading } from '../../hoc/pageLoading';
 
 const styles = theme => ({

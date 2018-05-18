@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
-import { withStyles } from ’@material-ui/corestyles';
+import { withStyles } from '@material-ui/core/styles';
 import LazyLoad from 'react-lazyload';
 import ContentLoader from 'react-content-loader';
 import { MEIZITU_DETAIL } from '../../graphql/meizitu';

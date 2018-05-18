@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import Grid from ’@material-ui/coreGrid';
+import Grid from '@material-ui/core/Grid';
 import withRoot from '../../hoc';
 import List from '../../view/explore/list';
 import Layout from '../../components/layout';

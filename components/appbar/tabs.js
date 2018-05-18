@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from ’@material-ui/corestyles';
+import { withStyles } from '@material-ui/core/styles';
 import Router from 'next/router';
-import Tabs, { Tab } from ’@material-ui/coreTabs';
-import Typography from ’@material-ui/coreTypography';
+import Tabs, { Tab } from '@material-ui/core/Tabs';
+import Typography from '@material-ui/core/Typography';
 import { withQuery } from '../../hoc/getQuery';
 
 function TabContainer(props) {

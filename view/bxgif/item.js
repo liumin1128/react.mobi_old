@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { withStyles } from ’@material-ui/corestyles';
+import { withStyles } from '@material-ui/core/styles';
 // import classnames from 'classnames';
-import Card, { CardHeader, CardMedia, CardContent } from ’@material-ui/coreCard';
+import Card, { CardHeader, CardMedia, CardContent } from '@material-ui/core/Card';
 
-import Typography from ’@material-ui/coreTypography';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   cover: {

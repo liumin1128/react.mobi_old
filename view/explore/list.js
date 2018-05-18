@@ -1,10 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
-import Grid from ’@material-ui/coreGrid';
+import Grid from '@material-ui/core/Grid';
 import Link from 'next/link';
-import { withStyles } from ’@material-ui/corestyles';
-import Card, { CardActions, CardContent, CardMedia } from ’@material-ui/coreCard';
-import Typography from ’@material-ui/coreTypography';
-import Button from ’@material-ui/coreButton';
+import { withStyles } from '@material-ui/core/styles';
+import Card, { CardActions, CardContent, CardMedia } from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const styles = {
   root: {

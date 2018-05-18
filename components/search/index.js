@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-// import TextField from ’@material-ui/coreTextField';
-import { withStyles } from ’@material-ui/corestyles';
-import Card, { CardHeader, CardMedia, CardContent } from ’@material-ui/coreCard';
+// import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
+import Card, { CardHeader, CardMedia, CardContent } from '@material-ui/core/Card';
 import { Form, Field } from 'react-final-form';
 import TextField from '../form/textField';
 

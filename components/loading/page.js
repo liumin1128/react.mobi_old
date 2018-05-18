@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { withStyles } from ’@material-ui/corestyles';
-import { CircularProgress } from ’@material-ui/coreProgress';
+import { withStyles } from '@material-ui/core/styles';
+import { CircularProgress } from '@material-ui/core/Progress';
 
 const styles = theme => ({
   root: theme.container,

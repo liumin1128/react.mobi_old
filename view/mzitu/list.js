@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
-import Grid from ’@material-ui/coreGrid';
+import Grid from '@material-ui/core/Grid';
 import Item from './item';
 import { MZITU_LIST } from '../../graphql/mzitu';
 import { updateQuery } from '../../graphql/index';
