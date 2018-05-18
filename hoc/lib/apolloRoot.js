@@ -1,7 +1,7 @@
-// import { Component } from 'react'
+import initApollo from './initApollo';
 import Head from 'next/head';
 import { getDataFromTree } from 'react-apollo';
-import initApollo from './initApollo';
+import propTypes from 'prop-types';
 
 export default (App) => {
   return class Apollo extends React.Component {
