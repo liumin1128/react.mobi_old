@@ -1,11 +1,9 @@
 {
+  "include": ["**/*"],
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "*": ["src/*"],
-      "@": ["src/*"],
-    //   "test/*": ["test/*"],
-    //   "underscore": ["lodash"]
+      "@": ["/*"],
     }
   }
 }

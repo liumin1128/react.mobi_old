@@ -1,16 +1,23 @@
 import React, { PureComponent, Fragment } from 'react';
-import Button from '@material-ui/core/Button';
-// import withRoot from '@/hoc/styleRoot';
+import Grid from '@material-ui/core/Grid';
 import List from '@/view/says/list';
+import Layout from '@/components/layout';
+import Calender from '@/components/calender';
 
-// @withRoot
 export default class Says extends PureComponent {
   render() {
     return (
       <Fragment>
-        <h1>7777772121</h1>
-        <Button color="primary">999999921219</Button>
-        <List />
+        <Layout>
+          <Grid container spacing={24}>
+            <Grid item xs={12} sm={12} md={8}>
+              <List />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+              <Calender />
+            </Grid>
+          </Grid>
+        </Layout>
       </Fragment>
     );
   }
