@@ -1,10 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
-import withRoot from '@/hoc';
 import Layout from '@/components/layout';
 import Create from '@/view/article/create';
 
-@withRoot
 export default class Says extends PureComponent {
   render() {
     return (

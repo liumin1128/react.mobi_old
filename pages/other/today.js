@@ -1,10 +1,8 @@
 import React, { PureComponent } from 'react';
 import Grid from '@material-ui/core/Grid';
-import withRoot from '@/hoc';
 import Layout from '@/components/layout';
 import List from '@/components/calender/todayInHistoryWidthImg';
 
-@withRoot
 export default class TodayInHistory extends PureComponent {
   // static async getInitialProps({ query }) {
   //   return { query };

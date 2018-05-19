@@ -1,12 +1,10 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import styleRoot from '@/hoc/styleRoot';
-import apolloRoot from '@/hoc/apolloRoot';
-import reduxRoot from '@/hoc/reduxRoot';
+
 import SaysDetail from '@/view/says/detail';
 
-const styles = (theme) => ({
+const styles = theme => ({
   root: {
     flexGrow: 1,
     maxWidth: 1110,
@@ -29,9 +27,7 @@ const styles = (theme) => ({
   },
 });
 
-@reduxRoot
-@apolloRoot
-@styleRoot
+
 @withStyles(styles)
 export default class News extends PureComponent {
   static async getInitialProps({ query }) {
