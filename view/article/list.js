@@ -1,8 +1,8 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
-import Item from './item';
 import { ARTICLE_LIST } from '@/graphql/article';
 import { loadMore } from '@/graphql';
+import Item from './item';
 
 function PostList({ data, loadMore }) {
   const {

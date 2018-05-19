@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 // import classnames from 'classnames';
-import Card from '@material-ui/core/Card'; import CardHeader from '@material-ui/core/CardHeader'; import CardContent from '@material-ui/core/CardContent'; import CardMedia from '@material-ui/core/CardMedia';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 // import Collapse from '@material-ui/core/transitions/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,23 +19,23 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import timeago from '@/utils/timeago';
 
 const styles = theme => ({
-  card: { marginBottom: theme.spacing.unit * 3 },
-  media: {
-    paddingTop: '38%',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
-  header: {
-    paddingBottom: 0,
-  },
-  flexGrow: {
-    flex: '1 1 auto',
-  },
-  title: {
-    fontSize: 16,
-    marginBottom: 8,
-  },
+  // card: { marginBottom: theme.spacing.unit * 3 },
+  // media: {
+  //   paddingTop: '38%',
+  // },
+  // avatar: {
+  //   backgroundColor: red[500],
+  // },
+  // header: {
+  //   paddingBottom: 0,
+  // },
+  // flexGrow: {
+  //   flex: '1 1 auto',
+  // },
+  // title: {
+  //   fontSize: 16,
+  //   marginBottom: 8,
+  // },
 });
 
 class RecipeReviewCard extends React.Component {

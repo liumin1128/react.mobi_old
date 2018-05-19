@@ -1,8 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
-import Grid from '@material-ui/core/Grid';
 import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
-import Card, { CardActions, CardContent, CardMedia } from '@material-ui/core/Card';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
