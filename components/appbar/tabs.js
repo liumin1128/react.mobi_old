@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Router from 'next/router';
-import Tabs, { Tab } from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
-import { withQuery } from '@/hoc/getQuery';
+// import { withQuery } from '@/hoc/getQuery';
 
 function TabContainer(props) {
   return (
@@ -45,11 +46,11 @@ class SimpleTabs extends React.Component {
   };
 
   componentWillMount() {
-    const { url } = this.props;
-    const idx = navList.findIndex(i => i.href === url.pathname);
-    if (idx !== -1) {
-      this.setState({ value: idx });
-    }
+    // const { url } = this.props;
+    // const idx = navList.findIndex(i => i.href === url.pathname);
+    // if (idx !== -1) {
+    //   this.setState({ value: idx });
+    // }
   }
 
   handleChange = (event, value) => {
@@ -88,4 +89,4 @@ SimpleTabs.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withQuery(withStyles(styles)(SimpleTabs));
+export default withStyles(styles)(SimpleTabs);

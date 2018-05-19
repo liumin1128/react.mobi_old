@@ -11,7 +11,6 @@ import withRoot from '@/hoc/material-ui/withRoot';
 export default class MyApp extends App {
   render() {
     const { Component, pageProps, apolloClient, pageContext } = this.props;
-
     return (<Container>
       <ApolloProvider client={apolloClient}>
         <MuiThemeProvider theme={pageContext.theme} sheetsManager={pageContext.sheetsManager}>

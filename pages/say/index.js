@@ -3,11 +3,13 @@ import Grid from '@material-ui/core/Grid';
 import List from '@/view/says/list';
 import Layout from '@/components/layout';
 import Calender from '@/components/calender';
+import Appbar from '@/components/appbar';
 
 export default class Says extends PureComponent {
   render() {
     return (
       <Fragment>
+        <Appbar />
         <Layout>
           <Grid container spacing={24}>
             <Grid item xs={12} sm={12} md={8}>
