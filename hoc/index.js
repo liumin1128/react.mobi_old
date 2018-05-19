@@ -1,14 +1,10 @@
 import { compose } from 'recompose';
-import styleRoot from './styleRoot';
-// import apolloRoot from './apolloRoot';
-// import reduxRoot from './reduxRoot';
-// import { queryProvider } from './getQuery';
-// import { modalProvider } from './widthModal';
+import withRedux from './store';
+import withApollo from './lib/apolloRoot';
+import withStyle from './material-ui/withRoot';
 
 export default compose(
-  // reduxRoot,
-  // apolloRoot,
-  styleRoot,
-  // queryProvider,
-  // modalProvider,
+  withRedux,
+  withApollo,
+  withStyle,
 );

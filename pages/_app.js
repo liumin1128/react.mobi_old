@@ -4,13 +4,9 @@ import { Provider } from 'react-redux';
 import { ApolloProvider } from 'react-apollo';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import withRedux from '@/hoc/store';
-import withApollo from '@/hoc/lib/apolloRoot';
-import withStyle from '@/hoc/material-ui/withRoot';
+import withRoot from '@/hoc';
 
-@withRedux
-@withApollo
-@withStyle
+@withRoot
 export default class MyApp extends App {
   render() {
     const { Component, pageProps, apolloClient, pageContext, reduxStore } = this.props;
