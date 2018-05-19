@@ -13,13 +13,13 @@ export default createMuiTheme({
         boxShadow: `0 4px 20px 0px ${Color('#2196f3').alpha(0.3)}, 0 7px 10px -5px ${Color('#2196f3').alpha(0.5)}`,
       },
     },
-    MuiInput: {
-      underline: {
-        '&::before': {
-          background: '#ddd',
-        },
-      },
-    },
+    // MuiInput: {
+    //   underline: {
+    //     '&::before': {
+    //       background: '#ddd',
+    //     },
+    //   },
+    // },
     MuiPaper: {
       elevation1: {
         boxShadow: '0 3px 5px 0px rgba(0, 0, 0, 0.05)',

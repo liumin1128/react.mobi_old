@@ -10,7 +10,6 @@ import LazyLoad from 'react-lazyload';
 // import ContentLoader, { Code } from 'react-content-loader';
 import { BXGIF_DETAIL } from '@/graphql/bxgif';
 
-
 const styles = theme => ({
   card: {
     maxWidth: 500,
@@ -30,6 +29,7 @@ const styles = theme => ({
     height: 0,
   },
 });
+
 @withStyles(styles)
 export default class MeizituDetail extends PureComponent {
   render() {
@@ -44,37 +44,26 @@ export default class MeizituDetail extends PureComponent {
           <div className={classes.root}>
             <h3>{detail.title}</h3>
             <br />
-            {detail.list.map(i => (
-
-              <Card
-                key={i.url}
-                className={classes.card}
-              >
+            {detail.list.map((i) => {
+              const paddingTop = `${Math.floor((i.height / i.width) * 100)}%`;
+              return (<Card key={i.url} className={classes.card} >
                 <LazyLoad
                   debounce={300}
                   unmountIfInvisible
-                  placeholder={
-                    <div
-                      style={{ paddingTop: `${Math.floor((i.height / i.width) * 100)}%` }}
-                      className={classes.load}
-                    />
-                  }
+                  placeholder={<div style={{ paddingTop }} className={classes.load} />}
                 >
                   <CardMedia
                     className={classes.media}
-                    style={{ paddingTop: `${Math.floor((i.height / i.width) * 100)}%` }}
+                    style={{ paddingTop }}
                     image={i.url}
                     title={`${i.width},${i.height}`}
                   />
                 </LazyLoad>
                 <CardContent>
-                  <Typography component="p">
-                    {i.title}
-                  </Typography>
+                  <Typography component="p">{i.title}</Typography>
                 </CardContent>
-              </Card>
-
-            ))}
+              </Card>);
+            })}
           </div>
         );
       }}
