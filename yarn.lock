@@ -4557,10 +4557,6 @@ neo-async@^2.5.0:
   version "2.5.1"
   resolved "http://registry.npm.taobao.org/neo-async/download/neo-async-2.5.1.tgz#acb909e327b1e87ec9ef15f41b8a269512ad41ee"
 
-next-redux-wrapper@^1.1.3:
-  version "1.1.3"
-  resolved "http://registry.npm.taobao.org/next-redux-wrapper/download/next-redux-wrapper-1.1.3.tgz#8813bee469a781636cfcc598afb4e2f4bc50f8de"
-
 next-tick@1:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/next-tick/download/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
