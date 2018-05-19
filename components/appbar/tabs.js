@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
-import Router from 'next/router';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
-// import { withQuery } from '@/hoc/getQuery';
 
 function TabContainer(props) {
   return (
@@ -46,16 +45,17 @@ class SimpleTabs extends React.Component {
   };
 
   componentWillMount() {
-    // const { url } = this.props;
-    // const idx = navList.findIndex(i => i.href === url.pathname);
-    // if (idx !== -1) {
-    //   this.setState({ value: idx });
-    // }
+    const { router } = this.props;
+    const idx = navList.findIndex(i => i.href === router.pathname);
+    if (idx !== -1) {
+      this.setState({ value: idx });
+    }
   }
 
   handleChange = (event, value) => {
     this.setState({ value });
-    Router.push(navList[value].href);
+    const { router } = this.props;
+    router.push(navList[value].href);
   };
 
   render() {
@@ -89,4 +89,4 @@ SimpleTabs.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SimpleTabs);
+export default withRouter(withStyles(styles)(SimpleTabs));
