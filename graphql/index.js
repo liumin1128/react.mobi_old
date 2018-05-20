@@ -1,4 +1,4 @@
-export const loadMore = (data) => {
+export const fetchMore = (data) => {
   return data.fetchMore({
     variables: {
       skip: data.list.length,

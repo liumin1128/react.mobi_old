@@ -61,11 +61,11 @@ class RecipeReviewCard extends React.Component {
     return (
       <div>
         <Card className={classes.card}>
-          <CardMedia
+          {cover && <CardMedia
             className={classes.media}
             image={cover}
             style={{ paddingTop: cover ? '38%' : 0 }}
-          />
+          />}
           <CardHeader
             avatar={
               <Avatar
