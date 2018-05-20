@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 // import { pageLoading } from '@/hoc/pageLoading';
-import { modalProvider } from '@/hoc/widthModal';
+// import { modalProvider } from '@/hoc/widthModal';
 
 const styles = theme => ({
   root: theme.container,
@@ -9,7 +9,7 @@ const styles = theme => ({
 
 // @pageLoading
 @withStyles(styles)
-@modalProvider
+// @modalProvider
 export default class News extends PureComponent {
   render() {
     const { classes, children } = this.props;

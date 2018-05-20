@@ -5,6 +5,7 @@ import { ApolloProvider } from 'react-apollo';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import withRoot from '@/hoc';
+import Modal from '@/hoc/widthModal';
 
 @withRoot
 export default class MyApp extends App {
@@ -15,7 +16,9 @@ export default class MyApp extends App {
         <ApolloProvider client={apolloClient}>
           <MuiThemeProvider theme={pageContext.theme} sheetsManager={pageContext.sheetsManager}>
             <CssBaseline />
-            <Component {...pageProps} />
+            <Modal>
+              <Component {...pageProps} />
+            </Modal>
           </MuiThemeProvider>
         </ApolloProvider>
       </Provider>

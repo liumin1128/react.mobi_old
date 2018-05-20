@@ -74,3 +74,10 @@ export function modalConsumer(WrappedComponent) {
   };
 }
 
+@modalProvider
+export default class Modal extends PureComponent {
+  render() {
+    return this.props.children;
+  }
+}
+
