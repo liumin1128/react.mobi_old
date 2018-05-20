@@ -9,7 +9,6 @@ import Avatar from '@material-ui/core/Avatar';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import { modalProvider } from '@/hoc/widthModal';
 import Headroom from 'react-headroom';
 import Search from './search';
 import Tabs from './tabs';
@@ -56,7 +55,6 @@ const styles = theme => ({
 
 
 @withStyles(styles)
-@modalProvider
 export default class MyAppBar2 extends PureComponent {
   static propTypes = {
     classes: PropTypes.object.isRequired,
