@@ -3,7 +3,7 @@
 # dependencies
 /node_modules
 /dll
-/.next
+.next
 /next
 /dump.rdb
 /yarn-error.log
