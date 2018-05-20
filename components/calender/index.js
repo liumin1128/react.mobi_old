@@ -49,7 +49,7 @@ export default class Calender extends PureComponent {
     const { date, open } = this.state;
     const { classes } = this.props;
     const list = new Array(35).fill('').map((_, idx) => {
-      const time = moment().weekday(idx - 1);
+      const time = moment().startOf('month').add(idx - moment().weekday() + 4, 'day');
       return {
         value: time.format('x'),
         label: time.date(),
@@ -64,6 +64,14 @@ export default class Calender extends PureComponent {
           {moment().format('llll')}
         </Typography>
         <div className={classes.items}>
+          {moment.weekdaysMin().map(i => (<div
+            key={i}
+            className={classes.item}
+            style={{
+              fontSize: 12,
+              marginBottom: 8,
+            }}
+          >{i}</div>))}
           {
             list.map(({ value, label, thisMonth, today, selected }) => (
               <div
