@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
 import { updateQuery } from '@/graphql/index';
 import { SAY_LIST } from '@/graphql/say';
+import LoadMore from '@/components/loadmore';
 import Item from './item';
 
 export default class SayList extends PureComponent {
@@ -27,9 +28,7 @@ export default class SayList extends PureComponent {
               {
                 list.map(i => <Item key={i._id} {...i} />)
               }
-              {!isEnd && <button onClick={() => loadMore()}>
-                {loading ? 'Loading...' : 'Show More'}
-              </button>}
+              <LoadMore isEnd={isEnd} onEnter={loadMore} />
             </div>);
           }}
       </Query>);

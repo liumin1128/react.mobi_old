@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { graphql } from 'react-apollo';
 import { ARTICLE_LIST } from '@/graphql/article';
 import { fetchMore } from '@/graphql';
+import LoadMore from '@/components/loadmore';
 import Item from './item';
 
 function PostList({ data, loadMore }) {
@@ -14,9 +15,7 @@ function PostList({ data, loadMore }) {
 
   return (<Fragment>
     {list.map(i => <Item key={i._id} {...i} />)}
-    {!isEnd && <button onClick={() => loadMore()}>
-      {loading ? 'Loading...' : 'Show More'}
-    </button>}
+    <LoadMore isEnd={isEnd} onEnter={loadMore} />
   </Fragment>);
 }
 
