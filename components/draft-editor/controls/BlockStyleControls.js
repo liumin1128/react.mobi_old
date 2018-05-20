@@ -21,8 +21,8 @@ const BLOCK_TYPES = [
   // { label: 'H5', style: 'header-five', icon: Looks5Icon },
   // { label: 'H6', style: 'header-six', icon: Looks6Icon },
   { label: 'Blockquote', style: 'blockquote', icon: FormatQuoteIcon },
-  { label: 'UL', style: 'unordered-list-item', icon: FormatListNumberedIcon },
-  { label: 'OL', style: 'ordered-list-item', icon: FormatListBulletedIcon },
+  { label: 'UL', style: 'unordered-list-item', icon: FormatListBulletedIcon },
+  { label: 'OL', style: 'ordered-list-item', icon: FormatListNumberedIcon },
   { label: 'Code Block', style: 'code-block', icon: CodeBulletedIcon },
   // { label: 'MyCustomBlock', style: 'MyCustomBlock', icon: LooksOneIcon },
 ];
