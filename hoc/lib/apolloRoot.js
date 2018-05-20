@@ -18,9 +18,11 @@ export default (App) => {
 
       const apolloState = {};
 
+      // 为App注入redux，否则这一步会出现意外情况
+      const Appwithredux = withRedux(App);
+
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
-      const Appwithredux = withRedux(App);
       const apollo = initApollo();
       try {
         // Run all GraphQL queries
