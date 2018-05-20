@@ -1,5 +1,7 @@
 import React, { PureComponent, Fragment, createRef } from 'react';
 import { Mutation } from 'react-apollo';
+import Head from 'next/head';
+import nossr from '@/hoc/nossr';
 import { withStyles } from '@material-ui/core/styles';
 import Router from 'next/router';
 import { Form, Field } from 'react-final-form';
@@ -13,10 +15,10 @@ import Snackbar from '@/components/snackbar';
 import Editor from '@/components/draft-editor';
 import TextField from '@/components/form/textField';
 import { CREATE_ARTICLE } from '@/graphql/article';
-import Appbar from './appbar';
 import { getStorage } from '@/utils/store';
-import { isServerSide } from '@/utils/common';
+// import { isServerSide } from '@/utils/common';
 import { STORE_USER_KEY } from '@/constants/base';
+import Appbar from './appbar';
 
 const styles = theme => ({
   root: {
@@ -33,6 +35,7 @@ const styles = theme => ({
 });
 
 @withStyles(styles)
+@nossr
 export default class CreateArticle extends PureComponent {
   state = {
     cover: undefined,
@@ -49,15 +52,14 @@ export default class CreateArticle extends PureComponent {
     return errors;
   }
   render() {
-    if (isServerSide()) {
-      return <Editor />;
-    }
     const user = getStorage(STORE_USER_KEY);
     if (!user || !user.token) {
       return '尚未登录';
     }
+
     const { classes } = this.props;
     const { cover } = this.state;
+
     return (
       <Mutation mutation={CREATE_ARTICLE}>
         {(createArticle, { loading, error, data = {} }) => {
@@ -91,6 +93,9 @@ export default class CreateArticle extends PureComponent {
           };
           return (
             <Fragment>
+              <Head>
+                <link href="/static/draft-editor.css" rel="stylesheet" />
+              </Head>
               <Appbar
                 onSetCover={(url) => {
                   this.setState({ cover: url });
@@ -137,9 +142,7 @@ export default class CreateArticle extends PureComponent {
                         </form>
                     )}
                     />
-                    <Editor
-                      ref={(c) => { this.editor = c; }}
-                    />
+                    <Editor ref={(c) => { this.editor = c; }} />
                   </div>
                 </CardContent>
               </Card>

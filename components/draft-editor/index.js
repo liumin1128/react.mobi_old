@@ -1,16 +1,15 @@
 import React, { PureComponent, createRef } from 'react';
-import Grid from '@material-ui/core/Grid';
 import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
-import Head from 'next/head';
+import nossr from '@/hoc/nossr';
 import InlineStyleControls from './controls/InlineStyleControls';
 import BlockStyleControls from './controls/BlockStyleControls';
 import MediaControls from './controls/MediaControls';
 import LinkControls from './controls/LinkControls';
 import options from './options';
 import decorators from './decorators';
-import { isServerSide } from '@/utils/common';
 
+@nossr
 export default class MyEditor extends PureComponent {
   constructor(props) {
     super(props);
@@ -33,11 +32,17 @@ export default class MyEditor extends PureComponent {
     return raw;
   }
   render() {
-    if (isServerSide()) {
-      return (<Head>
-        <link href="/static/draft-editor.css" rel="stylesheet" />
-      </Head>);
-    }
+    console.log('xxxxxxxxxxxxxxxx');
+    console.log('xxxxxxxxxxxxxxxx');
+    console.log('xxxxxxxxxxxxxxxx');
+    console.log('xxxxxxxxxxxxxxxx');
+    console.log('xxxxxxxxxxxxxxxx');
+    console.log('xxxxxxxxxxxxxxxx');
+    // if (isServerSide()) {
+    //   return (<Head>
+    //     <link href="/static/draft-editor.css" rel="stylesheet" />
+    //   </Head>);
+    // }
     const { editorState } = this.state;
     let className = 'RichEditor-editor';
     const contentState = editorState.getCurrentContent();
@@ -48,15 +53,12 @@ export default class MyEditor extends PureComponent {
     }
     return (
       <div className="RichEditor-root">
-
-
         <div className="RichEditor-menus">
           <BlockStyleControls editorState={editorState} onChange={this.onChange} />
           <InlineStyleControls editorState={editorState} onChange={this.onChange} />
           <LinkControls editorState={editorState} onChange={this.onChange} />
           <MediaControls editorState={editorState} onChange={this.onChange} />
         </div>
-
         <div className={className}>
           <Editor
             {...options}
@@ -67,7 +69,6 @@ export default class MyEditor extends PureComponent {
             spellCheck
           />
         </div>
-
         {
           // <Grid container spacing={24}>
           //   <Grid item md={4}>
@@ -85,7 +86,6 @@ export default class MyEditor extends PureComponent {
           //   </Grid>
           // </Grid>
         }
-
       </div>
     );
   }

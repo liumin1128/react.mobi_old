@@ -23,7 +23,7 @@ const styles = theme => ({
   root: {
     height: 64,
     width: '100%',
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 4,
   },
   container: theme.container,
   toolbar: {

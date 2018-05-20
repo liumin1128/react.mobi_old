@@ -18,7 +18,7 @@ export default (WrappedComponent) => {
     render() {
       const { ...other } = this.props;
       if (!this.state.show) {
-        return '';
+        return 'loading';
       }
       return (
         <WrappedComponent {...other} />
