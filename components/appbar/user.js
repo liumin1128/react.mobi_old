@@ -2,10 +2,11 @@ import React, { PureComponent, Fragment } from 'react';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import Menu, { MenuItem } from '@material-ui/core/Menu';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import Login from '@/view/login';
 import { modalConsumer } from '@/hoc/widthModal';
-import { getStorage, clearStorage, removeStorage } from '@/utils/store';
+import { getStorage, removeStorage } from '@/utils/store';
 import { STORE_USER_KEY } from '@/constants/base';
 import nossr from '@/hoc/nossr';
 
@@ -31,7 +32,6 @@ export default class UserAvatar extends PureComponent {
   }
 
   render() {
-    console.log('-------------------------------');
     const { modal } = this.props;
     const { token, userInfo = {} } = getStorage(STORE_USER_KEY) || {};
     if (!token) {
@@ -43,18 +43,13 @@ export default class UserAvatar extends PureComponent {
     const { anchorEl } = this.state;
     return (<Fragment>
       <IconButton
-      // className={classes.logoButton}
         color="inherit"
         aria-label="Menu"
-        // color="contrast"
         aria-owns={anchorEl ? 'simple-menu' : null}
         aria-haspopup="true"
         onClick={this.handleClick}
       >
-        <Avatar
-        // className={classes.logo}
-          src={userInfo.avatarUrl}
-        />
+        <Avatar src={userInfo.avatarUrl} />
       </IconButton>
       <Menu
         id="simple-menu"
@@ -70,15 +65,6 @@ export default class UserAvatar extends PureComponent {
           horizontal: 'right',
         }}
       >
-        {
-        // <MenuItem
-        // // className={classes.userInfo}
-        //   onClick={this.handleClose}
-        // >
-        //   <Avatar src={userInfo.avatarUrl} />
-        //   <h1 >{userInfo.nickname}</h1>
-        // </MenuItem>
-       }
         <MenuItem disabled onClick={this.handleClose}>个人资料</MenuItem>
         <MenuItem disabled onClick={this.handleClose}>我关注的</MenuItem>
         <MenuItem disabled onClick={this.handleClose}>火炬</MenuItem>

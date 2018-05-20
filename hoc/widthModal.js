@@ -45,7 +45,7 @@ export function modalProvider(WrappedComponent) {
             key={key}
             open={open}
             keepMounted={false}
-            transition={Transition}
+            TransitionComponent={Transition}
             onClose={() => this.handleClose(key)}
             onExited={() => this.destory(key)}
             aria-labelledby="form-dialog-title"

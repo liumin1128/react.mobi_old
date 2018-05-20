@@ -5,20 +5,20 @@ export default (WrappedComponent) => {
   return class NossrComponent extends PureComponent {
     state = {
       show: false,
-      nouse: false,
+      skip: false,
     }
     componentDidMount() {
       this.change();
     }
     change = () => {
-      if (!this.state.nouse && !isServerSide()) {
-        this.setState({ show: true, nouse: true });
+      if (!this.state.skip && !isServerSide()) {
+        this.setState({ show: true, skip: true });
       }
     }
     render() {
       const { ...other } = this.props;
       if (!this.state.show) {
-        return null;
+        return '';
       }
       return (
         <WrappedComponent {...other} />
