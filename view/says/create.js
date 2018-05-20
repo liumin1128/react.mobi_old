@@ -1,18 +1,24 @@
 import React, { PureComponent } from 'react';
 import { graphql } from 'react-apollo';
+import { withRouter } from 'next/router';
 import gql from 'graphql-tag';
 import { SAY_LIST } from '@/graphql/say';
 
-function Submit({ createSay }) {
-  function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new window.FormData(form);
-    const content = formData.get('content');
-    createSay({ content });
-    form.reset();
+function Submit({ createSay, router }) {
+  async function handleSubmit(event) {
+    try {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new window.FormData(form);
+      const content = formData.get('content');
+      await createSay({ content });
+      form.reset();
+      router.push('/');
+    } catch (error) {
+      console.log('error');
+      console.log(error);
+    }
   }
-
   return (
     <form onSubmit={handleSubmit}>
       <h1>Submit</h1>
@@ -32,7 +38,7 @@ const createSay = gql`
   }
 `;
 
-export default graphql(createSay, {
+export default withRouter(graphql(createSay, {
   props: ({ mutate }) => ({
     createSay: ({ content }) => mutate({
       variables: { input: { content } },
@@ -63,4 +69,4 @@ export default graphql(createSay, {
       // },
     }),
   }),
-})(Submit);
+})(Submit));
