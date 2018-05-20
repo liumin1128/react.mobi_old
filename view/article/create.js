@@ -106,44 +106,42 @@ export default class CreateArticle extends PureComponent {
                     .dispatchEvent(new Event('submit', { cancelable: true }));
                 }}
               />
-              <Card >
+              <Card className={classes.root}>
                 {cover && <CardMedia
                   className={classes.media}
                   style={{ paddingTop: cover ? '38%' : 0 }}
                   image={cover}
                 />}
                 <CardContent>
-                  <div className={classes.root}>
-                    <Form
-                      onSubmit={onSubmit}
+                  <Form
+                    onSubmit={onSubmit}
                       // initialValues={initialValue}
-                      validate={this.validate}
-                      render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
-                        <form id="createArticleForm" onSubmit={handleSubmit}>
-                          <Field
-                            name="title"
-                            label="标题"
-                            type="text"
-                            component={TextField}
-                            margin="normal"
-                            fullWidth
-                          />
-                          <Field
-                            name="tags"
-                            label="标签"
-                            type="text"
-                            placeholder="多个标签请用空格隔开"
-                            component={TextField}
-                            margin="normal"
-                            fullWidth
-                          />
-                          <br />
-                          <br />
-                        </form>
+                    validate={this.validate}
+                    render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
+                      <form id="createArticleForm" onSubmit={handleSubmit}>
+                        <Field
+                          name="title"
+                          label="标题"
+                          type="text"
+                          component={TextField}
+                          margin="normal"
+                          fullWidth
+                        />
+                        <Field
+                          name="tags"
+                          label="标签"
+                          type="text"
+                          placeholder="多个标签请用空格隔开"
+                          component={TextField}
+                          margin="normal"
+                          fullWidth
+                        />
+                        <br />
+                        <br />
+                      </form>
                     )}
-                    />
-                    <Editor ref={(c) => { this.editor = c; }} />
-                  </div>
+                  />
+                  <Editor ref={(c) => { this.editor = c; }} />
                 </CardContent>
               </Card>
             </Fragment>
