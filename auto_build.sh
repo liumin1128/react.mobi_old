@@ -25,11 +25,11 @@ git fetch --all
 git reset --hard origin/v3
 git pull
 
-echo "正在下载依赖"
-yarn
+# echo "正在下载依赖"
+# yarn
 
-echo "正在编译"
-yarn build
+# echo "正在编译"
+# yarn build
 
 echo "重启pm2"
 yarn pm2
