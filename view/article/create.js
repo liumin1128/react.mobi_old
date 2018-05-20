@@ -66,9 +66,6 @@ export default class CreateArticle extends PureComponent {
           // if (loading) return 'Loading...';
           // if (error) return `Error! ${error.message}`;
           const onSubmit = async ({ title, tags }) => {
-            console.log('this.editor');
-            console.log(this.editor);
-            return;
             const html = this.editor.getHtml();
             const json = this.editor.getJson();
             const input = {
@@ -110,11 +107,11 @@ export default class CreateArticle extends PureComponent {
                 }}
               />
               <Card >
-                <CardMedia
+                {cover && <CardMedia
                   className={classes.media}
                   style={{ paddingTop: cover ? '38%' : 0 }}
                   image={cover}
-                />
+                />}
                 <CardContent>
                   <div className={classes.root}>
                     <Form
@@ -145,7 +142,7 @@ export default class CreateArticle extends PureComponent {
                         </form>
                     )}
                     />
-                    <Editor ref={this.editor} />
+                    <Editor ref={(c) => { this.editor = c; }} />
                   </div>
                 </CardContent>
               </Card>
