@@ -66,6 +66,9 @@ export default class CreateArticle extends PureComponent {
           // if (loading) return 'Loading...';
           // if (error) return `Error! ${error.message}`;
           const onSubmit = async ({ title, tags }) => {
+            console.log('this.editor');
+            console.log(this.editor);
+            return;
             const html = this.editor.getHtml();
             const json = this.editor.getJson();
             const input = {
@@ -142,7 +145,7 @@ export default class CreateArticle extends PureComponent {
                         </form>
                     )}
                     />
-                    <Editor ref={(c) => { this.editor = c; }} />
+                    <Editor ref={this.editor} />
                   </div>
                 </CardContent>
               </Card>

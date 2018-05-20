@@ -1,7 +1,6 @@
 import React, { PureComponent, createRef } from 'react';
 import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
-import nossr from '@/hoc/nossr';
 import InlineStyleControls from './controls/InlineStyleControls';
 import BlockStyleControls from './controls/BlockStyleControls';
 import MediaControls from './controls/MediaControls';
@@ -9,7 +8,6 @@ import LinkControls from './controls/LinkControls';
 import options from './options';
 import decorators from './decorators';
 
-@nossr
 export default class MyEditor extends PureComponent {
   constructor(props) {
     super(props);
@@ -32,17 +30,6 @@ export default class MyEditor extends PureComponent {
     return raw;
   }
   render() {
-    console.log('xxxxxxxxxxxxxxxx');
-    console.log('xxxxxxxxxxxxxxxx');
-    console.log('xxxxxxxxxxxxxxxx');
-    console.log('xxxxxxxxxxxxxxxx');
-    console.log('xxxxxxxxxxxxxxxx');
-    console.log('xxxxxxxxxxxxxxxx');
-    // if (isServerSide()) {
-    //   return (<Head>
-    //     <link href="/static/draft-editor.css" rel="stylesheet" />
-    //   </Head>);
-    // }
     const { editorState } = this.state;
     let className = 'RichEditor-editor';
     const contentState = editorState.getCurrentContent();
