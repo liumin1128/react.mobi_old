@@ -31,7 +31,7 @@ export default class MeizituDetail extends PureComponent {
 
         return (
           <div>
-            <Grid container spacing={24}>
+            <Grid container spacing={16}>
               {
                 list.map(i => (<Grid
                   item

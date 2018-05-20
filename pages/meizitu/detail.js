@@ -36,7 +36,7 @@ export default class News extends PureComponent {
     return (
       <div className={classes.root}>
         <div className={classes.root}>
-          <Grid className={classes.container} container spacing={24}>
+          <Grid className={classes.container} container spacing={16}>
             <Grid item xs={12} sm={12} md={12}>
               <div className={classes.body}>
                 <Detail query={query} />

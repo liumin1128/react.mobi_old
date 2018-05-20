@@ -14,7 +14,7 @@ export default class Article extends PureComponent {
       <Fragment>
         <Appbar />
         <Layout>
-          <Grid container spacing={24}>
+          <Grid container spacing={16}>
             <Grid item xs={12} sm={12} md={8}>
               <Card><Link href="/article/create"><Button>发布</Button></Link></Card>
               <List />

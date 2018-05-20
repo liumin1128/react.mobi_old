@@ -11,7 +11,7 @@ export default class Says extends PureComponent {
       <Fragment>
         <Appbar />
         <Layout>
-          <Grid container spacing={24}>
+          <Grid container spacing={16}>
             <Grid item xs={12} sm={12} md={8}>
               <List />
             </Grid>

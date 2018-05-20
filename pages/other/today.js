@@ -10,7 +10,7 @@ export default class TodayInHistory extends PureComponent {
   render() {
     return (
       <Layout>
-        <Grid container spacing={24}>
+        <Grid container spacing={16}>
           <Grid item xs={12} sm={12} md={12}>
             <List />
           </Grid>

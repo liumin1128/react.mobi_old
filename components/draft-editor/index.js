@@ -57,7 +57,7 @@ export default class MyEditor extends PureComponent {
           />
         </div>
         {
-          // <Grid container spacing={24}>
+          // <Grid container spacing={16}>
           //   <Grid item md={4}>
           //     <div dangerouslySetInnerHTML={{ __html: this.getHtml() }} />
           //   </Grid>
