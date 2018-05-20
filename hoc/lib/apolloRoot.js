@@ -1,7 +1,9 @@
-import initApollo from './initApollo';
+import React from 'react';
 import Head from 'next/head';
 import { getDataFromTree } from 'react-apollo';
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
+import initApollo from './initApollo';
+import withRedux from '../store';
 
 export default (App) => {
   return class Apollo extends React.Component {
@@ -18,10 +20,11 @@ export default (App) => {
 
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
+      const Appwithredux = withRedux(App);
       const apollo = initApollo();
       try {
         // Run all GraphQL queries
-        await getDataFromTree(<App
+        await getDataFromTree(<Appwithredux
           {...appProps}
           Component={Component}
           router={router}
