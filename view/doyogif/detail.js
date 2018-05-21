@@ -7,6 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import LazyLoad from 'react-lazyload';
+import { updateQuery } from '@/graphql/index';
+import LoadMore from '@/components/loadmore';
 // import ContentLoader, { Code } from 'react-content-loader';
 import { DOYOGIF_DETAIL } from '@/graphql/doyogif';
 
@@ -24,13 +26,20 @@ const styles = theme => ({
 @withStyles(styles)
 export default class MeizituDetail extends PureComponent {
   render() {
-    const _id = this.props.query.id;
+    const { query = {} } = this.props;
+    const { id: _id, skip = 0 } = query;
     const { classes } = this.props;
     return (<Query query={DOYOGIF_DETAIL} variables={{ _id }}>
-      {({ loading, error, data = {} }) => {
-        const { detail: list } = data;
+      {({ loading, error, data = {}, fetchMore }) => {
+        const { list = [] } = data;
         if (loading) return 'Loading...';
         if (error) return `Error! ${error.message}`;
+
+        const loadMore = () => fetchMore({
+          variables: { skip: list.length + skip },
+          updateQuery,
+        });
+
         return (
           <div className={classes.root}>
             {
@@ -43,6 +52,7 @@ export default class MeizituDetail extends PureComponent {
                 </CardContent>
               </Card>))
             }
+            <LoadMore onEnter={loadMore} />
           </div>
         );
       }}

@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const DOYOGIF_DETAIL = gql`
   query doyogifDetail($_id: String!, $skip: Int) {
-    detail: doyogifDetail(_id: $_id, skip: $skip) {
+    list: doyogifDetail(_id: $_id, skip: $skip) {
       __typename
       src
       title
