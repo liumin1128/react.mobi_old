@@ -11,6 +11,7 @@ import { updateQuery } from '@/graphql/index';
 import LoadMore from '@/components/loadmore';
 // import ContentLoader, { Code } from 'react-content-loader';
 import { DOYOGIF_DETAIL } from '@/graphql/doyogif';
+import nossr from '@/hoc/nossr';
 
 const styles = theme => ({
   root: {
@@ -21,10 +22,22 @@ const styles = theme => ({
     height: 'auto',
     width: '100%',
   },
+  load: {
+    padding: 0,
+    margin: '0 auto',
+    display: 'block',
+    width: '100%',
+    height: 0,
+    overflow: 'hidden',
+    background: 'rgba(0,0,0,0.05)',
+  },
 });
 
+
+@nossr
 @withStyles(styles)
 export default class MeizituDetail extends PureComponent {
+  state = {}
   render() {
     const { query = {} } = this.props;
     const { id: _id, skip = 0 } = query;
@@ -43,14 +56,43 @@ export default class MeizituDetail extends PureComponent {
         return (
           <div className={classes.root}>
             {
-              list.map(i => (<Card>
-                <img className={classes.media} src={i.src} alt="" />
-                <CardContent>
-                  <Typography className={classes.title} component="p" >
-                    {i.title}
-                  </Typography>
-                </CardContent>
-              </Card>))
+              list.map((i) => {
+                const paddingTop = this.state[i.src] || '50%';
+                return (<Card key={i.src}>
+                  <LazyLoad
+                    debounce={300}
+                    unmountIfInvisible
+                    placeholder={<div style={{ paddingTop }} className={classes.load} />}
+                  >
+                    {
+                      (() => {
+                        if (!this.state[i.src]) {
+                          const img = new Image();
+                          img.src = i.src;
+                          const check = () => {
+                            if (img.width > 0 || img.height > 0) {
+                              const value = `${Math.floor((img.height / img.width) * 100)}%`;
+                              this.setState({ [i.src]: value });
+                              clearInterval(set);
+                            }
+                          };
+                          const set = setInterval(check, 40);
+                        }
+                        return (<CardMedia
+                          className={classes.media}
+                          style={{ paddingTop }}
+                          image={i.src}
+                        />);
+                      })()
+                    }
+                  </LazyLoad>
+                  <CardContent>
+                    <Typography className={classes.title} component="p" >
+                      {i.title}
+                    </Typography>
+                  </CardContent>
+                </Card>);
+              })
             }
             <LoadMore onEnter={loadMore} />
           </div>
