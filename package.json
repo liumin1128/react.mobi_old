@@ -4,6 +4,7 @@
     "deploy": "sh ./deploy.sh",
     "analyze": "cross-env ANALYZE=1 next build",
     "build": "next build",
+    "update": "yarn build && yarn deploy",
     "start": "next -p 8000",
     "server": "NODE_ENV=production node server.js",
     "next": "next start",
