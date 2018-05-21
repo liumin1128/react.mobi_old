@@ -6,6 +6,7 @@ import Waypoint from 'react-waypoint';
 import { DOYOGIF_LIST } from '@/graphql/doyogif';
 import { updateQuery } from '@/graphql';
 import Button from '@/components/loading/button';
+import LoadMore from '@/components/loadmore';
 import Item from './item';
 
 function PostList({
@@ -28,10 +29,7 @@ function PostList({
         </Grid>))
       }
     </Grid>
-    <Button onClick={() => loadMore()}>
-      加载更多
-    </Button>
-
+    <LoadMore onEnter={loadMore} />
   </div>);
 }
 
