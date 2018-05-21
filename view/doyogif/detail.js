@@ -11,22 +11,13 @@ import LazyLoad from 'react-lazyload';
 import { DOYOGIF_DETAIL } from '@/graphql/doyogif';
 
 const styles = theme => ({
-  card: {
-    maxWidth: 500,
-    marginBottom: theme.spacing.unit * 3,
+  root: {
+    maxWidth: 700,
     margin: '0 auto',
-  },
-  load: {
-    padding: 0,
-    margin: '0 auto',
-    display: 'block',
-    width: '100%',
-    height: 0,
-    overflow: 'hidden',
-    background: 'rgba(0,0,0,0.05)',
   },
   media: {
-    height: 0,
+    height: 'auto',
+    width: '100%',
   },
 });
 
@@ -37,12 +28,21 @@ export default class MeizituDetail extends PureComponent {
     const { classes } = this.props;
     return (<Query query={DOYOGIF_DETAIL} variables={{ _id }}>
       {({ loading, error, data = {} }) => {
-        const { detail = {} } = data;
+        const { detail: list } = data;
         if (loading) return 'Loading...';
         if (error) return `Error! ${error.message}`;
         return (
           <div className={classes.root}>
-            <h3>666</h3>
+            {
+              list.map(i => (<Card>
+                <img className={classes.media} src={i.src} alt="" />
+                <CardContent>
+                  <Typography className={classes.title} component="p" >
+                    {i.title}
+                  </Typography>
+                </CardContent>
+              </Card>))
+            }
           </div>
         );
       }}

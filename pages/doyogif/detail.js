@@ -13,7 +13,7 @@ export default class News extends PureComponent {
       <Layout >
         <Grid container spacing={16}>
           <Grid item xs={12} sm={12} md={12}>
-            <h1>7777</h1>
+            <Detail query={query} />
           </Grid>
         </Grid>
       </Layout>

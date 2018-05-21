@@ -49,7 +49,7 @@ class RecipeReviewCard extends React.Component {
     return (
       <div>
         <Card className={classes.root}>
-          <Link key={_id} href={`/bxgif/detail?id=${_id}`}>
+          <Link key={_id} href={`/doyogif/detail?id=${_id}`}>
             <a>
               <div>
                 <img src={cover} alt="" className={classes.cover} />
