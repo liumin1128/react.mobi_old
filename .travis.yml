@@ -10,6 +10,51 @@ node_js:
   - '9'
 
 before_script: 
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST  
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
+  - echo D_TEST
   - echo D_PATH
   - echo "开始安装依赖~~~"
   - yarn
@@ -21,6 +66,8 @@ script:
 
   - echo "开始推送~~~"
 
+
+
   - sshpass -p D_PS scp -o stricthostkeychecking=no -r ./D_LOCAL D_SERVER:D_PATH
 
   - echo "推送成功~~~"
@@ -30,3 +77,4 @@ env:
   - D_SERVER=X_SERVER
   - D_PATH=X_PATH
   - D_LOCAL=X_LOCAL
+  - D_TEST=X_TEST
