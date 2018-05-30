@@ -3,5 +3,16 @@ language: node_js
 node_js:
   - '9'
 
-before_script: yarn
-script: yarn build
+before_script: 
+  echo DB
+  echo SH
+  yarn
+script: 
+  echo DB
+  echo SH
+  yarn build
+
+
+env:
+  - DB=value
+  - SH=DDD_XXX
