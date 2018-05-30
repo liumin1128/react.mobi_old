@@ -4,15 +4,26 @@ node_js:
   - '9'
 
 before_script: 
-  echo DB
-  echo SH
+  echo PATH
+  sshpass -p PS scp -o stricthostkeychecking=no -r ./${LOCAL} ${SERVER}:${PATH}
+
+  echo '开始安装依赖~~~'
   yarn
+  echo '依赖安装完毕~~~'
 script: 
-  echo DB
-  echo SH
+  echo PATH
+  echo '开始编译项目~~~'
   yarn build
+  echo '项目编译成功~~~'
 
-
+  echo $(pwd)/${LOCAL}
+  
+  echo '开始推送~~~'
+  sshpass -p PS scp -o stricthostkeychecking=no -r ./${LOCAL} ${SERVER}:${PATH}
+  echo '推送成功~~~'
+  
 env:
-  - DB=value
-  - SH=DDD_XXX
+  - PS=PS
+  - SERVER=SERVER
+  - PATH=PATH
+  - LOCAL=LOCAL
