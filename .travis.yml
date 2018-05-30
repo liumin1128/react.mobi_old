@@ -10,57 +10,18 @@ node_js:
   - '9'
 
 before_script: 
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST  
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_TEST
-  - echo D_PATH
+  - echo X_TEST
+  - echo X_TEST
+  - echo X_TEST
+
   - echo "开始安装依赖~~~"
   - yarn
   - echo "依赖安装完毕~~~"
 script: 
   - echo "开始编译项目~~~"
+  - echo X_TEST
+  - echo X_TEST
+  - echo X_TEST
   - yarn build
   - echo "项目编译成功~~~"
 
@@ -68,13 +29,6 @@ script:
 
 
 
-  - sshpass -p D_PS scp -o stricthostkeychecking=no -r ./D_LOCAL D_SERVER:D_PATH
+  - sshpass -p X_PS scp -o stricthostkeychecking=no -r ./X_LOCAL X_SERVER:X_PATH
 
   - echo "推送成功~~~"
-  
-env:
-  - D_PS=X_PS
-  - D_SERVER=X_SERVER
-  - D_PATH=X_PATH
-  - D_LOCAL=X_LOCAL
-  - D_TEST=X_TEST
