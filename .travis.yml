@@ -1,9 +1,11 @@
 sudo: false
 language: node_js
+
 addons:
   apt:
     packages:
     - sshpass
+
 node_js:
   - '9'
 
@@ -24,7 +26,7 @@ script:
   - echo '推送成功~~~'
   
 env:
-  - D_PS=PS
-  - D_SERVER=SERVER
-  - D_PATH=PATH
-  - D_LOCAL=LOCAL
+  - D_PS=X_PS
+  - D_SERVER=X_SERVER
+  - D_PATH=X_PATH
+  - D_LOCAL=X_LOCAL
