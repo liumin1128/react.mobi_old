@@ -25,5 +25,5 @@ script:
   - yarn build
   - echo "项目编译成功~~~"
   - echo "开始推送~~~"
-  - sshpass -p X_PS scp -o stricthostkeychecking=no -r ./X_LOCAL X_SERVER:X_PATH
+  - sshpass -p ${X_PS} scp -o stricthostkeychecking=no -r ./${X_LOCAL} ${X_SERVER}:${X_PATH}
   - echo "推送成功~~~"
