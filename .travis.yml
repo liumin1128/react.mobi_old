@@ -21,7 +21,7 @@ script:
 
   - echo "开始推送~~~"
 
-  - sshpass -p D_PS scp -o stricthostkeychecking=no -r ./${D_LOCAL} ${D_SERVER}:${D_PATH}
+  - sshpass -p D_PS scp -o stricthostkeychecking=no -r ./D_LOCAL D_SERVER:D_PATH
 
   - echo "推送成功~~~"
   
