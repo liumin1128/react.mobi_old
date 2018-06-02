@@ -52,6 +52,14 @@ class SimpleTabs extends React.Component {
     }
   }
 
+  // componentDidMount() {
+  //   const { router } = this.props;
+  //   navList.map(({ href }) => {
+  //     router.prefetch(href);
+  //   });
+  // }
+
+
   handleChange = (event, value) => {
     this.setState({ value });
     const { router } = this.props;
@@ -59,7 +67,7 @@ class SimpleTabs extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, router } = this.props;
     const { value } = this.state;
 
     return (
@@ -70,16 +78,19 @@ class SimpleTabs extends React.Component {
           indicator: classes.indicator,
         }}
       >
-        {navList.map(({ href, label }) => (
-          <Tab
+        {navList.map(({ href, label }) => {
+          // console.log('router');
+          // console.log(href);
+          router.prefetch(href);
+          return (<Tab
             key={href}
             classes={{
-              root: classes.tab,
-              label: classes.label,
-            }}
+            root: classes.tab,
+            label: classes.label,
+          }}
             label={label}
-          />
-        ))}
+          />);
+        })}
       </Tabs>
     );
   }
