@@ -2215,6 +2215,10 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.2.3:
+  version "2.2.6"
+  resolved "http://registry.npm.taobao.org/classnames/download/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+
 classnames@^2.2.5:
   version "2.2.5"
   resolved "http://registry.npm.taobao.org/classnames/download/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
@@ -4255,6 +4259,10 @@ lodash.keys@^3.1.2:
 lodash.some@^4.6.0:
   version "4.6.0"
   resolved "http://registry.npm.taobao.org/lodash.some/download/lodash.some-4.6.0.tgz#1bb9f314ef6b8baded13b549169b2a945eb68e4d"
+
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "http://registry.npm.taobao.org/lodash.throttle/download/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
 
 lodash@4.17.5, lodash@^4.2.0:
   version "4.17.5"
@@ -6484,6 +6492,15 @@ validate-npm-package-license@^3.0.1:
 vary@~1.1.2:
   version "1.1.2"
   resolved "http://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
+
+video-react@^0.13.0:
+  version "0.13.0"
+  resolved "http://registry.npm.taobao.org/video-react/download/video-react-0.13.0.tgz#13d73c6f889899e1275517b540e96cc3434015a9"
+  dependencies:
+    classnames "^2.2.3"
+    lodash.throttle "^4.1.1"
+    prop-types "^15.5.8"
+    redux "^4.0.0"
 
 vm-browserify@0.0.4:
   version "0.0.4"

@@ -63,6 +63,7 @@
     "slate": "^0.33.6",
     "slate-react": "^0.12.6",
     "store": "^2.0.12",
-    "timeago.js": "^3.0.2"
+    "timeago.js": "^3.0.2",
+    "video-react": "^0.13.0"
   }
 }
