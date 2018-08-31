@@ -71,15 +71,17 @@ class SimpleTabs extends React.Component {
     const { value } = this.state;
 
     return (
-      <Tabs
-        value={value}
-        onChange={this.handleChange}
-        classes={{
+      <div>
+        <Tabs
+          value={value}
+          onChange={this.handleChange}
+          classes={{
           indicator: classes.indicator,
         }}
-      >
-        {navList.map(({ href, label }) => {
+        >
+          {navList.map(({ href, label }) => {
           // console.log('router');
+          console.log(router);
           // console.log(href);
           router.prefetch(href);
           return (<Tab
@@ -91,7 +93,8 @@ class SimpleTabs extends React.Component {
             label={label}
           />);
         })}
-      </Tabs>
+        </Tabs>
+      </div>
     );
   }
 }
