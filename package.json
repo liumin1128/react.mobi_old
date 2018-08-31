@@ -42,6 +42,7 @@
     "final-form": "^4.7.3",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
+    "hls.js": "^0.11.0",
     "html-minifier": "^3.5.16",
     "immutable": "^3.8.2",
     "isomorphic-unfetch": "^2.0.0",
@@ -64,6 +65,7 @@
     "slate-react": "^0.12.6",
     "store": "^2.0.12",
     "timeago.js": "^3.0.2",
-    "video-react": "^0.13.0"
+    "video-react": "^0.13.0",
+    "videojs-contrib-hls": "^5.14.1"
   }
 }
