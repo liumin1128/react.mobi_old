@@ -40,7 +40,8 @@
   },
   "parserOptions": {
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
+      "experimentalObjectRestSpread": true,
+      "legacyDecorators": true
     }
   },
   "env": {

@@ -1,10 +1,11 @@
 {
   "presets": [
-    "@babel/env",
+    "@babel/preset-env",
     "next/babel"
   ],
   "plugins": [
     "@babel/transform-runtime",
+    ["@babel/plugin-proposal-decorators", { "legacy": true } ],
     ["module-resolver", { "alias": { "@": "./" } }]
   ],
   "env": {

@@ -13,7 +13,7 @@ react, redux, next, graphql，draft
 ### 所有依赖
 
 ```
-npm i -D @babel/preset-env @babel/plugin-transform-runtime @babel/core @babel/register @babel/runtime babel-plugin-module-resolver eslint eslint-plugin-import babel-eslint eslint-config-airbnb babel-plugin-transform-remove-console babel-preset-minify babel-plugin-module-resolver cross-env
+npm i -D @babel/preset-env @babel/plugin-transform-runtime @babel/core @babel/register @babel/runtime @babel/plugin-proposal-decorators babel-plugin-module-resolver eslint eslint-plugin-import babel-eslint eslint-config-airbnb babel-plugin-transform-remove-console babel-preset-minify babel-plugin-module-resolver cross-env
 
 npm i -S graphql graphql-tag apollo-boost react-apollo
 
