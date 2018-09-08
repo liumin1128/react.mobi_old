@@ -1,13 +1,17 @@
 {
   "scripts": {
-    "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "pm2": "pm2 start ./process.json",
+    "start": "next -p 8000"
   },
   "dependencies": {
+    "apollo-boost": "^0.1.15",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.9.2",
     "next": "^7.0.0-canary.14",
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
+    "react-apollo": "^2.1.11",
     "react-dom": "^16.5.0"
   },
   "devDependencies": {
