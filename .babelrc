@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "@babel/env"
+  ],
+  "plugins": [
+    "@babel/transform-runtime",
+    ["module-resolver", { "alias": { "@": "./" } }]
+  ],
+  "env": {
+    "production": {
+      "presets": ["minify"],
+      "plugins": [
+        "transform-remove-console"
+      ]
+    }
+  }
+}
