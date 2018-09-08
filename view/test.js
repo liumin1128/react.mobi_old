@@ -1,6 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import nossr from '@/hoc/nossr';
 
 export const TEST = gql`
   query test {
@@ -11,6 +12,7 @@ export const TEST = gql`
   }
 `;
 
+@nossr
 @graphql(TEST)
 export default class test extends PureComponent {
   render() {
