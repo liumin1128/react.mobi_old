@@ -5,10 +5,9 @@ import { onError } from 'apollo-link-error';
 import { withClientState } from 'apollo-link-state';
 import { ApolloLink } from 'apollo-link';
 import { Observable } from 'rxjs';
-import Snackbar from '@/components/snackbar';
+// import Snackbar from '@/components/snackbar';
 import { getStorage } from '@/utils/store';
-import { STORE_USER_KEY } from '@/constants/base';
-import { ENV } from '@/config/base'
+import { STORE_USER_KEY, ENV } from '@/config/base';
 
 let apolloClient = null;
 
@@ -21,10 +20,8 @@ const cache = new InMemoryCache({
   // 存缓解析器，实现列表目录到详情
   cacheRedirects: {
     Query: {
-      say: (_, { _id }, { getCacheKey }) =>
-        getCacheKey({ __typename: 'Say', _id }),
-      article: (_, { _id }, { getCacheKey }) =>
-        getCacheKey({ __typename: 'Article', _id }),
+      say: (_, { _id }, { getCacheKey }) => getCacheKey({ __typename: 'Say', _id }),
+      article: (_, { _id }, { getCacheKey }) => getCacheKey({ __typename: 'Article', _id }),
     },
   },
 });
@@ -39,24 +36,23 @@ const request = async (operation) => {
   });
 };
 
-const requestLink = new ApolloLink((operation, forward) =>
-  new Observable((observer) => {
-    let handle;
-    Promise.resolve(operation)
-      .then(oper => request(oper))
-      .then(() => {
-        handle = forward(operation).subscribe({
-          next: observer.next.bind(observer),
-          error: observer.error.bind(observer),
-          complete: observer.complete.bind(observer),
-        });
-      })
-      .catch(observer.error.bind(observer));
+const requestLink = new ApolloLink((operation, forward) => new Observable((observer) => {
+  let handle;
+  Promise.resolve(operation)
+    .then(oper => request(oper))
+    .then(() => {
+      handle = forward(operation).subscribe({
+        next: observer.next.bind(observer),
+        error: observer.error.bind(observer),
+        complete: observer.complete.bind(observer),
+      });
+    })
+    .catch(observer.error.bind(observer));
 
-    return () => {
-      if (handle) handle.unsubscribe;
-    };
-  }));
+  return () => {
+    if (handle) handle.unsubscribe;
+  };
+}));
 
 function create(initialState) {
   return new ApolloClient({
@@ -71,13 +67,13 @@ function create(initialState) {
         if (graphQLErrors) {
           // console.log('graphQLErrors');
           // console.log(graphQLErrors);
-          Snackbar.error(graphQLErrors[0].message);
+          // Snackbar.error(graphQLErrors[0].message);
           // throw new Error(graphQLErrors);
           // sendToLoggingService(graphQLErrors);
           // throw graphQLErrors[0];
         }
         if (networkError) {
-          Snackbar.error('网络连接失败');
+          // Snackbar.error('网络连接失败');
           console.log('logoutUser');
           console.log(networkError);
           // logoutUser();
@@ -122,4 +118,3 @@ export default function initApollo(initialState) {
 
   return apolloClient;
 }
-

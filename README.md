@@ -13,9 +13,11 @@ react, redux, next, graphql，draft
 ### 所有依赖
 
 ```
-npm i -D @babel/preset-env @babel/plugin-transform-runtime @babel/core @babel/register @babel/runtime @babel/plugin-proposal-decorators babel-plugin-module-resolver eslint eslint-plugin-import babel-eslint eslint-config-airbnb babel-plugin-transform-remove-console babel-preset-minify babel-plugin-module-resolver cross-env
+npm i -D @babel/preset-env @babel/plugin-transform-runtime @babel/core @babel/register @babel/runtime @babel/plugin-proposal-decorators babel-plugin-module-resolver babel-plugin-transform-remove-console babel-preset-minify eslint eslint-plugin-import babel-eslint eslint-plugin-jsx-a11y eslint-plugin-react eslint-config-airbnb cross-env
 
-npm i -S graphql graphql-tag apollo-boost react-apollo
+npm i -S graphql graphql-tag apollo-boost react-apollo isomorphic-unfetch recompose
+
+npm i -S store
 
 
 yarn add --dev babel-eslint  eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react @babel/preset-env @babel/plugin-transform-runtime babel-plugin-transform-decorators-legacy babel-plugin-transform-remove-console babel-plugin-lodash babel-preset-minify babel-plugin-module-resolver express redux-devtools-extension webpack-bundle-analyzer cross-env 

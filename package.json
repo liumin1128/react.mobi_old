@@ -12,7 +12,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-apollo": "^2.1.11",
-    "react-dom": "^16.5.0"
+    "react-dom": "^16.5.0",
+    "store": "^2.0.12"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -28,6 +29,10 @@
     "cross-env": "^5.2.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "isomorphic-unfetch": "^2.1.1",
+    "recompose": "^0.30.0"
   }
 }

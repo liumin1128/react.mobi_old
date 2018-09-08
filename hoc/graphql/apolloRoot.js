@@ -3,11 +3,12 @@ import Head from 'next/head';
 import { getDataFromTree } from 'react-apollo';
 // import propTypes from 'prop-types';
 import initApollo from './initApollo';
-import withRedux from '../store';
+// import withRedux from '../store';
 
 export default (App) => {
   return class Apollo extends React.Component {
     static displayName = 'withApollo(App)'
+
     static async getInitialProps(ctx) {
       const { Component, router } = ctx;
 
@@ -19,7 +20,7 @@ export default (App) => {
       const apolloState = {};
 
       // 为App注入redux，否则这一步会出现意外情况
-      const Appwithredux = withRedux(App);
+      // const Appwithredux = withRedux(App);
 
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
