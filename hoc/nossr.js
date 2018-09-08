@@ -7,17 +7,22 @@ export default (WrappedComponent) => {
       show: false,
       skip: false,
     }
+
     componentDidMount() {
       this.change();
     }
+
     change = () => {
-      if (!this.state.skip && !isServerSide()) {
+      const { skip } = this.state;
+      if (!skip && !isServerSide()) {
         this.setState({ show: true, skip: true });
       }
     }
+
     render() {
       const { ...other } = this.props;
-      if (!this.state.show) {
+      const { show } = this.state;
+      if (!show) {
         return 'nossr loading';
       }
       return (
