@@ -27,7 +27,7 @@ export default (App) => {
       const apollo = initApollo();
       try {
         // Run all GraphQL queries
-        await getDataFromTree(<Appwithredux
+        await getDataFromTree(<App
           {...appProps}
           Component={Component}
           router={router}
