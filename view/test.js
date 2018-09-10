@@ -1,19 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
 import nossr from '@/hoc/nossr';
-
-export const TEST = gql`
-  query test {
-    list: books {
-      __typename
-      title
-    }
-  }
-`;
+import { BXGIF_LIST } from '@/graphql/schema/bxgif';
+import { listQuery } from '@/graphql/utils';
 
 @nossr
-@graphql(TEST)
+@listQuery(BXGIF_LIST)
 export default class test extends PureComponent {
   render() {
     const { data } = this.props;
