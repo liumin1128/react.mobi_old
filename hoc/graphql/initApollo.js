@@ -26,7 +26,6 @@ const cache = new InMemoryCache({
   },
 });
 
-
 const request = async (operation) => {
   const token = await getStorage(USER_TOKEN_KEY) || {};
   operation.setContext({
@@ -102,7 +101,6 @@ function create(initialState) {
     cache: cache.restore(initialState || {}),
   });
 }
-
 
 export default function initApollo(initialState) {
   // Make sure to create a new client for every server-side request so that data
