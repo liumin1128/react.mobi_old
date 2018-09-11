@@ -19,7 +19,7 @@ npm i -D eslint eslint-plugin-import babel-eslint eslint-plugin-jsx-a11y eslint-
 
 npm i -S graphql graphql-tag apollo-boost react-apollo isomorphic-unfetch 
 
-npm i -S store recompose
+npm i -S store recompose react-masonry-component
 
 npm i -S @material-ui/core @material-ui/icons
 

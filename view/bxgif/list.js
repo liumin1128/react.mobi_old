@@ -1,7 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
+import Masonry from 'react-masonry-component';
+import Grid from '@material-ui/core/Grid';
 import hocNossr from '@/hoc/hocNossr';
 import { BXGIF_LIST } from '@/graphql/schema/bxgif';
 import { listQuery } from '@/graphql/utils';
+import Item from './item';
 
 @hocNossr(listQuery(BXGIF_LIST))
 export default class test extends PureComponent {
@@ -14,11 +17,24 @@ export default class test extends PureComponent {
 
     return (
       <Fragment>
-        {list.map(i => (
-          <div id={i._id}>
-            {i.title}
-          </div>
-        ))}
+        <Masonry>
+          {list.map(i => (
+            <Grid
+              key={i._id}
+              style={{
+                padding: '8px',
+                width: '100%',
+                display: 'block',
+              }}
+              item
+              xs={6}
+              sm={4}
+              lg={3}
+            >
+              <Item {...i} />
+            </Grid>
+          ))}
+        </Masonry>
       </Fragment>
     );
   }
