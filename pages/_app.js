@@ -7,14 +7,14 @@ import { isServerSide } from '@/utils/common';
 @hoc
 export default class MyApp extends App {
   render() {
-    const { Component, pageProps, pageContext, apolloClient, router, ...other } = this.props;
+    const { Component, pageProps, pageContext, apolloClient } = this.props;
     return (
       <Container>
         <ApolloProvider client={apolloClient}>
           {
             isServerSide()
-              ? <Component pageContext={pageContext} router={router} {...pageProps} />
-              : <Component router={router} {...pageProps} />
+              ? <Component pageContext={pageContext} {...pageProps} />
+              : <Component {...pageProps} />
           }
         </ApolloProvider>
       </Container>
