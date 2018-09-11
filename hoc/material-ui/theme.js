@@ -26,16 +26,11 @@ export default createMuiTheme({
       },
     },
     MuiPaper: {
-      // elevation1: {
-      //   boxShadow: '0 3px 5px 0px rgba(0, 0, 0, 0.05)',
-      // },
       elevation1: {
         boxShadow: '0 5px 5px 0px rgba(0, 0, 0, 0.03)',
         borderRadius: 4,
         marginBottom: theme.spacing.unit * 2,
         [theme.breakpoints.down('xs')]: {
-          // boxShadow: '0 1px 2px 1px rgba(0, 0, 0, 0.05)',
-          // boxShadow: '0 1px 3px 0px rgba(0, 0, 0, 0.05)',
           marginBottom: theme.spacing.unit * 1,
           boxShadow: 'none',
         },

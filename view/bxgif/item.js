@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 const styles = theme => ({
   card: {
     cursor: 'pointer',
+    margin: 0,
+    padding: 0,
     // boxShadow: 'none',
   },
   cover: {
@@ -58,7 +60,7 @@ class RecipeReviewCard extends React.Component {
               <div className={classes.content}>
                 <Typography
                   className={classes.title}
-                    // variant="headline"
+                  variant="subheading"
                   component="p"
                 >
                   {title.substring(15, title.length)}
