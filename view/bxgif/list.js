@@ -33,7 +33,7 @@ const styles = theme => ({
 @withStyles(styles)
 export default class BxgifList extends PureComponent {
   render() {
-    const { data = {}, classes } = this.props;
+    const { data = {}, classes, fetchMore } = this.props;
     const { loading = true, error, list = [] } = data;
 
     if (loading) return 'Loading...';
@@ -49,7 +49,7 @@ export default class BxgifList extends PureComponent {
           ))}
         </Masonry>
         <Waypoint
-          onEnter={() => { console.log('xxx'); }}
+          onEnter={() => { console.log('xxx'); fetchMore(); }}
           onLeave={() => {}}
         />
         <CircularProgress color="secondary" className={classes.progress} />
