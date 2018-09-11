@@ -1,7 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
 import Masonry from 'react-masonry-component';
+import Waypoint from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import hocNossr from '@/hoc/hocNossr';
 import { BXGIF_LIST } from '@/graphql/schema/bxgif';
 import { listQuery } from '@/graphql/utils';
@@ -20,6 +22,10 @@ const styles = theme => ({
     [theme.breakpoints.down('xs')]: {
       padding: theme.spacing.unit * 0.5,
     },
+  },
+  progress: {
+    margin: `${theme.spacing.unit * 2}px auto`,
+    display: 'block',
   },
 });
 
@@ -42,6 +48,11 @@ export default class BxgifList extends PureComponent {
             </Grid>
           ))}
         </Masonry>
+        <Waypoint
+          onEnter={() => { console.log('xxx'); }}
+          onLeave={() => {}}
+        />
+        <CircularProgress color="secondary" className={classes.progress} />
       </Fragment>
     );
   }

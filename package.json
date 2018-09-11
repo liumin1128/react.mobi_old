@@ -17,6 +17,7 @@
     "react-apollo": "^2.1.11",
     "react-dom": "^16.5.0",
     "react-masonry-component": "^6.2.1",
+    "react-waypoint": "^8.0.3",
     "store": "^2.0.12"
   },
   "devDependencies": {
