@@ -8,18 +8,24 @@ import Card from '@material-ui/core/Card'; import CardHeader from '@material-ui/
 import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
+  card: {
+    cursor: 'pointer',
+    // boxShadow: 'none',
+  },
   cover: {
     width: '100%',
     minHeight: 100,
     display: 'block',
   },
   title: {
-    // fontSize: 16,
+    color: '#666',
   },
   meta: {
     marginTop: 4,
     display: 'flex',
     justifyContent: 'space-between',
+    color: '#999',
+    fontSize: 12,
   },
   content: {
     padding: 16,
@@ -47,25 +53,23 @@ class RecipeReviewCard extends React.Component {
       <div>
         <Card className={classes.card}>
           <Link key={_id} href={`/bxgif/detail?id=${_id}`}>
-            <a>
-              <div>
-                <img src={cover} alt="" className={classes.cover} />
-                <div className={classes.content}>
-                  <Typography
-                    className={classes.title}
+            <div>
+              <img src={cover} alt="" className={classes.cover} />
+              <div className={classes.content}>
+                <Typography
+                  className={classes.title}
                     // variant="headline"
-                    component="p"
-                  >
-                    {title.substring(15, title.length)}
-                  </Typography>
+                  component="p"
+                >
+                  {title.substring(15, title.length)}
+                </Typography>
 
-                  <Typography className={classes.meta} color="textSecondary">
-                    <span>{`${total}`}</span>
-                    <span>{createdAt}</span>
-                  </Typography>
-                </div>
+                <Typography className={classes.meta} color="textSecondary">
+                  <span>{`${total}`}</span>
+                  <span>{createdAt}</span>
+                </Typography>
               </div>
-            </a>
+            </div>
           </Link>
         </Card>
       </div>
