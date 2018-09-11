@@ -17,8 +17,7 @@ npm i -D @babel/preset-env @babel/plugin-transform-runtime @babel/core @babel/re
 npm i -D eslint eslint-plugin-import babel-eslint eslint-plugin-jsx-a11y eslint-plugin-react eslint-config-airbnb cross-env
 npm i -S graphql graphql-tag apollo-boost react-apollo isomorphic-unfetch 
 npm i -S @material-ui/core @material-ui/icons
-npm i -S store recompose react-masonry-component react-waypoint
-
+npm i -S store recompose react-masonry-component react-waypoint react-lazyload
 
 
 
