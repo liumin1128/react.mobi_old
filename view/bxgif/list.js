@@ -5,7 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import hocNossr from '@/hoc/hocNossr';
 import { BXGIF_LIST } from '@/graphql/schema/bxgif';
 import { listQuery } from '@/graphql/utils';
-
 import Item from './item';
 
 const styles = theme => ({
