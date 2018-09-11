@@ -11,6 +11,7 @@ export default class DxgifDetail extends PureComponent {
   render() {
     const { router } = this.props;
     const { id } = router.query;
+    console.log(id);
     return (
       <Layout>
         <h1>{id}</h1>
