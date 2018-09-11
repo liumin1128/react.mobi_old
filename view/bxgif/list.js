@@ -49,8 +49,7 @@ export default class BxgifList extends PureComponent {
           ))}
         </Masonry>
         <Waypoint
-          onEnter={() => { console.log('xxx'); fetchMore(); }}
-          onLeave={() => {}}
+          onEnter={fetchMore}
         />
         <CircularProgress color="secondary" className={classes.progress} />
       </Fragment>
