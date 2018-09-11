@@ -2,7 +2,6 @@ import React, { PureComponent, Fragment } from 'react';
 import Masonry from 'react-masonry-component';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-
 import hocNossr from '@/hoc/hocNossr';
 import { BXGIF_LIST } from '@/graphql/schema/bxgif';
 import { listQuery } from '@/graphql/utils';
@@ -16,9 +15,9 @@ const styles = theme => ({
     },
   },
   item: {
-    padding: theme.spacing.unit * 1,
     width: '100%',
     display: 'block',
+    padding: theme.spacing.unit * 1,
     [theme.breakpoints.down('xs')]: {
       padding: theme.spacing.unit * 0.5,
     },
@@ -27,7 +26,7 @@ const styles = theme => ({
 
 @hocNossr(listQuery(BXGIF_LIST))
 @withStyles(styles)
-export default class test extends PureComponent {
+export default class BxgifList extends PureComponent {
   render() {
     const { data = {}, classes } = this.props;
     const { loading = true, error, list = [] } = data;
@@ -39,14 +38,7 @@ export default class test extends PureComponent {
       <Fragment>
         <Masonry className={classes.list}>
           {list.map(i => (
-            <Grid
-              key={i._id}
-              className={classes.item}
-              item
-              xs={6}
-              sm={4}
-              lg={3}
-            >
+            <Grid key={i._id} className={classes.item} item xs={6} sm={4} lg={3}>
               <Item {...i} />
             </Grid>
           ))}
