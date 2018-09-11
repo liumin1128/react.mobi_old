@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import JssProvider from 'react-jss/lib/JssProvider';
 import getPageContext from './getPageContext';
+// import { isServerSide } from '@/utils/common';
 
 function withRoot(App) {
   class WithRoot extends React.Component {
@@ -21,7 +25,14 @@ function withRoot(App) {
 
 
     render() {
-      return <App {...this.props} pageContext={this.pageContext} />;
+      return (
+        <JssProvider registry={this.pageContext.sheetsRegistry} generateClassName={this.pageContext.generateClassName}>
+          <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
+            <CssBaseline />
+            <App {...this.props} pageContext={this.pageContext} />
+          </MuiThemeProvider>
+        </JssProvider>
+      );
     }
   }
 
