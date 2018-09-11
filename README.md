@@ -21,6 +21,9 @@ npm i -S graphql graphql-tag apollo-boost react-apollo isomorphic-unfetch
 
 npm i -S store recompose
 
+npm i -S @material-ui/core @material-ui/icons
+
+
 
 yarn add --dev babel-eslint  eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react @babel/preset-env @babel/plugin-transform-runtime babel-plugin-transform-decorators-legacy babel-plugin-transform-remove-console babel-plugin-lodash babel-preset-minify babel-plugin-module-resolver express redux-devtools-extension webpack-bundle-analyzer cross-env 
 

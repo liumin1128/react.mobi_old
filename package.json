@@ -5,6 +5,8 @@
     "start": "next -p 8000"
   },
   "dependencies": {
+    "@material-ui/core": "^3.0.3",
+    "@material-ui/icons": "^3.0.1",
     "apollo-boost": "^0.1.15",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
