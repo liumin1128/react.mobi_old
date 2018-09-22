@@ -43,14 +43,19 @@ export default class BxgifList extends PureComponent {
       <Fragment>
         <Masonry className={classes.list}>
           {list.map(i => (
-            <Grid key={i._id} className={classes.item} item xs={6} sm={4} lg={3}>
+            <Grid
+              key={i._id}
+              className={classes.item}
+              item
+              xs={6}
+              sm={4}
+              lg={3}
+            >
               <Item {...i} />
             </Grid>
           ))}
         </Masonry>
-        <Waypoint
-          onEnter={fetchMore}
-        />
+        <Waypoint onEnter={fetchMore} />
         <CircularProgress color="secondary" className={classes.progress} />
       </Fragment>
     );
