@@ -1,0 +1,18 @@
+import React, { PureComponent } from 'react';
+import Layout from '@/components/layout';
+import Detail from '@/view/bxgif/detail';
+import { withRouter } from 'next/router';
+
+@withRouter
+export default class DxgifDetail extends PureComponent {
+  render() {
+    const { router } = this.props;
+    const { id } = router.query;
+    return (
+      <Layout>
+        <h1>{id}</h1>
+        <Detail id={id} />
+      </Layout>
+    );
+  }
+}
