@@ -4,7 +4,6 @@ import Waypoint from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Item from './item';
-import hocNossr from '@/hoc/hocNossr';
 import { MZITU_LIST } from '@/graphql/schema/mzitu';
 import { listQuery } from '@/graphql/utils';
 
@@ -28,7 +27,7 @@ const styles = theme => ({
   },
 });
 
-@hocNossr(listQuery(MZITU_LIST))
+@listQuery(MZITU_LIST)
 @withStyles(styles)
 export default class MzituList extends PureComponent {
   render() {
@@ -49,7 +48,6 @@ export default class MzituList extends PureComponent {
               item
               xs={6}
               sm={4}
-              lg={3}
             >
               <Item {...i} />
             </Grid>
