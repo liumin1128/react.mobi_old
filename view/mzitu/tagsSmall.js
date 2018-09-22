@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import { Query } from 'react-apollo';
 import Link from 'next/link';
 import Grid from '@material-ui/core/Grid';
@@ -51,14 +51,16 @@ export default class MeizituDetail extends PureComponent {
                       key={i.tag}
                     >
                       <Link href={`/mzitu?tag=${i.tag}`}>
-                        <CardMedia
-                          className={classes.media}
-                          image={i.cover}
-                          title={i.title}
-                        />
-                        <Typography style={{ marginTop: 4 }} color="textSecondary" component="p">
-                          {i.title}
-                        </Typography>
+                        <Fragment>
+                          <CardMedia
+                            className={classes.media}
+                            image={i.cover}
+                            title={i.title}
+                          />
+                          <Typography style={{ marginTop: 4 }} color="textSecondary" component="p">
+                            {i.title}
+                          </Typography>
+                        </Fragment>
                       </Link>
                     </Grid>
                     ))
