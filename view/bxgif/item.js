@@ -77,8 +77,6 @@ class RecipeReviewCard extends React.Component {
                   component="p"
                 >
                   {title.substring(15, title.length)}
-                  {' '}
-                  {height}
                 </Typography>
 
                 <Typography className={classes.meta} color="textSecondary">
