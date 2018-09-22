@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 // import classnames from 'classnames';
-import Card from '@material-ui/core/Card'; import CardHeader from '@material-ui/core/CardHeader'; import CardContent from '@material-ui/core/CardContent'; import CardMedia from '@material-ui/core/CardMedia';
+import Card from '@material-ui/core/Card';
+// import CardHeader from '@material-ui/core/CardHeader';
+// import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -16,7 +19,8 @@ const styles = theme => ({
   },
   cover: {
     width: '100%',
-    minHeight: 100,
+    // minHeight: 100,
+    height: 0,
     display: 'block',
   },
   title: {
@@ -48,6 +52,7 @@ class RecipeReviewCard extends React.Component {
       cover,
       createdAt,
       total,
+      height,
       _id,
     } = this.props;
 
@@ -56,7 +61,15 @@ class RecipeReviewCard extends React.Component {
         <Card className={classes.card}>
           <Link key={_id} href={`/bxgif/detail?id=${_id}`}>
             <div>
-              <img src={cover} alt="" className={classes.cover} />
+              <CardMedia
+                className={classes.cover}
+                image={cover}
+                title={title}
+                style={{
+                  paddingBottom: `${(height / 195) * 100}%`,
+                  background: 'src',
+                }}
+              />
               <div className={classes.content}>
                 <Typography
                   className={classes.title}
@@ -64,6 +77,8 @@ class RecipeReviewCard extends React.Component {
                   component="p"
                 >
                   {title.substring(15, title.length)}
+                  {' '}
+                  {height}
                 </Typography>
 
                 <Typography className={classes.meta} color="textSecondary">

@@ -26,6 +26,7 @@ export const BXGIF_LIST = gql`
       comment
       createdAt
       total
+      height
     }
   }
 `;
