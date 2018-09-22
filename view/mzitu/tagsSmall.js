@@ -44,29 +44,25 @@ export default class MeizituDetail extends PureComponent {
             <div>
               <Grid container spacing={16}>
                 {
-                    result
-                      .map(i => (<Grid
-                        item
-                        xs={4}
-                      >
-                        <Link href={`/mzitu?tag=${i.tag}`}>
-                          <a>
-
-                            <CardMedia
-                              className={classes.media}
-                              image={i.cover}
-                              title={i.title}
-                            />
-
-                            <Typography style={{ marginTop: 4 }} color="textSecondary" component="p">
-                              {i.title}
-                            </Typography>
-
-                          </a>
-                        </Link>
-                      </Grid>
-                      ))
-                      }
+                  result
+                    .map(i => (<Grid
+                      item
+                      xs={4}
+                      key={i.tag}
+                    >
+                      <Link href={`/mzitu?tag=${i.tag}`}>
+                        <CardMedia
+                          className={classes.media}
+                          image={i.cover}
+                          title={i.title}
+                        />
+                        <Typography style={{ marginTop: 4 }} color="textSecondary" component="p">
+                          {i.title}
+                        </Typography>
+                      </Link>
+                    </Grid>
+                    ))
+                  }
               </Grid>
             </div>
           );

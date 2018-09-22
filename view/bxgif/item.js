@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 // import classnames from 'classnames';
 import Card from '@material-ui/core/Card';
 // import CardHeader from '@material-ui/core/CardHeader';
-// import CardContent from '@material-ui/core/CardContent';
+import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
 import Typography from '@material-ui/core/Typography';
@@ -60,7 +60,7 @@ class RecipeReviewCard extends React.Component {
       <div>
         <Card className={classes.card}>
           <Link key={_id} href={`/bxgif/detail?id=${_id}`}>
-            <div>
+            <Fragment>
               <CardMedia
                 className={classes.cover}
                 image={cover}
@@ -70,7 +70,7 @@ class RecipeReviewCard extends React.Component {
                   background: 'src',
                 }}
               />
-              <div className={classes.content}>
+              <CardContent className={classes.content}>
                 <Typography
                   className={classes.title}
                   variant="subheading"
@@ -83,8 +83,8 @@ class RecipeReviewCard extends React.Component {
                   <span>{`${total}`}</span>
                   <span>{createdAt}</span>
                 </Typography>
-              </div>
-            </div>
+              </CardContent>
+            </Fragment>
           </Link>
         </Card>
       </div>
