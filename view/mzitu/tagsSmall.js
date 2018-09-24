@@ -1,6 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
 import { Query } from 'react-apollo';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -50,7 +50,7 @@ export default class MeizituDetail extends PureComponent {
                       xs={4}
                       key={i.tag}
                     >
-                      <Link href={`/mzitu?tag=${i.tag}`}>
+                      <Link to={`/mzitu?tag=${i.tag}`}>
                         <Fragment>
                           <CardMedia
                             className={classes.media}
