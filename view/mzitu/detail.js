@@ -21,30 +21,34 @@ export default class MeizituDetail extends PureComponent {
   render() {
     const _id = this.props.query.id;
     const { classes } = this.props;
-    return (<Query query={MZITU_DETAIL} variables={{ _id }}>
-      {({ loading, error, data = {} }) => {
-        const { detail = {} } = data;
-        if (loading) return 'Loading...';
-        if (error) return `Error! ${error.message}`;
-        return (
-          <div className={classes.root}>
-            {detail.title}
-            {detail.pictures.map(i =>
-              (<LazyLoad
-                debounce={300}
-                key={i}
-                placeholder={<ContentLoader height={250}>
-                  <rect x="0" y="0" rx="2" ry="2" width="400" height="150" />
-                  <rect x="0" y="160" rx="2" ry="2" width="380" height="10" />
-                  <rect x="0" y="180" rx="2" ry="2" width="350" height="10" />
-                </ContentLoader>}
-              >
-                <img src={i} alt="" />
-              </LazyLoad>))}
-          </div>
-        );
-      }}
-    </Query>);
+    return (
+      <Query query={MZITU_DETAIL} variables={{ _id }}>
+        {({ loading, error, data = {} }) => {
+          const { detail = {} } = data;
+          if (loading) return 'Loading...';
+          if (error) return `Error! ${error.message}`;
+          return (
+            <div className={classes.root}>
+              {detail.title}
+              {detail.pictures.map(i => (
+                <LazyLoad
+                  debounce={300}
+                  key={i}
+                  placeholder={(
+                    <ContentLoader height={250}>
+                      <rect x="0" y="0" rx="2" ry="2" width="400" height="150" />
+                      <rect x="0" y="160" rx="2" ry="2" width="380" height="10" />
+                      <rect x="0" y="180" rx="2" ry="2" width="350" height="10" />
+                    </ContentLoader>
+)}
+                >
+                  <img src={i} alt="" />
+                </LazyLoad>
+              ))}
+            </div>
+          );
+        }}
+      </Query>
+    );
   }
 }
-
