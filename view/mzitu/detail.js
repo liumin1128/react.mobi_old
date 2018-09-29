@@ -8,9 +8,9 @@ const styles = theme => ({
   root: {
     '& > img': {
       width: '100%',
-      marginBottom: theme.spacing.unit * 3,
-      boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.05)',
-      borderRadius: 3,
+      marginBottom: theme.spacing.unit * 2,
+      // boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.05)',
+      borderRadius: theme.spacing.unit,
     },
   },
 });
@@ -31,7 +31,8 @@ export default class MeizituDetail extends PureComponent {
                 <LazyLoad
                   debounce={300}
                   key={i}
-                  placeholder={<div style={{ minHeight: 300 }} />}
+                  height={300}
+                  // placeholder={<div style={{ minHeight: 300 }} />}
                 >
                   <img src={i} alt="" />
                 </LazyLoad>

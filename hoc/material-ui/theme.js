@@ -27,7 +27,8 @@ export default createMuiTheme({
     },
     MuiPaper: {
       elevation1: {
-        boxShadow: '0 5px 5px 0px rgba(0, 0, 0, 0.03)',
+        // boxShadow: '0 5px 5px 0px rgba(0, 0, 0, 0.03)',
+        boxShadow: 'none',
         borderRadius: 4,
         marginBottom: theme.spacing.unit * 2,
         [theme.breakpoints.down('xs')]: {
