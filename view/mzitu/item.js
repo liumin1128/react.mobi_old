@@ -1,13 +1,13 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import Link from '@/components/Link';
 
-const styles = theme => ({
+const styles = () => ({
   card: {
     cursor: 'pointer',
   },
@@ -32,22 +32,20 @@ class RecipeReviewCard extends PureComponent {
     return (
       <Card className={classes.card}>
         <Link key={_id} href={`/mzitu/detail?id=${_id}`}>
-          <Fragment>
-            <CardMedia
-              className={classes.media}
-              image={cover.src}
-              title={title}
-            />
-            <CardContent>
-              <Typography
-                className={classes.title}
-                variant="headline"
-                component="h2"
-              >
-                {title}
-              </Typography>
-            </CardContent>
-          </Fragment>
+          <CardMedia
+            className={classes.media}
+            image={cover.src}
+            title={title}
+          />
+          <CardContent>
+            <Typography
+              className={classes.title}
+              variant="headline"
+              component="h2"
+            >
+              {title}
+            </Typography>
+          </CardContent>
         </Link>
       </Card>
     );
