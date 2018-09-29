@@ -12,7 +12,7 @@ export default class SearchBar extends PureComponent {
 
   render() {
     return (
-      <div style={{ marginBottom: 28 }}>
+      <div>
         <Search onSubmit={this.onSubmit} />
       </div>
     );
