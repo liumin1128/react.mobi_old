@@ -11,15 +11,17 @@ import { updateQuery } from '@/graphql/utils';
 const styles = theme => ({
   list: {
     [theme.breakpoints.down('xs')]: {
-      margin: theme.spacing.unit * 0.5,
+      width: 'auto',
+      margin: theme.spacing.unit * -0.5,
+      padding: 0,
     },
   },
   item: {
-    width: '100%',
-    display: 'block',
-    padding: theme.spacing.unit * 1,
+    paddingLeft: theme.spacing.unit * 1,
+    paddingRight: theme.spacing.unit * 1,
     [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing.unit * 0.5,
+      paddingLeft: theme.spacing.unit * 0.5,
+      paddingRight: theme.spacing.unit * 0.5,
     },
   },
   progress: {
@@ -35,6 +37,7 @@ export default class MzituList extends PureComponent {
     const { search, tag } = query;
     return (
       <Fragment>
+
         <Query
           query={MZITU_LIST}
           variables={{ search, tag }}
@@ -55,9 +58,7 @@ export default class MzituList extends PureComponent {
             });
 
             return (<Fragment>
-              {' '}
-              <Grid container spacing={16}>
-
+              <Grid container className={classes.list}>
                 {list.map(i => (
                   <Grid
                     key={i._id}
@@ -70,7 +71,6 @@ export default class MzituList extends PureComponent {
                   </Grid>
                 ))}
               </Grid>
-
               <Waypoint onEnter={loadMore} />
               <CircularProgress
                 color="secondary"
