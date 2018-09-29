@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import { withStyles } from '@material-ui/core/styles';
 import LazyLoad from 'react-lazyload';
 import { MZITU_DETAIL } from '@/graphql/schema/mzitu';
+import imageView from '@/components/ImageView';
 
 const styles = theme => ({
   root: {
@@ -37,7 +38,11 @@ export default class MeizituDetail extends PureComponent {
                   height={300}
                   // placeholder={<div style={{ minHeight: 300 }} />}
                 >
-                  <img src={i} alt="" />
+                  <img
+                    onClick={(e) => { imageView(e, i); }}
+                    src={i}
+                    alt=""
+                  />
                 </LazyLoad>
               ))}
             </div>
