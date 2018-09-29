@@ -2,24 +2,19 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Link from '@/components/Link';
 import { withStyles } from '@material-ui/core/styles';
-// import classnames from 'classnames';
 import Card from '@material-ui/core/Card';
-// import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-
 import Typography from '@material-ui/core/Typography';
 
-const styles = theme => ({
+const styles = {
   card: {
     cursor: 'pointer',
     margin: 0,
     padding: 0,
-    // boxShadow: 'none',
   },
   cover: {
     width: '100%',
-    // minHeight: 100,
     height: 0,
     display: 'block',
   },
@@ -36,7 +31,7 @@ const styles = theme => ({
   content: {
     padding: 16,
   },
-});
+};
 
 class RecipeReviewCard extends React.Component {
   state = { expanded: false };

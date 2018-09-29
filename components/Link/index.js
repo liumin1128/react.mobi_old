@@ -6,7 +6,7 @@ export default class MyLink extends PureComponent {
     const { to, href, children, ...other } = this.props;
     return (
       <Link href={to || href} {...other}>
-        <a>{children}</a>
+        <a style={{ textDecoration: 'none', color: 'inherit' }}>{children}</a>
       </Link>
     );
   }

@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { MZITU_TAGS } from '@/graphql/schema/mzitu';
 
-const styles = theme => ({
+const styles = {
   media: {
     height: 0,
     paddingTop: '100%',
@@ -19,7 +19,7 @@ const styles = theme => ({
       paddingBottom: 8,
     },
   },
-});
+};
 
 @withStyles(styles)
 export default class MeizituDetail extends PureComponent {
