@@ -20,11 +20,11 @@ export default class SearchBar extends PureComponent {
           <form onSubmit={handleSubmit}>
             <Field
               name="search"
-              label="搜索"
+              label="关键字搜索"
               type="search"
               component={TextField}
               className={classes.root}
-              placeholder="请输入关键字"
+              // placeholder="请输入关键字"
               {...other}
             />
           </form>
