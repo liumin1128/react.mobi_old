@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { domRender } from '@/utils/react';
+import { getScrollTop } from '@/utils/common';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -10,24 +11,24 @@ const styles = theme => ({
     left: 0,
     width: '100%',
     height: '100%',
-    background: 'rgba(255,255,255,0.8)',
+    // background: 'rgba(255,255,255,0.8)',
+    background: 'rgba(255,255,255,0.0)',
+    transition: '0.5s',
   },
   card: {
     position: 'fixed',
-    background: 'red',
-    transition: '0.3s',
+    transition: '0.5s',
   },
 });
 
 export default function (e, src) {
   const x = e.target.offsetLeft;
-  const y = e.target.offsetTop - document.documentElement.scrollTop;
+  const y = e.target.offsetTop - getScrollTop();
   const w = e.target.offsetWidth;
   const h = e.target.offsetHeight;
 
   const dw = document.documentElement.clientWidth;
   const dh = document.documentElement.clientHeight;
-
 
   let _x;
   let _y;
@@ -58,6 +59,9 @@ export default function (e, src) {
         this.setState({
           isInit: false,
         });
+        document
+          .getElementById('viewport')
+          .setAttribute('content', 'user-scalable=yes, width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=2');
       }, 100);
     }
 
@@ -66,14 +70,24 @@ export default function (e, src) {
       this.setState({
         isInit: true,
       });
-      setTimeout(destory, 300);
+      setTimeout(destory, 500);
+      document
+        .getElementById('viewport')
+        .setAttribute('content', 'user-scalable=no, width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=1');
     }
 
     render() {
       const { classes } = this.props;
       const { isInit } = this.state;
       return (
-        <div className={classes.root} onClick={this.close}>
+        <div
+          className={classes.root}
+          onClick={this.close}
+          style={isInit ? {
+          } : {
+            background: 'rgba(255,255,255,1)',
+          }}
+        >
           <img
             className={classes.card}
             style={isInit ? {
