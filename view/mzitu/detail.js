@@ -12,6 +12,7 @@ const styles = theme => ({
       marginBottom: theme.spacing.unit * 2,
       // boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.05)',
       borderRadius: theme.spacing.unit,
+      cursor: 'pointer',
       [theme.breakpoints.down('xs')]: {
         borderRadius: theme.spacing.unit * 0.5,
       },
