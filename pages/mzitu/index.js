@@ -14,6 +14,9 @@ const styles = theme => ({
     margin: 'auto',
     marginTop: theme.spacing.unit * 3,
   },
+  tags: {
+    padding: theme.spacing.unit * 2,
+  },
   body: {
     maxWidth: 760,
     width: '100%',
@@ -51,13 +54,13 @@ export default class News extends PureComponent {
               <div className={classes.body}>
 
                 <Card>
-                  <CardContent>
+                  <CardContent className={classes.tags}>
                     <SearchBar />
                   </CardContent>
                 </Card>
 
                 <Card>
-                  <CardContent>
+                  <CardContent className={classes.tags}>
                     <Tags />
                   </CardContent>
                 </Card>
