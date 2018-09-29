@@ -2,9 +2,7 @@ import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
 import { withStyles } from '@material-ui/core/styles';
 import LazyLoad from 'react-lazyload';
-import ContentLoader from 'react-content-loader';
-
-import { MZITU_DETAIL } from '@/graphql/mzitu';
+import { MZITU_DETAIL } from '@/graphql/schema/mzitu';
 
 const styles = theme => ({
   root: {
@@ -19,10 +17,9 @@ const styles = theme => ({
 @withStyles(styles)
 export default class MeizituDetail extends PureComponent {
   render() {
-    const _id = this.props.query.id;
-    const { classes } = this.props;
+    const { classes, id } = this.props;
     return (
-      <Query query={MZITU_DETAIL} variables={{ _id }}>
+      <Query query={MZITU_DETAIL} variables={{ _id: id }}>
         {({ loading, error, data = {} }) => {
           const { detail = {} } = data;
           if (loading) return 'Loading...';
@@ -34,13 +31,7 @@ export default class MeizituDetail extends PureComponent {
                 <LazyLoad
                   debounce={300}
                   key={i}
-                  placeholder={(
-                    <ContentLoader height={250}>
-                      <rect x="0" y="0" rx="2" ry="2" width="400" height="150" />
-                      <rect x="0" y="160" rx="2" ry="2" width="380" height="10" />
-                      <rect x="0" y="180" rx="2" ry="2" width="350" height="10" />
-                    </ContentLoader>
-)}
+                  placeholder={<div style={{ minHeight: 300 }} />}
                 >
                   <img src={i} alt="" />
                 </LazyLoad>
