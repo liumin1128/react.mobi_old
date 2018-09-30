@@ -6,7 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { MZITU_TAGS } from '@/graphql/schema/mzitu';
-// import nossr from '@/hoc/nossr';
 
 const styles = {
   media: {
@@ -21,7 +20,6 @@ const styles = {
   },
 };
 
-// @nossr
 @withStyles(styles)
 export default class MeizituDetail extends PureComponent {
   render() {
