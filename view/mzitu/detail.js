@@ -25,10 +25,19 @@ export default class MeizituDetail extends PureComponent {
     const { classes, id } = this.props;
     return (
       <Query query={MZITU_DETAIL} variables={{ _id: id }}>
-        {({ loading, error, data = {} }) => {
+        {({ loading, error, data = {}, refetch }) => {
           const { detail = {} } = data;
           if (loading) return 'Loading...';
-          if (error) return `Error! ${error.message}`;
+          if (error) {
+            return (
+              <div>
+                {`Error! ${error.message}`}
+                {' '}
+                <a onClick={() => { refetch(); }}>refetch</a>
+                {' '}
+              </div>
+            );
+          }
           return (
             <div className={classes.root}>
               {detail.title}

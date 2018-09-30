@@ -31,9 +31,19 @@ export default class MeizituDetail extends PureComponent {
         query={MZITU_TAGS}
         ssr={false}
       >
-        {({ loading, error, data = {} }) => {
+        {({ loading, error, data = {}, refetch }) => {
           if (loading) return 'Loading...';
-          if (error) return `Error! ${error.message}`;
+
+          if (error) {
+            return (
+              <div>
+                {`Error! ${error.message}`}
+                {' '}
+                <a onClick={() => { refetch(); }}>refetch</a>
+                {' '}
+              </div>
+            );
+          }
 
           const { list = [] } = data;
 
