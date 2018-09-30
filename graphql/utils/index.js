@@ -23,11 +23,12 @@ export const fetchMore = (data) => {
 };
 
 
-export const listQuery = schema => graphql(schema, {
+export const listQuery = (schema, options) => graphql(schema, {
   options: {
     variables: {
       skip: 0,
     },
+    ...options,
   },
   props: ({ data }) => ({
     data,

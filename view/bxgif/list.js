@@ -29,7 +29,7 @@ const styles = theme => ({
   },
 });
 
-@hocNossr(listQuery(BXGIF_LIST))
+@listQuery(BXGIF_LIST, { ssr: false })
 @withStyles(styles)
 export default class BxgifList extends PureComponent {
   render() {
