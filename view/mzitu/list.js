@@ -43,10 +43,18 @@ export default class MzituList extends PureComponent {
           variables={{ search, tag }}
         >
 
-          {({ loading, error, data = {}, fetchMore }) => {
+          {({ loading, error, data = {}, fetchMore, refetch }) => {
             if (loading) return 'Loading...';
-            if (error) return `Error! ${error.message}`;
-
+            if (error) {
+              return (
+                <div>
+                  {`Error! ${error.message}`}
+                  {' '}
+                  <a onClick={() => { refetch({ search, tag }); }}>refetch</a>
+                  {' '}
+                </div>
+              );
+            }
             const { list = [] } = data;
 
             const loadMore = () => fetchMore({
