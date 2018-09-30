@@ -28,7 +28,7 @@ export default class MeizituDetail extends PureComponent {
               <div>
                 {`Error! ${error.message}`}
                 {' '}
-                <a onClick={() => { refetch(); }}>refetch</a>
+                <a onClick={() => { refetch({ _id: id }); }}>refetch</a>
                 {' '}
               </div>
             );
