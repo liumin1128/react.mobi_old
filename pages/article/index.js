@@ -5,7 +5,6 @@ export default class index extends PureComponent {
   render() {
     return (
       <div>
-        article
         <ArticleCreate />
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Form, Field } from 'react-final-form';
-import TextField from './textField';
+import TextField from './TextField';
 
 const styles = () => ({
   root: {
