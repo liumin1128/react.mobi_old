@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import PhotoIcon from '@material-ui/icons/Photo';
 import UploadImages from '../../upload/wrapper';
-import { insertAtomicBlock } from './utils';
+import { insertAtomicBlock } from '../utils';
 
 const styles = theme => ({
   button: {
@@ -27,7 +27,6 @@ const styles = theme => ({
 
 @withStyles(styles)
 export default class MediaButton extends Component {
-
   addMedia = ({ type, value }) => {
     const { editorState, onChange } = this.props;
     onChange(insertAtomicBlock(
@@ -36,20 +35,20 @@ export default class MediaButton extends Component {
       'IMMUTABLE',
       {
         src: value,
-      }
+      },
     ));
   }
 
   render() {
     const { classes } = this.props;
     return (
-      <UploadImages onChange={values => {
-          values.map(value => {
-            this.addMedia({ type: 'image', value });
-          });
-        }}
+      <UploadImages onChange={(values) => {
+        values.map((value) => {
+          this.addMedia({ type: 'image', value });
+        });
+      }}
       >
-        <Button className={classes.button} >
+        <Button className={classes.button}>
           <PhotoIcon className={`${classes.icon} ${classes.unactive}`} />
         </Button>
       </UploadImages>
@@ -57,4 +56,3 @@ export default class MediaButton extends Component {
     );
   }
 }
-

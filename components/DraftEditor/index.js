@@ -15,7 +15,11 @@ export default class DraftEditor extends PureComponent {
     this.editor = createRef();
   }
 
-  onChange = editorState => this.setState({ editorState });
+  onChange = (editorState) => {
+    const { onInput } = this.props;
+    this.setState({ editorState });
+    if (onInput) onInput(editorState);
+  };
 
   handleKeyCommand = (command, editorState) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);

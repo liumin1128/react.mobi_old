@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { Form, Field } from 'react-final-form';
-import DraftEditor from '@/components/DraftEditor';
+import RichEditor from '@/components/Form/RichEditor';
 import Layout from '@/components/Layout';
 import TextField from '@/components/Form/TextField';
 
@@ -44,25 +44,31 @@ export default class ArticleCreate extends PureComponent {
     return (
       <div>
         <Layout>
-          <Grid container spacing={24}>
-            <Grid item md={8} xs={12}>
-              <Card className={classes.Card}>
-                <NoSsr>
-                  <DraftEditor />
-                </NoSsr>
-              </Card>
-            </Grid>
-            <Grid item md={4} xs={12}>
-              <Card className={classes.Card}>
-                <CardContent>
+          <Form
+            onSubmit={this.onSubmit}
+            initialValues={formData}
+          // values={formData}
+            validate={this.validate}
+            render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
+              <form id="createArticleForm" onSubmit={handleSubmit}>
+                <Grid container spacing={24}>
 
-                  <Form
-                    onSubmit={this.onSubmit}
-                    initialValues={formData}
-                    // values={formData}
-                    validate={this.validate}
-                    render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
-                      <form id="createArticleForm" onSubmit={handleSubmit}>
+                  <Grid item md={8} xs={12}>
+                    <Card className={classes.Card}>
+                      <NoSsr>
+                        <Field
+                          key="content"
+                          name="content"
+                          component={RichEditor}
+                          fullWidth
+                        />
+                      </NoSsr>
+                    </Card>
+                  </Grid>
+                  <Grid item md={4} xs={12}>
+                    <Card className={classes.Card}>
+                      <CardContent>
+
 
                         {
                         formKeys.map(i => (
@@ -88,14 +94,16 @@ export default class ArticleCreate extends PureComponent {
                         >
                         确认
                         </Button>
-                      </form>
-                    )}
-                  />
-                </CardContent>
 
-              </Card>
-            </Grid>
-          </Grid>
+                      </CardContent>
+
+                    </Card>
+                  </Grid>
+                </Grid>
+
+              </form>
+            )}
+          />
         </Layout>
       </div>
     );
