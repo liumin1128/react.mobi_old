@@ -9,8 +9,8 @@ class MyDocument extends Document {
 
     return (
       <html lang="en" dir="ltr">
+        <title>My page</title>
         <Head>
-          <title>My page</title>
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
