@@ -36,7 +36,7 @@ export default class BxgifList extends PureComponent {
     const { data = {}, classes, fetchMore } = this.props;
     const { loading = true, error, list = [] } = data;
 
-    if (loading) return 'Loading...';
+    if (loading) return <CircularProgress color="secondary" className={classes.progress} />;
     if (error) return `Error! ${error.message}`;
 
     return (
