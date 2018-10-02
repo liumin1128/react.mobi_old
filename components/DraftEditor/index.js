@@ -41,7 +41,6 @@ export default class DraftEditor extends PureComponent {
   }
 
   renderEditor = () => {
-    console.log(this.props);
     const { editorState } = this.state;
     const { placeholder = '输入文本...', ...props } = this.props;
     let className = 'RichEditor-editor draft-view-content';
