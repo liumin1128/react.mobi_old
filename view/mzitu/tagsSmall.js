@@ -5,9 +5,10 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { MZITU_TAGS } from '@/graphql/schema/mzitu';
 
-const styles = {
+const styles = theme => ({
   media: {
     height: 0,
     paddingTop: '100%',
@@ -18,7 +19,11 @@ const styles = {
       paddingBottom: 8,
     },
   },
-};
+  progress: {
+    margin: `${theme.spacing.unit * 2}px auto`,
+    display: 'block',
+  },
+});
 
 @withStyles(styles)
 export default class MeizituDetail extends PureComponent {
@@ -30,7 +35,7 @@ export default class MeizituDetail extends PureComponent {
         ssr={false}
       >
         {({ loading, error, data = {}, refetch }) => {
-          if (loading) return 'Loading...';
+          if (loading) return <CircularProgress color="secondary" className={classes.progress} />;
 
           if (error) {
             return (
