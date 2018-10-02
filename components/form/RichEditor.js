@@ -7,8 +7,7 @@ export default class RichEditor extends PureComponent {
     const { input: { onChange } } = this.props;
     return (
       <DraftEditor
-        onInput={(editorState) => {
-          // console.log(getJSON(editorState));
+        _onChange={(editorState) => {
           onChange(getJSON(editorState));
         }}
       />

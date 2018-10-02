@@ -16,9 +16,9 @@ export default class DraftEditor extends PureComponent {
   }
 
   onChange = (editorState) => {
-    const { onInput } = this.props;
+    const { _onChange } = this.props;
     this.setState({ editorState });
-    if (onInput) onInput(editorState);
+    if (_onChange) _onChange(editorState);
   };
 
   handleKeyCommand = (command, editorState) => {
@@ -41,6 +41,7 @@ export default class DraftEditor extends PureComponent {
   }
 
   renderEditor = () => {
+    console.log(this.props);
     const { editorState } = this.state;
     const { placeholder = '输入文本...', ...props } = this.props;
     let className = 'RichEditor-editor draft-view-content';
