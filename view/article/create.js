@@ -60,71 +60,62 @@ export default class ArticleCreate extends PureComponent {
     const { classes } = this.props;
     const formData = {};
     return (
-      <div>
-        <Layout>
-          <Form
-            onSubmit={this.onSubmit}
-            initialValues={formData}
+      <Layout>
+        <Form
+          onSubmit={this.onSubmit}
+          initialValues={formData}
           // values={formData}
-            validate={this.validate}
-            render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
-              <form id="createArticleForm" onSubmit={handleSubmit}>
-                <Grid container spacing={24}>
-
-                  <Grid item md={8} xs={12}>
-                    <Card className={classes.Card}>
-                      <NoSsr>
-                        <Field
-                          key="content"
-                          name="content"
-                          component={RichEditor}
-                          fullWidth
-                        />
-                      </NoSsr>
-                    </Card>
-                  </Grid>
-                  <Grid item md={4} xs={12}>
-                    <Card className={classes.Card}>
-                      <CardContent>
-
-
-                        {
-                          formKeys.map(i => (
-                            <Field
-                              key={i.key}
-                              name={i.key}
-                              label={i.label}
-                              component={TextField}
-                              type="text"
-                              margin="normal"
-                              fullWidth
-                              value={formData[i.key]}
-                              {...i.props}
-                            />
-                          ))
-                        }
-
-                        <Button
-                          variant="contained"
-                          size="large"
-                          color="primary"
-                          type="submit"
-                          className={classes.submitButton}
-                        >
-                          确认
-                        </Button>
-
-                      </CardContent>
-
-                    </Card>
-                  </Grid>
+          validate={this.validate}
+          render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
+            <form id="createArticleForm" onSubmit={handleSubmit}>
+              <Grid container spacing={24}>
+                <Grid item md={8} xs={12}>
+                  <Card className={classes.Card}>
+                    <NoSsr>
+                      <Field
+                        key="content"
+                        name="content"
+                        component={RichEditor}
+                        fullWidth
+                      />
+                    </NoSsr>
+                  </Card>
                 </Grid>
-
-              </form>
-            )}
-          />
-        </Layout>
-      </div>
+                <Grid item md={4} xs={12}>
+                  <Card className={classes.Card}>
+                    <CardContent>
+                      {
+                        formKeys.map(i => (
+                          <Field
+                            key={i.key}
+                            name={i.key}
+                            label={i.label}
+                            component={TextField}
+                            type="text"
+                            margin="normal"
+                            fullWidth
+                            value={formData[i.key]}
+                            {...i.props}
+                          />
+                        ))
+                      }
+                      <Button
+                        variant="contained"
+                        size="large"
+                        color="primary"
+                        type="submit"
+                        className={classes.submitButton}
+                      >
+                          确认
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              </Grid>
+            </form>
+          )}
+        />
+      </Layout>
     );
   }
 }
