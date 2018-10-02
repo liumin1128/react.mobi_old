@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Mutation } from 'react-apollo';
 import NoSsr from '@material-ui/core/NoSsr';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -9,6 +10,7 @@ import { Form, Field } from 'react-final-form';
 import RichEditor from '@/components/Form/RichEditor';
 import Layout from '@/components/Layout';
 import TextField from '@/components/Form/TextField';
+import { CREATE_ARTICLE } from '@/graphql/schema/article';
 
 const styles = theme => ({
   Card: {
@@ -37,11 +39,6 @@ const formKeys = [
 
 @withStyles(styles)
 export default class ArticleCreate extends PureComponent {
-  onSubmit = (values) => {
-    console.log('values');
-    console.log(values);
-  }
-
   validate = (values) => {
     const errors = {};
     if (!values.title) {
@@ -61,60 +58,87 @@ export default class ArticleCreate extends PureComponent {
     const formData = {};
     return (
       <Layout>
-        <Form
-          onSubmit={this.onSubmit}
-          initialValues={formData}
-          // values={formData}
-          validate={this.validate}
-          render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
-            <form id="createArticleForm" onSubmit={handleSubmit}>
-              <Grid container spacing={24}>
-                <Grid item md={8} xs={12}>
-                  <Card className={classes.Card}>
-                    <NoSsr>
-                      <Field
-                        key="content"
-                        name="content"
-                        component={RichEditor}
-                        fullWidth
-                      />
-                    </NoSsr>
-                  </Card>
-                </Grid>
-                <Grid item md={4} xs={12}>
-                  <Card className={classes.Card}>
-                    <CardContent>
-                      {
-                        formKeys.map(i => (
-                          <Field
-                            key={i.key}
-                            name={i.key}
-                            label={i.label}
-                            component={TextField}
-                            type="text"
-                            margin="normal"
-                            fullWidth
-                            value={formData[i.key]}
-                            {...i.props}
-                          />
-                        ))
-                      }
-                      <Button
-                        variant="contained"
-                        size="large"
-                        color="primary"
-                        type="submit"
-                        className={classes.submitButton}
-                      >
-                          确认
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              </Grid>
-            </form>
-          )}
-        />
+        <Mutation mutation={CREATE_ARTICLE}>
+          {(createArticle, { loading, error, data = {} }) => {
+            const onSubmit = async (values) => {
+              console.log('values');
+              console.log(values);
+
+              // const html = this.editor.getHtml();
+              // const json = this.editor.getJson();
+
+              try {
+                const result = await createArticle({
+                  variables: values,
+                  refetchQueries: ['ArticleList'],
+                });
+                console.log('result');
+                console.log(result);
+              } catch (err) {
+                console.log('err');
+                console.log(err);
+                // Snackbar.error('文章发布失败');
+              }
+            };
+
+            return (
+              <Form
+                onSubmit={onSubmit}
+                initialValues={formData}
+                // values={formData}
+                validate={this.validate}
+                render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
+                  <form id="createArticleForm" onSubmit={handleSubmit}>
+                    <Grid container spacing={24}>
+                      <Grid item md={8} xs={12}>
+                        <Card className={classes.Card}>
+                          <NoSsr>
+                            <Field
+                              key="content"
+                              name="content"
+                              component={RichEditor}
+                              fullWidth
+                            />
+                          </NoSsr>
+                        </Card>
+                      </Grid>
+                      <Grid item md={4} xs={12}>
+                        <Card className={classes.Card}>
+                          <CardContent>
+                            {
+                              formKeys.map(i => (
+                                <Field
+                                  key={i.key}
+                                  name={i.key}
+                                  label={i.label}
+                                  component={TextField}
+                                  type="text"
+                                  margin="normal"
+                                  fullWidth
+                                  value={formData[i.key]}
+                                  {...i.props}
+                                />
+                              ))
+                            }
+                            <Button
+                              variant="contained"
+                              size="large"
+                              color="primary"
+                              type="submit"
+                              className={classes.submitButton}
+                            >
+                              确认
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                    </Grid>
+                  </form>
+                )}
+              />
+            );
+          }}
+        </Mutation>
       </Layout>
     );
   }
