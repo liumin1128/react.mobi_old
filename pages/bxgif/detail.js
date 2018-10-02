@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Layout from '@/components/layout';
+import Layout from '@/components/Layout';
 import Detail from '@/view/bxgif/detail';
 import { withRouter } from 'next/router';
 
