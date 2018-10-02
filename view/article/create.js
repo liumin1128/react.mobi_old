@@ -14,12 +14,24 @@ const styles = theme => ({
   Card: {
     color: theme.palette.text.secondary,
   },
+  submitButton: {
+    marginTop: 20,
+    width: '100%',
+  },
 });
 
 const formKeys = [
   {
     key: 'title',
     label: '文章标题',
+  },
+  {
+    key: 'description',
+    label: '描述',
+  },
+  {
+    key: 'tags',
+    label: '标签',
   },
 ];
 
@@ -34,6 +46,12 @@ export default class ArticleCreate extends PureComponent {
     const errors = {};
     if (!values.title) {
       errors.title = '标题不可以不填';
+    }
+    if (!values.description) {
+      errors.description = '描述不可以不填';
+    }
+    if (!values.tags) {
+      errors.tags = '标签不可以不填';
     }
     return errors;
   }
@@ -71,28 +89,29 @@ export default class ArticleCreate extends PureComponent {
 
 
                         {
-                        formKeys.map(i => (
-                          <Field
-                            key={i.key}
-                            name={i.key}
-                            label={i.label}
-                            component={TextField}
-                            type="text"
-                            margin="normal"
-                            fullWidth
-                            value={formData[i.key]}
-                            {...i.props}
-                          />
-                        ))
-                      }
+                          formKeys.map(i => (
+                            <Field
+                              key={i.key}
+                              name={i.key}
+                              label={i.label}
+                              component={TextField}
+                              type="text"
+                              margin="normal"
+                              fullWidth
+                              value={formData[i.key]}
+                              {...i.props}
+                            />
+                          ))
+                        }
 
                         <Button
-                          type="submit"
                           variant="contained"
+                          size="large"
                           color="primary"
+                          type="submit"
                           className={classes.submitButton}
                         >
-                        确认
+                          确认
                         </Button>
 
                       </CardContent>
