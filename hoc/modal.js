@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
-import styleRoot from '@/hoc/styleRoot';
-import reduxRoot from '@/hoc/reduxRoot';
+import withStyle from './material-ui/withRoot';
+// import reduxRoot from '@/hoc/reduxRoot';
 import { domRender } from '@/utils/react';
 
 function Transition(props) {
@@ -11,8 +11,8 @@ function Transition(props) {
 
 export default function (WrappedComponent) {
   @domRender
-  @reduxRoot
-  @styleRoot
+  // @reduxRoot
+  @withStyle
   class Modal extends PureComponent {
     state = {
       open: true,
@@ -24,10 +24,12 @@ export default function (WrappedComponent) {
 
     render() {
       const { destory } = this.props;
+      const { open } = this.state;
+
       return (
         <div>
           <Dialog
-            open={this.state.open}
+            open={open}
             keepMounted={false}
             transition={Transition}
             onClose={this.handleClose}
