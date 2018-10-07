@@ -10,6 +10,10 @@ const styles = {
     maxWidth: 500,
     margin: 'auto',
   },
+  media: {
+    height: 0,
+    paddingTop: '60%',
+  },
 };
 
 
@@ -20,7 +24,10 @@ export default class LoginPage extends PureComponent {
     return (
       <div>
         <Card className={classes.card}>
-          <CardMedia />
+          <CardMedia
+            className={classes.media}
+            image={'https://imgs.react.mobi/FiIH1AWT8r5hJja50xiBSClwFvek'}
+          />
           <CardContent>
             <Login />
           </CardContent>
