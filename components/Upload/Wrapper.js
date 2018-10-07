@@ -81,14 +81,11 @@ export default class picture extends PureComponent {
 
     return (
       <div>
-        picture
-        {qiniuToken.token}
-        <br />
+
         <RcUpload
           supportServerRender
           action={action}
           data={{ token }}
-
           onStart={(file) => {
             const nextFileList = this.state.fileList.concat();
             const targetItem = {
