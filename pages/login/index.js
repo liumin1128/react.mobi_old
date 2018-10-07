@@ -4,6 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 // import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+
 import Login from '@/view/login';
 
 const styles = {

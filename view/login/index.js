@@ -1,7 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Form, Field } from 'react-final-form';
+import { graphql } from 'react-apollo';
 import Button from '@material-ui/core/Button';
 import TextField from '@/components/Form/TextField';
+import { USER_LOGIN } from '@/graphql/schema/user';
 
 const formKeys = [
   {
@@ -26,15 +28,21 @@ const validate = (values) => {
   return errors;
 };
 
+
+@graphql(USER_LOGIN)
 export default class Login extends PureComponent {
   render() {
-    const onSubmit = (values) => {
-      console.log('values');
-      console.log(values);
+    const onSubmit = async (values) => {
+      const { mutate } = this.props;
+      const { data: { result: data } } = await mutate({ variables: values });
+      console.log('data');
+      console.log(data);
+      if (data.status === 200) {
+        alert('登录成功');
+      }
     };
     return (
       <Fragment>
-
         <Form
           onSubmit={onSubmit}
           // initialValues={formData}
