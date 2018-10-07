@@ -7,7 +7,7 @@ import Login from '@/view/login';
 
 const styles = {
   card: {
-    maxWidth: 500,
+    maxWidth: 360,
     margin: 'auto',
   },
   media: {
