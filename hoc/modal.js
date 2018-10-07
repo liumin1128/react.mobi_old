@@ -9,7 +9,7 @@ function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
-export default function (WrappedComponent) {
+export default function (WrappedComponent, componentProps, modalProps) {
   @domRender
   // @reduxRoot
   @withStyle
@@ -31,12 +31,13 @@ export default function (WrappedComponent) {
           <Dialog
             open={open}
             keepMounted={false}
-            transition={Transition}
+            TransitionComponent={Transition}
             onClose={this.handleClose}
             onExited={() => { if (destory) destory(); }}
             aria-labelledby="form-dialog-title"
+            {...modalProps}
           >
-            <WrappedComponent close={this.handleClose} />
+            <WrappedComponent close={this.handleClose} {...componentProps} />
           </Dialog>
         </div>
       );
