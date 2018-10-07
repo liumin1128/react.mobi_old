@@ -65,7 +65,15 @@ export default class picture extends PureComponent {
   render() {
     if (this.state.destroyed) return null;
 
-    const { data: { loading, qiniuToken = {} }, action, children } = this.props;
+    const {
+      data: { loading, qiniuToken = {} },
+      action, children,
+      onChange,
+      qiniuUrl,
+      ...props
+    } = this.props;
+
+    console.log(props);
 
     if (loading) return <CircularProgress />;
 
@@ -123,6 +131,7 @@ export default class picture extends PureComponent {
           onError={(err) => {
             console.log('onError', err);
           }}
+          {...props}
         >
           {children}
         </RcUpload>
