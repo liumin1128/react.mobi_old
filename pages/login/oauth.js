@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'next/router';
 import { setStorage, removeStorage, getStorage } from '@/utils/store';
-import { PATH_BEFORELOGIN, USER_TOKEN_KEY } from '@/config/base';
+import { PATH_BEFORELOGIN, USER_TOKEN } from '@/config/base';
 import nossr from '@/hoc/nossr';
 
 @nossr
@@ -17,7 +17,7 @@ export default class oauth extends PureComponent {
       } else {
         path = '/';
       }
-      await setStorage(USER_TOKEN_KEY, token);
+      await setStorage(USER_TOKEN, token);
       router.push(path);
     }
   }

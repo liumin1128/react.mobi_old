@@ -1,6 +1,6 @@
 import request from '@/utils/request';
 import { setStorage } from '@/utils/store';
-import { USER_TOKEN_KEY } from '@/constants/base';
+import { USER_TOKEN } from '@/constants/base';
 
 export default {
   test: () => {
@@ -10,7 +10,7 @@ export default {
     try {
       const { status, token, userInfo } = await request('user/login', payload);
       if (status === 200) {
-        await setStorage(USER_TOKEN_KEY, token);
+        await setStorage(USER_TOKEN, token);
         await dispatch({ type: 'user/save', payload: { userInfo } });
       }
     } catch (error) {
