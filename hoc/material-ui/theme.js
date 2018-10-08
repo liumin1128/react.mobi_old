@@ -25,8 +25,11 @@ export default createMuiTheme({
         },
       },
       input: {
-        '-webkit-box-shadow': '0 0 0px 1000px #262333 inset !important', // 关于解决输入框背景颜色
-        '-webkit-text-fill-color': 'rgba(255,255,255,1)!important', // 关于接输入框文字颜色
+        // '-webkit-box-shadow': '0 0 0px 1000px white inset',
+        // '-webkit-text-fill-color': '#333',
+        // '-webkit-box-shadow': '0 0 0px 1000px white inset', // 使用足够大的纯色阴影来覆盖input输入框黄色背景颜色
+        // '-webkit-box-shadow': '0 0 0px 1000px #262333 inset !important', // 关于解决输入框背景颜色
+        // '-webkit-text-fill-color': 'rgba(255,255,255,1)!important', // 关于接输入框文字颜色
       },
     },
     MuiPaper: {
