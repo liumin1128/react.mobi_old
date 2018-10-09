@@ -1,9 +1,8 @@
 import View from '../view/test';
-import Header from '@/components/Layout/Header';
+import Layout from '@/components/Layout';
 
 export default () => (
-  <div>
-    <Header />
+  <Layout>
     <View />
-  </div>
+  </Layout>
 );

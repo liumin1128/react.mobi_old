@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Header from './Header';
 // import { pageLoading } from '@/hoc/pageLoading';
@@ -15,10 +15,13 @@ export default class News extends PureComponent {
   render() {
     const { classes, children } = this.props;
     return (
-      <div className={classes.root}>
+      <Fragment>
         <Header />
-        {children}
-      </div>
+        <div className={classes.root}>
+          {children}
+        </div>
+      </Fragment>
+
     );
   }
 }
