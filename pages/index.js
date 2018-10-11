@@ -1,4 +1,4 @@
-import View from '../view/test';
+import View from '../view/article/list';
 import Layout from '@/components/Layout';
 
 export default () => (

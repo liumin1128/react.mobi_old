@@ -18,7 +18,7 @@ export const ARTICLE_DETAIL = gql`
 `;
 
 export const ARTICLE_LIST = gql`
-  query ArticleList($first: Int!, $skip: Int!) {
+  query ArticleList($first: Int, $skip: Int) {
     list: articles(first: $first, skip: $skip) {
       __typename
       _id
