@@ -8,7 +8,7 @@ export default class RichEditor extends PureComponent {
     return (
       <DraftEditor
         _onChange={(editorState) => {
-          onChange(getJSON(editorState));
+          onChange(JSON.stringify(getJSON(editorState)));
         }}
       />
     );

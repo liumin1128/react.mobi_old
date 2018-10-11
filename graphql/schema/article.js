@@ -38,7 +38,7 @@ export const ARTICLE_LIST = gql`
 `;
 
 export const CREATE_ARTICLE = gql`
-  mutation ($input: ArticleInput) {
+  mutation createArticle($input: ArticleInput) {
     item: createArticle(input: $input) {
       __typename
       _id

@@ -60,16 +60,13 @@ export default class ArticleCreate extends PureComponent {
       <Layout>
         <Mutation mutation={CREATE_ARTICLE}>
           {(createArticle, { loading, error, data = {} }) => {
-            const onSubmit = async (values) => {
-              console.log('values');
-              console.log(values);
-
+            const onSubmit = async ({ tags, ...values }) => {
               // const html = this.editor.getHtml();
               // const json = this.editor.getJson();
 
               try {
                 const result = await createArticle({
-                  variables: values,
+                  variables: { input: { ...values, tags: tags.split(' ') } },
                   refetchQueries: ['ArticleList'],
                 });
                 console.log('result');
