@@ -17,6 +17,9 @@ export default class test extends PureComponent {
         {list.map(i => (
           <div id={i._id}>
             {i.title}
+            <pre>
+              {i.content}
+            </pre>
           </div>
         ))}
       </Fragment>
