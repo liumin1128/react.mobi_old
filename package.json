@@ -41,6 +41,7 @@
     "react-apollo": "^2.2.3",
     "react-dom": "^16.5.2",
     "react-final-form": "^3.6.5",
+    "react-headroom": "^2.2.4",
     "react-lazyload": "^2.3.0",
     "react-masonry-component": "^6.2.1",
     "react-waypoint": "^8.0.3",

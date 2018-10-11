@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
+import Headroom from 'react-headroom';
+
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
@@ -26,16 +28,19 @@ export default class Header extends PureComponent {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        <div className={classes.container}>
-          <Toolbar className={classes.toolbar}>
-            <Hidden className={`${classes.grow}`} implementation="css" only={['sm', 'xs']}>
-              <Tabs />
-            </Hidden>
-            <Button color="inherit">Login</Button>
-          </Toolbar>
+      <Headroom>
+        <div className={classes.root}>
+          <div className={classes.container}>
+            <Toolbar className={classes.toolbar}>
+              <Hidden className={`${classes.grow}`} implementation="css" only={['sm', 'xs']}>
+                <Tabs />
+              </Hidden>
+              <Button color="inherit">Login</Button>
+            </Toolbar>
+          </div>
         </div>
-      </div>
+      </Headroom>
+
     );
   }
 }
