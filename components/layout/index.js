@@ -6,6 +6,9 @@ import Header from './Header';
 
 const styles = theme => ({
   root: theme.container,
+  header: {
+    marginBottom: 16,
+  },
 });
 
 // @pageLoading
@@ -16,7 +19,9 @@ export default class News extends PureComponent {
     const { classes, children } = this.props;
     return (
       <Fragment>
-        <Header />
+        <div className={classes.header}>
+          <Header />
+        </div>
         <div className={classes.root}>
           {children}
         </div>
