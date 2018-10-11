@@ -24,7 +24,7 @@ export const ARTICLE_LIST = gql`
       _id
       title
       cover
-      content
+      html
       createdAt
       user {
         nickname
@@ -44,7 +44,8 @@ export const CREATE_ARTICLE = gql`
       _id
       title
       cover
-      content
+      json
+      html
       createdAt
       user {
         nickname

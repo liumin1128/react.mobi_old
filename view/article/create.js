@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, createRef } from 'react';
 import { Mutation } from 'react-apollo';
 import NoSsr from '@material-ui/core/NoSsr';
 import { withStyles } from '@material-ui/core/styles';
@@ -39,6 +39,8 @@ const formKeys = [
 
 @withStyles(styles)
 export default class ArticleCreate extends PureComponent {
+  editor = createRef()
+
   validate = (values) => {
     const errors = {};
     if (!values.title) {
@@ -61,12 +63,12 @@ export default class ArticleCreate extends PureComponent {
         <Mutation mutation={CREATE_ARTICLE}>
           {(createArticle, { loading, error, data = {} }) => {
             const onSubmit = async ({ tags, ...values }) => {
-              // const html = this.editor.getHtml();
-              // const json = this.editor.getJson();
+              const html = this.editor.getHTML();
+              const json = JSON.stringify(this.editor.getJSON());
 
               try {
                 const result = await createArticle({
-                  variables: { input: { ...values, tags: tags.split(' ') } },
+                  variables: { input: { ...values, html, json, tags: tags.split(' ') } },
                   refetchQueries: ['ArticleList'],
                 });
                 console.log('result');
@@ -90,11 +92,8 @@ export default class ArticleCreate extends PureComponent {
                       <Grid item md={8} xs={12}>
                         <Card className={classes.Card}>
                           <NoSsr>
-                            <Field
-                              key="content"
-                              name="content"
-                              component={RichEditor}
-                              fullWidth
+                            <RichEditor
+                              ref={(c) => { this.editor = c; }}
                             />
                           </NoSsr>
                         </Card>
