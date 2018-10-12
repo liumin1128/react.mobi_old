@@ -3,6 +3,7 @@ import App, { Container } from 'next/app';
 import { ApolloProvider } from 'react-apollo';
 import hoc from '@/hoc';
 import { isServerSide } from '@/utils/common';
+import Layout from '@/components/Layout';
 
 @hoc
 export default class MyApp extends App {
@@ -11,11 +12,13 @@ export default class MyApp extends App {
     return (
       <Container>
         <ApolloProvider client={apolloClient}>
-          {
-            isServerSide()
-              ? <Component pageContext={pageContext} {...pageProps} />
-              : <Component {...pageProps} />
-          }
+          <Layout>
+            {
+              isServerSide()
+                ? <Component pageContext={pageContext} {...pageProps} />
+                : <Component {...pageProps} />
+            }
+          </Layout>
         </ApolloProvider>
       </Container>
     );

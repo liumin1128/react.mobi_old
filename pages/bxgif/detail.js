@@ -1,5 +1,4 @@
-import React, { PureComponent } from 'react';
-import Layout from '@/components/Layout';
+import React, { PureComponent, Fragment } from 'react';
 import Detail from '@/view/bxgif/detail';
 import { withRouter } from 'next/router';
 
@@ -9,10 +8,10 @@ export default class DxgifDetail extends PureComponent {
     const { router } = this.props;
     const { id } = router.query;
     return (
-      <Layout>
+      <Fragment>
         <h1>{id}</h1>
         <Detail id={id} />
-      </Layout>
+      </Fragment>
     );
   }
 }
