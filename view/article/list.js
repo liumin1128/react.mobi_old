@@ -1,9 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
-import hocNossr from '@/hoc/hocNossr';
+import Html from '@/components/Html';
 import { ARTICLE_LIST } from '@/graphql/schema/article';
 import { listQuery } from '@/graphql/utils';
 
-@hocNossr(listQuery(ARTICLE_LIST))
+@listQuery(ARTICLE_LIST)
 export default class test extends PureComponent {
   render() {
     const { data = {} } = this.props;
@@ -15,11 +15,12 @@ export default class test extends PureComponent {
     return (
       <Fragment>
         {list.map(i => (
-          <div id={i._id}>
+          <div key={i._id} id={i._id}>
             {i.title}
             <pre>
-              {i.content}
+              {i.html}
             </pre>
+            <Html html={i.html} />
           </div>
         ))}
       </Fragment>
