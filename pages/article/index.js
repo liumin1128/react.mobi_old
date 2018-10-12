@@ -1,11 +1,15 @@
 import React, { PureComponent } from 'react';
-import ArticleCreate from '@/view/article/create';
+import Layout from '@/components/Layout';
+import Article from '@/view/article/list';
 
 export default class index extends PureComponent {
   render() {
     return (
       <div>
-        <ArticleCreate />
+        <Layout>
+        777777
+          <Article />
+        </Layout>
       </div>
     );
   }

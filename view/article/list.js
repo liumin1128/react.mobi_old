@@ -17,9 +17,6 @@ export default class test extends PureComponent {
         {list.map(i => (
           <div key={i._id} id={i._id}>
             {i.title}
-            <pre>
-              {i.html}
-            </pre>
             <Html html={i.html} />
           </div>
         ))}
