@@ -22,10 +22,15 @@ const styles = theme => ({
   fixed: {
     position: 'fixed',
     bottom: 0,
+    boxShadow: '0 0px 12px 0px rgba(0, 0, 0, 0.1)',
+    overflow: 'hidden',
+    transition: 'box-shadow 1s',
   },
   toolbar: {
     background: '#fff',
     height: 64,
+    // minHeight: 64,
+    // display: 'flex',
   },
 });
 
@@ -129,17 +134,15 @@ export default class ListItem extends PureComponent {
 
                 <div style={{ height: 64 }}>
                   <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth, left: toolbarLeft }}>
-                    <div className={classes.toolbar}>
-                      <Toolbar>
-                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                          <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" color="inherit" className={classes.grow}>
+                    <Toolbar className={classes.toolbar}>
+                      <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                        <MenuIcon />
+                      </IconButton>
+                      <Typography variant="h6" color="inherit" className={classes.grow}>
                           News
-                        </Typography>
-                        <Button color="inherit">Login</Button>
-                      </Toolbar>
-                    </div>
+                      </Typography>
+                      <Button color="inherit" onClick={this.switch}>收起</Button>
+                    </Toolbar>
                   </div>
                 </div>
               </Fragment>
