@@ -5,11 +5,11 @@ export const domRender = (Component) => {
   const div = document.createElement('div');
   document.body.appendChild(div);
   function destory() {
-    const unmountResult = ReactDOM.findDOMNode(div);
+    const unmountResult = ReactDOM.findDOMNode(div); // eslint-disable-line
     if (unmountResult && div.parentNode) {
       // console.log(div);
       div.parentNode.removeChild(div);
     }
   }
-  ReactDOM.render(<Component destory={destory} />, div);
+  ReactDOM.render(<Component destory={() => destory()} />, div);
 };
