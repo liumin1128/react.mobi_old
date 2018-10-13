@@ -18,9 +18,6 @@ const styles = theme => ({
     flexGrow: 1,
   },
   container: theme.container,
-  toolbar: {
-    padding: 0,
-  },
 });
 
 @withStyles(styles)
@@ -31,7 +28,7 @@ export default class Header extends PureComponent {
       <Headroom>
         <div className={classes.root}>
           <div className={classes.container}>
-            <Toolbar className={classes.toolbar}>
+            <Toolbar disableGutters>
               <Hidden className={`${classes.grow}`} implementation="css" only={['sm', 'xs']}>
                 <Tabs />
               </Hidden>
