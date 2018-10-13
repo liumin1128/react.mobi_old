@@ -64,12 +64,11 @@ export default class ListItem extends PureComponent {
     window.removeEventListener('resize', this.onResize);
   }
 
-  switch = () => {
+  switch = (e) => {
+    e.preventDefault();
     const { isExpanded } = this.state;
     this.setState({
       isExpanded: !isExpanded,
-      // toolbarLeft: this.content.offsetLeft,
-      // toolbarWidth: this.content.offsetWidth,
     }, () => {
       // 如果环境允许，创建自定义事件，触发滚动，以调整所有卡片状态
       if (document.createEvent) {
@@ -154,24 +153,6 @@ export default class ListItem extends PureComponent {
                   </Typography>
                   <Html html={html} />
                 </CardContent>
-
-                <div style={{ height: 64 }}>
-                  <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth, left: toolbarLeft }}>
-                    <Toolbar className={classes.toolbar}>
-                      <IconButton color="inherit" aria-label="Menu">
-                        <MenuIcon />
-                      </IconButton>
-                      <Typography variant="h6" color="inherit" className={classes.grow}>
-                          News
-                      </Typography>
-
-                      <Button color="inherit" onClick={this.switch}>
-                        收起
-                        <KeyboardArrowUpIcon />
-                      </Button>
-                    </Toolbar>
-                  </div>
-                </div>
               </Fragment>
             )
             : (
@@ -192,6 +173,25 @@ export default class ListItem extends PureComponent {
               </CardContent>
             )
           }
+
+          <div style={{ height: 64 }}>
+            <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth, left: toolbarLeft }}>
+              <Toolbar className={classes.toolbar}>
+                <IconButton color="inherit" aria-label="Menu">
+                  <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" color="inherit" className={classes.grow}>
+                  News
+                </Typography>
+                {isExpanded && (
+                  <Button disableRipple disableTouchRipple color="inherit" onClick={this.switch}>
+                  收起
+                    <KeyboardArrowUpIcon />
+                  </Button>
+                )}
+              </Toolbar>
+            </div>
+          </div>
         </Card>
       </div>
     );
