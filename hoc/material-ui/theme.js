@@ -45,6 +45,9 @@ export default createMuiTheme({
       },
     },
   },
+  typography: {
+    useNextVariants: true,
+  },
   palette: {
     primary: blue,
     secondary: red,
