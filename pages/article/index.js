@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 // import Link from '@/components/Link';
-import Article from '@/view/article/list';
 import Grid from '@material-ui/core/Grid';
+import Article from '@/view/article/list';
+import Side from '@/view/article/side';
 
 export default class index extends PureComponent {
   render() {
@@ -12,7 +13,7 @@ export default class index extends PureComponent {
             <Article />
           </Grid>
           <Grid item xs={12} sm={12} md={4}>
-            666
+            <Side />
           </Grid>
         </Grid>
       </div>
