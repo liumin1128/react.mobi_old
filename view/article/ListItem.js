@@ -70,7 +70,7 @@ export default class ListItem extends PureComponent {
     const sh = document.documentElement.clientHeight;
     const ot = this.content.offsetTop;
     const oh = this.content.offsetHeight;
-    console.log(st, sh, ot, oh);
+    // console.log(st, sh, ot, oh);
 
     if (st + sh < ot + oh && st + sh > ot + 100) {
       if (!isFixed) {
@@ -90,17 +90,12 @@ export default class ListItem extends PureComponent {
   onResize = () => {
     const { isExpanded, isFixed } = this.state;
     if (!isExpanded || !this.content || !isFixed) return;
-    console.log('onResize');
+    // console.log('onResize');
     this.setState({
       toolbarLeft: this.content.offsetLeft,
       toolbarWidth: this.content.offsetWidth,
     });
   }
-
-  // componentDidMount() {
-  //   window.addEventListener('resize', this.resize, { passive: true });
-  // }
-
 
   render() {
     const { _id, title, user, createdAt, html, classes } = this.props;
