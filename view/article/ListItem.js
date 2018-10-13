@@ -9,6 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -16,6 +17,9 @@ import Html from '@/components/Html';
 import { formatTime, getScrollTop } from '@/utils/common';
 
 const styles = theme => ({
+  grow: {
+    flexGrow: 1,
+  },
   content: {
     cursor: 'pointer',
   },
@@ -46,6 +50,15 @@ export default class ListItem extends PureComponent {
 
   content = createRef()
 
+  componentDidMount() {
+    if (this.content) {
+      this.setState({
+        toolbarLeft: this.content.offsetLeft,
+        toolbarWidth: this.content.offsetWidth,
+      });
+    }
+  }
+
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll);
     window.removeEventListener('resize', this.onResize);
@@ -55,6 +68,8 @@ export default class ListItem extends PureComponent {
     const { isExpanded } = this.state;
     this.setState({
       isExpanded: !isExpanded,
+      // toolbarLeft: this.content.offsetLeft,
+      // toolbarWidth: this.content.offsetWidth,
     }, () => {
       // 如果环境允许，创建自定义事件，触发滚动，以调整所有卡片状态
       if (document.createEvent) {
@@ -85,12 +100,10 @@ export default class ListItem extends PureComponent {
     const oh = this.content.offsetHeight;
     // console.log(st, sh, ot, oh);
 
-    if (st + sh < ot + oh && st + sh > ot + 200) {
+    if (st + sh < ot + oh && st + sh > ot + 300) {
       if (!isFixed) {
         this.setState({
           isFixed: true,
-          toolbarLeft: this.content.offsetLeft,
-          toolbarWidth: this.content.offsetWidth,
         });
       }
     } else if (isFixed) {
@@ -145,13 +158,17 @@ export default class ListItem extends PureComponent {
                 <div style={{ height: 64 }}>
                   <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth, left: toolbarLeft }}>
                     <Toolbar className={classes.toolbar}>
-                      <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                      <IconButton color="inherit" aria-label="Menu">
                         <MenuIcon />
                       </IconButton>
                       <Typography variant="h6" color="inherit" className={classes.grow}>
                           News
                       </Typography>
-                      <Button color="inherit" onClick={this.switch}>收起</Button>
+
+                      <Button color="inherit" onClick={this.switch}>
+                        收起
+                        <KeyboardArrowUpIcon />
+                      </Button>
                     </Toolbar>
                   </div>
                 </div>
