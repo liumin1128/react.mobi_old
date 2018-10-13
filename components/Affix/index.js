@@ -3,7 +3,8 @@ import React, { PureComponent, createRef } from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 
-import { throttleByAnimationFrameDecorator, getScroll, getDefaultTarget, getOffset, getTargetRect, shallowequal, noop } from './utils';
+import { getScroll, getDefaultTarget, getOffset, getTargetRect, shallowequal, noop } from './utils';
+import throttleByAnimationFrameDecorator from '../utils/throttleByAnimationFrame';
 
 /* eslint-disable react/destructuring-assignment */
 export default class Affix extends PureComponent {
