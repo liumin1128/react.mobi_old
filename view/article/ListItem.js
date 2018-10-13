@@ -12,7 +12,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import MenuIcon from '@material-ui/icons/Menu';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Html from '@/components/Html';
 import { formatTime, getScrollTop } from '@/utils/common';
 
@@ -33,8 +34,13 @@ const styles = theme => ({
   toolbar: {
     background: '#fff',
     height: 64,
+    // border: '1px red solid',
     // minHeight: 64,
     // display: 'flex',
+  },
+  btn: {
+    marginRight: 8,
+    minWidth: 0,
   },
 });
 
@@ -69,6 +75,7 @@ export default class ListItem extends PureComponent {
     const { isExpanded } = this.state;
     this.setState({
       isExpanded: !isExpanded,
+      isFixed: false,
     }, () => {
       // 如果环境允许，创建自定义事件，触发滚动，以调整所有卡片状态
       if (document.createEvent) {
@@ -175,16 +182,20 @@ export default class ListItem extends PureComponent {
           }
 
           <div style={{ height: 64 }}>
-            <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth, left: toolbarLeft }}>
+            <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth || '100%', left: toolbarLeft }}>
               <Toolbar className={classes.toolbar}>
-                <IconButton color="inherit" aria-label="Menu">
-                  <MenuIcon />
-                </IconButton>
-                <Typography variant="h6" color="inherit" className={classes.grow}>
+                <Button className={classes.btn} size="small" variant="outlined" color="primary">
+                  <ArrowDropUpIcon />
+                  赞同 8765
+                </Button>
+                <Button className={classes.btn} size="small" variant="outlined" color="primary">
+                  <ArrowDropDownIcon />
+                </Button>
+                <Typography color="inherit" className={classes.grow}>
                   News
                 </Typography>
                 {isExpanded && (
-                  <Button disableRipple disableTouchRipple color="inherit" onClick={this.switch}>
+                  <Button disableRipple disableTouchRipple size="small" color="primary" onClick={this.switch}>
                   收起
                     <KeyboardArrowUpIcon />
                   </Button>
