@@ -1,5 +1,5 @@
 import React, { PureComponent, createRef } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 
@@ -117,7 +117,6 @@ export default class Affix extends PureComponent {
     });
 
     setTimeout(() => {
-      // 如果环境允许，创建自定义事件，触发滚动，以调整所有卡片状态
       if (document.createEvent) {
         // 创建event的对象实例。
         const event = document.createEvent('HTMLEvents');
@@ -146,7 +145,8 @@ export default class Affix extends PureComponent {
 
   @throttleByAnimationFrameDecorator()
   updatePosition(e) {
-    console.log('xxxxxxxx');
+    // console.log('xxxxxxxx');
+    if (!this.fixedNode || !this.placeholderNode) return;
     let { offsetTop, offsetBottom, offset, target = getDefaultTarget } = this.props;
     const targetNode = target();
 
@@ -155,7 +155,8 @@ export default class Affix extends PureComponent {
     //   if offsetBottom is type of number, offsetMode will be { top: false, ... }
     offsetTop = typeof offsetTop === 'undefined' ? offset : offsetTop;
     const scrollTop = getScroll(targetNode, true);
-    const affixNode = ReactDOM.findDOMNode(this);
+    // const affixNode = ReactDOM.findDOMNode(this);
+    const affixNode = this.placeholderNode;
     const elemOffset = getOffset(affixNode, targetNode);
     const elemSize = {
       width: this.fixedNode.offsetWidth,
