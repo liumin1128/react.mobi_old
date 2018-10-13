@@ -55,7 +55,17 @@ export default class ListItem extends PureComponent {
     const { isExpanded } = this.state;
     this.setState({
       isExpanded: !isExpanded,
-    }, this.onScroll);
+    }, () => {
+      // 如果环境允许，创建自定义事件，触发滚动，以调整所有卡片状态
+      if (document.createEvent) {
+        // 创建event的对象实例。
+        const event = document.createEvent('HTMLEvents');
+        // 3个参数：事件类型，是否冒泡，是否阻止浏览器的默认行为
+        event.initEvent('scroll', true, false);
+        // 触发自定义事件oneating
+        document.dispatchEvent(event);
+      }
+    });
     if (!isExpanded) {
       window.addEventListener('scroll', this.onScroll);
       window.addEventListener('resize', this.onResize);
@@ -73,7 +83,7 @@ export default class ListItem extends PureComponent {
     const sh = document.documentElement.clientHeight;
     const ot = this.content.offsetTop;
     const oh = this.content.offsetHeight;
-    // console.log(st, sh, ot, oh);
+    console.log(st, sh, ot, oh);
 
     if (st + sh < ot + oh && st + sh > ot + 200) {
       if (!isFixed) {
