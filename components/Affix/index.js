@@ -146,6 +146,7 @@ export default class Affix extends PureComponent {
 
   @throttleByAnimationFrameDecorator()
   updatePosition(e) {
+  // updatePosition = (e) => {
     // console.log('xxxxxxxx');
     if (!this.fixedNode || !this.placeholderNode) return;
     let { offsetTop, offsetBottom, offset, target = getDefaultTarget } = this.props;
