@@ -25,11 +25,6 @@ export default class test extends PureComponent {
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
 
-    console.log('list');
-    console.log(list);
-
-    console.log(formatTime(parseInt('1538364320388', 0), 'MM月DD日'));
-
     return (
       <Fragment>
 

@@ -33,6 +33,14 @@ export function getScrollTop() {
 }
 /* eslint-enable prefer-destructuring */
 
+export function isElementInViewport(el, offset = 0) {
+  const box = el.getBoundingClientRect();
+  const top = (box.top >= 0);
+  const left = (box.left >= 0);
+  const bottom = (box.bottom <= (window.innerHeight || document.documentElement.clientHeight) + offset);
+  const right = (box.right <= (window.innerWidth || document.documentElement.clientWidth) + offset);
+  return (top && left && bottom && right);
+}
 
 export function lessStr(str, end = 15, start = 0) {
   if (str && str.length > end) {
