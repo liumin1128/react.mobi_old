@@ -30,6 +30,9 @@ export default class test extends PureComponent {
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
 
+    console.log('list');
+    console.log(list);
+
     return (
       <Fragment>
 
@@ -37,8 +40,8 @@ export default class test extends PureComponent {
           <Card key={i._id} id={i._id}>
             <CardHeader
               avatar={(
-                <Avatar aria-label="Recipe" className={classes.avatar}>
-                  R
+                <Avatar aria-label="Recipe" className={classes.avatar} src={i.user.avatarUrl}>
+                  {i.user.nickname}
                 </Avatar>
               )}
               action={(
@@ -46,7 +49,7 @@ export default class test extends PureComponent {
                   <MoreVertIcon />
                 </IconButton>
               )}
-              title="Shrimp and Chorizo Paella"
+              title={i.user.nickname}
               subheader="September 14, 2016"
             />
             <CardContent>
