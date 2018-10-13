@@ -15,17 +15,27 @@ const styles = theme => ({
   title: {
     fontSize: '1.1em',
   },
+  content: {
+    cursor: 'pointer',
+  },
 });
 
 @withStyles(styles)
 export default class ListItem extends PureComponent {
   state = {
-    more: false,
+    showMore: false,
+  }
+
+  switch = () => {
+    const { showMore } = this.state;
+    this.setState({
+      showMore: !showMore,
+    });
   }
 
   render() {
     const { _id, title, user, createdAt, html, classes } = this.props;
-    const { more } = this.state;
+    const { showMore } = this.state;
     return (
       <Card key={_id} id={_id}>
         <CardHeader
@@ -46,19 +56,32 @@ export default class ListItem extends PureComponent {
           title={user.nickname}
           subheader={formatTime(createdAt, 'MM月DD日')}
         />
-        <CardContent>
-          <Typography className={classes.title} gutterBottom variant="title" component="h3">
-            {title}
-          </Typography>
-          {more
-            ? <Html html={html} />
-            : (<Typography>
-              {`${html
-                .replace(/<[^>]+>/g, '')
-                .substring(0, 150)}......`}
-            </Typography>
-            )}
-        </CardContent>
+        {
+          showMore
+            ? (
+              <CardContent>
+                <Typography className={classes.title} variant="title" component="h3">
+                  {title}
+                </Typography>
+                <Html html={html} />
+              </CardContent>
+            )
+            : (
+              <CardContent onClick={this.switch} className={classes.content}>
+                <Typography className={classes.title} variant="title" component="h3">
+                  {title}
+                </Typography>
+                <Typography>
+                  <p>
+                    {`${html
+                      .replace(/<[^>]+>/g, '')
+                      .substring(0, 150)}......`}
+                  </p>
+                </Typography>
+              </CardContent>
+            )
+        }
+
       </Card>
     );
   }
