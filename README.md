@@ -14,9 +14,9 @@ react, redux, next, graphql，draft
 
 ```
 npm i -D @babel/preset-env @babel/plugin-transform-runtime @babel/core @babel/register @babel/runtime @babel/plugin-proposal-decorators babel-plugin-module-resolver babel-plugin-transform-remove-console babel-preset-minify 
-npm i -D eslint eslint-plugin-import babel-eslint eslint-plugin-jsx-a11y eslint-plugin-react eslint-config-airbnb cross-env @zeit/next-less less
+npm i -D eslint eslint-plugin-import babel-eslint eslint-plugin-jsx-a11y eslint-plugin-react eslint-config-airbnb cross-env @zeit/next-less less @zeit/next-bundle-analyzer
 npm i -S graphql graphql-tag apollo-boost react-apollo isomorphic-unfetch 
-npm i -S @material-ui/core @material-ui/icons
+npm i -S @material-ui/core @material-ui/icons react-jss
 npm i -S store recompose react-masonry-component react-waypoint react-lazyload color react-final-form final-form draft-js draft-js-export-html rc-upload react-headroom
 npm i -S next@latest react@latest react-dom@latest prop-types@latest
 

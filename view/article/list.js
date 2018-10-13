@@ -1,15 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 // import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-// import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Html from '@/components/Html';
+import Item from './ListItem';
 import { ARTICLE_LIST } from '@/graphql/schema/article';
 import { listQuery } from '@/graphql/utils';
 
@@ -42,28 +34,7 @@ export default class test extends PureComponent {
       <Fragment>
 
         {list.map(i => (
-          <Card key={i._id} id={i._id}>
-            <CardHeader
-              avatar={(
-                <Avatar aria-label="Recipe" className={classes.avatar} src={i.user.avatarUrl}>
-                  {i.user.nickname}
-                </Avatar>
-              )}
-              action={(
-                <IconButton>
-                  <MoreVertIcon />
-                </IconButton>
-              )}
-              title={i.user.nickname}
-              subheader={formatTime(i.createdAt, 'MM月DD日')}
-            />
-            <CardContent>
-              <Typography variant="title" component="h3">
-                {i.title}
-              </Typography>
-              <Html html={i.html} />
-            </CardContent>
-          </Card>
+          <Item key={i._id} {...i} />
         ))}
 
       </Fragment>
