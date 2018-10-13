@@ -1,8 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
+// import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
+// import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,6 +12,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Html from '@/components/Html';
 import { ARTICLE_LIST } from '@/graphql/schema/article';
 import { listQuery } from '@/graphql/utils';
+
+import { formatTime } from '@/utils/common';
 
 const styles = theme => ({
   card: {
@@ -33,6 +36,8 @@ export default class test extends PureComponent {
     console.log('list');
     console.log(list);
 
+    console.log(formatTime(parseInt('1538364320388', 0), 'MM月DD日'));
+
     return (
       <Fragment>
 
@@ -50,7 +55,7 @@ export default class test extends PureComponent {
                 </IconButton>
               )}
               title={i.user.nickname}
-              subheader="September 14, 2016"
+              subheader={formatTime(i.createdAt, 'MM月DD日')}
             />
             <CardContent>
               <Typography variant="title" component="h3">
