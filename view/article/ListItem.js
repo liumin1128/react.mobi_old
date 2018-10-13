@@ -14,6 +14,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ShareIcon from '@material-ui/icons/Share';
+import StarIcon from '@material-ui/icons/Star';
+import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
+
 import Html from '@/components/Html';
 import { formatTime, getScrollTop } from '@/utils/common';
 
@@ -191,12 +195,24 @@ export default class ListItem extends PureComponent {
                 <Button className={classes.btn} size="small" variant="outlined" color="primary">
                   <ArrowDropDownIcon />
                 </Button>
-                <Typography color="inherit" className={classes.grow}>
-                  News
-                </Typography>
+                <div className={classes.grow}>
+                  <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
+                    <SpeakerNotesIcon style={{ width: 16, marginRight: 3, marginTop: 2 }} />
+                    99 条评论
+                  </Button>
+                  <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
+                    <ShareIcon style={{ width: 13, marginRight: 3 }} />
+                    分享
+                  </Button>
+                  <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
+                    <StarIcon style={{ width: 16, marginRight: 3 }} />
+                    收藏
+                  </Button>
+                </div>
+
                 {isExpanded && (
                   <Button disableRipple disableTouchRipple size="small" color="primary" onClick={this.switch}>
-                  收起
+                    收起
                     <KeyboardArrowUpIcon />
                   </Button>
                 )}
