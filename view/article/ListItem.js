@@ -83,7 +83,7 @@ export default class ListItem extends PureComponent {
     const sh = document.documentElement.clientHeight;
     const ot = this.content.offsetTop;
     const oh = this.content.offsetHeight;
-    console.log(st, sh, ot, oh);
+    // console.log(st, sh, ot, oh);
 
     if (st + sh < ot + oh && st + sh > ot + 200) {
       if (!isFixed) {
