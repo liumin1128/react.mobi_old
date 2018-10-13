@@ -9,25 +9,23 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import MenuIcon from '@material-ui/icons/Menu';
 import Html from '@/components/Html';
 import { formatTime, getScrollTop } from '@/utils/common';
 
 const styles = theme => ({
-  container: theme.container,
-  title: {
-    // fontSize: '1.1em',
-  },
   content: {
     cursor: 'pointer',
-  },
-  toolbar: {
-    border: '1px red solid',
   },
   fixed: {
     position: 'fixed',
     bottom: 0,
-    left: 0,
-    width: '100%',
+  },
+  toolbar: {
+    background: '#fff',
+    height: 64,
   },
 });
 
@@ -72,7 +70,7 @@ export default class ListItem extends PureComponent {
     const oh = this.content.offsetHeight;
     // console.log(st, sh, ot, oh);
 
-    if (st + sh < ot + oh && st + sh > ot + 100) {
+    if (st + sh < ot + oh && st + sh > ot + 200) {
       if (!isFixed) {
         this.setState({
           isFixed: true,
@@ -123,20 +121,26 @@ export default class ListItem extends PureComponent {
             ? (
               <Fragment>
                 <CardContent>
-                  <Typography variant="h6" className={classes.title} component="h3">
+                  <Typography variant="h6" component="h3">
                     {title}
                   </Typography>
                   <Html html={html} />
                 </CardContent>
-                {isFixed && (
-                  <div className={classes.fixed} style={{ width: toolbarWidth, left: toolbarLeft }}>
+
+                <div style={{ height: 64 }}>
+                  <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth, left: toolbarLeft }}>
                     <div className={classes.toolbar}>
-                        666
+                      <Toolbar>
+                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                          <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" color="inherit" className={classes.grow}>
+                          News
+                        </Typography>
+                        <Button color="inherit">Login</Button>
+                      </Toolbar>
                     </div>
                   </div>
-                )}
-                <div className={classes.toolbar}>
-                  666
                 </div>
               </Fragment>
             )
@@ -145,7 +149,7 @@ export default class ListItem extends PureComponent {
                 onClick={this.switch}
                 className={classes.content}
               >
-                <Typography variant="h6" className={classes.title} component="h3">
+                <Typography variant="h6" component="h3">
                   {title}
                 </Typography>
                 <Typography component="div">
