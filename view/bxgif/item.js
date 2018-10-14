@@ -68,7 +68,7 @@ class RecipeReviewCard extends React.Component {
               <CardContent className={classes.content}>
                 <Typography
                   className={classes.title}
-                  variant="subheading"
+                  variant="body1"
                   component="p"
                 >
                   {title.substring(15, title.length)}
