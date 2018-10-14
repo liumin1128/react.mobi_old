@@ -1,5 +1,3 @@
-import View from '../view/article/list';
+import Index from './article';
 
-export default () => (
-  <View />
-);
+export default Index;

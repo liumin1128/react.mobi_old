@@ -11,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import StarIcon from '@material-ui/icons/Star';
+import CreateIcon from '@material-ui/icons/Create';
 
 const styles = theme => ({
   btn: {
@@ -18,7 +19,6 @@ const styles = theme => ({
     height: 60,
     flexDirection: 'column',
     borderRadius: 5,
-
   },
   btnText: {
     fontSize: 12,
@@ -37,7 +37,7 @@ export default class Edite extends PureComponent {
           <Grid container spacing={24}>
             <Grid item xs={4}>
               <ButtonBase className={classes.btn}>
-                <StarIcon />
+                <CreateIcon />
                 <Typography className={classes.btnText}>写文章</Typography>
               </ButtonBase>
             </Grid>
