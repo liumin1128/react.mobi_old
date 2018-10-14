@@ -6,7 +6,7 @@ export default class index extends PureComponent {
   render() {
     return (
       <div>
-        <Affix offsetTop={16}>
+        <Affix offsetTop={80}>
           <Edite />
         </Affix>
       </div>
