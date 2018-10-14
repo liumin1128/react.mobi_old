@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
+import cyan from '@material-ui/core/colors/cyan';
 import red from '@material-ui/core/colors/red';
 import Color from 'color';
 
@@ -9,8 +9,11 @@ export default createMuiTheme({
   overrides: {
     MuiAppBar: {
       root: {
-        background: `linear-gradient(60deg, ${Color('#2196f3').lighten(0.1)}, ${Color('#2196f3').darken(0.1)})`,
-        boxShadow: `0 4px 20px 0px ${Color('#2196f3').alpha(0.3)}, 0 7px 10px -5px ${Color('#2196f3').alpha(0.5)}`,
+        // background: `linear-gradient(60deg, ${Color('#2196f3').lighten(0.1)}, ${Color('#2196f3').darken(0.1)})`,
+        boxShadow: `
+          0 4px 8px 0px ${Color(cyan.A700).alpha(0.3)},
+          0 3px 5px -2px ${Color(cyan.A700).alpha(0.5)}
+        `,
       },
     },
     MuiInputLabel: {
@@ -49,7 +52,7 @@ export default createMuiTheme({
     useNextVariants: true,
   },
   palette: {
-    primary: blue,
+    primary: { ...cyan, contrastText: '#fff' },
     secondary: red,
     background: {
       default: '#f3f4f7',
