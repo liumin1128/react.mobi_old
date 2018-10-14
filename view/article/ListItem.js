@@ -33,7 +33,7 @@ const styles = theme => ({
     bottom: 0,
     boxShadow: '0 0px 12px 0px rgba(0, 0, 0, 0.1)',
     overflow: 'hidden',
-    transition: 'box-shadow 1s',
+    transition: 'box-shadow 1s ',
   },
   toolbar: {
     background: '#fff',
@@ -110,7 +110,7 @@ export default class ListItem extends PureComponent {
     const oh = this.content.offsetHeight;
     // console.log(st, sh, ot, oh);
 
-    if (st + sh < ot + oh && st + sh > ot + 300) {
+    if (st + sh < ot + oh && st + sh > ot + 200) {
       if (!isFixed) {
         this.setState({
           isFixed: true,
