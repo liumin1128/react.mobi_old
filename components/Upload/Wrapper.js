@@ -73,8 +73,6 @@ export default class picture extends PureComponent {
       ...props
     } = this.props;
 
-    console.log(props);
-
     if (loading) return <CircularProgress />;
 
     const { token } = qiniuToken;

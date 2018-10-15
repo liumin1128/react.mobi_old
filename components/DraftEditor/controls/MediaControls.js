@@ -48,6 +48,7 @@ export default class MediaButton extends Component {
             this.addMedia({ type: 'image', value });
           });
         }}
+        multiple
       >
         <Button disableRipple disableTouchRipple className={classes.button}>
           <PhotoIcon className={`${classes.icon} ${classes.unactive}`} />
