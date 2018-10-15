@@ -1,6 +1,7 @@
 import React, { Fragment, PureComponent, createRef } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import InlineStyleControls from './controls/InlineStyleControls';
+import MediaControls from './controls/MediaControls';
 import BlockStyleControls from './controls/BlockStyleControls';
 import decorators from './decorators';
 import options from './options';
@@ -36,6 +37,7 @@ export default class DraftEditor extends PureComponent {
       <div className="RichEditor-menus">
         <BlockStyleControls editorState={editorState} onChange={this.onChange} />
         <InlineStyleControls editorState={editorState} onChange={this.onChange} />
+        <MediaControls editorState={editorState} onChange={this.onChange} />
       </div>
     );
   }

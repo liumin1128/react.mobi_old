@@ -80,59 +80,57 @@ export default class picture extends PureComponent {
     const { token } = qiniuToken;
 
     return (
-      <div>
 
-        <RcUpload
-          supportServerRender
-          action={action}
-          data={{ token }}
-          onStart={(file) => {
-            const nextFileList = this.state.fileList.concat();
-            const targetItem = {
-              ...file,
-              status: 'uploading',
-              percent: 0,
-            };
-            nextFileList.push(targetItem);
-            this.onChange({
-              file: targetItem,
-              fileList: nextFileList,
-            });
-          }}
-          onSuccess={(response, file) => {
+      <RcUpload
+        supportServerRender
+        action={action}
+        data={{ token }}
+        onStart={(file) => {
+          const nextFileList = this.state.fileList.concat();
+          const targetItem = {
+            ...file,
+            status: 'uploading',
+            percent: 0,
+          };
+          nextFileList.push(targetItem);
+          this.onChange({
+            file: targetItem,
+            fileList: nextFileList,
+          });
+        }}
+        onSuccess={(response, file) => {
           // console.log('onSuccess');
-            const { fileList } = this.state;
-            // console.log(fileList);
-            this.clearProgressTimer();
-            try {
-              if (typeof response === 'string') {
-                response = JSON.parse(response);
-              }
-            } catch (e) { /* do nothing */
+          const { fileList } = this.state;
+          // console.log(fileList);
+          this.clearProgressTimer();
+          try {
+            if (typeof response === 'string') {
+              response = JSON.parse(response);
             }
-            const targetItem = getFileItem(file, fileList);
-            // console.log('targetItem');
-            // console.log(targetItem);
-            // removed
-            if (!targetItem) {
-              return;
-            }
-            targetItem.status = 'done';
-            targetItem.response = response;
+          } catch (e) { /* do nothing */
+          }
+          const targetItem = getFileItem(file, fileList);
+          // console.log('targetItem');
+          // console.log(targetItem);
+          // removed
+          if (!targetItem) {
+            return;
+          }
+          targetItem.status = 'done';
+          targetItem.response = response;
 
-            this.onChange({
-              file: { ...targetItem },
-              fileList,
-            });
-          }}
-          onError={(err) => {
-            console.log('onError', err);
-          }}
-          {...props}
-        >
-          {children}
-        </RcUpload>
-      </div>
+          this.onChange({
+            file: { ...targetItem },
+            fileList,
+          });
+        }}
+        onError={(err) => {
+          console.log('onError', err);
+        }}
+        {...props}
+      >
+        {children}
+      </RcUpload>
     );
   }
 }

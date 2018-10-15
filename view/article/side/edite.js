@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import StarIcon from '@material-ui/icons/Star';
 import CreateIcon from '@material-ui/icons/Create';
+import Link from '@/components/Link';
 
 const styles = theme => ({
   btn: {
@@ -36,10 +37,12 @@ export default class Edite extends PureComponent {
         <CardContent>
           <Grid container spacing={24}>
             <Grid item xs={4}>
-              <ButtonBase className={classes.btn}>
-                <CreateIcon />
-                <Typography className={classes.btnText}>写文章</Typography>
-              </ButtonBase>
+              <Link href="/article/create" passHref scroll={false}>
+                <ButtonBase className={classes.btn}>
+                  <CreateIcon />
+                  <Typography className={classes.btnText}>写文章</Typography>
+                </ButtonBase>
+              </Link>
             </Grid>
             <Grid item xs={4}>
               <ButtonBase className={classes.btn}>

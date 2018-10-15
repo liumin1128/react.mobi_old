@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import PhotoIcon from '@material-ui/icons/Photo';
-import UploadImages from '../../upload/wrapper';
+import UploadImages from '../../Upload/Wrapper';
 import { insertAtomicBlock } from '../utils';
 
 const styles = theme => ({
@@ -18,7 +18,7 @@ const styles = theme => ({
   },
   icon: {
     fontSize: 20,
-    marginBottom: -4,
+    // marginBottom: -4,
     padding: 8,
     width: 36,
     height: 36,
@@ -42,13 +42,14 @@ export default class MediaButton extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <UploadImages onChange={(values) => {
-        values.map((value) => {
-          this.addMedia({ type: 'image', value });
-        });
-      }}
+      <UploadImages
+        onChange={(values) => {
+          values.map((value) => {
+            this.addMedia({ type: 'image', value });
+          });
+        }}
       >
-        <Button className={classes.button}>
+        <Button disableRipple disableTouchRipple className={classes.button}>
           <PhotoIcon className={`${classes.icon} ${classes.unactive}`} />
         </Button>
       </UploadImages>
