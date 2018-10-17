@@ -5,6 +5,7 @@ import MediaControls from './controls/MediaControls';
 import BlockStyleControls from './controls/BlockStyleControls';
 import decorators from './decorators';
 import options from './options';
+import Affix from '../Affix';
 import './index.less';
 
 export default class DraftEditor extends PureComponent {
@@ -34,11 +35,13 @@ export default class DraftEditor extends PureComponent {
   renderMenus = () => {
     const { editorState } = this.state;
     return (
-      <div className="RichEditor-menus">
-        <BlockStyleControls editorState={editorState} onChange={this.onChange} />
-        <InlineStyleControls editorState={editorState} onChange={this.onChange} />
-        <MediaControls editorState={editorState} onChange={this.onChange} />
-      </div>
+      <Affix offsetTop={64}>
+        <div className="RichEditor-menus">
+          <BlockStyleControls editorState={editorState} onChange={this.onChange} />
+          <InlineStyleControls editorState={editorState} onChange={this.onChange} />
+          <MediaControls editorState={editorState} onChange={this.onChange} />
+        </div>
+      </Affix>
     );
   }
 
