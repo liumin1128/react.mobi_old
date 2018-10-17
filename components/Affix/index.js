@@ -189,6 +189,7 @@ export default class Affix extends PureComponent {
         top,
         left: targetRect.left + elemOffset.left,
         width,
+        zIndex: 2,
       });
       this.setPlaceholderStyle({
         width,
