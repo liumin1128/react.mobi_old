@@ -1,6 +1,5 @@
 import React, { PureComponent, createRef } from 'react';
 import { Mutation } from 'react-apollo';
-import NoSsr from '@material-ui/core/NoSsr';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -91,11 +90,9 @@ export default class ArticleCreate extends PureComponent {
                     <Grid container spacing={24}>
                       <Grid item md={8} xs={12}>
                         <Card className={classes.Card}>
-                          <NoSsr>
-                            <RichEditor
-                              ref={(c) => { this.editor = c; }}
-                            />
-                          </NoSsr>
+                          <RichEditor
+                            ref={(c) => { this.editor = c; }}
+                          />
                         </Card>
                       </Grid>
                       <Grid item md={4} xs={12}>

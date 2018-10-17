@@ -1,6 +1,10 @@
 import React, { PureComponent, createRef } from 'react';
-import DraftEditor from '@/components/DraftEditor';
+import dynamic from 'next/dynamic';
 import { getJSON, getHTML } from '@/components/DraftEditor/utils';
+
+const DynamicDraftEditorWithNoSSR = dynamic(() => import('@/components/DraftEditor'), {
+  ssr: false,
+});
 
 export default class RichEditor extends PureComponent {
   editor = createRef()
@@ -18,7 +22,7 @@ export default class RichEditor extends PureComponent {
   render() {
     // const { input: { onChange } } = this.props;
     return (
-      <DraftEditor
+      <DynamicDraftEditorWithNoSSR
         ref={(c) => { this.editor = c; }}
         // _onChange={(editorState) => {
         //   console.log(this.editor.state);
