@@ -7,7 +7,7 @@ const DynamicDraftEditorWithNoSSR = dynamic(() => import('@/components/DraftEdit
   ssr: false,
   loading: () => (
     <div style={{ padding: 16, minHeight: 302 }}>
-      <CircularProgress style={{ margin: 'auto', display: 'block' }} />
+      <CircularProgress size={20} style={{ margin: 'auto', display: 'block' }} />
     </div>
   ),
 });
