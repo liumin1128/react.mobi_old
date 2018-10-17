@@ -1,9 +1,15 @@
 import React, { PureComponent, createRef } from 'react';
 import dynamic from 'next/dynamic';
 import { getJSON, getHTML } from '@/components/DraftEditor/utils';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const DynamicDraftEditorWithNoSSR = dynamic(() => import('@/components/DraftEditor'), {
   ssr: false,
+  loading: () => (
+    <div style={{ padding: 16, minHeight: 302 }}>
+      <CircularProgress style={{ margin: 'auto', display: 'block' }} />
+    </div>
+  ),
 });
 
 export default class RichEditor extends PureComponent {
