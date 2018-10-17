@@ -63,7 +63,8 @@ export default class picture extends PureComponent {
 
 
   render() {
-    if (this.state.destroyed) return null;
+    const { destroyed } = this.state;
+    if (destroyed) return null;
 
     const {
       data: { loading, qiniuToken = {} },
@@ -73,7 +74,7 @@ export default class picture extends PureComponent {
       ...props
     } = this.props;
 
-    if (loading) return <CircularProgress />;
+    if (loading) return null;
 
     const { token } = qiniuToken;
 
