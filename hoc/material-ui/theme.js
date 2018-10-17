@@ -3,7 +3,11 @@ import cyan from '@material-ui/core/colors/cyan';
 import red from '@material-ui/core/colors/red';
 import Color from 'color';
 
-const theme = createMuiTheme();
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+});
 
 export default createMuiTheme({
   overrides: {

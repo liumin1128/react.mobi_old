@@ -40,7 +40,7 @@ class RecipeReviewCard extends PureComponent {
           <CardContent>
             <Typography
               className={classes.title}
-              variant="headline"
+              variant="h5"
               component="h2"
             >
               {title}
