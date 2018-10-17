@@ -7,7 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { Form, Field } from 'react-final-form';
 import RichEditor from '@/components/Form/RichEditor';
-import Layout from '@/components/Layout';
 import TextField from '@/components/Form/TextField';
 import { CREATE_ARTICLE } from '@/graphql/schema/article';
 
@@ -58,81 +57,79 @@ export default class ArticleCreate extends PureComponent {
     const { classes } = this.props;
     const formData = {};
     return (
-      <Layout>
-        <Mutation mutation={CREATE_ARTICLE}>
-          {(createArticle, { loading, error, data = {} }) => {
-            const onSubmit = async ({ tags, ...values }) => {
-              const html = this.editor.getHTML();
-              const json = JSON.stringify(this.editor.getJSON());
+      <Mutation mutation={CREATE_ARTICLE}>
+        {(createArticle, { loading, error, data = {} }) => {
+          const onSubmit = async ({ tags, ...values }) => {
+            const html = this.editor.getHTML();
+            const json = JSON.stringify(this.editor.getJSON());
 
-              try {
-                const result = await createArticle({
-                  variables: { input: { ...values, html, json, tags: tags.split(' ') } },
-                  refetchQueries: ['ArticleList'],
-                });
-                console.log('result');
-                console.log(result);
-              } catch (err) {
-                console.log('err');
-                console.log(err);
-                // Snackbar.error('文章发布失败');
-              }
-            };
+            try {
+              const result = await createArticle({
+                variables: { input: { ...values, html, json, tags: tags.split(' ') } },
+                refetchQueries: ['ArticleList'],
+              });
+              console.log('result');
+              console.log(result);
+            } catch (err) {
+              console.log('err');
+              console.log(err);
+              // Snackbar.error('文章发布失败');
+            }
+          };
 
-            return (
-              <Form
-                onSubmit={onSubmit}
-                initialValues={formData}
+          return (
+            <Form
+              onSubmit={onSubmit}
+              initialValues={formData}
                 // values={formData}
-                validate={this.validate}
-                render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
-                  <form id="createArticleForm" onSubmit={handleSubmit}>
-                    <Grid container spacing={24}>
-                      <Grid item md={8} xs={12}>
-                        <Card className={classes.Card}>
-                          <RichEditor
-                            ref={(c) => { this.editor = c; }}
-                          />
-                        </Card>
-                      </Grid>
-                      <Grid item md={4} xs={12}>
-                        <Card className={classes.Card}>
-                          <CardContent>
-                            {
-                              formKeys.map(i => (
-                                <Field
-                                  key={i.key}
-                                  name={i.key}
-                                  label={i.label}
-                                  component={TextField}
-                                  type="text"
-                                  margin="normal"
-                                  fullWidth
-                                  value={formData[i.key]}
-                                  {...i.props}
-                                />
-                              ))
-                            }
-                            <Button
-                              variant="contained"
-                              size="large"
-                              color="primary"
-                              type="submit"
-                              className={classes.submitButton}
-                            >
-                              确认
-                            </Button>
-                          </CardContent>
-                        </Card>
-                      </Grid>
+              validate={this.validate}
+              render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
+                <form id="createArticleForm" onSubmit={handleSubmit}>
+                  <Grid container spacing={24}>
+                    <Grid item md={8} xs={12}>
+                      <Card className={classes.Card}>
+                        <RichEditor
+                          ref={(c) => { this.editor = c; }}
+                        />
+                      </Card>
                     </Grid>
-                  </form>
-                )}
-              />
-            );
-          }}
-        </Mutation>
-      </Layout>
+                    <Grid item md={4} xs={12}>
+                      <Card className={classes.Card}>
+                        <CardContent>
+                          {
+                            formKeys.map(i => (
+                              <Field
+                                key={i.key}
+                                name={i.key}
+                                label={i.label}
+                                component={TextField}
+                                type="text"
+                                margin="normal"
+                                fullWidth
+                                value={formData[i.key]}
+                                {...i.props}
+                              />
+                            ))
+                          }
+                          <Button
+                            variant="contained"
+                            size="large"
+                            color="primary"
+                            type="submit"
+                            className={classes.submitButton}
+                          >
+                              确认2
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  </Grid>
+                </form>
+              )}
+            />
+          );
+        }}
+      </Mutation>
     );
   }
 }
