@@ -248,7 +248,7 @@ export default class Affix extends PureComponent {
 
     return (
       <div {...props} style={_placeholderStyle} ref={(c) => { this.placeholderNode = c; }}>
-        <div className={className} ref={(c) => { this.saveFixedNode = c; }} style={affixStyle}>
+        <div className={className} ref={(c) => { this.fixedNode = c; }} style={affixStyle}>
           {children}
         </div>
       </div>
