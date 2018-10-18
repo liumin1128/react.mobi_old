@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
@@ -39,7 +38,6 @@ export default class Header extends PureComponent {
               <Hidden className={`${classes.grow}`} implementation="css" only={['sm', 'xs']}>
                 <Tabs />
               </Hidden>
-              <Button color="inherit">Login</Button>
 
               <DynamicUserInfoWithNoSSR />
             </Toolbar>
