@@ -14,3 +14,13 @@ export const USER_LOGIN = gql`
     }
   }
 `;
+
+export const USERINFO = gql`
+  query userInfo {
+    userInfo: userInfo {
+        _id
+        nickname
+        avatarUrl
+    }
+  }
+`;

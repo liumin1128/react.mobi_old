@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import dynamic from 'next/dynamic';
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,6 +9,11 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
 import Tabs from './tabs';
+
+
+const DynamicUserInfoWithNoSSR = dynamic(() => import('./user'), {
+  ssr: false,
+});
 
 const styles = theme => ({
   root: {
@@ -26,6 +32,7 @@ export default class Header extends PureComponent {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
+
         <AppBar>
           <div className={classes.container}>
             <Toolbar disableGutters>
@@ -33,6 +40,8 @@ export default class Header extends PureComponent {
                 <Tabs />
               </Hidden>
               <Button color="inherit">Login</Button>
+
+              <DynamicUserInfoWithNoSSR />
             </Toolbar>
           </div>
         </AppBar>
