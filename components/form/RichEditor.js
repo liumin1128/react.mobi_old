@@ -2,6 +2,7 @@ import React, { PureComponent, createRef } from 'react';
 import { getJSON, getHTML } from '@/components/DraftEditor/utils';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+
 export default class RichEditor extends PureComponent {
   constructor(props) {
     super(props);
