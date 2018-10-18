@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Query } from 'react-apollo';
+import Avatar from '@material-ui/core/Avatar';
 import { USERINFO } from '@/graphql/schema/user';
 
 export default class user extends PureComponent {
@@ -7,15 +8,13 @@ export default class user extends PureComponent {
     return (
       <Query query={USERINFO}>
         {({ loading, error, data = {}, refetch }) => {
-          const { detail = {} } = data;
+          const { userInfo = {} } = data;
           if (loading) return 'Loading...';
-          console.log(error);
-
           if (error) return 'error';
-          console.log(error);
+          console.log(data);
           return (
             <div>
-              999
+              <Avatar src={userInfo.avatarUrl} />
             </div>
           );
         }}
