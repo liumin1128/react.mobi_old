@@ -51,6 +51,14 @@ export default createMuiTheme({
         },
       },
     },
+    MuiButton: {
+      contained: {
+        boxShadow: `
+          0 4px 8px 0px ${Color(cyan.A700).alpha(0.3)},
+          0 3px 5px -2px ${Color(cyan.A700).alpha(0.5)}
+        `,
+      },
+    },
   },
   typography: {
     useNextVariants: true,
