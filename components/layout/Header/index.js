@@ -12,6 +12,7 @@ import Tabs from './tabs';
 
 const DynamicUserInfoWithNoSSR = dynamic(() => import('./user'), {
   ssr: false,
+  loading: () => <span />,
 });
 
 const styles = theme => ({
@@ -31,14 +32,12 @@ export default class Header extends PureComponent {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-
         <AppBar>
           <div className={classes.container}>
             <Toolbar disableGutters>
               <Hidden className={`${classes.grow}`} implementation="css" only={['sm', 'xs']}>
                 <Tabs />
               </Hidden>
-
               <DynamicUserInfoWithNoSSR />
             </Toolbar>
           </div>
