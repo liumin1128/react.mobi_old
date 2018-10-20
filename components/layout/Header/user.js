@@ -24,6 +24,8 @@ const styles = theme => ({
 @withStyles(styles)
 @graphql(USER_LOGIN)
 export default class user extends PureComponent {
+  refetch = () => {}
+
   login = () => {
     const { classes } = this.props;
     modal(this.renderLoginForm, {
@@ -33,17 +35,17 @@ export default class user extends PureComponent {
     });
   }
 
-  onSubmit = async (values) => {
+  onSubmit = async (values, close) => {
     try {
       const { mutate } = this.props;
       const { data: { result: data } } = await mutate({
         variables: values,
-        refetchQueries: ['userInfo'],
+        // refetchQueries: ['userInfo'],
       });
-      // console.log('data');
-      // console.log(data);
       if (data.status === 200) {
         await setStorage(USER_TOKEN, data.token);
+        await this.refetch();
+        await close();
       }
     } catch (error) {
       console.log('error');
@@ -51,7 +53,7 @@ export default class user extends PureComponent {
     }
   }
 
-  renderLoginForm = () => (
+  renderLoginForm = ({ close }) => (
     <Fragment>
       <CardMedia
         style={{ height: 0, paddingTop: '60%' }}
@@ -59,7 +61,7 @@ export default class user extends PureComponent {
       />
       <CardContent>
         <DynamicComponentWithCustomLoading
-          onSubmit={this.onSubmit}
+          onSubmit={values => this.onSubmit(values, close)}
         />
       </CardContent>
     </Fragment>
@@ -70,7 +72,10 @@ export default class user extends PureComponent {
       <Query query={USERINFO} errorPolicy="all">
         {({ loading, error, data = {}, refetch }) => {
           if (loading) return 'Loading...';
-          if (error) return <Button color="inherit" onClick={this.login}>Login</Button>;
+          if (error) {
+            this.refetch = refetch;
+            return <Button color="inherit" onClick={this.login}>Login</Button>;
+          }
           const { userInfo = {} } = data;
           return (
             <div>
