@@ -10,13 +10,18 @@ import Form from './form';
 @graphql(USER_LOGIN)
 export default class Login extends PureComponent {
   onSubmit = async () => {
-    const { mutate, router } = this.props;
-    const { data: { result: data } } = await mutate({ variables: values });
-    // console.log('data');
-    // console.log(data);
-    if (data.status === 200) {
-      await setStorage(USER_TOKEN, data.token);
-      await router.push('/');
+    try {
+      const { mutate, router } = this.props;
+      const { data: { result: data } } = await mutate({ variables: values });
+      // console.log('data');
+      // console.log(data);
+      if (data.status === 200) {
+        await setStorage(USER_TOKEN, data.token);
+        await router.push('/');
+      }
+    } catch (error) {
+      console.log('error');
+      console.log(error);
     }
   }
 

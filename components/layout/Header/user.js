@@ -1,14 +1,15 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Query } from 'react-apollo';
+import { Query, graphql } from 'react-apollo';
+import dynamic from 'next/dynamic';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { withStyles } from '@material-ui/core/styles';
-
-import { USERINFO } from '@/graphql/schema/user';
-import dynamic from 'next/dynamic';
+import { USERINFO, USER_LOGIN } from '@/graphql/schema/user';
 import modal from '@/hoc/modal';
+import { USER_TOKEN } from '@/config/base';
+import { setStorage } from '@/utils/store';
 
 const DynamicComponentWithCustomLoading = dynamic(() => import('@/view/login/form'), {
   loading: () => <p>...</p>,
@@ -21,33 +22,48 @@ const styles = theme => ({
 });
 
 @withStyles(styles)
+@graphql(USER_LOGIN)
 export default class user extends PureComponent {
   login = () => {
     const { classes } = this.props;
-    modal(() => (
-      <Fragment>
-        <CardMedia
-          style={{ height: 0, paddingTop: '60%' }}
-          image={'https://imgs.react.mobi/FiIH1AWT8r5hJja50xiBSClwFvek'}
-        />
-        <CardContent>
-          <DynamicComponentWithCustomLoading
-            onSubmit={(values) => {
-              console.log('values');
-              console.log(values);
-            }}
-          />
-        </CardContent>
-      </Fragment>
-    ), {
-      // fullScreen: true,
-      // fullWidth: true,
+    modal(this.renderLoginForm, {
       classes: {
         paper: classes.paper,
       },
-      // style: { maxWidth: 360 },
     });
   }
+
+  onSubmit = async (values) => {
+    try {
+      const { mutate } = this.props;
+      const { data: { result: data } } = await mutate({
+        variables: values,
+        refetchQueries: ['userInfo'],
+      });
+      // console.log('data');
+      // console.log(data);
+      if (data.status === 200) {
+        await setStorage(USER_TOKEN, data.token);
+      }
+    } catch (error) {
+      console.log('error');
+      console.log(error);
+    }
+  }
+
+  renderLoginForm = () => (
+    <Fragment>
+      <CardMedia
+        style={{ height: 0, paddingTop: '60%' }}
+        image={'https://imgs.react.mobi/FiIH1AWT8r5hJja50xiBSClwFvek'}
+      />
+      <CardContent>
+        <DynamicComponentWithCustomLoading
+          onSubmit={this.onSubmit}
+        />
+      </CardContent>
+    </Fragment>
+  )
 
   render() {
     return (
