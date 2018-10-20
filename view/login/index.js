@@ -9,7 +9,7 @@ import Form from './form';
 @withRouter
 @graphql(USER_LOGIN)
 export default class Login extends PureComponent {
-  onSubmit = async () => {
+  onSubmit = async (values) => {
     try {
       const { mutate, router } = this.props;
       const { data: { result: data } } = await mutate({ variables: values });
