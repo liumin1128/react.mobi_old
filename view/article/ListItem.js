@@ -20,6 +20,7 @@ import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 
 import Html from '@/components/Html';
 import { formatTime, getScrollTop } from '@/utils/common';
+import Menus from '@/components/Menus';
 
 const styles = theme => ({
   grow: {
@@ -54,7 +55,6 @@ export default class ListItem extends PureComponent {
   state = {
     isExpanded: false,
     isFixed: false,
-    toolbarLeft: 0,
     toolbarWidth: 0,
   }
 
@@ -63,7 +63,6 @@ export default class ListItem extends PureComponent {
   componentDidMount() {
     if (this.content) {
       this.setState({
-        toolbarLeft: this.content.offsetLeft,
         toolbarWidth: this.content.offsetWidth,
       });
     }
@@ -128,14 +127,13 @@ export default class ListItem extends PureComponent {
     if (!isExpanded || !this.content || !isFixed) return;
     // console.log('onResize');
     this.setState({
-      toolbarLeft: this.content.offsetLeft,
       toolbarWidth: this.content.offsetWidth,
     });
   }
 
   render() {
     const { _id, title, user, createdAt, html, classes } = this.props;
-    const { isExpanded, isFixed, toolbarLeft, toolbarWidth } = this.state;
+    const { isExpanded, isFixed, toolbarWidth } = this.state;
     return (
       <div ref={(c) => { this.content = c; }}>
 
@@ -146,11 +144,7 @@ export default class ListItem extends PureComponent {
                 {user.nickname}
               </Avatar>
           )}
-            action={(
-              <IconButton>
-                <MoreVertIcon />
-              </IconButton>
-          )}
+            action={(<Menus />)}
             title={user.nickname}
             subheader={formatTime(createdAt, 'MM月DD日')}
           />
@@ -186,7 +180,7 @@ export default class ListItem extends PureComponent {
           }
 
           <div style={{ height: 64 }}>
-            <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth || '100%', left: toolbarLeft }}>
+            <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth || '100%' }}>
               <Toolbar className={classes.toolbar}>
                 <Button className={classes.btn} size="small" variant="outlined" color="primary">
                   <ArrowDropUpIcon />
