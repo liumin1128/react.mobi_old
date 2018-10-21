@@ -147,8 +147,20 @@ export default class ListItem extends PureComponent {
             action={(
               <Menus
                 options={[
-                  '编辑',
-                  '删除',
+                  {
+                    key: 'edite',
+                    label: '编辑',
+                    onClick: () => {
+                      console.log('编辑');
+                    },
+                  },
+                  {
+                    key: 'delete',
+                    label: '删除',
+                    onClick: () => {
+                      console.log('删除');
+                    },
+                  },
                 ]}
               />
             )}

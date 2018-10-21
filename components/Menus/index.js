@@ -4,8 +4,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const ITEM_HEIGHT = 48;
-
 class LongMenu extends React.Component {
   state = {
     anchorEl: null,
@@ -55,15 +53,20 @@ class LongMenu extends React.Component {
           }}
           elevation={2}
         >
-          {options.map(option => (
-            <MenuItem
-              key={option}
-              // selected={option === 'Pyxis'}
-              onClick={this.handleClose}
-            >
-              {option}
-            </MenuItem>
-          ))}
+          {options.map((option) => {
+            if (option.render) option.render();
+            return (
+              <MenuItem
+                key={option.key}
+                onClick={() => {
+                  this.handleClose();
+                  if (option.onClick) option.onClick();
+                }}
+              >
+                {option.label}
+              </MenuItem>
+            );
+          })}
         </Menu>
       </div>
     );
