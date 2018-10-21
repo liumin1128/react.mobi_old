@@ -144,7 +144,14 @@ export default class ListItem extends PureComponent {
                 {user.nickname}
               </Avatar>
           )}
-            action={(<Menus />)}
+            action={(
+              <Menus
+                options={[
+                  '编辑',
+                  '删除',
+                ]}
+              />
+            )}
             title={user.nickname}
             subheader={formatTime(createdAt, 'MM月DD日')}
           />
