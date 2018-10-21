@@ -21,6 +21,7 @@ import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import Html from '@/components/Html';
 import { formatTime, getScrollTop } from '@/utils/common';
 import Menus from '@/components/Menus';
+import Delete from './Delete2';
 
 const styles = theme => ({
   grow: {
@@ -131,6 +132,7 @@ export default class ListItem extends PureComponent {
     });
   }
 
+
   render() {
     const { _id, title, user, createdAt, html, classes } = this.props;
     const { isExpanded, isFixed, toolbarWidth } = this.state;
@@ -148,14 +150,10 @@ export default class ListItem extends PureComponent {
               <Menus
                 options={[
                   {
-                    key: 'edite',
-                    label: '编辑',
-                    onClick: () => {
-                      console.log('编辑');
-                    },
+                    render: () => <Delete key="ss" />,
                   },
                   {
-                    key: 'delete',
+                    key: 'edite',
                     label: '删除',
                     onClick: () => {
                       console.log('删除');

@@ -54,7 +54,7 @@ class LongMenu extends React.Component {
           elevation={2}
         >
           {options.map((option) => {
-            if (option.render) option.render();
+            if (option.render) return option.render();
             return (
               <MenuItem
                 key={option.key}
