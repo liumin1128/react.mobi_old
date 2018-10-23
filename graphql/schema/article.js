@@ -54,3 +54,13 @@ export const CREATE_ARTICLE = gql`
     }
   }
 `;
+
+export const DELETE_ARTICLE = gql`
+  mutation deleteArticle($id: String) {
+    result: deleteArticle(id: $id) {
+      __typename
+      status
+      message
+    }
+  }
+`;

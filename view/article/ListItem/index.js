@@ -150,7 +150,7 @@ export default class ListItem extends PureComponent {
               <Menus
                 options={[
                   {
-                    render: () => <Delete key="ss" />,
+                    render: () => <Delete id={_id} key="ss" />,
                   },
                   {
                     key: 'edite',
