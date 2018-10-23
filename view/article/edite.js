@@ -75,12 +75,7 @@ export default class ArticleCreate extends PureComponent {
             );
           }
           const { article = {} } = data;
-
-          console.log('article');
-          console.log(article);
-
           const { title, json, description, cover } = article;
-
           return this.renderMutation({ title, json, description, cover });
         }}
       </Query>
