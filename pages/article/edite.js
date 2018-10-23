@@ -8,7 +8,7 @@ export default class index extends PureComponent {
     const { router } = this.props;
     const { _id } = router.query;
     return (
-      <Edite _id={_id} />
+      <Edite mode="update" _id={_id} />
     );
   }
 }
