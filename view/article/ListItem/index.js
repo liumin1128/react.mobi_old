@@ -161,7 +161,7 @@ export default class ListItem extends PureComponent {
                     onClick: () => {
                       // console.log('编辑');
                       // Snackbar.success('xxx');
-                      router.push('/test');
+                      router.push(`/article/edite?_id=${_id}`);
                     },
                   },
                 ]}
