@@ -13,8 +13,6 @@ export default class Login extends PureComponent {
     try {
       const { mutate, router } = this.props;
       const { data: { result: data } } = await mutate({ variables: values });
-      // console.log('data');
-      // console.log(data);
       if (data.status === 200) {
         await setStorage(USER_TOKEN, data.token);
         await router.push('/');

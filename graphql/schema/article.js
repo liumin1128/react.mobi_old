@@ -39,18 +39,9 @@ export const ARTICLE_LIST = gql`
 
 export const CREATE_ARTICLE = gql`
   mutation createArticle($input: ArticleInput) {
-    item: createArticle(input: $input) {
-      __typename
-      _id
-      title
-      cover
-      json
-      html
-      createdAt
-      user {
-        nickname
-        avatarUrl
-      }
+    result: createArticle(input: $input) {
+      status
+      message
     }
   }
 `;
@@ -58,7 +49,6 @@ export const CREATE_ARTICLE = gql`
 export const DELETE_ARTICLE = gql`
   mutation deleteArticle($id: String) {
     result: deleteArticle(id: $id) {
-      __typename
       status
       message
     }
