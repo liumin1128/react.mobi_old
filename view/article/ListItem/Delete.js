@@ -21,11 +21,7 @@ export default class Delete extends PureComponent {
 
   render() {
     return (
-      <MenuItem
-        onClick={this.handleClose}
-      >
-        删除
-      </MenuItem>
+      <MenuItem onClick={this.handleClose}>删除</MenuItem>
     );
   }
 }
