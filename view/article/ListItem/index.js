@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment, createRef } from 'react';
 // import Waypoint from 'react-waypoint';
+import { withRouter } from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -20,6 +21,7 @@ import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import Html from '@/components/Html';
 import { formatTime, getScrollTop } from '@/utils/common';
 import Menus from '@/components/Menus';
+import Link from '@/components/Link';
 import Delete from './Delete';
 import Snackbar from '@/components/snackbar';
 
@@ -52,6 +54,7 @@ const styles = theme => ({
 
 
 @withStyles(styles)
+@withRouter
 export default class ListItem extends PureComponent {
   state = {
     isExpanded: false,
@@ -134,7 +137,7 @@ export default class ListItem extends PureComponent {
 
 
   render() {
-    const { _id, title, user, createdAt, html, classes } = this.props;
+    const { _id, title, user, createdAt, html, classes, router } = this.props;
     const { isExpanded, isFixed, toolbarWidth } = this.state;
     return (
       <div ref={(c) => { this.content = c; }}>
@@ -154,10 +157,11 @@ export default class ListItem extends PureComponent {
                   },
                   {
                     key: 'edite',
-                    label: '删除',
+                    label: '编辑',
                     onClick: () => {
-                      console.log('删除');
-                      Snackbar.success('xxx');
+                      // console.log('编辑');
+                      // Snackbar.success('xxx');
+                      router.push('/test');
                     },
                   },
                 ]}
