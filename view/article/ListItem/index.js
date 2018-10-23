@@ -17,11 +17,11 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ShareIcon from '@material-ui/icons/Share';
 import StarIcon from '@material-ui/icons/Star';
 import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
-
 import Html from '@/components/Html';
 import { formatTime, getScrollTop } from '@/utils/common';
 import Menus from '@/components/Menus';
-import Delete from './Delete2';
+import Delete from './Delete';
+import Snackbar from '@/components/snackbar';
 
 const styles = theme => ({
   grow: {
@@ -157,6 +157,7 @@ export default class ListItem extends PureComponent {
                     label: '删除',
                     onClick: () => {
                       console.log('删除');
+                      Snackbar.success('xxx');
                     },
                   },
                 ]}
