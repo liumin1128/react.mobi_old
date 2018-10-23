@@ -64,6 +64,7 @@ export const ARTICLE_CONTENT = gql`
       cover
       html
       json
+      description
       createdAt
     }
   }
