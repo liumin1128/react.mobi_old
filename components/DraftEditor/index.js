@@ -1,5 +1,5 @@
 import React, { Fragment, PureComponent, createRef } from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { Editor, EditorState, RichUtils, convertFromRaw } from 'draft-js';
 import InlineStyleControls from './controls/InlineStyleControls';
 import MediaControls from './controls/MediaControls';
 import BlockStyleControls from './controls/BlockStyleControls';
@@ -12,7 +12,9 @@ export default class DraftEditor extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      editorState: EditorState.createEmpty(decorators),
+      editorState: props.initialValue
+        ? EditorState.set(EditorState.createWithContent(convertFromRaw(props.initialValue)), { decorator: decorators })
+        : EditorState.createEmpty(decorators),
     };
     this.editor = createRef();
   }
