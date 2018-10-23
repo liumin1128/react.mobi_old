@@ -32,6 +32,7 @@ export default class RichEditor extends PureComponent {
 
   render() {
     const { DynamicComponent } = this.state;
+
     if (!DynamicComponent) {
       return (
         <div style={{ padding: 16, minHeight: 302 }}>
@@ -43,7 +44,10 @@ export default class RichEditor extends PureComponent {
       );
     }
     return (
-      <DynamicComponent ref={(c) => { this.editor = c; }} />
+      <DynamicComponent
+        {...this.props}
+        ref={(c) => { this.editor = c; }}
+      />
     );
   }
 }
