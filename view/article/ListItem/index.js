@@ -110,7 +110,6 @@ export default class ListItem extends PureComponent {
   }
 
   toggleShowComments = () => {
-    console.log('xxxxxxxxxxxxxxx');
     const { showComments } = this.state;
     this.setState({
       showComments: !showComments,
@@ -231,7 +230,7 @@ export default class ListItem extends PureComponent {
             <div className={classes.grow}>
               <Button onClick={this.toggleShowComments} className={classes.btn} size="small">
                 <SpeakerNotesIcon style={{ width: 16, marginRight: 3, marginTop: 2 }} />
-                99 条评论
+                {showComments ? '收起评论' : '99 条评论'}
               </Button>
               <Button className={classes.btn} size="small">
                 <ShareIcon style={{ width: 13, marginRight: 3 }} />
