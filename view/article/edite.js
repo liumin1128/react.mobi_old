@@ -96,7 +96,7 @@ export default class ArticleCreate extends PureComponent {
               const { data: { result: { status, message } } } = await createArticle({
                 variables: { input: params },
                 refetchQueries: ['ArticleList', 'ArticleDetail'],
-                awaitRefetchQueries: true,
+                // awaitRefetchQueries: true,
               });
 
               Snackbar.success(`[${status}]${message}`);
