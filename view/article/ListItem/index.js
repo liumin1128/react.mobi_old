@@ -135,106 +135,134 @@ export default class ListItem extends PureComponent {
     });
   }
 
+  renderMenus = () => {
+    const { _id, router } = this.props;
+    return (
+      <Menus
+        options={[
+          {
+            render: () => <Delete id={_id} key="ss" />,
+          },
+          {
+            key: 'edite',
+            label: '编辑',
+            onClick: () => {
+              router.push(`/article/edite?_id=${_id}`);
+            },
+          },
+        ]}
+      />
+    );
+  }
+
+  renderAvatar = () => {
+    const { classes, user } = this.props;
+    return (
+      <Avatar
+        aria-label="Recipe"
+        className={classes.avatar}
+        src={user.avatarUrl}
+      >
+        {user.nickname}
+      </Avatar>
+    );
+  }
+
+  renderContent = () => {
+    const { title, html } = this.props;
+    return (
+      <CardContent>
+        <Typography variant="h6" component="h3">
+          {title}
+        </Typography>
+        <Html html={html} />
+      </CardContent>
+    );
+  }
+
+  renderLessContent = () => {
+    const { title, html, classes } = this.props;
+    return (
+      <CardContent onClick={this.switch} className={classes.content}>
+        <Typography variant="h6" component="h3">
+          {title}
+        </Typography>
+        <Typography component="div">
+          <p>
+            {`${html
+              .replace(/<[^>]+>/g, '')
+              .substring(0, 150)}......`}
+          </p>
+        </Typography>
+      </CardContent>
+    );
+  }
+
+  renderToobar = () => {
+    const { classes } = this.props;
+    const { isExpanded, isFixed, toolbarWidth } = this.state;
+
+    return (
+      <div style={{ height: 64 }}>
+        <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth || '100%' }}>
+          <Toolbar className={classes.toolbar}>
+            <Button className={classes.btn} size="small" variant="outlined" color="primary">
+              <ArrowDropUpIcon />
+              赞同 8765
+            </Button>
+            <Button className={classes.btn} size="small" variant="outlined" color="primary">
+              <ArrowDropDownIcon />
+            </Button>
+
+            <div className={classes.grow}>
+              <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
+                <SpeakerNotesIcon style={{ width: 16, marginRight: 3, marginTop: 2 }} />
+                99 条评论
+              </Button>
+              <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
+                <ShareIcon style={{ width: 13, marginRight: 3 }} />
+                分享
+              </Button>
+              <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
+                <StarIcon style={{ width: 16, marginRight: 3 }} />
+                收藏
+              </Button>
+            </div>
+
+            {isExpanded && (
+              <Button
+                disableRipple
+                disableTouchRipple
+                size="small"
+                color="primary"
+                onClick={this.switch}
+              >
+                收起
+                <KeyboardArrowUpIcon />
+              </Button>
+            )}
+
+          </Toolbar>
+        </div>
+      </div>
+    );
+  }
 
   render() {
-    const { _id, title, user, createdAt, html, classes, router } = this.props;
-    const { isExpanded, isFixed, toolbarWidth } = this.state;
+    const { user, createdAt } = this.props;
+    const { isExpanded } = this.state;
+
     return (
       <div ref={(c) => { this.content = c; }}>
-
-        <Card key={_id} id={_id}>
+        <Card>
           <CardHeader
-            avatar={(
-              <Avatar aria-label="Recipe" className={classes.avatar} src={user.avatarUrl}>
-                {user.nickname}
-              </Avatar>
-          )}
-            action={(
-              <Menus
-                options={[
-                  {
-                    render: () => <Delete id={_id} key="ss" />,
-                  },
-                  {
-                    key: 'edite',
-                    label: '编辑',
-                    onClick: () => {
-                      // console.log('编辑');
-                      // Snackbar.success('xxx');
-                      router.push(`/article/edite?_id=${_id}`);
-                    },
-                  },
-                ]}
-              />
-            )}
+            avatar={this.renderAvatar()}
+            action={this.renderMenus()}
             title={user.nickname}
             subheader={formatTime(createdAt, 'MM月DD日')}
           />
-          {
-          isExpanded
-            ? (
-              <Fragment>
-                <CardContent>
-                  <Typography variant="h6" component="h3">
-                    {title}
-                  </Typography>
-                  <Html html={html} />
-                </CardContent>
-              </Fragment>
-            )
-            : (
-              <CardContent
-                onClick={this.switch}
-                className={classes.content}
-              >
-                <Typography variant="h6" component="h3">
-                  {title}
-                </Typography>
-                <Typography component="div">
-                  <p>
-                    {`${html
-                      .replace(/<[^>]+>/g, '')
-                      .substring(0, 150)}......`}
-                  </p>
-                </Typography>
-              </CardContent>
-            )
-          }
-
-          <div style={{ height: 64 }}>
-            <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth || '100%' }}>
-              <Toolbar className={classes.toolbar}>
-                <Button className={classes.btn} size="small" variant="outlined" color="primary">
-                  <ArrowDropUpIcon />
-                  赞同 8765
-                </Button>
-                <Button className={classes.btn} size="small" variant="outlined" color="primary">
-                  <ArrowDropDownIcon />
-                </Button>
-                <div className={classes.grow}>
-                  <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
-                    <SpeakerNotesIcon style={{ width: 16, marginRight: 3, marginTop: 2 }} />
-                    99 条评论
-                  </Button>
-                  <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
-                    <ShareIcon style={{ width: 13, marginRight: 3 }} />
-                    分享
-                  </Button>
-                  <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
-                    <StarIcon style={{ width: 16, marginRight: 3 }} />
-                    收藏
-                  </Button>
-                </div>
-
-                {isExpanded && (
-                  <Button disableRipple disableTouchRipple size="small" color="primary" onClick={this.switch}>
-                    收起
-                    <KeyboardArrowUpIcon />
-                  </Button>
-                )}
-              </Toolbar>
-            </div>
-          </div>
+          {isExpanded ? this.renderContent() : this.renderLessContent()}
+          {this.renderToobar()}
         </Card>
       </div>
     );
