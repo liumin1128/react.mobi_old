@@ -24,6 +24,7 @@ import Menus from '@/components/Menus';
 import Link from '@/components/Link';
 import Delete from './Delete';
 import Snackbar from '@/components/snackbar';
+import Comments from '@/view/comments';
 
 const styles = theme => ({
   grow: {
@@ -46,9 +47,13 @@ const styles = theme => ({
     // minHeight: 64,
     // display: 'flex',
   },
-  btn: {
-    marginRight: 8,
+  primaryBtn: {
     minWidth: 0,
+    marginRight: 8,
+  },
+  btn: {
+    minWidth: 0,
+    color: '#666',
   },
 });
 
@@ -60,6 +65,7 @@ export default class ListItem extends PureComponent {
     isExpanded: false,
     isFixed: false,
     toolbarWidth: 0,
+    showComments: false,
   }
 
   content = createRef()
@@ -77,7 +83,7 @@ export default class ListItem extends PureComponent {
     window.removeEventListener('resize', this.onResize);
   }
 
-  switch = (e) => {
+  toggleExpanded = (e) => {
     e.preventDefault();
     const { isExpanded } = this.state;
     this.setState({
@@ -101,6 +107,14 @@ export default class ListItem extends PureComponent {
       window.removeEventListener('scroll', this.onScroll);
       window.removeEventListener('resize', this.onResize);
     }
+  }
+
+  toggleShowComments = () => {
+    console.log('xxxxxxxxxxxxxxx');
+    const { showComments } = this.state;
+    this.setState({
+      showComments: !showComments,
+    });
   }
 
   onScroll = () => {
@@ -183,7 +197,7 @@ export default class ListItem extends PureComponent {
   renderLessContent = () => {
     const { title, html, classes } = this.props;
     return (
-      <CardContent onClick={this.switch} className={classes.content}>
+      <CardContent onClick={this.toggleExpanded} className={classes.content}>
         <Typography variant="h6" component="h3">
           {title}
         </Typography>
@@ -200,30 +214,30 @@ export default class ListItem extends PureComponent {
 
   renderToobar = () => {
     const { classes } = this.props;
-    const { isExpanded, isFixed, toolbarWidth } = this.state;
+    const { isExpanded, isFixed, toolbarWidth, showComments } = this.state;
 
     return (
       <div style={{ height: 64 }}>
         <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth || '100%' }}>
           <Toolbar className={classes.toolbar}>
-            <Button className={classes.btn} size="small" variant="outlined" color="primary">
+            <Button className={classes.primaryBtn} size="small" variant="outlined" color="primary">
               <ArrowDropUpIcon />
               赞同 8765
             </Button>
-            <Button className={classes.btn} size="small" variant="outlined" color="primary">
+            <Button className={classes.primaryBtn} size="small" variant="outlined" color="primary">
               <ArrowDropDownIcon />
             </Button>
 
             <div className={classes.grow}>
-              <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
+              <Button onClick={this.toggleShowComments} className={classes.btn} size="small">
                 <SpeakerNotesIcon style={{ width: 16, marginRight: 3, marginTop: 2 }} />
                 99 条评论
               </Button>
-              <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
+              <Button className={classes.btn} size="small">
                 <ShareIcon style={{ width: 13, marginRight: 3 }} />
                 分享
               </Button>
-              <Button className={classes.btn} size="small" style={{ color: '#666', marginRight: 0 }}>
+              <Button className={classes.btn} size="small">
                 <StarIcon style={{ width: 16, marginRight: 3 }} />
                 收藏
               </Button>
@@ -235,7 +249,7 @@ export default class ListItem extends PureComponent {
                 disableTouchRipple
                 size="small"
                 color="primary"
-                onClick={this.switch}
+                onClick={this.toggleExpanded}
               >
                 收起
                 <KeyboardArrowUpIcon />
@@ -250,7 +264,7 @@ export default class ListItem extends PureComponent {
 
   render() {
     const { user, createdAt } = this.props;
-    const { isExpanded } = this.state;
+    const { isExpanded, showComments } = this.state;
 
     return (
       <div ref={(c) => { this.content = c; }}>
@@ -263,6 +277,7 @@ export default class ListItem extends PureComponent {
           />
           {isExpanded ? this.renderContent() : this.renderLessContent()}
           {this.renderToobar()}
+          {showComments && <Comments />}
         </Card>
       </div>
     );
