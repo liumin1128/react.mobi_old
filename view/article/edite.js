@@ -8,6 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import RichEditor from '@/components/Form/RichEditor';
 import TextField from '@/components/Form/TextField';
@@ -107,13 +109,13 @@ export default class ArticleCreate extends PureComponent {
               // Snackbar.error('文章发布失败');
             }
           };
-          return this.renderForm({ onSubmit, initialValues });
+          return this.renderForm({ onSubmit, initialValues, loading });
         }}
       </Mutation>
     );
   }
 
-  renderForm = ({ onSubmit, initialValues: { json, ...initialValues } }) => {
+  renderForm = ({ onSubmit, initialValues: { json, ...initialValues }, loading }) => {
     const { classes } = this.props;
 
     return (
@@ -156,7 +158,9 @@ export default class ArticleCreate extends PureComponent {
                       type="submit"
                       className={classes.submitButton}
                     >
-                      确认
+                      {loading ? <CircularProgress color="inherit" size={20} thickness={5} /> : <SaveIcon /> }
+                      <span style={{ width: 16 }} />
+                      保存
                     </Button>
                   </CardContent>
                 </Card>
