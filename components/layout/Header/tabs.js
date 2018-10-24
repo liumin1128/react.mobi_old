@@ -34,8 +34,8 @@ const styles = theme => ({
 
 const navList = [
   { href: '/', label: '首页' },
-  { href: '/say', label: '说说' },
-  { href: '/article', label: '文章' },
+  // { href: '/say', label: '说说' },
+  // { href: '/article', label: '文章' },
   { href: '/ex', label: '发现' },
 ];
 
