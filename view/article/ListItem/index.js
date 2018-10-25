@@ -261,7 +261,7 @@ export default class ListItem extends PureComponent {
   }
 
   render() {
-    const { user, createdAt } = this.props;
+    const { _id, user, createdAt } = this.props;
     const { isExpanded, showComments } = this.state;
 
     return (
@@ -275,7 +275,7 @@ export default class ListItem extends PureComponent {
           />
           {isExpanded ? this.renderContent() : this.renderLessContent()}
           {this.renderToobar()}
-          {showComments && <Comments />}
+          {showComments && <Comments _id={_id} />}
         </Card>
       </div>
     );
