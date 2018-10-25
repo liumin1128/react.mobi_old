@@ -6,9 +6,15 @@ import Paper from '@material-ui/core/Paper';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import Create from './create';
 
 const styles = theme => ({
+  title: {
+    fontSize: 16,
+    // fontWeight: 'bold',
+    padding: '12px 16px',
+  },
   avatar: {
     width: 28,
     height: 28,
@@ -32,12 +38,20 @@ export default class test extends PureComponent {
       <Query query={COMMENT_LIST} variables={{ commentTo: _id }}>
         {({ loading, error, data = {}, refetch }) => {
           // todo 将refetch 传到create中
-          const { list = [] } = data;
+          const { list = [], meta } = data;
           if (loading) return 'Loading...';
           if (error) return 'error';
           return (
             <Paper className={classes.root}>
+              <Typography className={classes.title} variant="h4" component="h4">
+                {`${meta.count} 条评论`}
+
+              </Typography>
+              <Divider />
               <CardContent>
+
+                <br />
+                <br />
                 <Fragment>
                   {list.map(i => (
                     <Fragment key={i._id}>
