@@ -290,6 +290,7 @@ export default class ListItem extends PureComponent {
     return (
       <Dialog
         open
+        fullWidth
         onClose={this.toggleShowComments}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
