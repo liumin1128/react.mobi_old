@@ -33,10 +33,10 @@ const styles = theme => ({
 });
 
 const navList = [
-  { href: '/', label: '首页' },
+  { href: '/', label: '言雀' },
   // { href: '/say', label: '说说' },
   // { href: '/article', label: '文章' },
-  { href: '/ex', label: '发现' },
+  { href: '/ex', label: '知蛛' },
 ];
 
 class SimpleTabs extends React.Component {
