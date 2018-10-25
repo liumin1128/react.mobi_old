@@ -7,7 +7,7 @@ import Form from './form';
 
 export default class Create extends PureComponent {
   render() {
-    const { router, _id } = this.props;
+    const { _id, refetch } = this.props;
     return (
       <Mutation mutation={CREATE_COMMENT}>
         {(createComment, { loading, error, data = {} }) => {
@@ -20,11 +20,14 @@ export default class Create extends PureComponent {
 
               const { data: { result: { status, message } } } = await createComment({
                 variables: params,
-                refetchQueries: ['CommentList'],
+                // refetchQueries: ['CommentList'],
               });
 
-              Snackbar.success(`[${status}]${message}`);
-              router.push('/');
+              if (status === 200) {
+                refetch();
+              } else {
+                Snackbar.success(`[${status}]${message}`);
+              }
             } catch (err) {
               console.log('err');
               console.log(err);

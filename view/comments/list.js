@@ -56,7 +56,7 @@ export default class test extends PureComponent {
                     </Fragment>
                   ))}
                 </Fragment>
-                <Create _id={_id} />
+                <Create _id={_id} refetch={refetch} />
               </CardContent>
             </Paper>
           );
