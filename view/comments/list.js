@@ -12,8 +12,6 @@ import Create from './create';
 const styles = theme => ({
   title: {
     fontSize: 16,
-    // fontWeight: 'bold',
-    padding: '12px 16px',
   },
   avatar: {
     width: 28,
@@ -43,15 +41,14 @@ export default class test extends PureComponent {
           if (error) return 'error';
           return (
             <Paper className={classes.root}>
-              <Typography className={classes.title} variant="h4" component="h4">
-                {`${meta.count} 条评论`}
+              <CardContent>
+                <Typography className={classes.title} variant="h4" component="h4">
+                  {meta.count === 0 ? '暂无评论' : `${meta.count} 条评论`}
+                </Typography>
+              </CardContent>
 
-              </Typography>
               <Divider />
               <CardContent>
-
-                <br />
-                <br />
                 <Fragment>
                   {list.map(i => (
                     <Fragment key={i._id}>
