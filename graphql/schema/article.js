@@ -25,6 +25,7 @@ export const ARTICLE_LIST = gql`
       title
       cover
       html
+      commentCount
       createdAt
       user {
         nickname
