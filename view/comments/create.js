@@ -20,7 +20,7 @@ export default class Create extends PureComponent {
 
               const { data: { result: { status, message } } } = await createComment({
                 variables: params,
-                // refetchQueries: ['CommentList', 'CommentDetail'],
+                refetchQueries: ['CommentList'],
               });
 
               Snackbar.success(`[${status}]${message}`);

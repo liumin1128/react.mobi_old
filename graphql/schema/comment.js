@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const COMMENT_LIST = gql`
-  query CommentList($first: Int, $skip: Int, $id: String) {
-    list: comments(first: $first, skip: $skip, id: $id) {
+  query CommentList($first: Int, $skip: Int, $commentTo: String!) {
+    list: comments(first: $first, skip: $skip, commentTo: $commentTo) {
       __typename
       _id
       content

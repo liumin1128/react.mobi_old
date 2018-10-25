@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import List from './list';
 import Create from './create';
 
 export default class index extends PureComponent {
@@ -6,7 +7,7 @@ export default class index extends PureComponent {
     const { _id } = this.props;
     return (
       <div>
-        index
+        <List _id={_id} />
         <Create _id={_id} />
       </div>
     );
