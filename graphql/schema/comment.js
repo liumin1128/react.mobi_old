@@ -12,7 +12,7 @@ export const COMMENT_LIST = gql`
         avatarUrl
       }
     }
-    meta: _commentsMeta {
+    meta: _commentsMeta(commentTo: $commentTo) {
       count
     }
   }
