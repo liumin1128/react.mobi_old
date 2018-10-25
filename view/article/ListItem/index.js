@@ -33,6 +33,9 @@ const styles = theme => ({
   content: {
     cursor: 'pointer',
   },
+  nickname: {
+    fontSize: 14,
+  },
   fixed: {
     position: 'fixed',
     bottom: 0,
@@ -167,6 +170,13 @@ export default class ListItem extends PureComponent {
     );
   }
 
+  renderNickname = () => {
+    const { classes, user } = this.props;
+    return (
+      <Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>
+    );
+  }
+
   renderAvatar = () => {
     const { classes, user } = this.props;
     return (
@@ -279,7 +289,7 @@ export default class ListItem extends PureComponent {
           <CardHeader
             avatar={this.renderAvatar()}
             action={this.renderMenus()}
-            title={user.nickname}
+            title={this.renderNickname()}
             subheader={formatTime(createdAt, 'MM月DD日')}
           />
           {isExpanded ? this.renderContent() : this.renderLessContent()}

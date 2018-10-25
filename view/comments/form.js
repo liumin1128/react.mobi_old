@@ -30,6 +30,7 @@ export default class Create extends PureComponent {
               variant="outlined"
               fullWidth
               placeholder="畅所欲言"
+              autoComplete="off"
             />
             <Button
               variant="contained"
