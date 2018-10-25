@@ -110,10 +110,9 @@ export default class ListItem extends PureComponent {
   }
 
   toggleShowComments = () => {
-    const { showComments } = this.state;
-    this.setState({
-      showComments: !showComments,
-    });
+    this.setState(state => ({
+      showComments: !state.showComments,
+    }));
   }
 
   onScroll = () => {
