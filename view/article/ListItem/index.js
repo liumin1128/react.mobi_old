@@ -22,9 +22,14 @@ import Html from '@/components/Html';
 import { formatTime, getScrollTop } from '@/utils/common';
 import Menus from '@/components/Menus';
 import Link from '@/components/Link';
-import Delete from './Delete';
 import Snackbar from '@/components/snackbar';
 import Comments from '@/view/comments';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Delete from './Delete';
 
 const styles = theme => ({
   grow: {
@@ -65,9 +70,9 @@ const styles = theme => ({
 @withRouter
 export default class ListItem extends PureComponent {
   state = {
-    isExpanded: false,
     isFixed: false,
     toolbarWidth: 0,
+    isExpanded: false,
     showComments: false,
   }
 
@@ -91,6 +96,7 @@ export default class ListItem extends PureComponent {
     const { isExpanded } = this.state;
     this.setState({
       isExpanded: !isExpanded,
+      showComments: false,
       isFixed: false,
     }, () => {
       // 如果环境允许，创建自定义事件，触发滚动，以调整所有卡片状态
@@ -279,8 +285,22 @@ export default class ListItem extends PureComponent {
     );
   }
 
+  renderCommentsModel = () => {
+    const { _id } = this.props;
+    return (
+      <Dialog
+        open
+        onClose={this.toggleShowComments}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <Comments _id={_id} />
+      </Dialog>
+    );
+  }
+
   render() {
-    const { user, createdAt } = this.props;
+    const { createdAt } = this.props;
     const { isExpanded, showComments } = this.state;
 
     return (
@@ -294,7 +314,7 @@ export default class ListItem extends PureComponent {
           />
           {isExpanded ? this.renderContent() : this.renderLessContent()}
           {this.renderToobar()}
-          {showComments && this.renderComments()}
+          {showComments && (isExpanded ? this.renderCommentsModel() : this.renderComments())}
         </Card>
       </div>
     );
