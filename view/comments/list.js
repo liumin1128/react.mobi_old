@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Query } from 'react-apollo';
 import { COMMENT_LIST } from '@/graphql/schema/comment';
 import Paper from '@material-ui/core/Paper';
+import ButtonBase from '@material-ui/core/ButtonBase';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
@@ -10,8 +11,13 @@ import Divider from '@material-ui/core/Divider';
 import Create from './create';
 
 const styles = theme => ({
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+  },
   title: {
     fontSize: 16,
+    flexGrow: 1,
   },
   avatar: {
     width: 28,
@@ -25,6 +31,17 @@ const styles = theme => ({
   },
   nickname: {
     fontSize: 14,
+  },
+  pageBox: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  pageBtn: {
+    minHeight: 40,
+    lineHeight: '40px',
+    textAlign: 'center',
+    minWidth: 40,
+    display: 'inline-block',
   },
 });
 
@@ -41,12 +58,12 @@ export default class test extends PureComponent {
           if (error) return 'error';
           return (
             <Paper className={classes.root}>
-              <CardContent>
+              <CardContent className={classes.header}>
                 <Typography className={classes.title} variant="h4" component="h4">
                   {meta.count === 0 ? '暂无评论' : `${meta.count} 条评论`}
                 </Typography>
+                <Typography>时间 | 热度</Typography>
               </CardContent>
-
               <Divider />
               <CardContent>
                 <Fragment>
@@ -67,6 +84,20 @@ export default class test extends PureComponent {
                     </Fragment>
                   ))}
                 </Fragment>
+                <div className={classes.pageBox}>
+                  {
+                    [1, 2, 3, 4].map(i => (
+                      <ButtonBase
+                        onClick={() => {
+                          refetch({ skip: (i - 1) * 5 });
+                        }}
+                        className={classes.pageBtn}
+                      >
+                        {i}
+                      </ButtonBase>
+                    ))
+                  }
+                </div>
                 <Create _id={_id} refetch={refetch} />
               </CardContent>
             </Paper>
