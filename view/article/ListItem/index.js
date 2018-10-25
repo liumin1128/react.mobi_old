@@ -263,14 +263,14 @@ export default class ListItem extends PureComponent {
   renderComments = () => {
     const { _id } = this.props;
     return (
-<CardContent>
-      <Comments _id={_id} />
-    </CardContent>
-);
+      <CardContent>
+        <Comments _id={_id} />
+      </CardContent>
+    );
   }
 
   render() {
-    const { _id, user, createdAt } = this.props;
+    const { user, createdAt } = this.props;
     const { isExpanded, showComments } = this.state;
 
     return (
