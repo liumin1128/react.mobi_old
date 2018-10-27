@@ -1,9 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Form, Field } from 'react-final-form';
-// import Button from '@material-ui/core/Button';
 import TextField from '@/components/Form/TextField';
-import { withStyles } from '@material-ui/core/styles';
-// import Grow from '@material-ui/core/Grow';
 
 const validate = (values) => {
   const errors = {};
@@ -13,16 +10,6 @@ const validate = (values) => {
   return errors;
 };
 
-const styles = theme => ({
-  root: {
-    position: 'relative',
-  },
-  btn: {
-    position: 'absolute',
-  },
-});
-
-@withStyles(styles)
 export default class Create extends PureComponent {
   render() {
     const { onSubmit, classes } = this.props;
@@ -42,7 +29,7 @@ export default class Create extends PureComponent {
               <Field
                 key="content"
                 name="content"
-                label="评论内容"
+                label="输入评论"
                 component={TextField}
                 type="text"
                 margin="normal"
@@ -51,24 +38,10 @@ export default class Create extends PureComponent {
                 placeholder="畅所欲言，回车发送"
                 autoComplete="off"
               />
-              {
-              //   <Grow in={!pristine}>
-              //   <Button
-              //     variant="contained"
-              //     size="large"
-              //     color="primary"
-              //     type="submit"
-              //     className={classes.btn}
-              //   >
-              // 登录
-              //   </Button>
-              // </Grow>
-            }
             </form>
           )}
         />
       </div>
-
     );
   }
 }
