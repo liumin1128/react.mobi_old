@@ -12,18 +12,18 @@ const validate = (values) => {
 
 export default class Create extends PureComponent {
   render() {
-    const { onSubmit, classes } = this.props;
+    const { onSubmit } = this.props;
     return (
       <Form
-        onSubmit={onSubmit}
+        onSubmit={(values, form) => {
+          onSubmit(values);
+          form.reset();
+        }}
         validate={validate}
-        render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
+        render={({ handleSubmit }) => (
           <form
             id="createArticleForm"
-            onSubmit={(e) => {
-              handleSubmit(e);
-              reset();
-            }}
+            onSubmit={handleSubmit}
           >
             <Field
               key="content"

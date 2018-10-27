@@ -11,9 +11,10 @@ export default class Create extends PureComponent {
     return (
       <Mutation mutation={CREATE_COMMENT}>
         {(createComment, { loading, error, data = {} }) => {
-          const onSubmit = async ({ tags, ...values }) => {
+          const onSubmit = async ({ content }) => {
             try {
-              const params = { ...values, commentTo: _id };
+              if (!content) return;
+              const params = { content, commentTo: _id };
               const { data: { result: { status, message } } } = await createComment({
                 variables: params,
                 // refetchQueries: ['ArticleList'],

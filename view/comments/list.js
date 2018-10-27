@@ -121,6 +121,10 @@ export default class test extends PureComponent {
                     refetch({ skip: (page - 1) * 5 });
                   }}
                 />
+              </CardContent>
+
+              <Divider light />
+              <CardContent>
 
                 <Create _id={_id} refetch={refetch} />
               </CardContent>
