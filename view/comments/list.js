@@ -9,6 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Pagination from '@/components/Pagination';
+import { formatTime } from '@/utils/common';
 import Create from './create';
 
 const styles = theme => ({
@@ -28,17 +29,25 @@ const styles = theme => ({
     color: '#666',
   },
   avatar: {
-    width: 28,
-    height: 28,
-    borderRadius: 4,
-    marginRight: 8,
+    width: theme.spacing.unit * 3,
+    height: theme.spacing.unit * 3,
+    borderRadius: theme.spacing.unit * 0.5,
+    marginRight: theme.spacing.unit * 1.5,
   },
-  flex: {
+  commentItem: {
+    padding: `${theme.spacing.unit}px 0`,
+  },
+  commentHeader: {
     display: 'flex',
     alignItems: 'center',
   },
   nickname: {
     fontSize: 14,
+    flexGrow: 1,
+    color: '#666',
+  },
+  content: {
+    paddingLeft: 36,
   },
 });
 
@@ -73,9 +82,9 @@ export default class test extends PureComponent {
     }
     return (
       <Fragment>
-        {list.map(i => (
-          <Fragment key={i._id}>
-            <div className={classes.flex}>
+        {list.map((i, index) => (
+          <div className={classes.commentItem} key={i._id}>
+            <div className={classes.commentHeader}>
               <Avatar
                 aria-label="Recipe"
                 className={classes.avatar}
@@ -85,9 +94,13 @@ export default class test extends PureComponent {
                 {i.user.nickname}
               </Avatar>
               <Typography variant="h6" className={classes.nickname}>{i.user.nickname}</Typography>
+              <Typography variant="caption">
+                {formatTime(i.createdAt, 'MM月DD日')}
+              </Typography>
             </div>
-            <p>{i.content}</p>
-          </Fragment>
+            <Typography className={classes.content}><p>{i.content}</p></Typography>
+            {index !== list.length - 1 && <Divider inset light style={{ marginLeft: 36 }} />}
+          </div>
         ))}
       </Fragment>
     );

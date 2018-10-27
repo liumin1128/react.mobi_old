@@ -65,7 +65,6 @@ const styles = theme => ({
   },
 });
 
-
 @withStyles(styles)
 @withRouter
 export default class ListItem extends PureComponent {
