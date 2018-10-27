@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import Pagination from '@/components/Pagination';
 import Create from './create';
 
 const styles = theme => ({
@@ -54,6 +55,26 @@ const styles = theme => ({
 
 @withStyles(styles)
 export default class test extends PureComponent {
+  renderPagination = ({ onChange }) => {
+    const { classes, _id } = this.props;
+    return (
+      <div className="pagination">
+        {
+        [1, 2, 3, 4].map(i => (
+          <ButtonBase
+            onClick={() => {
+              onChange(i);
+            }}
+            className={classes.pageBtn}
+          >
+            {i}
+          </ButtonBase>
+        ))
+      }
+      </div>
+    );
+  }
+
   render() {
     const { classes, _id } = this.props;
     return (
@@ -91,20 +112,16 @@ export default class test extends PureComponent {
                     </Fragment>
                   ))}
                 </Fragment>
-                <div className={classes.pageBox}>
-                  {
-                    [1, 2, 3, 4].map(i => (
-                      <ButtonBase
-                        onClick={() => {
-                          refetch({ skip: (i - 1) * 5 });
-                        }}
-                        className={classes.pageBtn}
-                      >
-                        {i}
-                      </ButtonBase>
-                    ))
-                  }
-                </div>
+
+                <Pagination
+                  page={1}
+                  pageSize={5}
+                  total={meta.count}
+                  onChange={(page) => {
+                    refetch({ skip: (page - 1) * 5 });
+                  }}
+                />
+
                 <Create _id={_id} refetch={refetch} />
               </CardContent>
             </Paper>
