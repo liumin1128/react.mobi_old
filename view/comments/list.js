@@ -11,13 +11,20 @@ import Divider from '@material-ui/core/Divider';
 import Create from './create';
 
 const styles = theme => ({
+  root: {
+    border: '1px #eee solid',
+    boxShadow: 'none',
+    // boxShadow: '0 0px 8px 0px rgba(0,0,0,0.1), 0 6px 10px -4px rgba(0,0,0,0.2)',
+  },
   header: {
     display: 'flex',
     alignItems: 'center',
   },
   title: {
-    fontSize: 16,
+    fontSize: 14,
     flexGrow: 1,
+    fontWeight: 'bold',
+    color: '#666',
   },
   avatar: {
     width: 28,
@@ -59,12 +66,12 @@ export default class test extends PureComponent {
           return (
             <Paper className={classes.root}>
               <CardContent className={classes.header}>
-                <Typography className={classes.title} variant="h4" component="h4">
+                <Typography className={classes.title} variant="h6" component="h6">
                   {meta.count === 0 ? '暂无评论' : `${meta.count} 条评论`}
                 </Typography>
                 <Typography>时间 | 热度</Typography>
               </CardContent>
-              <Divider />
+              <Divider light />
               <CardContent>
                 <Fragment>
                   {list.map(i => (

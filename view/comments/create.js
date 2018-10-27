@@ -14,13 +14,10 @@ export default class Create extends PureComponent {
           const onSubmit = async ({ tags, ...values }) => {
             try {
               const params = { ...values, commentTo: _id };
-
-              console.log('params');
-              console.log(params);
-
               const { data: { result: { status, message } } } = await createComment({
                 variables: params,
-                // refetchQueries: ['CommentList'],
+                // refetchQueries: ['ArticleList'],
+                // awaitRefetchQueries: true,
               });
 
               if (status === 200) {
