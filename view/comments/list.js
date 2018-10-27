@@ -55,7 +55,6 @@ export default class test extends PureComponent {
         <Typography className={classes.title} variant="h6" component="h6">
           {loading ? 'loading' : (count === 0 ? '暂无评论' : `${count} 条评论`)}
         </Typography>
-        <Typography>时间 | 热度</Typography>
       </CardContent>
     );
   }
