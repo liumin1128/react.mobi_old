@@ -218,14 +218,16 @@ export default class ListItem extends PureComponent {
   }
 
   renderToobar = () => {
-    const { classes, commentCount, likeCount } = this.props;
+    const { classes, commentCount, likeCount, _id } = this.props;
     const { isExpanded, isFixed, toolbarWidth, showComments } = this.state;
+    console.log('likeCount');
+    console.log(likeCount);
 
     return (
       <div style={{ height: 64 }}>
         <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth || '100%' }}>
           <Toolbar className={classes.toolbar}>
-            <Like className={classes.primaryBtn} count={likeCount} />
+            <Like id={_id} className={classes.primaryBtn} count={likeCount} />
 
             <div className={classes.grow}>
               <Button onClick={this.toggleShowComments} className={classes.btn} size="small">
