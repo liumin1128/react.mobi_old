@@ -23,6 +23,7 @@ git pull
 
 yarn build
 
+
 echo "重启pm2"
 # pm2 restart api.react.mobi
 yarn pm2
