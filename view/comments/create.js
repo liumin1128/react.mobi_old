@@ -17,7 +17,7 @@ export default class Create extends PureComponent {
               const params = { content, commentTo: _id };
               const { data: { result: { status, message } } } = await createComment({
                 variables: params,
-                // refetchQueries: ['ArticleList'],
+                refetchQueries: [ 'ArticleList' ],
                 // awaitRefetchQueries: true,
               });
 
