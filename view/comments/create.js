@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { CREATE_COMMENT } from '@/graphql/schema/comment';
 import { Mutation } from 'react-apollo';
-import Snackbar from '@/components/snackbar';
+import Snackbar from '@/components/Snackbar';
 import Form from './form';
 
 

@@ -5,7 +5,7 @@ import { onError } from 'apollo-link-error';
 import { withClientState } from 'apollo-link-state';
 import { ApolloLink } from 'apollo-link';
 import { Observable } from 'rxjs';
-// import Snackbar from '@/components/snackbar';
+// import Snackbar from '@/components/Snackbar';
 import { getStorage } from '@/utils/store';
 import { USER_TOKEN, ENV } from '@/config/base';
 

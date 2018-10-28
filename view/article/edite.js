@@ -13,7 +13,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import RichEditor from '@/components/Form/RichEditor';
 import TextField from '@/components/Form/TextField';
-import Snackbar from '@/components/snackbar';
+import Snackbar from '@/components/Snackbar';
 
 import { CREATE_ARTICLE, ARTICLE_CONTENT } from '@/graphql/schema/article';
 

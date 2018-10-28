@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
-import Snackbar from './snackbar';
+import Snackbar from './Snackbar';
 
 class Container extends PureComponent {
   constructor(props) {

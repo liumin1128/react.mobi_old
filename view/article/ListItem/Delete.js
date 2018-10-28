@@ -7,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { DELETE_ARTICLE } from '@/graphql/schema/article';
-import Snackbar from '@/components/snackbar';
+import Snackbar from '@/components/Snackbar';
 
 const styles = theme => ({
   menuItem: {
