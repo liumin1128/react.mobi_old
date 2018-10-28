@@ -21,7 +21,10 @@ npm i -S store recompose react-masonry-component react-waypoint react-lazyload c
 npm i -S next@latest react@latest react-dom@latest prop-types@latest
 
 
-yarn add next@next react@latest react-dom@latest prop-types@latest redux react-redux es6-promise react-waypoint react-headroom store timeago.js axios @material-ui/core @material-ui/icons normalize.css apollo-boost react-apollo graphql graphql-tag isomorphic-unfetch react-masonry-component rxjs slate slate-react immutable react-lazyload final-form react-final-form html-minifier react-content-loader draft-js draft-js-export-html @navjobs/upload color
+yarn add --dev @babel/preset-env @babel/plugin-transform-runtime @babel/core @babel/register @babel/runtime @babel/plugin-proposal-decorators babel-plugin-module-resolver babel-plugin-transform-remove-console babel-preset-minify eslint eslint-plugin-import babel-eslint eslint-plugin-jsx-a11y eslint-plugin-react eslint-config-airbnb cross-env @zeit/next-less less @zeit/next-bundle-analyzer
+
+yarn add graphql graphql-tag apollo-boost react-apollo isomorphic-unfetch  @material-ui/core @material-ui/icons react-jss store recompose react-masonry-component react-waypoint react-lazyload color react-final-form final-form draft-js draft-js-export-html rc-upload react-headroom next@latest react@latest react-dom@latest prop-types@latest
+
 ```
 
 ### 感谢以下组织或个人的倾力支持：
