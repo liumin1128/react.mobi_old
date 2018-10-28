@@ -4,15 +4,28 @@ import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 export default class Like extends PureComponent {
+  state = {
+    status: '',
+  }
+
+  like = () => {
+    this.setState(({ status }) => ({ status: status === 'like' ? '' : 'like' }));
+  }
+
+  unlike = () => {
+    this.setState(({ status }) => ({ status: status === 'unlike' ? '' : 'unlike' }));
+  }
+
   render() {
     const { count = 0, className } = this.props;
+    const { status } = this.state;
     return (
       <Fragment>
-        <Button className={className} size="small" variant="outlined" color="primary">
+        <Button onClick={this.like} className={className} size="small" variant={status === 'like' ? 'contained' : 'outlined'} color="primary">
           <ArrowDropUpIcon />
-          {`like ${count}`}
+          {`like ${status === 'like' ? count + 1 : count}`}
         </Button>
-        <Button className={className} size="small" variant="outlined" color="primary">
+        <Button onClick={this.unlike} className={className} size="small" variant="outlined" color="primary">
           <ArrowDropDownIcon />
         </Button>
       </Fragment>
