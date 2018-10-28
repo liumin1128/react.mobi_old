@@ -1,15 +1,12 @@
-import React, { PureComponent, Fragment, createRef } from 'react';
+import React, { PureComponent, createRef } from 'react';
 // import Waypoint from 'react-waypoint';
 import { withRouter } from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-// import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
@@ -21,15 +18,10 @@ import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import Html from '@/components/Html';
 import { formatTime, getScrollTop } from '@/utils/common';
 import Menus from '@/components/Menus';
-import Link from '@/components/Link';
-import Snackbar from '@/components/snackbar';
 import Comments from '@/view/comments';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Delete from './Delete';
+import Like from './Like';
 
 const styles = theme => ({
   grow: {
@@ -233,13 +225,7 @@ export default class ListItem extends PureComponent {
       <div style={{ height: 64 }}>
         <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth || '100%' }}>
           <Toolbar className={classes.toolbar}>
-            <Button className={classes.primaryBtn} size="small" variant="outlined" color="primary">
-              <ArrowDropUpIcon />
-              {`like ${likeCount}`}
-            </Button>
-            <Button className={classes.primaryBtn} size="small" variant="outlined" color="primary">
-              <ArrowDropDownIcon />
-            </Button>
+            <Like className={classes.primaryBtn} count={likeCount} />
 
             <div className={classes.grow}>
               <Button onClick={this.toggleShowComments} className={classes.btn} size="small">
