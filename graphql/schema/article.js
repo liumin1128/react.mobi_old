@@ -22,11 +22,13 @@ export const ARTICLE_LIST = gql`
     list: articles(first: $first, skip: $skip) {
       __typename
       _id
+      createdAt
+
       title
       cover
       html
       commentCount
-      createdAt
+      likeCount
       user {
         nickname
         avatarUrl

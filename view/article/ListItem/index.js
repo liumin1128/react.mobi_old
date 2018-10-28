@@ -226,7 +226,7 @@ export default class ListItem extends PureComponent {
   }
 
   renderToobar = () => {
-    const { classes, commentCount } = this.props;
+    const { classes, commentCount, likeCount } = this.props;
     const { isExpanded, isFixed, toolbarWidth, showComments } = this.state;
 
     return (
@@ -235,7 +235,7 @@ export default class ListItem extends PureComponent {
           <Toolbar className={classes.toolbar}>
             <Button className={classes.primaryBtn} size="small" variant="outlined" color="primary">
               <ArrowDropUpIcon />
-              赞同 8765
+              {`like ${likeCount}`}
             </Button>
             <Button className={classes.primaryBtn} size="small" variant="outlined" color="primary">
               <ArrowDropDownIcon />
