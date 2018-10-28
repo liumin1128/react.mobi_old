@@ -3,33 +3,28 @@ import { Mutation } from 'react-apollo';
 import Button from '@material-ui/core/Button';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { LIKE } from '@/graphql/schema/like';
 
 export default class Like extends PureComponent {
   state = {
-    status: '',
-  }
-
-  like = () => {
-    this.setState(({ status }) => ({ status: status === 'like' ? '' : 'like' }));
-  }
-
-  unlike = () => {
-    this.setState(({ status }) => ({ status: status === 'unlike' ? '' : 'unlike' }));
+    active: '',
   }
 
   render() {
     const { count = 0, className } = this.props;
-    const { status } = this.state;
+    const { active } = this.state;
     return (
       <Mutation mutation={LIKE}>
         {(like, { loading, error, data = {} }) => {
-          const onLike = async (type) => {
+          const onLike = async (unlike) => {
             try {
+              this.setState({ active: unlike ? 'unlike' : 'like' });
               const { id } = this.props;
               const res = await like({
-                variables: { id, unlike: false },
-                // refetchQueries: [ 'ArticleList' ],
+                variables: { id, unlike },
+                refetchQueries: [ 'ArticleList' ],
+                awaitRefetchQueries: true,
               });
               console.log('res');
               console.log(res);
@@ -40,12 +35,12 @@ export default class Like extends PureComponent {
           };
           return (
             <Fragment>
-              <Button onClick={onLike} className={className} size="small" variant={status === 'like' ? 'contained' : 'outlined'} color="primary">
-                <ArrowDropUpIcon />
-                {`like ${status === 'like' ? count + 1 : count}`}
+              <Button onClick={() => onLike()} className={className} size="small" variant="outlined" color="primary">
+                {(loading && active === 'like') ? <CircularProgress color="inherit" size={24} thickness={5} /> : <ArrowDropUpIcon />}
+                {` like ${count}`}
               </Button>
-              <Button onClick={this.unlike} className={className} size="small" variant="outlined" color="primary">
-                <ArrowDropDownIcon />
+              <Button onClick={() => onLike(true)} className={className} size="small" variant="outlined" color="primary">
+                {(loading && active === 'unlike') ? <CircularProgress color="inherit" size={24} thickness={5} /> : <ArrowDropDownIcon />}
               </Button>
             </Fragment>
           );

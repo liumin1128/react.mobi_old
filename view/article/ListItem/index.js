@@ -228,7 +228,6 @@ export default class ListItem extends PureComponent {
         <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth || '100%' }}>
           <Toolbar className={classes.toolbar}>
             <Like id={_id} className={classes.primaryBtn} count={likeCount} />
-
             <div className={classes.grow}>
               <Button onClick={this.toggleShowComments} className={classes.btn} size="small">
                 <SpeakerNotesIcon style={{ width: 16, marginRight: 3, marginTop: 2 }} />
