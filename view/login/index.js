@@ -17,11 +17,11 @@ export default class Login extends PureComponent {
       const { mutate, router } = this.props;
       const { data: { result: data } } = await mutate({ variables: values });
       if (data.status === 200) {
-        await Snackbar.success('登录成功');
+        await Snackbar.success(data.message);
         await setStorage(USER_TOKEN, data.token);
         await router.push('/');
       }
-      await Snackbar.success('用户名或密码错误');
+      await Snackbar.success(data.message);
     } catch (error) {
       console.log('error');
       console.log(error);
