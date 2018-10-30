@@ -10,8 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ShareIcon from '@material-ui/icons/Share';
 import StarIcon from '@material-ui/icons/Star';
 import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
