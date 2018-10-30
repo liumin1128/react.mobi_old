@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { domRender } from '@/utils/react';
 import { getScrollTop } from '@/utils/common';
 import { withStyles } from '@material-ui/core/styles';
+import withStyle from '../../hoc/material-ui/withRoot';
 
 const styles = theme => ({
   root: {
@@ -107,5 +108,5 @@ export default function (e, src) {
       );
     }
   }
-  return domRender(withStyles(styles)(Index));
+  return domRender(withStyle(withStyles(styles)(Index)));
 }
