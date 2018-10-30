@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import Snackbar from './Snackbar';
+import withStyle from '../../hoc/material-ui/withRoot';
 
+@withStyle
 class Container extends PureComponent {
   constructor(props) {
     super(props);
@@ -10,12 +12,15 @@ class Container extends PureComponent {
       visible: true,
     };
   }
+
   onExited() {
     this.props.removeChild();
   }
+
   closeModals() {
     this.modal.onCancel();
   }
+
   render() {
     // console.log(this.props);
     return <Snackbar {...this.props} />;
