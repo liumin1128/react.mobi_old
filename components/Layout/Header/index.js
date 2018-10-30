@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
-import Hidden from '@material-ui/core/Hidden';
+// import Hidden from '@material-ui/core/Hidden';
 import Tabs from './tabs';
 
 
@@ -31,9 +31,7 @@ export default class Header extends PureComponent {
         <AppBar className={classes.root}>
           <div className={classes.container}>
             <Toolbar disableGutters>
-              <Hidden className={`${classes.grow}`} implementation="css" only={[ 'sm', 'xs' ]}>
-                <Tabs />
-              </Hidden>
+              <Tabs />
               <DynamicUserInfoWithNoSSR />
             </Toolbar>
           </div>
