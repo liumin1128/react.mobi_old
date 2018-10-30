@@ -20,6 +20,11 @@ import { formatTime, getScrollTop } from '@/utils/common';
 import Menus from '@/components/Menus';
 import Comments from '@/view/comments';
 import Dialog from '@material-ui/core/Dialog';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import EditIcon from '@material-ui/icons/Edit';
+
 import Delete from './Delete';
 import Like from './Like';
 
@@ -156,11 +161,17 @@ export default class ListItem extends PureComponent {
             render: () => <Delete id={_id} key="ss" />,
           },
           {
-            key: 'edite',
-            label: '编辑',
-            onClick: () => {
-              router.push(`/article/edite?_id=${_id}`);
-            },
+            render: () => (
+              <MenuItem onClick={() => {
+                router.push(`/article/edite?_id=${_id}`);
+              }}
+              >
+                <ListItemIcon>
+                  <EditIcon />
+                </ListItemIcon>
+                <ListItemText inset primary="编辑" />
+              </MenuItem>
+            ),
           },
         ]}
       />
