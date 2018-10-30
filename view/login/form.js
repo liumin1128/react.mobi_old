@@ -36,8 +36,8 @@ export default class form extends PureComponent {
     return (
       <Form
         onSubmit={this.onSubmit}
-          // initialValues={formData}
-          // values={formData}
+        // initialValues={formData}
+        // values={formData}
         validate={validate}
         render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
           <form id="createArticleForm" onSubmit={handleSubmit}>
@@ -58,13 +58,31 @@ export default class form extends PureComponent {
             }
             <br />
             <br />
+
             <Button
               variant="contained"
-              size="large"
+              // size="small"
               color="primary"
               type="submit"
+              style={{ marginRight: 16 }}
             >
                 登录
+            </Button>
+            <Button
+              // variant="contained"
+              size="small"
+              color="primary"
+              onClick={() => { window.location.href = 'https://api.react.mobi/oauth/github'; }}
+            >
+                Github
+            </Button>
+            <Button
+              // variant="contained"
+              size="small"
+              color="primary"
+              onClick={() => { window.location.href = 'https://api.react.mobi/oauth/wechat'; }}
+            >
+              wechat
             </Button>
           </form>
         )}

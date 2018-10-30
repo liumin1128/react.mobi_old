@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { graphql } from 'react-apollo';
 import { withRouter } from 'next/router';
 import { USER_LOGIN } from '@/graphql/schema/user';
@@ -25,7 +25,9 @@ export default class Login extends PureComponent {
 
   render() {
     return (
-      <Form onSubmit={this.onSubmit} />
+      <Fragment>
+        <Form onSubmit={this.onSubmit} />
+      </Fragment>
     );
   }
 }
