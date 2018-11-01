@@ -22,6 +22,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import EditIcon from '@material-ui/icons/Edit';
+import Hidden from '@material-ui/core/Hidden';
 
 import Delete from './Delete';
 import Like from './Like';
@@ -29,6 +30,8 @@ import Like from './Like';
 const styles = theme => ({
   grow: {
     flexGrow: 1,
+    display: 'flex',
+    alignItems: 'center',
   },
   content: {
     cursor: 'pointer',
@@ -232,9 +235,14 @@ export default class ListItem extends PureComponent {
     console.log('likeCount');
     console.log(likeCount);
 
+    const fixedOptions = isFixed ? {
+      className: classes.fixed,
+      width: toolbarWidth || '100%',
+    } : {};
+
     return (
       <div style={{ height: 64 }}>
-        <div className={isFixed ? classes.fixed : undefined} style={{ width: toolbarWidth || '100%' }}>
+        <div {...fixedOptions}>
           <Toolbar className={classes.toolbar}>
             <Like id={_id} className={classes.primaryBtn} count={likeCount} />
             <div className={classes.grow}>
@@ -242,15 +250,21 @@ export default class ListItem extends PureComponent {
                 <SpeakerNotesIcon style={{ width: 16, marginRight: 3, marginTop: 2 }} />
                 {showComments ? '收起评论' : `${commentCount} 条评论`}
               </Button>
-              <Button className={classes.btn} size="small">
-                <ShareIcon style={{ width: 13, marginRight: 3 }} />
-                分享
-              </Button>
-              <Button className={classes.btn} size="small">
-                <StarIcon style={{ width: 16, marginRight: 3 }} />
-                收藏
-              </Button>
+              <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
+                <Button className={classes.btn} size="small">
+                  <ShareIcon style={{ width: 13, marginRight: 3 }} />
+                  分享
+                </Button>
+                <Button className={classes.btn} size="small">
+                  <StarIcon style={{ width: 16, marginRight: 3 }} />
+                  收藏
+                </Button>
+              </Hidden>
+
+              {this.renderMenus()}
+
             </div>
+
 
             {isExpanded && (
               <Button
@@ -260,7 +274,7 @@ export default class ListItem extends PureComponent {
                 color="primary"
                 onClick={this.toggleExpanded}
               >
-                收起
+                  收起
                 <KeyboardArrowUpIcon />
               </Button>
             )}
@@ -304,7 +318,7 @@ export default class ListItem extends PureComponent {
         <Card>
           <CardHeader
             avatar={this.renderAvatar()}
-            action={this.renderMenus()}
+            // action={this.renderMenus()}
             title={this.renderNickname()}
             subheader={formatTime(createdAt, 'MM月DD日')}
           />
