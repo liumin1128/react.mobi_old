@@ -9,7 +9,7 @@ class MyDocument extends Document {
 
     return (
       <html lang="en" dir="ltr">
-        <title>My page</title>
+        <title>言雀</title>
         <Head>
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
