@@ -1,4 +1,4 @@
-import React, { PureComponent, createRef } from 'react';
+import React, { PureComponent, createRef, Fragment } from 'react';
 // import Waypoint from 'react-waypoint';
 import { withRouter } from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
@@ -30,8 +30,6 @@ import Like from './Like';
 const styles = theme => ({
   grow: {
     flexGrow: 1,
-    display: 'flex',
-    alignItems: 'center',
   },
   content: {
     cursor: 'pointer',
@@ -238,7 +236,9 @@ export default class ListItem extends PureComponent {
 
     const fixedOptions = isFixed ? {
       className: classes.fixed,
-      width: toolbarWidth || '100%',
+      style: {
+        width: toolbarWidth || '100%',
+      },
     } : {};
 
     return (
@@ -252,20 +252,27 @@ export default class ListItem extends PureComponent {
                 {showComments ? '收起评论' : `${commentCount} 条评论`}
               </Button>
 
-              <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
-                <Button className={classes.btn} size="small">
-                  <ShareIcon style={{ width: 13, marginRight: 3 }} />
-                  分享
-                </Button>
-                <Button className={classes.btn} size="small">
-                  <StarIcon style={{ width: 16, marginRight: 3 }} />
-                  收藏
-                </Button>
-              </Hidden>
+              {isWidthUp('sm', width) && (
+                <Fragment>
+                  <Button className={classes.btn} size="small">
+                    <ShareIcon style={{ width: 13, marginRight: 3 }} />
+                      分享
+                  </Button>
+                  <Button className={classes.btn} size="small">
+                    <StarIcon style={{ width: 16, marginRight: 3 }} />
+                    收藏
+                  </Button>
+                  {this.renderMenus()}
+                </Fragment>
+              )}
 
-              {isWidthUp('sm', width) && this.renderMenus()}
             </div>
-            {isWidthDown('xs', width) && this.renderMenus()}
+
+            {isWidthDown('xs', width) && (
+              <Fragment>
+                {this.renderMenus()}
+              </Fragment>
+            )}
 
             {isExpanded && (
               <Button

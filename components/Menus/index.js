@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -23,7 +23,7 @@ class LongMenu extends React.Component {
     const open = Boolean(anchorEl);
 
     return (
-      <div>
+      <Fragment>
         <IconButton
           aria-label="More"
           aria-owns={open ? 'long-menu' : null}
@@ -68,7 +68,7 @@ class LongMenu extends React.Component {
             );
           })}
         </Menu>
-      </div>
+      </Fragment>
     );
   }
 }
