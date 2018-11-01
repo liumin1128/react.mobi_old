@@ -31,7 +31,9 @@ export default class Header extends PureComponent {
         <AppBar className={classes.root}>
           <div className={classes.container}>
             <Toolbar disableGutters>
-              <Tabs />
+              <div className={classes.grow}>
+                <Tabs />
+              </div>
               <DynamicUserInfoWithNoSSR />
             </Toolbar>
           </div>
