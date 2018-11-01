@@ -1,11 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
-// import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
-import Item from './ListItem';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { ARTICLE_LIST } from '@/graphql/schema/article';
 import { listQuery } from '@/graphql/utils';
-
-import { formatTime } from '@/utils/common';
+import Item from './ListItem';
 
 const styles = theme => ({
   card: {
@@ -15,14 +13,14 @@ const styles = theme => ({
   },
 });
 
-@listQuery(ARTICLE_LIST)
+@listQuery(ARTICLE_LIST, { ssr: false })
 @withStyles(styles)
 export default class test extends PureComponent {
   render() {
-    const { data = {}, classes } = this.props;
+    const { data = {} } = this.props;
     const { loading = true, error, list = [] } = data;
 
-    if (loading) return 'Loading...';
+    if (loading) return <CircularProgress size={20} thickness={5} />;
     if (error) return `Error! ${error.message}`;
 
     return (
