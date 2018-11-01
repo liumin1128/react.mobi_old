@@ -23,7 +23,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import EditIcon from '@material-ui/icons/Edit';
 import Hidden from '@material-ui/core/Hidden';
-
+import withWidth, { isWidthUp, isWidthDown } from '@material-ui/core/withWidth';
 import Delete from './Delete';
 import Like from './Like';
 
@@ -63,6 +63,7 @@ const styles = theme => ({
   },
 });
 
+@withWidth()
 @withStyles(styles)
 @withRouter
 export default class ListItem extends PureComponent {
@@ -230,10 +231,10 @@ export default class ListItem extends PureComponent {
   }
 
   renderToobar = () => {
-    const { classes, commentCount, likeCount, _id } = this.props;
+    const { classes, commentCount, likeCount, _id, width } = this.props;
     const { isExpanded, isFixed, toolbarWidth, showComments } = this.state;
-    console.log('likeCount');
-    console.log(likeCount);
+    console.log('width');
+    console.log(width);
 
     const fixedOptions = isFixed ? {
       className: classes.fixed,
@@ -250,6 +251,7 @@ export default class ListItem extends PureComponent {
                 <SpeakerNotesIcon style={{ width: 16, marginRight: 3, marginTop: 2 }} />
                 {showComments ? '收起评论' : `${commentCount} 条评论`}
               </Button>
+
               <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
                 <Button className={classes.btn} size="small">
                   <ShareIcon style={{ width: 13, marginRight: 3 }} />
@@ -261,10 +263,9 @@ export default class ListItem extends PureComponent {
                 </Button>
               </Hidden>
 
-              {this.renderMenus()}
-
+              {isWidthUp('sm', width) && this.renderMenus()}
             </div>
-
+            {isWidthDown('xs', width) && this.renderMenus()}
 
             {isExpanded && (
               <Button
