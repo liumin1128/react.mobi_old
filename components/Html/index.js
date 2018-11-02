@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   html: {
     // border: '1px red solid',
+    fontSize: 16,
     '& img': {
       width: '100%',
     },

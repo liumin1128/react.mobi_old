@@ -217,7 +217,7 @@ export default class ListItem extends PureComponent {
         <Typography variant="h6" component="h3">
           {title}
         </Typography>
-        <Typography component="div">
+        <Typography component="div" style={{ fontSize: 16 }}>
           <p>
             {`${html
               .replace(/<[^>]+>/g, '')
