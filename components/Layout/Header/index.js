@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
 // import Hidden from '@material-ui/core/Hidden';
 import Tabs from './tabs';
+import Logo from './logo';
 
 
 const DynamicUserInfoWithNoSSR = dynamic(() => import('./user'), {
@@ -31,6 +33,9 @@ export default class Header extends PureComponent {
         <AppBar className={classes.root}>
           <div className={classes.container}>
             <Toolbar disableGutters>
+              <Link href="/">
+                <a><Logo /></a>
+              </Link>
               <div className={classes.grow}>
                 <Tabs />
               </div>
