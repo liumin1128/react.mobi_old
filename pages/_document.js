@@ -9,7 +9,7 @@ class MyDocument extends Document {
 
     return (
       <html lang="en" dir="ltr">
-        <title>盗火</title>
+        <title>盗火 一个年轻的知识社区</title>
         <Head>
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
@@ -27,6 +27,7 @@ class MyDocument extends Document {
 
           <link rel="icon" href="https://imgs.react.mobi/FjpmLe9it1pTemLeB2w5XgDhv1D-" type="image/x-icon" />
           <link rel="shortcut icon" href="https://imgs.react.mobi/FjpmLe9it1pTemLeB2w5XgDhv1D-" type="image/x-icon" />
+          <script src="/static/start.js" />
         </Head>
         <body>
           <Main />
