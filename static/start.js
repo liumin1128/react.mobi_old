@@ -21,7 +21,7 @@ document.addEventListener('visibilitychange', () => {
     document.title = '常回家看看';
     setTimeout(() => {
       document.title = '盗火 一个年轻的知识社区';
-    }, 3000);
+    }, 1000);
   }
 });
 
