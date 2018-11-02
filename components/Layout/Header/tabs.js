@@ -33,7 +33,7 @@ const styles = theme => ({
 });
 
 const navList = [
-  { href: '/', label: '言雀' },
+  { href: '/', label: '盗火' },
   // { href: '/say', label: '说说' },
   // { href: '/article', label: '文章' },
   { href: '/ex', label: '知蛛' },
