@@ -4,6 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { ARTICLE_LIST } from '@/graphql/schema/article';
 import { listQuery } from '@/graphql/utils';
 import Item from './ListItem';
+import Placeholder from './Placeholder';
 
 const styles = theme => ({
   card: {
@@ -20,7 +21,15 @@ export default class test extends PureComponent {
     const { data = {} } = this.props;
     const { loading = true, error, list = [] } = data;
 
-    if (loading) return <CircularProgress size={20} thickness={5} />;
+    if (loading) {
+      return (
+        <Fragment>
+          <Placeholder />
+          <br />
+          <Placeholder />
+        </Fragment>
+      );
+    }
     if (error) return `Error! ${error.message}`;
 
     return (

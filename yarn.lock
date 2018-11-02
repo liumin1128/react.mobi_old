@@ -5094,6 +5094,11 @@ react-apollo@^2.2.4:
     lodash.isequal "^4.5.0"
     prop-types "^15.6.0"
 
+react-content-loader@^3.2.0:
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/react-content-loader/download/react-content-loader-3.2.0.tgz#39a6a035a5dddc2270432c1df7950e37f179dcf2"
+  integrity sha1-OaagNaXd3CJwQywd95UON/F53PI=
+
 react-dom@^16.6.0:
   version "16.6.0"
   resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.6.0.tgz#6375b8391e019a632a89a0988bce85f0cc87a92f"
