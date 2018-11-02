@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 class LongMenu extends React.Component {
   state = {
@@ -30,7 +30,7 @@ class LongMenu extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
         >
-          <MoreVertIcon />
+          <MoreHorizIcon />
         </IconButton>
         <Menu
           id="long-menu"

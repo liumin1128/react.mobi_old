@@ -71,7 +71,7 @@ export default class user extends PureComponent {
     return (
       <Query query={USERINFO} errorPolicy="all">
         {({ loading, error, data = {}, refetch }) => {
-          if (loading) return 'Loading...';
+          if (loading) return null;
           if (error) {
             this.refetch = refetch;
             return <Button color="inherit" onClick={this.login}>Login</Button>;
