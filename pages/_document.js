@@ -27,6 +27,10 @@ class MyDocument extends Document {
 
           <link rel="icon" href="https://imgs.react.mobi/FjpmLe9it1pTemLeB2w5XgDhv1D-" type="image/x-icon" />
           <link rel="shortcut icon" href="https://imgs.react.mobi/FjpmLe9it1pTemLeB2w5XgDhv1D-" type="image/x-icon" />
+
+          <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" rel="apple-touch-icon-precomposed" />
+          <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" sizes="114x114" rel="apple-touch-icon-precomposed" />
+
           <script src="/static/start.js" />
         </Head>
         <body>
