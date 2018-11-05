@@ -29,6 +29,7 @@ export const ARTICLE_LIST = gql`
       html
       commentCount
       likeCount
+      likeStatus
       user {
         nickname
         avatarUrl

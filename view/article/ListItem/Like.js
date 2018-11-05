@@ -12,7 +12,7 @@ export default class Like extends PureComponent {
   }
 
   render() {
-    const { count = 0, className } = this.props;
+    const { count = 0, className, likeStatus } = this.props;
     const { active } = this.state;
     return (
       <Mutation mutation={LIKE}>
@@ -35,11 +35,23 @@ export default class Like extends PureComponent {
           };
           return (
             <Fragment>
-              <Button onClick={() => onLike()} className={className} size="small" variant="outlined" color="primary">
+              <Button
+                onClick={() => onLike()}
+                className={className}
+                size="small"
+                variant={likeStatus === 'like' ? 'contained' : 'outlined'}
+                color="primary"
+              >
                 {(loading && active === 'like') ? <CircularProgress color="inherit" size={24} thickness={5} /> : <ArrowDropUpIcon />}
                 {` like ${count}`}
               </Button>
-              <Button onClick={() => onLike(true)} className={className} size="small" variant="outlined" color="primary">
+              <Button
+                onClick={() => onLike(true)}
+                className={className}
+                size="small"
+                variant={likeStatus === 'unlike' ? 'contained' : 'outlined'}
+                color="primary"
+              >
                 {(loading && active === 'unlike') ? <CircularProgress color="inherit" size={24} thickness={5} /> : <ArrowDropDownIcon />}
               </Button>
             </Fragment>
