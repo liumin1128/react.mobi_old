@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 import CardHeader from '@material-ui/core/CardHeader';
 // import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -25,6 +26,9 @@ const styles = theme => ({
     fontSize: 12,
     fontWeight: 500,
   },
+  button: {
+    width: '100%',
+  },
 });
 
 @withStyles(styles)
@@ -35,30 +39,38 @@ export default class Edite extends PureComponent {
     return (
       <Card>
         <CardContent>
-          <Grid container spacing={24}>
-            <Grid item xs={4}>
-              <Link href="/article/create" passHref scroll={false}>
-                <ButtonBase className={classes.btn}>
-                  <CreateIcon />
-                  <Typography className={classes.btnText}>写文章</Typography>
-                </ButtonBase>
-              </Link>
-            </Grid>
-            <Grid item xs={4}>
-              <ButtonBase className={classes.btn}>
-                <StarIcon />
-                <Typography className={classes.btnText}>写文章</Typography>
-              </ButtonBase>
-            </Grid>
-            <Grid item xs={4}>
-              <ButtonBase className={classes.btn}>
-                <StarIcon />
-                <Typography className={classes.btnText}>写文章</Typography>
-              </ButtonBase>
-            </Grid>
-          </Grid>
-          <br />
-          <Divider />
+          <Link href="/article/create" passHref scroll={false}>
+            <Button variant="outlined" color="primary" className={classes.button}>
+              写文章
+            </Button>
+          </Link>
+          {
+
+          // <Grid container spacing={24}>
+          //   <Grid item xs={4}>
+          //     <Link href="/article/create" passHref scroll={false}>
+          //       <ButtonBase className={classes.btn}>
+          //         <CreateIcon />
+          //         <Typography className={classes.btnText}>写文章</Typography>
+          //       </ButtonBase>
+          //     </Link>
+          //   </Grid>
+          //   <Grid item xs={4}>
+          //     <ButtonBase className={classes.btn}>
+          //       <StarIcon />
+          //       <Typography className={classes.btnText}>写文章</Typography>
+          //     </ButtonBase>
+          //   </Grid>
+          //   <Grid item xs={4}>
+          //     <ButtonBase className={classes.btn}>
+          //       <StarIcon />
+          //       <Typography className={classes.btnText}>写文章</Typography>
+          //     </ButtonBase>
+          //   </Grid>
+          // </Grid>
+          // <br />
+          // <Divider />
+          }
 
         </CardContent>
       </Card>
