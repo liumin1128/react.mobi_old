@@ -8,15 +8,17 @@ export default class Placeholder extends PureComponent {
         <ContentLoader
           height="350"
           width="635"
-          speed={5}
-          primaryColor="#f3f3f3"
-          secondaryColor="#ecebeb"
-          preserveAspectRatio=""
+          uniquekey="aaaa" // 应对ssr
+          // speed={5}
+          // animate={false}
+          // primaryColor="#f3f3f3"
+          // secondaryColor="#ecebeb"
+          // preserveAspectRatio=""
         >
           <circle cx="44" cy="40" r="22" />
           <rect x="80" y="20" rx="5" ry="0" width="150" height="16" />
           <rect x="80" y="42" rx="5" ry="0" width="100" height="14" />
-          <rect x="24" y="88" rx="5" ry="0" width="400" height="28" />
+          <rect x="24" y="98" rx="5" ry="0" width="400" height="22" />
           <rect x="24" y="140" rx="5" ry="0" width="587" height="16" />
           <rect x="24" y="164" rx="5" ry="0" width="587" height="16" />
           <rect x="24" y="188" rx="5" ry="0" width="587" height="16" />
