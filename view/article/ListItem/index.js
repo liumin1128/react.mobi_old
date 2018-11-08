@@ -203,7 +203,7 @@ export default class ListItem extends PureComponent {
   renderContent = () => {
     const { title, html } = this.props;
     return (
-      <CardContent>
+      <CardContent style={{ paddingTop: 8, paddingBottom: 0 }}>
         <Typography variant="h6" component="h3">
           {title}
         </Typography>
@@ -215,7 +215,7 @@ export default class ListItem extends PureComponent {
   renderLessContent = () => {
     const { title, html, classes } = this.props;
     return (
-      <CardContent onClick={this.toggleExpanded} className={classes.content}>
+      <CardContent style={{ paddingTop: 8, paddingBottom: 0 }} onClick={this.toggleExpanded} className={classes.content}>
         <Typography variant="h6" component="h3">
           {title}
         </Typography>
