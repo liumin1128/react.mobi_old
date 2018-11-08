@@ -74,7 +74,12 @@ export default class user extends PureComponent {
           if (loading) return null;
           if (error) {
             this.refetch = refetch;
-            return <Button color="inherit" onClick={this.login}>Login</Button>;
+            return (
+              <Fragment>
+                <Button color="inherit" onClick={this.login}>注册</Button>
+                <Button color="inherit" style={{ background: 'rgba(255,255,255,0.2)' }} onClick={this.login}>登录</Button>
+              </Fragment>
+            );
           }
           const { userInfo = {} } = data;
           return (
