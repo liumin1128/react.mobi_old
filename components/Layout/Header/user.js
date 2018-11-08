@@ -78,10 +78,11 @@ export default class user extends PureComponent {
               <Fragment>
                 <Button color="inherit" onClick={this.login}>注册</Button>
                 <Button
-                  color="inherit"
                   // centerRipple
                   // focusRipple
                   // variant="extendedFab"
+                  // color="primary"
+                  color="inherit"
                   style={{ background: 'rgba(255,255,255,0.1)' }}
                   onClick={this.login}
                 >
