@@ -25,7 +25,7 @@ export default class test extends PureComponent {
       return (
         <Fragment>
           <Placeholder />
-          <br />
+          <div style={{ marginBottom: 16 }} />
           <Placeholder />
         </Fragment>
       );
