@@ -158,13 +158,15 @@ export default class ListItem extends PureComponent {
       <Menus
         options={[
           {
-            render: () => <Delete id={_id} key="ss" />,
+            render: () => <Delete key={{ key: 'delete' }} id={_id} />,
           },
           {
             render: () => (
-              <MenuItem onClick={() => {
-                router.push(`/article/edite?_id=${_id}`);
-              }}
+              <MenuItem
+                key={{ key: 'edite' }}
+                onClick={() => {
+                  router.push(`/article/edite?_id=${_id}`);
+                }}
               >
                 <ListItemIcon>
                   <EditIcon />
@@ -231,8 +233,8 @@ export default class ListItem extends PureComponent {
   renderToobar = () => {
     const { classes, commentCount, likeCount, likeStatus, _id, width } = this.props;
     const { isExpanded, isFixed, toolbarWidth, showComments } = this.state;
-    console.log('width');
-    console.log(width);
+    // console.log('width');
+    // console.log(width);
 
     const fixedOptions = isFixed ? {
       className: classes.fixed,
@@ -262,7 +264,9 @@ export default class ListItem extends PureComponent {
                     <StarIcon style={{ width: 16, marginRight: 3 }} />
                     收藏
                   </Button>
-                  {this.renderMenus()}
+                  {
+                    this.renderMenus()
+                  }
                 </Fragment>
               )}
 
@@ -270,7 +274,9 @@ export default class ListItem extends PureComponent {
 
             {isWidthDown('xs', width) && (
               <Fragment>
-                {this.renderMenus()}
+                {
+                  this.renderMenus()
+                }
               </Fragment>
             )}
 

@@ -1,6 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { ARTICLE_LIST } from '@/graphql/schema/article';
 import { listQuery } from '@/graphql/utils';
 import Item from './ListItem';
