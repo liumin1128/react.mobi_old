@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@/components/Form/TextField';
 import Grid from '@material-ui/core/Grid';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import SelectField from './SelectField';
 
 const formKeys = [
@@ -51,6 +52,11 @@ const styles = (theme) => {
     item: {
       marginBottom: theme.spacing.unit * 3,
     },
+    getCode: {
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+    },
   };
 };
 
@@ -87,7 +93,6 @@ export default class LoginForm extends PureComponent {
                   label={i.label}
                   component={TextField}
                   type="text"
-                  margin="normal"
                   fullWidth
                   // value={formData[i.key]}
                   {...i.props}
@@ -160,7 +165,6 @@ export default class LoginForm extends PureComponent {
               className={classes.item}
               component={TextField}
               type="text"
-              // margin="normal"
               fullWidth
             />
 
@@ -175,7 +179,6 @@ export default class LoginForm extends PureComponent {
                   className={classes.item}
                   component={SelectField}
                   type="text"
-                  // margin="normal"
                 />
               </Grid>
               <Grid item xs={8}>
@@ -187,7 +190,6 @@ export default class LoginForm extends PureComponent {
                   className={classes.item}
                   component={TextField}
                   type="text"
-                  // margin="normal"
                 />
               </Grid>
             </Grid>
@@ -200,7 +202,15 @@ export default class LoginForm extends PureComponent {
               className={classes.item}
               component={TextField}
               type="text"
-              // margin="normal"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment variant="filled" position="end">
+                    <Button size="small" color="primary" className={classes.getCode}>
+                      获取验证码
+                    </Button>
+                  </InputAdornment>
+                ),
+              }}
             />
 
             <Button
