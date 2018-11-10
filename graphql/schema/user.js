@@ -26,3 +26,13 @@ export const USERINFO = gql`
     }
   }
 `;
+
+export const USER_PHONENUMBER_CODE = gql`
+  mutation getPhoneNumberCode($purePhoneNumber: String!, $countryCode: String!) {
+    result: getPhoneNumberCode(purePhoneNumber: $purePhoneNumber, countryCode: $countryCode) {
+      __typename
+      status
+      message
+    }
+  }
+`;

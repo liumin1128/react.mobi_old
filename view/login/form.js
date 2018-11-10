@@ -6,6 +6,7 @@ import TextField from '@/components/Form/TextField';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SelectField from './SelectField';
+import CodeBtn from './CodeBtn';
 
 const formKeys = [
   {
@@ -76,6 +77,7 @@ export default class LoginForm extends PureComponent {
     console.log(values);
   }
 
+
   renderLogin() {
     return (
       <Form
@@ -145,7 +147,8 @@ export default class LoginForm extends PureComponent {
 
   renderRegister() {
     const formData = {
-      // countryCode: '+86',
+      countryCode: '+86',
+      purePhoneNumber: '18629974148',
     };
 
     const { classes } = this.props;
@@ -154,77 +157,80 @@ export default class LoginForm extends PureComponent {
         onSubmit={this.onRegister}
         initialValues={formData}
         validate={registerValidate}
-        render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
+        render={({ handleSubmit, reset, submitting, pristine, change, values }) => {
+          console.log('values');
+          console.log(values);
+          return (
+            <form id="createArticleForm" onSubmit={handleSubmit}>
 
-          <form id="createArticleForm" onSubmit={handleSubmit}>
+              <Field
+                key="nickname"
+                name="nickname"
+                label="昵称"
+                className={classes.item}
+                component={TextField}
+                type="text"
+                fullWidth
+              />
 
-            <Field
-              key="nickname"
-              name="nickname"
-              label="昵称"
-              className={classes.item}
-              component={TextField}
-              type="text"
-              fullWidth
-            />
-
-            <Grid container spacing={16}>
-              <Grid item xs>
-                <Field
-                  fullWidth
-                  key="countryCode"
-                  name="countryCode"
-                  label="国家"
-                  // value={10}
-                  className={classes.item}
-                  component={SelectField}
-                  type="text"
-                />
+              <Grid container spacing={16}>
+                <Grid item xs>
+                  <Field
+                    fullWidth
+                    key="countryCode"
+                    name="countryCode"
+                    label="国家"
+                    // value={10}
+                    className={classes.item}
+                    component={SelectField}
+                    type="text"
+                  />
+                </Grid>
+                <Grid item xs={8}>
+                  <Field
+                    fullWidth
+                    key="purePhoneNumber"
+                    name="purePhoneNumber"
+                    label="手机号"
+                    className={classes.item}
+                    component={TextField}
+                    type="text"
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={8}>
-                <Field
-                  fullWidth
-                  key="purePhoneNumber"
-                  name="purePhoneNumber"
-                  label="手机号"
-                  className={classes.item}
-                  component={TextField}
-                  type="text"
-                />
-              </Grid>
-            </Grid>
 
-            <Field
-              fullWidth
-              key="code"
-              name="code"
-              label="验证码"
-              className={classes.item}
-              component={TextField}
-              type="text"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment variant="filled" position="end">
-                    <Button size="small" color="primary" className={classes.getCode}>
-                      获取验证码
-                    </Button>
-                  </InputAdornment>
-                ),
-              }}
-            />
+              <Field
+                fullWidth
+                key="code"
+                name="code"
+                label="验证码"
+                className={classes.item}
+                component={TextField}
+                type="text"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment variant="filled" position="end">
+                      <CodeBtn values={values} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
 
-            <Button
-              variant="contained"
-              // size="small"
-              color="primary"
-              type="submit"
-              style={{ marginRight: 16 }}
-            >
-              登录
-            </Button>
+              <Button
+                variant="contained"
+                // size="small"
+                color="primary"
+                type="submit"
+                style={{ marginRight: 16 }}
+              >
+            登录
+              </Button>
 
-          </form>
-        )}
+            </form>
+          );
+        }
+
+        }
       />
     );
   }
