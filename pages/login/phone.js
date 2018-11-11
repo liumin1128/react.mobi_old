@@ -8,7 +8,6 @@ import Login from '@/view/login/phone';
 import Oauth from '@/view/login/oauth';
 import AppBar from '@/components/Layout/Header/SimpleAppbar';
 
-
 const styles = theme => ({
   card: {
     maxWidth: 360,
@@ -63,6 +62,10 @@ export default class LoginPage extends PureComponent {
             <span>
               <Link href="/login">用户名密码登录</Link>
             </span>
+          </CardContent>
+
+          <CardContent style={{ background: 'rgba(0,0,0,0.02)', padding: 8 }}>
+            <Oauth />
           </CardContent>
         </Dialog>
       </Fragment>
