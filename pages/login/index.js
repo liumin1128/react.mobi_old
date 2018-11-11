@@ -1,14 +1,13 @@
 import React, { PureComponent, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Link from 'next/link';
 import Dialog from '@material-ui/core/Dialog';
-// import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-
 import Login from '@/view/login/login';
 import AppBar from '@/components/Layout/Header/SimpleAppbar';
 
-const styles = {
+const styles = theme => ({
   card: {
     maxWidth: 360,
     margin: 16,
@@ -18,7 +17,19 @@ const styles = {
     height: 0,
     paddingTop: '60%',
   },
-};
+  help: {
+    // background: 'red',
+    paddingTop: 0,
+    fontSize: 12,
+    color: '#666',
+    display: 'flex',
+    justifyContent: 'space-between',
+    '&  a': {
+      color: theme.palette.primary.main,
+      textDecoration: 'none',
+    },
+  },
+});
 
 
 @withStyles(styles)
@@ -37,13 +48,24 @@ export default class LoginPage extends PureComponent {
           }}
         >
           {
-          //   <CardMedia
-          //   className={classes.media}
-          //   image={'https://imgs.react.mobi/FiIH1AWT8r5hJja50xiBSClwFvek'}
-          // />
+            // <CardMedia
+            //   className={classes.media}
+            //   image={'https://imgs.react.mobi/FiIH1AWT8r5hJja50xiBSClwFvek'}
+            // />
           }
           <CardContent>
             <Login />
+
+          </CardContent>
+          <CardContent className={classes.help}>
+            <span>
+              还没有账号？
+              <Link href="/login/register">立即注册</Link>
+            </span>
+            <span>
+              <Link href="/login/phone">手机号登录</Link>
+            </span>
+
           </CardContent>
         </Dialog>
       </Fragment>
