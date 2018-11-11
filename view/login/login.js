@@ -89,6 +89,7 @@ export default class LoginForm extends PureComponent {
                       type="submit"
                       style={{ marginRight: 16 }}
                       disabled={!dirty && !valid}
+                      fullWidth
                     >
                       {loading && <CircularProgress style={{ marginRight: 8 }} color="inherit" size={14} thickness={5} />}
                       登录
