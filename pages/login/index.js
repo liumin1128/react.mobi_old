@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Login from '@/view/login/login';
 import AppBar from '@/components/Layout/Header/SimpleAppbar';
+import Oauth from '@/view/login/oauth';
 
 const styles = theme => ({
   card: {
@@ -65,6 +66,10 @@ export default class LoginPage extends PureComponent {
             <span>
               <Link href="/login/phone">手机号登录</Link>
             </span>
+          </CardContent>
+
+          <CardContent style={{ background: 'rgba(0,0,0,0.02)', padding: 8 }}>
+            <Oauth />
           </CardContent>
         </Dialog>
       </Fragment>
