@@ -11,9 +11,9 @@ import modal from '@/hoc/modal';
 import { USER_TOKEN } from '@/config/base';
 import { setStorage } from '@/utils/store';
 
-const DynamicComponentWithCustomLoading = dynamic(() => import('@/view/login/form'), {
-  loading: () => <p>...</p>,
-});
+// const DynamicComponentWithCustomLoading = dynamic(() => import('@/view/login/form'), {
+//   loading: () => <p>...</p>,
+// });
 
 const styles = theme => ({
   paper: {

@@ -12,8 +12,8 @@ import { USER_REGISTER } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
 import { isPhoneNumber } from '@/utils/validate';
 
-import SelectField from './SelectField';
-import CodeBtn from './CodeBtn';
+import SelectField from './components/SelectField';
+import CodeBtn from './components/CodeBtn';
 
 const validate = (values) => {
   const errors = {};
