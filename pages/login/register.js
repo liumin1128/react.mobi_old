@@ -1,11 +1,9 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
-// import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-
 import Register from '@/view/login/register';
+import AppBar from '@/components/Layout/Header/SimpleAppbar';
 
 const styles = {
   card: {
@@ -19,13 +17,13 @@ const styles = {
   },
 };
 
-
 @withStyles(styles)
 export default class RegisterPage extends PureComponent {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <Fragment>
+        <AppBar title="注册" />
         <Dialog
           hideBackdrop
           open
@@ -34,17 +32,11 @@ export default class RegisterPage extends PureComponent {
             paper: classes.card,
           }}
         >
-          {
-          //   <CardMedia
-          //   className={classes.media}
-          //   image={'https://imgs.react.mobi/FiIH1AWT8r5hJja50xiBSClwFvek'}
-          // />
-          }
           <CardContent>
             <Register />
           </CardContent>
         </Dialog>
-      </div>
+      </Fragment>
     );
   }
 }
