@@ -50,9 +50,16 @@ export default class RegisterPage extends PureComponent {
             <Register />
           </CardContent>
           <CardContent className={classes.help}>
+
             <span>
               已有账号？
               <Link href="/login">点击登录</Link>
+            </span>
+
+            <span>
+              注册即代表同意《
+              <Link href="/login/terms">用户协议</Link>
+              》
             </span>
           </CardContent>
         </Dialog>
