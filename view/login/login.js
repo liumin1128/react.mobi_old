@@ -15,7 +15,7 @@ import { isPhoneNumber } from '@/utils/validate';
 import SelectField from './SelectField';
 import CodeBtn from './CodeBtn';
 
-const validate = (values) => {
+const registerValidate = (values) => {
   const errors = {};
   if (!values.nickname) {
     errors.nickname = '昵称不能为空';
@@ -83,10 +83,10 @@ export default class LoginForm extends PureComponent {
             <Form
               onSubmit={onRegister}
               initialValues={formData}
-              validate={validate}
+              validate={registerValidate}
               render={({ handleSubmit, values, valid, dirty, ...other }) => {
-                // console.log('other');
-                // console.log(other);
+                console.log('other');
+                console.log(other);
                 return (
                   <form id="createArticleForm" onSubmit={handleSubmit}>
 
@@ -149,17 +149,7 @@ export default class LoginForm extends PureComponent {
                       label="密码"
                       className={classes.item}
                       component={TextField}
-                      type="password"
-                      fullWidth
-                    />
-
-                    <Field
-                      key="password2"
-                      name="password2"
-                      label="确认密码"
-                      className={classes.item}
-                      component={TextField}
-                      type="password"
+                      type="text"
                       fullWidth
                     />
 
@@ -174,7 +164,6 @@ export default class LoginForm extends PureComponent {
                       {loading && <CircularProgress style={{ marginRight: 8 }} color="inherit" size={14} thickness={5} />}
                       注册
                     </Button>
-
                   </form>
                 );
               }}
