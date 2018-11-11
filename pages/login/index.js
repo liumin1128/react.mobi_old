@@ -65,7 +65,6 @@ export default class LoginPage extends PureComponent {
             <span>
               <Link href="/login/phone">手机号登录</Link>
             </span>
-
           </CardContent>
         </Dialog>
       </Fragment>

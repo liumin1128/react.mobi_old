@@ -1,11 +1,12 @@
 import React, { PureComponent, Fragment } from 'react';
+import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import CardContent from '@material-ui/core/CardContent';
 import Register from '@/view/login/register';
 import AppBar from '@/components/Layout/Header/SimpleAppbar';
 
-const styles = {
+const styles = theme => ({
   card: {
     maxWidth: 360,
     margin: 16,
@@ -15,7 +16,20 @@ const styles = {
     height: 0,
     paddingTop: '60%',
   },
-};
+  help: {
+    // background: 'red',
+    paddingTop: 0,
+    fontSize: 12,
+    color: '#666',
+    display: 'flex',
+    justifyContent: 'space-between',
+    '&  a': {
+      color: theme.palette.primary.main,
+      textDecoration: 'none',
+    },
+  },
+});
+
 
 @withStyles(styles)
 export default class RegisterPage extends PureComponent {
@@ -34,6 +48,12 @@ export default class RegisterPage extends PureComponent {
         >
           <CardContent>
             <Register />
+          </CardContent>
+          <CardContent className={classes.help}>
+            <span>
+              已有账号？
+              <Link href="/login">点击登录</Link>
+            </span>
           </CardContent>
         </Dialog>
       </Fragment>
