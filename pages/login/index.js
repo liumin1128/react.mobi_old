@@ -25,7 +25,7 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     '&  a': {
-      color: theme.palette.primary.main,
+      color: '#666',
       textDecoration: 'none',
     },
   },
