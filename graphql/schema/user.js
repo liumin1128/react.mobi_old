@@ -36,3 +36,19 @@ export const USER_PHONENUMBER_CODE = gql`
     }
   }
 `;
+
+export const USER_REGISTER = gql`
+  mutation userRegister($input: UserRegisterInput) {
+    result: userRegister(input: $input) {
+      __typename
+      status
+      message
+      token
+      userInfo {
+        _id
+        nickname
+        avatarUrl
+      }
+    }
+  }
+`;

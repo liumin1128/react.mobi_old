@@ -57,29 +57,17 @@ export default class CodeBtn extends PureComponent {
                 // refetchQueries: ['ArticleList'],
               });
 
-              console.log(this.setTimer);
-
-              this.setTimer(10);
-
-              console.log('status, message');
-              console.log(status, message);
+              this.setTimer(60);
+              Snackbar.success('验证码发送成功');
 
               // Snackbar.success(`[${status}]${message}`);
             } catch (err) {
-              this.setTimer(10);
-
               console.log('err');
               console.log(err);
             }
           };
 
           const { timer } = this.state;
-
-          console.log(timer);
-
-          console.log('timer, countryCode, purePhoneNumber');
-          console.log(timer, countryCode, purePhoneNumber);
-          console.log(loading);
 
           return (
             <Button

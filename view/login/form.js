@@ -5,6 +5,12 @@ import Button from '@material-ui/core/Button';
 import TextField from '@/components/Form/TextField';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
+
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { Mutation } from 'react-apollo';
+import { USER_REGISTER } from '@/graphql/schema/user';
+import Snackbar from '@/components/Snackbar';
+
 import SelectField from './SelectField';
 import CodeBtn from './CodeBtn';
 
@@ -67,13 +73,13 @@ export default class LoginForm extends PureComponent {
     mode: 'register',
   }
 
-  onSubmit = (values) => {
-    const { onSubmit } = this.props;
-    if (onSubmit) onSubmit(values);
-  }
+  // onSubmit = (values) => {
+  //   const { onSubmit } = this.props;
+  //   if (onSubmit) onSubmit(values);
+  // }
 
   onRegister = (values) => {
-    console.log('values');
+    console.log('onRegister');
     console.log(values);
   }
 
@@ -147,91 +153,118 @@ export default class LoginForm extends PureComponent {
 
   renderRegister() {
     const formData = {
+      nickname: '本王今年八岁',
       countryCode: '+86',
       purePhoneNumber: '18629974148',
+      code: '168102',
     };
 
     const { classes } = this.props;
     return (
-      <Form
-        onSubmit={this.onRegister}
-        initialValues={formData}
-        validate={registerValidate}
-        render={({ handleSubmit, reset, submitting, pristine, change, values }) => {
-          console.log('values');
-          console.log(values);
+      <Mutation mutation={USER_REGISTER}>
+        {(mutation, { loading, error, data = {} }) => {
+          const onRegister = async (values) => {
+            try {
+              console.log('values');
+              console.log(values);
+
+              const { data: { result: { status, message } } } = await mutation({
+                variables: { input: values },
+                // refetchQueries: ['ArticleList'],
+              });
+
+              Snackbar.success(message);
+
+              // Snackbar.success(`[${status}]${message}`);
+            } catch (err) {
+              console.log('err');
+              console.log(err);
+            }
+          };
+
           return (
-            <form id="createArticleForm" onSubmit={handleSubmit}>
+            <Form
+              onSubmit={onRegister}
+              initialValues={formData}
+              validate={registerValidate}
+              render={({ handleSubmit, reset, submitting, pristine, change, values }) => {
+                console.log('values， submitting,pristine, change');
+                console.log(values, submitting, pristine, change);
+                return (
+                  <form id="createArticleForm" onSubmit={handleSubmit}>
 
-              <Field
-                key="nickname"
-                name="nickname"
-                label="昵称"
-                className={classes.item}
-                component={TextField}
-                type="text"
-                fullWidth
-              />
+                    <Field
+                      key="nickname"
+                      name="nickname"
+                      label="昵称"
+                      className={classes.item}
+                      component={TextField}
+                      type="text"
+                      fullWidth
+                    />
 
-              <Grid container spacing={16}>
-                <Grid item xs>
-                  <Field
-                    fullWidth
-                    key="countryCode"
-                    name="countryCode"
-                    label="国家"
-                    // value={10}
-                    className={classes.item}
-                    component={SelectField}
-                    type="text"
-                  />
-                </Grid>
-                <Grid item xs={8}>
-                  <Field
-                    fullWidth
-                    key="purePhoneNumber"
-                    name="purePhoneNumber"
-                    label="手机号"
-                    className={classes.item}
-                    component={TextField}
-                    type="text"
-                  />
-                </Grid>
-              </Grid>
+                    <Grid container spacing={16}>
+                      <Grid item xs>
+                        <Field
+                          fullWidth
+                          key="countryCode"
+                          name="countryCode"
+                          label="国家"
+                          // value={10}
+                          className={classes.item}
+                          component={SelectField}
+                          type="text"
+                        />
+                      </Grid>
+                      <Grid item xs={8}>
+                        <Field
+                          fullWidth
+                          key="purePhoneNumber"
+                          name="purePhoneNumber"
+                          label="手机号"
+                          className={classes.item}
+                          component={TextField}
+                          type="text"
+                        />
+                      </Grid>
+                    </Grid>
 
-              <Field
-                fullWidth
-                key="code"
-                name="code"
-                label="验证码"
-                className={classes.item}
-                component={TextField}
-                type="text"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment variant="filled" position="end">
-                      <CodeBtn values={values} />
-                    </InputAdornment>
-                  ),
-                }}
-              />
+                    <Field
+                      fullWidth
+                      key="code"
+                      name="code"
+                      label="验证码"
+                      className={classes.item}
+                      component={TextField}
+                      type="text"
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment variant="filled" position="end">
+                            <CodeBtn values={values} />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
 
-              <Button
-                variant="contained"
-                // size="small"
-                color="primary"
-                type="submit"
-                style={{ marginRight: 16 }}
-              >
-            登录
-              </Button>
+                    <Button
+                      variant="contained"
+                      size="large"
+                      color="primary"
+                      type="submit"
+                      style={{ marginRight: 16 }}
+                    >
+                登录
+                    </Button>
 
-            </form>
+                  </form>
+                );
+              }}
+            />
           );
-        }
+        }}
 
-        }
-      />
+      </Mutation>
+
     );
   }
 
