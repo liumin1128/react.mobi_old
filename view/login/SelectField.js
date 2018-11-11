@@ -1,5 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import countries from '@/static/countries.json';
 
 export default ({
   input: { name, onChange, value, ...restInput },
@@ -21,9 +22,7 @@ export default ({
       }}
       {...rest}
     >
-      <option value="" />
-      <option value="+86">中国</option>
-      <option value="+1">美国</option>
+      {countries.map(i => <option key={i.code + i.abbr} value={i.code}>{i.name}</option>)}
     </TextField>
   );
 };
