@@ -46,6 +46,7 @@ export default class RegisterPage extends PureComponent {
             paper: classes.card,
           }}
         >
+          <br />
           <CardContent>
             <Register />
           </CardContent>

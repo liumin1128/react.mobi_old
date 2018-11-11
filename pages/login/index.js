@@ -48,10 +48,10 @@ export default class LoginPage extends PureComponent {
           }}
         >
           {
-            // <CardMedia
-            //   className={classes.media}
-            //   image={'https://imgs.react.mobi/FiIH1AWT8r5hJja50xiBSClwFvek'}
-            // />
+            <CardMedia
+              className={classes.media}
+              image={'https://imgs.react.mobi/FiIH1AWT8r5hJja50xiBSClwFvek'}
+            />
           }
           <CardContent>
             <Login />
