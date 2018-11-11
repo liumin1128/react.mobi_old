@@ -57,8 +57,8 @@ export default class LoginForm extends PureComponent {
               onSubmit={onLogin}
               validate={registerValidate}
               render={({ handleSubmit, values, valid, dirty, ...other }) => {
-                console.log('other');
-                console.log(other);
+                // console.log('other');
+                // console.log(other);
                 return (
                   <form id="createArticleForm" onSubmit={handleSubmit}>
 
