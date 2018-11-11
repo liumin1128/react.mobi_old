@@ -58,6 +58,13 @@ const styles = (theme) => {
 @withStyles(styles)
 export default class LoginForm extends PureComponent {
   render() {
+    const formData = {
+      // nickname: '本王今年八岁',
+      countryCode: '+86',
+      // purePhoneNumber: '18629974148',
+      // code: '168102',
+    };
+
     const { classes } = this.props;
     return (
       <Mutation mutation={USER_REGISTER}>
@@ -84,7 +91,7 @@ export default class LoginForm extends PureComponent {
           return (
             <Form
               onSubmit={onRegister}
-              // initialValues={formData}
+              initialValues={formData}
               validate={validate}
               render={({ handleSubmit, values, valid, dirty, ...other }) => {
                 // console.log('other');
