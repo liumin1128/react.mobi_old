@@ -52,3 +52,13 @@ export const USER_REGISTER = gql`
     }
   }
 `;
+
+export const USER_LOGIN_BY_PHONENUMBER_CODE = gql`
+  mutation userLoginByPhonenumberCode($purePhoneNumber: String!, $countryCode: String!, $code: String!) {
+    result: userLoginByPhonenumberCode(purePhoneNumber: $purePhoneNumber, countryCode: $countryCode, code: $code) {
+      __typename
+      status
+      message
+    }
+  }
+`;
