@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 // import Card from '@material-ui/core/Card';
@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
 import Login from '@/view/login/login';
+import AppBar from '@/components/Layout/Header/SimpleAppbar';
 
 const styles = {
   card: {
@@ -25,7 +26,8 @@ export default class LoginPage extends PureComponent {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <Fragment>
+        <AppBar title="登录" />
         <Dialog
           hideBackdrop
           open
@@ -44,7 +46,7 @@ export default class LoginPage extends PureComponent {
             <Login />
           </CardContent>
         </Dialog>
-      </div>
+      </Fragment>
     );
   }
 }
