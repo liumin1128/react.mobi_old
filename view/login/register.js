@@ -10,6 +10,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { Mutation } from 'react-apollo';
 import { USER_REGISTER } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
+import { isPhoneNumber } from '@/utils/validate';
 
 import SelectField from './SelectField';
 import CodeBtn from './CodeBtn';
@@ -23,11 +24,17 @@ const registerValidate = (values) => {
     errors.countryCode = '区号不能为空';
   }
   if (!values.purePhoneNumber) {
-    errors.purePhoneNumber = '验证码不能为空';
+    errors.purePhoneNumber = '手机号不能为空';
+  } else if (!isPhoneNumber(values.countryCode, values.purePhoneNumber)) {
+    console.log(isPhoneNumber(values.countryCode, values.purePhoneNumber));
+    errors.purePhoneNumber = '手机号格式不正确';
   }
+
   if (!values.code) {
     errors.code = '验证码不能为空';
   }
+
+  console.log(errors);
   return errors;
 };
 
@@ -55,8 +62,8 @@ export default class LoginForm extends PureComponent {
         {(mutation, { loading, error, data = {} }) => {
           const onRegister = async (values) => {
             try {
-              console.log('values');
-              console.log(values);
+              // console.log('values');
+              // console.log(values);
 
               const { data: { result: { status, message } } } = await mutation({
                 variables: { input: values },
@@ -77,9 +84,9 @@ export default class LoginForm extends PureComponent {
               onSubmit={onRegister}
               initialValues={formData}
               validate={registerValidate}
-              render={({ handleSubmit, reset, submitting, pristine, change, values, valid, ...other }) => {
-                console.log('values， submitting,pristine, change, other');
-                console.log(values, submitting, pristine, change, other);
+              render={({ handleSubmit, values, valid, dirty, ...other }) => {
+                console.log('other');
+                console.log(other);
                 return (
                   <form id="createArticleForm" onSubmit={handleSubmit}>
 
@@ -142,10 +149,10 @@ export default class LoginForm extends PureComponent {
                       color="primary"
                       type="submit"
                       style={{ marginRight: 16 }}
-                      disabled={!valid}
+                      disabled={!dirty && !valid}
                     >
                       {loading && <CircularProgress style={{ marginRight: 8 }} color="inherit" size={14} thickness={5} />}
-                      登录
+                      注册
                     </Button>
 
                   </form>
