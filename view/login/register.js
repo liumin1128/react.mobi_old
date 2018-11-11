@@ -34,6 +34,15 @@ const validate = (values) => {
     errors.code = '验证码不能为空';
   }
 
+  if (!values.password) {
+    errors.password = '密码不能为空';
+  }
+  if (!values.password2) {
+    errors.password2 = '确认密码不能为空';
+  } else if (values.password !== values.password2) {
+    errors.password2 = '两次输入密码不一致';
+  }
+
   console.log(errors);
   return errors;
 };
@@ -50,17 +59,17 @@ const styles = (theme) => {
 export default class LoginForm extends PureComponent {
   render() {
     const formData = {
-      // nickname: '本王今年八岁',
+      nickname: '本王今年八岁',
       countryCode: '+86',
-      // purePhoneNumber: '18629974148',
-      // code: '168102',
+      purePhoneNumber: '18629974148',
+      code: '168102',
     };
 
     const { classes } = this.props;
     return (
       <Mutation mutation={USER_REGISTER}>
         {(mutation, { loading, error, data = {} }) => {
-          const onRegister = async (values) => {
+          const onRegister = async ({ password2, ...values }) => {
             try {
               // console.log('values');
               // console.log(values);
