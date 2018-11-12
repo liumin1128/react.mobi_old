@@ -61,7 +61,6 @@ export default class LoginPage extends PureComponent {
           }
           <CardContent>
             <Login />
-
           </CardContent>
           <CardContent className={classes.help}>
             <span>
@@ -72,7 +71,6 @@ export default class LoginPage extends PureComponent {
               <Link href="/login/phone">手机号登录</Link>
             </span>
           </CardContent>
-
           <CardContent style={{ background: 'rgba(0,0,0,0.02)', padding: 8 }}>
             <Oauth />
           </CardContent>
