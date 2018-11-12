@@ -3,20 +3,13 @@ import { Query, graphql } from 'react-apollo';
 import dynamic from 'next/dynamic';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
 import { USERINFO, USER_LOGIN } from '@/graphql/schema/user';
 
 const DynamicComponentWithCustomLoading = dynamic(() => import('@/view/login/modal'), {
   loading: () => <p>...</p>,
 });
 
-const styles = theme => ({
-  paper: {
-    maxWidth: 360,
-  },
-});
 
-@withStyles(styles)
 @graphql(USER_LOGIN)
 export default class user extends PureComponent {
   state = {
@@ -41,9 +34,13 @@ export default class user extends PureComponent {
   //   }
   // }
 
+  toogleModal = () => {
+    this.setState(({ showLoginModal }) => ({ showLoginModal: !showLoginModal }));
+  }
+
   renderLoginForm() {
     return (
-      <DynamicComponentWithCustomLoading />
+      <DynamicComponentWithCustomLoading onClose={this.toogleModal} />
     );
   }
 
@@ -56,15 +53,11 @@ export default class user extends PureComponent {
             this.refetch = refetch;
             return (
               <Fragment>
-                <Button color="inherit" onClick={this.login}>注册</Button>
+                <Button color="inherit" onClick={this.toogleModal}>注册</Button>
                 <Button
-                  // centerRipple
-                  // focusRipple
-                  // variant="extendedFab"
-                  // color="primary"
                   color="inherit"
                   style={{ background: 'rgba(255,255,255,0.1)' }}
-                  onClick={this.login}
+                  onClick={this.toogleModal}
                 >
                   登录
                 </Button>
@@ -73,9 +66,7 @@ export default class user extends PureComponent {
           }
           const { userInfo = {} } = data;
           return (
-            <div>
-              <Avatar src={userInfo.avatarUrl} />
-            </div>
+            <Avatar src={userInfo.avatarUrl} />
           );
         }}
       </Query>
