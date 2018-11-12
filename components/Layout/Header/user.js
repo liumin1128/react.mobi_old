@@ -13,7 +13,7 @@ const DynamicComponentWithCustomLoading = dynamic(() => import('@/view/login/mod
 @graphql(USER_LOGIN)
 export default class user extends PureComponent {
   state = {
-    showLoginModal: true,
+    showLoginModal: false,
   }
 
   // onSubmit = async (values, close) => {

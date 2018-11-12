@@ -66,6 +66,7 @@ export default class LoginForm extends PureComponent {
                       key="username"
                       name="username"
                       label="用户名"
+                      placeholder="请输入手机号或邮箱"
                       className={classes.item}
                       component={TextField}
                       type="text"
@@ -76,6 +77,7 @@ export default class LoginForm extends PureComponent {
                       key="password"
                       name="password"
                       label="密码"
+                      placeholder="你输吧，我不看"
                       className={classes.item}
                       component={TextField}
                       type="password"
