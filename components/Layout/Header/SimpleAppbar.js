@@ -28,7 +28,11 @@ export default class Header extends PureComponent {
               <Link href="/">
                 <a><Logo /></a>
               </Link>
-              <Typography variant="h6" color="inherit" className={classes.grow}>
+              <Typography
+                variant="h6"
+                color="inherit"
+                className={classes.grow}
+              >
                 {title}
               </Typography>
             </Toolbar>
