@@ -9,6 +9,10 @@ import AppBar from '@/components/Layout/Header/SimpleAppbar';
 import Oauth from '@/view/login/oauth';
 
 const styles = theme => ({
+  root: {
+    background: 'none',
+    marginTop: 64,
+  },
   card: {
     maxWidth: 360,
     margin: 16,
@@ -46,6 +50,7 @@ export default class LoginPage extends PureComponent {
           // className={classes.card}
           classes={{
             paper: classes.card,
+            root: classes.root,
           }}
         >
           {

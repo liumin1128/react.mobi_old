@@ -7,6 +7,10 @@ import Register from '@/view/login/register';
 import AppBar from '@/components/Layout/Header/SimpleAppbar';
 
 const styles = theme => ({
+  root: {
+    background: 'none',
+    marginTop: 64,
+  },
   card: {
     maxWidth: 360,
     margin: 16,
@@ -44,6 +48,7 @@ export default class RegisterPage extends PureComponent {
           // className={classes.card}
           classes={{
             paper: classes.card,
+            root: classes.root,
           }}
         >
           <br />
