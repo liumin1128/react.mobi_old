@@ -15,7 +15,7 @@ const DynamicComponentWithCustomLoading = dynamic(() => import('@/view/login/mod
 });
 
 
-@graphql(USERINFO)
+@graphql(USERINFO, { ssr: false })
 export default class user extends PureComponent {
   state = {
     showLoginModal: false,
@@ -32,7 +32,6 @@ export default class user extends PureComponent {
 
   handleLgout = async () => {
     const { data: { refetch } } = this.props;
-
     this.handleClose();
     await clearStorage();
     await refetch();
@@ -42,8 +41,9 @@ export default class user extends PureComponent {
   refetch = () => {}
 
   onLoginSuccess = () => {
+    const { data: { refetch } } = this.props;
     this.setState({ showLoginModal: false });
-    this.refetch();
+    refetch();
   }
 
   toogleModal = () => {
@@ -60,10 +60,11 @@ export default class user extends PureComponent {
   }
 
   renderUser() {
-    const { data: { loading, error, userInfo = {}, refetch } } = this.props;
+    const { data: { loading, error, userInfo = {} } } = this.props;
+
     if (loading) return null;
     if (error) {
-      this.refetch = refetch;
+      // console.log(error);
       return (
         <Fragment>
           <Link href="/login/register"><Button color="inherit">注册</Button></Link>
@@ -104,8 +105,7 @@ export default class user extends PureComponent {
   }
 
   render() {
-    console.log('this.props');
-    console.log(this.props);
+    // console.log(this.props);
     const { showLoginModal } = this.state;
     return (
       <Fragment>
