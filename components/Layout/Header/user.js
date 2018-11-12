@@ -1,4 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
+import Link from 'next/link';
+
 import { Query, graphql } from 'react-apollo';
 import dynamic from 'next/dynamic';
 import Avatar from '@material-ui/core/Avatar';
@@ -53,7 +55,7 @@ export default class user extends PureComponent {
             this.refetch = refetch;
             return (
               <Fragment>
-                <Button color="inherit" onClick={this.toogleModal}>注册</Button>
+                <Link href="/login/register"><Button color="inherit">注册</Button></Link>
                 <Button
                   color="inherit"
                   style={{ background: 'rgba(255,255,255,0.1)' }}

@@ -36,7 +36,6 @@ const styles = theme => ({
   },
 });
 
-
 @withStyles(styles)
 export default class LoginPage extends PureComponent {
   render() {
