@@ -5,12 +5,13 @@ import Button from '@material-ui/core/Button';
 import TextField from '@/components/Form/TextField';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
-
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Mutation } from 'react-apollo';
 import { USER_LOGIN_BY_PHONENUMBER_CODE } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
 import { isPhoneNumber } from '@/utils/validate';
+import { setStorage } from '@/utils/store';
+import { USER_TOKEN } from '@/config/base';
 
 import SelectField from './components/SelectField';
 import CodeBtn from './components/CodeBtn';
@@ -54,7 +55,7 @@ export default class LoginForm extends PureComponent {
       // code: '434772',
     };
 
-    const { classes } = this.props;
+    const { classes, onLoginSuccess } = this.props;
     return (
       <Mutation mutation={USER_LOGIN_BY_PHONENUMBER_CODE}>
         {(mutation, { loading, error, data = {} }) => {
@@ -63,10 +64,19 @@ export default class LoginForm extends PureComponent {
               // console.log('values');
               // console.log(values);
 
-              const { data: { result: { status, message } } } = await mutation({
+              const { data: { result: { status, message, token } } } = await mutation({
                 variables: values,
                 // refetchQueries: ['ArticleList'],
               });
+
+              if (status === 200) {
+                await setStorage(USER_TOKEN, token);
+                if (onLoginSuccess) {
+                  await onLoginSuccess();
+                } else {
+                  window.location.href = '/';
+                }
+              }
 
               Snackbar.success(message);
 

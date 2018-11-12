@@ -7,6 +7,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { Mutation } from 'react-apollo';
 import { USER_LOGIN } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
+import { setStorage } from '@/utils/store';
+import { USER_TOKEN } from '@/config/base';
 
 const registerValidate = (values) => {
   const errors = {};
@@ -31,16 +33,25 @@ const styles = (theme) => {
 @withStyles(styles)
 export default class LoginForm extends PureComponent {
   render() {
-    const { classes } = this.props;
+    const { classes, onLoginSuccess } = this.props;
     return (
       <Mutation mutation={USER_LOGIN}>
         {(mutation, { loading, error, data = {} }) => {
           const onLogin = async (values) => {
             try {
-              const { data: { result: { status, message } } } = await mutation({
+              const { data: { result: { status, message, token } } } = await mutation({
                 variables: values,
-                // refetchQueries: ['ArticleList'],
+                // refetchQueries: [ 'userLogin' ],
               });
+
+              if (status === 200) {
+                await setStorage(USER_TOKEN, token);
+                if (onLoginSuccess) {
+                  await onLoginSuccess();
+                } else {
+                  window.location.href = '/';
+                }
+              }
 
               Snackbar.success(message);
 

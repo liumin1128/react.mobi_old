@@ -17,23 +17,12 @@ export default class user extends PureComponent {
     showLoginModal: false,
   }
 
-  // onSubmit = async (values, close) => {
-  //   try {
-  //     const { mutate } = this.props;
-  //     const { data: { result: data } } = await mutate({
-  //       variables: values,
-  //       // refetchQueries: ['userInfo'],
-  //     });
-  //     if (data.status === 200) {
-  //       await setStorage(USER_TOKEN, data.token);
-  //       await this.refetch();
-  //       await close();
-  //     }
-  //   } catch (error) {
-  //     console.log('error');
-  //     console.log(error);
-  //   }
-  // }
+  refetch = () => {}
+
+  onLoginSuccess = () => {
+    this.setState({ showLoginModal: false });
+    this.refetch();
+  }
 
   toogleModal = () => {
     this.setState(({ showLoginModal }) => ({ showLoginModal: !showLoginModal }));
@@ -41,7 +30,10 @@ export default class user extends PureComponent {
 
   renderLoginForm() {
     return (
-      <DynamicComponentWithCustomLoading onClose={this.toogleModal} />
+      <DynamicComponentWithCustomLoading
+        onLoginSuccess={this.onLoginSuccess}
+        onClose={this.toogleModal}
+      />
     );
   }
 

@@ -54,7 +54,7 @@ export default class LoginModal extends PureComponent {
   }
 
   renderLogin = () => {
-    const { classes } = this.props;
+    const { classes, onLoginSuccess } = this.props;
     return (
       <Fragment>
         {
@@ -64,7 +64,7 @@ export default class LoginModal extends PureComponent {
           />
         }
         <DialogContent>
-          <Login />
+          <Login onLoginSuccess={onLoginSuccess} />
         </DialogContent>
         <DialogContent className={classes.help}>
           <span>
@@ -80,12 +80,12 @@ export default class LoginModal extends PureComponent {
   }
 
   renderRegister = () => {
-    const { classes } = this.props;
+    const { classes, onLoginSuccess } = this.props;
     return (
       <Fragment>
 
         <DialogContent>
-          <Register />
+          <Register onLoginSuccess={onLoginSuccess} />
         </DialogContent>
         <DialogContent className={classes.help}>
           <span>
@@ -101,7 +101,7 @@ export default class LoginModal extends PureComponent {
   }
 
   renderPhone = () => {
-    const { classes } = this.props;
+    const { classes, onLoginSuccess } = this.props;
     return (
       <Fragment>
         {
@@ -111,7 +111,7 @@ export default class LoginModal extends PureComponent {
           />
         }
         <DialogContent>
-          <Phone />
+          <Phone onLoginSuccess={onLoginSuccess} />
         </DialogContent>
         <DialogContent className={classes.help}>
           <span>
