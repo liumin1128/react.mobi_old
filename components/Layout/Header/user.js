@@ -1,6 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
 import Link from 'next/link';
-
 import { Query, graphql } from 'react-apollo';
 import dynamic from 'next/dynamic';
 import Avatar from '@material-ui/core/Avatar';
@@ -8,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import { USERINFO, USER_LOGIN } from '@/graphql/schema/user';
 
 const DynamicComponentWithCustomLoading = dynamic(() => import('@/view/login/modal'), {
-  loading: () => <p>...</p>,
+  loading: () => null,
 });
 
 

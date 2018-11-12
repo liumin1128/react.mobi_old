@@ -1,13 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Link from 'next/link';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import CardMedia from '@material-ui/core/CardMedia';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import Login from './login';
 import Oauth from './oauth';
@@ -17,7 +12,6 @@ import Register from './register';
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
-
 
 const styles = theme => ({
   root: {
@@ -121,7 +115,7 @@ export default class LoginModal extends PureComponent {
         </DialogContent>
         <DialogContent className={classes.help}>
           <span>
-        还没有账号？
+          还没有账号？
             <a onClick={() => { this.switchMode('register'); }}>立即注册</a>
           </span>
           <span>
