@@ -5,6 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { Mutation } from 'react-apollo';
 import { USER_PHONENUMBER_CODE } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
+import { isPhoneNumber } from '@/utils/validate';
 
 const styles = (theme) => {
   return {
@@ -51,6 +52,12 @@ export default class CodeBtn extends PureComponent {
                 Snackbar.error('请填写手机号');
                 return;
               }
+
+              if (!isPhoneNumber(countryCode, purePhoneNumber)) {
+                Snackbar.error('手机号格式不正确');
+                return;
+              }
+
 
               const { data: { result: { status, message } } } = await getPhoneNumberCode({
                 variables: { purePhoneNumber, countryCode },
