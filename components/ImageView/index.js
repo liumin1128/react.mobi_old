@@ -15,6 +15,7 @@ const styles = theme => ({
     // background: 'rgba(255,255,255,0.8)',
     background: 'rgba(255,255,255,0.0)',
     transition: '0.5s',
+    zIndex: 9999,
   },
   card: {
     position: 'fixed',
@@ -22,7 +23,7 @@ const styles = theme => ({
   },
 });
 
-export default function (e, src) {
+export default function (e, src, srcs) {
   const x = e.target.offsetLeft;
   const y = e.target.offsetTop - getScrollTop();
   const w = e.target.offsetWidth;
