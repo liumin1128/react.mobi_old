@@ -87,7 +87,7 @@ export default class user extends PureComponent {
           aria-haspopup="true"
           onClick={this.handleClick}
         >
-          <Avatar src={userInfo.avatarUrl} />
+          <Avatar style={{ background: 'rgba(0,0,0,0.1)' }} src={userInfo.avatarUrl}>{userInfo.nickname}</Avatar>
         </ButtonBase>
         <Menu
           id="simple-menu"

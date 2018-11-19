@@ -194,6 +194,7 @@ export default class ListItem extends PureComponent {
         aria-label="Recipe"
         className={classes.avatar}
         src={user.avatarUrl}
+        style={{ background: 'rgba(0,0,0,0.1)' }}
       >
         {user.nickname}
       </Avatar>
