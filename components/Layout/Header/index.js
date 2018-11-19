@@ -21,7 +21,6 @@ const styles = theme => ({
   grow: {
     flexGrow: 1,
   },
-  container: theme.container,
 });
 
 @withStyles(styles)
@@ -31,17 +30,15 @@ export default class Header extends PureComponent {
     return (
       <div className={classes.root}>
         <AppBar className={classes.root}>
-          <div className={classes.container}>
-            <Toolbar disableGutters>
-              <Link href="/">
-                <a><Logo /></a>
-              </Link>
-              <div className={classes.grow}>
-                <Tabs />
-              </div>
-              <DynamicUserInfoWithNoSSR />
-            </Toolbar>
-          </div>
+          <Toolbar>
+            <Link href="/">
+              <a><Logo /></a>
+            </Link>
+            <div className={classes.grow}>
+              <Tabs />
+            </div>
+            <DynamicUserInfoWithNoSSR />
+          </Toolbar>
         </AppBar>
       </div>
     );

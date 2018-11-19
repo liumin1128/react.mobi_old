@@ -10,9 +10,6 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   logo: {
     marginRight: 16,
-    [theme.breakpoints.down('xs')]: {
-      marginLeft: 16,
-    },
   },
 });
 
