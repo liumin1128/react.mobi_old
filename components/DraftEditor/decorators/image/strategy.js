@@ -6,8 +6,8 @@ export default (contentBlock, callback) => {
       const entityKey = character.getEntity();
 
       return (
-        entityKey !== null &&
-        Entity.get(entityKey).getType() === 'IMAGE'
+        entityKey !== null
+        && Entity.get(entityKey).getType() === 'IMAGE'
       );
     },
     callback,
