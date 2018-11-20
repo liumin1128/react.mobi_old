@@ -5556,10 +5556,10 @@ react-final-form@^4.0.2:
   dependencies:
     "@babel/runtime" "^7.1.2"
 
-react-headroom@^2.2.4:
-  version "2.2.4"
-  resolved "http://registry.npm.taobao.org/react-headroom/download/react-headroom-2.2.4.tgz#e931bf5f91d0ea2c2fbf0f156a2b82d7db6cbe3b"
-  integrity sha1-6TG/X5HQ6iwvvw8VaiuC19tsvjs=
+react-headroom@2.2.2:
+  version "2.2.2"
+  resolved "http://registry.npm.taobao.org/react-headroom/download/react-headroom-2.2.2.tgz#5ddea3bc87cd54be38f6f98c3fde4527e2a5fb0f"
+  integrity sha1-Xd6jvIfNVL449vmMP95FJ+Kl+w8=
   dependencies:
     prop-types "^15.5.8"
     raf "^3.3.0"
