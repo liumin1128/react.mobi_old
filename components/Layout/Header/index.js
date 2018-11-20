@@ -7,7 +7,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Hidden from '@material-ui/core/Hidden';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Nav from './tabs';
+import NavTabs from './NavTabs';
 import Logo from './logo';
 
 
@@ -44,27 +44,14 @@ export default class Header extends PureComponent {
             </Link>
             <div className={classes.grow}>
               <Hidden implementation="css" xsDown>
-                <Nav />
+                <NavTabs mode="large" />
               </Hidden>
             </div>
 
             <DynamicUserInfoWithNoSSR />
           </Toolbar>
           <Hidden implementation="css" smUp>
-            <Tabs
-              // value={this.state.value}
-              value={0}
-              indicatorColor="primary"
-              textColor="inherit"
-              onChange={this.handleChange}
-              style={{ margin: '0 16px' }}
-              classes={{
-                indicator: classes.indicator,
-              }}
-            >
-              <Tab label="盗火" />
-              <Tab label="蜘蛛" disabled />
-            </Tabs>
+            <NavTabs />
           </Hidden>
         </AppBar>
 

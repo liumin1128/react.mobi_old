@@ -59,7 +59,7 @@ class SimpleTabs extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, mode = 'small' } = this.props;
     const { value } = this.state;
 
     return (
@@ -73,9 +73,11 @@ class SimpleTabs extends React.Component {
         {navList.map(({ href, label }) => (
           <Tab
             key={href}
-            classes={{
+            classes={mode === 'large' ? {
               root: classes.tab,
               label: classes.label,
+            } : {
+
             }}
             label={label}
           />
