@@ -27,6 +27,8 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "express": "^4.16.4",
+    "html-minifier": "^3.5.21",
     "less": "^3.8.1"
   },
   "dependencies": {
@@ -48,11 +50,11 @@
     "react-content-loader": "^3.2.0",
     "react-dom": "^16.6.3",
     "react-final-form": "^4.0.2",
-    "react-headroom": "2.2.2",
+    "react-headroom": "^2.2.4",
     "react-jss": "^8.6.1",
     "react-lazyload": "^2.3.0",
     "react-masonry-component": "^6.2.1",
-    "react-waypoint": "^8.0.3",
+    "react-waypoint": "^8.1.0",
     "recompose": "^0.30.0",
     "store": "^2.0.12"
   }
