@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
 import Hidden from '@material-ui/core/Hidden';
-import Affix from '../../Affix';
+// import Affix from '../../Affix';
 import NavTabs from './NavTabs';
 import Logo from './logo';
 
@@ -19,7 +19,7 @@ const styles = theme => ({
   root: {
     height: 64,
     [theme.breakpoints.down('xs')]: {
-      height: 64 + 40,
+      height: 56,
     },
   },
   grow: {
@@ -36,7 +36,10 @@ export default class Header extends PureComponent {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar position="static" className={classes.root}>
+        <AppBar
+          // position="static"
+          className={classes.root}
+        >
           <Toolbar>
             <Link href="/">
               <a><Logo /></a>
@@ -48,13 +51,15 @@ export default class Header extends PureComponent {
             </div>
             <DynamicUserInfoWithNoSSR />
           </Toolbar>
-          <Hidden implementation="css" smUp>
-            <Affix>
-              <div style={{ background: '#00bcd4' }}>
-                <NavTabs />
-              </div>
-            </Affix>
-          </Hidden>
+          {
+          //   <Hidden implementation="css" smUp>
+          //   <Affix>
+          //     <div style={{ background: '#00bcd4' }}>
+          //       <NavTabs />
+          //     </div>
+          //   </Affix>
+          // </Hidden>
+          }
         </AppBar>
       </div>
     );
