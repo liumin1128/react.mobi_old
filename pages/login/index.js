@@ -48,6 +48,7 @@ export default class LoginPage extends PureComponent {
           hideBackdrop
           open
           // className={classes.card}
+          scroll="body"
           classes={{
             paper: classes.card,
             root: classes.root,

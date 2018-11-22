@@ -132,6 +132,7 @@ export default class LoginModal extends PureComponent {
     return (
       <Dialog
         open
+        scroll="body"
         TransitionComponent={Transition}
         keepMounted
         onClose={onClose}

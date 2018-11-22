@@ -45,6 +45,7 @@ export default class RegisterPage extends PureComponent {
         <Dialog
           hideBackdrop
           open
+          scroll="body"
           // className={classes.card}
           classes={{
             paper: classes.card,

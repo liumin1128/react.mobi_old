@@ -46,6 +46,7 @@ export default class LoginPage extends PureComponent {
         <Dialog
           hideBackdrop
           open
+          scroll="body"
           // className={classes.card}
           classes={{
             paper: classes.card,
