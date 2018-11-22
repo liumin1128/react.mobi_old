@@ -13,8 +13,11 @@ const styles = theme => ({
   },
   card: {
     maxWidth: 360,
-    margin: 16,
+    margin: '16px auto',
     boxShadow: 'none',
+    // [theme.breakpoints.down('xs')]: {
+    //   margin: '16px auto',
+    // },
   },
   media: {
     height: 0,

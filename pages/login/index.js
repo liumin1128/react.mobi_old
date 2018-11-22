@@ -15,7 +15,7 @@ const styles = theme => ({
   },
   card: {
     maxWidth: 360,
-    margin: 16,
+    margin: '16px auto',
     boxShadow: 'none',
   },
   media: {

@@ -4,6 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 import CardMedia from '@material-ui/core/CardMedia';
 import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
+import withWidth, { isWidthUp, isWidthDown } from '@material-ui/core/withWidth';
 import Login from './login';
 import Oauth from './oauth';
 import Phone from './phone';
@@ -18,8 +19,7 @@ const styles = theme => ({
     background: 'none',
   },
   card: {
-    maxWidth: 360,
-    margin: 16,
+    margin: '16px auto',
     boxShadow: 'none',
   },
   media: {
@@ -41,6 +41,7 @@ const styles = theme => ({
 });
 
 
+@withWidth()
 @withStyles(styles)
 export default class LoginModal extends PureComponent {
   state = {
@@ -127,12 +128,13 @@ export default class LoginModal extends PureComponent {
   }
 
   render() {
-    const { onClose, classes } = this.props;
+    const { onClose, classes, width } = this.props;
     const { mode } = this.state;
     return (
       <Dialog
         open
-        scroll="body"
+        scroll={isWidthDown('xs', width) ? 'body' : 'paper'}
+        // fullScreen={isWidthDown('xs', width)}
         TransitionComponent={Transition}
         keepMounted
         onClose={onClose}
