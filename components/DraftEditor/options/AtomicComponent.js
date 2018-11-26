@@ -42,9 +42,10 @@ export default (props) => {
   const { src } = entity.getData();
   const type = entity.getType();
   switch (type) {
-    case 'audio': return <Audio src={src} />;
-    case 'image': return <Image src={src} />;
-    case 'video': return <Video src={src} />;
-    default: return null;
+  case 'audio': return <Audio src={src} />;
+  case 'image': return <Image src={src} />;
+  case 'IMAGE': return <Image src={src} />;
+  case 'video': return <Video src={src} />;
+  default: return null;
   }
 };
