@@ -52,7 +52,7 @@ const navList = [
 class SimpleTabs extends React.Component {
   state = {
     value: 0,
-    isOpen: true,
+    isOpen: false,
   };
 
   componentWillMount() {
