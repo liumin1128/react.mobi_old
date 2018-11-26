@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
-import Hidden from '@material-ui/core/Hidden';
+
 // import Affix from '../../Affix';
 import NavTabs from './NavTabs';
 import Logo from './logo';
@@ -45,9 +45,7 @@ export default class Header extends PureComponent {
               <a><Logo /></a>
             </Link>
             <div className={classes.grow}>
-              <Hidden implementation="css" xsDown>
-                <NavTabs mode="large" />
-              </Hidden>
+              <NavTabs />
             </div>
             <DynamicUserInfoWithNoSSR />
           </Toolbar>

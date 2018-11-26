@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Hidden from '@material-ui/core/Hidden';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import HomeIcon from '@material-ui/icons/Home';
+import AppsIcon from '@material-ui/icons/Apps';
 
 function TabContainer({ children }) {
   return (
@@ -33,15 +43,16 @@ const styles = theme => ({
 });
 
 const navList = [
-  { href: '/', label: '盗火' },
+  { href: '/', label: '盗火', icon: HomeIcon },
   // { href: '/say', label: '说说' },
   // { href: '/article', label: '文章' },
-  { href: '/ex', label: '知蛛' },
+  { href: '/ex', label: '知蛛', icon: AppsIcon },
 ];
 
 class SimpleTabs extends React.Component {
   state = {
     value: 0,
+    isOpen: true,
   };
 
   componentWillMount() {
@@ -52,37 +63,84 @@ class SimpleTabs extends React.Component {
     }
   }
 
-  handleChange = (event, value) => {
+  goto = (value) => {
     this.setState({ value });
     const { router } = this.props;
     router.push(navList[value].href);
   };
 
+  handleDrawerChange = (key, value) => () => {
+    this.setState({ [key]: value });
+  }
+
+  renderList() {
+    return (
+      <List style={{ width: 240 }}>
+        {navList.map(({ label, href, icon: Icon }, index) => (
+          <ListItem button key={href} onClick={() => this.goto(index)}>
+            <ListItemIcon><Icon /></ListItemIcon>
+            <ListItemText primary={label} />
+          </ListItem>
+        ))}
+      </List>
+    );
+  }
+
   render() {
-    const { classes, mode = 'small' } = this.props;
-    const { value } = this.state;
+    const { classes, mode = 'large' } = this.props;
+    const { value, isOpen } = this.state;
 
     return (
-      <Tabs
-        value={value}
-        onChange={this.handleChange}
-        classes={{
-          indicator: classes.indicator,
-        }}
-      >
-        {navList.map(({ href, label }) => (
-          <Tab
-            key={href}
-            classes={mode === 'large' ? {
-              root: classes.tab,
-              label: classes.label,
-            } : {
+      <Fragment>
 
+        <Hidden implementation="css" smUp>
+          <IconButton
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="Menu"
+            onClick={this.handleDrawerChange('isOpen', true)}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
+
+        <Hidden implementation="css" xsDown>
+          <Tabs
+            value={value}
+            onChange={(_, href) => this.goto(href)}
+            classes={{
+              indicator: classes.indicator,
             }}
-            label={label}
-          />
-        ))}
-      </Tabs>
+          >
+            {navList.map(({ href, label }) => (
+              <Tab
+                key={href}
+                classes={mode === 'large' ? {
+                  root: classes.tab,
+                  label: classes.label,
+                } : {
+
+                }}
+                label={label}
+              />
+            ))}
+          </Tabs>
+        </Hidden>
+
+        <Drawer
+          open={isOpen}
+          onClose={this.handleDrawerChange('isOpen', false)}
+        >
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.handleDrawerChange('isOpen', false)}
+            onKeyDown={this.handleDrawerChange('isOpen', false)}
+          >
+            {this.renderList()}
+          </div>
+        </Drawer>
+      </Fragment>
     );
   }
 }
