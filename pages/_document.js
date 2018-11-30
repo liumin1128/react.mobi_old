@@ -22,6 +22,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content={pageContext.theme.palette.primary.main} />
           <link
             rel="stylesheet"
+            media="print"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
 
@@ -31,7 +32,7 @@ class MyDocument extends Document {
           <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" rel="apple-touch-icon-precomposed" />
           <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" sizes="114x114" rel="apple-touch-icon-precomposed" />
 
-          <script src="/static/start.js" />
+          <script async src="/static/start.js" />
         </Head>
         <body>
           <Main />
