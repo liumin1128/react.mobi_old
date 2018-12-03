@@ -53,12 +53,12 @@ export default class oauth extends PureComponent {
             <div className={classes.or}>Or</div>
           </div>
           <OauthButton
-            text="Sign Up Github"
+            text="使用Github账号登录"
             color="#24292e"
             icon="https://imgs.react.mobi/FitOmAQE-Ulzbzg3ba2cNRohbhCk"
           />
           <OauthButton
-            text="Sign Up Wechat"
+            text="使用微信账号登录"
             color="#02b234"
             icon="https://imgs.react.mobi/FoRb0_NUH0SrLH6-UfD0jXQnzecd"
           />

@@ -24,7 +24,7 @@ const styles = theme => ({
   help: {
     fontSize: 12,
     marginTop: 20,
-    marginBottom: 48,
+    marginBottom: 64,
     color: '#666',
     display: 'flex',
     justifyContent: 'space-between',
@@ -45,7 +45,13 @@ export default class LoginPage extends PureComponent {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-
+        <style global jsx>
+          {`
+            body {
+              background: red;
+            }
+          `}
+        </style>
         <div className={classes.head}>
           <Typography className={classes.title} variant="h5" gutterBottom>
               登录
@@ -68,13 +74,7 @@ export default class LoginPage extends PureComponent {
         </div>
 
         <Oauth />
-        <style global jsx>
-          {`
-            body {
-              background: #fff;
-            }
-          `}
-        </style>
+
       </div>
     );
   }
