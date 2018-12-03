@@ -75,7 +75,7 @@ export default class LoginForm extends PureComponent {
                 type="submit"
                 style={{
                   height: 48,
-                  boxShadow: '0 8px 30px rgba(0,0,0,0.05)',
+                  boxShadow: '0 8px 30px rgba(0,0,0,0.1)',
                   borderRadius: 6,
                 }}
                 // disabled={!dirty && !valid}

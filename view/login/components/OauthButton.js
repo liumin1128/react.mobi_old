@@ -27,6 +27,7 @@ export default class OauthButton extends PureComponent {
           marginBottom: 20,
           position: 'relative',
           borderRadius: 6,
+          background: '#fff',
           boxShadow: '0 8px 30px rgba(0,0,0,0.05)',
         }}
       >
