@@ -32,8 +32,67 @@ const styles = (theme) => {
 
 @withStyles(styles)
 export default class LoginForm extends PureComponent {
+  renderForm =(onLogin, loading) => {
+    const { classes } = this.props;
+    return (
+      <Form
+        onSubmit={onLogin}
+        validate={registerValidate}
+        render={({ handleSubmit, values, valid, dirty, ...other }) => {
+          // console.log('other');
+          // console.log(other);
+          return (
+            <form id="createArticleForm" onSubmit={handleSubmit}>
+
+              <Field
+                key="username"
+                name="username"
+                label="用户名"
+                placeholder="请输入手机号或邮箱"
+                className={classes.item}
+                component={TextField}
+                type="text"
+                // autoComplete="new-password"
+                fullWidth
+              />
+
+              <Field
+                key="password"
+                name="password"
+                label="密码"
+                // placeholder="保证不偷看"
+                className={classes.item}
+                component={TextField}
+                type="password"
+                autoComplete="new-password"
+                fullWidth
+              />
+
+              <Button
+                variant="contained"
+                size="large"
+                color="primary"
+                type="submit"
+                style={{
+                  height: 48,
+                  boxShadow: '0 8px 30px rgba(0,0,0,0.05)',
+                  borderRadius: 6,
+                }}
+                // disabled={!dirty && !valid}
+                fullWidth
+              >
+                {loading && <CircularProgress style={{ marginRight: 8 }} color="inherit" size={14} thickness={5} />}
+                登录
+              </Button>
+            </form>
+          );
+        }}
+      />
+    );
+  }
+
   render() {
-    const { classes, onLoginSuccess } = this.props;
+    const { onLoginSuccess } = this.props;
     return (
       <Mutation mutation={USER_LOGIN}>
         {(mutation, { loading, error, data = {} }) => {
@@ -62,60 +121,9 @@ export default class LoginForm extends PureComponent {
               console.log(err);
             }
           };
-
-          return (
-            <Form
-              onSubmit={onLogin}
-              validate={registerValidate}
-              render={({ handleSubmit, values, valid, dirty, ...other }) => {
-                // console.log('other');
-                // console.log(other);
-                return (
-                  <form id="createArticleForm" onSubmit={handleSubmit}>
-
-                    <Field
-                      key="username"
-                      name="username"
-                      label="用户名"
-                      placeholder="请输入手机号或邮箱"
-                      className={classes.item}
-                      component={TextField}
-                      type="text"
-                      fullWidth
-                    />
-
-                    <Field
-                      key="password"
-                      name="password"
-                      label="密码"
-                      placeholder="你输吧，我不看"
-                      className={classes.item}
-                      component={TextField}
-                      type="password"
-                      fullWidth
-                    />
-
-                    <Button
-                      variant="contained"
-                      size="large"
-                      color="primary"
-                      type="submit"
-                      style={{ marginRight: 16 }}
-                      disabled={!dirty && !valid}
-                      fullWidth
-                    >
-                      {loading && <CircularProgress style={{ marginRight: 8 }} color="inherit" size={14} thickness={5} />}
-                      登录
-                    </Button>
-                  </form>
-                );
-              }}
-            />
-          );
+          return this.renderForm(onLogin, loading);
         }}
-
       </Mutation>
-
     );
   }
 }
