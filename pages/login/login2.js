@@ -11,6 +11,7 @@ const styles = theme => ({
     background: 'none',
     maxWidth: 500,
     padding: 36,
+    margin: '0 auto',
   },
   title: {
   },
@@ -18,13 +19,13 @@ const styles = theme => ({
     color: '#ccc',
   },
   head: {
-    marginTop: 64,
-    marginBottom: 64,
+    marginTop: 48,
+    marginBottom: 48,
   },
   help: {
     fontSize: 12,
     marginTop: 20,
-    marginBottom: 64,
+    marginBottom: 48,
     color: '#666',
     display: 'flex',
     justifyContent: 'space-between',
