@@ -1,9 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
-import Dialog from '@material-ui/core/Dialog';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Login from '@/view/login/login';
 import AppBar from '@/components/Layout/Header/SimpleAppbar';
 import Oauth from '@/view/login/oauth2';
@@ -16,15 +13,25 @@ const styles = theme => ({
     padding: 36,
   },
   title: {
-    // textAlign: 'center',
   },
   subline: {
-    // textAlign: 'center',
     color: '#ccc',
   },
   head: {
     marginTop: 64,
     marginBottom: 64,
+  },
+  help: {
+    fontSize: 12,
+    marginTop: 20,
+    marginBottom: 48,
+    color: '#666',
+    display: 'flex',
+    justifyContent: 'space-between',
+    '&  a': {
+      color: '#666',
+      textDecoration: 'none',
+    },
   },
 });
 
@@ -37,21 +44,38 @@ export default class LoginPage extends PureComponent {
   render() {
     const { classes } = this.props;
     return (
-      <Fragment>
-        <div className={classes.root}>
-          <div className={classes.head}>
-            <Typography className={classes.title} variant="h5" gutterBottom>
-              登录
-            </Typography>
-            <Typography className={classes.subline} variant="body2" gutterBottom>
-              盗火，一个年轻的知识社区
-            </Typography>
-          </div>
+      <div className={classes.root}>
 
-          <Login />
-          <Oauth />
+        <div className={classes.head}>
+          <Typography className={classes.title} variant="h5" gutterBottom>
+              登录
+          </Typography>
+          <Typography className={classes.subline} variant="body2" gutterBottom>
+              盗火，一个年轻的知识社区
+          </Typography>
         </div>
-      </Fragment>
+
+        <Login />
+
+        <div className={classes.help}>
+          <span>
+              还没有账号？
+            <Link href="/login/register">立即注册</Link>
+          </span>
+          <span>
+            <Link href="/login/phone">手机号登录</Link>
+          </span>
+        </div>
+
+        <Oauth />
+        <style global jsx>
+          {`
+            body {
+              background: #fff;
+            }
+          `}
+        </style>
+      </div>
     );
   }
 }
