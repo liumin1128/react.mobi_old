@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import Login from '@/view/login/login';
 import AppBar from '@/components/Layout/Header/SimpleAppbar';
 import Oauth from '@/view/login/oauth2';
