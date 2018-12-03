@@ -48,7 +48,7 @@ export default class LoginPage extends PureComponent {
         <style global jsx>
           {`
             body {
-              background: red;
+              background: #fff !important;
             }
           `}
         </style>
