@@ -41,10 +41,10 @@ export default class LoginPage extends PureComponent {
       <div className={classes.root}>
 
         <div className={classes.head}>
-          <Typography className={classes.title} variant="h6" gutterBottom>
+          <Typography className={classes.title} variant="h5" gutterBottom>
               登录
           </Typography>
-          <Typography className={classes.subline} variant="body1" gutterBottom>
+          <Typography className={classes.subline} variant="subtitle1" gutterBottom>
               盗火，一个年轻的知识社区
           </Typography>
         </div>
