@@ -53,8 +53,8 @@ export default class RegisterPage extends PureComponent {
 
         <div className={classes.help}>
           <span>
-            还没有账号？
-            <Link href="/login/register">立即注册</Link>
+            已有账号？
+            <Link href="/login">立即登录</Link>
           </span>
           <span>
             注册即代表同意《
