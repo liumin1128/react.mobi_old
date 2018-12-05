@@ -1,35 +1,30 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Link from 'next/link';
-import Dialog from '@material-ui/core/Dialog';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import Link from '@/components/Link';
 import Login from '@/view/login/login';
-import AppBar from '@/components/Layout/Header/SimpleAppbar';
-import Oauth from '@/view/login/oauth';
+import Oauth from '@/view/login/oauth2';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
-    background: 'none',
-    marginTop: 64,
+    maxWidth: 414,
+    padding: 36,
+    margin: '0 auto',
   },
-  card: {
-    maxWidth: 360,
-    margin: '16px auto',
-    boxShadow: 'none',
+  subline: {
+    color: '#999',
   },
-  media: {
-    height: 0,
-    paddingTop: '60%',
+  head: {
+    margin: '48px 0',
   },
   help: {
-    // background: 'red',
-    paddingTop: 0,
     fontSize: 12,
+    marginTop: 20,
+    marginBottom: 48,
     color: '#666',
     display: 'flex',
     justifyContent: 'space-between',
-    '&  a': {
+    '& a': {
       color: '#666',
       textDecoration: 'none',
     },
@@ -42,41 +37,41 @@ export default class LoginPage extends PureComponent {
   render() {
     const { classes } = this.props;
     return (
-      <Fragment>
-        <AppBar title="登录" />
-        <Dialog
-          hideBackdrop
-          open
-          // className={classes.card}
-          scroll="body"
-          classes={{
-            paper: classes.card,
-            root: classes.root,
-          }}
-        >
-          {
-            <CardMedia
-              className={classes.media}
-              image={'https://imgs.react.mobi/FiIH1AWT8r5hJja50xiBSClwFvek'}
-            />
-          }
-          <CardContent>
-            <Login />
-          </CardContent>
-          <CardContent className={classes.help}>
-            <span>
-              还没有账号？
-              <Link href="/login/register">立即注册</Link>
-            </span>
-            <span>
-              <Link href="/login/phone">手机号登录</Link>
-            </span>
-          </CardContent>
-          <CardContent style={{ background: 'rgba(0,0,0,0.02)', padding: 8 }}>
-            <Oauth />
-          </CardContent>
-        </Dialog>
-      </Fragment>
+      <div className={classes.root}>
+
+        <div className={classes.head}>
+          <Typography className={classes.title} variant="h5" gutterBottom>
+            登录
+          </Typography>
+          <Typography className={classes.subline} variant="subtitle1" gutterBottom>
+            盗火，一个年轻的知识社区
+          </Typography>
+        </div>
+
+        <Login />
+
+        <div className={classes.help}>
+          <span>
+            还没有账号？
+            <Link href="/login/register">立即注册</Link>
+          </span>
+          <span>
+            <Link href="/login/phone">手机号登录</Link>
+          </span>
+        </div>
+
+        <Oauth />
+
+        {
+          // <style global jsx>
+          //   {`
+          //   body {
+          //     // background: #fff !important;
+          //   }
+          // `}
+          // </style>
+        }
+      </div>
     );
   }
 }
