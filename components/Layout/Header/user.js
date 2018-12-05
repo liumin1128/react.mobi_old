@@ -68,13 +68,18 @@ export default class user extends PureComponent {
       return (
         <Fragment>
           <Link href="/login/register"><Button color="inherit">注册</Button></Link>
-          <Button
-            color="inherit"
-            style={{ background: 'rgba(255,255,255,0.1)' }}
-            onClick={this.toogleModal}
-          >
-            登录
-          </Button>
+          <Link href="/login"><Button style={{ background: 'rgba(255,255,255,0.1)' }} color="inherit">登录</Button></Link>
+
+
+          {
+          // <Button
+          //   color="inherit"
+          //   style={{ background: 'rgba(255,255,255,0.1)' }}
+          //   onClick={this.toogleModal}
+          // >
+          //   登录
+          // </Button>
+          }
         </Fragment>
       );
     }

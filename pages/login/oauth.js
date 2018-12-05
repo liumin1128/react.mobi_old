@@ -24,9 +24,7 @@ export default class oauth extends PureComponent {
 
   render() {
     return (
-      <div>
-        登录成功
-      </div>
+      <div />
     );
   }
 }

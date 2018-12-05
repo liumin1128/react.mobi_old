@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 const styles = theme => ({
   root: {
     maxWidth: 414,
-    padding: 36,
+    padding: '0 36px',
     margin: '0 auto',
   },
   subline: {
