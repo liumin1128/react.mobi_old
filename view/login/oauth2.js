@@ -50,7 +50,7 @@ export default class oauth extends PureComponent {
         <div className={classes.root}>
           <div className={classes.orLine}>
             <div className={classes.line} />
-            <div className={classes.or}>Or</div>
+            <div className={classes.or}>or</div>
           </div>
           <OauthButton
             text="使用Github账号登录"
