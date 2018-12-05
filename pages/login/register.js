@@ -45,7 +45,7 @@ export default class RegisterPage extends PureComponent {
             注册
           </Typography>
           <Typography className={classes.subline} variant="subtitle1" gutterBottom>
-            盗火，一个年轻的知识社区
+            盗火，成为知识的分享者
           </Typography>
         </div>
 
