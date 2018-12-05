@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@/components/Link';
 import Login from '@/container/login/phone';
-import Oauth from '@/container/login/oauth2';
+import Oauth from '@/container/login/oauth';
 import Typography from '@material-ui/core/Typography';
 
 

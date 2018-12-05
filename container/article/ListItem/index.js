@@ -22,7 +22,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import EditIcon from '@material-ui/icons/Edit';
-import Hidden from '@material-ui/core/Hidden';
+// import Hidden from '@material-ui/core/Hidden';
 import withWidth, { isWidthUp, isWidthDown } from '@material-ui/core/withWidth';
 import Delete from './Delete';
 import Like from './Like';

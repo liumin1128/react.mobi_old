@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import { Mutation } from 'react-apollo';
 import { USER_LOGIN } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
@@ -7,15 +6,6 @@ import { setStorage } from '@/utils/store';
 import { USER_TOKEN } from '@/config/base';
 import PhoneLogin from './components/Form/Login';
 
-const styles = (theme) => {
-  return {
-    item: {
-      marginBottom: theme.spacing.unit * 3,
-    },
-  };
-};
-
-@withStyles(styles)
 export default class LoginForm extends PureComponent {
   render() {
     const { onLoginSuccess } = this.props;

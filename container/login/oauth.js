@@ -1,32 +1,33 @@
 import React, { PureComponent, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-// https://imgs.react.mobi/FgEWNcoi0IAl_SjRixPwi6_dMoa2
-// https://imgs.react.mobi/FnBjvuOrSAfDgsb6lJbRvP6DR9a3
+import { API_URL } from '@/config/base';
+import OauthButton from './components/OauthButton';
 
 const styles = theme => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignContent: 'center',
-  },
-  btn: {
-    width: 40,
-    height: 40,
-    padding: 0,
-  },
-  icon: {
-    width: 32,
-    height: 32,
-    opacity: 0.6,
-  },
-  title: {
-    fontSize: 32,
-    color: theme.palette.primary.main,
+  orLine: {
+    textAlign: 'center',
+    position: 'relative',
+    color: '#d8d8d8',
+    margin: '20px 0',
+    '&::before': {
+      content: "''",
+      position: 'absolute',
+      width: '43%',
+      height: 1,
+      top: '50%',
+      display: 'block',
+      background: '#d8d8d8',
+    },
+    '&::after': {
+      content: "''",
+      position: 'absolute',
+      width: '43%',
+      height: 1,
+      top: '50%',
+      right: 0,
+      display: 'block',
+      background: '#d8d8d8',
+    },
   },
 });
 
@@ -37,24 +38,23 @@ export default class oauth extends PureComponent {
     return (
       <Fragment>
         <div className={classes.root}>
-          <a href="https://api.react.mobi/oauth/github">
-            <IconButton className={classes.btn}>
-              <img className={classes.icon} src="https://imgs.react.mobi/FgEWNcoi0IAl_SjRixPwi6_dMoa2" alt="" />
-            </IconButton>
-          </a>
-          <a href="https://api.react.mobi/oauth/wechat">
-            <IconButton className={classes.btn}>
-              <img className={classes.icon} src="https://imgs.react.mobi/FnBjvuOrSAfDgsb6lJbRvP6DR9a3" alt="" />
-            </IconButton>
-          </a>
+          <div className={classes.orLine}>
+            <div className={classes.line} />
+            <div className={classes.or}>or</div>
+          </div>
+          <OauthButton
+            text="使用Github账号登录"
+            color="#24292e"
+            icon="https://imgs.react.mobi/FitOmAQE-Ulzbzg3ba2cNRohbhCk"
+            url={`${API_URL}/oauth/github`}
+          />
+          <OauthButton
+            text="使用微信账号登录"
+            color="#02b234"
+            icon="https://imgs.react.mobi/FoRb0_NUH0SrLH6-UfD0jXQnzecd"
+            url={`${API_URL}/oauth/wechat`}
+          />
         </div>
-
-        {
-          // <img className={classes.logo} src="https://imgs.react.mobi/Fi6oyHGOpFKKAjNJilB5LSeTRurZ" alt="" />
-          // <Typography className={classes.title} component="h2" variant="h1" gutterBottom>
-          // 盗火
-          // </Typography>
-        }
       </Fragment>
     );
   }
