@@ -42,7 +42,7 @@ export default class RegisterPage extends PureComponent {
 
         <div className={classes.head}>
           <Typography className={classes.title} variant="h5" gutterBottom>
-            登录
+            注册
           </Typography>
           <Typography className={classes.subline} variant="subtitle1" gutterBottom>
             盗火，一个年轻的知识社区
