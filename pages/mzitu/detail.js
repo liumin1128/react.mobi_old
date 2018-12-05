@@ -2,8 +2,8 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Detail from '@/view/mzitu/detail';
-import Side from '@/view/mzitu/side';
+import Detail from '@/container/mzitu/detail';
+import Side from '@/container/mzitu/side';
 import { withRouter } from 'next/router';
 
 const styles = theme => ({

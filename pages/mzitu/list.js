@@ -1,4 +1,4 @@
-import List from '@/view/mzitu/list';
+import List from '@/container/mzitu/list';
 
 export default () => (
   <List />

@@ -4,8 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Login from '@/view/login/phone';
-import Oauth from '@/view/login/oauth';
+import Login from '@/container/login/phone';
+import Oauth from '@/container/login/oauth';
 import AppBar from '@/components/Layout/Header/SimpleAppbar';
 
 const styles = theme => ({

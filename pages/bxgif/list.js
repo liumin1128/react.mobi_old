@@ -1,4 +1,4 @@
-import List from '@/view/bxgif/list';
+import List from '@/container/bxgif/list';
 
 export default () => (
   <List />

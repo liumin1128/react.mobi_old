@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import List from '@/view/mzitu/list';
-import Side from '@/view/mzitu/side';
+import List from '@/container/mzitu/list';
+import Side from '@/container/mzitu/side';
 
 const styles = theme => ({
   root: {

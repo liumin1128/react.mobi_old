@@ -16,7 +16,7 @@ import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import Html from '@/components/Html';
 import { formatTime, getScrollTop } from '@/utils/common';
 import Menus from '@/components/Menus';
-import Comments from '@/view/comments';
+import Comments from '@/container/comments';
 import Dialog from '@material-ui/core/Dialog';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';

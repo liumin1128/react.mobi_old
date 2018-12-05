@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 // import Link from '@/components/Link';
 import Grid from '@material-ui/core/Grid';
-import Article from '@/view/article/list';
-import Side from '@/view/article/side';
+import Article from '@/container/article/list';
+import Side from '@/container/article/side';
 
 export default class index extends PureComponent {
   render() {

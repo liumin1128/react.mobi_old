@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import Create from '@/view/say/create';
+import Create from '@/container/say/create';
 import Grid from '@material-ui/core/Grid';
 
 export default class index extends PureComponent {

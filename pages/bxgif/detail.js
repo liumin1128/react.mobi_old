@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import Detail from '@/view/bxgif/detail';
+import Detail from '@/container/bxgif/detail';
 import { withRouter } from 'next/router';
 
 @withRouter

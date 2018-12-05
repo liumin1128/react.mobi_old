@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import CardContent from '@material-ui/core/CardContent';
-import Register from '@/view/login/register';
+import Register from '@/container/login/register';
 import AppBar from '@/components/Layout/Header/SimpleAppbar';
 
 const styles = theme => ({

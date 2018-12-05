@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Grid from '@material-ui/core/Grid';
-import List from '@/view/explore/list';
+import List from '@/container/explore/list';
 // import Calender from '@/components/Calender';
 
 export default class Says extends PureComponent {

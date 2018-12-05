@@ -10,7 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { clearStorage } from '@/utils/store';
 import { USERINFO } from '@/graphql/schema/user';
 
-const DynamicComponentWithCustomLoading = dynamic(() => import('@/view/login/modal'), {
+const DynamicComponentWithCustomLoading = dynamic(() => import('@/container/login/modal'), {
   loading: () => null,
 });
 

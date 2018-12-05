@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@/components/Link';
-import Login from '@/view/login/phone';
-import Oauth from '@/view/login/oauth2';
+import Login from '@/container/login/phone';
+import Oauth from '@/container/login/oauth2';
 import Typography from '@material-ui/core/Typography';
 
 
