@@ -7,7 +7,7 @@ import { ApolloLink } from 'apollo-link';
 import { Observable } from 'rxjs';
 // import Snackbar from '@/components/Snackbar';
 import { getStorage } from '@/utils/store';
-import { USER_TOKEN, ENV } from '@/config/base';
+import { USER_TOKEN, API_URL } from '@/config/base';
 
 let apolloClient = null;
 
@@ -94,7 +94,7 @@ function create(initialState) {
         cache,
       }),
       new HttpLink({
-        uri: ENV ? 'http://localhost:3101/graphql' : 'https://api.react.mobi/graphql', // Server URL (must be absolute)
+        uri: `${API_URL}/graphql`, // Server URL (must be absolute)
         credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
       }),
     ]),
