@@ -1,36 +1,31 @@
-import React, { PureComponent, Fragment } from 'react';
-import Link from 'next/link';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import CardContent from '@material-ui/core/CardContent';
+import Link from '@/components/Link';
 import Register from '@/container/login/register';
-import AppBar from '@/components/Layout/Header/SimpleAppbar';
+import Oauth from '@/container/login/oauth2';
+import Typography from '@material-ui/core/Typography';
+
 
 const styles = theme => ({
   root: {
-    background: 'none',
-    marginTop: 64,
+    maxWidth: 414,
+    padding: 36,
+    margin: '0 auto',
   },
-  card: {
-    maxWidth: 360,
-    margin: '16px auto',
-    boxShadow: 'none',
-    // [theme.breakpoints.down('xs')]: {
-    //   margin: '16px auto',
-    // },
+  subline: {
+    color: '#999',
   },
-  media: {
-    height: 0,
-    paddingTop: '60%',
+  head: {
+    margin: '48px 0',
   },
   help: {
-    // background: 'red',
-    paddingTop: 0,
     fontSize: 12,
+    marginTop: 20,
+    marginBottom: 48,
     color: '#666',
     display: 'flex',
     justifyContent: 'space-between',
-    '&  a': {
+    '& a': {
       color: '#666',
       textDecoration: 'none',
     },
@@ -43,37 +38,32 @@ export default class RegisterPage extends PureComponent {
   render() {
     const { classes } = this.props;
     return (
-      <Fragment>
-        <AppBar title="注册" />
-        <Dialog
-          hideBackdrop
-          open
-          scroll="body"
-          // className={classes.card}
-          classes={{
-            paper: classes.card,
-            root: classes.root,
-          }}
-        >
-          <br />
-          <CardContent>
-            <Register />
-          </CardContent>
-          <CardContent className={classes.help}>
+      <div className={classes.root}>
 
-            <span>
-              已有账号？
-              <Link href="/login">点击登录</Link>
-            </span>
+        <div className={classes.head}>
+          <Typography className={classes.title} variant="h5" gutterBottom>
+            登录
+          </Typography>
+          <Typography className={classes.subline} variant="subtitle1" gutterBottom>
+            盗火，一个年轻的知识社区
+          </Typography>
+        </div>
 
-            <span>
-              注册即代表同意《
-              <Link href="/login/terms">用户协议</Link>
-              》
-            </span>
-          </CardContent>
-        </Dialog>
-      </Fragment>
+        <Register />
+
+        <div className={classes.help}>
+          <span>
+            还没有账号？
+            <Link href="/login/register">立即注册</Link>
+          </span>
+          <span>
+            注册即代表同意《
+            <Link href="/login/terms">用户协议</Link>
+            》
+          </span>
+        </div>
+        <Oauth />
+      </div>
     );
   }
 }
