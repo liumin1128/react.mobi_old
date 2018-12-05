@@ -5,14 +5,37 @@ import Login from '@/view/login/login';
 // import AppBar from '@/components/Layout/Header/SimpleAppbar';
 import Oauth from '@/view/login/oauth2';
 import Typography from '@material-ui/core/Typography';
-import styles from './styles';
+
+const styles = theme => ({
+  root: {
+    maxWidth: 414,
+    padding: 36,
+    margin: '0 auto',
+  },
+  subline: {
+    color: '#999',
+  },
+  head: {
+    marginTop: 48,
+    marginBottom: 48,
+  },
+  help: {
+    fontSize: 12,
+    marginTop: 20,
+    marginBottom: 48,
+    color: '#666',
+    display: 'flex',
+    justifyContent: 'space-between',
+    '&  a': {
+      color: '#666',
+      textDecoration: 'none',
+    },
+  },
+});
+
 
 @withStyles(styles)
 export default class LoginPage extends PureComponent {
-  componentDidMount() {
-    // window.document.body.style.background = '#fff';
-  }
-
   render() {
     const { classes } = this.props;
     return (

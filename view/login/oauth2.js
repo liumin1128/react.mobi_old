@@ -56,6 +56,7 @@ export default class oauth extends PureComponent {
             text="使用Github账号登录"
             color="#24292e"
             icon="https://imgs.react.mobi/FitOmAQE-Ulzbzg3ba2cNRohbhCk"
+            url="https://api.react.mobi/oauth/github"
           />
           <OauthButton
             text="使用微信账号登录"
