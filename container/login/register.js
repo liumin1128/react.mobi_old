@@ -15,6 +15,8 @@ import { USER_TOKEN } from '@/config/base';
 
 import SelectField from './components/SelectField';
 import CodeBtn from './components/CodeBtn';
+import Register from './components/Form/Register';
+
 
 const validate = (values) => {
   const errors = {};
@@ -98,108 +100,7 @@ export default class LoginForm extends PureComponent {
             }
           };
 
-          return (
-            <Form
-              onSubmit={onRegister}
-              initialValues={formData}
-              validate={validate}
-              render={({ handleSubmit, values, valid, dirty, ...other }) => {
-                // console.log('other');
-                // console.log(other);
-                return (
-                  <form id="createArticleForm" onSubmit={handleSubmit}>
-
-                    <Field
-                      key="nickname"
-                      name="nickname"
-                      label="昵称"
-                      className={classes.item}
-                      component={TextField}
-                      type="text"
-                      fullWidth
-                    />
-
-                    <Grid container spacing={16}>
-                      <Grid item xs>
-                        <Field
-                          fullWidth
-                          key="countryCode"
-                          name="countryCode"
-                          label="国家"
-                          // value={10}
-                          className={classes.item}
-                          component={SelectField}
-                          type="text"
-                        />
-                      </Grid>
-                      <Grid item xs={8}>
-                        <Field
-                          fullWidth
-                          key="purePhoneNumber"
-                          name="purePhoneNumber"
-                          label="手机号"
-                          className={classes.item}
-                          component={TextField}
-                          type="text"
-                        />
-                      </Grid>
-                    </Grid>
-
-                    <Field
-                      fullWidth
-                      key="code"
-                      name="code"
-                      label="验证码"
-                      className={classes.item}
-                      component={TextField}
-                      type="text"
-                      InputProps={{
-                        endAdornment: (
-                          <InputAdornment variant="filled" position="end">
-                            <CodeBtn values={values} />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-
-                    <Field
-                      key="password"
-                      name="password"
-                      label="密码"
-                      className={classes.item}
-                      component={TextField}
-                      type="password"
-                      fullWidth
-                    />
-
-                    <Field
-                      key="password2"
-                      name="password2"
-                      label="确认密码"
-                      className={classes.item}
-                      component={TextField}
-                      type="password"
-                      fullWidth
-                    />
-
-                    <Button
-                      variant="contained"
-                      size="large"
-                      color="primary"
-                      type="submit"
-                      style={{ marginRight: 16 }}
-                      disabled={!dirty && !valid}
-                      fullWidth
-                    >
-                      {loading && <CircularProgress style={{ marginRight: 8 }} color="inherit" size={14} thickness={5} />}
-                      注册
-                    </Button>
-
-                  </form>
-                );
-              }}
-            />
-          );
+          return <Register onSubmit={onRegister} loading={loading} />;
         }}
 
       </Mutation>
