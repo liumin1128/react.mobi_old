@@ -16,8 +16,7 @@ const styles = theme => ({
     color: '#999',
   },
   head: {
-    marginTop: 48,
-    marginBottom: 48,
+    margin: '48px 0',
   },
   help: {
     fontSize: 12,
@@ -26,7 +25,7 @@ const styles = theme => ({
     color: '#666',
     display: 'flex',
     justifyContent: 'space-between',
-    '&  a': {
+    '& a': {
       color: '#666',
       textDecoration: 'none',
     },
@@ -64,13 +63,15 @@ export default class LoginPage extends PureComponent {
 
         <Oauth />
 
-        <style global jsx>
-          {`
-            body {
-              background: #fff !important;
-            }
-          `}
-        </style>
+        {
+          // <style global jsx>
+          //   {`
+          //   body {
+          //     // background: #fff !important;
+          //   }
+          // `}
+          // </style>
+        }
       </div>
     );
   }
