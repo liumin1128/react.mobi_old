@@ -3,6 +3,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Grid from '@material-ui/core/Grid';
 import Article from '@/container/article/list';
 import Side from '@/container/article/side';
+import Blogrol from '@/components/Blogrol';
 
 export default class index extends PureComponent {
   render() {
@@ -15,6 +16,7 @@ export default class index extends PureComponent {
           <Grid item xs={12} sm={12} md={4}>
             <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
               <Side />
+              <Blogrol />
             </Hidden>
           </Grid>
         </Grid>
