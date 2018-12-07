@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import Hidden from '@material-ui/core/Hidden';
 import Grid from '@material-ui/core/Grid';
-import Article from '@/container/article/list';
 import Side from '@/container/side';
+import Typography from '@material-ui/core/Typography';
 
 export default class index extends PureComponent {
   render() {
@@ -10,7 +10,9 @@ export default class index extends PureComponent {
       <div>
         <Grid container spacing={16}>
           <Grid item xs={12} sm={12} md={8}>
-            <Article />
+            <Typography variant="h6" gutterBottom>
+              关于作者
+            </Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={4}>
             <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
