@@ -144,10 +144,12 @@ class SimpleTabs extends React.Component {
           >
             {this.renderList()}
             <Edite />
-            <CardContent style={{ position: 'absolute', bottom: 0, left: 0 }}>
-              <Blogrol />
-              <Footer />
-            </CardContent>
+            <div style={{ position: 'absolute', bottom: 0, left: 0 }}>
+              <CardContent>
+                <Blogrol />
+                <Footer />
+              </CardContent>
+            </div>
           </div>
         </Drawer>
       </Fragment>
