@@ -31,7 +31,7 @@ class MyDocument extends Document {
 
           <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" rel="apple-touch-icon-precomposed" />
           <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" sizes="114x114" rel="apple-touch-icon-precomposed" />
-
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
           <script async src="/static/start.js" />
         </Head>
         <body>
