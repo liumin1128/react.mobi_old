@@ -15,6 +15,11 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import AppsIcon from '@material-ui/icons/Apps';
+import CardContent from '@material-ui/core/CardContent';
+
+import Blogrol from '@/container/side/Blogrol';
+import Footer from '@/container/side/Footer';
+import Edite from '@/container/side/edite';
 
 function TabContainer({ children }) {
   return (
@@ -138,6 +143,11 @@ class SimpleTabs extends React.Component {
             onKeyDown={this.handleDrawerChange('isOpen', false)}
           >
             {this.renderList()}
+            <Edite />
+            <CardContent style={{ position: 'absolute', bottom: 0, left: 0 }}>
+              <Blogrol />
+              <Footer />
+            </CardContent>
           </div>
         </Drawer>
       </Fragment>
