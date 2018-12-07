@@ -20,6 +20,13 @@ export default createMuiTheme({
         `,
       },
     },
+    MuiCardContent: {
+      root: {
+        // '&:last-child': {
+        //   paddingBottom: 16,
+        // },
+      },
+    },
     // MuiInputLabel: {
     //   formControl: {
     //     color: '#9197a3',

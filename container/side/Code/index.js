@@ -13,6 +13,7 @@ const styles = theme => ({
     height: 0,
     paddingTop: '100%',
     marginBottom: 8,
+    opacity: 0.8,
   },
 });
 
