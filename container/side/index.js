@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Affix from '@/components/Affix';
 import Blogrol from './Blogrol';
 import Footer from './Footer';
+import Code from './Code';
 import Edite from './edite';
 
 export default class index extends PureComponent {
@@ -10,6 +11,7 @@ export default class index extends PureComponent {
       <div>
         <Affix offsetTop={80}>
           <Edite />
+          <Code />
           <Blogrol />
           <Footer />
         </Affix>

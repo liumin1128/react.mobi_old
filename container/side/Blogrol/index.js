@@ -13,7 +13,7 @@ export default class index extends PureComponent {
           <Link target="_blank" href="https://www.xiaoduyu.com">小度鱼 - xiaoduyu.com</Link>
         </Typography>
         <Typography variant="body2" gutterBottom>
-          <Link target="_blank" href="https://liumin.me">本王今年八岁的博客 - liumin.me</Link>
+          <Link target="_blank" href="https://liumin.me">八岁的博客 - liumin.me</Link>
         </Typography>
       </div>
     );
