@@ -27,26 +27,25 @@ export default class index extends PureComponent {
       <Card>
         <CardContent>
           <Grid container spacing={16}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={6}>
               <CardMedia
                 className={classes.media}
                 image="https://imgs.react.mobi/FlbZ2qwJrIvzlzPXW1rCVCx2zKSV"
                 title="Contemplative Reptile"
               />
-              <Typography variant="body2">
-                扫码加群聊
-              </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <CardMedia
-                className={classes.media}
-                image="https://imgs.react.mobi/FuUzX-Uz3L1CO2a9aUDsAv5tY1kH"
-                title="Contemplative Reptile"
-              />
-              <Typography variant="body2">
-                转账加好友
-              </Typography>
-            </Grid>
+            {
+            //   <Grid item xs={12} md={6}>
+            //   <CardMedia
+            //     className={classes.media}
+            //     image="https://imgs.react.mobi/FuUzX-Uz3L1CO2a9aUDsAv5tY1kH"
+            //     title="Contemplative Reptile"
+            //   />
+            //   <Typography variant="body2">
+            //     转账加好友
+            //   </Typography>
+            // </Grid>
+            }
           </Grid>
         </CardContent>
       </Card>
