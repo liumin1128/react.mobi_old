@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Typography from '@material-ui/core/Typography';
-import Link from '../Link';
+import Link from '@/components/Link';
 
 export default class index extends PureComponent {
   render() {

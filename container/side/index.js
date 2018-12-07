@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Affix from '@/components/Affix';
-import Blogrol from '@/components/Blogrol';
+import Blogrol from './Blogrol';
 import Edite from './edite';
 
 export default class index extends PureComponent {
