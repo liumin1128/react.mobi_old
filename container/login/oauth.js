@@ -54,6 +54,12 @@ export default class oauth extends PureComponent {
             icon="https://imgs.react.mobi/FoRb0_NUH0SrLH6-UfD0jXQnzecd"
             url={`${API_URL}/oauth/wechat`}
           />
+          <OauthButton
+            text="使用Microsoft账号登录"
+            color="#0067b8"
+            icon="https://imgs.react.mobi/FsRmgY99IhggoAUEEGPWG7JMnkWO"
+            url={`${API_URL}/oauth/outlook`}
+          />
         </div>
       </Fragment>
     );
