@@ -24,6 +24,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import EditIcon from '@material-ui/icons/Edit';
 // import Hidden from '@material-ui/core/Hidden';
 import withWidth, { isWidthUp, isWidthDown } from '@material-ui/core/withWidth';
+import ShareMenu from '@/components/ShareMenu';
 import Delete from './Delete';
 import Like from './Like';
 
@@ -158,12 +159,14 @@ export default class ListItem extends PureComponent {
       <Menus
         options={[
           {
-            render: () => <Delete key={{ key: 'delete' }} id={_id} />,
+            key: 'delete',
+            render: props => <Delete {...props} key={{ key: 'delete' }} id={_id} />,
           },
           {
-            render: () => (
+            key: 'edite',
+            render: props => (
               <MenuItem
-                key={{ key: 'edite' }}
+                {...props}
                 onClick={() => {
                   router.push(`/article/edite?_id=${_id}`);
                 }}
@@ -257,10 +260,12 @@ export default class ListItem extends PureComponent {
 
               {isWidthUp('sm', width) && (
                 <Fragment>
-                  <Button className={classes.btn} size="small">
-                    <ShareIcon style={{ width: 13, marginRight: 3 }} />
+                  <ShareMenu>
+                    <Button className={classes.btn} size="small">
+                      <ShareIcon style={{ width: 13, marginRight: 3 }} />
                       分享
-                  </Button>
+                    </Button>
+                  </ShareMenu>
                   <Button className={classes.btn} size="small">
                     <StarIcon style={{ width: 16, marginRight: 3 }} />
                     收藏
