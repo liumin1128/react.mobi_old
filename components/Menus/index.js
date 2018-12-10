@@ -18,20 +18,24 @@ class LongMenu extends React.Component {
   };
 
   render() {
-    const { options } = this.props;
+    const { options = [], children } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
     return (
       <Fragment>
-        <IconButton
-          aria-label="More"
-          aria-owns={open ? 'long-menu' : null}
-          aria-haspopup="true"
-          onClick={this.handleClick}
-        >
-          <MoreHorizIcon />
-        </IconButton>
+        <span onClick={this.handleClick}>
+          {children || (
+            <IconButton
+              aria-label="More"
+              aria-owns={open ? 'long-menu' : null}
+              aria-haspopup="true"
+            >
+              <MoreHorizIcon />
+            </IconButton>
+          )}
+        </span>
+
         <Menu
           id="long-menu"
           anchorEl={anchorEl}
@@ -54,7 +58,7 @@ class LongMenu extends React.Component {
           elevation={2}
         >
           {options.map((option) => {
-            if (option.render) return option.render();
+            if (option.render) return option.render({ key: option.key });
             return (
               <MenuItem
                 key={option.key}
