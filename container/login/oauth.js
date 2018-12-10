@@ -55,6 +55,18 @@ export default class oauth extends PureComponent {
             url={`${API_URL}/oauth/wechat`}
           />
           <OauthButton
+            text="使用QQ账号登录"
+            color="#0fb4ee"
+            icon="https://imgs.react.mobi/Fj2wmuujbWAz70-kIxa-8dNCDOrB"
+            url={`${API_URL}/oauth/qq`}
+          />
+          <OauthButton
+            text="使用新浪微博账号登录"
+            color="#eb192d"
+            icon="https://imgs.react.mobi/Fk_dlrKcrqzUU4PJdtJRoR2VAkP7"
+            url={`${API_URL}/oauth/weibo`}
+          />
+          <OauthButton
             text="使用Microsoft账号登录"
             color="#0067b8"
             icon="https://imgs.react.mobi/FsRmgY99IhggoAUEEGPWG7JMnkWO"
