@@ -235,7 +235,7 @@ export default class ListItem extends PureComponent {
   }
 
   renderToobar = () => {
-    const { classes, commentCount, likeCount, likeStatus, _id, width } = this.props;
+    const { classes, commentCount, user = {}, title, html, likeCount, likeStatus, _id, width } = this.props;
     const { isExpanded, isFixed, toolbarWidth, showComments } = this.state;
     // console.log('width');
     // console.log(width);
@@ -260,7 +260,13 @@ export default class ListItem extends PureComponent {
 
               {isWidthUp('sm', width) && (
                 <Fragment>
-                  <ShareMenu>
+                  <ShareMenu
+                    title={title}
+                    nickname={user.nickname}
+                    description={`${html
+                      .replace(/<[^>]+>/g, '')
+                      .substring(0, 70)}......`}
+                  >
                     <Button className={classes.btn} size="small">
                       <ShareIcon style={{ width: 13, marginRight: 3 }} />
                       分享
