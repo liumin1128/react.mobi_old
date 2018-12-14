@@ -18,7 +18,6 @@ const styles = theme => ({
 export default class Content extends PureComponent {
   render() {
     const { _id, title, html, isExpanded, classes, toggleExpanded } = this.props;
-
     return (
       <Fragment>
         <CardContent style={{ paddingTop: 8, paddingBottom: 0 }}>
