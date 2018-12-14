@@ -50,6 +50,12 @@ export function lessStr(str, end = 15, start = 0) {
   }
 }
 
+export function getStrFromHtml(html, max = 140) {
+  return `${html
+    .replace(/<[^>]+>/g, '')
+    .substring(0, max)}......`;
+}
+
 export const getSmallImg = (url, propsX, propsY) => {
   const x = propsX || 200;
   const y = propsY || 200;
@@ -65,7 +71,7 @@ export function formatTime(tm, conf = 'YYYY年MM月DD日 HH:mm:ss 星期') {
     .replace(/HH/g, t.getHours())
     .replace(/mm/g, (`0${t.getMinutes()}`).slice(-2))
     .replace(/ss/g, t.getSeconds())
-    .replace(/星期/g, `星期${['日', '一', '二', '三', '四', '五', '六'][t.getDay()]}`);
+    .replace(/星期/g, `星期${[ '日', '一', '二', '三', '四', '五', '六' ][t.getDay()]}`);
 }
 
 

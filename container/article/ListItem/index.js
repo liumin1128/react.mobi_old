@@ -306,7 +306,7 @@ export default class ListItem extends PureComponent {
   }
 
   render() {
-    const { html, title, createdAt } = this.props;
+    const { html, title, _id, createdAt } = this.props;
     const { isExpanded, showComments } = this.state;
 
     return (
@@ -318,7 +318,13 @@ export default class ListItem extends PureComponent {
             title={this.renderNickname()}
             subheader={formatTime(createdAt, 'MM月DD日')}
           />
-          <Content title={title} html={html} isExpanded={isExpanded} toggleExpanded={this.toggleExpanded} />
+          <Content
+            _id={_id}
+            title={title}
+            html={html}
+            isExpanded={isExpanded}
+            toggleExpanded={this.toggleExpanded}
+          />
           {this.renderToobar()}
           {showComments && (isExpanded ? this.renderCommentsModel() : this.renderComments())}
         </Card>
