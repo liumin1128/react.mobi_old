@@ -6,8 +6,8 @@ export const ARTICLE_DETAIL = gql`
       __typename
       _id
       title
+      html
       cover
-      content
       createdAt
       user {
         nickname
