@@ -27,6 +27,7 @@ import withWidth, { isWidthUp, isWidthDown } from '@material-ui/core/withWidth';
 import ShareMenu from '@/components/ShareMenu';
 import Delete from './Delete';
 import Like from './Like';
+import Content from './Content';
 
 const styles = theme => ({
   grow: {
@@ -204,36 +205,6 @@ export default class ListItem extends PureComponent {
     );
   }
 
-  renderContent = () => {
-    const { title, html } = this.props;
-    return (
-      <CardContent style={{ paddingTop: 8, paddingBottom: 0 }}>
-        <Typography variant="h6" component="h3">
-          {title}
-        </Typography>
-        <Html html={html} />
-      </CardContent>
-    );
-  }
-
-  renderLessContent = () => {
-    const { title, html, classes } = this.props;
-    return (
-      <CardContent style={{ paddingTop: 8, paddingBottom: 0 }} onClick={this.toggleExpanded} className={classes.content}>
-        <Typography variant="h6" component="h3">
-          {title}
-        </Typography>
-        <Typography component="div" style={{ fontSize: 16 }}>
-          <p>
-            {`${html
-              .replace(/<[^>]+>/g, '')
-              .substring(0, 150)}......`}
-          </p>
-        </Typography>
-      </CardContent>
-    );
-  }
-
   renderToobar = () => {
     const { classes, commentCount, user = {}, title, html, likeCount, likeStatus, _id, width } = this.props;
     const { isExpanded, isFixed, toolbarWidth, showComments } = this.state;
@@ -336,7 +307,7 @@ export default class ListItem extends PureComponent {
   }
 
   render() {
-    const { createdAt } = this.props;
+    const { html, title, createdAt } = this.props;
     const { isExpanded, showComments } = this.state;
 
     return (
@@ -348,7 +319,7 @@ export default class ListItem extends PureComponent {
             title={this.renderNickname()}
             subheader={formatTime(createdAt, 'MM月DD日')}
           />
-          {isExpanded ? this.renderContent() : this.renderLessContent()}
+          <Content title={title} html={html} isExpanded={isExpanded} toggleExpanded={this.toggleExpanded} />
           {this.renderToobar()}
           {showComments && (isExpanded ? this.renderCommentsModel() : this.renderComments())}
         </Card>
