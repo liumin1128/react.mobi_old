@@ -7,6 +7,10 @@ import Link from '@/components/Link';
 import { getStrFromHtml } from '@/utils/common';
 
 const styles = theme => ({
+  title: {
+    paddingTop: 8,
+    paddingBottom: 0,
+  },
   content: {
     cursor: 'pointer',
     paddingTop: 0,
@@ -20,7 +24,7 @@ export default class Content extends PureComponent {
     const { _id, title, html, isExpanded, classes, toggleExpanded } = this.props;
     return (
       <Fragment>
-        <CardContent style={{ paddingTop: 8, paddingBottom: 0 }}>
+        <CardContent className={classes.title}>
           <Link href={`/article/detail?_id=${_id}`}>
             <Typography variant="h6" component="h3">
               {title}
