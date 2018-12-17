@@ -73,6 +73,18 @@ export default class oauth extends PureComponent {
             url={`${API_URL}/oauth/outlook`}
           />
         </div>
+        {
+          <style global jsx>
+            {`
+            body {
+              background-image: url('/static/bg.svg');
+              background-repeat: no-repeat;
+              background-size: 100% auto;
+              background-attachment:fixed;
+            }
+          `}
+          </style>
+        }
       </Fragment>
     );
   }

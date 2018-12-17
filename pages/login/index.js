@@ -62,15 +62,7 @@ export default class LoginPage extends PureComponent {
 
         <Oauth />
 
-        {
-          // <style global jsx>
-          //   {`
-          //   body {
-          //     // background: #fff !important;
-          //   }
-          // `}
-          // </style>
-        }
+
       </div>
     );
   }
