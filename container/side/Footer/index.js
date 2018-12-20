@@ -20,7 +20,7 @@ export default class index extends PureComponent {
           </a>
         </Typography>
         <Typography style={{ color: '#999' }} variant="body2" gutterBottom>
-          盗火©2018 -
+          盗火 -
           {' '}
           <Link target="_blank" href="http://www.miitbeian.gov.cn">吉ICP备15006191号-2</Link>
         </Typography>
