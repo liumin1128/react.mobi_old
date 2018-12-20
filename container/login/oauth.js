@@ -4,6 +4,9 @@ import { API_URL } from '@/config/base';
 import OauthButton from './components/OauthButton';
 
 const styles = theme => ({
+  root: {
+    marginBottom: 64,
+  },
   orLine: {
     textAlign: 'center',
     position: 'relative',
