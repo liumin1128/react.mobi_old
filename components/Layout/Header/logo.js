@@ -12,7 +12,7 @@ const styles = theme => ({
     marginRight: 16,
     [theme.breakpoints.down('xs')]: {
       margin: 0,
-      marginLeft: -2,
+      // marginLeft: -2,
     },
   },
 });
