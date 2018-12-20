@@ -11,7 +11,8 @@ const styles = theme => ({
   logo: {
     marginRight: 16,
     [theme.breakpoints.down('xs')]: {
-      margin: 8,
+      margin: 0,
+      marginLeft: -2,
     },
   },
 });
