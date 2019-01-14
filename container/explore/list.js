@@ -90,7 +90,7 @@ export default class MeizituDetail extends PureComponent {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Link href={i.url} target="_blank">
+                <Link href={i.url}>
                   <Button size="small" color="primary">点击查看</Button>
                 </Link>
               </CardActions>
