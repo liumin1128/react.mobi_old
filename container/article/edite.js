@@ -97,7 +97,7 @@ export default class ArticleCreate extends PureComponent {
 
               const { data: { result: { status, message } } } = await createArticle({
                 variables: { input: params },
-                refetchQueries: ['ArticleList', 'ArticleDetail'],
+                refetchQueries: [ 'ArticleList', 'ArticleDetail' ],
                 // awaitRefetchQueries: true,
               });
 
@@ -147,7 +147,7 @@ export default class ArticleCreate extends PureComponent {
                           type="text"
                           margin="normal"
                           fullWidth
-                          {...i.props}
+                          // {...i.props}
                         />
                       ))
                     }
