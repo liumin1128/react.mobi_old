@@ -18,8 +18,8 @@ git fetch --all
 git reset --hard origin/master
 git pull
 
-# echo "安装依赖"
-# yarn
+echo "安装依赖"
+yarn
 
 yarn build
 
