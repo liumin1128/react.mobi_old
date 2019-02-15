@@ -13,6 +13,7 @@ export default class MyApp extends App {
     this.load();
   }
 
+
   load = async () => {
     await dynamicFile([
       '/static/pace.min.js',
