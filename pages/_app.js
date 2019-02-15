@@ -4,9 +4,22 @@ import { ApolloProvider } from 'react-apollo';
 import hoc from '@/hoc';
 import { isServerSide } from '@/utils/common';
 import Layout from '@/components/Layout';
+import dynamicFile from '@/utils/dynamicFile';
+
 
 @hoc
 export default class MyApp extends App {
+  componentDidMount() {
+    this.load();
+  }
+
+  load = async () => {
+    await dynamicFile([
+      '/static/pace.min.js',
+      '/static/pace.css',
+    ]);
+  }
+
   render() {
     const { Component, pageProps, pageContext, apolloClient, router } = this.props;
 
