@@ -223,6 +223,7 @@ export default class ListItem extends PureComponent {
           <Toolbar className={classes.toolbar}>
             <Like likeStatus={likeStatus} id={_id} className={classes.primaryBtn} count={likeCount} />
             <div className={classes.grow}>
+
               <Button onClick={this.toggleShowComments} className={classes.btn} size="small">
                 <SpeakerNotesIcon style={{ width: 16, marginRight: 3, marginTop: 2 }} />
                 {showComments ? '收起评论' : `${commentCount} 条评论`}
@@ -254,7 +255,7 @@ export default class ListItem extends PureComponent {
 
             </div>
 
-            {isWidthDown('xs', width) && (
+            {!isExpanded && isWidthDown('xs', width) && (
               <Fragment>
                 {
                   this.renderMenus()
