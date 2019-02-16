@@ -16,7 +16,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import AppsIcon from '@material-ui/icons/Apps';
 import CardContent from '@material-ui/core/CardContent';
-
 import Blogrol from '@/container/side/Blogrol';
 import Footer from '@/container/side/Footer';
 import Edite from '@/container/side/edite';
@@ -49,8 +48,8 @@ const styles = theme => ({
 
 const navList = [
   { href: '/', label: '盗火', icon: HomeIcon },
-  // { href: '/say', label: '说说' },
-  // { href: '/article', label: '文章' },
+  { href: '/article', label: '文章' },
+  { href: '/say', label: '说说' },
   { href: '/ex', label: '知蛛', icon: AppsIcon },
 ];
 
