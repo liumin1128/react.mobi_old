@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import Detail from '@/container/bxgif/detail';
 import Layout from '@/components/Layout/Blank';
 import { withRouter } from 'next/router';
