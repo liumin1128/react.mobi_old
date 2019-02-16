@@ -1,11 +1,15 @@
 import React, { PureComponent } from 'react';
-import Create from '@/container/article/edite';
-// import Grid from '@material-ui/core/Grid';
+import { withRouter } from 'next/router';
+import BlankLayout from '@/components/Layout/Blank';
+import Edite from '@/container/article/edite';
 
+@withRouter
 export default class index extends PureComponent {
   render() {
     return (
-      <Create />
+      <BlankLayout>
+        <Edite />
+      </BlankLayout>
     );
   }
 }

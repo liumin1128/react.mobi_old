@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'next/router';
+import BlankLayout from '@/components/Layout/Blank';
 import Edite from '@/container/article/edite';
 
 @withRouter
@@ -8,7 +9,9 @@ export default class index extends PureComponent {
     const { router } = this.props;
     const { _id } = router.query;
     return (
-      <Edite mode="update" _id={_id} />
+      <BlankLayout>
+        <Edite mode="update" _id={_id} />
+      </BlankLayout>
     );
   }
 }
