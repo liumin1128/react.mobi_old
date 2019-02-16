@@ -33,11 +33,9 @@ export default class test extends PureComponent {
 
     return (
       <Fragment>
-
         {list.map(i => (
           <Item key={i._id} {...i} />
         ))}
-
       </Fragment>
     );
   }

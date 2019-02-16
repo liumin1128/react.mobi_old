@@ -4,6 +4,7 @@ import { ApolloProvider } from 'react-apollo';
 import hoc from '@/hoc';
 import { isServerSide } from '@/utils/common';
 import dynamicFile from '@/utils/dynamicFile';
+import '@/utils/console';
 
 
 @hoc
