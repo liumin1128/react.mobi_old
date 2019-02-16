@@ -74,7 +74,6 @@ export function formatTime(tm, conf = 'YYYY年MM月DD日 HH:mm:ss 星期') {
     .replace(/星期/g, `星期${[ '日', '一', '二', '三', '四', '五', '六' ][t.getDay()]}`);
 }
 
-
 export const randomString = (len = 32) => {
   const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
   /** **默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1*** */

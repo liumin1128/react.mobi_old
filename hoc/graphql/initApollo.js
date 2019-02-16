@@ -31,6 +31,7 @@ const request = async (operation) => {
   operation.setContext({
     headers: {
       Authorization: `bearer ${token}`,
+      platform: 'web',
     },
   });
 };
