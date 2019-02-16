@@ -16,7 +16,7 @@ export const SAY_DETAIL = gql`
 `;
 
 export const SAY_LIST = gql`
-  query SayList($first: Int!, $skip: Int!) {
+  query SayList($first: Int, $skip: Int) {
     list: says(first: $first, skip: $skip) {
       __typename
       _id

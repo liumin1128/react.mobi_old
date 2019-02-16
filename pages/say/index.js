@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import BaseLayout from '@/components/Layout/Base';
-import Article from '@/container/article/list';
+import List from '@/container/say/list';
 
 export default class index extends PureComponent {
   render() {
     return (
       <BaseLayout>
-        <Article />
+        <List />
       </BaseLayout>
     );
   }
