@@ -1,5 +1,5 @@
 import React, { PureComponent, createRef } from 'react';
-import { Mutation, Query } from 'react-apollo';
+import * as Aaa from 'react-apollo';
 import { Form, Field } from 'react-final-form';
 import { withRouter } from 'next/router';
 
@@ -16,6 +16,12 @@ import TextField from '@/components/Form/TextField';
 import Snackbar from '@/components/Snackbar';
 
 import { CREATE_ARTICLE, ARTICLE_CONTENT } from '@/graphql/schema/article';
+
+const { Mutation, Query } = Aaa;
+
+console.log('Aaa');
+console.log(Aaa);
+
 
 const styles = theme => ({
   Card: {

@@ -7,7 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import UpPicture from '@/components/Upload/Wrapper';
-import Layout from '@/components/Layout';
+import Layout from '@/components/Layout/Base';
 import modal from '@/hoc/modal';
 
 export default class index extends PureComponent {
