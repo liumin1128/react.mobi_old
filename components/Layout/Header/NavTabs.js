@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
@@ -48,12 +48,12 @@ const styles = theme => ({
 
 const navList = [
   { href: '/', label: '盗火', icon: HomeIcon },
-  { href: '/article', label: '文章' },
-  { href: '/say', label: '说说' },
+  { href: '/article', label: '文章', icon: HomeIcon },
+  { href: '/say', label: '说说', icon: HomeIcon },
   { href: '/ex', label: '知蛛', icon: AppsIcon },
 ];
 
-class SimpleTabs extends React.Component {
+class SimpleTabs extends PureComponent {
   state = {
     value: 0,
     isOpen: false,
