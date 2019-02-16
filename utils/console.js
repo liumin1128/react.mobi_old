@@ -9,4 +9,4 @@ const logo = `
 Bingo！ 970568830@qq.com
 `;
 
-console.log(logo);
+console.log(`%c${logo}`, 'color: #789');
