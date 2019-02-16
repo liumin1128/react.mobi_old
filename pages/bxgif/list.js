@@ -1,5 +1,8 @@
 import List from '@/container/bxgif/list';
+import Layout from '@/components/Layout/Blank';
 
 export default () => (
-  <List />
+  <Layout>
+    <List />
+  </Layout>
 );
