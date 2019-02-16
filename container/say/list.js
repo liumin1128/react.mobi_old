@@ -1,25 +1,43 @@
 import React, { PureComponent, Fragment } from 'react';
-import Html from '@/components/Html';
+import { withStyles } from '@material-ui/core/styles';
 import { ARTICLE_LIST } from '@/graphql/schema/article';
 import { listQuery } from '@/graphql/utils';
+import Item from './ListItem';
+import Placeholder from './Placeholder';
 
-@listQuery(ARTICLE_LIST)
+const styles = theme => ({
+  card: {
+    maxWidth: 500,
+    marginBottom: theme.spacing.unit * 3,
+    margin: '0 auto',
+  },
+});
+
+@listQuery(ARTICLE_LIST, { ssr: false })
+@withStyles(styles)
 export default class test extends PureComponent {
   render() {
     const { data = {} } = this.props;
     const { loading = true, error, list = [] } = data;
 
-    if (loading) return 'Loading...';
+    if (loading) {
+      return (
+        <Fragment>
+          <Placeholder />
+          <div style={{ marginBottom: 16 }} />
+          <Placeholder />
+        </Fragment>
+      );
+    }
     if (error) return `Error! ${error.message}`;
 
     return (
       <Fragment>
+
         {list.map(i => (
-          <div key={i._id} id={i._id}>
-            {i.title}
-            <Html html={i.html} />
-          </div>
+          <Item key={i._id} {...i} />
         ))}
+
       </Fragment>
     );
   }
