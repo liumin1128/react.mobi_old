@@ -1,9 +1,9 @@
 
-import Layout from '@/components/Layout/Blank';
+import BaseLayout from '@/components/Layout/Base';
 import Article from '@/container/article/list';
 
 export default () => (
-  <Layout>
+  <BaseLayout>
     <Article />
-  </Layout>
+  </BaseLayout>
 );
