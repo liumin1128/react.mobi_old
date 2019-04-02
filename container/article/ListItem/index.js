@@ -1,5 +1,5 @@
 import React, { PureComponent, createRef, Fragment } from 'react';
-// import Waypoint from 'react-waypoint';
+// import { Waypoint } from 'react-waypoint';
 import { withRouter } from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';

@@ -60,11 +60,7 @@ export default class MeizituDetail extends PureComponent {
               <Grid container spacing={16}>
                 {
                   result
-                    .map(i => (<Grid
-                      item
-                      xs={4}
-                      key={i.tag}
-                    >
+                    .map(i => (<Grid item xs={4} key={i.tag} >
                       <Link to={`/mzitu?tag=${i.tag}`}>
                         <Fragment>
                           <CardMedia

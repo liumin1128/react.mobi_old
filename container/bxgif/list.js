@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import Masonry from 'react-masonry-component';
-import Waypoint from 'react-waypoint';
+import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';

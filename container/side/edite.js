@@ -27,15 +27,11 @@ export default class Edite extends PureComponent {
     const { classes } = this.props;
 
     return (
-      <Card>
-        <CardContent>
-          <Link href="/article/create" passHref scroll={false}>
-            <Button variant="outlined" color="primary" className={classes.button}>
-              写文章
-            </Button>
-          </Link>
-        </CardContent>
-      </Card>
+      <Link href="/article/create" passHref scroll={false}>
+        <Button variant="outlined" color="primary" className={classes.button}>
+          写文章
+        </Button>
+      </Link>
     );
   }
 }

@@ -14,10 +14,13 @@ const styles = () => ({
   media: {
     height: 0,
     paddingTop: '150%',
+    borderRadius: 4
   },
   title: {
-    fontSize: 16,
-  },
+    fontSize: 14,
+    marginTop: 8,
+    color: '#666'
+  }
 });
 
 class RecipeReviewCard extends PureComponent {
@@ -30,24 +33,20 @@ class RecipeReviewCard extends PureComponent {
     } = this.props;
 
     return (
-      <Card className={classes.card}>
-        <Link key={_id} href={`/mzitu/detail?id=${_id}`}>
-          <CardMedia
-            className={classes.media}
-            image={cover.src}
-            title={title}
-          />
-          <CardContent>
-            <Typography
-              className={classes.title}
-              variant="h5"
-              component="h2"
-            >
-              {title}
-            </Typography>
-          </CardContent>
-        </Link>
-      </Card>
+      <Link key={_id} href={`/mzitu/detail?id=${_id}`}>
+        <CardMedia
+          className={classes.media}
+          image={cover.src}
+          title={title}
+        />
+        <Typography
+          className={classes.title}
+          variant="h5"
+          component="h2"
+        >
+          {title}
+        </Typography>
+      </Link>
     );
   }
 }

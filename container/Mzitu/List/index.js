@@ -1,12 +1,13 @@
 import React, { PureComponent, Fragment } from 'react';
+import { withRouter } from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
 import { Query } from 'react-apollo';
-import Waypoint from 'react-waypoint';
+import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Item from './item';
 import { MZITU_LIST } from '@/graphql/schema/mzitu';
 import { updateQuery } from '@/graphql/utils';
+import Item from './Item';
 
 const styles = theme => ({
   list: {
@@ -16,42 +17,31 @@ const styles = theme => ({
       padding: 0,
     },
   },
-  item: {
-    paddingLeft: theme.spacing.unit * 1,
-    paddingRight: theme.spacing.unit * 1,
-    [theme.breakpoints.down('xs')]: {
-      paddingLeft: theme.spacing.unit * 0.5,
-      paddingRight: theme.spacing.unit * 0.5,
-    },
-  },
   progress: {
     margin: `${theme.spacing.unit * 2}px auto`,
     display: 'block',
+    width: 12
   },
 });
 
+@withRouter
 @withStyles(styles)
 export default class MzituList extends PureComponent {
   render() {
-    const { query = {}, classes } = this.props;
-    const { search, tag } = query;
+    const { router, classes } = this.props;
+    const { search, tag } = router.query;
     return (
-      <Fragment>
-
         <Query
           query={MZITU_LIST}
           variables={{ search, tag }}
         >
-
           {({ loading, error, data = {}, fetchMore, refetch }) => {
             if (loading) return 'Loading...';
             if (error) {
               return (
                 <div>
                   {`Error! ${error.message}`}
-                  {' '}
                   <a onClick={() => { refetch({ search, tag }); }}>refetch</a>
-                  {' '}
                 </div>
               );
             }
@@ -66,7 +56,7 @@ export default class MzituList extends PureComponent {
             });
 
             return (<Fragment>
-              <Grid container className={classes.list}>
+              <Grid spacing={16} container className={classes.list}>
                 {list.map(i => (
                   <Grid
                     key={i._id}
@@ -79,17 +69,16 @@ export default class MzituList extends PureComponent {
                   </Grid>
                 ))}
               </Grid>
-              <Waypoint onEnter={loadMore} />
+              <br/>
               <CircularProgress
                 color="secondary"
                 className={classes.progress}
               />
+              <Waypoint onEnter={loadMore} />
             </Fragment>
             );
           }}
         </Query>
-
-      </Fragment>
     );
   }
 }

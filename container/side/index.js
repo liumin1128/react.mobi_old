@@ -11,7 +11,10 @@ export default class index extends PureComponent {
       <div>
         <Affix offsetTop={80}>
           <Edite />
+          <br />
+          <br />
           <Code />
+          <br />
           <Blogrol />
           <Footer />
         </Affix>

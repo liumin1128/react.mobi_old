@@ -14,6 +14,7 @@ const styles = theme => ({
     },
   },
 });
+
 @withStyles(styles)
 export default class MeizituDetail extends PureComponent {
   render() {
@@ -27,27 +28,16 @@ export default class MeizituDetail extends PureComponent {
             return (
               <div>
                 {`Error! ${error.message}`}
-                {' '}
                 <a onClick={() => { refetch({ _id: id }); }}>refetch</a>
-                {' '}
               </div>
             );
           }
           return (
             <div className={classes.root}>
-              {detail.title}
+              <h3>{detail.title}</h3>
               {detail.pictures.map(i => (
-                <LazyLoad
-                  debounce={300}
-                  key={i}
-                  height={300}
-                  // placeholder={<div style={{ minHeight: 300 }} />}
-                >
-                  <img
-                    onClick={(e) => { imageView(e, i); }}
-                    src={i}
-                    alt=""
-                  />
+                <LazyLoad debounce={300} key={i} height={300}>
+                  <img onClick={(e) => { imageView(e, i); }} src={i} alt="" />
                 </LazyLoad>
               ))}
             </div>
