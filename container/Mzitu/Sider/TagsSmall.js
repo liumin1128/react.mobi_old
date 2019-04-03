@@ -55,14 +55,14 @@ export default class MeizituDetail extends PureComponent {
 
           if (list.length === 0) return 'Loading...';
 
-          const randomIdx = Math.floor((list.length - 18) * Math.random());
-          const result = list.slice(randomIdx, randomIdx + 18);
+          // const randomIdx = Math.floor((list.length - 18) * Math.random());
+          // const result = list.slice(randomIdx, randomIdx + 18);
 
           return (
             <div>
               <Grid container spacing={16}>
                 {
-                  result
+                  list
                     .map(i => (<Grid item xs={4} key={i.tag} >
                       <Link to={`/mzitu?tag=${i.tag}`}>
                         <Fragment>
