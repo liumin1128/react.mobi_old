@@ -57,6 +57,7 @@ export default class MzituList extends PureComponent {
 
             return (<Fragment>
               <Tags></Tags>
+              <br/>
               <Grid spacing={16} container className={classes.list}>
                 {list.map(i => (
                   <Grid

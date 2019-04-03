@@ -11,13 +11,16 @@ export default class Tags extends PureComponent {
   }
 
   render() {
+    const { router } = this.props;
+    const { type } = router.query;
     return (
       <Tabs
         // value={this.state.value}
-        value="xinggan"
+        value={type || 'xinggan'}
         indicatorColor="primary"
         textColor="primary"
         onChange={this.handleChange}
+        centered
       >
         <Tab label="性感" value="xinggan" />
         <Tab label="清纯" value="mm" />
