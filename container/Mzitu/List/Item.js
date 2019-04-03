@@ -14,7 +14,11 @@ const styles = () => ({
   media: {
     height: 0,
     paddingTop: '150%',
-    borderRadius: 4
+    borderRadius: 4,
+    transition: 'transform 0.3s',
+    '&:hover': {
+      transform: 'translateY(-8px)',
+    }
   },
   title: {
     fontSize: 15,
