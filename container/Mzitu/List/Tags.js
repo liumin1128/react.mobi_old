@@ -32,6 +32,8 @@ export default class Tags extends PureComponent {
             <Tab style={{ minWidth: 'auto' }} label="性感" value="xinggan" />
             <Tab style={{ minWidth: 'auto' }} label="清纯" value="mm" />
             <Tab style={{ minWidth: 'auto' }} label="最热" value="hot" />
+            <Tab style={{ minWidth: 'auto' }} label="日本" value="japan" />
+            <Tab style={{ minWidth: 'auto' }} label="台湾" value="taiwan" />
             <Tab style={{ minWidth: 'auto' }} label="随缘" value="hotpage" />
           </Tabs>
           // </div>
