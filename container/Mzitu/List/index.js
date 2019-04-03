@@ -8,7 +8,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { MZITU_LIST } from '@/graphql/schema/mzitu';
 import { updateQuery } from '@/graphql/utils';
 import Item from './Item';
-import Tags from './Tags';
 
 
 const styles = theme => ({
@@ -36,7 +35,10 @@ export default class MzituList extends PureComponent {
           variables={{ search, tag, type }}
         >
           {({ loading, error, data = {}, fetchMore, refetch }) => {
-            if (loading) return 'Loading...';
+            if (loading) return <CircularProgress
+            color="secondary"
+            className={classes.progress}
+          />
             if (error) {
               return (
                 <div>
@@ -56,8 +58,6 @@ export default class MzituList extends PureComponent {
             });
 
             return (<Fragment>
-              <Tags></Tags>
-              <br/>
               <Grid spacing={16} container className={classes.list}>
                 {list.map(i => (
                   <Grid
