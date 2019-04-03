@@ -12,6 +12,7 @@ const styles = {
     cursor: 'pointer',
     margin: 0,
     padding: 0,
+    boxShadow: '0px 5px 10px rgba(0,0,0,0.07)'
   },
   cover: {
     width: '100%',

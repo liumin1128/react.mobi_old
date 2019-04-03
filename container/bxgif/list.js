@@ -10,17 +10,17 @@ import Item from './item';
 
 const styles = theme => ({
   list: {
-    [theme.breakpoints.down('xs')]: {
-      margin: theme.spacing.unit * 0.5,
-    },
+    // [theme.breakpoints.down('xs')]: {
+      margin: - theme.spacing.unit,
+    // },
   },
   item: {
     width: '100%',
     display: 'block',
-    padding: theme.spacing.unit * 1,
-    [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing.unit * 0.5,
-    },
+    // padding: theme.spacing.unit * 1,
+    // [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing.unit,
+    // },
   },
   progress: {
     margin: `${theme.spacing.unit * 2}px auto`,
@@ -41,6 +41,7 @@ export default class BxgifList extends PureComponent {
     return (
       <Fragment>
         <Masonry className={classes.list}>
+
           {list.map(i => (
             <Grid
               key={i._id}
@@ -53,7 +54,9 @@ export default class BxgifList extends PureComponent {
               <Item {...i} />
             </Grid>
           ))}
+
         </Masonry>
+
         <Waypoint onEnter={fetchMore} />
         <CircularProgress color="secondary" className={classes.progress} />
       </Fragment>
