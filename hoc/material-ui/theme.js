@@ -99,7 +99,9 @@ export default createMuiTheme({
     width: '100%',
     margin: 'auto',
     [theme.breakpoints.down('xs')]: {
-      overflow: 'hidden',
+      paddingLeft: 16,
+      paddingRight: 16,
+      overflow: 'hidden'
     },
   },
 });

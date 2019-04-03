@@ -10,11 +10,6 @@ import { updateQuery } from '@/graphql/utils';
 import Item from './Item';
 
 const styles = theme => ({
-  list: {
-    [theme.breakpoints.down('xs')]: {
-      width: 'auto',
-    },
-  },
   progress: {
     margin: `${theme.spacing.unit * 2}px auto`,
     display: 'block',
