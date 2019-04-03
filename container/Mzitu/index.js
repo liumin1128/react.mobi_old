@@ -10,11 +10,11 @@ const styles = theme => ({
 
 export default withStyles(styles)(({ classes }) => (
   <div className={classes.root}>
-    <Grid container spacing={24}>
-      <Grid item xs={12} sm={12} md={8}>
+    <Grid container spacing={16}>
+      <Grid item xs={12} sm={12} md={9}>
         <List />
       </Grid>
-      <Grid item xs={12} sm={12} md={4}>
+      <Grid item xs={12} sm={12} md={3}>
         <Sider />
       </Grid>
     </Grid>

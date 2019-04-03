@@ -13,8 +13,6 @@ const styles = theme => ({
   list: {
     [theme.breakpoints.down('xs')]: {
       width: 'auto',
-      margin: theme.spacing.unit * -0.5,
-      padding: 0,
     },
   },
   progress: {
