@@ -17,7 +17,7 @@ const styles = () => ({
     borderRadius: 4
   },
   title: {
-    fontSize: 14,
+    fontSize: 15,
     marginTop: 8,
     color: '#666'
   }

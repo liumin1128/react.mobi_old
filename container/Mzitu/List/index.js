@@ -15,6 +15,9 @@ const styles = theme => ({
     display: 'block',
     width: 12
   },
+  item: {
+    marginBottom: 8
+  }
 });
 
 @withRouter

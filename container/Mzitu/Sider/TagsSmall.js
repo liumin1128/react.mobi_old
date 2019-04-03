@@ -12,6 +12,7 @@ const styles = theme => ({
   media: {
     height: 0,
     paddingTop: '100%',
+    borderRadius: 4
   },
   content: {
     textAlign: 'center',
@@ -68,7 +69,7 @@ export default class MeizituDetail extends PureComponent {
                             image={i.cover}
                             title={i.title}
                           />
-                          <Typography style={{ marginTop: 4 }} color="textSecondary" component="p">
+                          <Typography style={{ marginTop: 4, fontSize: 10, textAlign: 'center' }} color="textSecondary" component="p">
                             {i.title}
                           </Typography>
                         </Fragment>
