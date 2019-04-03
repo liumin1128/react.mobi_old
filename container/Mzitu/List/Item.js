@@ -15,10 +15,10 @@ const styles = () => ({
     height: 0,
     paddingTop: '150%',
     borderRadius: 4,
-    transition: 'transform 0.3s',
-    '&:hover': {
-      transform: 'translateY(-8px)',
-    }
+    // transition: 'transform 0.3s',
+    // '&:hover': {
+    //   transform: 'translateY(-8px)',
+    // }
   },
   title: {
     fontSize: 15,
