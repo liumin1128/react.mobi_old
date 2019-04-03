@@ -21,7 +21,7 @@ const styles = () => ({
     // }
   },
   title: {
-    fontSize: 15,
+    fontSize: 16,
     marginTop: 8,
     color: '#666'
   }
