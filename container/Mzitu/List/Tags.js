@@ -28,7 +28,7 @@ export default class Tags extends PureComponent {
           <Tab style={{ minWidth: 'auto' }} label="最热" value="hot" />
           <Tab style={{ minWidth: 'auto' }} label="随缘" value="hotpage" />
         </Tabs>
-        <Divider />
+        <Divider style={{ marginTop: -1 }} />
       </Fragment>
     );
   }
