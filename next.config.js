@@ -3,8 +3,8 @@ const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 
 module.exports = withLess(
   withBundleAnalyzer({
-    analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
-    analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
+    analyzeServer: [ 'server', 'both' ].includes(process.env.BUNDLE_ANALYZE),
+    analyzeBrowser: [ 'browser', 'both' ].includes(process.env.BUNDLE_ANALYZE),
     bundleAnalyzerConfig: {
       server: {
         analyzerMode: 'static',
