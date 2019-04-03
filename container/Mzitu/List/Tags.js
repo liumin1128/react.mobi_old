@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { withRouter } from 'next/router';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-
+import Divider from '@material-ui/core/Divider';
 @withRouter
 export default class Tags extends PureComponent {
   handleChange = (_, value) => {
@@ -14,19 +14,22 @@ export default class Tags extends PureComponent {
     const { router } = this.props;
     const { type } = router.query;
     return (
-      <Tabs
+      <Fragment>
+        <Tabs
         // value={this.state.value}
-        value={type || 'xinggan'}
-        indicatorColor="primary"
-        textColor="primary"
-        onChange={this.handleChange}
-        centered
-      >
-        <Tab label="性感" value="xinggan" />
-        <Tab label="清纯" value="mm" />
-        <Tab label="最热" value="hot" />
-        <Tab label="随缘" value="hotpage" />
-      </Tabs>
+          value={type || 'xinggan'}
+          indicatorColor="primary"
+          textColor="primary"
+          onChange={this.handleChange}
+        // centered
+        >
+          <Tab style={{ minWidth: 'auto' }} label="性感" value="xinggan" />
+          <Tab style={{ minWidth: 'auto' }} label="清纯" value="mm" />
+          <Tab style={{ minWidth: 'auto' }} label="最热" value="hot" />
+          <Tab style={{ minWidth: 'auto' }} label="随缘" value="hotpage" />
+        </Tabs>
+        <Divider />
+      </Fragment>
     );
   }
 }
