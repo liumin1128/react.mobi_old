@@ -23,6 +23,8 @@ const styles = theme => ({
   progress: {
     margin: `${theme.spacing.unit * 2}px auto`,
     display: 'block',
+    maxWidth: '36px',
+    maxHeight: '36px',
   },
 });
 

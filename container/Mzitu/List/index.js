@@ -13,7 +13,9 @@ const styles = theme => ({
   progress: {
     margin: `${theme.spacing.unit * 2}px auto`,
     display: 'block',
-    width: 12
+    // backgroundColor: 'red',
+    maxWidth: '24px',
+    maxHeight: '24px',
   },
   item: {
     marginBottom: 8
