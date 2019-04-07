@@ -15,6 +15,7 @@ const styles = () => ({
     height: 0,
     paddingTop: '150%',
     borderRadius: 4,
+    backgroundColor: 'rgba(0,0,0,0.03)',
     // transition: 'transform 0.3s',
     // '&:hover': {
     //   transform: 'translateY(-8px)',

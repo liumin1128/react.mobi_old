@@ -12,7 +12,8 @@ const styles = theme => ({
   media: {
     height: 0,
     paddingTop: '100%',
-    borderRadius: 4
+    borderRadius: 4,
+    backgroundColor: 'rgba(0,0,0,0.03)',
   },
   content: {
     textAlign: 'center',
