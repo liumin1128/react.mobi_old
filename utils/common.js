@@ -42,7 +42,7 @@ export function isElementInViewport(el, offset = 0) {
   return (top && left && bottom && right);
 }
 
-export function lessStr(str, end = 15, start = 0) {
+export function getLessStr(str, end = 15, start = 0) {
   if (str && str.length > end) {
     return `${str.substring(start, end)}...`;
   } else {

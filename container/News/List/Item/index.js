@@ -5,6 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import CardMedia from '@material-ui/core/CardMedia';
+import { getLessStr } from '@/utils/common';
 
 const styles = theme => ({
   media: {
@@ -28,27 +29,38 @@ const styles = theme => ({
 @withStyles(styles)
 export default class Item extends PureComponent {
   render() {
-    const { classes, title, cover, content } = this.props;
+    const {
+      classes,
+      id,
+      title,
+      date,
+      description,
+      source,
+      html,
+      labels,
+      photos,
+      cover,
+      tags,
+    } = this.props;
     return (
       <div>
         <div className={classes.flexGrow}>
           <div>
             <Typography variant="h6" gutterBottom>{title}</Typography>
-            <Typography variant="body1" gutterBottom>{content}</Typography>
+            <Typography variant="body1" gutterBottom>{getLessStr(description, 140)}</Typography>
           </div>
           <CardHeader
             avatar={(
               <Avatar aria-label="Recipe">
-                R
+                {source[0]}
               </Avatar>
             )}
-            title="Shrimp and Chorizo Paella"
-            subheader="September 14, 2016"
+            title={source}
+            subheader={date}
             style={{ paddingLeft: 0 }}
           />
         </div>
         <CardMedia style={{ paddingTop: '55%', marginBottom: 16 }} image={cover} />
-        {title}
       </div>
     );
   }
