@@ -1,8 +1,8 @@
-import BaseLayout from '@/components/Layout/Base';
-import List from '@/container/News/List';
+import Layout from '@/components/Layout/Blank';
+import Content from '@/container/News';
 
 export default () => (
-  <BaseLayout>
-    <List />
-  </BaseLayout>
+  <Layout>
+    <Content />
+  </Layout>
 );
