@@ -46,7 +46,9 @@ export default class NewsList extends PureComponent {
             });
 
             return (<Fragment>
-              {list.map(i => (
+              {list
+                  .slice(4,list.length)
+                  .map(i => (
                 <div key={i.id}>
                   <Item {...i} />
                 </div>
