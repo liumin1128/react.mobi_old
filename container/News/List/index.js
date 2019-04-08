@@ -55,7 +55,9 @@ export default class NewsList extends PureComponent {
                 color="secondary"
                 // className={classes.progress}
               />
-              <Waypoint onEnter={loadMore} />
+              {
+                // <Waypoint onEnter={loadMore} />
+              }
             </Fragment>
             );
           }}
