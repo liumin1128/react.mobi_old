@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const NEWS_DETAIL = gql`
   query NewsDetail($_id: String!) {
-    news: NewsDetail(_id: $_id) {
+    data: NewsDetail(_id: $_id) {
       __typename
       title
       createdAt
@@ -13,6 +13,7 @@ export const NEWS_DETAIL = gql`
       photos
       cover
       tags
+      url
     }
   }
 `;
