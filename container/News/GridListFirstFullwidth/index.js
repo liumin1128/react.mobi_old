@@ -56,49 +56,57 @@ export default class NewsList extends PureComponent {
 
             const loadMore = () => fetchMore({
               variables: {
-                page: (Math.floor(list.length / 24) || 1) + 1,
+                skip: list.length,
                 search,
               },
               updateQuery,
             });
 
             return (
-              <Grid container className={classes.root} spacing={16}>
-                {list
-                  // .slice(0, 4)
-                  .map((i, index) => (
-                  <Grid key={i.id} item xs={12} md={index === 0 ? 12 : 4}>
-                    <Grid container spacing={16}>
-                      <Grid item xs={12} md={index === 0 ? 8 : 12}>
-                        <CardMedia
-                          style={{
-                            paddingTop: index === 0 ? '45%' : '55%',
-                            backgroundColor: 'rgba(0,0,0,0.05)'
-                          }}
-                          image={i.cover}
-                        />
-                      </Grid>
-                      <Grid item xs={12} md={index === 0 ? 4 : 12}>
+              <Fragment>
 
-                        <div style={{height: index === 0 ? 260 :140}}>
-                          <Typography variant="h6" gutterBottom>{i.title}</Typography>
-                          <Typography variant="body1" gutterBottom>{getLessStr(i.description, index === 0 ? 180 : 60)}</Typography>
-                        </div>
-                        <CardHeader
-                          avatar={(
-                            <Avatar aria-label="Recipe">
-                              {i.source[0]}
-                            </Avatar>
-                          )}
-                          title={i.source}
-                          subheader={formatTime(i.date, 'MM月DD日 HH:mm 星期')}
-                          style={{ paddingLeft: 0 }}
-                        />
+                <Grid container className={classes.root} spacing={16}>
+                  {list
+                    // .slice(0, 4)
+                    .map((i, index) => (
+                    <Grid key={i.id} item xs={12} md={index === 0 ? 12 : 4}>
+                      <Grid container spacing={16}>
+                        <Grid item xs={12} md={index === 0 ? 8 : 12}>
+                          <CardMedia
+                            style={{
+                              paddingTop: index === 0 ? '45%' : '55%',
+                              backgroundColor: 'rgba(0,0,0,0.05)'
+                            }}
+                            image={i.cover}
+                          />
+                        </Grid>
+                        <Grid item xs={12} md={index === 0 ? 4 : 12}>
+
+                          <div style={{height: index === 0 ? 260 :140}}>
+                            <Typography variant="h6" gutterBottom>{i.title}</Typography>
+                            <Typography variant="body1" gutterBottom>{getLessStr(i.description, index === 0 ? 180 : 60)}</Typography>
+                          </div>
+                          <CardHeader
+                            avatar={(
+                              <Avatar aria-label="Recipe">
+                                {i.source[0]}
+                              </Avatar>
+                            )}
+                            title={i.source}
+                            subheader={formatTime(i.createdAt, 'MM月DD日 HH:mm 星期')}
+                            style={{ paddingLeft: 0 }}
+                          />
+                        </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
-                ))}
-              </Grid>
+                  ))}
+                </Grid>
+                <CircularProgress
+                  color="secondary"
+                  className={classes.progress}
+                />
+                <Waypoint onEnter={loadMore} />
+              </Fragment>
             );
           }}
         </Query>

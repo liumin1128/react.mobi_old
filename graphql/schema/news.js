@@ -5,7 +5,7 @@ export const NEWS_DETAIL = gql`
     news: NewsDetail(id: $id) {
       __typename
       title
-      date
+      createdAt
       description
       source
       html
@@ -23,7 +23,7 @@ export const NEWS_LIST = gql`
       __typename
       id
       title
-      date
+      createdAt
       description
       source
       html
