@@ -74,16 +74,20 @@ export default class NewsList extends PureComponent {
                         <CardMedia style={{ paddingTop: index === 0 ? '45%' : '55%' }} image={i.photos[0]} />
                       </Grid>
                       <Grid item xs={12} md={index === 0 ? 4 : 12}>
+                        <CardHeader
+                          avatar={(
+                            <Avatar aria-label="Recipe">
+                              {i.source[0]}
+                            </Avatar>
+                          )}
+                          title={i.source}
+                          subheader={i.date}
+                          style={{ paddingLeft: 0, paddingTop: 0 }}
+                        />
                         <div style={index === 0 ? {} : { height: 138 }}>
                           <Typography variant="h6" gutterBottom>{i.title}</Typography>
-                          <Typography variant="body1" gutterBottom>{getLessStr(i.description, index === 0 ? 75 : 50)}</Typography>
+                          <Typography variant="body1" gutterBottom>{getLessStr(i.description, index === 0 ? 140 : 60)}</Typography>
                         </div>
-                        <CardHeader
-                          avatar={(<Avatar aria-label="Recipe">R</Avatar>)}
-                          title="Shrimp and Chorizo Paella"
-                          subheader="September 14, 2016"
-                          style={{ paddingLeft: 0 }}
-                        />
                       </Grid>
                     </Grid>
                   </Grid>

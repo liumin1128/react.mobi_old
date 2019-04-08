@@ -5,6 +5,7 @@ import Recommend from './Recommend';
 export default () => (
   <Fragment>
     <Recommend />
+    <br />
     <List />
   </Fragment>
 );
