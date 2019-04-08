@@ -65,11 +65,10 @@ export default class NewsList extends PureComponent {
             return (
               <Grid container className={classes.root} spacing={16}>
                 {list
-                  .slice(0, 4)
                   .map((i, index) => (
-                  <Grid key={i.id} item xs={12} md={index === 0 ? 12 : 4}>
+                  <Grid key={i.id} item xs={12} md={ 4}>
                     <Grid container spacing={16}>
-                      <Grid item xs={12} md={index === 0 ? 8 : 12}>
+                      <Grid item xs={12} md={ 12}>
                         <CardMedia
                           style={{
                             paddingTop: index === 0 ? '45%' : '55%',
@@ -78,7 +77,7 @@ export default class NewsList extends PureComponent {
                           image={i.cover}
                         />
                       </Grid>
-                      <Grid item xs={12} md={index === 0 ? 4 : 12}>
+                      <Grid item xs={12} md={ 12}>
 
                         <div>
                           <Typography variant="h6" gutterBottom>{i.title}</Typography>
