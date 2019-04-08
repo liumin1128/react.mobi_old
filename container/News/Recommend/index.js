@@ -11,7 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import CardMedia from '@material-ui/core/CardMedia';
 import { NEWS_LIST } from '@/graphql/schema/news';
 import { updateQuery } from '@/graphql/utils';
-import { getLessStr } from '@/utils/common';
+import { getLessStr, formatTime } from '@/utils/common';
 import Item from './Item';
 
 const styles = theme => ({
@@ -66,7 +66,7 @@ export default class NewsList extends PureComponent {
             return (
               <Grid container className={classes.root} spacing={16}>
                 {list
-                  .splice(0, 4)
+                  .slice(0, 4)
                   .map((i, index) => (
                   <Grid key={i.id} item xs={12} md={index === 0 ? 12 : 4}>
                     <Grid container spacing={16}>
@@ -74,6 +74,12 @@ export default class NewsList extends PureComponent {
                         <CardMedia style={{ paddingTop: index === 0 ? '45%' : '55%' }} image={i.photos[0]} />
                       </Grid>
                       <Grid item xs={12} md={index === 0 ? 4 : 12}>
+
+                        <div>
+                          <Typography variant="h6" gutterBottom>{i.title}</Typography>
+
+                          <Typography variant="body1" gutterBottom>{getLessStr(i.description, index === 0 ? 140 : 60)}</Typography>
+                        </div>
                         <CardHeader
                           avatar={(
                             <Avatar aria-label="Recipe">
@@ -81,13 +87,9 @@ export default class NewsList extends PureComponent {
                             </Avatar>
                           )}
                           title={i.source}
-                          subheader={i.date}
-                          style={{ paddingLeft: 0, paddingTop: 0 }}
+                          subheader={formatTime(i.date, 'MM月DD日 HH:mm 星期')}
+                          style={{ paddingLeft: 0 }}
                         />
-                        <div style={index === 0 ? {} : { height: 138 }}>
-                          <Typography variant="h6" gutterBottom>{i.title}</Typography>
-                          <Typography variant="body1" gutterBottom>{getLessStr(i.description, index === 0 ? 140 : 60)}</Typography>
-                        </div>
                       </Grid>
                     </Grid>
                   </Grid>
