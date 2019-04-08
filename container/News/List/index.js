@@ -6,7 +6,11 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { NEWS_LIST } from '@/graphql/schema/news';
 import { updateQuery } from '@/graphql/utils';
-import Item from './Item';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import CardHeader from '@material-ui/core/CardHeader';
+import Avatar from '@material-ui/core/Avatar';
+import CardMedia from '@material-ui/core/CardMedia';
 
 @withRouter
 export default class NewsList extends PureComponent {
@@ -46,18 +50,33 @@ export default class NewsList extends PureComponent {
             });
 
             return (<Fragment>
-              {list
-                  .slice(4,list.length)
-                  .map(i => (
-                <div key={i.id}>
-                  <Item {...i} />
+              {list.map((i, index) => (
+                <div key={i.id} className={classes.card}>
+                  <div className={classes.flexGrow}>
+                    <div>
+                      <Typography variant="h6" gutterBottom>{i.title}</Typography>
+                      <Typography variant="body1" gutterBottom>{getStrFromHtml(i.content, 50)}</Typography>
+                    </div>
+                    <CardHeader
+                      avatar={(
+                        <Avatar aria-label="Recipe">
+                          R
+                        </Avatar>
+                      )}
+                      title="Shrimp and Chorizo Paella"
+                      subheader="September 14, 2016"
+                      style={{ paddingLeft: 0 }}
+                    />
+                  </div>
+                  <CardMedia style={{ display: 'block', width: 148, height: 148 }} image={i.photos[0]} />
                 </div>
               ))}
-              <CircularProgress
-                color="secondary"
-                // className={classes.progress}
-              />
+
               {
+                // <CircularProgress
+                // color="secondary"
+                // className={classes.progress}
+              // />
                 // <Waypoint onEnter={loadMore} />
               }
             </Fragment>

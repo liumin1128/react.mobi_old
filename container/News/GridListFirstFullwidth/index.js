@@ -65,7 +65,7 @@ export default class NewsList extends PureComponent {
             return (
               <Grid container className={classes.root} spacing={16}>
                 {list
-                  .slice(0, 4)
+                  // .slice(0, 4)
                   .map((i, index) => (
                   <Grid key={i.id} item xs={12} md={index === 0 ? 12 : 4}>
                     <Grid container spacing={16}>
@@ -82,7 +82,6 @@ export default class NewsList extends PureComponent {
 
                         <div>
                           <Typography variant="h6" gutterBottom>{i.title}</Typography>
-
                           <Typography variant="body1" gutterBottom>{getLessStr(i.description, index === 0 ? 140 : 60)}</Typography>
                         </div>
                         <CardHeader
