@@ -95,7 +95,7 @@ export default createMuiTheme({
     overflow: 'hidden',
   },
   container: {
-    maxWidth: 960,
+    maxWidth: 1110,
     width: '100%',
     margin: 'auto',
     [theme.breakpoints.down('xs')]: {
