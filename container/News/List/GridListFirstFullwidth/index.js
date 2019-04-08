@@ -12,7 +12,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { NEWS_LIST } from '@/graphql/schema/news';
 import { updateQuery } from '@/graphql/utils';
 import { getLessStr, formatTime } from '@/utils/common';
-
+import Link from '@/components/Link'
 const styles = theme => ({
   media: {
     display: 'block',
@@ -69,8 +69,12 @@ export default class NewsList extends PureComponent {
                   {list
                     // .slice(0, 4)
                     .map((i, index) => (
-                    <Grid key={i.id} item xs={12} md={index === 0 ? 12 : 4}>
+                    <Grid key={i._id} item xs={12} md={index === 0 ? 12 : 4}>
+                    <Link to={"/news/detail?_id="+i._id}>
+
+
                       <Grid container spacing={16}>
+
                         <Grid item xs={12} md={index === 0 ? 8 : 12}>
                           <CardMedia
                             style={{
@@ -98,6 +102,7 @@ export default class NewsList extends PureComponent {
                           />
                         </Grid>
                       </Grid>
+                      </Link>
                     </Grid>
                   ))}
                 </Grid>
