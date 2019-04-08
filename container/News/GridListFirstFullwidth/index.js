@@ -80,9 +80,9 @@ export default class NewsList extends PureComponent {
                       </Grid>
                       <Grid item xs={12} md={index === 0 ? 4 : 12}>
 
-                        <div>
+                        <div style={{height: index === 0 ? 260 :140}}>
                           <Typography variant="h6" gutterBottom>{i.title}</Typography>
-                          <Typography variant="body1" gutterBottom>{getLessStr(i.description, index === 0 ? 140 : 60)}</Typography>
+                          <Typography variant="body1" gutterBottom>{getLessStr(i.description, index === 0 ? 180 : 60)}</Typography>
                         </div>
                         <CardHeader
                           avatar={(
