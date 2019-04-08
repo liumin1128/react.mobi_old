@@ -71,7 +71,13 @@ export default class NewsList extends PureComponent {
                   <Grid key={i.id} item xs={12} md={index === 0 ? 12 : 4}>
                     <Grid container spacing={16}>
                       <Grid item xs={12} md={index === 0 ? 8 : 12}>
-                        <CardMedia style={{ paddingTop: index === 0 ? '45%' : '55%' }} image={i.photos[0]} />
+                        <CardMedia
+                          style={{
+                            paddingTop: index === 0 ? '45%' : '55%',
+                            backgroundColor: 'rgba(0,0,0,0.05)'
+                          }}
+                          image={i.cover}
+                        />
                       </Grid>
                       <Grid item xs={12} md={index === 0 ? 4 : 12}>
 
