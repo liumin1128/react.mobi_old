@@ -22,24 +22,17 @@ export default class NewsDetail extends PureComponent {
     const { _id } = router.query;
     return (
       <Query query={NEWS_DETAIL} variables={{ _id }}>
-        {({ loading, error, data: {data} }) => {
+        {({ loading, error, data: { data } }) => {
           if (error) return 'error';
           if (loading) return <Loading />;
 
-          const { user, title, cover, html, url } = data;
+          const { user, title, cover, html, url, content } = data;
 
           return (
-            <Card>
+            <div style={{ maxWidth: 700 }}>
               <a href={url} target="_blank">{url}</a>
-              <CardContent>
-                <Link href={`/news/detail?_id=${_id}`}>
-                  <Typography style={{ fontWeight: 700, fontSize: 28 }} variant="h5" component="h5">
-                    {title}
-                  </Typography>
-                </Link>
-                <Html html={html} />
-              </CardContent>
-            </Card>
+              <p>{content}</p>
+            </div>
           );
         }}
       </Query>

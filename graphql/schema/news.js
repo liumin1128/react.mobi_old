@@ -6,7 +6,7 @@ export const NEWS_DETAIL = gql`
       __typename
       title
       createdAt
-      description
+      content
       source
       html
       labels
@@ -25,7 +25,7 @@ export const NEWS_LIST = gql`
       _id
       title
       createdAt
-      description
+      content
       source
       html
       labels
