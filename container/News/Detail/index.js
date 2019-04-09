@@ -34,10 +34,11 @@ export default class NewsDetail extends PureComponent {
               <br />
               {appCode}
               <br />
-              {showHtml ? '显示html' : '显示文本'}
-              <Html html={html} />
+              {showHtml ? 'html' : 'txt'}
               {
-                // showHtml ? <Html html={html} /> : <p>{content}</p>
+                showHtml
+                  ? <Html html={html} />
+                  : <p>{content}</p>
               }
             </div>
           );

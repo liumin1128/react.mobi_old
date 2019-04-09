@@ -11,7 +11,6 @@ export const NEWS_DETAIL = gql`
       appName
       showHtml
       html
-      labels
       photos
       cover
       tags
@@ -31,7 +30,6 @@ export const NEWS_LIST = gql`
       appCode
       appName
       html
-      labels
       photos
       cover
       tags
