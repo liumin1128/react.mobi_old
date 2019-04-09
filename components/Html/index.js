@@ -13,6 +13,14 @@ const styles = theme => ({
     '& figure': {
       margin: 0,
     },
+    '& figure a': {
+    },
+    '& figure img': {
+      marginTop: '-16px',
+      marginBottom: '-16px',
+    },
+
+
     // '& a': {
     //   margin: 0,
     //   display: 'block',
