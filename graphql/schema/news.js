@@ -8,6 +8,7 @@ export const NEWS_DETAIL = gql`
       createdAt
       content
       source
+      showHtml
       html
       labels
       photos

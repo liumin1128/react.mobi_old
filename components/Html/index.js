@@ -7,7 +7,8 @@ const styles = theme => ({
     // border: '1px red solid',
     fontSize: 16,
     '& img': {
-      // width: '100%',
+      maxWidth: '100%',
+      margin: 'auto',
     },
     '& figure': {
       margin: 0,
