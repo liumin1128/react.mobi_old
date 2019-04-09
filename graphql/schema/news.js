@@ -7,7 +7,8 @@ export const NEWS_DETAIL = gql`
       title
       createdAt
       content
-      source
+      appCode
+      appName
       showHtml
       html
       labels
@@ -27,7 +28,8 @@ export const NEWS_LIST = gql`
       title
       createdAt
       content
-      source
+      appCode
+      appName
       html
       labels
       photos

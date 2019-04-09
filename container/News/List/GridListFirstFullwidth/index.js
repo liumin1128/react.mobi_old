@@ -86,17 +86,23 @@ export default class NewsList extends PureComponent {
                         </Grid>
                         <Grid item xs={12} md={index === 0 ? 4 : 12}>
 
-                          <div style={{height: index === 0 ? 260 :140}}>
+                          <div
+                            style={{
+                              height: index === 0 ? 260 :140
+                            }}>
                             <Typography variant="h6" gutterBottom>{i.title}</Typography>
-                            <Typography variant="body1" gutterBottom>{getLessStr(i.content, index === 0 ? 180 : 60)}</Typography>
+                            <Typography variant="body1" gutterBottom>{
+                              getLessStr(i.content, index === 0 ? 180 : 60)
+                              // i.content
+                            }</Typography>
                           </div>
                           <CardHeader
                             avatar={(
                               <Avatar aria-label="Recipe">
-                                {i.source[0]}
+                                {i.appName[0]}
                               </Avatar>
                             )}
-                            title={i.source}
+                            title={i.appName}
                             subheader={formatTime(i.createdAt, 'MM月DD日 HH:mm 星期')}
                             style={{ paddingLeft: 0 }}
                           />

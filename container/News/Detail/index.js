@@ -26,11 +26,14 @@ export default class NewsDetail extends PureComponent {
           if (error) return 'error';
           if (loading) return <Loading />;
 
-          const { user, title, cover, html, url, content, showHtml } = data;
+          const { user, title, cover, html, url, content, showHtml, appCode } = data;
 
           return (
             <div style={{ maxWidth: 700 }}>
               <a href={url} target="_blank">{url}</a>
+              <br />
+              {appCode}
+              <br />
               {showHtml ? '显示html' : '显示文本'}
               <Html html={html} />
               {
