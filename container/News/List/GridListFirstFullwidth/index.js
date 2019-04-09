@@ -81,7 +81,7 @@ export default class NewsList extends PureComponent {
                               paddingTop: index === 0 ? '45%' : '55%',
                               backgroundColor: 'rgba(0,0,0,0.05)'
                             }}
-                            image={i.cover}
+                            image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''  }
                           />
                         </Grid>
                         <Grid item xs={12} md={index === 0 ? 4 : 12}>
