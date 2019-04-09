@@ -72,7 +72,7 @@ export default class NewsList extends PureComponent {
                           )}
                           title={i.appName}
                           subheader={formatTime(i.createdAt, 'MM月DD日 HH:mm 星期')}
-                          style={{ paddingLeft: 0 }}
+                          style={{ paddingLeft: 0, paddingTop: 16 }}
                         />
                       </Link>
                     </Grid>
