@@ -88,13 +88,15 @@ export default class NewsList extends PureComponent {
 
                           <div
                             style={{
-                              height: index === 0 ? 260 :140
+                              // height: index === 0 ? 260 :140
                             }}>
-                            <Typography variant="h6" gutterBottom>{i.title}</Typography>
-                            <Typography variant="body1" gutterBottom>{
-                              getLessStr(i.content, index === 0 ? 180 : 60)
-                              // i.content
-                            }</Typography>
+                            <Typography variant="h6">{i.title}</Typography>
+                            {
+                            //   <Typography variant="body1" gutterBottom>{
+                            //   getLessStr(i.content, index === 0 ? 180 : 60)
+                            //   // i.content
+                            // }</Typography>
+                          }
                           </div>
                           <CardHeader
                             avatar={(

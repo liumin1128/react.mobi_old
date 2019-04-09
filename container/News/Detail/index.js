@@ -26,7 +26,7 @@ export default class NewsDetail extends PureComponent {
           if (error) return 'error';
           if (loading) return <Loading />;
 
-          const { user, title, cover, html, url, content, showHtml, appCode } = data;
+          const { user, title, cover, html, url, content, showHtml, appCode, photos } = data;
 
           return (
             <div style={{ maxWidth: 700 }}>
@@ -38,7 +38,14 @@ export default class NewsDetail extends PureComponent {
               {
                 showHtml
                   ? <Html html={html} />
-                  : <p>{content}</p>
+                  : (
+                    <div>
+                      <Typography>{content}</Typography>
+                      {
+                        photos.map(i => <img style={{ margin: 'auto', width: '100%', display: 'block', marginTop: 16 }} src={i} alt="" />)
+                      }
+                    </div>
+                  )
               }
             </div>
           );
