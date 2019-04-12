@@ -27,26 +27,12 @@ export default class NewsDetail extends PureComponent {
           if (loading) return <Loading />;
 
           const { user, title, cover, html, url, content, showHtml, appCode, photos } = data;
-
           return (
             <div style={{ maxWidth: 700 }}>
               <a href={url} target="_blank">{url}</a>
+              <Typography variant="h6">{title}</Typography>
               <br />
-              {appCode}
-              <br />
-              {showHtml ? 'html' : 'txt'}
-              {
-                showHtml
-                  ? <Html html={html} />
-                  : (
-                    <div>
-                      <Typography>{content}</Typography>
-                      {
-                        photos.map(i => <img style={{ margin: 'auto', width: '100%', display: 'block', marginTop: 16 }} src={i} alt="" />)
-                      }
-                    </div>
-                  )
-              }
+              <Html html={html} />
             </div>
           );
         }}
