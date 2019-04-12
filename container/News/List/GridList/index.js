@@ -63,7 +63,7 @@ export default class NewsList extends PureComponent {
                           }}
                           image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''  }
                         />
-                        <Typography variant="h6">{i.title}</Typography>
+                        <Typography variant="h6" style={{ fontSize: '1.125em', maxHeight: 56, overflow: 'hidden' }}>{i.title}</Typography>
                         <CardHeader
                           avatar={(
                             <Avatar aria-label="Recipe">
