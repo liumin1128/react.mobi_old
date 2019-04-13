@@ -14,6 +14,14 @@ import { formatTime } from '@/utils/common';
 import Link from '@/components/Link'
 import Loading from '@/components/Loading'
 
+const appLogo = {
+  '3dmgame.com': 'https://imgs.react.mobi/FhyQn2l-CNmlB-Oxi9pXvm0vZqSJ',
+  'toutiao.com': 'https://imgs.react.mobi/Fk0vSrOldS7bHybywpj3pKXTMWEZ',
+  'eastday.com': 'https://imgs.react.mobi/FvCrL3RB16fjHafbjXhrrg3zOmGA',
+  'qq.com': 'https://imgs.react.mobi/FkIgsT1b8qL52F8fKidNimDhKUJB',
+};
+
+
 @withRouter
 export default class NewsList extends PureComponent {
   render() {
@@ -67,7 +75,7 @@ export default class NewsList extends PureComponent {
                         <Typography variant="h6" style={{ maxHeight: 56, overflow: 'hidden' }}>{i.title}</Typography>
                         <CardHeader
                           avatar={(
-                            <Avatar aria-label="Recipe" >
+                            <Avatar aria-label="Recipe" src={appLogo[i.appCode]}>
                               {i.appName[0]}
                             </Avatar>
                           )}

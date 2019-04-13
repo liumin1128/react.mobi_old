@@ -30,6 +30,8 @@ export default class NewsDetail extends PureComponent {
 
           return (
             <div style={{ maxWidth: 700 }}>
+              {appCode}
+              <br />
               <a href={url} target="_blank">{url}</a>
               <Typography variant="h6">{title}</Typography>
               <br />
