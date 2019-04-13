@@ -12,6 +12,7 @@ import { NEWS_LIST } from '@/graphql/schema/news';
 import { updateQuery } from '@/graphql/utils';
 import { formatTime } from '@/utils/common';
 import Link from '@/components/Link'
+import Loading from '@/components/Loading'
 
 @withRouter
 export default class NewsList extends PureComponent {
@@ -63,10 +64,10 @@ export default class NewsList extends PureComponent {
                           }}
                           image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''  }
                         />
-                        <Typography variant="h6" style={{ fontSize: '1.125em', maxHeight: 56, overflow: 'hidden' }}>{i.title}</Typography>
+                        <Typography variant="h6" style={{ maxHeight: 56, overflow: 'hidden' }}>{i.title}</Typography>
                         <CardHeader
                           avatar={(
-                            <Avatar aria-label="Recipe">
+                            <Avatar aria-label="Recipe" >
                               {i.appName[0]}
                             </Avatar>
                           )}
@@ -78,7 +79,7 @@ export default class NewsList extends PureComponent {
                     </Grid>
                   ))}
                 </Grid>
-                <CircularProgress color="secondary" />
+                <Loading />
                 <Waypoint onEnter={loadMore} />
               </Fragment>
             );
