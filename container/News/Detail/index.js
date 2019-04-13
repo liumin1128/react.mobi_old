@@ -27,6 +27,7 @@ export default class NewsDetail extends PureComponent {
           if (loading) return <Loading />;
 
           const { user, title, cover, html, url, content, showHtml, appCode, photos } = data;
+
           return (
             <div style={{ maxWidth: 700 }}>
               <a href={url} target="_blank">{url}</a>

@@ -58,7 +58,7 @@ export default class NewsList extends PureComponent {
                       <Link to={"/news/detail?_id="+i._id}>
                         <CardMedia
                           style={{
-                            paddingTop: '55%',
+                            paddingTop: '56%',
                             backgroundColor: 'rgba(0,0,0,0.05)',
                             marginBottom: 16
                           }}
