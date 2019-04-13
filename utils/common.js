@@ -1,3 +1,7 @@
+import { format } from 'timeago.js';
+
+export const getTimeAgo = date => format(date, 'zh_CN');
+
 export function isWeixin() {
   const ua = navigator.userAgent.toLowerCase();
   if (ua.indexOf('micromessenger') !== -1) {

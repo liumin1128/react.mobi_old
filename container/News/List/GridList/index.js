@@ -10,7 +10,7 @@ import Avatar from '@material-ui/core/Avatar';
 import CardMedia from '@material-ui/core/CardMedia';
 import { NEWS_LIST } from '@/graphql/schema/news';
 import { updateQuery } from '@/graphql/utils';
-import { formatTime } from '@/utils/common';
+import { formatTime, getTimeAgo } from '@/utils/common';
 import Link from '@/components/Link'
 import Loading from '@/components/Loading'
 
@@ -68,22 +68,34 @@ export default class NewsList extends PureComponent {
                           style={{
                             paddingTop: '56%',
                             backgroundColor: 'rgba(0,0,0,0.05)',
-                            marginBottom: 16
+                            marginBottom: 12,
+                            borderRadius: 4
                           }}
                           image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''  }
                         />
-                        <Typography variant="h6" style={{ maxHeight: 56, overflow: 'hidden' }}>{i.title}</Typography>
-                        <CardHeader
-                          avatar={(
-                            <Avatar aria-label="Recipe" src={appLogo[i.appCode]}>
-                              {i.appName[0]}
-                            </Avatar>
-                          )}
-                          title={i.appName}
-                          subheader={formatTime(i.createdAt, 'MM月DD日 HH:mm 星期')}
-                          style={{ paddingLeft: 0, paddingTop: 16 }}
-                        />
+                        <Typography variant="h6" gutterBottom style={{ maxHeight: 50,fontSize: 16, overflow: 'hidden' }}>{i.title}</Typography>
+                        <div style={{display: 'flex',alignItems: 'center', fontSize: 12, color: '#666'}}>
+                          <Avatar aria-label="Recipe" src={appLogo[i.appCode]} style={{maxWidth: 18,maxHeight: 18, fontSize: 10, marginRight: 8}}>
+                            {i.appName[0]}
+                          </Avatar>
+                          <p style={{flex: 1, margin: 0}}>{i.appName}</p>
+                          <p style={{ margin: 0}}>{getTimeAgo(i.createdAt)}</p>
+                        </div>
+                        {
+                        //   <CardHeader
+                        //   avatar={(
+                        //     <Avatar aria-label="Recipe" src={appLogo[i.appCode]}>
+                        //       {i.appName[0]}
+                        //     </Avatar>
+                        //   )}
+                        //   title={i.appName}
+                        //   subheader={formatTime(i.createdAt, 'MM月DD日 HH:mm 星期')}
+                        //   style={{ paddingLeft: 0, paddingTop: 16 }}
+                        // />
+                          }
                       </Link>
+
+
                     </Grid>
                   ))}
                 </Grid>
