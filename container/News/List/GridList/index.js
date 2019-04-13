@@ -58,7 +58,7 @@ export default class NewsList extends PureComponent {
             return (
               <Fragment>
 
-                <Grid container spacing={24}>
+                <Grid container spacing={16}>
                   {list
                     // .slice(0, 4)
                     .map((i, index) => (
@@ -73,11 +73,13 @@ export default class NewsList extends PureComponent {
                           }}
                           image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''  }
                         />
-                        <Typography variant="h6" gutterBottom style={{ maxHeight: 50,fontSize: 16, overflow: 'hidden' }}>{i.title}</Typography>
+                        <Typography variant="h6" gutterBottom style={{ height: 50,fontSize: 16, overflow: 'hidden' }}>{i.title}</Typography>
                         <div style={{display: 'flex',alignItems: 'center', fontSize: 12, color: '#666', opacity: 0.8}}>
-                          <Avatar aria-label="Recipe" src={appLogo[i.appCode]} style={{maxWidth: 18,maxHeight: 18, fontSize: 10, marginRight: 8}}>
-                            {i.appName[0]}
-                          </Avatar>
+                          {
+                          //   <Avatar aria-label="Recipe" src={appLogo[i.appCode]} style={{maxWidth: 18,maxHeight: 18, fontSize: 10, marginRight: 8}}>
+                          //   {i.appName[0]}
+                          // </Avatar>
+                          }
                           <p style={{flex: 1, margin: 0}}>{i.appName}</p>
                           <p style={{ margin: 0}}>{getTimeAgo(i.createdAt)}</p>
                         </div>
