@@ -14,8 +14,11 @@ const styles = theme => ({
       margin: 0,
     },
     '& iframe': {
-      maxWidth: '100%',
-      height: 'auto',
+      width: '100%',
+      [theme.breakpoints.down('xs')]: {
+        maxWidth: '100%',
+        height: 'auto',
+      },
     },
     '& figure img': {
       margin: 'auto',
