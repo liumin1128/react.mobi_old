@@ -24,7 +24,10 @@ const styles = theme => ({
       marginTop: '1em',
       marginBottom: '1em',
     },
-
+    '& figure a': {
+      display: 'block',
+      paddingBottom: '0 !important',
+    },
 
     // '& a': {
     //   margin: 0,
