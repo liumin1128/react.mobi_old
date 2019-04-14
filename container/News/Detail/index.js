@@ -43,14 +43,13 @@ export default class NewsDetail extends PureComponent {
               <Typography variant="h4" style={{ fontWeight: 600 }}>{title}</Typography>
               <br />
               <div style={{ display: 'flex', alignItems: 'center', fontSize: 12, color: '#666', opacity: 0.8 }}>
-                <a href={url} target="_blank" style={{ flex: 1, margin: 0, display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+                <a href={url} target="_blank" style={{ margin: 0, display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
                   <Avatar aria-label="Recipe" src={appLogo[appCode]} style={{ maxWidth: 18, maxHeight: 18, fontSize: 10, marginRight: 8 }}>
                     {appName[0]}
                   </Avatar>
-                  <p style={{ margin: 0, color: '#666' }}>
+                  <p style={{ margin: 0, color: '#666', marginRight: 8 }}>
                     {appName}
-                    {' '}
-                    - 原文链接
+                    {'  '}
                   </p>
                 </a>
                 <p style={{ margin: 0 }}>{formatTime(createdAt, 'YYYY-MM-DD HH:mm:ss')}</p>
