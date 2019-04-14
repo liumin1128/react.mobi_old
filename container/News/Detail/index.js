@@ -39,17 +39,21 @@ export default class NewsDetail extends PureComponent {
           const { user, title, cover, html, url, content, showHtml, appCode, appName, photos, createdAt } = data;
 
           return (
-            <div style={{ maxWidth: 700 }}>
-              <Typography variant="h6">{title}</Typography>
+            <div style={{ maxWidth: 660 }}>
+              <Typography variant="h4" style={{ fontWeight: 600 }}>{title}</Typography>
               <br />
               <div style={{ display: 'flex', alignItems: 'center', fontSize: 12, color: '#666', opacity: 0.8 }}>
                 <a href={url} target="_blank" style={{ flex: 1, margin: 0, display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
                   <Avatar aria-label="Recipe" src={appLogo[appCode]} style={{ maxWidth: 18, maxHeight: 18, fontSize: 10, marginRight: 8 }}>
                     {appName[0]}
                   </Avatar>
-                  <p style={{ margin: 0, color: '#666' }}>{appName}</p>
+                  <p style={{ margin: 0, color: '#666' }}>
+                    {appName}
+                    {' '}
+                    - 原文链接
+                  </p>
                 </a>
-                <p style={{ margin: 0 }}>{getTimeAgo(createdAt)}</p>
+                <p style={{ margin: 0 }}>{formatTime(createdAt, 'YYYY-MM-DD HH:mm:ss')}</p>
               </div>
               <br />
               <Html html={html} />

@@ -10,6 +10,10 @@ const styles = theme => ({
       maxWidth: '100%',
       margin: 'auto',
     },
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'none',
+    },
     '& figure': {
       margin: 0,
     },
