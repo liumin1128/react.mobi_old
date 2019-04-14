@@ -4,7 +4,7 @@
         "name": "react.mobi",
         "script": "server.js",
         "log_date_format": "YYYY-MM-DD HH:mm Z",
-        "cron_restart": "0 4 * * *",
+        "cron_restart": "0 */10 * * * *",
         "instances": 2,
         "env": {
           "NODE_ENV": "production"
