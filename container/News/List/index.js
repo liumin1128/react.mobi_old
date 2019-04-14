@@ -7,7 +7,6 @@ import Recommend from './GridList';
 export default () => (
   <Fragment>
     <br />
-    <Typography variant="h5" gutterBottom>Switch News</Typography>
     <Recommend />
   </Fragment>
 );

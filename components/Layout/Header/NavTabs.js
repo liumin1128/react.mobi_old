@@ -47,9 +47,9 @@ const styles = theme => ({
 });
 
 const navList = [
-  { href: '/', label: '盗火', icon: HomeIcon },
+  { href: '/', label: '首页', icon: HomeIcon },
   { href: '/article', label: '文章', icon: HomeIcon },
-  { href: '/say', label: '讨论', icon: HomeIcon },
+  // { href: '/say', label: '讨论', icon: HomeIcon },
   { href: '/ex', label: '知蛛', icon: AppsIcon },
 ];
 
