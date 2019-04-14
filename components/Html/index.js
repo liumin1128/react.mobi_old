@@ -13,11 +13,16 @@ const styles = theme => ({
     '& figure': {
       margin: 0,
     },
-    '& figure a': {
+    '& iframe': {
+      width: '100%',
     },
     '& figure img': {
-      marginTop: '-16px',
-      marginBottom: '-16px',
+      margin: 'auto',
+      width: '100%',
+      maxWidth: '100%',
+      display: 'block',
+      marginTop: '1em',
+      marginBottom: '1em',
     },
 
 
