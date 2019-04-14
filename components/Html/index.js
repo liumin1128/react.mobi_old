@@ -14,7 +14,8 @@ const styles = theme => ({
       margin: 0,
     },
     '& iframe': {
-      width: '100%',
+      maxWidth: '100%',
+      height: 'auto',
     },
     '& figure img': {
       margin: 'auto',
