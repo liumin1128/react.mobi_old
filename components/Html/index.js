@@ -31,6 +31,7 @@ const styles = theme => ({
       display: 'block',
       marginTop: '1em',
       marginBottom: '1em',
+      backgroundColor: 'rgba(0,0,0,0.05)',
     },
     '& figure a': {
       display: 'block',
