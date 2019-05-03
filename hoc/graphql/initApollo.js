@@ -22,6 +22,7 @@ const cache = new InMemoryCache({
     Query: {
       say: (_, { _id }, { getCacheKey }) => getCacheKey({ __typename: 'Say', _id }),
       article: (_, { _id }, { getCacheKey }) => getCacheKey({ __typename: 'Article', _id }),
+      news: (_, { _id }, { getCacheKey }) => getCacheKey({ __typename: 'News', _id }),
     },
   },
 });

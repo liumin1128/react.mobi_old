@@ -4,13 +4,13 @@ import { Query } from 'react-apollo';
 import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Typography from '@material-ui/core/Typography';
-import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import CardMedia from '@material-ui/core/CardMedia';
 import { NEWS_LIST } from '@/graphql/schema/news';
-import { updateQuery } from '@/graphql/utils';
-import { formatTime, getTimeAgo } from '@/utils/common';
+import { getTimeAgo } from '@/utils/common';
 import Link from '@/components/Link'
 import Loading from '@/components/Loading'
 
@@ -73,30 +73,38 @@ export default class NewsList extends PureComponent {
                           }}
                           image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''  }
                         />
-                        <Typography variant="h6" gutterBottom style={{ height: 50,fontSize: 16, overflow: 'hidden' }}>{i.title}</Typography>
-                        <div style={{display: 'flex',alignItems: 'center', fontSize: 12, color: '#666', opacity: 0.8}}>
-                          {
-                          //   <Avatar aria-label="Recipe" src={appLogo[i.appCode]} style={{maxWidth: 18,maxHeight: 18, fontSize: 10, marginRight: 8}}>
-                          //   {i.appName[0]}
-                          // </Avatar>
-                          }
-                          <p style={{flex: 1, margin: 0}}>{i.appName}</p>
-                          <p style={{ margin: 0}}>{getTimeAgo(i.createdAt)}</p>
-                        </div>
+                        <Typography variant="h6" style={{ overflow: 'hidden' }}>{i.title}</Typography>
+
                         {
-                        //   <CardHeader
-                        //   avatar={(
-                        //     <Avatar aria-label="Recipe" src={appLogo[i.appCode]}>
-                        //       {i.appName[0]}
-                        //     </Avatar>
-                        //   )}
-                        //   title={i.appName}
-                        //   subheader={formatTime(i.createdAt, 'MM月DD日 HH:mm 星期')}
-                        //   style={{ paddingLeft: 0, paddingTop: 16 }}
-                        // />
+                          <CardHeader
+                            avatar={(
+                              <Avatar aria-label="Recipe" src={appLogo[i.appCode]}>
+                                {i.appName[0]}
+                              </Avatar>
+                            )}
+                            title={i.appName}
+                            subheader={getTimeAgo(i.createdAt)}
+                            style={{ paddingLeft: 0, paddingTop: 16 }}
+                          />
                           }
                       </Link>
 
+                      <div style={{display: 'flex', alignItems: 'center'}}>
+                        <Typography variant="caption" gutterBottom style={{marginRight: 8}}>
+                          {i.appName}
+                        </Typography>
+                        <Typography variant="caption" gutterBottom style={{flex: 1}}>
+                          {getTimeAgo(i.createdAt)}
+                        </Typography>
+                        <IconButton
+                          aria-label="More"
+                          // aria-owns={open ? 'long-menu' : undefined}
+                          aria-haspopup="true"
+                          // onClick={this.handleClick}
+                        >
+                          <MoreVertIcon />
+                        </IconButton>
+                      </div>
 
                     </Grid>
                   ))}
