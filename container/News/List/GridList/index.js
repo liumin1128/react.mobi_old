@@ -9,10 +9,12 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import CardMedia from '@material-ui/core/CardMedia';
+import CardHeader from '@material-ui/core/CardHeader';
 import { NEWS_LIST } from '@/graphql/schema/news';
 import { getTimeAgo } from '@/utils/common';
 import Link from '@/components/Link'
 import Loading from '@/components/Loading'
+import { updateQuery } from '@/graphql/utils';
 
 const appLogo = {
   '3dmgame.com': 'https://imgs.react.mobi/FhyQn2l-CNmlB-Oxi9pXvm0vZqSJ',
