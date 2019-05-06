@@ -78,16 +78,16 @@ export default class NewsList extends PureComponent {
                         <Typography variant="h6" style={{ overflow: 'hidden' }}>{i.title}</Typography>
 
                         {
-                          <CardHeader
-                            avatar={(
-                              <Avatar aria-label="Recipe" src={appLogo[i.appCode]}>
-                                {i.appName[0]}
-                              </Avatar>
-                            )}
-                            title={i.appName}
-                            subheader={getTimeAgo(i.createdAt)}
-                            style={{ paddingLeft: 0, paddingTop: 16 }}
-                          />
+                          // <CardHeader
+                          //   avatar={(
+                          //     <Avatar aria-label="Recipe" src={appLogo[i.appCode]}>
+                          //       {i.appName[0]}
+                          //     </Avatar>
+                          //   )}
+                          //   title={i.appName}
+                          //   subheader={getTimeAgo(i.createdAt)}
+                          //   style={{ paddingLeft: 0, paddingTop: 16 }}
+                          // />
                           }
                       </Link>
 
