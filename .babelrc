@@ -6,7 +6,7 @@
   "plugins": [
     "@babel/transform-runtime",
     ["@babel/plugin-proposal-decorators", { "legacy": true } ],
-    ["module-resolver", { "alias": { "@": "./" } }]
+    ["module-resolver", { "alias": { "@": "./src/" } }]
   ],
   "env": {
     "production": {
