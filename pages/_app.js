@@ -7,6 +7,10 @@ import theme from '../src/theme';
 
 class MyApp extends App {
   componentDidMount() {
+    this.removeJssStyles();
+  }
+
+  removeJssStyles = () => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
