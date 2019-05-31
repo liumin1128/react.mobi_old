@@ -6,7 +6,6 @@ import Box from '@material-ui/core/Box';
 import MuiLink from '@material-ui/core/Link';
 import ProTip from '@/components/ProTip';
 import Link from '@/components/Link';
-import TabNavigation from '@/components/Navigation/Tab';
 
 
 function MadeWithLove() {
@@ -21,10 +20,10 @@ function MadeWithLove() {
   );
 }
 
+
 export default function Index() {
   return (
     <Container maxWidth="sm">
-      <TabNavigation />
       <Box my={4}>
         <Typography variant="h4" component="h1" gutterBottom>
           Next.js v4-beta example
