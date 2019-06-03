@@ -26,7 +26,9 @@ export default function About() {
           Next.js v4-beta example
         </Typography>
         <Link href="/">Go to the main page</Link>
+        我去我去
         <ProTip />
+        wqwq
         <MadeWithLove />
       </Box>
     </Container>
