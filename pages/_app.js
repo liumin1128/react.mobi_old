@@ -2,7 +2,7 @@ import React from 'react';
 import App, { Container } from 'next/app';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TabNavigation from '@/components/Navigation/Tab';
+import NavTab from '@/components/NavTab';
 import theme from '@/config/theme';
 
 const navList = [
@@ -29,7 +29,7 @@ class MyApp extends App {
       <Container>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <TabNavigation navList={navList} />
+          <NavTab navList={navList} />
           <Component {...pageProps} />
         </ThemeProvider>
       </Container>
