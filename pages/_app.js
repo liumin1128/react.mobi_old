@@ -3,7 +3,7 @@ import App, { Container } from 'next/app';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TabNavigation from '@/components/Navigation/Tab';
-import theme from '../src/theme';
+import theme from '@/config/theme';
 
 const navList = [
   { pathname: '/', label: '首页' },
