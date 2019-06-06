@@ -1,22 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 
-function TabContainer({ children }) {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {children}
-    </Typography>
-  );
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+import { useOnMount, useOnUnmount } from '@/hooks';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,7 +18,22 @@ function SimpleTabs({ navList = [] }) {
   const classes = useStyles();
 
   const router = useRouter();
+
   const [ value, setValue ] = useState(router.pathname);
+
+  useOnMount(() => {
+    Router.events.on('routeChangeStart', onRouteChange);
+  });
+
+  useOnUnmount(() => {
+    Router.events.off('routeChangeStart', onRouteChange);
+  });
+
+  function onRouteChange(pathname) {
+    if (navList.findIndex(i => i.pathname === pathname) !== -1) {
+      setValue(pathname);
+    }
+  }
 
   function handleChange(event, pathname) {
     setValue(pathname);
