@@ -12,13 +12,11 @@ import { withThemeConsumer } from '@/hoc/theme';
 
 class Index extends PureComponent {
   render() {
-    console.log('this.props');
-    console.log(this.props);
     const { setTheme, theme } = this.props;
     return (
       <Container maxWidth="sm">
         <h1>{theme.color}</h1>
-        <Button onClick={setTheme}>111111111</Button>
+        <Button onClick={setTheme}>switch theme</Button>
         <Box my={4}>
           <Typography variant="h4" component="h1" gutterBottom>
             Next.js v4-beta example
