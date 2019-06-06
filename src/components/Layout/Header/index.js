@@ -24,11 +24,8 @@ const styles = theme => ({
       height: 56,
     },
   },
-  grow: {
-    flexGrow: 1,
-  },
-  indicator: {
-    backgroundColor: '#ffffff',
+  logo: {
+    marginRight: 16,
   },
 });
 
