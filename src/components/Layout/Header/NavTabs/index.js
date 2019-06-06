@@ -8,9 +8,17 @@ import Tab from '@material-ui/core/Tab';
 import { useOnMount, useOnUnmount } from '@/hooks';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+  tab: {
+    height: 64,
+    minWidth: 100,
+    fontWeight: 'bold',
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  indicator: {
+    backgroundColor: '#ffffff',
   },
 }));
 
@@ -41,12 +49,21 @@ function SimpleTabs({ navList = [] }) {
   }
 
   return (
-    <Tabs value={value} onChange={handleChange}>
+    <Tabs
+      value={value}
+      onChange={handleChange}
+      classes={{
+        indicator: classes.indicator,
+      }}
+    >
       {navList.map(i => (
         <Tab
           key={i.key || i.label}
           label={i.label}
           value={i.pathname}
+          classes={{
+            root: classes.tab,
+          }}
         />
       ))}
     </Tabs>
