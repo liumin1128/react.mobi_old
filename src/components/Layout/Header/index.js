@@ -1,16 +1,19 @@
 import React, { PureComponent } from 'react';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
-import NavTabs from './NavTabs';
-import Logo from './logo';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import Avatar from '@material-ui/core/Avatar';
 
-const DynamicUserInfoWithNoSSR = dynamic(() => import('./user'), {
-  ssr: false,
-  loading: () => <span />,
-});
+import NavTabs from '@/components/NavTabs';
+import Link from '@/components/Link';
+// import Logo from './logo';
+
+// const DynamicUserInfoWithNoSSR = dynamic(() => import('./user'), {
+//   ssr: false,
+//   loading: () => <span />,
+// });
 
 const styles = theme => ({
   root: {
@@ -27,34 +30,28 @@ const styles = theme => ({
   },
 });
 
+const navList = [
+  { pathname: '/', label: '首页' },
+  { pathname: '/about', label: '关于' },
+];
+
 @withStyles(styles)
 export default class Header extends PureComponent {
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar
-          // position="static"
-          className={classes.root}
-        >
+        <AppBar className={classes.root}>
           <Toolbar>
             <Link href="/">
-              <a><Logo /></a>
+              <ButtonBase centerRipple className={classes.logo}>
+                <Avatar src="https://imgs.react.mobi/FldU5XAVJksEDNDEs7MZiF36DMAz" />
+              </ButtonBase>
             </Link>
             <div className={classes.grow}>
-              <NavTabs />
+              <NavTabs navList={navList} />
             </div>
-            <DynamicUserInfoWithNoSSR />
           </Toolbar>
-          {
-          //   <Hidden implementation="css" smUp>
-          //   <Affix>
-          //     <div style={{ background: '#00bcd4' }}>
-          //       <NavTabs />
-          //     </div>
-          //   </Affix>
-          // </Hidden>
-          }
         </AppBar>
       </div>
     );

@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SimpleTabs({ navList }) {
+function SimpleTabs({ navList = [] }) {
   const classes = useStyles();
 
   const router = useRouter();
@@ -48,5 +48,9 @@ function SimpleTabs({ navList }) {
     </Tabs>
   );
 }
+
+SimpleTabs.propTypes = {
+  navList: PropTypes.array.isRequired,
+};
 
 export default SimpleTabs;

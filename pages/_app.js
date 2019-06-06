@@ -2,8 +2,12 @@ import React from 'react';
 import App, { Container } from 'next/app';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import NavTab from '@/components/NavTab';
+
+import NavTabs from '@/components/NavTabs';
 import theme from '@/config/theme';
+
+import Header from '@/components/Layout/Header';
+
 
 const navList = [
   { pathname: '/', label: '首页' },
@@ -29,7 +33,8 @@ class MyApp extends App {
       <Container>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <NavTab navList={navList} />
+          <Header />
+          <NavTabs navList={navList} />
           <Component {...pageProps} />
         </ThemeProvider>
       </Container>
