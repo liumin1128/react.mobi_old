@@ -10,12 +10,12 @@ import { useOnMount, useOnUnmount } from '@/hooks';
 const useStyles = makeStyles(theme => ({
   tab: {
     height: 64,
-    minWidth: 100,
+    minWidth: 80,
     fontWeight: 'bold',
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    [theme.breakpoints.down('xs')]: {
+      minWidth: 70,
+      height: 56,
+    },
   },
   indicator: {
     backgroundColor: '#ffffff',
