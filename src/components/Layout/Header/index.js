@@ -37,11 +37,9 @@ export default class Header extends PureComponent {
       <div className={classes.root}>
         <AppBar className={classes.root}>
           <Toolbar>
-            <Link href="/">
-              <ButtonBase centerRipple className={classes.logo}>
-                <Avatar src={LOGO_URL} />
-              </ButtonBase>
-            </Link>
+            <ButtonBase centerRipple className={classes.logo}>
+              <Avatar src={LOGO_URL} />
+            </ButtonBase>
             <div className={classes.grow}>
               <NavTabs navList={NAV_TABS} />
             </div>
