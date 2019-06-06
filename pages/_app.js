@@ -4,6 +4,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '@/config/theme';
 import Header from '@/components/Layout/Header';
+import { withTheme } from '@/hoc/theme';
 
 class MyApp extends App {
   componentDidMount() {
@@ -20,6 +21,9 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
+    console.log('this.props');
+    console.log(this.props);
+
     return (
       <Container>
         <ThemeProvider theme={theme}>
@@ -32,4 +36,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default withTheme(MyApp);

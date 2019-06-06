@@ -14,45 +14,51 @@ export function modalProvider(WrappedComponent) {
     state = {
       modals: [],
     }
+
     handleClose = (key) => {
       const { modals = [] } = this.state;
       modals.find(i => i.key === key).open = false;
-      this.setState({ modals: [...modals] });
+      this.setState({ modals: [ ...modals ] });
     };
+
     destory = (key) => {
       const { modals = [] } = this.state;
       modals.splice(modals.findIndex(i => i.key === key), 1);
-      this.setState({ modals: [...modals] });
+      this.setState({ modals: [ ...modals ] });
     }
+
     render() {
       const { modals = [] } = this.state;
-      return (<ModalContext.Provider
-        value={{
-          modal: (C) => {
-            this.setState({
-              modals: [...modals, {
-                key: randomString(),
-                open: true,
-                C,
-              }],
-            });
-          },
-        }}
-      >
-        <WrappedComponent {...this.props} />
-        {modals.map(({ key, C, open }) =>
-          (<Dialog
-            key={key}
-            open={open}
-            keepMounted={false}
-            TransitionComponent={Transition}
-            onClose={() => this.handleClose(key)}
-            onExited={() => this.destory(key)}
-            aria-labelledby="form-dialog-title"
-          >
-            <C close={() => this.handleClose(key)} />
-          </Dialog>))}
-      </ModalContext.Provider>);
+      return (
+        <ModalContext.Provider
+          value={{
+            modal: (C) => {
+              this.setState({
+                modals: [ ...modals, {
+                  key: randomString(),
+                  open: true,
+                  C,
+                } ],
+              });
+            },
+          }}
+        >
+          <WrappedComponent {...this.props} />
+          {modals.map(({ key, C, open }) => (
+            <Dialog
+              key={key}
+              open={open}
+              keepMounted={false}
+              TransitionComponent={Transition}
+              onClose={() => this.handleClose(key)}
+              onExited={() => this.destory(key)}
+              aria-labelledby="form-dialog-title"
+            >
+              <C close={() => this.handleClose(key)} />
+            </Dialog>
+          ))}
+        </ModalContext.Provider>
+      );
     }
   };
 }
@@ -63,10 +69,12 @@ export function modalConsumer(WrappedComponent) {
       return (
         <ModalContext.Consumer>
           {(value) => {
-            return (<WrappedComponent
-              {...this.props}
-              {...value}
-            />);
+            return (
+              <WrappedComponent
+                {...this.props}
+                {...value}
+              />
+            );
           }}
         </ModalContext.Consumer>
       );
@@ -80,4 +88,3 @@ export default class Modal extends PureComponent {
     return this.props.children;
   }
 }
-
