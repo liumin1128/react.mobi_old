@@ -2,6 +2,11 @@ import React, { PureComponent, createContext } from 'react';
 import defaultTheme from '@/config/theme';
 import darkTheme from '@/config/theme/dark';
 
+const themes = {
+  default: defaultTheme,
+  dark: darkTheme,
+};
+
 export const ThemeContext = createContext(defaultTheme);
 
 
@@ -17,7 +22,7 @@ export function withThemeConsumer(WrappedComponent) {
 export function withThemeProvider(WrappedComponent) {
   return class ThemeContextProvider extends PureComponent {
       state = {
-        theme: darkTheme,
+        theme: 'default',
       }
 
       render() {
@@ -25,10 +30,10 @@ export function withThemeProvider(WrappedComponent) {
         return (
           <ThemeContext.Provider
             value={{
-              theme,
+              theme: themes[theme],
               setTheme: () => {
                 this.setState({
-                  theme: theme.background === 'white' ? darkTheme : defaultTheme,
+                  theme: theme === 'default' ? 'dark' : 'default',
                 });
               },
             }}
