@@ -22,7 +22,7 @@ export function withThemeConsumer(WrappedComponent) {
 export function withThemeProvider(WrappedComponent) {
   return class ThemeContextProvider extends PureComponent {
       state = {
-        theme: 'default',
+        theme: 'dark',
       }
 
       render() {
