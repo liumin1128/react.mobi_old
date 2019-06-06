@@ -73,18 +73,6 @@ export default createMuiTheme({
   palette: {
     primary: { ...cyan, contrastText: '#fff' },
     secondary: red,
-    // primary: {
-    //   light: '#ff8b80',
-    //   main: '#ff6f61',
-    //   dark: '#b24d43',
-    //   contrastText: '#fff',
-    // },
-    // secondary: {
-    //   light: '#73c9ff',
-    //   main: '#50bcff',
-    //   dark: '#3883b2',
-    //   contrastText: '#fff',
-    // },
     background: {
       default: '#ffffff',
     },
