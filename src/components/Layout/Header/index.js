@@ -6,8 +6,10 @@ import AppBar from '@material-ui/core/AppBar';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Avatar from '@material-ui/core/Avatar';
 
-import NavTabs from '@/components/NavTabs';
 import Link from '@/components/Link';
+import { LOGO_URL, NAV_TABS } from '@/config/base';
+
+import NavTabs from './NavTabs';
 // import Logo from './logo';
 
 // const DynamicUserInfoWithNoSSR = dynamic(() => import('./user'), {
@@ -30,11 +32,6 @@ const styles = theme => ({
   },
 });
 
-const navList = [
-  { pathname: '/', label: '首页' },
-  { pathname: '/about', label: '关于' },
-];
-
 @withStyles(styles)
 export default class Header extends PureComponent {
   render() {
@@ -45,11 +42,11 @@ export default class Header extends PureComponent {
           <Toolbar>
             <Link href="/">
               <ButtonBase centerRipple className={classes.logo}>
-                <Avatar src="https://imgs.react.mobi/FldU5XAVJksEDNDEs7MZiF36DMAz" />
+                <Avatar src={LOGO_URL} />
               </ButtonBase>
             </Link>
             <div className={classes.grow}>
-              <NavTabs navList={navList} />
+              <NavTabs navList={NAV_TABS} />
             </div>
           </Toolbar>
         </AppBar>
