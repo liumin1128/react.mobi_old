@@ -1,39 +1,36 @@
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import MuiLink from '@material-ui/core/Link';
 import ProTip from '@/components/ProTip';
 import Link from '@/components/Link';
+import { withThemeConsumer } from '@/hoc/theme';
 
 
-function MadeWithLove() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Built with love by the '}
-      <MuiLink color="inherit" href="https://material-ui.com/">
-        Material-UI
-      </MuiLink>
-      {' team.'}
-    </Typography>
-  );
+class Index extends PureComponent {
+  render() {
+    console.log('this.props');
+    console.log(this.props);
+    const { setTheme, theme } = this.props;
+    return (
+      <Container maxWidth="sm">
+        <h1>{theme.color}</h1>
+        <Button onClick={setTheme}>111111111</Button>
+        <Box my={4}>
+          <Typography variant="h4" component="h1" gutterBottom>
+            Next.js v4-beta example
+          </Typography>
+          <Link href="/about" color="secondary">
+            Go to the about page
+          </Link>
+          <ProTip />
+        </Box>
+      </Container>
+    );
+  }
 }
 
-
-export default function Index() {
-  return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Next.js v4-beta example
-        </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <ProTip />
-        <MadeWithLove />
-      </Box>
-    </Container>
-  );
-}
+export default withThemeConsumer(Index);
