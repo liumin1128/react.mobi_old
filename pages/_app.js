@@ -4,7 +4,9 @@ import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { withThemeProvider, withThemeConsumer } from '@/hoc/theme';
 import defaultLayout from '@/hoc/layout';
+import withGraphql from '@/hoc/graphql/apolloRoot';
 
+@withGraphql
 @withThemeProvider
 @withThemeConsumer
 @defaultLayout
