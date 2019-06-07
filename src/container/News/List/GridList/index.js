@@ -65,7 +65,7 @@ export default class NewsList extends PureComponent {
                     // .slice(0, 4)
                     .map((i, index) => (
                     <Grid key={i._id} item xs={12} md={4}>
-                      <Link to={"/news/detail?_id="+i._id}>
+                      <Link href={"/news/detail?_id="+i._id}>
                         <CardMedia
                           style={{
                             paddingTop: '56%',

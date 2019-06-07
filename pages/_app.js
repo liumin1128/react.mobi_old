@@ -26,9 +26,6 @@ export default class MyApp extends App {
 
   render() {
     const { Component, pageProps, theme, apolloClient } = this.props;
-
-    console.log('apolloClient');
-    console.log(apolloClient);
     return (
       <Container>
         <ApolloProvider client={apolloClient}>
