@@ -19,9 +19,8 @@ import Link from '@/components/Link';
 import Loading from '@/components/Loading';
 import { updateQuery } from '@/graphql/utils';
 import { useQuery } from 'react-apollo-hooks';
-
+import { useLoadMore } from '@/hooks/graphql';
 import useStyles from './styles';
-import useLoadMore from './useLoadMore';
 
 
 function NewsList({ router }) {
