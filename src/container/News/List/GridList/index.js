@@ -40,8 +40,8 @@ const useStyles = makeStyles({
 
 function NewsList({ router }) {
   const classes = useStyles();
-
-  const { data, error, loading } = useQuery(NEWS_LIST);
+  const { search, tag, type } = router.query;
+  const { data, error, loading } = useQuery(NEWS_LIST, { search, tag, type });
 
   if (loading) {
     return <div>Loading...</div>;
