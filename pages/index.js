@@ -32,7 +32,6 @@ class Index extends PureComponent {
   }
 }
 
-Index.Layout = Fragment;
 Index.Header = Header;
 
 export default Index;

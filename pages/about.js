@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box';
 import MuiLink from '@material-ui/core/Link';
 import ProTip from '@/components/ProTip';
 import Link from '@/components/Link';
+import Header from '@/components/Layout/Header';
 
 function MadeWithLove() {
   return (
@@ -18,7 +19,7 @@ function MadeWithLove() {
   );
 }
 
-export default function About() {
+function About() {
   return (
     <Container maxWidth="sm">
       <Box my={4}>
@@ -34,3 +35,7 @@ export default function About() {
     </Container>
   );
 }
+
+About.Header = Header;
+
+export default About;
