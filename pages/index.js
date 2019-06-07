@@ -13,15 +13,8 @@ import Content from '@/container/News/List';
 class Index extends PureComponent {
   render() {
     return (
-      <Container maxWidth="sm">
-        <Box my={4}>
-          <Typography variant="h4" component="h1" gutterBottom>
-            Next.js v4-beta example
-          </Typography>
-          <Link href="/about" color="secondary">
-            Go to the about page
-          </Link>
-          <ProTip />
+      <Container maxWidth="md">
+        <Box my={2}>
           <Content />
         </Box>
       </Container>

@@ -75,7 +75,7 @@ export default class NewsList extends PureComponent {
                           image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''  }
                         />
                         <Typography 
-                          variant="h6" 
+                          variant="subtitle2" 
                           color="textPrimary" 
                           style={{ overflow: 'hidden' }}>{i.title}</Typography>
 
