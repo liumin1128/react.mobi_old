@@ -5,7 +5,8 @@ import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Button from '@material-ui/core/Button';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -88,13 +89,14 @@ export default class NewsList extends PureComponent {
                         <Typography variant="caption" gutterBottom style={{flex: 1}}>
                           {getTimeAgo(i.createdAt)}
                         </Typography>
+                        
                         <IconButton
+                          // size="small"
+                          color="inherit"
                           aria-label="More"
-                          // aria-owns={open ? 'long-menu' : undefined}
                           aria-haspopup="true"
-                          // onClick={this.handleClick}
                         >
-                          <MoreVertIcon />
+                          <MoreHorizIcon fontSize="small" color="inherit" />
                         </IconButton>
                       </div>
 
