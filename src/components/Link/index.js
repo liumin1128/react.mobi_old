@@ -29,10 +29,21 @@ function Link(props) {
   });
 
   if (naked) {
-    return <NextComposed className={className} {...other} />;
+    return (
+      <NextComposed
+        className={className}
+        {...other}
+      />
+    );
   }
 
-  return <MuiLink component={NextComposed} className={className} {...other} />;
+  return (
+    <MuiLink
+      component={NextComposed}
+      className={className}
+      {...other}
+    />
+  );
 }
 
 

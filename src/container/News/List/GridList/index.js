@@ -62,7 +62,6 @@ export default class NewsList extends PureComponent {
 
                 <Grid container spacing={2}>
                   {list
-                    // .slice(0, 4)
                     .map((i, index) => (
                     <Grid key={i._id} item xs={12} md={4}>
                       <Link href={"/news/detail?_id="+i._id}>
@@ -75,20 +74,11 @@ export default class NewsList extends PureComponent {
                           }}
                           image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''  }
                         />
-                        <Typography variant="h6" style={{ overflow: 'hidden' }}>{i.title}</Typography>
+                        <Typography 
+                          variant="h6" 
+                          color="textPrimary" 
+                          style={{ overflow: 'hidden' }}>{i.title}</Typography>
 
-                        {
-                          // <CardHeader
-                          //   avatar={(
-                          //     <Avatar aria-label="Recipe" src={appLogo[i.appCode]}>
-                          //       {i.appName[0]}
-                          //     </Avatar>
-                          //   )}
-                          //   title={i.appName}
-                          //   subheader={getTimeAgo(i.createdAt)}
-                          //   style={{ paddingLeft: 0, paddingTop: 16 }}
-                          // />
-                          }
                       </Link>
 
                       <div style={{display: 'flex', alignItems: 'center'}}>
