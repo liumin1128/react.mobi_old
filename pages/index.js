@@ -1,5 +1,5 @@
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -8,11 +8,12 @@ import MuiLink from '@material-ui/core/Link';
 import ProTip from '@/components/ProTip';
 import Link from '@/components/Link';
 import { withThemeConsumer } from '@/hoc/theme';
+import Header from '@/components/Layout/Header';
 
 
 class Index extends PureComponent {
   render() {
-    const { setTheme, theme } = this.props;
+    const { setTheme, theme = {} } = this.props;
     return (
       <Container maxWidth="sm">
         <h1>{theme.color}</h1>
@@ -31,4 +32,7 @@ class Index extends PureComponent {
   }
 }
 
-export default withThemeConsumer(Index);
+Index.Layout = Fragment;
+Index.Header = Header;
+
+export default Index;

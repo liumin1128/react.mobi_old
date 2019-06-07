@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import App, { Container } from 'next/app';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Header from '@/components/Layout/Header';
 import { withThemeProvider, withThemeConsumer } from '@/hoc/theme';
+import defaultLayout from '@/hoc/layout';
 
 @withThemeProvider
 @withThemeConsumer
+@defaultLayout
 export default class MyApp extends App {
   componentDidMount() {
     this.removeJssStyles();
@@ -21,12 +22,17 @@ export default class MyApp extends App {
 
   render() {
     const { Component, pageProps, theme } = this.props;
+
+
     return (
       <Container>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Header />
-          <Component {...pageProps} />
+          <Component.Layout>
+            <Component.Header />
+            <Component {...pageProps} />
+            <Component.Footer />
+          </Component.Layout>
         </ThemeProvider>
       </Container>
     );
