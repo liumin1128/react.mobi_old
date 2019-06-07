@@ -60,7 +60,7 @@ export default class NewsList extends PureComponent {
             return (
               <Fragment>
 
-                <Grid container spacing={16}>
+                <Grid container spacing={2}>
                   {list
                     // .slice(0, 4)
                     .map((i, index) => (

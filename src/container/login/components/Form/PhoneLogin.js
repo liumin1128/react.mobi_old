@@ -64,7 +64,7 @@ export default class phone extends PureComponent {
           return (
             <form id="createArticleForm" onSubmit={handleSubmit}>
 
-              <Grid container spacing={16}>
+              <Grid container spacing={2}>
                 <Grid item xs>
                   <Field
                     fullWidth

@@ -7,6 +7,7 @@ import MuiLink from '@material-ui/core/Link';
 import ProTip from '@/components/ProTip';
 import Link from '@/components/Link';
 import Header from '@/components/Layout/Header';
+import Content from '@/container/News/List';
 
 
 class Index extends PureComponent {
@@ -21,6 +22,7 @@ class Index extends PureComponent {
             Go to the about page
           </Link>
           <ProTip />
+          <Content />
         </Box>
       </Container>
     );

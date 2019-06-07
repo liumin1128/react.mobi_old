@@ -1,5 +1,5 @@
 import React, { PureComponent, createRef } from 'react';
-import { Mutation, Query } from 'react-apollo';
+import * as Aaa from 'react-apollo';
 import { Form, Field } from 'react-final-form';
 import { withRouter } from 'next/router';
 
@@ -16,6 +16,12 @@ import TextField from '@/components/Form/TextField';
 import Snackbar from '@/components/Snackbar';
 
 import { CREATE_ARTICLE, ARTICLE_CONTENT } from '@/graphql/schema/article';
+
+const { Mutation, Query } = Aaa;
+
+console.log('Aaa');
+console.log(Aaa);
+
 
 const styles = theme => ({
   Card: {
@@ -125,7 +131,7 @@ export default class ArticleCreate extends PureComponent {
         validate={validate}
         render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
           <form id="createArticleForm" onSubmit={handleSubmit}>
-            <Grid container spacing={24}>
+            <Grid container spacing={3}>
               <Grid item md={8} xs={12}>
                 <Card className={classes.Card}>
                   <RichEditor

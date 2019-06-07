@@ -26,7 +26,7 @@ export default class News extends PureComponent {
       <div className={classes.root}>
         <AppBar title="用户协议" />
 
-        <Grid className={classes.container} container spacing={16}>
+        <Grid className={classes.container} container spacing={2}>
           <Grid item>
             <Typography>你点进来是打算看到什么？</Typography>
             <Typography>然鹅，并没有什么协议...</Typography>

@@ -61,7 +61,7 @@ export default class MeizituDetail extends PureComponent {
 
           return (
             <div>
-              <Grid container spacing={16}>
+              <Grid container spacing={2}>
                 {
                   list
                     .map(i => (<Grid item xs={4} key={i.tag} >

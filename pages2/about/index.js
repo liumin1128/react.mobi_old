@@ -8,7 +8,7 @@ export default class index extends PureComponent {
   render() {
     return (
       <div>
-        <Grid container spacing={16}>
+        <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={8}>
             <Typography variant="h6" gutterBottom>
               关于作者

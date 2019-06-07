@@ -87,7 +87,7 @@ export default class LoginForm extends PureComponent {
                 fullWidth
               />
 
-              <Grid container spacing={16}>
+              <Grid container spacing={2}>
                 <Grid item xs>
                   <Field
                     fullWidth

@@ -24,7 +24,7 @@ export default class index extends PureComponent {
     // https://imgs.react.mobi/FlbZ2qwJrIvzlzPXW1rCVCx2zKSV
     const { classes } = this.props;
     return (
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         <Grid item xs={6}>
           <CardMedia
             className={classes.media}

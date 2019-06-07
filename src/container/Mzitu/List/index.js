@@ -58,7 +58,7 @@ export default class MzituList extends PureComponent {
             });
 
             return (<Fragment>
-              <Grid spacing={16} container className={classes.list}>
+              <Grid spacing={2} container className={classes.list}>
                 {list.map(i => (
                   <Grid
                     key={i._id}

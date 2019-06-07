@@ -65,7 +65,7 @@ export default class NewsList extends PureComponent {
             return (
               <Fragment>
 
-                <Grid container className={classes.root} spacing={16}>
+                <Grid container className={classes.root} spacing={2}>
                   {list
                     // .slice(0, 4)
                     .map((i, index) => (
@@ -73,7 +73,7 @@ export default class NewsList extends PureComponent {
                     <Link to={"/news/detail?_id="+i._id}>
 
 
-                      <Grid container spacing={16}>
+                      <Grid container spacing={2}>
 
                         <Grid item xs={12} md={index === 0 ? 8 : 12}>
                           <CardMedia
