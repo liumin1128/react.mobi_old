@@ -23,7 +23,7 @@ import { useQuery } from 'react-apollo-hooks';
 const useStyles = makeStyles(theme => ({
   cover: {
     paddingTop: '56%',
-    backgroundColor: 'rgba(0,0,0,0.05)',
+    backgroundColor: 'rgba(128,128,128,0.3)',
     marginBottom: 12,
     borderRadius: 4,
     borderBottomRightRadius: 0,
@@ -43,11 +43,7 @@ const useStyles = makeStyles(theme => ({
     '-webkit-box-orient': 'vertical',
     // minHeight: '3em',
     [theme.breakpoints.down('xs')]: {
-      overflow: 'auto',
-      textOverflow: 'auto',
-      display: '-webkit-box',
       '-webkit-line-clamp': '3',
-      '-webkit-box-orient': 'vertical',
     },
   },
 }));
