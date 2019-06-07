@@ -3,6 +3,7 @@ import { withRouter } from 'next/router';
 import { Query } from 'react-apollo';
 import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
@@ -78,7 +79,10 @@ export default class NewsList extends PureComponent {
                         <Typography 
                           variant="subtitle2" 
                           color="textPrimary" 
-                          style={{ overflow: 'hidden' }}>{i.title}</Typography>
+                          style={{ overflow: 'hidden' }}
+                        >
+                          {i.title}
+                        </Typography>
 
                       </Link>
 

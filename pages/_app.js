@@ -6,7 +6,8 @@ import { withThemeProvider, withThemeConsumer } from '@/hoc/theme';
 import defaultLayout from '@/hoc/layout';
 import withGraphql from '@/hoc/graphql/apolloRoot';
 
-import { getDataFromTree, ApolloProvider } from 'react-apollo';
+import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 
 @withGraphql
 @withThemeProvider
@@ -29,14 +30,16 @@ export default class MyApp extends App {
     return (
       <Container>
         <ApolloProvider client={apolloClient}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Component.Layout>
-              <Component.Header />
-              <Component {...pageProps} />
-              <Component.Footer />
-            </Component.Layout>
-          </ThemeProvider>
+          <ApolloHooksProvider client={apolloClient}>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <Component.Layout>
+                <Component.Header />
+                <Component {...pageProps} />
+                <Component.Footer />
+              </Component.Layout>
+            </ThemeProvider>
+          </ApolloHooksProvider>
         </ApolloProvider>
       </Container>
     );
