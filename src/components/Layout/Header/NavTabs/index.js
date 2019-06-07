@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Router, { useRouter } from 'next/router';
+import Router, { useRouter, withRouter } from 'next/router';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -22,10 +22,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SimpleTabs({ navList = [] }) {
+function SimpleTabs({ navList = [], router }) {
   const classes = useStyles();
-
-  const router = useRouter();
 
   const [ value, setValue ] = useState(router.pathname);
 
@@ -74,4 +72,4 @@ SimpleTabs.propTypes = {
   navList: PropTypes.array.isRequired,
 };
 
-export default SimpleTabs;
+export default withRouter(SimpleTabs);
