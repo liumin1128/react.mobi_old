@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent, Fragment, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'next/router';
 import { Query } from 'react-apollo';
@@ -51,8 +51,11 @@ const useStyles = makeStyles(theme => ({
 
 function NewsList({ router }) {
   const classes = useStyles();
+
   const { search, tag, type } = router.query;
-  const { data, error, loading } = useQuery(NEWS_LIST, { search, tag, type });
+  const { data, error, loading, fetchMore } = useQuery(NEWS_LIST, { search, tag, type });
+
+  const [ isLoadingMore, setIsLoadingMore ] = useState(false);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -64,6 +67,29 @@ function NewsList({ router }) {
         {error.message}
       </div>
     );
+  }
+
+  function loadMore() {
+    setIsLoadingMore(true);
+    fetchMore({
+      variables: {
+        skip: data.list.length,
+        search,
+      },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        setIsLoadingMore(false);
+        if (!fetchMoreResult) {
+          return previousResult;
+        }
+        return {
+          ...fetchMoreResult,
+          list: [
+            ...previousResult.list,
+            ...fetchMoreResult.list,
+          ],
+        };
+      },
+    });
   }
 
 
@@ -94,6 +120,8 @@ function NewsList({ router }) {
           </Grid>
         ))}
       </Grid>
+
+      {isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />}
     </Fragment>
   );
 }
