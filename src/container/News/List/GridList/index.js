@@ -20,12 +20,20 @@ import Loading from '@/components/Loading';
 import { updateQuery } from '@/graphql/utils';
 import { useQuery } from 'react-apollo-hooks';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   cover: {
     paddingTop: '56%',
     backgroundColor: 'rgba(0,0,0,0.05)',
     marginBottom: 12,
     borderRadius: 4,
+    borderBottomRightRadius: 0,
+    transition: 'background-size 0.2s',
+    backgroundSize: '100%',
+    '&:hover': {
+      backgroundSize: '110%',
+      // border: '1px red solid',
+    },
+
   },
   title: {
     overflow: 'hidden',
@@ -34,8 +42,15 @@ const useStyles = makeStyles({
     '-webkit-line-clamp': '1',
     '-webkit-box-orient': 'vertical',
     // minHeight: '3em',
+    [theme.breakpoints.down('xs')]: {
+      overflow: 'auto',
+      textOverflow: 'auto',
+      display: '-webkit-box',
+      '-webkit-line-clamp': '3',
+      '-webkit-box-orient': 'vertical',
+    },
   },
-});
+}));
 
 
 function NewsList({ router }) {
