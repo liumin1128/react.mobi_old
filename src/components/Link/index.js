@@ -1,20 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { withRouter } from 'next/router';
 import NextLink from 'next/link';
 import MuiLink from '@material-ui/core/Link';
 
-function NextComposed(props) {
-  const { as, href, prefetch, ...other } = props;
 
-  return (
-    <NextLink href={href} prefetch={prefetch} as={as}>
-      <a {...other} />
-    </NextLink>
-  );
-}
+const NextComposed = forwardRef(({ as, href, prefetch, ...other }, ref) => (
+  <NextLink href={href} prefetch={prefetch} as={as} ref={ref}>
+    <a {...other} />
+  </NextLink>
+));
 
 NextComposed.propTypes = {
   as: PropTypes.string,
@@ -37,6 +34,7 @@ function Link(props) {
 
   return <MuiLink component={NextComposed} className={className} {...other} />;
 }
+
 
 Link.propTypes = {
   activeClassName: PropTypes.string,
