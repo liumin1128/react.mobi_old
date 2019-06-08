@@ -6,6 +6,7 @@ export default WrappedComponent => ({ Component, ...props }) => {
   if (!Component.Layout) Component.Layout = Fragment;
   if (!Component.Header) Component.Header = Header;
   if (!Component.Footer) Component.Footer = Fragment;
+  if (!Component.Sider) Component.Sider = Fragment;
 
   return <WrappedComponent Component={Component} {...props} />;
 };
