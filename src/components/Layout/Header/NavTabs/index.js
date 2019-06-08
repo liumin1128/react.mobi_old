@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 
 import { useOnMount, useOnUnmount } from '@/hooks';
 
+
 const useStyles = makeStyles(theme => ({
   tab: {
     height: 64,
@@ -25,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 function SimpleTabs({ navList = [], router }) {
   const classes = useStyles();
 
-  const [ value, setValue ] = useState(router.pathname);
+  const [ value, setValue ] = useState(isInNavList(router.pathname) ? router.pathname : '/');
 
   useOnMount(() => {
     Router.events.on('routeChangeStart', onRouteChange);
@@ -36,7 +37,7 @@ function SimpleTabs({ navList = [], router }) {
   });
 
   function onRouteChange(pathname) {
-    if (navList.findIndex(i => i.pathname === pathname) !== -1) {
+    if (isInNavList(pathname)) {
       setValue(pathname);
     }
   }
@@ -44,6 +45,10 @@ function SimpleTabs({ navList = [], router }) {
   function handleChange(event, pathname) {
     setValue(pathname);
     router.push(pathname);
+  }
+
+  function isInNavList(pathname) {
+    return navList.findIndex(i => i.pathname === pathname) !== -1;
   }
 
   return (
