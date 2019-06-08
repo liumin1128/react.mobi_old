@@ -11,19 +11,19 @@ import Item from './item';
 const styles = theme => ({
   list: {
     // [theme.breakpoints.down('xs')]: {
-      margin: - theme.spacing.unit,
+      margin: - theme.spacing(),
     // },
   },
   item: {
     width: '100%',
     display: 'block',
-    // padding: theme.spacing.unit * 1,
+    // padding: theme.spacing() * 1,
     // [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing.unit,
+      padding: theme.spacing(),
     // },
   },
   progress: {
-    margin: `${theme.spacing.unit * 2}px auto`,
+    margin: `${theme.spacing(2)}px auto`,
     display: 'block',
   },
 });

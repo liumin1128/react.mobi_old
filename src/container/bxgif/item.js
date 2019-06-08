@@ -8,19 +8,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 const styles = {
-  card: {
-    cursor: 'pointer',
-    margin: 0,
-    padding: 0,
-    boxShadow: '0px 5px 10px rgba(0,0,0,0.07)'
-  },
   cover: {
     width: '100%',
     height: 0,
     display: 'block',
-  },
-  title: {
-    color: '#666',
+    // borderRadius: 4,
   },
   meta: {
     marginTop: 4,
@@ -53,37 +45,33 @@ class RecipeReviewCard extends React.Component {
     } = this.props;
 
     return (
-      <div>
-        <Card className={classes.card}>
           <Link key={_id} href={`/bxgif/detail?id=${_id}`}>
-            <Fragment>
+            <Card>
               <CardMedia
                 className={classes.cover}
                 image={cover}
                 title={title}
                 style={{
                   paddingBottom: `${(height / 195) * 100}%`,
-                  background: 'src',
                 }}
               />
-              <CardContent className={classes.content}>
-                <Typography
-                  className={classes.title}
-                  // variant="body1"
-                  component="p"
-                >
-                  {title.substring(15, title.length)}
-                </Typography>
-
-                <Typography className={classes.meta} color="textSecondary">
-                  <span>{`${total}`}</span>
-                  <span>{createdAt}</span>
-                </Typography>
+              <CardContent>
+              <Typography
+                className={classes.title}
+                variant="body2"
+                component="p"
+                // color="textPrimary"
+                color="textSecondary"
+              >
+                {title.substring(15, title.length)}
+              </Typography>
+              <Typography className={classes.meta} color="textSecondary">
+                <span>{`${total}`}</span>
+                <span>{createdAt}</span>
+              </Typography>
               </CardContent>
-            </Fragment>
+            </Card>
           </Link>
-        </Card>
-      </div>
     );
   }
 }
