@@ -18,7 +18,7 @@ const styles = {
     marginTop: 4,
     display: 'flex',
     justifyContent: 'space-between',
-    color: '#999',
+    // color: '#999',
     fontSize: 12,
   },
   content: {
@@ -59,9 +59,9 @@ class RecipeReviewCard extends React.Component {
               <Typography
                 className={classes.title}
                 variant="body2"
-                component="p"
-                // color="textPrimary"
-                color="textSecondary"
+                // component="p"
+                color="textPrimary"
+                // color="textSecondary"
               >
                 {title.substring(15, title.length)}
               </Typography>

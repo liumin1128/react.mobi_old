@@ -62,6 +62,7 @@ Link.propTypes = {
 
 Link.defaultProps = {
   activeClassName: 'active',
+  underline: 'none',
 };
 
 export default withRouter(Link);
