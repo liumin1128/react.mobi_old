@@ -1,6 +1,13 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiPaper: {
+      root: {
+        'background-color': '#212121',
+      },
+    },
+  },
   palette: {
     primary: {
       main: '#212121',
