@@ -1,44 +1,31 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import App, { Container } from 'next/app';
-import { ThemeProvider } from '@material-ui/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import { withThemeProvider, withThemeConsumer } from '@/hoc/theme';
+import withMaterial from '@/hoc/material';
 import defaultLayout from '@/hoc/layout';
 import withGraphql from '@/hoc/graphql/apolloRoot';
 
 import { ApolloProvider } from 'react-apollo';
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 
+
 @withGraphql
 @withThemeProvider
 @withThemeConsumer
+@withMaterial
 @defaultLayout
 export default class MyApp extends App {
-  componentDidMount() {
-    this.removeJssStyles();
-  }
-
-  removeJssStyles = () => {
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles) {
-      jssStyles.parentNode.removeChild(jssStyles);
-    }
-  }
-
   render() {
-    const { Component, pageProps, theme, apolloClient } = this.props;
+    const { Component, apolloClient } = this.props;
     return (
       <Container>
         <ApolloProvider client={apolloClient}>
           <ApolloHooksProvider client={apolloClient}>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <Component.Layout>
-                <Component.Header />
-                <Component {...pageProps} />
-                <Component.Footer />
-              </Component.Layout>
-            </ThemeProvider>
+            <Component.Layout>
+              <Component.Header />
+              <Component />
+              <Component.Footer />
+            </Component.Layout>
           </ApolloHooksProvider>
         </ApolloProvider>
       </Container>
