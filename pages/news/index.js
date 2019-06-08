@@ -8,9 +8,7 @@ class Index extends PureComponent {
   render() {
     return (
       <Container maxWidth="md">
-        <Box my={2}>
-          <Content />
-        </Box>
+        <Content />
       </Container>
     );
   }
