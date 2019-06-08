@@ -1,6 +1,5 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import { withThemeProvider, withThemeConsumer } from '@/hoc/theme';
 import withMaterial from '@/hoc/material';
 import defaultLayout from '@/hoc/layout';
 import withGraphql from '@/hoc/graphql/apolloRoot';
@@ -10,8 +9,6 @@ import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 
 
 @withGraphql
-@withThemeProvider
-@withThemeConsumer
 @withMaterial
 @defaultLayout
 export default class MyApp extends App {

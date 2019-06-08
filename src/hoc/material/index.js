@@ -1,8 +1,11 @@
 import React from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { withThemeProvider, withThemeConsumer } from '@/hoc/theme';
 
 export default function withRoot(App) {
+  @withThemeProvider
+  @withThemeConsumer
   class WithRoot extends React.Component {
     componentDidMount() {
       this.removeJssStyles();
@@ -16,7 +19,7 @@ export default function withRoot(App) {
     }
 
     render() {
-      const { theme, ...props } = this.props;
+      const { theme, setTheme, ...props } = this.props;
       return (
         <ThemeProvider theme={theme}>
           <CssBaseline />
