@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { withRouter } from 'next/router';
+import { useQuery } from 'react-apollo-hooks';
 import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -7,7 +8,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Link from '@/components/Link';
 import Loading from '@/components/Loading';
 import { NEWS_LIST } from '@/graphql/schema/news';
-import { useQuery } from 'react-apollo-hooks';
 import { useLoadMore } from '@/hooks/graphql';
 import useStyles from './styles';
 
