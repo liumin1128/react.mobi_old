@@ -16,8 +16,6 @@ export default WrappedComponent => ({ Component, ...props }) => {
         <WrappedComponent Component={Component} {...props} />
       </Container>
     );
-  } else {
-    Component.Sider = Fragment;
   }
 
   return (

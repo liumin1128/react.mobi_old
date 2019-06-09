@@ -39,7 +39,7 @@ export default class NewsDetail extends PureComponent {
           const { user, title, cover, html, url, content, showHtml, appCode, appName, photos, createdAt } = data;
 
           return (
-            <div style={{ maxWidth: 660 }}>
+            <div>
               <Typography variant="h4" style={{ fontWeight: 600 }}>{title}</Typography>
               <br />
               <div style={{ display: 'flex', alignItems: 'center', fontSize: 12, color: '#666', opacity: 0.8 }}>

@@ -1,22 +1,17 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import Container from '@material-ui/core/Container';
-import Header from '@/components/Layout/Header';
 import Content from '@/container/News/Detail';
-import Box from '@material-ui/core/Box';
 
-
-class Index extends PureComponent {
+class NewsDetail extends PureComponent {
   render() {
     return (
-      <Container maxWidth="md">
-        <Box my={2}>
-          <Content />
-        </Box>
+      <Container maxWidth="sm">
+        <Content />
       </Container>
     );
   }
 }
 
-Index.Header = Header;
+NewsDetail.Side = Content;
 
-export default Index;
+export default NewsDetail;

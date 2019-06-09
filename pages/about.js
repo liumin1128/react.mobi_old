@@ -21,18 +21,16 @@ function MadeWithLove() {
 
 function About() {
   return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
+    <Box my={4}>
+      <Typography variant="h4" component="h1" gutterBottom>
           Next.js v4-beta example
-        </Typography>
-        <Link href="/">Go to the main page</Link>
+      </Typography>
+      <Link href="/">Go to the main page</Link>
         我去我去
-        <ProTip />
+      <ProTip />
         wqwq
-        <MadeWithLove />
-      </Box>
-    </Container>
+      <MadeWithLove />
+    </Box>
   );
 }
 
