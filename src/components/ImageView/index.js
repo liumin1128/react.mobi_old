@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { domRender } from '@/utils/react';
 import { getScrollTop } from '@/utils/common';
 import { withStyles } from '@material-ui/core/styles';
-import withStyle from '../../hoc/material-ui/withRoot';
+import withStyle from '@/hoc/material';
 
 const styles = theme => ({
   root: {
@@ -61,6 +61,7 @@ export default function (e, src, srcs) {
         this.setState({
           isInit: false,
         });
+
         document
           .getElementById('viewport')
           .setAttribute('content', 'user-scalable=yes, width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=2');
@@ -73,6 +74,7 @@ export default function (e, src, srcs) {
         isInit: true,
       });
       setTimeout(destory, 500);
+
       document
         .getElementById('viewport')
         .setAttribute('content', 'user-scalable=no, width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=1');

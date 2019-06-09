@@ -13,6 +13,7 @@ class MyDocument extends Document {
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
             name="viewport"
+            id="viewport"
             content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
           />
           {/* PWA primary color */}
