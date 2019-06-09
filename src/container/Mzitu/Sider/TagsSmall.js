@@ -1,14 +1,14 @@
 import React, { Fragment, PureComponent } from 'react';
-import { Query } from 'react-apollo';
-import Link from '@/components/Link';
+import { useQuery } from 'react-apollo-hooks';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Link from '@/components/Link';
 import { MZITU_TAGS } from '@/graphql/schema/mzitu';
+import Loading from '@/components/Loading';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   media: {
     height: 0,
     paddingTop: '100%',
@@ -27,68 +27,48 @@ const styles = theme => ({
     maxWidth: '36px',
     maxHeight: '36px',
   },
-});
-
-@withStyles(styles)
-export default class MeizituDetail extends PureComponent {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Query
-        query={MZITU_TAGS}
-        ssr={false}
-      >
-        {({ loading, error, data = {}, refetch }) => {
-          if (loading) return <CircularProgress color="secondary" className={classes.progress} />;
-
-          if (error) {
-            return (
-              <div>
-                {`Error! ${error.message}`}
-                {' '}
-                <a onClick={() => { refetch(); }}>refetch</a>
-                {' '}
-              </div>
-            );
-          }
-
-          const { list = [] } = data;
-
-          if (list.length === 0) return 'Loading...';
-
-          // const randomIdx = Math.floor((list.length - 18) * Math.random());
-          // const result = list.slice(randomIdx, randomIdx + 18);
-
-          return (
-            <div>
-              <Grid container spacing={2}>
-                {
-                  list
-                    .map(i => (<Grid item xs={4} key={i.tag} >
-                      <Link to={`/mzitu?tag=${i.tag}`}>
-                        <Fragment>
-                          <CardMedia
-                            className={classes.media}
-                            image={i.cover}
-                            title={i.title}
-                          />
-                          <Typography style={{
-                             marginTop: 4,
-                             fontSize: 10,
-                             textAlign: 'center',
-                             whiteSpace:'nowrap'
-                            }} color="textSecondary" component="p">
-                            {i.title}
-                          </Typography>
-                        </Fragment>
-                      </Link>
-                    </Grid>
-                    ))
-                  }
-              </Grid>
-            </div>
-          );
-        }}
-      </Query>);
+  name: {
+    marginTop: 4,
+    fontSize: 10,
+    textAlign: 'center',
+    whiteSpace:'nowrap'
   }
-}
+}));
+
+
+function MzituTags() {
+  const classes = useStyles();
+  const { data, error, loading, refetch } = useQuery(MZITU_TAGS);
+
+  if (loading) return <Loading />;
+
+  if (error) {
+    return (
+      <div>
+        {`Error! ${error.message}`}
+        <Button onClick={refetch}>refetch</Button>
+      </div>
+    );
+  }
+
+  const { list = [] } = data;
+
+  return (
+    <Grid container spacing={2}>
+      {
+        list.map(i => (<Grid item xs={4} key={i.tag}>
+          <Link to={`/mzitu?tag=${i.tag}`}>
+            <Fragment>
+              <CardMedia className={classes.media} image={i.cover} title={i.title} />
+              <Typography style={classes.name} color="textSecondary" component="p">
+                {i.title}
+              </Typography>
+            </Fragment>
+          </Link>
+        </Grid>))
+      }
+    </Grid>
+  );
+};
+
+export default MzituTags;
