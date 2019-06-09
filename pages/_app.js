@@ -3,6 +3,7 @@ import App, { Container as NextContainer } from 'next/app';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Header from '@/components/Layout/Header';
@@ -29,18 +30,20 @@ export default class MyApp extends App {
             <Component.Layout>
               <Component.Header />
               <Container maxWidth="md">
-                {Component.Sider ? (
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={12} md={8}>
-                      <Component />
+                <Box my={2}>
+                  {Component.Sider ? (
+                    <Grid container spacing={2}>
+                      <Grid item xs={12} sm={12} md={8}>
+                        <Component />
+                      </Grid>
+                      <Grid item xs={12} sm={12} md={4}>
+                        <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
+                          <Component.Sider />
+                        </Hidden>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={4}>
-                      <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
-                        <Component.Sider />
-                      </Hidden>
-                    </Grid>
-                  </Grid>
-                ) : <Component />}
+                  ) : <Component />}
+                </Box>
               </Container>
               <Component.Footer />
             </Component.Layout>

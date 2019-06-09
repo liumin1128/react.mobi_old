@@ -8,6 +8,4 @@ function Index() {
   );
 }
 
-Index.Sider = () => <p>111111</p>;
-
 export default Index;
