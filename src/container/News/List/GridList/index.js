@@ -19,7 +19,7 @@ function NewsList({ router }) {
   const { data, error, loading, fetchMore } = useQuery(NEWS_LIST, { search, tag, type });
   const [ isLoadingMore, loadMore ] = useLoadMore(fetchMore, data, { search, tag, type });
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
   if (error) return <div>{error.message}</div>;
 
   const { list } = data;

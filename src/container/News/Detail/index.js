@@ -1,15 +1,12 @@
 import React, { PureComponent } from 'react';
 import { useQuery } from 'react-apollo-hooks';
 import { withRouter } from 'next/router';
+import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
 import { NEWS_DETAIL } from '@/graphql/schema/news';
 import Loading from '@/components/Loading';
 import Html from '@/components/Html';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import Link from '@/components/Link';
 import { formatTime, getTimeAgo } from '@/utils/common';
 import useStyles from './styles';
 
