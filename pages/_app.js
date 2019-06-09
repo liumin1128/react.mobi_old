@@ -25,41 +25,25 @@ export default class MyApp extends App {
     if (!Component.Header) Component.Header = Header;
     if (!Component.Footer) Component.Footer = Fragment;
 
-    if (!Component.Sider) {
-      return (
-        <NextContainer>
-          <ApolloProvider client={apolloClient}>
-            <ApolloHooksProvider client={apolloClient}>
-              <Component.Layout>
-                <Component.Header />
-                <Container>
-                  <Component />
-                </Container>
-                <Component.Footer />
-              </Component.Layout>
-            </ApolloHooksProvider>
-          </ApolloProvider>
-        </NextContainer>
-      );
-    }
-
     return (
       <NextContainer>
         <ApolloProvider client={apolloClient}>
           <ApolloHooksProvider client={apolloClient}>
             <Component.Layout>
               <Component.Header />
-              <Container>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Component />
+              <Container maxWidth="md">
+                {Component.Sider ? (
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={12} md={8}>
+                      <Component />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
+                        <Component.Sider />
+                      </Hidden>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
-                      <Component.Sider />
-                    </Hidden>
-                  </Grid>
-                </Grid>
+                ) : <Component />}
               </Container>
               <Component.Footer />
             </Component.Layout>
