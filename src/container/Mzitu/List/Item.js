@@ -16,16 +16,8 @@ const styles = () => ({
     paddingTop: '150%',
     borderRadius: 4,
     backgroundColor: 'rgba(0,0,0,0.03)',
-    // transition: 'transform 0.3s',
-    // '&:hover': {
-    //   transform: 'translateY(-8px)',
-    // }
+    marginBottom: 8
   },
-  title: {
-    fontSize: 16,
-    marginTop: 8,
-    color: '#666'
-  }
 });
 
 class RecipeReviewCard extends PureComponent {
@@ -39,18 +31,8 @@ class RecipeReviewCard extends PureComponent {
 
     return (
       <Link key={_id} href={`/mzitu/detail?id=${_id}`}>
-        <CardMedia
-          className={classes.media}
-          image={cover.src}
-          title={title}
-        />
-        <Typography
-          className={classes.title}
-          variant="h5"
-          component="h2"
-        >
-          {title}
-        </Typography>
+        <CardMedia className={classes.media} image={cover.src} title={title}/>
+        <Typography variant="subtitle1" color="textPrimary">{title}</Typography>
       </Link>
     );
   }
