@@ -13,7 +13,7 @@ import useStyles from './styles';
 function MzituDetail({ router }) {
   const classes = useStyles();
   const { id } = router.query;
-  const { data, error, loading, refetch } = useQuery(MZITU_DETAIL, { variables: { _id: id }, suspend: true });
+  const { data, error, loading, refetch } = useQuery(MZITU_DETAIL, { variables: { _id: id } });
 
   if (loading) return <Loading />;
 
