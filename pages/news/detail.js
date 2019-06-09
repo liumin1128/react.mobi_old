@@ -1,7 +1,5 @@
-import React, { PureComponent, Fragment } from 'react';
-import Container from '@material-ui/core/Container';
+import React from 'react';
 import Content from '@/container/News/Detail';
-
 
 function NewsDetail() {
   return (
