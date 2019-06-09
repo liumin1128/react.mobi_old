@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useQuery as _useQuery } from 'react-apollo-hooks';
 
 export function useLoadMore(fetchMore, data, variables) {
   const [ isLoadingMore, setIsLoadingMore ] = useState(false);
@@ -27,4 +28,11 @@ export function useLoadMore(fetchMore, data, variables) {
   }
 
   return [ isLoadingMore, loadMore ];
+}
+
+export function useQuery(schema, variables, options) {
+  const { fetchMore, data, ...other } = _useQuery(schema, { variables, ...options });
+  const [ isLoadingMore, loadMore ] = useLoadMore(fetchMore, data, variables);
+
+  return { isLoadingMore, loadMore, fetchMore, data, ...other };
 }

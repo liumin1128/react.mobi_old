@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { withRouter } from 'next/router';
-import { useQuery } from 'react-apollo-hooks';
 import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -9,15 +8,14 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Link from '@/components/Link';
 import Loading from '@/components/Loading';
 import { NEWS_LIST } from '@/graphql/schema/news';
-import { useLoadMore } from '@/hooks/graphql';
+import { useQuery } from '@/hooks/graphql';
 import useStyles from './styles';
 
 function NewsList({ router }) {
   const classes = useStyles();
 
   const { search, tag, type } = router.query;
-  const { data, error, loading, fetchMore } = useQuery(NEWS_LIST, { variables: { search, tag, type } });
-  const [ isLoadingMore, loadMore ] = useLoadMore(fetchMore, data, { search, tag, type });
+  const { data, error, loading, isLoadingMore, loadMore } = useQuery(NEWS_LIST, { search, tag, type });
 
   if (loading) return <Loading />;
   if (error) return <div>{error.message}</div>;
