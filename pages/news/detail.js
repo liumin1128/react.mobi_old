@@ -5,9 +5,7 @@ import Content from '@/container/News/Detail';
 
 function NewsDetail() {
   return (
-    <Container maxWidth="sm">
-      <Content />
-    </Container>
+    <Content />
   );
 }
 

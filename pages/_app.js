@@ -32,7 +32,7 @@ export default class MyApp extends App {
               <Container maxWidth="md">
                 <Box my={2}>
                   {Component.Sider ? (
-                    <Grid container spacing={2}>
+                    <Grid container spacing={3}>
                       <Grid item xs={12} sm={12} md={8}>
                         <Component />
                       </Grid>
