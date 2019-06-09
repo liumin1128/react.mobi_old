@@ -11,7 +11,7 @@ import Item from './Item';
 
 function MzituList({ router }) {
   const { search, tag, type } = router.query;
-  const { data, error, loading, fetchMore } = useQuery(MZITU_LIST, { search, tag, type });
+  const { data, error, loading, fetchMore } = useQuery(MZITU_LIST, { variables: { search, tag, type } });
   const [ isLoadingMore, loadMore ] = useLoadMore(fetchMore, data, { search, tag, type });
 
   if (loading) return <Loading />;

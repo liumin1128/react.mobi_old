@@ -16,7 +16,7 @@ function NewsList({ router }) {
   const classes = useStyles();
 
   const { search, tag, type } = router.query;
-  const { data, error, loading, fetchMore } = useQuery(NEWS_LIST, { search, tag, type });
+  const { data, error, loading, fetchMore } = useQuery(NEWS_LIST, { variables: { search, tag, type } });
   const [ isLoadingMore, loadMore ] = useLoadMore(fetchMore, data, { search, tag, type });
 
   if (loading) return <Loading />;

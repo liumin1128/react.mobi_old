@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-export function useLoadMore(fetchMore, data, search) {
+export function useLoadMore(fetchMore, data, variables) {
   const [ isLoadingMore, setIsLoadingMore ] = useState(false);
 
   function loadMore() {
     setIsLoadingMore(true);
     fetchMore({
       variables: {
+        ...variables,
         skip: data.list.length,
-        search,
       },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         setIsLoadingMore(false);

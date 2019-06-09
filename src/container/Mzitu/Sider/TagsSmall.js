@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   progress: {
-    margin: `${theme.spacing.unit * 2}px auto`,
+    margin: `${theme.spacing(2)}px auto`,
     display: 'block',
     maxWidth: '36px',
     maxHeight: '36px',
@@ -57,10 +57,10 @@ function MzituTags() {
     <Grid container spacing={2}>
       {
         list.map(i => (<Grid item xs={4} key={i.tag}>
-          <Link to={`/mzitu?tag=${i.tag}`}>
+          <Link href={`/mzitu?tag=${i.tag}`}>
             <Fragment>
               <CardMedia className={classes.media} image={i.cover} title={i.title} />
-              <Typography style={classes.name} color="textSecondary" component="p">
+              <Typography className={classes.name} color="textSecondary" component="p">
                 {i.title}
               </Typography>
             </Fragment>
