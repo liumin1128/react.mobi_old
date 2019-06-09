@@ -1,17 +1,14 @@
 import React, { Fragment } from 'react';
 import App, { Container as NextContainer } from 'next/app';
+import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Header from '@/components/Layout/Header';
-
 import withMaterial from '@/hoc/material';
 // import defaultLayout from '@/hoc/layout';
 import withGraphql from '@/hoc/graphql/apolloRoot';
-
-import { ApolloProvider } from 'react-apollo';
-import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
-
 
 @withGraphql
 @withMaterial
