@@ -1,17 +1,14 @@
-import React, { PureComponent } from 'react';
-import { withRouter } from 'next/router';
-import MzituDetail from '@/container/Mzitu/Detail';
-import BlankLayout from '@/components/Layout/Blank';
+import React from 'react';
+import Box from '@material-ui/core/Box';
+import Content from '@/container/Mzitu/Detail';
+import Sider from '@/container/Mzitu/Sider';
 
-@withRouter
-export default class News extends PureComponent {
-  render() {
-    const { router } = this.props;
-    const { id } = router.query;
-    return (
-      <BlankLayout>
-        <MzituDetail id={id} />
-      </BlankLayout>
-    );
-  }
+function NewsDetail() {
+  return (
+    <Content />
+  );
 }
+
+NewsDetail.Sider = Sider;
+
+export default NewsDetail;

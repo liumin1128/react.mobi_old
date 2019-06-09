@@ -10,7 +10,6 @@ const styles = theme => ({
   progress: {
     margin: `${theme.spacing.unit * 2}px auto`,
     display: 'block',
-    // backgroundColor: 'red',
     maxWidth: '36px',
     maxHeight: '36px',
   },
@@ -58,3 +57,4 @@ export default class MeizituDetail extends PureComponent {
     );
   }
 }
+  
