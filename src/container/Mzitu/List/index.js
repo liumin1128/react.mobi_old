@@ -1,86 +1,36 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { withRouter } from 'next/router';
-import { withStyles } from '@material-ui/core/styles';
-import { Query } from 'react-apollo';
+import { useQuery } from 'react-apollo-hooks';
 import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
 import { MZITU_LIST } from '@/graphql/schema/mzitu';
-import { updateQuery } from '@/graphql/utils';
+import { useLoadMore } from '@/hooks/graphql';
+import Loading from '@/components/Loading';
 import Item from './Item';
 
+function MzituList({ router }) {
+  const { search, tag, type } = router.query;
+  const { data, error, loading, fetchMore } = useQuery(MZITU_LIST, { search, tag, type });
+  const [ isLoadingMore, loadMore ] = useLoadMore(fetchMore, data, { search, tag, type });
 
-const styles = theme => ({
-  progress: {
-    margin: `${theme.spacing.unit * 2}px auto`,
-    display: 'block',
-    // backgroundColor: 'red',
-    maxWidth: '24px',
-    maxHeight: '24px',
-  },
-  item: {
-    marginBottom: 8
-  }
-});
+  if (loading) return <Loading />;
+  if (error) return <div>{error.message}</div>;
 
-@withRouter
-@withStyles(styles)
-export default class MzituList extends PureComponent {
-  render() {
-    const { router, classes } = this.props;
-    const { search, tag, type } = router.query;
-    return (
-        <Query
-          query={MZITU_LIST}
-          variables={{ search, tag, type }}
-        >
-          {({ loading, error, data = {}, fetchMore, refetch }) => {
-            if (loading) return <CircularProgress
-            color="secondary"
-            className={classes.progress}
-          />
-            if (error) {
-              return (
-                <div>
-                  {`Error! ${error.message}`}
-                  <a onClick={() => { refetch({ search, tag }); }}>refetch</a>
-                </div>
-              );
-            }
-            const { list = [] } = data;
+  const { list } = data;
 
-            const loadMore = () => fetchMore({
-              variables: {
-                page: (Math.floor(list.length / 24) || 1) + 1,
-                search,
-              },
-              updateQuery,
-            });
-
-            return (<Fragment>
-              <Grid spacing={2} container className={classes.list}>
-                {list.map(i => (
-                  <Grid
-                    key={i._id}
-                    className={classes.item}
-                    item
-                    xs={6}
-                    sm={4}
-                  >
-                    <Item {...i} />
-                  </Grid>
-                ))}
-              </Grid>
-              <br/>
-              <CircularProgress
-                color="secondary"
-                className={classes.progress}
-              />
-              <Waypoint onEnter={loadMore} />
-            </Fragment>
-            );
-          }}
-        </Query>
-    );
-  }
+  return (
+    <Fragment>
+      <Grid spacing={2} container>
+        {list.map(i => (
+          <Grid key={i._id} item xs={6} sm={4}>
+            <Item {...i} />
+          </Grid>
+        ))}
+      </Grid>
+      {isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />}
+    </Fragment>
+  );
 }
+
+export default withRouter(MzituList);

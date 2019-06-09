@@ -5,6 +5,7 @@ import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
+
 import Link from '@/components/Link';
 import Loading from '@/components/Loading';
 import { NEWS_LIST } from '@/graphql/schema/news';
@@ -21,10 +22,12 @@ function NewsList({ router }) {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
+  const { list } = data;
+
   return (
     <Fragment>
       <Grid container spacing={3}>
-        {data.list.map(i => (
+        {list.map(i => (
           <Grid key={i._id} item xs={12} md={4}>
             <Link href={`/news/detail?_id=${i._id}`}>
               <CardMedia className={classes.cover} image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''} />
