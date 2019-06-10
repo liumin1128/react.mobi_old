@@ -32,7 +32,7 @@ class RecipeReviewCard extends PureComponent {
     return (
       <Link key={_id} href={`/mzitu/detail?id=${_id}`}>
         <CardMedia className={classes.media} image={cover.src} title={title}/>
-        <Typography variant="subtitle1" color="textPrimary">{title}</Typography>
+        <Typography variant="subtitle2" color="textPrimary">{title}</Typography>
       </Link>
     );
   }
