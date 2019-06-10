@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
+import withStyle from '@/hoc/material-ui';
 import Snackbar from './Snackbar';
-import withStyle from '../../hoc/material-ui/withRoot';
 
 @withStyle
 class Container extends PureComponent {
@@ -26,7 +26,6 @@ class Container extends PureComponent {
     return <Snackbar {...this.props} />;
   }
 }
-
 
 export default (config) => {
   const div = document.createElement('div');

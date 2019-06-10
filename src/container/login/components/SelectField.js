@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import countries from '@/static/countries.json';
+import countries from '../../../../static/countries.json';
 
 export default ({
   input: { name, onChange, value, ...restInput },

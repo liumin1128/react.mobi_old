@@ -80,6 +80,7 @@ export function ThemeContextProvider({ children }) {
     const str = state === 'default' ? 'dark' : 'default';
     setState(str);
   };
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <ThemeProvider theme={theme}>

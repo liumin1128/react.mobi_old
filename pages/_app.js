@@ -7,14 +7,10 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Header from '@/components/Layout/Header';
-// import withMaterial from '@/hoc/material';
-// import defaultLayout from '@/hoc/layout';
 import withGraphql from '@/hoc/graphql/apolloRoot';
 import { ThemeContextProvider } from '@/hoc/theme';
 
 @withGraphql
-// @withMaterial
-// @defaultLayout
 export default class MyApp extends App {
   render() {
     const { Component, apolloClient } = this.props;
