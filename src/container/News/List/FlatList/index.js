@@ -1,88 +1,61 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { withRouter } from 'next/router';
-import { Query } from 'react-apollo';
 import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { NEWS_LIST } from '@/graphql/schema/news';
-import { updateQuery } from '@/graphql/utils';
-import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import CardHeader from '@material-ui/core/CardHeader';
-import Avatar from '@material-ui/core/Avatar';
 import CardMedia from '@material-ui/core/CardMedia';
 
-@withRouter
-export default class NewsList extends PureComponent {
-  render() {
-    const { router, classes } = this.props;
-    const { search, tag, type } = router.query;
-    return (
-        <Query
-          query={NEWS_LIST}
-          variables={{ search, tag, type }}
-        >
-          {({ loading, error, data = {}, fetchMore, refetch }) => {
-            if (loading) return <CircularProgress
-            color="secondary"
-            // className={classes.progress}
-          />
-            if (error) {
-              return (
-                <div>
-                  {`Error! ${error.message}`}
-                  <a onClick={() => { refetch({ search, tag }); }}>refetch</a>
-                </div>
-              );
-            }
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import ImageIcon from '@material-ui/icons/Image';
+import WorkIcon from '@material-ui/icons/Work';
+import BeachAccessIcon from '@material-ui/icons/BeachAccess';
 
-            console.log('data')
-            console.log(data)
+import Link from '@/components/Link';
+import Loading from '@/components/Loading';
+import { NEWS_LIST } from '@/graphql/schema/news';
+import { useQuery } from '@/hooks/graphql';
+import { getStrFromHtml } from '@/utils/common';
+import useStyles from './styles';
 
-            const { list = [] } = data;
 
-            const loadMore = () => fetchMore({
-              variables: {
-                page: (Math.floor(list.length / 24) || 1) + 1,
-                search,
-              },
-              updateQuery,
-            });
+function NewsList({ router }) {
+  const classes = useStyles();
 
-            return (<Fragment>
-              {list.map((i, index) => (
-                <div key={i.id} className={classes.card}>
-                  <div className={classes.flexGrow}>
-                    <div>
-                      <Typography variant="h6" gutterBottom>{i.title}</Typography>
-                      <Typography variant="body1" gutterBottom>{getStrFromHtml(i.content, 50)}</Typography>
-                    </div>
-                    <CardHeader
-                      avatar={(
-                        <Avatar aria-label="Recipe">
-                          R
-                        </Avatar>
-                      )}
-                      title="Shrimp and Chorizo Paella"
-                      subheader="September 14, 2016"
-                      style={{ paddingLeft: 0 }}
-                    />
-                  </div>
-                  <CardMedia style={{ display: 'block', width: 148, height: 148 }} image={i.photos[0]} />
-                </div>
-              ))}
+  const { search, tag, type } = router.query;
+  const { data, error, loading, isLoadingMore, loadMore } = useQuery(NEWS_LIST, { search, tag, type });
 
-              {
-                // <CircularProgress
-                // color="secondary"
-                // className={classes.progress}
-              // />
-                // <Waypoint onEnter={loadMore} />
-              }
-            </Fragment>
-            );
-          }}
-        </Query>
-    );
-  }
+  if (loading) return <Loading />;
+  if (error) return <div>{error.message}</div>;
+
+  const { list } = data;
+
+  return (
+    <Fragment>
+      <List className={classes.root}>
+        {list.map((i, index) => (
+          <ListItem button key={i._id} style={{ padding: 0 }}>
+            <ListItemAvatar>
+              <Avatar size={70} src={i.photos[0]} style={{ borderRadius: 0, width: 64, height: 64, marginRight: 8 }} />
+            </ListItemAvatar>
+            <ListItemText
+              // secondary={i.title}
+              primary={i.title}
+              // secondary={getStrFromHtml(i.content, 20)}
+              secondary={i.createdAt}
+              // primaryTypographyProps={{ noWrap: true, style: { overflow: 'hidden' } }}
+            />
+          </ListItem>
+        ))}
+      </List>
+
+      {isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />}
+    </Fragment>
+  );
 }
+
+export default withRouter(NewsList);

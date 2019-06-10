@@ -1,11 +1,14 @@
 
 import React from 'react';
-import Content from '@/container/News/List';
+import GridList from '@/container/News/List/GridList';
+// import FlatList from '@/container/News/List/FlatList';
 
 function Index() {
   return (
-    <Content />
+    <GridList />
   );
 }
+
+// Index.Sider = FlatList;
 
 export default Index;
