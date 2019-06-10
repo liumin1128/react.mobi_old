@@ -7,12 +7,13 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Header from '@/components/Layout/Header';
-import withMaterial from '@/hoc/material';
+// import withMaterial from '@/hoc/material';
 // import defaultLayout from '@/hoc/layout';
 import withGraphql from '@/hoc/graphql/apolloRoot';
+import { ThemeContextProvider } from '@/hoc/theme';
 
 @withGraphql
-@withMaterial
+// @withMaterial
 // @defaultLayout
 export default class MyApp extends App {
   render() {
@@ -24,32 +25,34 @@ export default class MyApp extends App {
     if (!Component.Footer) Component.Footer = Fragment;
 
     return (
-      <NextContainer>
-        <ApolloProvider client={apolloClient}>
-          <ApolloHooksProvider client={apolloClient}>
-            <Component.Layout>
-              <Component.Header />
-              <Container maxWidth="md">
-                <Box my={2}>
-                  {Component.Sider ? (
-                    <Grid container spacing={3}>
-                      <Grid item xs={12} sm={12} md={8}>
-                        <Component />
+      <ThemeContextProvider>
+        <NextContainer>
+          <ApolloProvider client={apolloClient}>
+            <ApolloHooksProvider client={apolloClient}>
+              <Component.Layout>
+                <Component.Header />
+                <Container maxWidth="md">
+                  <Box my={2}>
+                    {Component.Sider ? (
+                      <Grid container spacing={3}>
+                        <Grid item xs={12} sm={12} md={8}>
+                          <Component />
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={4}>
+                          <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
+                            <Component.Sider />
+                          </Hidden>
+                        </Grid>
                       </Grid>
-                      <Grid item xs={12} sm={12} md={4}>
-                        <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
-                          <Component.Sider />
-                        </Hidden>
-                      </Grid>
-                    </Grid>
-                  ) : <Component />}
-                </Box>
-              </Container>
-              <Component.Footer />
-            </Component.Layout>
-          </ApolloHooksProvider>
-        </ApolloProvider>
-      </NextContainer>
+                    ) : <Component />}
+                  </Box>
+                </Container>
+                <Component.Footer />
+              </Component.Layout>
+            </ApolloHooksProvider>
+          </ApolloProvider>
+        </NextContainer>
+      </ThemeContextProvider>
     );
   }
 }

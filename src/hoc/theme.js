@@ -1,6 +1,9 @@
-import React, { PureComponent, createContext, useReducer, useContext } from 'react';
+import React, { PureComponent, createContext, useReducer, useContext, useState } from 'react';
+import { ThemeProvider } from '@material-ui/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import defaultTheme from '@/config/theme';
 import darkTheme from '@/config/theme/dark';
+import { useOnMount } from '@/hooks';
 
 const themes = {
   default: defaultTheme,
@@ -44,7 +47,7 @@ export function withThemeConsumer(WrappedComponent) {
 }
 
 // ThemeProvider的hook用法
-export default function ThemeProvider({ children }) {
+export default function HookThemeProvider({ children }) {
   function reducer(state, action) {
     switch (action.type) {
       case 'switch':
@@ -57,6 +60,32 @@ export default function ThemeProvider({ children }) {
   return (
     <ThemeContext.Provider value={{ state, dispatch }}>
       {children}
+    </ThemeContext.Provider>
+  );
+}
+
+//
+export function ThemeContextProvider({ children }) {
+  const [ state, setState ] = useState('dark');
+
+  useOnMount(() => {
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentNode.removeChild(jssStyles);
+    }
+  });
+
+  const theme = themes[state];
+  const setTheme = () => {
+    const str = state === 'default' ? 'dark' : 'default';
+    setState(str);
+  };
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
     </ThemeContext.Provider>
   );
 }
