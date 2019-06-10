@@ -17,7 +17,7 @@ export const BXGIF_DETAIL = gql`
 `;
 
 export const BXGIF_LIST = gql`
-  query bxgifList($skip: Int!) {
+  query bxgifList($skip: Int) {
     list: bxgifList(skip: $skip) {
       __typename
       _id

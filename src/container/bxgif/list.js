@@ -2,16 +2,16 @@ import React, { PureComponent, Fragment } from 'react';
 import Masonry from 'react-masonry-component';
 import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@material-ui/core/styles';
 import { BXGIF_LIST } from '@/graphql/schema/bxgif';
-import { listQuery } from '@/graphql/utils';
+import { useQuery } from '@/hooks/graphql';
+import Loading from '@/components/Loading';
 import Item from './item';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   list: {
     // [theme.breakpoints.down('xs')]: {
-      margin: - theme.spacing(),
+    margin: -theme.spacing(),
     // },
   },
   item: {
@@ -19,47 +19,33 @@ const styles = theme => ({
     display: 'block',
     // padding: theme.spacing() * 1,
     // [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing(),
+    padding: theme.spacing(),
     // },
   },
-  progress: {
-    margin: `${theme.spacing(2)}px auto`,
-    display: 'block',
-  },
-});
+}));
 
-@listQuery(BXGIF_LIST, { ssr: false })
-@withStyles(styles)
-export default class BxgifList extends PureComponent {
-  render() {
-    const { data = {}, classes, fetchMore } = this.props;
-    const { loading = true, error, list = [] } = data;
+function BxgigList() {
+  const classes = useStyles();
 
-    if (loading) return <CircularProgress color="secondary" className={classes.progress} />;
-    if (error) return `Error! ${error.message}`;
+  const { data, error, loading, isLoadingMore, loadMore } = useQuery(BXGIF_LIST, { }, { ssr: false });
 
-    return (
-      <Fragment>
-        <Masonry className={classes.list}>
+  if (loading) return <Loading />;
+  if (error) return <div>{error.message}</div>;
 
-          {list.map(i => (
-            <Grid
-              key={i._id}
-              className={classes.item}
-              item
-              xs={6}
-              sm={4}
-              lg={3}
-            >
-              <Item {...i} />
-            </Grid>
-          ))}
+  const { list } = data;
 
-        </Masonry>
-
-        <Waypoint onEnter={fetchMore} />
-        <CircularProgress color="secondary" className={classes.progress} />
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <Masonry className={classes.list}>
+        {list.map(i => (
+          <Grid key={i._id} className={classes.item} item xs={6} sm={4} lg={3}>
+            <Item {...i} />
+          </Grid>
+        ))}
+      </Masonry>
+      {isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />}
+    </Fragment>
+  );
 }
+
+export default BxgigList;
