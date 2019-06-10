@@ -6,9 +6,9 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
-import Header from '@/components/Layout/Header';
 import withGraphql from '@/hoc/graphql/apolloRoot';
 import { ThemeContextProvider } from '@/hoc/theme';
+import Header from '@/components/Layout/Header';
 
 @withGraphql
 export default class MyApp extends App {
@@ -21,10 +21,10 @@ export default class MyApp extends App {
     if (!Component.Footer) Component.Footer = Fragment;
 
     return (
-      <ThemeContextProvider>
-        <NextContainer>
-          <ApolloProvider client={apolloClient}>
-            <ApolloHooksProvider client={apolloClient}>
+      <NextContainer>
+        <ApolloProvider client={apolloClient}>
+          <ApolloHooksProvider client={apolloClient}>
+            <ThemeContextProvider>
               <Component.Layout>
                 <Component.Header />
                 <Container maxWidth="md">
@@ -45,10 +45,10 @@ export default class MyApp extends App {
                 </Container>
                 <Component.Footer />
               </Component.Layout>
-            </ApolloHooksProvider>
-          </ApolloProvider>
-        </NextContainer>
-      </ThemeContextProvider>
+            </ThemeContextProvider>
+          </ApolloHooksProvider>
+        </ApolloProvider>
+      </NextContainer>
     );
   }
 }
