@@ -4,6 +4,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+
 @withRouter
 export default class Tags extends PureComponent {
   handleChange = (_, value) => {
