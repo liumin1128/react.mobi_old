@@ -1,25 +1,14 @@
 import React, { Fragment } from 'react';
 import { withRouter } from 'next/router';
 import { Waypoint } from 'react-waypoint';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import CardMedia from '@material-ui/core/CardMedia';
-
-import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import ImageIcon from '@material-ui/icons/Image';
-import WorkIcon from '@material-ui/icons/Work';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
-
-import Link from '@/components/Link';
 import Loading from '@/components/Loading';
 import { NEWS_LIST } from '@/graphql/schema/news';
 import { useQuery } from '@/hooks/graphql';
-import { getStrFromHtml } from '@/utils/common';
 import useStyles from './styles';
 
 
