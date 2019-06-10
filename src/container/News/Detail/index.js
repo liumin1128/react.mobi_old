@@ -1,10 +1,10 @@
 import React from 'react';
-import { useQuery } from 'react-apollo-hooks';
 import { withRouter } from 'next/router';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { NEWS_DETAIL } from '@/graphql/schema/news';
+import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import Html from '@/components/Html';
 import { formatTime, getTimeAgo } from '@/utils/common';
@@ -19,7 +19,7 @@ const appLogo = {
 
 function NewsDetail({ router }) {
   const { _id } = router.query;
-  const { data, error, loading, refetch } = useQuery(NEWS_DETAIL, { variables: { _id } });
+  const { data, error, loading, refetch } = useQuery(NEWS_DETAIL, { _id });
 
   if (loading) return <Loading />;
 

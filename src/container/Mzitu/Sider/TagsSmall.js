@@ -1,11 +1,11 @@
 import React, { Fragment, PureComponent } from 'react';
-import { useQuery } from 'react-apollo-hooks';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Link from '@/components/Link';
 import { MZITU_TAGS } from '@/graphql/schema/mzitu';
+import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 
 const useStyles = makeStyles(theme => ({
