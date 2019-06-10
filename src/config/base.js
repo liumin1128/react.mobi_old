@@ -18,5 +18,4 @@ export const PATH_BEFORELOGIN = 'react.mobi.path.before.login';
 
 export const QINIUURL = 'https://imgs.react.mobi';
 export const QINIU_UPLOADURL = 'https://upload-z1.qiniup.com';
-
 export const API_URL = ENV ? 'http://localhost:3101' : 'https://api.react.mobi';
