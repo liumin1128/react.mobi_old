@@ -45,7 +45,7 @@ class RecipeReviewCard extends React.Component {
     } = this.props;
 
     return (
-          <Link key={_id} href={`/bxgif/detail?id=${_id}`}>
+          <Link key={_id} href={`/bxgif/detail?_id=${_id}`}>
             <Card>
               <CardMedia
                 className={classes.cover}
