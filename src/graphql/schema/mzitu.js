@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const MZITU_LIST = gql`
-  query mzituList($page: Int, $search: String, $tag: String, $type: String ) {
-    list: mzituList(page: $page, search: $search, tag: $tag, type: $type) {
+  query mzituList($skip: Int, $search: String, $tag: String, $type: String ) {
+    list: mzituList(skip: $skip, search: $search, tag: $tag, type: $type) {
       __typename
       _id
       title
