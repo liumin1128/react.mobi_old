@@ -1,19 +1,10 @@
-import React, { PureComponent } from 'react';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Header from '@/components/Layout/Header';
+import React from 'react';
 import Content from '@/container/News/List';
 
-class Index extends PureComponent {
-  render() {
-    return (
-      <Container maxWidth="md">
-        <Content />
-      </Container>
-    );
-  }
+function Index() {
+  return (
+    <Content />
+  );
 }
-
-Index.Header = Header;
 
 export default Index;
