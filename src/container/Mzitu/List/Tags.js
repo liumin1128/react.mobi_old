@@ -25,8 +25,8 @@ export default class Tags extends PureComponent {
           <Tabs
             // value={this.state.value}
             value={type || 'xinggan'}
-            indicatorColor="primary"
-            textColor="primary"
+            indicatorColor="secondary"
+            textColor="secondary"
             onChange={this.handleChange}
             // centered
           >
