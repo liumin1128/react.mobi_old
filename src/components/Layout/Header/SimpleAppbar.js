@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
-import Logo from './logo';
+// import Logo from './logo';
 
 const styles = theme => ({
   root: {
@@ -26,7 +26,9 @@ export default class Header extends PureComponent {
           <div className={classes.container}>
             <Toolbar disableGutters>
               <Link href="/">
-                <a><Logo /></a>
+                {
+                // <a><Logo /></a>
+                }
               </Link>
               <Typography
                 variant="h6"

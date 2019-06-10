@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
-import withStyle from './material-ui/withRoot';
+import withStyle from './material-ui';
 // import reduxRoot from '@/hoc/reduxRoot';
 import { domRender } from '@/utils/react';
 
