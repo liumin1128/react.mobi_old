@@ -1,5 +1,6 @@
 import React from 'react';
 import Content from '@/container/News/Detail';
+import FlatList from '@/container/News/List/FlatList';
 
 function NewsDetail() {
   return (
@@ -7,6 +8,6 @@ function NewsDetail() {
   );
 }
 
-NewsDetail.Sider = Content;
+NewsDetail.Sider = FlatList;
 
 export default NewsDetail;

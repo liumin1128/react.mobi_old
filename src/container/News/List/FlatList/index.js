@@ -7,8 +7,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Loading from '@/components/Loading';
+import Link from '@/components/Link';
+
 import { NEWS_LIST } from '@/graphql/schema/news';
 import { useQuery } from '@/hooks/graphql';
+import { getTimeAgo } from '@/utils/common';
 import useStyles from './styles';
 
 
@@ -27,22 +30,22 @@ function NewsList({ router }) {
     <Fragment>
       <List className={classes.root}>
         {list.map((i, index) => (
-          <ListItem button key={i._id} style={{ padding: 0 }}>
-            <ListItemAvatar>
-              <Avatar size={70} src={i.photos[0]} style={{ borderRadius: 0, width: 64, height: 64, marginRight: 8 }} />
-            </ListItemAvatar>
-            <ListItemText
-              // secondary={i.title}
-              primary={i.title}
-              // secondary={getStrFromHtml(i.content, 20)}
-              secondary={i.createdAt}
-              // primaryTypographyProps={{ noWrap: true, style: { overflow: 'hidden' } }}
-            />
-          </ListItem>
+          <Link key={i._id} href={`/news/detail?_id=${i._id}`}>
+            <ListItem button style={{ padding: 0 }}>
+              <ListItemText primary={i.title} secondary={getTimeAgo(i.createdAt)} primaryTypographyProps={{ color: 'textPrimary', variant: 'subtitle2' }} />
+              <ListItemAvatar>
+                <Avatar size={70} src={i.photos[0]} style={{ borderRadius: 0, width: 64, height: 64, marginLeft: 8 }} />
+              </ListItemAvatar>
+            </ListItem>
+          </Link>
+
+
         ))}
       </List>
 
-      {isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />}
+      {
+        // isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />
+        }
     </Fragment>
   );
 }

@@ -36,7 +36,7 @@ function NewsDetail({ router }) {
 
   return (
     <div>
-      <Typography variant="h4" style={{ fontWeight: 600 }}>{title}</Typography>
+      <Typography variant="h5" style={{ fontWeight: 600 }}>{title}</Typography>
       <br />
       <div style={{ display: 'flex', alignItems: 'center', fontSize: 12, color: '#666', opacity: 0.8 }}>
         <a href={url} target="_blank" rel="noopener noreferrer" style={{ margin: 0, display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
