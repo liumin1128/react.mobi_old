@@ -63,7 +63,7 @@ class RecipeReviewCard extends React.Component {
                 color="textPrimary"
                 // color="textSecondary"
               >
-                {title.substring(15, title.length)}
+                {title.substring(14, title.length)}
               </Typography>
               <Typography className={classes.meta} color="textSecondary">
                 <span>{`${total}`}</span>

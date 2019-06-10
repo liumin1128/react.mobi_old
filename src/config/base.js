@@ -4,6 +4,8 @@ export const LOGO_URL = 'https://imgs.react.mobi/FldU5XAVJksEDNDEs7MZiF36DMAz';
 
 export const NAV_TABS = [
   { pathname: '/', label: '首页' },
+  { pathname: '/bxgif/list', label: '囧图' },
+  { pathname: '/mzitu', label: '妹子' },
   { pathname: '/about', label: '关于' },
 ];
 
