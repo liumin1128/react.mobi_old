@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter } from 'next/router';
-import { useQuery } from 'react-apollo-hooks';
 import LazyLoad from 'react-lazyload';
 import Button from '@material-ui/core/Button';
 import Loading from '@/components/Loading';
 
 import { MZITU_DETAIL } from '@/graphql/schema/mzitu';
+import { useQuery } from '@/hooks/graphql';
 import imageView from '@/components/ImageView';
 
 import useStyles from './styles';
@@ -13,7 +13,7 @@ import useStyles from './styles';
 function MzituDetail({ router }) {
   const classes = useStyles();
   const { id } = router.query;
-  const { data, error, loading, refetch } = useQuery(MZITU_DETAIL, { variables: { _id: id } });
+  const { data, error, loading, refetch } = useQuery(MZITU_DETAIL, { _id: id });
 
   if (loading) return <Loading />;
 
