@@ -1,26 +1,21 @@
-import React, { PureComponent } from 'react';
-import Hidden from '@material-ui/core/Hidden';
-import Grid from '@material-ui/core/Grid';
-import Side from '@/container/side';
-import Typography from '@material-ui/core/Typography';
+import Link from 'next/link';
+import { withRouter } from 'next/router';
 
-export default class index extends PureComponent {
-  render() {
-    return (
-      <div>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={12} md={8}>
-            <Typography variant="h6" gutterBottom>
-              关于作者
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={12} md={4}>
-            <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
-              <Side />
-            </Hidden>
-          </Grid>
-        </Grid>
-      </div>
-    );
-  }
+function Home({ router }) {
+  console.log('router');
+  console.log(router);
+  return (
+    <div>
+      <h1>about</h1>
+      <Link href="/"><a>index</a></Link>
+      <br />
+      <Link href="/about?xxx=1"><a>index 1</a></Link>
+      <br />
+      <Link href="/about?xxx=2"><a>index 2</a></Link>
+      <br />
+      <Link href="/about?xxx=3"><a>index 3</a></Link>
+    </div>
+  );
 }
+
+export default withRouter(Home);
