@@ -31,21 +31,22 @@ function NewsList({ router }) {
       <List className={classes.root}>
         {list.map((i, index) => (
           <Link key={i._id} href={`/news/detail?_id=${i._id}`}>
-            <ListItem button style={{ padding: 0 }}>
-              <ListItemText primary={i.title} secondary={getTimeAgo(i.createdAt)} primaryTypographyProps={{ color: 'textPrimary', variant: 'subtitle2' }} />
+            <ListItem button className={classes.item}>
+              <ListItemText
+                primary={i.title}
+                secondary={getTimeAgo(i.createdAt)}
+                primaryTypographyProps={{ color: 'textPrimary', variant: 'subtitle2', className: classes.title }}
+              />
               <ListItemAvatar>
                 <Avatar size={70} src={i.photos[0]} style={{ borderRadius: 0, width: 64, height: 64, marginLeft: 8 }} />
               </ListItemAvatar>
             </ListItem>
           </Link>
-
-
         ))}
       </List>
-
       {
         // isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />
-        }
+      }
     </Fragment>
   );
 }
