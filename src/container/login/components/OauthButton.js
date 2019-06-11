@@ -10,7 +10,7 @@ const styles = theme => ({
     marginBottom: 20,
     position: 'relative',
     borderRadius: 6,
-    background: '#fff',
+    // background: theme.palette.text.primary,
     boxShadow: '0 8px 30px rgba(0,0,0,0.05)',
   },
   icon: {
@@ -30,9 +30,10 @@ export default class OauthButton extends PureComponent {
       <Link href={url}>
         <Button
           variant="outlined"
+          size="large"
           fullWidth
-          className={classes.button}
           style={{ borderColor: color, color }}
+          className={classes.button}
         >
           <img className={classes.icon} alt={text} src={icon} />
           {text}
