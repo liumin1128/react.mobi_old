@@ -1,10 +1,14 @@
 import React, { PureComponent } from 'react';
 import dynamic from 'next/dynamic';
 import { withStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import ColorLensIcon from '@material-ui/icons/ColorLens';
+
 import Link from '@/components/Link';
 import { LOGO_URL, NAV_TABS } from '@/config/base';
 import { withThemeConsumer } from '@/hoc/theme';
@@ -42,10 +46,12 @@ export default class Header extends PureComponent {
                 <Avatar src={LOGO_URL} />
               </ButtonBase>
             </Link>
-            <div className={classes.grow}>
+            <Box flexGrow={1} className={classes.grow}>
               <NavTabs navList={NAV_TABS} />
-            </div>
-            <ButtonBase onClick={setTheme}>switch theme</ButtonBase>
+            </Box>
+            <IconButton color="inherit" onClick={setTheme}>
+              <ColorLensIcon />
+            </IconButton>
           </Toolbar>
         </AppBar>
       </div>
