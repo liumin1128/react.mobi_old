@@ -52,7 +52,7 @@ export default class phone extends PureComponent {
     const formData = {
       // nickname: '本王今年八岁',
       countryCode: '+86',
-      // purePhoneNumber: '18629974148',
+      purePhoneNumber: '18629974148',
       // code: '434772',
     };
     return (

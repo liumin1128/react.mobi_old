@@ -79,7 +79,7 @@ export default class CodeBtn extends PureComponent {
           return (
             <Button
               size="small"
-              color="primary"
+              color="secondary"
               className={classes.getCode}
               onClick={onGetCode}
               disabled={timer > 0 || !countryCode || !purePhoneNumber}
