@@ -29,6 +29,7 @@ const styles = theme => ({
   },
   logo: {
     marginRight: 16,
+    filter: 'grayscale(100%) saturate(100%)',
   },
 });
 
