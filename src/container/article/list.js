@@ -8,7 +8,7 @@ import Placeholder from './Placeholder';
 const styles = theme => ({
   card: {
     maxWidth: 500,
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing(3),
     margin: '0 auto',
   },
 });

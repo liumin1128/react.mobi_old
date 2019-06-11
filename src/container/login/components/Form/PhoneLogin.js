@@ -34,7 +34,7 @@ const validate = (values) => {
 const styles = (theme) => {
   return {
     item: {
-      marginBottom: theme.spacing.unit * 3,
+      marginBottom: theme.spacing(3),
     },
     button: {
       height: 48,

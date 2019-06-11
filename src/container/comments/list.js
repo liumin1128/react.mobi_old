@@ -29,8 +29,8 @@ const styles = theme => ({
     color: '#666',
   },
   avatar: {
-    width: theme.spacing.unit * 3,
-    height: theme.spacing.unit * 3,
+    width: theme.spacing(3),
+    height: theme.spacing(3),
     borderRadius: theme.spacing.unit * 0.5,
     marginRight: theme.spacing.unit * 1.5,
   },
