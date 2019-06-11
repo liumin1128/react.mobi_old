@@ -31,11 +31,11 @@ const styles = theme => ({
   avatar: {
     width: theme.spacing(3),
     height: theme.spacing(3),
-    borderRadius: theme.spacing.unit * 0.5,
-    marginRight: theme.spacing.unit * 1.5,
+    borderRadius: theme.spacing(0.5),
+    marginRight: theme.spacing(1.5),
   },
   commentItem: {
-    padding: `${theme.spacing.unit}px 0`,
+    padding: `${theme.spacing()}px 0`,
   },
   commentHeader: {
     display: 'flex',

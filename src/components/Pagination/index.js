@@ -6,7 +6,7 @@ const styles = theme => ({
   list: {
     display: 'flex',
     justifyContent: 'center',
-    margin: -theme.spacing.unit * 0.5,
+    margin: -theme.spacing(0.5),
   },
   item: {
     minHeight: 32,
@@ -15,7 +15,7 @@ const styles = theme => ({
     minWidth: 32,
     display: 'inline-block',
     padding: 0,
-    margin: theme.spacing.unit * 0.5,
+    margin: theme.spacing(0.5),
   },
 });
 

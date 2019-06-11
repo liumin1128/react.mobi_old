@@ -4,7 +4,7 @@ export default makeStyles(theme => ({
   root: {
     '& > img': {
       width: '100%',
-      marginBottom: theme.spacing.unit * 2,
+      marginBottom: theme.spacing(2),
       cursor: 'pointer',
     },
   },

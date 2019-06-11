@@ -9,8 +9,8 @@ const styles = theme => ({
     // height: 36,
   },
   close: {
-    width: theme.spacing.unit * 4,
-    height: theme.spacing.unit * 4,
+    width: theme.spacing(4),
+    height: theme.spacing(4),
   },
 });
 
@@ -47,14 +47,14 @@ export default class MySnackbar extends PureComponent {
       actionText = 'OK',
     } = this.props;
 
-    const action = [<Button
+    const action = [ <Button
       key="undo"
       color="inherit"
       dense="true"
       onClick={this.handleClose}
     >
       {actionText}
-    </Button>];
+    </Button> ];
 
     return (
       <Snackbar
