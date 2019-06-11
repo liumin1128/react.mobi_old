@@ -15,10 +15,10 @@ import { withThemeConsumer } from '@/hoc/theme';
 import NavTabs from './NavTabs';
 // import Logo from './logo';
 
-// const DynamicUserInfoWithNoSSR = dynamic(() => import('./user'), {
-//   ssr: false,
-//   loading: () => <span />,
-// });
+const DynamicUserInfoWithNoSSR = dynamic(() => import('./user'), {
+  ssr: false,
+  loading: () => <span />,
+});
 
 const styles = theme => ({
   root: {
@@ -53,6 +53,7 @@ export default class Header extends PureComponent {
             <IconButton color="inherit" onClick={setTheme}>
               <ColorLensIcon />
             </IconButton>
+            <DynamicUserInfoWithNoSSR />
           </Toolbar>
         </AppBar>
       </div>
