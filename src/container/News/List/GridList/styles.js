@@ -13,7 +13,7 @@ export default makeStyles(theme => ({
   cover: {
 
     paddingTop: '56%',
-    backgroundColor: 'rgba(128,0,0)',
+    backgroundColor: 'rgba(128,128,128)',
     marginBottom: 12,
     // borderRadius: 4,
 
