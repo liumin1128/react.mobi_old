@@ -8,6 +8,7 @@ class MyDocument extends Document {
   render() {
     return (
       <html lang="en" dir="ltr">
+        <title>盗火</title>
         <Head>
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
@@ -22,11 +23,17 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
           />
+          <link rel="icon" href="https://imgs.react.mobi/FjpmLe9it1pTemLeB2w5XgDhv1D-" type="image/x-icon" />
+          <link rel="shortcut icon" href="https://imgs.react.mobi/FjpmLe9it1pTemLeB2w5XgDhv1D-" type="image/x-icon" />
+
+          <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" rel="apple-touch-icon-precomposed" />
+          <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" sizes="114x114" rel="apple-touch-icon-precomposed" />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
+        <script type="text/javascript" src="/static/start.js" defer="defer" />
       </html>
     );
   }
