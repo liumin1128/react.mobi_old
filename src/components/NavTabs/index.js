@@ -68,9 +68,7 @@ function SimpleTabs({ navList = [], router }) {
           key={i.key || i.label}
           label={i.label}
           value={i.pathname}
-          classes={{
-            root: classes.tab,
-          }}
+          classes={{ root: classes.tab }}
         />
       ))}
     </Tabs>
