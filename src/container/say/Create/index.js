@@ -19,7 +19,9 @@ function SayCreate({ router }) {
     },
   };
 
-  const createSay = useMutation(SAY_CREATE, params);
+  const createSay = useMutation(SAY_CREATE, params, {
+    refetchQueries: [ 'SayList' ],
+  });
 
   return (
     <Fragment>

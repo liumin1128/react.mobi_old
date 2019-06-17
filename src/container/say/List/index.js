@@ -24,7 +24,7 @@ function SayList({ router }) {
 
   return (
     <Fragment>
-      1111
+      {list.map(i => <h6>{i.content}</h6>)}
     </Fragment>
   );
 }
