@@ -11,7 +11,7 @@ import { SAY_LIST } from '@/graphql/schema/say';
 import { useQuery } from '@/hooks/graphql';
 import useStyles from './styles';
 
-function SayCreate({ router }) {
+function SayList({ router }) {
   const { data, error, loading, isLoadingMore, loadMore } = useQuery(SAY_LIST, router.query);
 
   if (loading) return <Loading />;
@@ -29,4 +29,4 @@ function SayCreate({ router }) {
   );
 }
 
-export default withRouter(SayCreate);
+export default withRouter(SayList);
