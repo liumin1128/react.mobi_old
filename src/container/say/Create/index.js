@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Button from '@material-ui/core/Button';
 import { withRouter } from 'next/router';
 import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
@@ -7,24 +8,23 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 import Link from '@/components/Link';
 import Loading from '@/components/Loading';
-import { SAY_LIST } from '@/graphql/schema/say';
-import { useQuery } from '@/hooks/graphql';
+import { SAY_CREATE } from '@/graphql/schema/say';
+import { useMutation } from '@/hooks/graphql';
 import useStyles from './styles';
 
 function SayCreate({ router }) {
-  const { data, error, loading, isLoadingMore, loadMore } = useQuery(SAY_LIST, router.query);
+  const params = {
+    input: {
+      content: '测试文本',
+    },
+  };
 
-  if (loading) return <Loading />;
-  if (error) return <div>{error.message}</div>;
-
-  const { list } = data;
-
-  console.log('list');
-  console.log(list);
+  const createSay = useMutation(SAY_CREATE, params);
 
   return (
     <Fragment>
-      1111
+      SayCreate
+      <Button onClick={createSay}>useMutation</Button>
     </Fragment>
   );
 }

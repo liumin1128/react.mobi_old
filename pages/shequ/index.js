@@ -1,6 +1,6 @@
 import React from 'react';
 import SayList from '@/container/Say/List';
-// import FlatList from '@/container/News/List/FlatList';
+import SayCreate from '@/container/Say/Create';
 
 function Index() {
   return (
@@ -8,6 +8,6 @@ function Index() {
   );
 }
 
-// Index.Sider = FlatList;
+Index.Sider = SayCreate;
 
 export default Index;

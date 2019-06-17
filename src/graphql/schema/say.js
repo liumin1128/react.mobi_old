@@ -32,3 +32,12 @@ export const SAY_LIST = gql`
     }
   }
 `;
+
+export const SAY_CREATE = gql`
+  mutation SayCreate($input: SayInput) {
+    result: SayCreate(input: $input) {
+      status
+      message
+    }
+  }
+`;
