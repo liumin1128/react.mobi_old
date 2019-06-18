@@ -33,6 +33,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
         <script type="text/javascript" src="/static/start.js" defer="defer" />
       </html>
     );
