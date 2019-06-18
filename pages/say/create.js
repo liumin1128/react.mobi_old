@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout/Blank';
-import Create from '@/container/say/Create';
+import Create from '@/container/Say/Create';
 
 export default () => (
   <Layout>
