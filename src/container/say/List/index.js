@@ -9,6 +9,7 @@ import Link from '@/components/Link';
 import Loading from '@/components/Loading';
 import { SAY_LIST } from '@/graphql/schema/say';
 import { useQuery } from '@/hooks/graphql';
+import Item from './Item';
 import useStyles from './styles';
 
 function SayList({ router }) {
@@ -24,7 +25,7 @@ function SayList({ router }) {
 
   return (
     <Fragment>
-      {list.map(i => <h6>{i.content}</h6>)}
+      {list.map(i => <Item key={i._id} {...i} />)}
     </Fragment>
   );
 }
