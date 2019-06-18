@@ -27,7 +27,7 @@ export default class MyApp extends App {
             <ThemeContextProvider>
               <Component.Layout>
                 <Component.Header />
-                <Container maxWidth="md">
+                <Container maxWidth="lg">
                   <Box my={2}>
                     {Component.Sider ? (
                       <Grid container spacing={3}>
