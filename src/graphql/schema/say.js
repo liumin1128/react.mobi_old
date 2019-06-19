@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const SAY_DETAIL = gql`
   query SayDetail($_id: String!) {
-    say: say(_id: $_id) {
+    data: say(_id: $_id) {
       __typename
       _id
       content

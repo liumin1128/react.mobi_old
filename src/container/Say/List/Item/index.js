@@ -25,21 +25,23 @@ function SayListItem({ _id, content, user, createdAt, loading, ...props }) {
 
   return (
     <Fragment key={_id}>
-      <Card>
-        <CardHeader
-          avatar={(<Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>)}
-          action={(
-            <IconButton aria-label="Settings">
-              <MoreVertIcon />
-            </IconButton>
+      <Link href={`/shequ/detail?_id=${_id}`}>
+        <Card>
+          <CardHeader
+            avatar={(<Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>)}
+            action={(
+              <IconButton aria-label="Settings">
+                <MoreVertIcon />
+              </IconButton>
             )}
-          title={user.nickname}
-          subheader={getTimeAgo(createdAt)}
-        />
-        <CardContent>
-          <Typography variant="body2">{content}</Typography>
-        </CardContent>
-      </Card>
+            title={user.nickname}
+            subheader={getTimeAgo(createdAt)}
+          />
+          <CardContent>
+            <Typography variant="body2">{content}</Typography>
+          </CardContent>
+        </Card>
+      </Link>
       <br />
     </Fragment>
   );
