@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -8,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
+import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { SAY_DETAIL } from '@/graphql/schema/say';
@@ -42,12 +44,25 @@ function SayDetail({ router }) {
             <CardContent>
               <Typography variant="h6">{content}</Typography>
               <Typography variant="body2" component="p">{`${getTimeAgo(createdAt)}发布`}</Typography>
-              <Typography variant="caption" component="p">技术 / 前端 / React</Typography>
+              <Typography variant="body2" component="p">技术 / 前端 / React</Typography>
             </CardContent>
           </Grid>
+          <Divider />
           <Grid item xs={12} sm={12} md={4}>
             <CardContent>
-              <Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>
+              <Box display="flex" alignItems="center">
+                <Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>
+                <Box mr={2} />
+                <Box>
+                  <Typography variant="h6">{user.nickname}</Typography>
+                  <Typography variant="body2" component="p">华人生活网 | 前端</Typography>
+                  <Box mt={1} display="flex">
+                    <Button variant="contained" size="small">关注</Button>
+                    <Box mr={2} />
+                    <Button variant="outlined" size="small">私信</Button>
+                  </Box>
+                </Box>
+              </Box>
             </CardContent>
           </Grid>
         </Grid>
