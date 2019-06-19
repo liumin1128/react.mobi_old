@@ -1,6 +1,13 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { SAY_DETAIL } from '@/graphql/schema/say';
@@ -8,11 +15,11 @@ import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import Html from '@/components/Html';
 import { formatTime, getTimeAgo } from '@/utils/common';
-// import useStyles from './styles';
+import useStyles from './styles';
 
 function SayDetail({ router }) {
-  const { _id } = router.query;
-  const { data, error, loading, refetch } = useQuery(SAY_DETAIL, { _id });
+  const classes = useStyles();
+  const { data, error, loading, refetch } = useQuery(SAY_DETAIL, router.query);
 
   if (loading) return <Loading />;
 
@@ -29,7 +36,28 @@ function SayDetail({ router }) {
 
   return (
     <div>
-      <Typography variant="h5" style={{ fontWeight: 600 }}>{content}</Typography>
+      <Card>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={12} md={8}>
+            <CardContent>
+              <Typography variant="h6">{content}</Typography>
+              <Typography variant="body2" component="p">{`${getTimeAgo(createdAt)}发布`}</Typography>
+              <Typography variant="caption" component="p">技术 / 前端 / React</Typography>
+            </CardContent>
+          </Grid>
+          <Grid item xs={12} sm={12} md={4}>
+            <CardContent>
+              <Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>
+            </CardContent>
+          </Grid>
+        </Grid>
+      </Card>
+      <br />
+      <Card>
+        <CardContent>
+          <Typography variant="body2">{content}</Typography>
+        </CardContent>
+      </Card>
     </div>
   );
 }
