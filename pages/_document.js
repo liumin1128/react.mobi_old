@@ -29,13 +29,22 @@ class MyDocument extends Document {
           <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" rel="apple-touch-icon-precomposed" />
           <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" sizes="114x114" rel="apple-touch-icon-precomposed" />
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
-          <script type="text/javascript" src="/static/start.js" defer="defer" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (adsbygoogle = window.adsbygoogle || []).push({
+                  google_ad_client: "ca-pub-5887271219203522",
+                  enable_page_level_ads: true
+                })
+              `
+            }}
+          />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-
+        <script type="text/javascript" src="/static/start.js" defer="defer" />
       </html>
     );
   }

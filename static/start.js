@@ -34,7 +34,7 @@ document.addEventListener('visibilitychange', () => {
 // </script>
 
 
-(adsbygoogle = window.adsbygoogle || []).push({
-  google_ad_client: "ca-pub-5887271219203522",
-  enable_page_level_ads: true
-});
+// (adsbygoogle = window.adsbygoogle || []).push({
+//   google_ad_client: "ca-pub-5887271219203522",
+//   enable_page_level_ads: true
+// });
