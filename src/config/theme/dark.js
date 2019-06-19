@@ -7,6 +7,22 @@ const theme = createMuiTheme({
         'background-color': '#212121',
       },
     },
+    MuiButton: {
+      containedPrimary: {
+        backgroundColor: '#fff',
+        color: '#212121',
+        '&:hover': {
+          backgroundColor: '#ccc',
+        },
+      },
+      outlinedPrimary: {
+        color: '#fff',
+        borderColor: '#fff',
+        '&:hover': {
+          borderColor: '#ccc',
+        },
+      },
+    },
   },
   palette: {
     type: 'dark',

@@ -57,9 +57,9 @@ function SayDetail({ router }) {
                   <Typography variant="h6">{user.nickname}</Typography>
                   <Typography variant="body2" component="p">华人生活网 | 前端</Typography>
                   <Box mt={1} display="flex">
-                    <Button variant="contained" size="small">关注</Button>
+                    <Button variant="contained" size="small" color="primary">关注</Button>
                     <Box mr={2} />
-                    <Button variant="outlined" size="small">私信</Button>
+                    <Button variant="outlined" size="small" color="primary">私信</Button>
                   </Box>
                 </Box>
               </Box>
