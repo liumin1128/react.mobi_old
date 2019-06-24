@@ -23,6 +23,14 @@ const theme = createMuiTheme({
         },
       },
     },
+
+    // MuiOutlinedInput: {
+    //   focused: {
+    //     notchedOutline: {
+    //       borderColor: '#fff'
+    //     }
+    //   }
+    // }
   },
   palette: {
     type: 'dark',

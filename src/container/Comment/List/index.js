@@ -9,7 +9,6 @@ import Loading from '@/components/Loading';
 import { SAY_LIST } from '@/graphql/schema/say';
 import { useQuery } from '@/hooks/graphql';
 import { getTimeAgo } from '@/utils/common';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import useStyles from './styles';

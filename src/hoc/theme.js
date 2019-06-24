@@ -1,7 +1,7 @@
 import React, { PureComponent, createContext, useReducer, useContext, useState } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import defaultTheme from '@/config/theme';
+import defaultTheme from '@/config/theme/default';
 import darkTheme from '@/config/theme/dark';
 import { useOnMount } from '@/hooks';
 
