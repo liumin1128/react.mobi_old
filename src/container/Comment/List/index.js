@@ -27,7 +27,7 @@ function SayList({ router }) {
           <Box mx={2}>
             <Box my={4}>
               <Box display="flex">
-                <Box mr={2}>
+                <Box mr={3}>
                   <Avatar
                     aria-label="Avatar"
                     src={i.user.avatarUrl}
@@ -72,7 +72,7 @@ function SayList({ router }) {
                 </Box>
               </Box>
             </Box>
-            <Divider />
+            <Divider variant="inset" />
           </Box>
         </Fragment>
       ))}

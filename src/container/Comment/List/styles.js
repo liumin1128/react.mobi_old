@@ -14,7 +14,7 @@ export default makeStyles(theme => ({
     marginTop: theme.spacing(1),
   },
   replay: {
-    backgroundColor: theme.palette.type === 'dark' ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)',
+    backgroundColor: theme.palette.type === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
     borderRadius: theme.spacing(0.5),
     marginTop: theme.spacing(4),
     position: 'relative',
@@ -27,7 +27,7 @@ export default makeStyles(theme => ({
       left: theme.spacing(2),
       borderWidth: `${theme.spacing(1.5)}px ${theme.spacing(1.5)}px`,
       borderStyle: 'solid',
-      borderColor: 'transparent transparent '+(theme.palette.type === 'dark' ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)')+' transparent',
+      borderColor: 'transparent transparent '+(theme.palette.type === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)')+' transparent',
       display: 'block',
     },
   },
