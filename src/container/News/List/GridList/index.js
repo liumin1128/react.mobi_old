@@ -13,9 +13,7 @@ import useStyles from './styles';
 
 function NewsList({ router }) {
   const classes = useStyles();
-
-  const { search, tag, type } = router.query;
-  const { data, error, loading, isLoadingMore, loadMore } = useQuery(NEWS_LIST, { search, tag, type });
+  const { data, error, loading, isLoadingMore, loadMore } = useQuery(NEWS_LIST, router.query);
 
   if (loading) return <Loading />;
   if (error) return <div>{error.message}</div>;
