@@ -42,7 +42,7 @@ function SayCreate({ router }) {
             <form id="createArticleForm" onSubmit={handleSubmit}>
               <Field
                 multiline
-                rows="3"
+                rows="2"
                 key="content"
                 name="content"
                 label="输入评论"
@@ -51,7 +51,7 @@ function SayCreate({ router }) {
                 margin="normal"
                 variant="outlined"
                 fullWidth
-                placeholder="畅所欲言，回车发送"
+                placeholder="畅所欲言，有你更精彩"
                 autoComplete="off"
                 rowsMax="8"
               />

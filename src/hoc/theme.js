@@ -10,7 +10,8 @@ const themes = {
   dark: darkTheme,
 };
 
-export const ThemeContext = createContext(defaultTheme);
+
+export const ThemeContext = createContext(darkTheme);
 
 // ThemeProvider的hoc用法
 export function withThemeProvider(WrappedComponent) {

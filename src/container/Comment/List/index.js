@@ -44,21 +44,17 @@ function SayList({ router }) {
                   <Typography variant="body2" component="p" className={classes.content}>好喜欢～～～～～～～～～～～～～～～～～·好喜欢～～～～～～～～～～～～～～～～～·好喜欢～～～～～～～～～～～～～～～～～·好喜欢～～～～～～～～～～～～～～～～～·</Typography>
                   <Box display="flex" justifyContent="space-between" alignItems="center">
                     <Typography variant="body2">{getTimeAgo(i.createdAt)}</Typography>
-                    <Box>
-
-
-                      <IconButton aria-label="Delete" className={classes.margin} color="inherit">
+                    <Box color="#666">
+                      <IconButton aria-label="Delete" color="inherit">
                         <ModeCommentIcon fontSize="small" style={{ fontSize: 15 }} />
                       </IconButton>
                       {0}
                       <Box px={1} display="inline" />
 
-                      <IconButton aria-label="Delete" className={classes.margin} color="inherit">
+                      <IconButton aria-label="Delete" color="inherit">
                         <ThumbUpIcon fontSize="small" style={{ fontSize: 15 }} />
                       </IconButton>
                       {15}
-
-
                     </Box>
                   </Box>
 
@@ -89,14 +85,14 @@ function SayList({ router }) {
 
                         <Box display="flex" justifyContent="space-between" alignItems="center">
                           <Typography variant="body2">{getTimeAgo(i.createdAt)}</Typography>
-                          <Box>
-                            <IconButton aria-label="Delete" className={classes.margin} color="inherit">
+                          <Box color="#666">
+                            <IconButton aria-label="Delete" color="inherit">
                               <ModeCommentIcon fontSize="small" style={{ fontSize: 15 }} />
                             </IconButton>
                             {0}
                             <Box px={1} display="inline" />
 
-                            <IconButton aria-label="Delete" className={classes.margin} color="inherit">
+                            <IconButton aria-label="Delete" color="inherit">
                               <ThumbUpIcon fontSize="small" style={{ fontSize: 15 }} />
                             </IconButton>
                             {15}
