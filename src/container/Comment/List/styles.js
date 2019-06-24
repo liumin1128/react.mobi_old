@@ -16,7 +16,7 @@ export default makeStyles(theme => ({
   replay: {
     backgroundColor: theme.palette.type === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
     borderRadius: theme.spacing(0.5),
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(2),
     position: 'relative',
     '&::before': {
       content: "''",
