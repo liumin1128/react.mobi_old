@@ -44,3 +44,6 @@ const theme = createMuiTheme({
 });
 
 export default theme;
+
+// 站酷字体
+// 14px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif;

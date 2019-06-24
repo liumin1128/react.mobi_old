@@ -17,6 +17,7 @@ import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import Html from '@/components/Html';
 import { formatTime, getTimeAgo } from '@/utils/common';
+import Comment from '@/container/Comment';
 import useStyles from './styles';
 
 function SayDetail({ router }) {
@@ -73,6 +74,9 @@ function SayDetail({ router }) {
           <Typography variant="body2">{content}</Typography>
         </CardContent>
       </Card>
+
+      <br />
+      <Comment />
     </div>
   );
 }
