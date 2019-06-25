@@ -15,6 +15,7 @@ export const ENV = process.env.NODE_ENV !== 'production';
 export const STORE_USER_KEY = 'react.mobi.user';
 export const USER_TOKEN = 'react.mobi.user.token';
 export const USER_INFO_KEY = 'react.mobi.user.info';
+export const USER_SETTING_THEME = 'react.mobi.user.setting.theme';
 export const PATH_BEFORELOGIN = 'react.mobi.path.before.login';
 
 export const QINIUURL = 'https://imgs.react.mobi';

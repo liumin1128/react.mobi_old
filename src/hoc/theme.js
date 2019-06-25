@@ -4,6 +4,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import defaultTheme from '@/config/theme/default';
 import darkTheme from '@/config/theme/dark';
 import { useOnMount } from '@/hooks';
+import { getStorage, setStorage } from '@/utils/store';
+import { USER_SETTING_THEME } from '@/config/base';
 
 const themes = {
   default: defaultTheme,
@@ -67,7 +69,9 @@ export default function HookThemeProvider({ children }) {
 
 //
 export function ThemeContextProvider({ children }) {
-  const [ state, setState ] = useState('dark');
+  const themeStr = getStorage(USER_SETTING_THEME) || 'dark';
+
+  const [ state, setState ] = useState(themeStr);
 
   useOnMount(() => {
     const jssStyles = document.querySelector('#jss-server-side');
@@ -79,6 +83,7 @@ export function ThemeContextProvider({ children }) {
   const theme = themes[state];
   const setTheme = () => {
     const str = state === 'default' ? 'dark' : 'default';
+    setStorage(USER_SETTING_THEME, str);
     setState(str);
   };
 
