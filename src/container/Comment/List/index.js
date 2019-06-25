@@ -24,9 +24,15 @@ function SayList({ router }) {
 
   return (
     <Fragment>
-      {list.map((i, idx) => (
-        <Fragment key={i._id}>
-          <Box mx={2}>
+      <Box mx={2} my={2} display="flex" alignItems="center">
+        <Typography variant="body1" gutterBottom>全部评论</Typography>
+        <Box mx={1} />
+        <Typography variant="body2" gutterBottom>1</Typography>
+      </Box>
+      <Box mx={2}>
+
+        {list.map((i, idx) => (
+          <Fragment key={i._id}>
             {idx !== 0 && <Divider variant="inset" />}
             <Box my={4}>
               <Box display="flex">
@@ -104,9 +110,10 @@ function SayList({ router }) {
                 </Box>
               </Box>
             </Box>
-          </Box>
-        </Fragment>
-      ))}
+          </Fragment>
+        ))}
+      </Box>
+
     </Fragment>
   );
 }
