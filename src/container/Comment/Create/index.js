@@ -1,11 +1,13 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+import isEmpty from 'lodash/isEmpty';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import { CREATE_COMMENT, COMMENT_LIST } from '@/graphql/schema/comment';
 import { useMutation } from '@/hooks/graphql';
 import { Form, Field } from 'react-final-form';
 import TextField from '@/components/Form/TextField';
+import Button from '@/components/Button/Loading';
 import useStyles from './styles';
+
 
 const validate = (values) => {
   const errors = {};
@@ -17,6 +19,7 @@ const validate = (values) => {
 
 function SayCreate({ _id }) {
   const classes = useStyles();
+  const [ status, setStatus ] = useState('default');
   const createComment = useMutation(CREATE_COMMENT, { commentTo: _id }, {
     // refetchQueries: [ 'CommentList' ],
     // 乐观更新
@@ -38,13 +41,6 @@ function SayCreate({ _id }) {
     //     },
     //   },
     // },
-    update: (store, { data: { result: { status, data: result } } }) => {
-      if (status === 200) {
-        const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo: _id } });
-        data.list.unshift(result);
-        store.writeQuery({ query: COMMENT_LIST, variables: { commentTo: _id }, data });
-      }
-    },
   });
 
   return (
@@ -52,11 +48,21 @@ function SayCreate({ _id }) {
       <Box px={2}>
         <Form
           onSubmit={(values, form) => {
-            createComment(values);
-            form.reset();
+            setStatus('loading');
+            createComment(values, {
+              update: (store, { data: { result: { status, data: result } } }) => {
+                setStatus('default');
+                form.reset();
+                if (status === 200) {
+                  const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo: _id } });
+                  data.list.unshift(result);
+                  store.writeQuery({ query: COMMENT_LIST, variables: { commentTo: _id }, data });
+                }
+              },
+            });
           }}
           validate={validate}
-          render={({ handleSubmit }) => (
+          render={({ handleSubmit, errors }) => (
             <form id="createArticleForm" onSubmit={handleSubmit}>
               <Field
                 multiline
@@ -75,7 +81,16 @@ function SayCreate({ _id }) {
               />
               <Box display="flex" justifyContent="space-between" alignItems="flex-start">
                 <Button size="small">添加表情</Button>
-                <Button type="submit" variant="contained" color="primary" className={classes.submit}>评论</Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  disabled={!isEmpty(errors)}
+                  loading={status === 'loading'}
+                >
+                  评论
+                </Button>
               </Box>
             </form>
           )}

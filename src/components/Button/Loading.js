@@ -6,7 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const styles = theme => ({
   icon: {
     position: 'absolute',
-    left: 24,
+    left: 12,
   },
 });
 
@@ -20,8 +20,8 @@ export default class LoadingButton extends PureComponent {
           <CircularProgress
             className={classes.icon}
             color="inherit"
-            size={20}
-            thickness={5}
+            size={12}
+            thickness={3}
           />
         )}
         {children}
