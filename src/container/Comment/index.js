@@ -12,7 +12,7 @@ export default ({ _id }) => (
     </CardContent>
     <Divider />
     <CardContent>
-      <List />
+      <List _id={_id} />
     </CardContent>
   </Card>
 );

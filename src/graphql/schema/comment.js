@@ -23,6 +23,16 @@ export const CREATE_COMMENT = gql`
     result: createComment(content: $content, commentTo: $commentTo) {
       status
       message
+      data {
+        __typename
+        _id
+        content
+        createdAt
+        user {
+          nickname
+          avatarUrl
+        }
+      }
     }
   }
 `;

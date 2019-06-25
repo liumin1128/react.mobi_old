@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import { CREATE_COMMENT } from '@/graphql/schema/comment';
+import { CREATE_COMMENT, COMMENT_LIST } from '@/graphql/schema/comment';
 import { useMutation } from '@/hooks/graphql';
 import { Form, Field } from 'react-final-form';
 import TextField from '@/components/Form/TextField';
@@ -17,7 +17,35 @@ const validate = (values) => {
 
 function SayCreate({ _id }) {
   const classes = useStyles();
-  const createComment = useMutation(CREATE_COMMENT, { commentTo: _id });
+  const createComment = useMutation(CREATE_COMMENT, { commentTo: _id }, {
+    // refetchQueries: [ 'CommentList' ],
+    // 乐观更新
+    // optimisticResponse: {
+    //   result: {
+    //     status: 200,
+    //     message: '创建成功',
+    //     __typename: 'Result',
+    //     data: {
+    //       content: '测试文本22',
+    //       createdAt: new Date().getTime(),
+    //       user: {
+    //         nickname: '本王今年八岁',
+    //         avatarUrl: 'https://imgs.react.mobi/Fs0w36NQ9R1szSwKO3c0nIor_8m6',
+    //         __typename: 'User',
+    //       },
+    //       __typename: 'Comment',
+    //       _id: new Date().getTime(),
+    //     },
+    //   },
+    // },
+    update: (store, { data: { result: { status, data: result } } }) => {
+      if (status === 200) {
+        const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo: _id } });
+        data.list.unshift(result);
+        store.writeQuery({ query: COMMENT_LIST, variables: { commentTo: _id }, data });
+      }
+    },
+  });
 
   return (
     <Fragment>
@@ -59,29 +87,3 @@ function SayCreate({ _id }) {
 }
 
 export default SayCreate;
-
-
-// 乐观更新
-// optimisticResponse: { result: { status: 200, message: '创建成功11', __typename: 'Result' } },
-// update: (store, { data: { result: { status } } }) => {
-//   console.log('status');
-//   console.log(status);
-//   if (status === 200) {
-//     // Read the data from our cache for this query.
-//     const data = store.readQuery({ query: SAY_LIST });
-//     // Add our comment from the mutation to the end.
-//     data.list.push({
-//       content: '测试文本22',
-//       createdAt: '1560768742714',
-//       user: {
-//         nickname: '本王今年八岁',
-//         avatarUrl: 'https://imgs.react.mobi/Fs0w36NQ9R1szSwKO3c0nIor_8m6',
-//         __typename: 'User',
-//       },
-//       __typename: 'Say',
-//       _id: '5d0770e6bd48e7125d2c5971',
-//     });
-//     // Write our data back to the cache.
-//     store.writeQuery({ query: SAY_LIST, data });
-//   }
-// },

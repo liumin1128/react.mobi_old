@@ -6,21 +6,24 @@ import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Loading from '@/components/Loading';
-import { SAY_LIST } from '@/graphql/schema/say';
+import { COMMENT_LIST } from '@/graphql/schema/comment';
 import { useQuery } from '@/hooks/graphql';
 import { getTimeAgo } from '@/utils/common';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import useStyles from './styles';
 
-function SayList({ router }) {
+function SayList({ _id }) {
   const classes = useStyles();
-  const { data, error, loading, isLoadingMore, loadMore } = useQuery(SAY_LIST, router.query);
+  const { data, error, loading, isLoadingMore, loadMore } = useQuery(COMMENT_LIST, { commentTo: _id });
 
   if (loading) return <Loading />;
   if (error) return <div>{error.message}</div>;
 
   const { list } = data;
+
+  console.log('list');
+  console.log(list);
 
   return (
     <Fragment>
@@ -47,7 +50,7 @@ function SayList({ router }) {
                 </Box>
                 <Box flexGrow={1}>
                   <Typography variant="h6" gutterBottom className={classes.name}>{i.user.nickname}</Typography>
-                  <Typography variant="body2" component="p" className={classes.content}>好喜欢～～～～～～～～～～～～～～～～～·好喜欢～～～～～～～～～～～～～～～～～·好喜欢～～～～～～～～～～～～～～～～～·好喜欢～～～～～～～～～～～～～～～～～·</Typography>
+                  <Typography variant="body2" component="p" className={classes.content}>{i.content}</Typography>
                   <Box display="flex" justifyContent="space-between" alignItems="center">
                     <Typography variant="body2">{getTimeAgo(i.createdAt)}</Typography>
                     <Box color="#666">
@@ -119,4 +122,4 @@ function SayList({ router }) {
 }
 
 
-export default withRouter(SayList);
+export default SayList;
