@@ -39,5 +39,8 @@ export function useQuery(schema, variables, options) {
 
 
 export function useMutation(schema, variables, options) {
-  return _useMutation(schema, { variables, ...options });
+  const f1 = _useMutation(schema, { variables, ...options });
+  return function f2(data) {
+    return f1({ variables: { ...variables, ...data } });
+  };
 }

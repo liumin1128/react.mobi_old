@@ -5,10 +5,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Create from './Create';
 import List from './List';
 
-export default () => (
+export default ({ _id }) => (
   <Card>
     <CardContent>
-      <Create />
+      <Create _id={_id} />
     </CardContent>
     <Divider />
     <CardContent>

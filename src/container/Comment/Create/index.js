@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import { withRouter } from 'next/router';
-import { SAY_CREATE, SAY_LIST } from '@/graphql/schema/say';
+import { CREATE_COMMENT } from '@/graphql/schema/comment';
 import { useMutation } from '@/hooks/graphql';
 import { Form, Field } from 'react-final-form';
 import TextField from '@/components/Form/TextField';
@@ -16,25 +15,16 @@ const validate = (values) => {
   return errors;
 };
 
-function SayCreate({ router }) {
+function SayCreate({ _id }) {
   const classes = useStyles();
-  const params = {
-    input: {
-      content: '测试文本',
-    },
-  };
-
-  const createSay = useMutation(SAY_CREATE, params, {
-    refetchQueries: [ 'SayList' ],
-  });
+  const createComment = useMutation(CREATE_COMMENT, { commentTo: _id });
 
   return (
     <Fragment>
       <Box px={2}>
         <Form
           onSubmit={(values, form) => {
-            console.log('values');
-            console.log(values);
+            createComment(values);
             form.reset();
           }}
           validate={validate}
@@ -68,7 +58,7 @@ function SayCreate({ router }) {
   );
 }
 
-export default withRouter(SayCreate);
+export default SayCreate;
 
 
 // 乐观更新

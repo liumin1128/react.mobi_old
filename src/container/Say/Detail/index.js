@@ -35,7 +35,7 @@ function SayDetail({ router }) {
     );
   }
 
-  const { data: { user, title, cover, html, url, content, showHtml, appCode, appName, photos, createdAt } } = data;
+  const { data: { user, title, cover, html, url, content, showHtml, appCode, appName, photos, createdAt, _id } } = data;
 
   return (
     <div>
@@ -76,7 +76,7 @@ function SayDetail({ router }) {
       </Card>
 
       <br />
-      <Comment />
+      <Comment _id={_id} />
     </div>
   );
 }
