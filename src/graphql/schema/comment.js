@@ -11,6 +11,21 @@ export const COMMENT_LIST = gql`
         nickname
         avatarUrl
       }
+      replys {
+        _id
+        content
+        replyTo {
+          user {
+            nickname
+            avatarUrl
+          }
+        }
+        createdAt
+        user {
+          nickname
+          avatarUrl
+        }
+      }
     }
     meta: _commentsMeta(commentTo: $commentTo) {
       count
@@ -19,8 +34,8 @@ export const COMMENT_LIST = gql`
 `;
 
 export const CREATE_COMMENT = gql`
-  mutation createComment($content: String!, $commentTo: String!) {
-    result: createComment(content: $content, commentTo: $commentTo) {
+  mutation createComment($content: String!, $commentTo: String!, $replyTo: String) {
+    result: createComment(content: $content, commentTo: $commentTo, replyTo: $replyTo) {
       status
       message
       data {

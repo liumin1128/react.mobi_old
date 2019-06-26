@@ -17,10 +17,10 @@ const validate = (values) => {
   return errors;
 };
 
-function SayCreate({ commentTo }) {
+function SayCreate({ commentTo, replyTo }) {
   const classes = useStyles();
   const [ status, setStatus ] = useState('default');
-  const createComment = useMutation(CREATE_COMMENT, { commentTo }, {
+  const createComment = useMutation(CREATE_COMMENT, { commentTo, replyTo }, {
     // refetchQueries: [ 'CommentList' ],
     // 乐观更新
     // optimisticResponse: {
