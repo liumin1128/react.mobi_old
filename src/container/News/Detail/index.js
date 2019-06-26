@@ -7,6 +7,7 @@ import { NEWS_DETAIL } from '@/graphql/schema/news';
 import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import Html from '@/components/Html';
+import Comment from '@/container/Comment';
 import { formatTime, getTimeAgo } from '@/utils/common';
 // import useStyles from './styles';
 
@@ -32,7 +33,7 @@ function NewsDetail({ router }) {
     );
   }
 
-  const { data: { user, title, cover, html, url, content, showHtml, appCode, appName, photos, createdAt } } = data;
+  const { data: { _id: id, user, title, cover, html, url, content, showHtml, appCode, appName, photos, createdAt } } = data;
 
   return (
     <div>
@@ -51,6 +52,8 @@ function NewsDetail({ router }) {
       </div>
       <br />
       <Html html={html} />
+      <Comment _id={_id} />
+
     </div>
   );
 }
