@@ -43,6 +43,9 @@ export const CREATE_COMMENT = gql`
         _id
         content
         createdAt
+        replys {
+          _id
+        }
         user {
           nickname
           avatarUrl

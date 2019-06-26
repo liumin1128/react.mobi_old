@@ -34,7 +34,6 @@ function SayList({ _id }) {
         <Typography variant="body2" gutterBottom>1</Typography>
       </Box>
       <Box mx={2}>
-
         {list.map((i, idx) => (
           <Fragment key={i._id}>
             {idx !== 0 && <Divider variant="inset" />}
@@ -51,7 +50,6 @@ function SayList({ _id }) {
           </Fragment>
         ))}
       </Box>
-
     </Fragment>
   );
 }

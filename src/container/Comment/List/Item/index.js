@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { getTimeAgo } from '@/utils/common';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
-import Create from '../../Create';
+import Create from './CreateReplay';
 import useStyles from './styles';
 
 function Comment({ commentTo, _id, user = {}, content, createdAt, replyTo }) {
@@ -15,8 +15,6 @@ function Comment({ commentTo, _id, user = {}, content, createdAt, replyTo }) {
   function toogleShow() {
     setShow(!isShow);
   }
-  console.log('replyTo');
-  console.log(replyTo);
   return (
     <Box display="flex">
       <Box mr={3}>
