@@ -40,11 +40,13 @@ function SayList({ _id }) {
             {idx !== 0 && <Divider variant="inset" />}
             <Box my={4}>
               <Item {...i} />
-              <Box ml={9} p={3} className={classes.replay}>
-                {i.replys && i.replys.length > 0 && i.replys.map(j => (
-                  <Item key={j._id} {...j} commentTo={i._id} />
-                ))}
-              </Box>
+              {i.replys && i.replys.length > 0 && (
+                <Box ml={9} p={3} className={classes.replay}>
+                  {i.replys.map(j => (
+                    <Item key={j._id} {...j} commentTo={i._id} />
+                  ))}
+                </Box>
+              )}
             </Box>
           </Fragment>
         ))}
