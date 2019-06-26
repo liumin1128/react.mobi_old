@@ -53,7 +53,6 @@ function NewsDetail({ router }) {
       <br />
       <Html html={html} />
       <Comment _id={_id} />
-
     </div>
   );
 }

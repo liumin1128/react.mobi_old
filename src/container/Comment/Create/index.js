@@ -44,60 +44,55 @@ function SayCreate({ _id }) {
   });
 
   return (
-    <Fragment>
-      <Box px={2}>
-        <Form
-          onSubmit={(values, form) => {
-            setStatus('loading');
-            createComment(values, {
-              update: (store, { data: { result: { status, data: result } } }) => {
-                setStatus('default');
-                form.reset();
-                if (status === 200) {
-                  const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo: _id } });
-                  data.list.unshift(result);
-                  store.writeQuery({ query: COMMENT_LIST, variables: { commentTo: _id }, data });
-                }
-              },
-            });
-          }}
-          validate={validate}
-          render={({ handleSubmit, errors }) => (
-            <form id="createArticleForm" onSubmit={handleSubmit}>
-              <Field
-                multiline
-                rows="2"
-                key="content"
-                name="content"
-                label="输入评论"
-                component={TextField}
-                type="text"
-                margin="normal"
-                variant="outlined"
-                fullWidth
-                placeholder="畅所欲言，有你更精彩"
-                autoComplete="off"
-                rowsMax="8"
-              />
-              <Box display="flex" justifyContent="space-between" alignItems="flex-start">
-                <Button size="small">添加表情</Button>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                  disabled={status === 'loading' || !isEmpty(errors)}
-                  loading={status === 'loading'}
-                >
-                  评论
-                </Button>
-              </Box>
-            </form>
-          )}
-        />
-
-      </Box>
-    </Fragment>
+    <Form
+      onSubmit={(values, form) => {
+        setStatus('loading');
+        createComment(values, {
+          update: (store, { data: { result: { status, data: result } } }) => {
+            setStatus('default');
+            form.reset();
+            if (status === 200) {
+              const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo: _id } });
+              data.list.unshift(result);
+              store.writeQuery({ query: COMMENT_LIST, variables: { commentTo: _id }, data });
+            }
+          },
+        });
+      }}
+      validate={validate}
+      render={({ handleSubmit, errors }) => (
+        <form id="createArticleForm" onSubmit={handleSubmit}>
+          <Field
+            // multiline
+            // rows="2"
+            key="content"
+            name="content"
+            label="输入评论"
+            component={TextField}
+            type="text"
+            margin="normal"
+            variant="outlined"
+            fullWidth
+            placeholder="畅所欲言，有你更精彩"
+            autoComplete="off"
+            // rowsMax="8"
+          />
+          <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+            <Button size="small">添加表情</Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              disabled={status === 'loading' || !isEmpty(errors)}
+              loading={status === 'loading'}
+            >
+              评论
+            </Button>
+          </Box>
+        </form>
+      )}
+    />
   );
 }
 

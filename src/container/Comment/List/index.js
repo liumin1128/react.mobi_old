@@ -11,6 +11,7 @@ import { useQuery } from '@/hooks/graphql';
 import { getTimeAgo } from '@/utils/common';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
+import Item from './Item';
 import useStyles from './styles';
 
 function SayList({ _id }) {
@@ -38,79 +39,9 @@ function SayList({ _id }) {
           <Fragment key={i._id}>
             {idx !== 0 && <Divider variant="inset" />}
             <Box my={4}>
-              <Box display="flex">
-                <Box mr={3}>
-                  <Avatar
-                    aria-label="Avatar"
-                    src={i.user.avatarUrl}
-                    className={classes.avatar}
-                  >
-                    {i.user.nickname}
-                  </Avatar>
-                </Box>
-                <Box flexGrow={1}>
-                  <Typography variant="h6" gutterBottom className={classes.name}>{i.user.nickname}</Typography>
-                  <Typography variant="body2" component="p" className={classes.content}>{i.content}</Typography>
-                  <Box display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography variant="body2">{getTimeAgo(i.createdAt)}</Typography>
-                    <Box color="#666">
-                      <IconButton aria-label="Delete" color="inherit">
-                        <ModeCommentIcon fontSize="small" style={{ fontSize: 15 }} />
-                      </IconButton>
-                      {0}
-                      <Box px={1} display="inline" />
-
-                      <IconButton aria-label="Delete" color="inherit">
-                        <ThumbUpIcon fontSize="small" style={{ fontSize: 15 }} />
-                      </IconButton>
-                      {15}
-                    </Box>
-                  </Box>
-
-                  <Box p={3} className={classes.replay}>
-                    <Box display="flex">
-                      <Box mr={3}>
-                        <Avatar
-                          aria-label="Avatar"
-                          src={i.user.avatarUrl}
-                          className={classes.avatar}
-                        >
-                          {i.user.nickname}
-                        </Avatar>
-                      </Box>
-                      <Box flexGrow={1}>
-                        <Typography variant="h6" gutterBottom className={classes.name}>{i.user.nickname}</Typography>
-                        <Typography variant="body2" gutterBottom component="p" className={classes.content}>
-                          回复
-                          {' '}
-                          <strong>
-                            {i.user.nickname}
-                            {' '}
-                            ：
-                          </strong>
-                          {' '}
-                          好喜欢～～～～～～～～～～～～～～～～～·好喜欢～～～～～～～～～～～～～～～～～·好喜欢～～～～～～～～～～～～～～～～～·好喜欢～～～～～～～～～～～～～～～～～·
-                        </Typography>
-
-                        <Box display="flex" justifyContent="space-between" alignItems="center">
-                          <Typography variant="body2">{getTimeAgo(i.createdAt)}</Typography>
-                          <Box color="#666">
-                            <IconButton aria-label="Delete" color="inherit">
-                              <ModeCommentIcon fontSize="small" style={{ fontSize: 15 }} />
-                            </IconButton>
-                            {0}
-                            <Box px={1} display="inline" />
-
-                            <IconButton aria-label="Delete" color="inherit">
-                              <ThumbUpIcon fontSize="small" style={{ fontSize: 15 }} />
-                            </IconButton>
-                            {15}
-                          </Box>
-                        </Box>
-                      </Box>
-                    </Box>
-                  </Box>
-                </Box>
+              <Item {...i} />
+              <Box ml={9} p={3} className={classes.replay}>
+                <Item {...i} />
               </Box>
             </Box>
           </Fragment>
