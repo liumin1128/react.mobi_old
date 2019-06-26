@@ -27,7 +27,7 @@ function NewsList({ router }) {
           <Grid key={i._id} item xs={12} md={4} lg={3}>
             <Link href={`/news/detail?_id=${i._id}`}>
               <CardMedia className={classes.cover} image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''} />
-              <Typography variant="subtitle2" color="textPrimary" className={classes.title}>{i.title}</Typography>
+              <Typography variant="body2" color="textPrimary" className={classes.title}>{i.title}</Typography>
             </Link>
           </Grid>
         ))}

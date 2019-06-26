@@ -18,7 +18,13 @@ const theme = createMuiTheme({
         font: `14px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif`
       },
       elevation1: {
-        boxShadow: 'none',
+        // boxShadow: 'none',
+        boxShadow: '0 1px 2px 0 rgba(168,182,191,0.6)',
+        transition: 'all .25s ease-out',
+        '&:hover': {
+          boxShadow: '0 10px 20px 0 rgba(168,182,191,0.6)',
+          transform: 'translateY(-1px)'
+        }
       }
     },
     MuiTypography: {

@@ -86,7 +86,7 @@ function SayCreate({ _id }) {
                   variant="contained"
                   color="primary"
                   className={classes.submit}
-                  disabled={!isEmpty(errors)}
+                  disabled={status === 'loading' || !isEmpty(errors)}
                   loading={status === 'loading'}
                 >
                   评论

@@ -16,7 +16,13 @@ const styles = () => ({
     paddingTop: '150%',
     borderRadius: 4,
     backgroundColor: 'rgba(0,0,0,0.03)',
-    marginBottom: 8
+    marginBottom: 8,
+    boxShadow: '0 1px 2px 0 rgba(168,182,191,0.6)',
+    transition: 'all .25s ease-out',
+    '&:hover': {
+      boxShadow: '0 10px 20px 0 rgba(168,182,191,0.6)',
+      transform: 'translateY(-1px)'
+    }
   },
 });
 
@@ -32,7 +38,7 @@ class RecipeReviewCard extends PureComponent {
     return (
       <Link key={_id} href={`/mzitu/detail?id=${_id}`}>
         <CardMedia className={classes.media} image={cover.src} title={title}/>
-        <Typography variant="subtitle2" color="textPrimary">{title}</Typography>
+        <Typography variant="body2" color="textPrimary">{title}</Typography>
       </Link>
     );
   }
