@@ -17,10 +17,10 @@ const validate = (values) => {
   return errors;
 };
 
-function SayCreate({ _id }) {
+function SayCreate({ commentTo }) {
   const classes = useStyles();
   const [ status, setStatus ] = useState('default');
-  const createComment = useMutation(CREATE_COMMENT, { commentTo: _id }, {
+  const createComment = useMutation(CREATE_COMMENT, { commentTo }, {
     // refetchQueries: [ 'CommentList' ],
     // 乐观更新
     // optimisticResponse: {
@@ -37,7 +37,7 @@ function SayCreate({ _id }) {
     //         __typename: 'User',
     //       },
     //       __typename: 'Comment',
-    //       _id: new Date().getTime(),
+    //       commentTo: new Date().getTime(),
     //     },
     //   },
     // },
@@ -52,9 +52,9 @@ function SayCreate({ _id }) {
             setStatus('default');
             form.reset();
             if (status === 200) {
-              const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo: _id } });
+              const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo } });
               data.list.unshift(result);
-              store.writeQuery({ query: COMMENT_LIST, variables: { commentTo: _id }, data });
+              store.writeQuery({ query: COMMENT_LIST, variables: { commentTo }, data });
             }
           },
         });

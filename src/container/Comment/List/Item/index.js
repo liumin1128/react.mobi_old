@@ -9,7 +9,7 @@ import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import Create from '../../Create';
 import useStyles from './styles';
 
-function SayList({ user = {}, content, createdAt }) {
+function SayList({ _id, user = {}, content, createdAt }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
   function toogleShow() {
@@ -39,7 +39,7 @@ function SayList({ user = {}, content, createdAt }) {
             {15}
           </Box>
         </Box>
-        {isShow && <Create />}
+        {isShow && <Create commentTo={_id} />}
       </Box>
     </Box>
   );
