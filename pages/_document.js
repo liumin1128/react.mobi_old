@@ -1,8 +1,9 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/styles';
 import flush from 'styled-jsx/server';
 import theme from '@/config/theme/dark';
+import { ENV } from '@/config/base'
 
 class MyDocument extends Document {
   render() {
@@ -28,7 +29,8 @@ class MyDocument extends Document {
 
           <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" rel="apple-touch-icon-precomposed" />
           <link href="https://imgs.react.mobi/FlJJA3uXR8FaVGJ5Gxluorer_0H9" sizes="114x114" rel="apple-touch-icon-precomposed" />
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
+          {!ENV && <Fragment>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -40,13 +42,15 @@ class MyDocument extends Document {
             }}
           />
 
+          </Fragment>}
+
         </Head>
         <body>
-        <ins className="adsbygoogle"
+        {!ENV && <ins className="adsbygoogle"
      data-ad-client="ca-pub-5887271219203522"
      data-ad-slot="9309859792"
      data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+     data-full-width-responsive="true"></ins>}
           <Main />
           <NextScript />
         </body>
