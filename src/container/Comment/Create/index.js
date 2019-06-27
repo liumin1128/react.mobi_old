@@ -55,7 +55,7 @@ function SayCreate({ commentTo, replyTo, targetId, type, callback }) {
             if (status === 200) {
               if (type === 'reply') {
                 const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo: targetId } });
-                data.list.find(i => i.commentTo === targetId).replys.push(result);
+                data.list.find(i => i._id === commentTo).replys.push(result);
                 store.writeQuery({ query: COMMENT_LIST, variables: { commentTo: targetId }, data });
               }
               if (type === 'comment') {
@@ -71,7 +71,9 @@ function SayCreate({ commentTo, replyTo, targetId, type, callback }) {
       render={({ handleSubmit, errors }) => (
         <form id="createArticleForm" onSubmit={handleSubmit}>
           {
-            // JSON.stringify({ commentTo, replyTo, targetId, type })
+            // <pre>
+            //   {JSON.stringify({ commentTo, replyTo, targetId, type }, true, 2)}
+            // </pre>
             }
           <Field
             // multiline

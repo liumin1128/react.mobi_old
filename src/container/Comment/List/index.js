@@ -53,9 +53,9 @@ function SayList({ _id }) {
                       )}
                       <Item
                         data={j}
-                          // 评论id
+                        // 评论id
                         commentTo={i._id}
-                          // 目标id，用于写入存缓
+                        // 目标id，用于写入存缓
                         targetId={_id}
                       />
                     </Fragment>
