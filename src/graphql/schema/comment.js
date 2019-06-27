@@ -5,6 +5,7 @@ export const COMMENT_LIST = gql`
     list: comments(first: $first, skip: $skip, commentTo: $commentTo) {
       __typename
       _id
+      commentTo
       content
       createdAt
       user {
@@ -42,6 +43,7 @@ export const CREATE_COMMENT = gql`
         __typename
         _id
         content
+        commentTo
         createdAt
         replys {
           _id
@@ -49,6 +51,12 @@ export const CREATE_COMMENT = gql`
         user {
           nickname
           avatarUrl
+        }
+        replyTo {
+          user {
+            nickname
+            avatarUrl
+          }
         }
       }
     }

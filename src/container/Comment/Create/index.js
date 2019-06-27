@@ -17,7 +17,7 @@ const validate = (values) => {
   return errors;
 };
 
-function SayCreate({ commentTo, replyTo }) {
+function SayCreate({ commentTo, replyTo, targetId, type }) {
   const classes = useStyles();
   const [ status, setStatus ] = useState('default');
   const createComment = useMutation(CREATE_COMMENT, { commentTo, replyTo }, {
@@ -52,9 +52,16 @@ function SayCreate({ commentTo, replyTo }) {
             setStatus('default');
             form.reset();
             if (status === 200) {
-              const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo } });
-              data.list.unshift(result);
-              store.writeQuery({ query: COMMENT_LIST, variables: { commentTo }, data });
+              if (type === 'reply') {
+                const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo: targetId } });
+                data.list.find(i => i.commentTo === targetId).replys.push(result);
+                store.writeQuery({ query: COMMENT_LIST, variables: { commentTo: targetId }, data });
+              }
+              if (type === 'comment') {
+                const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo } });
+                data.list.unshift(result);
+                store.writeQuery({ query: COMMENT_LIST, variables: { commentTo }, data });
+              }
             }
           },
         });
@@ -62,6 +69,9 @@ function SayCreate({ commentTo, replyTo }) {
       validate={validate}
       render={({ handleSubmit, errors }) => (
         <form id="createArticleForm" onSubmit={handleSubmit}>
+          {
+            // JSON.stringify({ commentTo, replyTo, targetId, type })
+            }
           <Field
             // multiline
             // rows="2"

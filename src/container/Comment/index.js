@@ -8,7 +8,7 @@ import List from './List';
 export default ({ _id }) => (
   <Card>
     <CardContent>
-      <Create commentTo={_id} />
+      <Create commentTo={_id} type="comment" />
     </CardContent>
     <Divider />
     <CardContent>

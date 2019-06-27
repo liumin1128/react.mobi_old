@@ -6,10 +6,10 @@ import IconButton from '@material-ui/core/IconButton';
 import { getTimeAgo } from '@/utils/common';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
-import Create from './CreateReplay';
+import Create from '../../Create';
 import useStyles from './styles';
 
-function Comment({ commentTo, _id, user = {}, content, createdAt, replyTo }) {
+function Comment({ commentTo, targetId, type, data: { _id, user = {}, content, createdAt, replyTo } }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
   function toogleShow() {
@@ -17,6 +17,9 @@ function Comment({ commentTo, _id, user = {}, content, createdAt, replyTo }) {
   }
   return (
     <Box display="flex">
+      {
+        // JSON.stringify({ type })
+        }
       <Box mr={3}>
         <Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>
           {user.nickname}
@@ -64,8 +67,10 @@ function Comment({ commentTo, _id, user = {}, content, createdAt, replyTo }) {
         </Box>
         {isShow && (
           <Create
+            targetId={targetId}
             commentTo={commentTo || _id}
             replyTo={commentTo ? _id : undefined} // 外部指定commentId，说明是回复
+            type={type}
           />
         )}
       </Box>
