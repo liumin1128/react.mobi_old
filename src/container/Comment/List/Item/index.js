@@ -9,7 +9,7 @@ import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import Create from '../../Create';
 import useStyles from './styles';
 
-function Comment({ commentTo, targetId, type, data: { _id, user = {}, content, createdAt, replyTo } }) {
+function Comment({ commentTo, targetId, data: { _id, user = {}, content, createdAt, replyTo } }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
   function toogleShow() {
@@ -34,23 +34,25 @@ function Comment({ commentTo, targetId, type, data: { _id, user = {}, content, c
           </Typography>
 
         </Box>
-        <Typography variant="body2" component="p" className={classes.content}>
-
-          {replyTo && replyTo.user && replyTo.user.nickname && (
-            <Fragment>
+        {replyTo && replyTo.user && replyTo.user.nickname && (
+        <Fragment>
               回复
-              <Box p={0.25} display="inline" />
-              <b>
-                {replyTo.user.nickname}
-              </b>
-              <Box p={0.25} display="inline" />
+          <Box p={0.25} display="inline" />
+          <b>
+            {replyTo.user.nickname}
+          </b>
+          <Box p={0.25} display="inline" />
 
               :
-              <Box p={0.5} display="inline" />
-            </Fragment>
-          )}
+          <Box p={0.5} display="inline" />
+        </Fragment>
+        )}
+        <Typography variant="body2" className={classes.content}>
+
           {content}
         </Typography>
+
+
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="body2">{getTimeAgo(createdAt)}</Typography>
           <Box color="#666">
@@ -67,10 +69,11 @@ function Comment({ commentTo, targetId, type, data: { _id, user = {}, content, c
         </Box>
         {isShow && (
           <Create
+            type="reply"
             targetId={targetId}
             commentTo={commentTo || _id}
             replyTo={commentTo ? _id : undefined} // 外部指定commentId，说明是回复
-            type={type}
+            callback={toogleShow}
           />
         )}
       </Box>

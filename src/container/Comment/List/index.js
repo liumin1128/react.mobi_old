@@ -41,20 +41,24 @@ function SayList({ _id }) {
               <Item
                 data={i}
                 targetId={_id}
-                type="reply"
               />
               {i.replys && i.replys.length > 0 && (
-                <Box ml={9} p={3} className={classes.replay}>
-                  {i.replys.map(j => (
-                    <Item
-                      key={j._id}
-                      data={j}
-                      // 评论id
-                      commentTo={i._id}
-                      // 目标id，用于写入存缓
-                      targetId={_id}
-                      type="reply"
-                    />
+                <Box ml={9} p={4} className={classes.replay}>
+                  {i.replys.map((j, jdx) => (
+                    <Fragment key={j._id}>
+                      {jdx !== 0 && (
+                        <Box my={3}>
+                          <Divider variant="inset" />
+                        </Box>
+                      )}
+                      <Item
+                        data={j}
+                          // 评论id
+                        commentTo={i._id}
+                          // 目标id，用于写入存缓
+                        targetId={_id}
+                      />
+                    </Fragment>
                   ))}
                 </Box>
               )}

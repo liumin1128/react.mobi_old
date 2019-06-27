@@ -17,7 +17,7 @@ const validate = (values) => {
   return errors;
 };
 
-function SayCreate({ commentTo, replyTo, targetId, type }) {
+function SayCreate({ commentTo, replyTo, targetId, type, callback }) {
   const classes = useStyles();
   const [ status, setStatus ] = useState('default');
   const createComment = useMutation(CREATE_COMMENT, { commentTo, replyTo }, {
@@ -51,6 +51,7 @@ function SayCreate({ commentTo, replyTo, targetId, type }) {
           update: (store, { data: { result: { status, data: result } } }) => {
             setStatus('default');
             form.reset();
+            if (callback) callback();
             if (status === 200) {
               if (type === 'reply') {
                 const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo: targetId } });
