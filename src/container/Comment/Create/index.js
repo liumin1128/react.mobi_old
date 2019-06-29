@@ -55,11 +55,17 @@ function SayCreate({ commentTo, replyTo, session, callback }) {
             if (session !== commentTo) {
               if (replyTo) {
                 const data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
-                data.list.find(i => i._id === commentTo).replys.push(result);
+                const idx = data.list.findIndex(i => i._id === commentTo);
+
+                data.list[idx].replys.push(result);
+                data.list[idx].replyCount += 1;
+                data.meta.count += 1;
+
                 store.writeQuery({ query: COMMENT_LIST, variables: { session }, data });
               } else {
                 const data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
                 data.list.unshift(result);
+                data.meta.count += 1;
                 store.writeQuery({ query: COMMENT_LIST, variables: { session }, data });
               }
             }
@@ -70,9 +76,9 @@ function SayCreate({ commentTo, replyTo, session, callback }) {
       render={({ handleSubmit, errors }) => (
         <form id="createArticleForm" onSubmit={handleSubmit}>
           {
-            <pre>
-              {JSON.stringify({ commentTo, replyTo, session }, true, 2)}
-            </pre>
+            // <pre>
+            //   {JSON.stringify({ commentTo, replyTo, session }, true, 2)}
+            // </pre>
             }
           <Field
             // multiline

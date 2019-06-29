@@ -26,9 +26,9 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
       </Box>
       <Box flexGrow={1}>
         {
-          <pre>
-            {JSON.stringify({ _id, commentTo, replyTo, session }, true, 2)}
-          </pre>
+          // <pre>
+          //   {JSON.stringify({ _id, commentTo, replyTo, session }, true, 2)}
+          // </pre>
             }
         <Box display="flex">
           <Typography variant="h6" gutterBottom className={classes.name}>
