@@ -48,22 +48,22 @@ function SayCreate({ commentTo, replyTo, session, callback }) {
       onSubmit={(values, form) => {
         setStatus('loading');
         createComment(values, {
-          // update: (store, { data: { result: { status, data: result } } }) => {
-          //   setStatus('default');
-          //   form.reset();
-          //   if (callback) callback();
-          //   if (status === 200) {
-          //     if (replyTo) {
-          //       const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo } });
-          //       data.list.find(i => i._id === replyTo).replys.push(result);
-          //       store.writeQuery({ query: COMMENT_LIST, variables: { commentTo }, data });
-          //     } else {
-          //       const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo } });
-          //       data.list.unshift(result);
-          //       store.writeQuery({ query: COMMENT_LIST, variables: { commentTo }, data });
-          //     }
-          //   }
-          // },
+          update: (store, { data: { result: { status, data: result } } }) => {
+            setStatus('default');
+            form.reset();
+            if (callback) callback();
+            if (session !== commentTo) {
+              if (replyTo) {
+                const data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
+                data.list.find(i => i._id === commentTo).replys.push(result);
+                store.writeQuery({ query: COMMENT_LIST, variables: { session }, data });
+              } else {
+                const data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
+                data.list.unshift(result);
+                store.writeQuery({ query: COMMENT_LIST, variables: { session }, data });
+              }
+            }
+          },
         });
       }}
       validate={validate}
