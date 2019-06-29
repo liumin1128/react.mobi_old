@@ -48,6 +48,31 @@ export const CREATE_COMMENT = gql`
       data {
         __typename
         _id
+        createdAt
+        content
+        session
+        replyCount
+        replys {
+          __typename
+        }
+        user {
+          _id
+          nickname
+          avatarUrl
+        }
+      }
+    }
+  }
+`;
+
+export const CREATE_REPLY = gql`
+  mutation createComment($content: String!, $session: String!, $replyTo: String, $commentTo: String) {
+    result: createComment(content: $content, session: $session, replyTo: $replyTo, commentTo: $commentTo) {
+      status
+      message
+      data {
+        __typename
+        _id
         content
         createdAt
         user {

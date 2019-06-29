@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { getTimeAgo } from '@/utils/common';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
-import Create from '../../Create';
+import Create from '../../Create/Reply';
 import useStyles from './styles';
 
 function Comment({ commentTo, session, data: { _id, user = {}, content, createdAt, replyTo, replyCount } }) {
