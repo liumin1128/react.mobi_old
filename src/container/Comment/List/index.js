@@ -21,7 +21,7 @@ function SayList({ _id }) {
   if (loading) return <Loading />;
   if (error) return <div>{error.message}</div>;
 
-  const { list } = data;
+  const { list, meta } = data;
 
   console.log('list');
   console.log(list);
@@ -31,7 +31,7 @@ function SayList({ _id }) {
       <Box mx={2} my={2} display="flex" alignItems="center">
         <Typography variant="body1" gutterBottom>全部评论</Typography>
         <Box mx={1} />
-        <Typography variant="body2" gutterBottom>1</Typography>
+        <Typography variant="body2" gutterBottom>{meta.count}</Typography>
       </Box>
       <Box mx={2}>
         {list.map((i, idx) => (
