@@ -7,6 +7,7 @@ export const COMMENT_LIST = gql`
       _id
       session
       content
+      replyCount
       createdAt
       user {
         nickname
@@ -22,6 +23,7 @@ export const COMMENT_LIST = gql`
         }
         replyTo {
           _id
+          content
           user {
             _id
             nickname

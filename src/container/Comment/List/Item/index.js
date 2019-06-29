@@ -9,7 +9,7 @@ import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import Create from '../../Create';
 import useStyles from './styles';
 
-function Comment({ commentTo, session, data: { _id, user = {}, content, createdAt, replyTo } }) {
+function Comment({ commentTo, session, data: { _id, user = {}, content, createdAt, replyTo, replyCount } }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
   function toogleShow() {
@@ -17,9 +17,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
   }
   return (
     <Box display="flex">
-      {
-        // JSON.stringify({ type })
-        }
+
       <Box mr={3}>
         <Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>
           {user.nickname}
@@ -27,16 +25,20 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
         </Avatar>
       </Box>
       <Box flexGrow={1}>
-
+        {
+          <pre>
+            {JSON.stringify({ _id, commentTo, replyTo, session }, true, 2)}
+          </pre>
+            }
         <Box display="flex">
           <Typography variant="h6" gutterBottom className={classes.name}>
             {user.nickname}
           </Typography>
 
         </Box>
-        {replyTo && replyTo.user && replyTo.user.nickname && (
+        {replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname && (
         <Fragment>
-              回复
+          回复
           <Box p={0.25} display="inline" />
           <b>
             {replyTo.user.nickname}
@@ -59,7 +61,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
             <IconButton aria-label="Delete" color="inherit" onClick={toogleShow}>
               <ModeCommentIcon fontSize="small" style={{ fontSize: 15 }} />
             </IconButton>
-            {0}
+            {replyCount || null}
             <Box px={1} display="inline" />
             <IconButton aria-label="Delete" color="inherit">
               <ThumbUpIcon fontSize="small" style={{ fontSize: 15 }} />
