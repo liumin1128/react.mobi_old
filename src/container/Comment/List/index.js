@@ -14,9 +14,9 @@ import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import Item from './Item';
 import useStyles from './styles';
 
-function SayList({ _id }) {
+function SayList({ commentTo, session }) {
   const classes = useStyles();
-  const { data, error, loading, isLoadingMore, loadMore } = useQuery(COMMENT_LIST, { commentTo: _id });
+  const { data, error, loading, isLoadingMore, loadMore } = useQuery(COMMENT_LIST, { session });
 
   if (loading) return <Loading />;
   if (error) return <div>{error.message}</div>;
@@ -40,7 +40,8 @@ function SayList({ _id }) {
             <Box my={4}>
               <Item
                 data={i}
-                targetId={_id}
+                session={session}
+                commentTo={i._id}
               />
               {i.replys && i.replys.length > 0 && (
                 <Box ml={9} p={4} className={classes.replay}>
@@ -53,10 +54,8 @@ function SayList({ _id }) {
                       )}
                       <Item
                         data={j}
-                        // 评论id
+                        session={session}
                         commentTo={i._id}
-                        // 目标id，用于写入存缓
-                        targetId={_id}
                       />
                     </Fragment>
                   ))}

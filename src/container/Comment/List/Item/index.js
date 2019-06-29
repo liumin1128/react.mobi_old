@@ -9,7 +9,7 @@ import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import Create from '../../Create';
 import useStyles from './styles';
 
-function Comment({ commentTo, targetId, data: { _id, user = {}, content, createdAt, replyTo } }) {
+function Comment({ commentTo, session, data: { _id, user = {}, content, createdAt, replyTo } }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
   function toogleShow() {
@@ -69,10 +69,9 @@ function Comment({ commentTo, targetId, data: { _id, user = {}, content, created
         </Box>
         {isShow && (
           <Create
-            type="reply"
-            targetId={targetId}
-            commentTo={commentTo || _id}
-            replyTo={commentTo ? _id : undefined} // 外部指定commentId，说明是回复
+            session={session}
+            commentTo={commentTo}
+            replyTo={_id} // 外部指定commentId，说明是回复
             callback={toogleShow}
           />
         )}

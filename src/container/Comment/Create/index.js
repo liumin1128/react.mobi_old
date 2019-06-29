@@ -17,10 +17,10 @@ const validate = (values) => {
   return errors;
 };
 
-function SayCreate({ commentTo, replyTo, targetId, type, callback }) {
+function SayCreate({ commentTo, replyTo, session, callback }) {
   const classes = useStyles();
   const [ status, setStatus ] = useState('default');
-  const createComment = useMutation(CREATE_COMMENT, { commentTo, replyTo }, {
+  const createComment = useMutation(CREATE_COMMENT, { commentTo, replyTo, session }, {
     // refetchQueries: [ 'CommentList' ],
     // 乐观更新
     // optimisticResponse: {
@@ -48,32 +48,31 @@ function SayCreate({ commentTo, replyTo, targetId, type, callback }) {
       onSubmit={(values, form) => {
         setStatus('loading');
         createComment(values, {
-          update: (store, { data: { result: { status, data: result } } }) => {
-            setStatus('default');
-            form.reset();
-            if (callback) callback();
-            if (status === 200) {
-              if (type === 'reply') {
-                const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo: targetId } });
-                data.list.find(i => i._id === commentTo).replys.push(result);
-                store.writeQuery({ query: COMMENT_LIST, variables: { commentTo: targetId }, data });
-              }
-              if (type === 'comment') {
-                const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo } });
-                data.list.unshift(result);
-                store.writeQuery({ query: COMMENT_LIST, variables: { commentTo }, data });
-              }
-            }
-          },
+          // update: (store, { data: { result: { status, data: result } } }) => {
+          //   setStatus('default');
+          //   form.reset();
+          //   if (callback) callback();
+          //   if (status === 200) {
+          //     if (replyTo) {
+          //       const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo } });
+          //       data.list.find(i => i._id === replyTo).replys.push(result);
+          //       store.writeQuery({ query: COMMENT_LIST, variables: { commentTo }, data });
+          //     } else {
+          //       const data = store.readQuery({ query: COMMENT_LIST, variables: { commentTo } });
+          //       data.list.unshift(result);
+          //       store.writeQuery({ query: COMMENT_LIST, variables: { commentTo }, data });
+          //     }
+          //   }
+          // },
         });
       }}
       validate={validate}
       render={({ handleSubmit, errors }) => (
         <form id="createArticleForm" onSubmit={handleSubmit}>
           {
-            // <pre>
-            //   {JSON.stringify({ commentTo, replyTo, targetId, type }, true, 2)}
-            // </pre>
+            <pre>
+              {JSON.stringify({ commentTo, replyTo, session }, true, 2)}
+            </pre>
             }
           <Field
             // multiline

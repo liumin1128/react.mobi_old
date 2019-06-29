@@ -1,11 +1,11 @@
 import gql from 'graphql-tag';
 
 export const COMMENT_LIST = gql`
-  query CommentList($first: Int, $skip: Int, $commentTo: String!) {
-    list: comments(first: $first, skip: $skip, commentTo: $commentTo) {
+  query CommentList($first: Int, $skip: Int, $session: String!) {
+    list: comments(first: $first, skip: $skip, session: $session) {
       __typename
       _id
-      commentTo
+      session
       content
       createdAt
       user {
@@ -15,35 +15,37 @@ export const COMMENT_LIST = gql`
       replys {
         _id
         content
-        replyTo {
-          user {
-            nickname
-            avatarUrl
-          }
-        }
         createdAt
         user {
           nickname
           avatarUrl
         }
+        replyTo {
+          _id
+          user {
+            _id
+            nickname
+            avatarUrl
+          }
+        }
       }
     }
-    meta: _commentsMeta(commentTo: $commentTo) {
+    meta: _commentsMeta(session: $session) {
       count
     }
   }
 `;
 
 export const CREATE_COMMENT = gql`
-  mutation createComment($content: String!, $commentTo: String!, $replyTo: String) {
-    result: createComment(content: $content, commentTo: $commentTo, replyTo: $replyTo) {
+  mutation createComment($content: String!, $session: String!, $replyTo: String, $commentTo: String) {
+    result: createComment(content: $content, session: $session, replyTo: $replyTo, commentTo: $commentTo) {
       status
       message
       data {
         __typename
         _id
         content
-        commentTo
+        session
         createdAt
         replys {
           _id
@@ -53,7 +55,9 @@ export const CREATE_COMMENT = gql`
           avatarUrl
         }
         replyTo {
+          _id
           user {
+            _id
             nickname
             avatarUrl
           }

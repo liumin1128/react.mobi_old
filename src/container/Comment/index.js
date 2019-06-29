@@ -8,11 +8,11 @@ import List from './List';
 export default ({ _id }) => (
   <Card>
     <CardContent>
-      <Create commentTo={_id} type="comment" />
+      <Create session={_id} />
     </CardContent>
     <Divider />
     <CardContent>
-      <List _id={_id} />
+      <List session={_id} />
     </CardContent>
   </Card>
 );
