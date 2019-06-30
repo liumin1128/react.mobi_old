@@ -14,7 +14,7 @@ export const COMMENT_LIST = gql`
         nickname
         avatarUrl
       }
-      replys {
+      replys(first: 2) {
         __typename
         _id
         content
