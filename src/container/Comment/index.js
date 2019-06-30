@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
+import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 import CardContent from '@material-ui/core/CardContent';
 import Create from './Create';
@@ -7,12 +8,12 @@ import List from './List';
 
 export default ({ _id }) => (
   <Card>
-    <CardContent>
+    <Box px={4} py={3}>
       <Create session={_id} />
-    </CardContent>
+    </Box>
     <Divider />
-    <CardContent>
+    <Box px={4} py={3}>
       <List session={_id} />
-    </CardContent>
+    </Box>
   </Card>
 );

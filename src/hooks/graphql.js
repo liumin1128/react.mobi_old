@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { useQuery as _useQuery, useMutation as _useMutation } from 'react-apollo-hooks';
+import {
+  useQuery as _useQuery,
+  useMutation as _useMutation,
+} from 'react-apollo-hooks';
 
 export function useLoadMore(fetchMore, data, variables) {
   const [ isLoadingMore, setIsLoadingMore ] = useState(false);

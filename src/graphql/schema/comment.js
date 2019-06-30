@@ -40,6 +40,32 @@ export const COMMENT_LIST = gql`
   }
 `;
 
+
+export const REPLY_LIST = gql`
+  query ReplyList($first: Int, $skip: Int, $commentTo: String!) {
+    list: replys(first: $first, skip: $skip, commentTo: $commentTo) {
+      __typename
+      _id
+      content
+      createdAt
+      user {
+        _id
+        nickname
+        avatarUrl
+      }
+      replyTo {
+        _id
+        user {
+          _id
+          nickname
+          avatarUrl
+        }
+      }
+    }
+  }
+`;
+
+
 export const CREATE_COMMENT = gql`
   mutation createComment($content: String!, $session: String!, $replyTo: String, $commentTo: String) {
     result: createComment(content: $content, session: $session, replyTo: $replyTo, commentTo: $commentTo) {

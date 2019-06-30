@@ -20,7 +20,7 @@ function CommentCreate({ commentTo, replyTo, session, callback }) {
               const data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
               const idx = data.list.findIndex(i => i._id === commentTo);
 
-              data.list[idx].replys.push(result);
+              data.list[idx].replys.unshift(result);
               data.list[idx].replyCount += 1;
               data.meta.count += 1;
 
