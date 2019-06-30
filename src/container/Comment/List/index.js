@@ -18,7 +18,7 @@ import useStyles from './styles';
 function SayList({ session }) {
   const classes = useStyles();
   const { data, error, loading, isLoadingMore, loadMore } = useQuery(COMMENT_LIST, { session });
-  const createComment = useMutation(REPLY_LIST);
+  const fetchMoreReplys = useMutation(REPLY_LIST);
 
   if (loading) return <Loading />;
   if (error) return <div>{error.message}</div>;
@@ -65,7 +65,7 @@ function SayList({ session }) {
                   <Button
                     fullWidth
                     onClick={() => {
-                      createComment({ commentTo: i._id, skip: i.replys.length }, {
+                      fetchMoreReplys({ commentTo: i._id, skip: i.replys.length }, {
                         update: (store, { data: { list: _list } }) => {
                           const _data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
                           const jdx = _data.list.findIndex(j => j._id === i._id);
@@ -76,7 +76,9 @@ function SayList({ session }) {
                       });
                     }}
                   >
-                    加载更多
+                    查看更多回复 - 剩余
+                    {i.replyCount - i.replys.length}
+                    条
                   </Button>
                   )}
                 </Box>
@@ -84,6 +86,17 @@ function SayList({ session }) {
             </Box>
           </Fragment>
         ))}
+
+        {list.length < meta.commentCount && (
+          <Button
+            fullWidth
+            onClick={loadMore}
+          >
+            查看更多回复 - 剩余
+            {meta.commentCount - list.length}
+            条
+          </Button>
+        )}
       </Box>
     </Fragment>
   );

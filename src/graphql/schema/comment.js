@@ -36,6 +36,7 @@ export const COMMENT_LIST = gql`
     }
     meta: _commentsMeta(session: $session) {
       count
+      commentCount
     }
   }
 `;
@@ -115,6 +116,16 @@ export const CREATE_REPLY = gql`
           }
         }
       }
+    }
+  }
+`;
+
+
+export const DELETE_COMMENT = gql`
+  mutation deleteComment($_id: String!) {
+    result: deleteComment(_id: $_id) {
+      status
+      message
     }
   }
 `;
