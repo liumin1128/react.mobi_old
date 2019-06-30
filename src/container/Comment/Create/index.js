@@ -3,7 +3,7 @@ import { CREATE_COMMENT, COMMENT_LIST } from '@/graphql/schema/comment';
 import { useMutation } from '@/hooks/graphql';
 import Form from './Form';
 
-function CommentCreate({ commentTo, replyTo, session, callback }) {
+function CommentCreate({ commentTo, replyTo, session, callback, autoFocus }) {
   const [ status, setStatus ] = useState('default');
   const createComment = useMutation(CREATE_COMMENT, { commentTo, replyTo, session }, {});
 
@@ -27,6 +27,7 @@ function CommentCreate({ commentTo, replyTo, session, callback }) {
         });
       }}
       status={status}
+      autoFocus={autoFocus}
     />
   );
 }

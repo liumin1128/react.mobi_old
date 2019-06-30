@@ -75,6 +75,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
             commentTo={commentTo}
             replyTo={_id} // 外部指定commentId，说明是回复
             callback={toogleShow}
+            autoFocus
           />
         )}
       </Box>

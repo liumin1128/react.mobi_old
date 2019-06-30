@@ -14,7 +14,7 @@ const validate = (values) => {
   return errors;
 };
 
-function CreateCommentForm({ onSubmit, status }) {
+function CreateCommentForm({ onSubmit, status, autoFocus }) {
   const classes = useStyles();
   return (
     <Form
@@ -23,6 +23,7 @@ function CreateCommentForm({ onSubmit, status }) {
       render={({ handleSubmit, errors }) => (
         <form id="createArticleForm" onSubmit={handleSubmit}>
           <Field
+            autoFocus
             // multiline
             // rows="2"
             key="content"
