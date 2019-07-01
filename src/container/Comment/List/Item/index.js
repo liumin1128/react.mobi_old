@@ -8,14 +8,16 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import { DELETE_COMMENT } from '@/graphql/schema/comment';
+import { ZAN } from '@/graphql/schema/zan';
 import { useMutation } from '@/hooks/graphql';
 import Create from '../../Create/Reply';
 import useStyles from './styles';
 
-function Comment({ commentTo, session, data: { _id, user = {}, content, createdAt, replyTo, replyCount } }) {
+function Comment({ commentTo, session, data: { _id, user = {}, content, createdAt, replyTo, replyCount, zanCount } }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
   const deleteComment = useMutation(DELETE_COMMENT, { _id });
+  const zan = useMutation(ZAN, { _id });
 
   function toogleShow() {
     setShow(!isShow);
@@ -72,15 +74,25 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
               <DeleteIcon fontSize="small" style={{ fontSize: 14 }} />
             </IconButton>
             <Box px={1} display="inline" />
-            <IconButton aria-label="Delete" color="inherit" onClick={toogleShow}>
+            <IconButton
+              aria-label="Comment"
+              color="inherit"
+              onClick={toogleShow}
+            >
               <ModeCommentIcon fontSize="small" style={{ fontSize: 14 }} />
             </IconButton>
             {replyCount || null}
             <Box px={1} display="inline" />
-            <IconButton aria-label="Delete" color="inherit">
+            <IconButton
+              aria-label="Zan"
+              color="inherit"
+              onClick={() => {
+                zan();
+              }}
+            >
               <ThumbUpIcon fontSize="small" style={{ fontSize: 14 }} />
             </IconButton>
-            {15}
+            {zanCount || null}
           </Box>
         </Box>
 
