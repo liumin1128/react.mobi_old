@@ -19,6 +19,7 @@ export const COMMENT_LIST = gql`
         __typename
         _id
         content
+        zanCount
         createdAt
         user {
           _id
@@ -104,6 +105,7 @@ export const CREATE_REPLY = gql`
         __typename
         _id
         content
+        zanCount
         createdAt
         user {
           _id

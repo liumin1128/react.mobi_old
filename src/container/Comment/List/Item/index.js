@@ -7,7 +7,7 @@ import { getTimeAgo } from '@/utils/common';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
-import { DELETE_COMMENT } from '@/graphql/schema/comment';
+import { DELETE_COMMENT, COMMENT_LIST } from '@/graphql/schema/comment';
 import { ZAN } from '@/graphql/schema/zan';
 import { useMutation } from '@/hooks/graphql';
 import Create from '../../Create/Reply';
@@ -17,7 +17,19 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
   const deleteComment = useMutation(DELETE_COMMENT, { _id });
-  const zan = useMutation(ZAN, { _id });
+  const zan = useMutation(ZAN, { _id }, {
+    optimisticResponse: { result: { status: 200, message: '创建成功', __typename: 'Result' } },
+    update: (store, { data: { result: { status: code, data: result } } }) => {
+      if (code === 200 || code === 201) {
+        const data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
+        const idx = data.list.findIndex(i => i._id === commentTo);
+        const jdx = data.list[idx].replys.findIndex(j => j._id === _id);
+        const num = { 200: 1, 201: -1 };
+        data.list[idx].replys[jdx].zanCount += num[code];
+        store.writeQuery({ query: COMMENT_LIST, variables: { session }, data });
+      }
+    },
+  });
 
   function toogleShow() {
     setShow(!isShow);
