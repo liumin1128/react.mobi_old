@@ -21,4 +21,7 @@ export default makeStyles(theme => ({
   'delete-comment': {
     display: 'none',
   },
+  Badge: {
+    left: 0,
+  },
 }));

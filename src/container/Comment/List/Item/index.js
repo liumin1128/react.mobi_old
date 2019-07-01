@@ -87,7 +87,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
 
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="body2">{getTimeAgo(createdAt)}</Typography>
-          <Box color="#666">
+          <Box>
             <IconButton
               aria-label="Delete"
               color="inherit"
@@ -104,7 +104,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
               color="inherit"
               onClick={toogleShow}
             >
-              <Badge badgeContent={replyCount}>
+              <Badge badgeContent={replyCount} classes={{ badge: classes.Badge }}>
                 <ModeCommentIcon
                   fontSize="small"
                   style={{ fontSize: 14 }}
@@ -119,7 +119,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
                 zan();
               }}
             >
-              <Badge badgeContent={zanCount}>
+              <Badge badgeContent={zanCount} classes={{ badge: classes.Badge }}>
                 <ThumbUpIcon
                   color={zanStatus ? 'secondary' : undefined}
                   fontSize="small"
