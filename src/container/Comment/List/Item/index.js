@@ -7,6 +7,7 @@ import { getTimeAgo } from '@/utils/common';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
+import Badge from '@material-ui/core/Badge';
 import { DELETE_COMMENT, COMMENT_LIST } from '@/graphql/schema/comment';
 import { ZAN } from '@/graphql/schema/zan';
 import { useMutation } from '@/hooks/graphql';
@@ -57,9 +58,9 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
       </Box>
       <Box flexGrow={1}>
         {
-          <pre>
-            {JSON.stringify({ _id, commentTo, replyTo, session }, true, 2)}
-          </pre>
+          // <pre>
+          //   {JSON.stringify({ _id, commentTo, replyTo, session }, true, 2)}
+          // </pre>
             }
         <Box display="flex">
           <Typography variant="h6" gutterBottom className={classes.name}>
@@ -103,9 +104,13 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
               color="inherit"
               onClick={toogleShow}
             >
-              <ModeCommentIcon fontSize="small" style={{ fontSize: 14 }} />
+              <Badge badgeContent={replyCount}>
+                <ModeCommentIcon
+                  fontSize="small"
+                  style={{ fontSize: 14 }}
+                />
+              </Badge>
             </IconButton>
-            {replyCount || null}
             <Box px={1} display="inline" />
             <IconButton
               aria-label="Zan"
@@ -114,13 +119,14 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
                 zan();
               }}
             >
-              <ThumbUpIcon
-                color={zanStatus ? 'secondary' : undefined}
-                fontSize="small"
-                style={{ fontSize: 14 }}
-              />
+              <Badge badgeContent={zanCount}>
+                <ThumbUpIcon
+                  color={zanStatus ? 'secondary' : undefined}
+                  fontSize="small"
+                  style={{ fontSize: 14 }}
+                />
+              </Badge>
             </IconButton>
-            {zanCount || null}
           </Box>
         </Box>
 
