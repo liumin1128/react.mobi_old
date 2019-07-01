@@ -13,19 +13,21 @@ import { useMutation } from '@/hooks/graphql';
 import Create from '../../Create/Reply';
 import useStyles from './styles';
 
-function Comment({ commentTo, session, data: { _id, user = {}, content, createdAt, replyTo, replyCount, zanCount } }) {
+function Comment({ commentTo, session, data: { _id, user = {}, content, createdAt, replyTo, replyCount, zanCount, zanStatus } }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
   const deleteComment = useMutation(DELETE_COMMENT, { _id });
   const zan = useMutation(ZAN, { _id }, {
-    optimisticResponse: { result: { status: 200, message: '创建成功', __typename: 'Result' } },
+    optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
     update: (store, { data: { result: { status: code, data: result } } }) => {
       if (code === 200 || code === 201) {
         const data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
         const idx = data.list.findIndex(i => i._id === commentTo);
         const jdx = data.list[idx].replys.findIndex(j => j._id === _id);
         const num = { 200: 1, 201: -1 };
+        const sta = { 200: true, 201: false };
         data.list[idx].replys[jdx].zanCount += num[code];
+        data.list[idx].replys[jdx].zanStatus = sta[code];
         store.writeQuery({ query: COMMENT_LIST, variables: { session }, data });
       }
     },
@@ -102,7 +104,11 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
                 zan();
               }}
             >
-              <ThumbUpIcon fontSize="small" style={{ fontSize: 14 }} />
+              <ThumbUpIcon
+                color={zanStatus ? 'secondary' : undefined}
+                fontSize="small"
+                style={{ fontSize: 14 }}
+              />
             </IconButton>
             {zanCount || null}
           </Box>
