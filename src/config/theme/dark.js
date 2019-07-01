@@ -14,7 +14,7 @@ const theme = createMuiTheme({
     MuiButton: {
       containedPrimary: {
         backgroundColor: '#fff',
-        color: '#212121',
+        color: '#1b1b1b',
         '&:hover': {
           backgroundColor: '#ccc',
         },
@@ -39,18 +39,18 @@ const theme = createMuiTheme({
   palette: {
     type: 'dark',
     primary: {
-      main: '#212121',
+      main: '#1b1b1b',
       contrastText: '#fff',
     },
     text: {
-      primary: 'rgba(255,255,255, 0.87)',
+      primary: 'rgba(255,255,255, 0.75)',
       secondary: 'rgba(255,255,255, 0.54)',
       disabled: 'rgba(255,255,255, 0.38)',
       hint: 'rgba(255,255,255, 0.38)',
       divider: 'rgba(255,255,255, 0.12)',
     },
     background: {
-      default: '#2f2f2f',
+      default: '#252525',
     },
   },
 });
