@@ -68,19 +68,19 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
           </Typography>
 
         </Box>
-        {replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname && (
-        <Fragment>
-          回复
-          <Box p={0.25} display="inline" />
-          <b>
-            {replyTo.user.nickname}
-          </b>
-          <Box p={0.25} display="inline" />
-            :
-          <Box p={0.5} display="inline" />
-        </Fragment>
-        )}
+
         <Typography variant="body2" className={classes.content}>
+          {replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname && (
+            <Fragment>
+              回复
+              {' '}
+              <b>
+                {replyTo.user.nickname}
+            :
+              </b>
+              {' '}
+            </Fragment>
+          )}
           {content}
         </Typography>
 
