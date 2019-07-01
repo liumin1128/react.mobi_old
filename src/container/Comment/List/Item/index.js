@@ -69,7 +69,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
 
         </Box>
 
-        <Typography variant="body2" className={classes.content}>
+        <Typography variant="body1" className={classes.content}>
           {replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname && (
             <Fragment>
               回复
@@ -87,7 +87,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
 
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="body2">{getTimeAgo(createdAt)}</Typography>
-          <Box>
+          <Typography variant="body2" component="div">
             <IconButton
               aria-label="Delete"
               color="inherit"
@@ -115,9 +115,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
             <IconButton
               aria-label="Zan"
               color="inherit"
-              onClick={() => {
-                zan();
-              }}
+              onClick={() => { zan(); }}
             >
               <Badge badgeContent={zanCount} classes={{ badge: classes.Badge }}>
                 <ThumbUpIcon
@@ -127,7 +125,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
                 />
               </Badge>
             </IconButton>
-          </Box>
+          </Typography>
         </Box>
 
         {isShow && (
