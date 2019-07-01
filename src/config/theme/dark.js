@@ -4,7 +4,11 @@ const theme = createMuiTheme({
   overrides: {
     MuiPaper: {
       root: {
-        'background-color': '#212121',
+        // 'background-color': 'none',
+        // 'background-color': 'rgba(255,255,255,0.05)',
+      },
+      elevation1: {
+        'box-shadow': 'none',
       },
     },
     MuiButton: {
