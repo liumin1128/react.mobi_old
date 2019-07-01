@@ -91,6 +91,7 @@ function SayList({ session }) {
           <Button
             fullWidth
             onClick={loadMore}
+            disabled={isLoadingMore}
           >
             查看更多回复 - 剩余
             {meta.commentCount - list.length}
