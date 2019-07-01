@@ -9,6 +9,7 @@ export const COMMENT_LIST = gql`
       content
       replyCount
       zanCount
+      zanStatus
       createdAt
       user {
         _id
@@ -20,6 +21,7 @@ export const COMMENT_LIST = gql`
         _id
         content
         zanCount
+        zanStatus
         createdAt
         user {
           _id
@@ -51,6 +53,7 @@ export const REPLY_LIST = gql`
       _id
       content
       zanCount
+      zanStatus
       createdAt
       user {
         _id
@@ -83,6 +86,7 @@ export const CREATE_COMMENT = gql`
         session
         replyCount
         zanCount
+        zanStatus
         replys {
           __typename
         }
@@ -106,6 +110,7 @@ export const CREATE_REPLY = gql`
         _id
         content
         zanCount
+        zanStatus
         createdAt
         user {
           _id
