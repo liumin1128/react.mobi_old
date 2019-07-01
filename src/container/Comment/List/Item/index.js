@@ -10,6 +10,7 @@ import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import { DELETE_COMMENT, COMMENT_LIST } from '@/graphql/schema/comment';
 import { ZAN } from '@/graphql/schema/zan';
 import { useMutation } from '@/hooks/graphql';
+import Snackbar from '@/components/Snackbar';
 import Create from '../../Create/Reply';
 import useStyles from './styles';
 
@@ -19,16 +20,25 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
   const deleteComment = useMutation(DELETE_COMMENT, { _id });
   const zan = useMutation(ZAN, { _id }, {
     optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
-    update: (store, { data: { result: { status: code, data: result } } }) => {
+    update: (store, { data: { result: { status: code, message } } }) => {
       if (code === 200 || code === 201) {
         const data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
-        const idx = data.list.findIndex(i => i._id === commentTo);
-        const jdx = data.list[idx].replys.findIndex(j => j._id === _id);
         const num = { 200: 1, 201: -1 };
         const sta = { 200: true, 201: false };
-        data.list[idx].replys[jdx].zanCount += num[code];
-        data.list[idx].replys[jdx].zanStatus = sta[code];
+        if (replyTo) {
+          // 如果是回复
+          const idx = data.list.findIndex(i => i._id === commentTo);
+          const jdx = data.list[idx].replys.findIndex(j => j._id === _id);
+          data.list[idx].replys[jdx].zanCount += num[code];
+          data.list[idx].replys[jdx].zanStatus = sta[code];
+        } else {
+          const idx = data.list.findIndex(i => i._id === commentTo);
+          data.list[idx].zanCount += num[code];
+          data.list[idx].zanStatus = sta[code];
+        }
         store.writeQuery({ query: COMMENT_LIST, variables: { session }, data });
+      } else {
+        Snackbar.error(message);
       }
     },
   });
@@ -47,9 +57,9 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
       </Box>
       <Box flexGrow={1}>
         {
-          // <pre>
-          //   {JSON.stringify({ _id, commentTo, replyTo, session }, true, 2)}
-          // </pre>
+          <pre>
+            {JSON.stringify({ _id, commentTo, replyTo, session }, true, 2)}
+          </pre>
             }
         <Box display="flex">
           <Typography variant="h6" gutterBottom className={classes.name}>
