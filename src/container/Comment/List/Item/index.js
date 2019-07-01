@@ -98,7 +98,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
             >
               <DeleteIcon fontSize="small" style={{ fontSize: 14 }} />
             </IconButton>
-            <Box px={1} display="inline" />
+            <Box px={0.5} display="inline" />
             <IconButton
               aria-label="Comment"
               color="inherit"
@@ -111,7 +111,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
                 />
               </Badge>
             </IconButton>
-            <Box px={1} display="inline" />
+            <Box px={0.5} display="inline" />
             <IconButton
               aria-label="Zan"
               color="inherit"
