@@ -46,7 +46,7 @@ function SayList({ session }) {
                 commentTo={i._id}
               />
               {i.replys && i.replys.length > 0 && (
-                <Box ml={9} p={4} className={classes.replay}>
+                <Box ml={9} p={4} pb={3} className={classes.replay}>
                   {i.replys.map((j, jdx) => (
                     <Fragment key={j._id}>
                       {jdx !== 0 && (
