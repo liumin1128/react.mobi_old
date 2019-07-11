@@ -22,7 +22,7 @@ function SayListItem({ _id, content, user, createdAt, ...props }) {
   const classes = useStyles();
   return (
     <Fragment key={_id}>
-      <Link href={`/shequ/detail?_id=${_id}`}>
+      <Link href={`/dynamic/detail?_id=${_id}`}>
         <Card className={classes.card}>
           <CardHeader
             avatar={(<Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>)}
