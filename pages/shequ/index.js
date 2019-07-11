@@ -18,9 +18,14 @@ function Index() {
         <Box px={1}>
           <NavTabs
             navList={[
-              { label: 'switch', pathname: '/' },
-              { label: 'ps4', pathname: '/ps4' },
-              { label: 'cosplay', pathname: '/cos' },
+              { label: '技术', pathname: '/' },
+              { label: '前端', pathname: '/web' },
+              { label: '后端', pathname: '/node' },
+              { label: '游戏', pathname: '/game' },
+              { label: '动画', pathname: '/cartoon' },
+              { label: '电影', pathname: '/movie' },
+              { label: '读书', pathname: '/book' },
+              { label: '生活', pathname: '/life' },
             ]}
           />
         </Box>
