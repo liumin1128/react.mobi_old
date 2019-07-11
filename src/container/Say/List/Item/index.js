@@ -18,15 +18,12 @@ import Loading from '@/components/Loading';
 import { getTimeAgo } from '@/utils/common';
 import useStyles from './styles';
 
-function SayListItem({ _id, content, user, createdAt, loading, ...props }) {
+function SayListItem({ _id, content, user, createdAt, ...props }) {
   const classes = useStyles();
-  if (loading) return <Loading />;
-
-
   return (
     <Fragment key={_id}>
       <Link href={`/shequ/detail?_id=${_id}`}>
-        <Card>
+        <Card className={classes.card}>
           <CardHeader
             avatar={(<Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>)}
             action={(
@@ -34,10 +31,10 @@ function SayListItem({ _id, content, user, createdAt, loading, ...props }) {
                 <MoreVertIcon />
               </IconButton>
             )}
-            title={user.nickname}
+            title={<Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>}
             subheader={getTimeAgo(createdAt)}
           />
-          <CardContent>
+          <CardContent className={classes.content}>
             <Typography variant="body2">{content}</Typography>
           </CardContent>
         </Card>
