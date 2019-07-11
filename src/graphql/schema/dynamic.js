@@ -38,6 +38,16 @@ export const DYNAMIC_CREATE = gql`
     result: DynamicCreate(input: $input) {
       status
       message
+      data {
+        __typename
+        _id
+        content
+        createdAt
+        user {
+          nickname
+          avatarUrl
+        }
+      }
     }
   }
 `;
