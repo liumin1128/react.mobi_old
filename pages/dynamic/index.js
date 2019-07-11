@@ -13,7 +13,7 @@ function Index() {
           <DynamicCreate />
         </Box>
       </Card>
-      <Box pb={2} />
+      <Box mb={1.5} />
       <Card>
         <Box px={1}>
           <NavTabs
@@ -30,7 +30,7 @@ function Index() {
           />
         </Box>
       </Card>
-      <Box pb={2} />
+      <Box mb={1.5} />
       <DynamicList />
     </Fragment>
   );
