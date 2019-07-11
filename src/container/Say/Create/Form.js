@@ -24,8 +24,8 @@ function CreateCommentForm({ onSubmit, status, autoFocus }) {
         <form id="createArticleForm" onSubmit={handleSubmit}>
           <Field
             autoFocus
-            // multiline
-            // rows="2"
+            multiline
+            rows="3"
             key="content"
             name="content"
             // label="输入评论"
@@ -36,7 +36,7 @@ function CreateCommentForm({ onSubmit, status, autoFocus }) {
             fullWidth
             placeholder="畅所欲言，有你更精彩"
             autoComplete="off"
-            // rowsMax="8"
+            rowsMax="8"
           />
           <Box mt={1} display="flex" justifyContent="space-between" alignItems="flex-start">
             <Button size="small">添加表情</Button>
