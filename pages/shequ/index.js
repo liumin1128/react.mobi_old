@@ -9,13 +9,21 @@ function Index() {
   return (
     <Fragment>
       <Card>
-        <NavTabs
-          navList={[
-            { label: 'switch', pathname: '/' },
-            { label: 'ps4', pathname: '/ps4' },
-            { label: 'cosplay', pathname: '/cos' },
-          ]}
-        />
+        <Box p={2}>
+          <SayCreate />
+        </Box>
+      </Card>
+      <Box pb={2} />
+      <Card>
+        <Box px={1}>
+          <NavTabs
+            navList={[
+              { label: 'switch', pathname: '/' },
+              { label: 'ps4', pathname: '/ps4' },
+              { label: 'cosplay', pathname: '/cos' },
+            ]}
+          />
+        </Box>
       </Card>
       <Box pb={2} />
       <SayList />
