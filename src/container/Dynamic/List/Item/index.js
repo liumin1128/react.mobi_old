@@ -18,7 +18,7 @@ import Loading from '@/components/Loading';
 import { getTimeAgo } from '@/utils/common';
 import useStyles from './styles';
 
-function SayListItem({ _id, content, user, createdAt, ...props }) {
+function DynamicListItem({ _id, content, user, createdAt, ...props }) {
   const classes = useStyles();
   return (
     <Fragment key={_id}>
@@ -45,4 +45,4 @@ function SayListItem({ _id, content, user, createdAt, ...props }) {
 }
 
 
-export default SayListItem;
+export default DynamicListItem;

@@ -1,14 +1,14 @@
 // import React from 'react';
-// import SayList from '@/container/Say/List';
-// import SayCreate from '@/container/Say/Create';
+// import DynamicList from '@/container/Dynamic/List';
+// import DynamicCreate from '@/container/Dynamic/Create';
 
 // function Index() {
 //   return (
-//     <SayList />
+//     <DynamicList />
 //   );
 // }
 
-// Index.Sider = SayCreate;
+// Index.Sider = DynamicCreate;
 
 // export default Index;
 

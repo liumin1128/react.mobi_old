@@ -12,7 +12,7 @@ import Collapse from '@material-ui/core/Collapse';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import { SAY_DETAIL } from '@/graphql/schema/say';
+import { SAY_DETAIL } from '@/graphql/schema/dynamic';
 import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import Html from '@/components/Html';
@@ -20,7 +20,7 @@ import { formatTime, getTimeAgo } from '@/utils/common';
 import Comment from '@/container/Comment';
 import useStyles from './styles';
 
-function SayDetail({ router }) {
+function DynamicDetail({ router }) {
   const classes = useStyles();
   const { data, error, loading, refetch } = useQuery(SAY_DETAIL, router.query);
 
@@ -81,4 +81,4 @@ function SayDetail({ router }) {
   );
 }
 
-export default withRouter(SayDetail);
+export default withRouter(DynamicDetail);

@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { SAY_LIST } from '@/graphql/schema/say';
+import { SAY_LIST } from '@/graphql/schema/dynamic';
 import { listQuery } from '@/graphql/utils';
 import Item from './ListItem';
 import Placeholder from './Placeholder';

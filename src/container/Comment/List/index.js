@@ -15,7 +15,7 @@ import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import Item from './Item';
 import useStyles from './styles';
 
-function SayList({ session }) {
+function DynamicList({ session }) {
   const classes = useStyles();
   const { data, error, loading, isLoadingMore, loadMore } = useQuery(COMMENT_LIST, { session });
   const fetchMoreReplys = useMutation(REPLY_LIST);
@@ -104,4 +104,4 @@ function SayList({ session }) {
 }
 
 
-export default SayList;
+export default DynamicList;

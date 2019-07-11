@@ -27,7 +27,7 @@ export default class Edite extends PureComponent {
     const { classes } = this.props;
 
     return (
-      <Link href="/article/create" passHref scroll={false}>
+      <Link href="/article/create">
         <Button variant="outlined" color="primary" className={classes.button}>
           写文章
         </Button>

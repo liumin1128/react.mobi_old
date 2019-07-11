@@ -20,7 +20,7 @@ const cache = new InMemoryCache({
   // 存缓解析器，实现列表目录到详情
   cacheRedirects: {
     Query: {
-      say: (_, { _id }, { getCacheKey }) => getCacheKey({ __typename: 'Say', _id }),
+      dynamic: (_, { _id }, { getCacheKey }) => getCacheKey({ __typename: 'Dynamic', _id }),
       article: (_, { _id }, { getCacheKey }) => getCacheKey({ __typename: 'Article', _id }),
     },
   },

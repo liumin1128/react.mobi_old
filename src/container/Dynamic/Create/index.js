@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SAY_CREATE, SAY_LIST } from '@/graphql/schema/say';
+import { SAY_CREATE, SAY_LIST } from '@/graphql/schema/dynamic';
 import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
 import Form from './Form';

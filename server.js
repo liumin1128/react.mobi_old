@@ -23,8 +23,8 @@ app.prepare()
     // Use the `renderAndCache` utility defined below to serve pages
     [
       '/',
-      '/say',
-      '/say/detail',
+      '/dynamic',
+      '/dynamic/detail',
       '/article',
       '/article/detail',
       '/bxgif',
