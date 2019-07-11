@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const SAY_DETAIL = gql`
+export const DYNAMIC_DETAIL = gql`
   query DynamicDetail($_id: String!) {
     data: dynamic(_id: $_id) {
       __typename
@@ -15,9 +15,9 @@ export const SAY_DETAIL = gql`
   }
 `;
 
-export const SAY_LIST = gql`
+export const DYNAMIC_LIST = gql`
   query DynamicList($first: Int, $skip: Int) {
-    list: says(first: $first, skip: $skip) {
+    list: dynamics(first: $first, skip: $skip) {
       __typename
       _id
       content
@@ -27,13 +27,13 @@ export const SAY_LIST = gql`
         avatarUrl
       }
     }
-    meta: _saysMeta {
+    meta: _dynamicsMeta {
       count
     }
   }
 `;
 
-export const SAY_CREATE = gql`
+export const DYNAMIC_CREATE = gql`
   mutation DynamicCreate($input: DynamicInput) {
     result: DynamicCreate(input: $input) {
       status

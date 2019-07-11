@@ -12,7 +12,7 @@ import Collapse from '@material-ui/core/Collapse';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import { SAY_DETAIL } from '@/graphql/schema/dynamic';
+import { DYNAMIC_DETAIL } from '@/graphql/schema/dynamic';
 import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import Html from '@/components/Html';
@@ -22,7 +22,7 @@ import useStyles from './styles';
 
 function DynamicDetail({ router }) {
   const classes = useStyles();
-  const { data, error, loading, refetch } = useQuery(SAY_DETAIL, router.query);
+  const { data, error, loading, refetch } = useQuery(DYNAMIC_DETAIL, router.query);
 
   if (loading) return <Loading />;
 

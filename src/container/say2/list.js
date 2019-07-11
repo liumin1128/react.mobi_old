@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { SAY_LIST } from '@/graphql/schema/dynamic';
+import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import { listQuery } from '@/graphql/utils';
 import Item from './ListItem';
 import Placeholder from './Placeholder';
@@ -13,7 +13,7 @@ const styles = theme => ({
   },
 });
 
-@listQuery(SAY_LIST, { ssr: false })
+@listQuery(DYNAMIC_LIST, { ssr: false })
 @withStyles(styles)
 export default class test extends PureComponent {
   render() {
