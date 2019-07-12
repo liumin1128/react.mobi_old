@@ -1,9 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import InputBase from '@material-ui/core/InputBase';
+import { DYNAMIC_TOPIC_LIST } from '@/graphql/schema/dynamic';
+import { useMutation } from '@/hooks/graphql';
 import useStyles from './styles';
 
-function DynamicCreate() {
-  //   const createDynamic = useMutation(DYNAMIC_CREATE);
+function Topics() {
+  const getTopics = useMutation(DYNAMIC_TOPIC_LIST);
   const classes = useStyles();
   return (
     <Fragment>
@@ -13,11 +15,16 @@ function DynamicCreate() {
           input: classes.input,
         }}
         onChange={(e) => {
-          console.log(e.target.value);
+          getTopics({ title: e.target.value }, {
+            update: (_, { data }) => {
+              console.log('data');
+              console.log(data);
+            },
+          });
         }}
       />
     </Fragment>
   );
 }
 
-export default DynamicCreate;
+export default Topics;

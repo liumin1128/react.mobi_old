@@ -54,3 +54,15 @@ export const DYNAMIC_CREATE = gql`
     }
   }
 `;
+
+
+export const DYNAMIC_TOPIC_LIST = gql`
+  query DynamicTopicList($first: Int, $skip: Int, $title: String) {
+    list: DynamicTopics(first: $first, skip: $skip, title: $title) {
+      __typename
+      _id
+      title
+      number
+    }
+  }
+`;
