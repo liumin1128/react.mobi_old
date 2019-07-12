@@ -63,7 +63,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
                 </IconButton>
               </UpPicture>
               <IconButton aria-label="Delete">
-                <PhotoIcon />
+                #
               </IconButton>
             </Box>
             <Button
