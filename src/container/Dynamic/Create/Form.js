@@ -3,6 +3,7 @@ import isEmpty from 'lodash/isEmpty';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import CloseIcon from '@material-ui/icons/Close';
+import Icon from '@material-ui/core/Icon';
 import CardMedia from '@material-ui/core/CardMedia';
 import PhotoIcon from '@material-ui/icons/Photo';
 import { Form, Field } from 'react-final-form';
@@ -64,7 +65,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
                 </IconButton>
               </UpPicture>
               <Popper content={<Button>11111</Button>}>
-                #
+                <Icon>#</Icon>
               </Popper>
             </Box>
             <Button

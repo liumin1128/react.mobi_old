@@ -19,8 +19,6 @@ function DynamicCreate() {
         content: '即将于 8 月 30 日发售的 NS 游戏《星魂之链》已开启预购下载，游戏容量为 10.9GB。该游戏支持玩家使用「任天堂游戏兑换券（Nintendo Catalog Ticket）」购买。#任天堂#',
       }}
       onSubmit={(values, form) => {
-        console.log('values');
-        console.log(values);
         setStatus('loading');
         createDynamic({ input: values }, {
           update: (store, { data: { result: { status: code, message, data: result } } }) => {
