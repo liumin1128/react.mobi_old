@@ -11,10 +11,10 @@ function DynamicCreate() {
     <Form
       initialValues={{
         pictures: [
-          'https://imgs.react.mobi/FugLdcExrep8XP8b9UGklaZS3_Xf',
-          'https://imgs.react.mobi/FhSW2PlU3vcJg3s4rn8Ah6LOPZhh',
-          'https://imgs.react.mobi/FppdySI-horw1rk81FCt2hHU_e8E',
-          'https://imgs.react.mobi/FgXlzlzCZjWodl1-7VyTWQ89Lqek',
+          // 'https://imgs.react.mobi/FugLdcExrep8XP8b9UGklaZS3_Xf',
+          // 'https://imgs.react.mobi/FhSW2PlU3vcJg3s4rn8Ah6LOPZhh',
+          // 'https://imgs.react.mobi/FppdySI-horw1rk81FCt2hHU_e8E',
+          // 'https://imgs.react.mobi/FgXlzlzCZjWodl1-7VyTWQ89Lqek',
         ],
         content: '即将于 8 月 30 日发售的 NS 游戏《星魂之链》已开启预购下载，游戏容量为 10.9GB。该游戏支持玩家使用「任天堂游戏兑换券（Nintendo Catalog Ticket）」购买。#任天堂#',
       }}
