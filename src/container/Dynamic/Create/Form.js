@@ -18,27 +18,22 @@ const validate = (values) => {
   return errors;
 };
 
-function CreateCommentForm({ onSubmit, status }) {
+function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   const classes = useStyles();
 
-  const [ pictures, setPictures ] = useState([
-    'https://imgs.react.mobi/FugLdcExrep8XP8b9UGklaZS3_Xf',
-    'https://imgs.react.mobi/FhSW2PlU3vcJg3s4rn8Ah6LOPZhh',
-    'https://imgs.react.mobi/FppdySI-horw1rk81FCt2hHU_e8E',
-    'https://imgs.react.mobi/FgXlzlzCZjWodl1-7VyTWQ89Lqek',
-  ]);
+  const { content, pictures: _pictures = [] } = initialValues;
+
+  const [ pictures, setPictures ] = useState(_pictures);
 
   function onUpPictureSuccess(data) {
     setPictures(data);
   }
 
-  console.log('pictures');
-  console.log(pictures);
-
   return (
     <Form
-      onSubmit={onSubmit}
+      onSubmit={({ content: val }) => { onSubmit({ content: val, pictures }); }}
       validate={validate}
+      initialValues={{ content }}
       render={({ handleSubmit, errors }) => (
         <form id="createArticleForm" onSubmit={handleSubmit}>
           <Field
