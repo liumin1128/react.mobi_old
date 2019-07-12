@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { fade, withStyles, makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import isEmpty from 'lodash/isEmpty';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import InputBase from '@material-ui/core/InputBase';
 import CloseIcon from '@material-ui/icons/Close';
 import Icon from '@material-ui/core/Icon';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -21,6 +23,41 @@ const validate = (values) => {
   }
   return errors;
 };
+
+const BootstrapInput = withStyles(theme => ({
+  root: {
+    'label + &': {
+      marginTop: theme.spacing(3),
+    },
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    backgroundColor: theme.palette.common.white,
+    border: '1px solid #ced4da',
+    fontSize: 16,
+    width: 'auto',
+    padding: '10px 12px',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    '&:focus': {
+      boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+      borderColor: theme.palette.primary.main,
+    },
+  },
+}))(InputBase);
 
 function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   const classes = useStyles();
@@ -64,7 +101,13 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
                   <PhotoIcon />
                 </IconButton>
               </UpPicture>
-              <Popper content={<Button>11111</Button>}>
+              <Popper
+                content={(
+                  <Box p={1}>
+                    <BootstrapInput></BootstrapInput>
+                  </Box>
+                )}
+              >
                 <Icon>#</Icon>
               </Popper>
             </Box>
