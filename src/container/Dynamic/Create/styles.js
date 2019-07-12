@@ -1,55 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(theme => ({
-  '@keyframes rotate': {
-    from: {
-      'background-position': '-300px',
-    },
-    to: {
-      'background-position': '0px',
-    },
-  },
-
-  cover: {
-
-    paddingTop: '56%',
-    backgroundColor: 'rgba(128,128,128)',
-    marginBottom: 12,
-    // borderRadius: 4,
-
-    position: 'relative',
-
-    '&:hover': {
-      '&::after': {
-        content: "''",
-        position: 'absolute',
-        width: 'calc(100% + 4px)',
-        height: 'calc(100% + 4px)',
-
-        // borderRadius: 4,
-
-        top: -2,
-        left: -2,
-        display: 'block',
-        zIndex: -1,
-
-        animation: '$rotate 5s infinite linear',
-        background: '-webkit-gradient(linear, left top, right top, color-stop(0%,rgba(48,255,144,1)), color-stop(25%,rgba(237,45,237,1)), color-stop(50%,rgba(201,152,38,1)), color-stop(75%,rgba(48,255,230,1)), color-stop(100%,rgba(48,255,144,1)))',
-      },
-    },
-
-
-  },
-  title: {
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    display: '-webkit-box',
-    '-webkit-line-clamp': '1',
-    '-webkit-box-orient': 'vertical',
-    // minHeight: '3em',
-    [theme.breakpoints.down('xs')]: {
-      '-webkit-line-clamp': '3',
-    },
+  picture: {
+    width: theme.spacing(8),
+    height: theme.spacing(8),
+    borderRadius: theme.spacing(0.5),
+    margin: 4,
   },
 }));
 
