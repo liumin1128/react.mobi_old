@@ -10,7 +10,16 @@ export default makeStyles(theme => ({
   },
   content: {
     // border: '1px red solid',
-    paddingLeft: theme.spacing(10),
+    // paddingLeft: theme.spacing(10),
+    marginTop: theme.spacing(-1),
     paddingTop: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+  picture: {
+    width: theme.spacing(10),
+    height: theme.spacing(10),
+    borderRadius: theme.spacing(0.5),
+    margin: 4,
   },
 }));

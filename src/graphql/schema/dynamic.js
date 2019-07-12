@@ -6,6 +6,7 @@ export const DYNAMIC_DETAIL = gql`
       __typename
       _id
       content
+      pictures
       createdAt
       user {
         nickname
@@ -21,6 +22,7 @@ export const DYNAMIC_LIST = gql`
       __typename
       _id
       content
+      pictures
       createdAt
       user {
         nickname
@@ -42,6 +44,7 @@ export const DYNAMIC_CREATE = gql`
         __typename
         _id
         content
+        pictures
         createdAt
         user {
           nickname
