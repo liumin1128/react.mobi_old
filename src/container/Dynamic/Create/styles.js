@@ -1,11 +1,35 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(theme => ({
+  item: {
+    position: 'relative',
+    borderRadius: theme.spacing(0.5),
+    overflow: 'hidden',
+    '&:hover': {
+      '& > .pictures-close-btn': {
+        display: 'block',
+      },
+    },
+  },
   picture: {
     width: theme.spacing(8),
     height: theme.spacing(8),
     borderRadius: theme.spacing(0.5),
     margin: 4,
+  },
+  close: {
+    display: 'none',
+    position: 'absolute',
+    top: theme.spacing(0.5),
+    right: theme.spacing(0.5),
+    background: 'rgba(0,0,0,0.5)',
+    width: theme.spacing(2),
+    height: theme.spacing(2),
+    '& > svg': {
+      width: '100%',
+      height: '100%',
+      color: '#fff',
+    },
   },
 }));
 

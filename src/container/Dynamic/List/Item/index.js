@@ -35,9 +35,7 @@ function DynamicListItem({ _id, content, pictures = [], user, createdAt, ...prop
                 {pictures.map(i => <CardMedia key={i} className={classes.picture} image={i} />)}
               </Box>
             </CardContent>
-
           </Box>
-
         </Card>
       </Link>
       <Box mb={1.5} />

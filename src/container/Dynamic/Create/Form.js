@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
 import Box from '@material-ui/core/Box';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import CloseIcon from '@material-ui/icons/Close';
 import CardMedia from '@material-ui/core/CardMedia';
 import PhotoIcon from '@material-ui/icons/Photo';
 import { Form, Field } from 'react-final-form';
@@ -20,15 +22,15 @@ const validate = (values) => {
 
 function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   const classes = useStyles();
-
   const { content, pictures: _pictures = [] } = initialValues;
-
   const [ pictures, setPictures ] = useState(_pictures);
-
   function onUpPictureSuccess(data) {
-    setPictures(data);
+    setPictures([ ...pictures, ...data ]);
   }
-
+  function onDeletePictures(idx) {
+    pictures.splice(idx, 1);
+    setPictures([ ...pictures ]);
+  }
   return (
     <Form
       onSubmit={({ content: val }) => { onSubmit({ content: val, pictures }); }}
@@ -77,9 +79,15 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
           </Box>
 
           <Box mt={1} />
-
           <Box display="flex" m={-0.5}>
-            {pictures.map(i => <CardMedia key={i} className={classes.picture} image={i} />)}
+            {pictures.map((i, idx) => (
+              <Box key={i} className={classes.item}>
+                <CardMedia className={classes.picture} image={i} />
+                <ButtonBase className={`${classes.close} pictures-close-btn`} onClick={() => { onDeletePictures(idx); }}>
+                  <CloseIcon />
+                </ButtonBase>
+              </Box>
+            ))}
           </Box>
         </form>
       )}
