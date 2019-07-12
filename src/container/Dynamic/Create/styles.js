@@ -30,6 +30,9 @@ export default makeStyles(theme => ({
       height: '100%',
       color: '#fff',
     },
+    [theme.breakpoints.down('xs')]: {
+      display: 'block',
+    },
   },
 }));
 
