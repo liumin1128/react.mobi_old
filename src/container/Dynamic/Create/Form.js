@@ -21,7 +21,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   const [ content, setContent ] = useState(_content);
   const [ pictures, setPictures ] = useState(_pictures);
   // const [ selection, setSelection ] = useState();
-  const [ range, setRange ] = useState();
+  const [ lastEditRange, setLastEditRange ] = useState();
 
   useOnMount(() => {
     const edit = input.current;
@@ -39,11 +39,8 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     // 获取选定对象
     const selection = getSelection();
     // 设置最后光标对象
-    const lastEditRange = selection.getRangeAt(0);
-    console.log('lastEditRange');
-    console.log(lastEditRange);
-
-    setRange(lastEditRange);
+    const range = selection.getRangeAt(0);
+    setLastEditRange(range);
   }
 
   function insetText(text) {
@@ -56,10 +53,10 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     // 获取选定对象
     const selection = getSelection();
     // 判断是否有最后光标对象存在
-    if (range) {
+    if (lastEditRange) {
       // 存在最后光标对象，选定对象清除所有光标并添加最后光标还原之前的状态
       selection.removeAllRanges();
-      selection.addRange(range);
+      selection.addRange(lastEditRange);
     }
 
     // setContent(`${content}[xxxxx]`);
@@ -81,38 +78,37 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
       }
 
       // 创建新的光标对象
-      const newRange = document.createRange();
+      const range = document.createRange();
       // 光标对象的范围界定为新建的表情节点
-      newRange.selectNodeContents(emojiText);
+      range.selectNodeContents(emojiText);
       // 光标位置定位在表情节点的最大长度
-      newRange.setStart(emojiText, emojiText.length);
+      range.setStart(emojiText, emojiText.length);
       // 使光标开始和光标结束重叠
-      newRange.collapse(true);
+      range.collapse(true);
       // 清除选定对象的所有光标对象
       selection.removeAllRanges();
       // 插入新的光标对象
-      selection.addRange(newRange);
+      selection.addRange(range);
     } else {
       // 如果是文本节点则先获取光标对象
-      const newRange = selection.getRangeAt(0);
+      const range = selection.getRangeAt(0);
       // 获取光标对象的范围界定对象，一般就是textNode对象
-      const textNode = newRange.startContainer;
+      const textNode = range.startContainer;
       // 获取光标位置
-      const rangeStartOffset = newRange.startOffset;
+      const rangeStartOffset = range.startOffset;
       // 文本节点在光标位置处插入新的表情内容
       textNode.insertData(rangeStartOffset, text);
       // 光标移动到到原来的位置加上新内容的长度
-      newRange.setStart(textNode, rangeStartOffset + text.length);
+      range.setStart(textNode, rangeStartOffset + text.length);
       // 光标开始和光标结束重叠
-      newRange.collapse(true);
+      range.collapse(true);
       // 清除选定对象的所有光标对象
       selection.removeAllRanges();
       // 插入新的光标对象
-      selection.addRange(newRange);
+      selection.addRange(range);
     }
     // 无论如何都要记录最后光标对象
-    const lastEditRange = selection.getRangeAt(0);
-    setRange(lastEditRange);
+    getCursor();
   }
 
   function insetEmoji({ name, url }) {
@@ -125,28 +121,27 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     // 获取选定对象
     const selection = getSelection();
     // 判断是否有最后光标对象存在
-    if (range) {
+    if (lastEditRange) {
       // 存在最后光标对象，选定对象清除所有光标并添加最后光标还原之前的状态
       selection.removeAllRanges();
-      selection.addRange(range);
+      selection.addRange(lastEditRange);
     }
 
     // 如果是文本节点则先获取光标对象
-    const newRange = selection.getRangeAt(0);
+    const range = selection.getRangeAt(0);
     // 创建需追加到光标处节点的文档片段
     const fragment = range.createContextualFragment(`<img src="${url}" name="${name}" class="emoji">`);
     // 将创建的文档片段插入到光标处
-    newRange.insertNode(fragment.lastChild);
+    range.insertNode(fragment.lastChild);
     // 光标开始和光标结束重叠
-    newRange.collapse(); // 有参数true，会使结束光标与开始光标重合
+    range.collapse(); // 有参数true，会使结束光标与开始光标重合
     // 清除选定对象的所有光标对象
     selection.removeAllRanges();
     // 插入新的光标对象
-    selection.addRange(newRange);
+    selection.addRange(range);
 
     // 无论如何都要记录最后光标对象
-    const lastEditRange = selection.getRangeAt(0);
-    setRange(lastEditRange);
+    getCursor();
   }
 
 
