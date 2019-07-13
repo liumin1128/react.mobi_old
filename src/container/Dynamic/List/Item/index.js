@@ -33,7 +33,6 @@ function DynamicListItem({ _id, content, pictures = [], user, createdAt, ...prop
           />
           <Box ml={10}>
             <CardContent className={classes.content}>
-
               <Typography variant="body2" gutterBottom component="div">
                 <div className={classes.html} dangerouslySetInnerHTML={{ __html: text2html(content) }} />
               </Typography>
