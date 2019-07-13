@@ -46,7 +46,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     setRange(lastEditRange);
   }
 
-  function insetEmoji(data) {
+  function insetText(text) {
     // 获取编辑框对象
     const edit = input.current;
     // 获取输入框对象
@@ -66,7 +66,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     // 判断选定对象范围是编辑框还是文本节点
     if (selection.anchorNode.nodeName !== '#text') {
       // 如果是编辑框范围。则创建表情文本节点进行插入
-      const emojiText = document.createTextNode('#####');
+      const emojiText = document.createTextNode(text);
 
       if (edit.childNodes.length > 0) {
         // 如果文本框的子元素大于0，则表示有其他元素，则按照位置插入表情节点
@@ -100,9 +100,9 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
       // 获取光标位置
       const rangeStartOffset = newRange.startOffset;
       // 文本节点在光标位置处插入新的表情内容
-      textNode.insertData(rangeStartOffset, 'xxxxxx');
+      textNode.insertData(rangeStartOffset, text);
       // 光标移动到到原来的位置加上新内容的长度
-      newRange.setStart(textNode, rangeStartOffset + 'xxxxxx'.length);
+      newRange.setStart(textNode, rangeStartOffset + text.length);
       // 光标开始和光标结束重叠
       newRange.collapse(true);
       // 清除选定对象的所有光标对象
@@ -110,6 +110,53 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
       // 插入新的光标对象
       selection.addRange(newRange);
     }
+    // 无论如何都要记录最后光标对象
+    const lastEditRange = selection.getRangeAt(0);
+    setRange(lastEditRange);
+  }
+
+  function insetEmoji({ name, url }) {
+    // 获取编辑框对象
+    const edit = input.current;
+    // 获取输入框对象
+    // const emojiInput = document.getElementById('emojiInput');
+    // 编辑框设置焦点
+    edit.focus();
+    // 获取选定对象
+    const selection = getSelection();
+    // 判断是否有最后光标对象存在
+    if (range) {
+      // 存在最后光标对象，选定对象清除所有光标并添加最后光标还原之前的状态
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+
+    // 如果是文本节点则先获取光标对象
+    const newRange = selection.getRangeAt(0);
+    // 获取光标对象的范围界定对象，一般就是textNode对象
+    const textNode = newRange.startContainer;
+    // 获取光标位置
+    const rangeStartOffset = newRange.startOffset;
+    // 文本节点在光标位置处插入新的表情内容
+    // textNode.insertData(rangeStartOffset, 'xxxxxx');
+
+    // 创建需追加到光标处节点的文档片段
+    const fragment = range.createContextualFragment(`<img src="${url}" class="emoji">`);
+    // 将创建的文档片段插入到光标处
+    newRange.insertNode(fragment.lastChild);
+
+    console.log('newRange');
+    console.log(newRange);
+
+    // 光标移动到到原来的位置加上新内容的长度
+    // newRange.setStart(textNode, rangeStartOffset + 'xxxxxx'.length);
+    // 光标开始和光标结束重叠
+    newRange.collapse(); // 有参数true，会使结束光标与开始光标重合
+    // 清除选定对象的所有光标对象
+    selection.removeAllRanges();
+    // 插入新的光标对象
+    selection.addRange(newRange);
+
     // 无论如何都要记录最后光标对象
     const lastEditRange = selection.getRangeAt(0);
     setRange(lastEditRange);
@@ -146,9 +193,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
               <Box p={1}>
                 <SelectTopic
                   onClick={(topic) => {
-                    console.log('topic');
-                    console.log(topic);
-                    input.focus();
+                    insetText(`#${topic.title}#`);
                   }}
                 />
               </Box>
