@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { fade, withStyles, makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import isEmpty from 'lodash/isEmpty';
 import Box from '@material-ui/core/Box';
@@ -38,94 +38,70 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     setPictures([ ...pictures ]);
   }
   return (
-    <Form
-      onSubmit={({ content: val }) => { onSubmit({ content: val, pictures }); }}
-      validate={validate}
-      initialValues={{ content }}
-      render={({ handleSubmit, errors }) => (
-        <form id="createArticleForm" onSubmit={handleSubmit}>
-          <Field
-            autoFocus
-            multiline
-            rows="3"
-            key="content"
-            name="content"
-            // label="输入评论"
-            component={TextField}
-            type="text"
-            // margin="normal"
-            variant="outlined"
-            fullWidth
-            placeholder="畅所欲言，有你更精彩"
-            autoComplete="off"
-            rowsMax="8"
-          />
-
-          <Box mt={1} display="flex" justifyContent="space-between" alignItems="flex-start">
-            <Box>
-              <UpPicture multiple onChange={onUpPictureSuccess}>
-                <IconButton aria-label="Photo">
-                  <PhotoIcon />
-                </IconButton>
-              </UpPicture>
-              <Popper
-                content={(
-                  <Box p={1}>
-                    <SelectTopic
-                      onClick={(topic) => {
-                        console.log('topic');
-                        console.log(topic);
-                      }}
-                    />
-                  </Box>
-                )}
-              >
-                <Icon>#</Icon>
-              </Popper>
-
-              <Popper
-                content={(
-                  <Box p={1}>
-                    <Emoticon
-                      onClick={(topic) => {
-                        console.log('topic');
-                        console.log(topic);
-                      }}
-                    />
-                  </Box>
-                )}
-              >
-                <Icon>@</Icon>
-              </Popper>
-            </Box>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              disabled={status === 'loading' || !isEmpty(errors)}
-              loading={status === 'loading'}
-            >
-              发布
-            </Button>
-          </Box>
-
-          <Box mt={1} />
-          <Box display="flex" m={-0.5}>
-            {pictures.map((i, idx) => (
-              <Box key={i} className={classes.item}>
-                <CardMedia className={classes.picture} image={i} />
-                <ButtonBase className={`${classes.close} pictures-close-btn`} onClick={() => { onDeletePictures(idx); }}>
-                  <CloseIcon />
-                </ButtonBase>
+    <Fragment>
+      <Box mt={1} display="flex" justifyContent="space-between" alignItems="flex-start">
+        <Box>
+          <UpPicture multiple onChange={onUpPictureSuccess}>
+            <IconButton aria-label="Photo">
+              <PhotoIcon />
+            </IconButton>
+          </UpPicture>
+          <Popper
+            content={(
+              <Box p={1}>
+                <SelectTopic
+                  onClick={(topic) => {
+                    console.log('topic');
+                    console.log(topic);
+                  }}
+                />
               </Box>
-            ))}
+                )}
+          >
+            <Icon>#</Icon>
+          </Popper>
+
+          <Popper
+            content={(
+              <Box p={1}>
+                <Emoticon
+                  onClick={(topic) => {
+                    console.log('topic');
+                    console.log(topic);
+                  }}
+                />
+              </Box>
+                )}
+          >
+            <Icon>@</Icon>
+          </Popper>
+        </Box>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+          // disabled={status === 'loading' || !isEmpty(errors)}
+          loading={status === 'loading'}
+        >
+          发布
+        </Button>
+      </Box>
+
+      <Box mt={1} />
+      <Box display="flex" m={-0.5}>
+        {pictures.map((i, idx) => (
+          <Box key={i} className={classes.item}>
+            <CardMedia className={classes.picture} image={i} />
+            <ButtonBase className={`${classes.close} pictures-close-btn`} onClick={() => { onDeletePictures(idx); }}>
+              <CloseIcon />
+            </ButtonBase>
           </Box>
+        ))}
+      </Box>
+    </Fragment>
 
 
-        </form>
-      )}
-    />
   );
 }
 

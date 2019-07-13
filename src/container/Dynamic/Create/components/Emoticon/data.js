@@ -18,12 +18,14 @@ export default [
     name: '不二呆',
     id: 'b2d',
     cover: 'https://imgs.react.mobi/emoticon/b2d/00.gif',
-    list: getList(22, 'b2d')
+    list: getList(22, 'b2d'),
+    size: '80%'
   },
   {
     name: '小狮子',
     id: 'xsz',
     cover: 'https://imgs.react.mobi/emoticon/xsz/00.gif',
-    list: getList(16, 'xsz')
+    list: getList(16, 'xsz'),
+    size: '80%'
   },
 ]

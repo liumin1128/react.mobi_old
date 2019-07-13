@@ -27,7 +27,7 @@ function Topics({ onClick }) {
           i.list.map(j => (<ButtonBase key={j.url} onClick={() => {onClick(j)}}>
             <figure 
               className={classes.item} 
-              style={{backgroundImage: `url(${j.url})`}} 
+              style={{backgroundImage: `url(${j.url})`, backgroundSize: i.size }} 
             />
           </ButtonBase>))
         }
@@ -40,11 +40,9 @@ function Topics({ onClick }) {
           emojiList.map(i => <Tab 
             key={i.id}
             value={i.id}
+            // label={i.name}
             className={classes.tab}
-            icon={<figure 
-              className={classes.item} 
-              style={{backgroundImage: `url(${i.cover})`,border: 'none' }} 
-            />}
+            icon={<figure style={{backgroundImage: `url(${i.cover})`,border: 'none' }}  />}
           />)
         }
       </Tabs>
