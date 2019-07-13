@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import AppBar from '@material-ui/core/AppBar';
+import Divider from '@material-ui/core/Divider';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import useStyles from './styles';
@@ -20,7 +20,13 @@ function Topics({ onClick }) {
   return (
     <Fragment>
       {
-        emojiList.map(i => emoji === i.id ? <Box display="flex" flexWrap="wrap" className={classes.box}>
+        emojiList.map(i => emoji === i.id ? <Box
+        key={i.id} 
+        className={classes.box}
+        display="flex" 
+        flexWrap="wrap"
+        alignContent="flex-start"
+      >
         {
           i.list.map(j => (<ButtonBase key={j.url}>
             <figure 
@@ -31,9 +37,12 @@ function Topics({ onClick }) {
         }
       </Box> : null)
       }
+      <Box mt={1}></Box>
+      <Divider></Divider>
       <Tabs value={emoji} onChange={handleChange}>
         {
           emojiList.map(i => <Tab 
+            key={i.id}
             value={i.id}
             className={classes.tab}
             icon={<figure 

@@ -1,4 +1,4 @@
-const list = new Array(24)
+const list = new Array(22)
 .fill('x')
 .map((_, idx) => ({
   name: `[emoji_b2d:${(idx < 10 ? ('0'+idx) : idx)}]`,
