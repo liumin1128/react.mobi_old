@@ -157,6 +157,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
         contentEditable
         suppressContentEditableWarning
         id="edit"
+        placeholder="有什么想和大家分享的？"
         className={classes.input}
         ref={input}
       >

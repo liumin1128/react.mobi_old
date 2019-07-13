@@ -16,7 +16,7 @@ function DynamicCreate() {
           // 'https://imgs.react.mobi/FppdySI-horw1rk81FCt2hHU_e8E',
           // 'https://imgs.react.mobi/FgXlzlzCZjWodl1-7VyTWQ89Lqek',
         ],
-        content: '111112222',
+        content: '#任天堂#[xjh_11]',
       }}
       onSubmit={(values, form) => {
         setStatus('loading');
