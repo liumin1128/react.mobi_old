@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import { fade, withStyles, makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import isEmpty from 'lodash/isEmpty';
 import Box from '@material-ui/core/Box';
@@ -13,10 +13,12 @@ import IconButton from '@material-ui/core/IconButton';
 import TextField from '@/components/Form/TextField';
 import Button from '@/components/Button/Loading';
 import UpPicture from '@/components/Upload/Wrapper';
-import Popper from '@/components/Popper';
+import { useOnMount } from '@/hooks';
 import useStyles from './styles';
+import Popper from '@/components/Popper';
 import SelectTopic from './components/SelectTopic';
 import Emoticon from './components/Emoticon';
+// import Editor from './components/Editor';
 
 const validate = (values) => {
   const errors = {};
@@ -27,9 +29,23 @@ const validate = (values) => {
 };
 
 function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
+  const { content: _content, pictures: _pictures = [] } = initialValues;
   const classes = useStyles();
-  const { content, pictures: _pictures = [] } = initialValues;
+  const input = useRef();
+  const [ content, setContent ] = useState(_content);
   const [ pictures, setPictures ] = useState(_pictures);
+  const [ selection, setSelection ] = useState();
+
+  useOnMount(() => {
+    document.addEventListener('selectionchange', () => {
+      getCursor(self);
+    });
+  });
+
+  function getCursor(self) {
+    const sel = window.getSelection();
+    if (sel) setSelection(sel);
+  }
   function onUpPictureSuccess(data) {
     setPictures([ ...pictures, ...data ]);
   }
@@ -39,6 +55,15 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   }
   return (
     <Fragment>
+      <div
+        contentEditable
+        suppressContentEditableWarning
+        id="feedback_mix_text"
+        className={classes.input}
+        ref={input}
+      >
+        {content}
+      </div>
       <Box mt={1} display="flex" justifyContent="space-between" alignItems="flex-start">
         <Box>
           <UpPicture multiple onChange={onUpPictureSuccess}>
@@ -53,10 +78,11 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
                   onClick={(topic) => {
                     console.log('topic');
                     console.log(topic);
+                    input.focus();
                   }}
                 />
               </Box>
-                )}
+            )}
           >
             <Icon>#</Icon>
           </Popper>
@@ -66,8 +92,11 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
               <Box p={1}>
                 <Emoticon
                   onClick={(topic) => {
-                    console.log('topic');
-                    console.log(topic);
+                    setContent(content + topic.name);
+                    input.current.focus();
+                    // selection.collapse();
+                    // selection.selectAllChildren(input.current);// range 选择obj下所有子内容
+                    // selection.collapseToEnd();// 光标移至最后
                   }}
                 />
               </Box>
