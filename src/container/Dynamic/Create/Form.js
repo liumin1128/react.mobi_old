@@ -133,23 +133,10 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
 
     // 如果是文本节点则先获取光标对象
     const newRange = selection.getRangeAt(0);
-    // 获取光标对象的范围界定对象，一般就是textNode对象
-    const textNode = newRange.startContainer;
-    // 获取光标位置
-    const rangeStartOffset = newRange.startOffset;
-    // 文本节点在光标位置处插入新的表情内容
-    // textNode.insertData(rangeStartOffset, 'xxxxxx');
-
     // 创建需追加到光标处节点的文档片段
-    const fragment = range.createContextualFragment(`<img src="${url}" class="emoji">`);
+    const fragment = range.createContextualFragment(`<img src="${url}" name="${name}" class="emoji">`);
     // 将创建的文档片段插入到光标处
     newRange.insertNode(fragment.lastChild);
-
-    console.log('newRange');
-    console.log(newRange);
-
-    // 光标移动到到原来的位置加上新内容的长度
-    // newRange.setStart(textNode, rangeStartOffset + 'xxxxxx'.length);
     // 光标开始和光标结束重叠
     newRange.collapse(); // 有参数true，会使结束光标与开始光标重合
     // 清除选定对象的所有光标对象
