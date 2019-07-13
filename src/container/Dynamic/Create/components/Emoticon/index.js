@@ -5,11 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import useStyles from './styles';
-import xjh from './xjh';
-import b2d from './b2d';
-import xsz from './xsz';
-
-const emojiList = [xjh, b2d, xsz]
+import emojiList from './data'
 
 function Topics({ onClick }) {
   const classes = useStyles();
