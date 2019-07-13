@@ -1,5 +1,5 @@
 function getList(num, id) {
-  return new Array(22)
+  return new Array(num)
   .fill('x')
   .map((_, idx) => ({
     name: `[emoji_${id}:${(idx < 10 ? ('0'+idx) : idx)}]`,

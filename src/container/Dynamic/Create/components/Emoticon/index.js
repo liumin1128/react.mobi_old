@@ -24,7 +24,7 @@ function Topics({ onClick }) {
         alignContent="flex-start"
       >
         {
-          i.list.map(j => (<ButtonBase key={j.url}>
+          i.list.map(j => (<ButtonBase key={j.url} onClick={() => {onClick(j)}}>
             <figure 
               className={classes.item} 
               style={{backgroundImage: `url(${j.url})`}} 
