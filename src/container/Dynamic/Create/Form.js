@@ -20,7 +20,6 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   const input = useRef();
   const [ content, setContent ] = useState(_content);
   const [ pictures, setPictures ] = useState(_pictures);
-  // const [ selection, setSelection ] = useState();
   const [ lastEditRange, setLastEditRange ] = useState();
 
   useOnMount(() => {
@@ -130,7 +129,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     // 如果是文本节点则先获取光标对象
     const range = selection.getRangeAt(0);
     // 创建需追加到光标处节点的文档片段
-    const fragment = range.createContextualFragment(`<img src="${url}" name="${name}" class="emoji">`);
+    const fragment = range.createContextualFragment(`<img src="${url}"  class="emoji" alt="${name}">`);
     // 将创建的文档片段插入到光标处
     range.insertNode(fragment.lastChild);
     // 光标开始和光标结束重叠
@@ -144,10 +143,10 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     getCursor();
   }
 
-
   function onUpPictureSuccess(data) {
     setPictures([ ...pictures, ...data ]);
   }
+
   function onDeletePictures(idx) {
     pictures.splice(idx, 1);
     setPictures([ ...pictures ]);
@@ -189,17 +188,6 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
               <Box p={1}>
                 <Emoticon
                   onClick={insetEmoji}
-                  // onClick={(topic) => {
-                  //   setContent(content + topic.name);
-                  //   input.current.focus();
-                  //   // const sel = window.getSelection();
-                  //   // if (range) {
-                  //   //   console.log('range111111');
-                  //   //   console.log(range);
-                  //   //   sel.removeAllRanges();
-                  //   //   sel.addRange(range);
-                  //   // }
-                  // }}
                 />
               </Box>
                 )}
@@ -214,6 +202,29 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
           className={classes.submit}
           // disabled={status === 'loading' || !isEmpty(errors)}
           loading={status === 'loading'}
+          onClick={() => {
+            const edit = input.current;
+            console.log('innerText', edit.innerText);
+            console.log('innerHTML', edit.innerHTML);
+            console.log('textContent', edit.textContent);
+            console.log('nodeValue', edit.childNodes[0].nodeValue);
+
+            const regex = /(.*?)<img.*?alt="(.*?)">/ig;
+
+            const result = edit.innerHTML.replace(regex, '$1$2');
+
+            console.log(result);
+
+            // const reg = /(.*?)<img.+?alt=('|")(.*?)\2.*?>([^<]*)/gi;
+            // let resultStr = '';
+            // let exec = '';
+
+            // while (exec = reg.exec(edit.innerHTML)) {
+            //   resultStr += exec[1] + exec[3] + exec[4];
+            // }
+
+            // console.log(resultStr);
+          }}
         >
           发布
         </Button>
@@ -231,8 +242,6 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
         ))}
       </Box>
     </Fragment>
-
-
   );
 }
 
