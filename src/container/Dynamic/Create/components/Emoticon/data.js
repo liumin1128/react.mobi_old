@@ -2,7 +2,7 @@ function getList(num, id) {
   return new Array(num)
   .fill('x')
   .map((_, idx) => ({
-    name: `[emoji_${id}:${(idx < 10 ? ('0'+idx) : idx)}]`,
+    name: `[${id}_${(idx < 10 ? ('0'+idx) : idx)}]`,
     url: 'https://imgs.react.mobi/emoticon/'+id+'/'+(idx < 10 ? ('0'+idx) : idx)+'.gif',
   }));
 }
