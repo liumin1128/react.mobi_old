@@ -31,7 +31,6 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   const { content: _content, pictures: _pictures = [] } = initialValues;
   const classes = useStyles();
   const input = useRef();
-  // const [ content, setContent ] = useState(aaaa);
   const [ pictures, setPictures ] = useState(_pictures);
   const [ lastEditRange, setLastEditRange ] = useState();
 
@@ -41,10 +40,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     edit.addEventListener('keyup', getCursor);
 
     if (_content) {
-      console.log('_content');
-      console.log(_content);
       edit.innerHTML = text2html(_content);
-      // .replace(/(.*?)\/n(.*?)/ig, '$1<div>$2</div>');
     }
   });
 
