@@ -70,7 +70,12 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
               <Popper
                 content={(
                   <Box p={1}>
-                    <SelectTopic />
+                    <SelectTopic
+                      onClick={(topic) => {
+                        console.log('topic');
+                        console.log(topic);
+                      }}
+                    />
                   </Box>
                 )}
               >
