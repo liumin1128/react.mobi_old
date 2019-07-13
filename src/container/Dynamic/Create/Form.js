@@ -18,7 +18,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   const { content: _content, pictures: _pictures = [] } = initialValues;
   const classes = useStyles();
   const input = useRef();
-  const [ content, setContent ] = useState(_content);
+  // const [ content, setContent ] = useState(aaaa);
   const [ pictures, setPictures ] = useState(_pictures);
   const [ lastEditRange, setLastEditRange ] = useState();
 
@@ -26,6 +26,12 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     const edit = input.current;
     edit.addEventListener('click', getCursor);
     edit.addEventListener('keyup', getCursor);
+
+    if (_content) {
+      const aaaa = '#任天堂#<img src="https://imgs.react.mobi/emoticon/xjh/11.gif" class="emoji" alt="[xjh_11]">';
+
+      edit.innerHTML = _content.replace(/(.*?)\[(.*?)_(.*?)]/ig, '$1<img src="https://imgs.react.mobi/emoticon/$2/$3.gif" class="emoji" alt="[$2_$3]">');
+    }
   });
 
   useOnUnmount(() => {
@@ -160,9 +166,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
         placeholder="有什么想和大家分享的？"
         className={classes.input}
         ref={input}
-      >
-        {content}
-      </div>
+      />
       <Box mt={1} display="flex" justifyContent="space-between" alignItems="flex-start">
         <Box>
           <UpPicture multiple onChange={onUpPictureSuccess}>
