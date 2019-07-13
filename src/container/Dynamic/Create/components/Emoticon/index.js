@@ -1,11 +1,48 @@
 import React, { Fragment, useState } from 'react';
+import Box from '@material-ui/core/Box';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import useStyles from './styles';
+import xjh from './xjh';
+import b2d from './b2d';
+import xsz from './xsz';
+
+const emojiList = [xjh, b2d, xsz]
 
 function Topics({ onClick }) {
-  const [ topics, setTopics ] = useState([]);
-
+  const classes = useStyles();
+  const [ emoji, setEmoji ] = useState('xjh');
+  function handleChange(_,value) {
+    setEmoji(value)
+  }
   return (
     <Fragment>
-      111111
+      {
+        emojiList.map(i => emoji === i.id ? <Box display="flex" flexWrap="wrap" className={classes.box}>
+        {
+          i.list.map(j => (<ButtonBase key={j.url}>
+            <figure 
+              className={classes.item} 
+              style={{backgroundImage: `url(${j.url})`}} 
+            />
+          </ButtonBase>))
+        }
+      </Box> : null)
+      }
+      <Tabs value={emoji} onChange={handleChange}>
+        {
+          emojiList.map(i => <Tab 
+            value={i.id}
+            className={classes.tab}
+            icon={<figure 
+              className={classes.item} 
+              style={{backgroundImage: `url(${i.cover})` }} 
+            />}
+          />)
+        }
+      </Tabs>
     </Fragment>
   );
 }
