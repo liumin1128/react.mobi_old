@@ -211,7 +211,10 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
 
             const regex = /(.*?)<img.*?alt="(.*?)">/ig;
 
-            const result = edit.innerHTML.replace(regex, '$1$2');
+            const result = edit.innerHTML
+              .replace(regex, '$1$2')
+              .replace(/<div>/ig, '\n')
+              .replace(/<\/div>/ig, '');
 
             console.log(result);
 
