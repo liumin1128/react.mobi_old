@@ -9,12 +9,20 @@ import ListItemText from '@material-ui/core/ListItemText';
 // import DraftsIcon from '@material-ui/icons/Drafts';
 import { useMutation } from '@/hooks/graphql';
 import { DYNAMIC_TOPIC_LIST } from '@/graphql/schema/dynamic';
+// import { useOnMount } from '@/hooks';
 import useStyles from './styles';
 
 function Topics({ onClick }) {
   const [ topics, setTopics ] = useState([]);
-  const getTopics = useMutation(DYNAMIC_TOPIC_LIST);
+  const getTopics = useMutation(DYNAMIC_TOPIC_LIST, {}, {
+    update: (_, { data }) => {
+      setTopics(data.list);
+    },
+  });
   const classes = useStyles();
+  // useOnMount(() => {
+  //   getTopics();
+  // });
   return (
     <Fragment>
       <InputBase
@@ -23,20 +31,21 @@ function Topics({ onClick }) {
           input: classes.input,
         }}
         onChange={(e) => {
-          getTopics({ title: e.target.value }, {
-            update: (_, { data }) => {
-              setTopics(data.list);
-            },
-          });
+          getTopics({ title: e.target.value });
         }}
       />
-      <List component="nav" aria-label="Main mailbox folders">
-        {topics.map(i => (
-          <ListItem key={i._id} button onClick={() => onClick(i)}>
-            <ListItemText primary={i.title} />
-          </ListItem>
-        ))}
-      </List>
+      {
+        topics.length > 0 && (
+        <List component="nav" aria-label="Main mailbox folders">
+          {topics.map(i => (
+            <ListItem key={i._id} button onClick={() => onClick(i)}>
+              <ListItemText primary={`#${i.title}#`} />
+            </ListItem>
+          ))}
+        </List>
+        )
+      }
+
     </Fragment>
   );
 }
