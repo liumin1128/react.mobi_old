@@ -16,6 +16,7 @@ import UpPicture from '@/components/Upload/Wrapper';
 import Popper from '@/components/Popper';
 import useStyles from './styles';
 import SelectTopic from './components/SelectTopic';
+import Emoticon from './components/Emoticon';
 
 const validate = (values) => {
   const errors = {};
@@ -85,7 +86,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
               <Popper
                 content={(
                   <Box p={1}>
-                    <SelectTopic />
+                    <Emoticon />
                   </Box>
                 )}
               >
