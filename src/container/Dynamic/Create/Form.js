@@ -8,24 +8,12 @@ import PhotoIcon from '@material-ui/icons/Photo';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@/components/Button/Loading';
 import UpPicture from '@/components/Upload/Wrapper';
+import Popper from '@/components/Popper';
 import { useOnMount, useOnUnmount } from '@/hooks';
 import useStyles from './styles';
-import Popper from '@/components/Popper';
 import SelectTopic from './components/SelectTopic';
 import Emoticon from './components/Emoticon';
-
-function html2text(html) {
-  return html.replace(/(.*?)<img.*?alt="(.*?)">/ig, '$1$2')
-    .replace(/<br>/ig, '')
-    .replace(/<div>/ig, '\n')
-    .replace(/<\/div>/ig, '');
-}
-
-function text2html(str) {
-  return str
-    .replace(/(.*?)\[(.*?)_(.*?)]/ig, '$1<img src="https://imgs.react.mobi/emoticon/$2/$3.gif" class="emoji" alt="[$2_$3]">')
-    .replace(/(.*?)\n(.*?)/ig, '$1<div>$2</div>');
-}
+import { html2text, text2html } from '../utils';
 
 function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   const { content: _content, pictures: _pictures = [] } = initialValues;

@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, fade } from '@material-ui/core/styles';
 
 export default makeStyles(theme => ({
   avatar: {
@@ -21,5 +21,14 @@ export default makeStyles(theme => ({
     height: theme.spacing(10),
     borderRadius: theme.spacing(0.5),
     margin: 4,
+  },
+  html: {
+    position: 'relative',
+
+    '& .emoji': {
+      width: '1.25em',
+      height: '1.25em',
+      'vertical-align': -4,
+    },
   },
 }));

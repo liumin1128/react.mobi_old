@@ -9,7 +9,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Link from '@/components/Link';
+import Html from '@/components/Html';
 import { getTimeAgo } from '@/utils/common';
+import { html2text, text2html } from '../../utils';
+
 import useStyles from './styles';
 
 function DynamicListItem({ _id, content, pictures = [], user, createdAt, ...props }) {
@@ -30,7 +33,10 @@ function DynamicListItem({ _id, content, pictures = [], user, createdAt, ...prop
           />
           <Box ml={10}>
             <CardContent className={classes.content}>
-              <Typography variant="body2" gutterBottom>{content}</Typography>
+
+              <Typography variant="body2" gutterBottom component="div">
+                <div className={classes.html} dangerouslySetInnerHTML={{ __html: text2html(content) }} />
+              </Typography>
               <Box display="flex" m={-0.5}>
                 {pictures.map(i => <CardMedia key={i} className={classes.picture} image={i} />)}
               </Box>
