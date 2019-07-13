@@ -1,32 +1,18 @@
 import React, { Fragment, useState, useRef } from 'react';
-import { fade, withStyles, makeStyles, createMuiTheme } from '@material-ui/core/styles';
-import isEmpty from 'lodash/isEmpty';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import InputBase from '@material-ui/core/InputBase';
 import CloseIcon from '@material-ui/icons/Close';
 import Icon from '@material-ui/core/Icon';
 import CardMedia from '@material-ui/core/CardMedia';
 import PhotoIcon from '@material-ui/icons/Photo';
-import { Form, Field } from 'react-final-form';
 import IconButton from '@material-ui/core/IconButton';
-import TextField from '@/components/Form/TextField';
 import Button from '@/components/Button/Loading';
 import UpPicture from '@/components/Upload/Wrapper';
-import { useOnMount } from '@/hooks';
+import { useOnMount, useOnUnmount } from '@/hooks';
 import useStyles from './styles';
 import Popper from '@/components/Popper';
 import SelectTopic from './components/SelectTopic';
 import Emoticon from './components/Emoticon';
-// import Editor from './components/Editor';
-
-const validate = (values) => {
-  const errors = {};
-  if (!values.content) {
-    errors.content = '内容不可以为空';
-  }
-  return errors;
-};
 
 function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   const { content: _content, pictures: _pictures = [] } = initialValues;
@@ -34,18 +20,102 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   const input = useRef();
   const [ content, setContent ] = useState(_content);
   const [ pictures, setPictures ] = useState(_pictures);
-  const [ selection, setSelection ] = useState();
+  // const [ selection, setSelection ] = useState();
+  const [ range, setRange ] = useState();
 
   useOnMount(() => {
-    document.addEventListener('selectionchange', () => {
-      getCursor(self);
-    });
+    const edit = input.current;
+    edit.addEventListener('click', getCursor);
+    edit.addEventListener('keyup', getCursor);
   });
 
-  function getCursor(self) {
-    const sel = window.getSelection();
-    if (sel) setSelection(sel);
+  useOnUnmount(() => {
+    const edit = input.current;
+    edit.removeEventListener('click', getCursor);
+    edit.removeEventListener('keyup', getCursor);
+  });
+
+  function getCursor() {
+    // 获取选定对象
+    const selection = getSelection();
+    // 设置最后光标对象
+    const lastEditRange = selection.getRangeAt(0);
+    console.log('lastEditRange');
+    console.log(lastEditRange);
+
+    setRange(lastEditRange);
   }
+
+  function insetEmoji(data) {
+    // 获取编辑框对象
+    const edit = input.current;
+    // 获取输入框对象
+    // const emojiInput = document.getElementById('emojiInput');
+    // 编辑框设置焦点
+    edit.focus();
+    // 获取选定对象
+    const selection = getSelection();
+    // 判断是否有最后光标对象存在
+    if (range) {
+      // 存在最后光标对象，选定对象清除所有光标并添加最后光标还原之前的状态
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+
+    // setContent(`${content}[xxxxx]`);
+    // 判断选定对象范围是编辑框还是文本节点
+    if (selection.anchorNode.nodeName !== '#text') {
+      // 如果是编辑框范围。则创建表情文本节点进行插入
+      const emojiText = document.createTextNode('#####');
+
+      if (edit.childNodes.length > 0) {
+        // 如果文本框的子元素大于0，则表示有其他元素，则按照位置插入表情节点
+        for (let i = 0; i < edit.childNodes.length; i += 1) {
+          if (i === selection.anchorOffset) {
+            edit.insertBefore(emojiText, edit.childNodes[i]);
+          }
+        }
+      } else {
+        // 否则直接插入一个表情元素
+        edit.appendChild(emojiText);
+      }
+
+      // 创建新的光标对象
+      const newRange = document.createRange();
+      // 光标对象的范围界定为新建的表情节点
+      newRange.selectNodeContents(emojiText);
+      // 光标位置定位在表情节点的最大长度
+      newRange.setStart(emojiText, emojiText.length);
+      // 使光标开始和光标结束重叠
+      newRange.collapse(true);
+      // 清除选定对象的所有光标对象
+      selection.removeAllRanges();
+      // 插入新的光标对象
+      selection.addRange(newRange);
+    } else {
+      // 如果是文本节点则先获取光标对象
+      const newRange = selection.getRangeAt(0);
+      // 获取光标对象的范围界定对象，一般就是textNode对象
+      const textNode = newRange.startContainer;
+      // 获取光标位置
+      const rangeStartOffset = newRange.startOffset;
+      // 文本节点在光标位置处插入新的表情内容
+      textNode.insertData(rangeStartOffset, 'xxxxxx');
+      // 光标移动到到原来的位置加上新内容的长度
+      newRange.setStart(textNode, rangeStartOffset + 'xxxxxx'.length);
+      // 光标开始和光标结束重叠
+      newRange.collapse(true);
+      // 清除选定对象的所有光标对象
+      selection.removeAllRanges();
+      // 插入新的光标对象
+      selection.addRange(newRange);
+    }
+    // 无论如何都要记录最后光标对象
+    const lastEditRange = selection.getRangeAt(0);
+    setRange(lastEditRange);
+  }
+
+
   function onUpPictureSuccess(data) {
     setPictures([ ...pictures, ...data ]);
   }
@@ -58,7 +128,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
       <div
         contentEditable
         suppressContentEditableWarning
-        id="feedback_mix_text"
+        id="edit"
         className={classes.input}
         ref={input}
       >
@@ -91,13 +161,18 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
             content={(
               <Box p={1}>
                 <Emoticon
-                  onClick={(topic) => {
-                    setContent(content + topic.name);
-                    input.current.focus();
-                    // selection.collapse();
-                    // selection.selectAllChildren(input.current);// range 选择obj下所有子内容
-                    // selection.collapseToEnd();// 光标移至最后
-                  }}
+                  onClick={insetEmoji}
+                  // onClick={(topic) => {
+                  //   setContent(content + topic.name);
+                  //   input.current.focus();
+                  //   // const sel = window.getSelection();
+                  //   // if (range) {
+                  //   //   console.log('range111111');
+                  //   //   console.log(range);
+                  //   //   sel.removeAllRanges();
+                  //   //   sel.addRange(range);
+                  //   // }
+                  // }}
                 />
               </Box>
                 )}
