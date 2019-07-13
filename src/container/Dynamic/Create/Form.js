@@ -14,6 +14,19 @@ import Popper from '@/components/Popper';
 import SelectTopic from './components/SelectTopic';
 import Emoticon from './components/Emoticon';
 
+function html2text(html) {
+  return html.replace(/(.*?)<img.*?alt="(.*?)">/ig, '$1$2')
+    .replace(/<br>/ig, '')
+    .replace(/<div>/ig, '\n')
+    .replace(/<\/div>/ig, '');
+}
+
+function text2html(str) {
+  return str
+    .replace(/(.*?)\[(.*?)_(.*?)]/ig, '$1<img src="https://imgs.react.mobi/emoticon/$2/$3.gif" class="emoji" alt="[$2_$3]">')
+    .replace(/(.*?)\n(.*?)/ig, '$1<div>$2</div>');
+}
+
 function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   const { content: _content, pictures: _pictures = [] } = initialValues;
   const classes = useStyles();
@@ -28,9 +41,10 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     edit.addEventListener('keyup', getCursor);
 
     if (_content) {
-      const aaaa = '#任天堂#<img src="https://imgs.react.mobi/emoticon/xjh/11.gif" class="emoji" alt="[xjh_11]">';
-
-      edit.innerHTML = _content.replace(/(.*?)\[(.*?)_(.*?)]/ig, '$1<img src="https://imgs.react.mobi/emoticon/$2/$3.gif" class="emoji" alt="[$2_$3]">');
+      console.log('_content');
+      console.log(_content);
+      edit.innerHTML = text2html(_content);
+      // .replace(/(.*?)\/n(.*?)/ig, '$1<div>$2</div>');
     }
   });
 
@@ -214,10 +228,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
             console.log('textContent', edit.textContent);
             console.log('nodeValue', edit.childNodes[0].nodeValue);
 
-            const result = edit.innerHTML
-              .replace(/(.*?)<img.*?alt="(.*?)">/ig, '$1$2')
-              .replace(/<div>/ig, '\n')
-              .replace(/<\/div>/ig, '');
+            const result = html2text(edit.innerHTML);
 
             console.log(result);
 
