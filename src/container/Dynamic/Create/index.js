@@ -4,7 +4,7 @@ import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
 import Form from './Form';
 
-const teststs = '3123<img src="https://imgs.react.mobi/emoticon/xjh/04.gif" class="emoji" alt="[xjh_04]"><div></div><img src="https://imgs.react.mobi/emoticon/xjh/04.gif" class="emoji" alt="[xjh_04]">2313<div>312<img src="https://imgs.react.mobi/emoticon/xjh/04.gif" class="emoji" alt="[xjh_04]"></div>';
+const teststs = '3123<img src="https://imgs.react.mobi/emoticon/xjh/04.gif" class="emoji" alt="[xjh_04]"><div></div><img src="https://imgs.react.mobi/emoticon/xjh/04.gif" class="emoji" alt="[xjh_04]">2313<div></div>312<img src="https://imgs.react.mobi/emoticon/xjh/04.gif" class="emoji" alt="[xjh_04]"><img src="https://imgs.react.mobi/emoticon/xjh/10.gif" class="emoji" alt="[xjh_10]"><img src="https://imgs.react.mobi/emoticon/xjh/05.gif" class="emoji" alt="[xjh_05]">';
 
 function html2text(html) {
   return html.replace(/(.*?)<img.*?alt="(.*?)">/ig, '$1$2')

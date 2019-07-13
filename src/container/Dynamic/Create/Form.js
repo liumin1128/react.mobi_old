@@ -51,11 +51,17 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
   });
 
   function getCursor() {
-    // 获取选定对象
-    const selection = getSelection();
-    // 设置最后光标对象
-    const range = selection.getRangeAt(0);
-    setLastEditRange(range);
+    try {
+      // 获取选定对象
+      setTimeout(() => {
+        const selection = getSelection();
+        // 设置最后光标对象
+        const range = selection.getRangeAt(0);
+        setLastEditRange(range);
+      }, 0);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function insetText(text) {
