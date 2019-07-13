@@ -43,7 +43,7 @@ function Topics({ onClick }) {
             className={classes.tab}
             icon={<figure 
               className={classes.item} 
-              style={{backgroundImage: `url(${i.cover})` }} 
+              style={{backgroundImage: `url(${i.cover})`,border: 'none' }} 
             />}
           />)
         }

@@ -2,8 +2,8 @@ function getList(num, id) {
   return new Array(22)
   .fill('x')
   .map((_, idx) => ({
-    name: `[emoji_b2d:${(idx < 10 ? ('0'+idx) : idx)}]`,
-    url: 'https://imgs.react.mobi/emoticon/b2d/'+(idx < 10 ? ('0'+idx) : idx)+'.gif',
+    name: `[emoji_${id}:${(idx < 10 ? ('0'+idx) : idx)}]`,
+    url: 'https://imgs.react.mobi/emoticon/'+id+'/'+(idx < 10 ? ('0'+idx) : idx)+'.gif',
   }));
 }
 
