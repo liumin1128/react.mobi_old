@@ -234,15 +234,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
 
             console.log(result);
 
-            // const reg = /(.*?)<img.+?alt=('|")(.*?)\2.*?>([^<]*)/gi;
-            // let resultStr = '';
-            // let exec = '';
-
-            // while (exec = reg.exec(edit.innerHTML)) {
-            //   resultStr += exec[1] + exec[3] + exec[4];
-            // }
-
-            // console.log(resultStr);
+            onSubmit({ content: result, pictures });
           }}
         >
           发布
