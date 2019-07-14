@@ -11,13 +11,9 @@ function DynamicCreate() {
     <Form
       initialValues={{
         pictures: [
-          // 'https://imgs.react.mobi/FugLdcExrep8XP8b9UGklaZS3_Xf',
-          // 'https://imgs.react.mobi/FhSW2PlU3vcJg3s4rn8Ah6LOPZhh',
-          // 'https://imgs.react.mobi/FppdySI-horw1rk81FCt2hHU_e8E',
-          // 'https://imgs.react.mobi/FgXlzlzCZjWodl1-7VyTWQ89Lqek',
+          'https://imgs.react.mobi/FixMFpDoeOnf-46tuYS0wVFLh4yq',
         ],
         content: '#任天堂#',
-        // [xjh_04]321321`,
       }}
       onSubmit={(values, form) => {
         setStatus('loading');
