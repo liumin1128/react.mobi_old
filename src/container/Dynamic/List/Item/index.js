@@ -100,7 +100,16 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
               <Divider />
               <Box mt={3} />
               <Box ml={8}>
-                <CreateComment session={_id} autoFocus />
+                <CreateComment
+                  session={_id}
+                  autoFocus
+                  update={(store) => {
+                    const data = store.readQuery({ query: DYNAMIC_LIST });
+                    const idx = data.list.findIndex(i => i._id === _id);
+                    data.list[idx].commentCount += 1;
+                    store.writeQuery({ query: DYNAMIC_LIST, data });
+                  }}
+                />
                 <Box my={3} />
                 <Divider />
               </Box>

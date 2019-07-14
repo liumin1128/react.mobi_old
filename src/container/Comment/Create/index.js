@@ -15,7 +15,7 @@ import Emoticon from '@/container/Dynamic/Create/components/Emoticon';
 import { html2text } from '@/container/Dynamic/utils';
 import useStyles from './styles';
 
-function CommentCreate({ commentTo, replyTo, session, callback, autoFocus }) {
+function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
   const [ status, setStatus ] = useState('default');
   const input = useRef();
   const classes = useStyles();
@@ -169,6 +169,7 @@ function CommentCreate({ commentTo, replyTo, session, callback, autoFocus }) {
           data.list.unshift(result);
           data.meta.count += 1;
           store.writeQuery({ query: COMMENT_LIST, variables: { session }, data });
+          if (update) update(store);
         } else {
           Snackbar.error(message);
         }
