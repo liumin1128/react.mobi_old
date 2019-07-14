@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 // import ButtonBase from '@material-ui/core/ButtonBase';
@@ -22,6 +22,7 @@ import { text2html } from '../../utils';
 
 function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt }) {
   const classes = useStyles();
+  const [ isShow, setShow ] = useState(false);
 
   let html = text2html(content);
 
@@ -54,9 +55,14 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt 
             )}
 
             <Box mb={2} display="flex">
-              <Box style={{ display: 'flex', alignItems: 'center', color: '#999' }}>
+              <Box
+                style={{ display: 'flex', alignItems: 'center', color: '#999' }}
+                onClick={() => {
+                  setShow(true);
+                }}
+              >
                 <ChatBubbleOutlineIcon style={{ width: 16, marginTop: 2, marginRight: 8 }} />
-              11
+                11
               </Box>
               <Box mr={5} />
               <Box style={{ display: 'flex', alignItems: 'center', color: '#999' }}>
@@ -67,16 +73,19 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt 
             </Box>
           </Box>
 
-          <Box>
-            <Divider />
-            <Box mt={3} />
-            <Box ml={8}>
-              <CreateComment session={_id} />
-              <Box my={3} />
+
+          {isShow && (
+            <Box>
               <Divider />
+              <Box mt={3} />
+              <Box ml={8}>
+                <CreateComment session={_id} autoFocus />
+                <Box my={3} />
+                <Divider />
+              </Box>
+              <CommentList session={_id} />
             </Box>
-            <CommentList session={_id} />
-          </Box>
+          )}
         </Box>
 
 
