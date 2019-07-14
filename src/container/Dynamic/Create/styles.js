@@ -41,7 +41,7 @@ export default makeStyles(theme => ({
     maxHeight: theme.spacing(30),
     overflowY: 'scroll',
     // backgroundColor: theme.palette.common.white,
-    border: '1px solid rgba(0,0,0,0.3)',
+    border: '1px solid rgba(0,0,0,0.1)',
     fontSize: 16,
     padding: '10px 12px',  
     transition: theme.transitions.create([ 'border-color', 'box-shadow' ]),

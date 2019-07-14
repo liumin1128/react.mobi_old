@@ -4,7 +4,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import CloseIcon from '@material-ui/icons/Close';
 import Icon from '@material-ui/core/Icon';
 import CardMedia from '@material-ui/core/CardMedia';
-import PhotoIcon from '@material-ui/icons/Photo';
+import CameraIcon from '@material-ui/icons/Camera';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@/components/Button/Loading';
 import UpPicture from '@/components/Upload/Wrapper';
@@ -196,20 +196,20 @@ function DynamicCreate() {
         className={classes.input}
         ref={input}
       />
-      <Box mt={1} display="flex" justifyContent="space-between" alignItems="flex-start">
-        <Box>
+      <Box mt={2} display="flex" justifyContent="space-between" alignItems="flex-start">
+        <Box display="flex">
           <UpPicture multiple onChange={onUpPictureSuccess}>
-            <IconButton aria-label="Photo">
-              <PhotoIcon />
-            </IconButton>
+            <ButtonBase aria-label="Camera">
+              <CameraIcon style={{ width: 32, height: 32, color: '#999' }} />
+            </ButtonBase>
           </UpPicture>
-
+          <Box ml={1} />
           <Popper content={(<Box p={1}><SelectTopic onClick={(topic) => { insetText(`#${topic.title}#`); }} /></Box>)}>
-            <Icon>#</Icon>
+            <Box style={{ width: 32, height: 32, textAlign: 'center', lineHeight: '32px', fontSize: 32, color: '#999' }}>#</Box>
           </Popper>
-
+          <Box ml={1} />
           <Popper content={(<Box p={1}><Emoticon onClick={insetEmoji} /></Box>)}>
-            <Icon>@</Icon>
+            <img style={{ width: 32, height: 32 }} src="https://imgs.react.mobi/emoticon/xjh/00.gif" alt="" />
           </Popper>
         </Box>
         <Button
