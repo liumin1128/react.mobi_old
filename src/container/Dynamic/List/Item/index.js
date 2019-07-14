@@ -69,7 +69,10 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt,
 
           <Box>
             <Divider />
-            <CreateComment session={_id} />
+            <Box mt={2} />
+            <Box ml={8}>
+              <CreateComment session={_id} />
+            </Box>
             <CommentList session={_id} />
           </Box>
         </Box>
