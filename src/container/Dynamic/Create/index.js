@@ -201,16 +201,16 @@ function DynamicCreate() {
         <Box display="flex" flexGrow={1}>
           <UpPicture multiple onChange={onUpPictureSuccess}>
             <ButtonBase aria-label="Camera">
-              <CameraIcon style={{ width: 32, height: 32, color: '#999' }} />
+              <CameraIcon style={{ width: 28, height: 28, color: '#999' }} />
             </ButtonBase>
           </UpPicture>
           <Box ml={1} />
           <Popper content={(<Box p={1}><SelectTopic onClick={(topic) => { insetText(`#${topic.title}#`); }} /></Box>)}>
-            <Box style={{ width: 32, height: 32, textAlign: 'center', lineHeight: '32px', fontSize: 32, color: '#999' }}>#</Box>
+            <Box style={{ width: 28, height: 28, textAlign: 'center', lineHeight: '28px', fontSize: 28, color: '#999' }}>#</Box>
           </Popper>
           <Box ml={1} />
           <Popper content={(<Box p={1}><Emoticon onClick={insetEmoji} /></Box>)}>
-            <img style={{ width: 32, height: 32 }} src="https://imgs.react.mobi/emoticon/xjh/00.gif" alt="" />
+            <img style={{ width: 28, height: 28 }} src="https://imgs.react.mobi/emoticon/xjh/00.gif" alt="" />
           </Popper>
         </Box>
         <Box mx={2}>

@@ -1,6 +1,9 @@
 import { makeStyles, fade } from '@material-ui/core/styles';
 
 export default makeStyles(theme => ({
+  card: {
+    padding: theme.spacing(1),
+  },
   avatar: {
     width: 48,
     height: 48,
