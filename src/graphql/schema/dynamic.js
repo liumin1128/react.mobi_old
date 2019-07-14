@@ -8,6 +8,14 @@ export const DYNAMIC_DETAIL = gql`
       content
       pictures
       createdAt
+      zanCount
+      zanStatus
+      commentCount
+      topics {
+        _id
+        title
+        number
+      }
       user {
         nickname
         avatarUrl
