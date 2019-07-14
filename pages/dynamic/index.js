@@ -38,6 +38,6 @@ function Index() {
   );
 }
 
-// Index.Sider = DynamicCreate;
+Index.Sider = Fragment;
 
 export default Index;

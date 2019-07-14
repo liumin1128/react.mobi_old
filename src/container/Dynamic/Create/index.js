@@ -196,9 +196,6 @@ function DynamicCreate() {
         placeholder="有什么想和大家分享的？"
         className={classes.input}
         ref={input}
-        onChange={() => {
-          console.log('xxxx');
-        }}
       />
       <Box mt={2} display="flex" alignItems="center">
         <Box display="flex" flexGrow={1}>
@@ -217,7 +214,7 @@ function DynamicCreate() {
           </Popper>
         </Box>
         <Box mx={2}>
-          <Typography variant="caption">233</Typography>
+          <Typography variant="caption" style={{ color: '#999' }}>233</Typography>
         </Box>
         <Button
           type="submit"
