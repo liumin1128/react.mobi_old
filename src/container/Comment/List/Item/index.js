@@ -3,9 +3,9 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ThumbUpIcon from '@material-ui/icons/ThumbUpOutlined';
 import DeleteIcon from '@material-ui/icons/Delete';
-import ModeCommentIcon from '@material-ui/icons/ModeComment';
+import ModeCommentIcon from '@material-ui/icons/ModeCommentOutlined';
 import Badge from '@material-ui/core/Badge';
 import { DELETE_COMMENT, COMMENT_LIST } from '@/graphql/schema/comment';
 import { ZAN } from '@/graphql/schema/zan';
@@ -66,23 +66,28 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
           </Typography>
         </Box>
 
-        <Typography variant="body1" component="div" className={classes.content}>
-          {replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname && (
+        {/* 正文部分 */}
+        <Box mt={1}>
+          <Typography variant="body1" component="div" className={classes.content}>
+            {replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname && (
             <Fragment>
               回复
               {' '}
               <b>
                 {replyTo.user.nickname}
-            :
+              :
               </b>
               {' '}
             </Fragment>
-          )}
-          <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
-        </Typography>
+            )}
+            <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
+          </Typography>
+        </Box>
+
+        {/* 正文部分 */}
 
 
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box mb={-1} display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="body2">{getTimeAgo(createdAt)}</Typography>
           <Typography variant="body2" component="div">
             <IconButton

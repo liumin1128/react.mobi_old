@@ -38,11 +38,11 @@ function DynamicList({ session }) {
                 commentTo={i._id}
               />
               {i.replys && i.replys.length > 0 && (
-                <Box ml={8} p={4} pb={3} className={classes.replay}>
+                <Box ml={8} mt={3} p={3} className={classes.replay}>
                   {i.replys.map((j, jdx) => (
                     <Fragment key={j._id}>
                       {jdx !== 0 && (
-                        <Box ml={8}><Divider /></Box>
+                        <Box ml={8} my={3}><Divider /></Box>
                       )}
                       <Item
                         data={j}

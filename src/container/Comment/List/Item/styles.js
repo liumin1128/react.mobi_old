@@ -16,7 +16,7 @@ export default makeStyles(theme => ({
   },
   content: {
     lineHeight: 1.875,
-    marginTop: theme.spacing(1),
+    // marginTop: theme.spacing(1),
   },
   html: {
     position: 'relative',
