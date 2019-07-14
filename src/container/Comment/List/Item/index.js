@@ -103,7 +103,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
               <DeleteIcon fontSize="small" style={{ fontSize: 14 }} />
             </IconButton> */}
           <Box ml={4} />
-          <InfoButton label={replyCount} icon={ModeCommentIcon} onClick={() => { toogleShow(); }} />
+          <InfoButton label={replyCount || null} icon={ModeCommentIcon} onClick={() => { toogleShow(); }} />
           <Box ml={4} />
           <InfoButton
             label={zanCount || null}
