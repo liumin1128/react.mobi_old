@@ -80,7 +80,7 @@ export default makeStyles(theme => ({
 
     '&:empty::before': {
       content: 'attr(placeholder)',
-      color: 'rgba(0,0,0,0.5)'
+      color: 'rgba(0,0,0,0.3)'
     },
 
     '& .emoji': {

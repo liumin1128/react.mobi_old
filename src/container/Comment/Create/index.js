@@ -156,9 +156,6 @@ function CommentCreate({ commentTo, replyTo, session, callback, autoFocus }) {
     const edit = input.current;
     const content = html2text(edit.innerHTML);
 
-    console.log('content');
-    console.log(content);
-
     createComment({ content }, {
       update: (store, { data: { result: { status: code, message, data: result } } }) => {
         setStatus('default');
@@ -181,7 +178,7 @@ function CommentCreate({ commentTo, replyTo, session, callback, autoFocus }) {
         contentEditable
         suppressContentEditableWarning
         id="edit"
-        placeholder="有什么想和大家分享的？"
+        placeholder="回帖请自觉遵守互联网相关的政策法规。"
         className={classes.input}
         ref={input}
       />
