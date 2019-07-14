@@ -25,7 +25,7 @@ import useStyles from './styles';
 import { text2html } from '../../utils';
 
 
-function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, zanStatus, createdAt }) {
+function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, zanStatus, commentCount, createdAt }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
   function toogleShow() {
@@ -82,7 +82,11 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
             )}
 
             <Box mb={2} display="flex" style={{ color: '#999' }}>
-              <InfoButton label="111" icon={ChatBubbleOutlineIcon} onClick={() => { toogleShow(); }} />
+              <InfoButton
+                label={commentCount || null}
+                icon={ChatBubbleOutlineIcon}
+                onClick={() => { toogleShow(); }}
+              />
               <Box mr={5} />
               <InfoButton
                 label={zanCount || null}
