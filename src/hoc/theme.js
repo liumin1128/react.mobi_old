@@ -12,14 +12,16 @@ const themes = {
   dark: darkTheme,
 };
 
+const defaultStr = 'default';
+
 
 export const ThemeContext = createContext(darkTheme);
 
-// ThemeProvider的hoc用法
+// // ThemeProvider的hoc用法
 export function withThemeProvider(WrappedComponent) {
   return class ThemeContextProvider extends PureComponent {
       state = {
-        theme: 'dark',
+        theme: defaultStr,
       }
 
       setTheme = () => {
@@ -40,7 +42,7 @@ export function withThemeProvider(WrappedComponent) {
   };
 }
 
-// theme的hoc用法
+// // theme的hoc用法
 export function withThemeConsumer(WrappedComponent) {
   return props => (
     <ThemeContext.Consumer>
@@ -49,7 +51,7 @@ export function withThemeConsumer(WrappedComponent) {
   );
 }
 
-// ThemeProvider的hook用法
+// // ThemeProvider的hook用法
 export default function HookThemeProvider({ children }) {
   function reducer(state, action) {
     switch (action.type) {
@@ -69,7 +71,7 @@ export default function HookThemeProvider({ children }) {
 
 //
 export function ThemeContextProvider({ children }) {
-  const themeStr = getStorage(USER_SETTING_THEME) || 'dark';
+  const themeStr = getStorage(USER_SETTING_THEME) || defaultStr;
 
   const [ state, setState ] = useState(themeStr);
 
