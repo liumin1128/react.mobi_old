@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 // import ButtonBase from '@material-ui/core/ButtonBase';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
+// import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ThumbUpIcon from '@material-ui/icons/ThumbUpOutlined';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import Comment from '@/container/Comment';
+// import Comment from '@/container/Comment';
 import { getTimeAgo } from '@/utils/common';
 import CreateComment from '@/container/Comment/Create';
 import CommentList from '@/container/Comment/List';
@@ -20,7 +20,7 @@ import useStyles from './styles';
 import { text2html } from '../../utils';
 
 
-function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt, ...props }) {
+function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt }) {
   const classes = useStyles();
 
   let html = text2html(content);
