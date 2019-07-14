@@ -23,6 +23,9 @@ import { text2html } from '../../utils';
 function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
+  function toogleShow() {
+    setShow(!isShow);
+  }
 
   let html = text2html(content);
 
@@ -57,8 +60,9 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt 
             <Box mb={2} display="flex">
               <Box
                 style={{ display: 'flex', alignItems: 'center', color: '#999' }}
+                className
                 onClick={() => {
-                  setShow(true);
+                  toogleShow();
                 }}
               >
                 <ChatBubbleOutlineIcon style={{ width: 16, marginTop: 2, marginRight: 8 }} />
