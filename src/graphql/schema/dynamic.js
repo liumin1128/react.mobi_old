@@ -24,6 +24,8 @@ export const DYNAMIC_LIST = gql`
       _id
       content
       pictures
+      zanCount
+      zanStatus
       topics {
         _id
         title
@@ -50,6 +52,8 @@ export const DYNAMIC_CREATE = gql`
         _id
         content
         pictures
+        zanCount
+        zanStatus
         topics {
           _id
           title
