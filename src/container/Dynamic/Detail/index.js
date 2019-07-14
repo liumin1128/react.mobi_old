@@ -82,4 +82,5 @@ function DynamicDetail({ router }) {
   );
 }
 
+
 export default withRouter(DynamicDetail);
