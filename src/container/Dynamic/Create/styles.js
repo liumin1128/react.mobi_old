@@ -37,6 +37,9 @@ export default makeStyles(theme => ({
   input: {
     borderRadius: 4,
     position: 'relative',
+    minHeight: theme.spacing(15),
+    maxHeight: theme.spacing(30),
+    overflowY: 'scroll',
     // backgroundColor: theme.palette.common.white,
     border: '1px solid rgba(0,0,0,0.3)',
     fontSize: 16,
