@@ -176,29 +176,12 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
               <PhotoIcon />
             </IconButton>
           </UpPicture>
-          <Popper
-            content={(
-              <Box p={1}>
-                <SelectTopic
-                  onClick={(topic) => {
-                    insetText(`#${topic.title}#`);
-                  }}
-                />
-              </Box>
-            )}
-          >
+
+          <Popper content={(<Box p={1}><SelectTopic onClick={(topic) => { insetText(`#${topic.title}#`); }} /></Box>)}>
             <Icon>#</Icon>
           </Popper>
 
-          <Popper
-            content={(
-              <Box p={1}>
-                <Emoticon
-                  onClick={insetEmoji}
-                />
-              </Box>
-                )}
-          >
+          <Popper content={(<Box p={1}><Emoticon onClick={insetEmoji} /></Box>)}>
             <Icon>@</Icon>
           </Popper>
         </Box>
@@ -207,19 +190,10 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
           variant="contained"
           color="primary"
           className={classes.submit}
-          // disabled={status === 'loading' || !isEmpty(errors)}
           loading={status === 'loading'}
           onClick={() => {
             const edit = input.current;
-            console.log('innerText', edit.innerText);
-            console.log('innerHTML', edit.innerHTML);
-            console.log('textContent', edit.textContent);
-            console.log('nodeValue', edit.childNodes[0].nodeValue);
-
             const result = html2text(edit.innerHTML);
-
-            console.log(result);
-
             onSubmit({ content: result, pictures });
           }}
         >
@@ -232,7 +206,10 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
         {pictures.map((i, idx) => (
           <Box key={i} className={classes.item}>
             <CardMedia className={classes.picture} image={i} />
-            <ButtonBase className={`${classes.close} pictures-close-btn`} onClick={() => { onDeletePictures(idx); }}>
+            <ButtonBase
+              className={`${classes.close} pictures-close-btn`}
+              onClick={() => { onDeletePictures(idx); }}
+            >
               <CloseIcon />
             </ButtonBase>
           </Box>
