@@ -12,6 +12,11 @@ const theme = createMuiTheme({
         boxShadow: `0 4px 8px 0px ${Color(cyan.A700).alpha(0.3)}, 0 3px 5px -2px ${Color(cyan.A700).alpha(0.5)}`,
       },
     },
+    MuiDivider: {
+      root: {
+        'background-color': 'rgba(0,0,0,0.07)'
+      }
+    },
     MuiPaper: {
       root: {
         color: '#333',

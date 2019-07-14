@@ -33,8 +33,8 @@ function DynamicList({ session }) {
       <Box>
         {list.map((i, idx) => (
           <Fragment key={i._id}>
-            {idx !== 0 && <Divider variant="inset" />}
-            <Box my={3}>
+            {idx !== 0 && <Box ml={8}><Divider /></Box> }
+            <Box my={3} mb={2}>
               <Item
                 data={i}
                 session={session}
@@ -45,9 +45,7 @@ function DynamicList({ session }) {
                   {i.replys.map((j, jdx) => (
                     <Fragment key={j._id}>
                       {jdx !== 0 && (
-                        <Box my={3}>
-                          <Divider variant="inset" />
-                        </Box>
+                        <Box ml={8}><Divider /></Box>
                       )}
                       <Item
                         data={j}
