@@ -3,6 +3,7 @@ import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 import DynamicList from '@/container/Dynamic/List';
 import DynamicCreate from '@/container/Dynamic/Create';
+import DynamicTopics from '@/container/Dynamic/Topics';
 import NavTabs from '@/components/NavTabs';
 
 function Index() {
@@ -38,6 +39,6 @@ function Index() {
   );
 }
 
-Index.Sider = Fragment;
+Index.Sider = DynamicTopics;
 
 export default Index;
