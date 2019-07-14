@@ -52,7 +52,11 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
     setShow(!isShow);
   }
 
-  const html = text2html(content);
+  let html = text2html(content);
+
+  if (replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname) {
+    html = `回复 <b>${replyTo.user.nickname}</b> ： ${html}`;
+  }
 
   return (
     <Box display="flex" className={classes.root}>
@@ -70,19 +74,8 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
         </Box>
 
         {/* 正文部分 */}
-        <Box mt={1}>
+        <Box mt={0.5}>
           <Typography variant="body1" component="div" className={classes.content}>
-            {replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname && (
-            <Fragment>
-              回复
-              {' '}
-              <b>
-                {replyTo.user.nickname}
-              :
-              </b>
-              {' '}
-            </Fragment>
-            )}
             <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
           </Typography>
         </Box>
