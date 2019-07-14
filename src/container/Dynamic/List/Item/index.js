@@ -11,9 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ThumbUpIcon from '@material-ui/icons/ThumbUpOutlined';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-// import ThumbUpSvg from './images/icon_likegood';
-
-// import Link from '@/components/Link';
+import Comment from '@/container/Comment';
 import { getTimeAgo } from '@/utils/common';
 import useStyles from './styles';
 import { text2html } from '../../utils';
@@ -64,6 +62,12 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt,
               11
             </Box>
           </Box>
+
+
+        </Box>
+
+        <Box>
+          <Comment _id={_id} />
         </Box>
 
       </Card>
