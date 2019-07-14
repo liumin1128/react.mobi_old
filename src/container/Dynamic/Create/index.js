@@ -1,31 +1,39 @@
 import React, { Fragment, useState, useRef } from 'react';
+import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import CloseIcon from '@material-ui/icons/Close';
-import Icon from '@material-ui/core/Icon';
+// import Icon from '@material-ui/core/Icon';
 import CardMedia from '@material-ui/core/CardMedia';
 import CameraIcon from '@material-ui/icons/Camera';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Button from '@/components/Button/Loading';
 import UpPicture from '@/components/Upload/Wrapper';
 import Popper from '@/components/Popper';
-import { DYNAMIC_CREATE, DYNAMIC_LIST } from '@/graphql/schema/dynamic';
+import { DYNAMIC_CREATE, DYNAMIC_LIST, DYNAMIC_TOPIC } from '@/graphql/schema/dynamic';
 import { useOnMount, useOnUnmount } from '@/hooks';
-import { useMutation } from '@/hooks/graphql';
+import { useMutation, useQuery } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
 import useStyles from './styles';
 import SelectTopic from './components/SelectTopic';
 import Emoticon from './components/Emoticon';
 import { html2text, text2html } from '../utils';
 
-function DynamicCreate() {
+function DynamicCreate({ router }) {
   const [ status, setStatus ] = useState('default');
   const input = useRef();
   const classes = useStyles();
   const [ pictures, setPictures ] = useState([]);
   const [ lastEditRange, setLastEditRange ] = useState();
   const createDynamic = useMutation(DYNAMIC_CREATE);
+  // const getTopic = useMutation(DYNAMIC_TOPIC);
+  const { data: { data: topic } } = useQuery(DYNAMIC_TOPIC, router.query);
+
+  // if (topic) {
+  //   const edit = input.current;
+  //   edit.innerHTML = `#${topic.title}#`;
+  // }
 
   useOnMount(() => {
     const edit = input.current;
@@ -177,9 +185,9 @@ function DynamicCreate() {
           edit.innerHTML = '';
           setPictures([]);
 
-          const data = store.readQuery({ query: DYNAMIC_LIST });
+          const data = store.readQuery({ query: DYNAMIC_LIST, variables: router.query });
           data.list.unshift(result);
-          store.writeQuery({ query: DYNAMIC_LIST, data });
+          store.writeQuery({ query: DYNAMIC_LIST, data, variables: router.query });
         } else {
           Snackbar.error(message);
         }
@@ -196,7 +204,9 @@ function DynamicCreate() {
         placeholder="有什么想和大家分享的？"
         className={classes.input}
         ref={input}
-      />
+      >
+        {topic ? `#${topic.title}#` : ''}
+      </div>
       <Box mt={2} display="flex" alignItems="center">
         <Box display="flex" flexGrow={1}>
           <UpPicture multiple onChange={onUpPictureSuccess}>
@@ -246,4 +256,4 @@ function DynamicCreate() {
   );
 }
 
-export default DynamicCreate;
+export default withRouter(DynamicCreate);

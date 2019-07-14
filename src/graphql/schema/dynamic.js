@@ -17,8 +17,8 @@ export const DYNAMIC_DETAIL = gql`
 `;
 
 export const DYNAMIC_LIST = gql`
-  query DynamicList($first: Int, $skip: Int) {
-    list: dynamics(first: $first, skip: $skip) {
+  query DynamicList($first: Int, $skip: Int, $topic: String, $user: String) {
+    list: dynamics(first: $first, skip: $skip, topic: $topic, user: $user) {
       __typename
       createdAt
       _id
@@ -75,6 +75,17 @@ export const DYNAMIC_CREATE = gql`
 export const DYNAMIC_TOPIC_LIST = gql`
   query DynamicTopicList($first: Int, $skip: Int, $title: String) {
     list: DynamicTopics(first: $first, skip: $skip, title: $title) {
+      __typename
+      _id
+      title
+      number
+    }
+  }
+`;
+
+export const DYNAMIC_TOPIC = gql`
+  query DynamicTopic($topic: String) {
+    data: DynamicTopic(topic: $topic) {
       __typename
       _id
       title
