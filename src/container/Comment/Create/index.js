@@ -207,6 +207,7 @@ function CommentCreate({ commentTo, replyTo, session, callback, autoFocus }) {
           className={classes.submit}
           loading={status === 'loading'}
           onClick={onSubmit}
+          size="small"
         >
           发表评论
         </Button>
