@@ -20,10 +20,15 @@ export const DYNAMIC_LIST = gql`
   query DynamicList($first: Int, $skip: Int) {
     list: dynamics(first: $first, skip: $skip) {
       __typename
+      createdAt
       _id
       content
       pictures
-      createdAt
+      topics {
+        _id
+        title
+        number
+      }
       user {
         nickname
         avatarUrl
@@ -45,6 +50,11 @@ export const DYNAMIC_CREATE = gql`
         _id
         content
         pictures
+        topics {
+          _id
+          title
+          number
+        }
         createdAt
         user {
           nickname
