@@ -12,11 +12,21 @@ export default makeStyles(theme => ({
     height: theme.spacing(6),
   },
   name: {
-    fontSize: 16,
+    fontSize: '1.125em',
   },
   content: {
     lineHeight: 1.875,
     marginTop: theme.spacing(1),
+  },
+  html: {
+    position: 'relative',
+    color: '#666',
+
+    '& .emoji': {
+      width: '1.5em',
+      height: '1.5em',
+      'vertical-align': -4,
+    },
   },
   'delete-comment': {
     display: 'none',

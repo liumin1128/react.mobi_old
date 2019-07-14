@@ -3,7 +3,6 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import { getTimeAgo } from '@/utils/common';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ModeCommentIcon from '@material-ui/icons/ModeComment';
@@ -12,6 +11,8 @@ import { DELETE_COMMENT, COMMENT_LIST } from '@/graphql/schema/comment';
 import { ZAN } from '@/graphql/schema/zan';
 import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
+import { getTimeAgo } from '@/utils/common';
+import { text2html } from '@/container/Dynamic/utils';
 import Create from '../../Create/Reply';
 import useStyles from './styles';
 
@@ -48,28 +49,24 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
     setShow(!isShow);
   }
 
+  const html = text2html(content);
+
   return (
     <Box display="flex" className={classes.root}>
 
-      <Box mr={3}>
+      <Box mr={2}>
         <Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>
           {user.nickname}
         </Avatar>
       </Box>
       <Box flexGrow={1}>
-        {
-          // <pre>
-          //   {JSON.stringify({ _id, commentTo, replyTo, session }, true, 2)}
-          // </pre>
-            }
         <Box display="flex">
-          <Typography variant="h6" gutterBottom className={classes.name}>
+          <Typography variant="h6" className={classes.name}>
             {user.nickname}
           </Typography>
-
         </Box>
 
-        <Typography variant="body1" className={classes.content}>
+        <Typography variant="body1" component="div" className={classes.content}>
           {replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname && (
             <Fragment>
               回复
@@ -81,7 +78,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
               {' '}
             </Fragment>
           )}
-          {content}
+          <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
         </Typography>
 
 

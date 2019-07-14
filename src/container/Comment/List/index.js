@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react';
-import { withRouter } from 'next/router';
+// import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
+// import Avatar from '@material-ui/core/Avatar';
+// import IconButton from '@material-ui/core/IconButton';
+// import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+// import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import Loading from '@/components/Loading';
 import { COMMENT_LIST, REPLY_LIST } from '@/graphql/schema/comment';
 import { useQuery, useMutation } from '@/hooks/graphql';
-import { getTimeAgo } from '@/utils/common';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import ModeCommentIcon from '@material-ui/icons/ModeComment';
+// import { getTimeAgo } from '@/utils/common';
 import Item from './Item';
 import useStyles from './styles';
 
@@ -30,23 +30,18 @@ function DynamicList({ session }) {
 
   return (
     <Fragment>
-      <Box my={2} display="flex" alignItems="center">
-        <Typography variant="body1" gutterBottom>全部评论</Typography>
-        <Box mx={1} />
-        <Typography variant="body2" gutterBottom>{meta.count}</Typography>
-      </Box>
       <Box>
         {list.map((i, idx) => (
           <Fragment key={i._id}>
             {idx !== 0 && <Divider variant="inset" />}
-            <Box my={4}>
+            <Box my={3}>
               <Item
                 data={i}
                 session={session}
                 commentTo={i._id}
               />
               {i.replys && i.replys.length > 0 && (
-                <Box ml={9} p={4} pb={3} className={classes.replay}>
+                <Box ml={8} p={4} pb={3} className={classes.replay}>
                   {i.replys.map((j, jdx) => (
                     <Fragment key={j._id}>
                       {jdx !== 0 && (
