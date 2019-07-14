@@ -43,11 +43,16 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt,
             <Typography variant="body2" gutterBottom component="div">
               <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
             </Typography>
-            <Box display="flex" m={-0.5}>
+            <Box display="flex" m={-0.5} mt={1}>
               {pictures.map(i => <CardMedia key={i} className={classes.picture} image={i} />)}
             </Box>
           </CardContent>
+
+          <Box pb={2}>
+            1111
+          </Box>
         </Box>
+
       </Card>
       <Box mb={1.5} />
     </Fragment>

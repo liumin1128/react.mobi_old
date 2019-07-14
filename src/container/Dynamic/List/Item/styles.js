@@ -20,8 +20,8 @@ export default makeStyles(theme => ({
     paddingRight: 0,
   },
   picture: {
-    width: theme.spacing(10),
-    height: theme.spacing(10),
+    width: theme.spacing(13),
+    height: theme.spacing(13),
     borderRadius: theme.spacing(0.5),
     margin: 4,
   },
