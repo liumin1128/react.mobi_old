@@ -29,7 +29,7 @@ export default makeStyles(theme => ({
   html: {
     position: 'relative',
     color: '#666',
-
+    cursor: 'pointer',
     '& .emoji': {
       width: '1.5em',
       height: '1.5em',

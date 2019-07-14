@@ -35,7 +35,7 @@ function DynamicDetail({ router }) {
     );
   }
 
-  const { data: { user, title, cover, html, url, content, showHtml, appCode, appName, photos, createdAt, _id } } = data;
+  const { data: { user, pictures, content, createdAt, _id } } = data;
 
   return (
     <div>
@@ -72,6 +72,7 @@ function DynamicDetail({ router }) {
       <Card>
         <CardContent>
           <Typography variant="body2">{content}</Typography>
+          {pictures.length > 0 && pictures.map(i => <img alt="" key={i} className={classes.picture} src={i} />)}
         </CardContent>
       </Card>
 
