@@ -36,4 +36,7 @@ export default makeStyles(theme => ({
       'vertical-align': -4,
     },
   },
+  primary: {
+    color: `${theme.palette.primary.main} !important`
+  },
 }));

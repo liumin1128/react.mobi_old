@@ -10,12 +10,17 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import ThumbUpIcon from '@material-ui/icons/ThumbUpOutlined';
+import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import InfoButton from '@/components/Button/Info';
 import { getTimeAgo } from '@/utils/common';
 import CreateComment from '@/container/Comment/Create';
 import CommentList from '@/container/Comment/List';
+import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
+import { ZAN } from '@/graphql/schema/zan';
+import { useMutation } from '@/hooks/graphql';
+import Snackbar from '@/components/Snackbar';
 import useStyles from './styles';
 import { text2html } from '../../utils';
 
@@ -33,6 +38,26 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
     const reg = new RegExp(`#${i.title}#`);
     html = html.replace(reg, `<a href="/dynamic?topic=${i.number}" class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary">#${i.title}#</a>`);
   });
+
+  const zan = useMutation(ZAN, { _id }, {
+    optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
+    update: (store, { data: { result: { status: code, message } } }) => {
+      if (code === 200 || code === 201) {
+        const data = store.readQuery({ query: DYNAMIC_LIST });
+        const num = { 200: 1, 201: -1 };
+        const sta = { 200: true, 201: false };
+        const idx = data.list.findIndex(i => i._id === _id);
+        data.list[idx].zanCount += num[code];
+        data.list[idx].zanStatus = sta[code];
+        store.writeQuery({ query: DYNAMIC_LIST, data });
+      } else {
+        Snackbar.error(message);
+      }
+    },
+  });
+
+  console.log('zanStatus');
+  console.log(zanStatus);
 
   return (
     <Fragment key={_id}>
@@ -59,7 +84,12 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
             <Box mb={2} display="flex" style={{ color: '#999' }}>
               <InfoButton label="111" icon={ChatBubbleOutlineIcon} onClick={() => { toogleShow(); }} />
               <Box mr={5} />
-              <InfoButton label={zanCount} icon={ThumbUpIcon} onClick={() => { toogleShow(); }} />
+              <InfoButton
+                label={zanCount || null}
+                icon={zanStatus ? ThumbUpIcon : ThumbUpOutlinedIcon}
+                onClick={() => { zan(); }}
+                className={zanStatus ? classes.primary : ''}
+              />
             </Box>
           </Box>
 
