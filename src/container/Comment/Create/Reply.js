@@ -30,6 +30,10 @@ function ReplyCreate({ commentTo, replyTo, session, callback, autoFocus }) {
     // if (_content) {
     //   edit.innerHTML = text2html(_content);
     // }
+
+    if (autoFocus) {
+      edit.focus();
+    }
   });
 
   useOnUnmount(() => {
