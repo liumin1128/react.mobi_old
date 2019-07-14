@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
+// import ButtonBase from '@material-ui/core/ButtonBase';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,7 +9,10 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Link from '@/components/Link';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+
+// import Link from '@/components/Link';
 import { getTimeAgo } from '@/utils/common';
 import useStyles from './styles';
 import { text2html } from '../../utils';
@@ -26,7 +30,6 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt,
 
   return (
     <Fragment key={_id}>
-      {/* <Link href="/aaa">1111</Link> */}
       <Card className={classes.card}>
         <CardHeader
           avatar={(<Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>)}
@@ -40,7 +43,7 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt,
         />
         <Box ml={10}>
           <CardContent className={classes.content}>
-            <Typography variant="body2" gutterBottom component="div">
+            <Typography variant="body1" gutterBottom component="div">
               <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
             </Typography>
             <Box display="flex" m={-0.5} mt={1}>
@@ -48,8 +51,16 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt,
             </Box>
           </CardContent>
 
-          <Box pb={2}>
-            1111
+          <Box pb={2} display="flex">
+            <Box style={{ display: 'flex', alignItems: 'center', color: '#999' }}>
+              <ChatBubbleOutlineIcon style={{ width: 16, marginTop: 2, marginRight: 8 }} />
+              11
+            </Box>
+            <Box mr={5} />
+            <Box style={{ display: 'flex', alignItems: 'center', color: '#999' }}>
+              <ThumbUpIcon style={{ width: 16, marginTop: 2, marginRight: 8 }} />
+              11
+            </Box>
           </Box>
         </Box>
 

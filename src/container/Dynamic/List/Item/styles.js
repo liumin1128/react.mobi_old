@@ -18,6 +18,7 @@ export default makeStyles(theme => ({
     paddingTop: 0,
     paddingLeft: 0,
     paddingRight: 0,
+    paddingBottom: theme.spacing(1),
   },
   picture: {
     width: theme.spacing(13),
@@ -27,10 +28,11 @@ export default makeStyles(theme => ({
   },
   html: {
     position: 'relative',
+    color: '#666',
 
     '& .emoji': {
-      width: '1.25em',
-      height: '1.25em',
+      width: '1.5em',
+      height: '1.5em',
       'vertical-align': -4,
     },
   },
