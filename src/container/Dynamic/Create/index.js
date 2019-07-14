@@ -6,6 +6,7 @@ import Icon from '@material-ui/core/Icon';
 import CardMedia from '@material-ui/core/CardMedia';
 import CameraIcon from '@material-ui/icons/Camera';
 import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import Button from '@/components/Button/Loading';
 import UpPicture from '@/components/Upload/Wrapper';
 import Popper from '@/components/Popper';
@@ -195,9 +196,12 @@ function DynamicCreate() {
         placeholder="有什么想和大家分享的？"
         className={classes.input}
         ref={input}
+        onChange={() => {
+          console.log('xxxx');
+        }}
       />
-      <Box mt={2} display="flex" justifyContent="space-between" alignItems="flex-start">
-        <Box display="flex">
+      <Box mt={2} display="flex" alignItems="center">
+        <Box display="flex" flexGrow={1}>
           <UpPicture multiple onChange={onUpPictureSuccess}>
             <ButtonBase aria-label="Camera">
               <CameraIcon style={{ width: 32, height: 32, color: '#999' }} />
@@ -211,6 +215,9 @@ function DynamicCreate() {
           <Popper content={(<Box p={1}><Emoticon onClick={insetEmoji} /></Box>)}>
             <img style={{ width: 32, height: 32 }} src="https://imgs.react.mobi/emoticon/xjh/00.gif" alt="" />
           </Popper>
+        </Box>
+        <Box mx={2}>
+          <Typography variant="caption">233</Typography>
         </Box>
         <Button
           type="submit"
