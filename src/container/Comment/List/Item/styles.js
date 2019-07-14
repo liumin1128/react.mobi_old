@@ -34,4 +34,7 @@ export default makeStyles(theme => ({
   Badge: {
     left: 0,
   },
+  primary: {
+    color: `${theme.palette.primary.main} !important`
+  },
 }));

@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
-    color: '#999',
+    color: 'inherit',
     '&:hover': {
       color: theme.palette.primary.main,
       cursor: 'pointer',
@@ -19,11 +19,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function InfoButton({ label, icon: Icon, onClick }) {
+export default function InfoButton({ label, icon: Icon, onClick, className }) {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root} onClick={onClick}>
+    <Box className={classes.root + (className ? ` ${className}` : '')} onClick={onClick}>
       <Icon className={classes.icon} />
       {label}
     </Box>

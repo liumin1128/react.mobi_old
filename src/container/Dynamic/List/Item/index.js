@@ -44,7 +44,6 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt 
             action={(<IconButton aria-label="Settings"><MoreVertIcon /></IconButton>)}
             title={<Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>}
             subheader={getTimeAgo(createdAt)}
-
           />
           <Box ml={8} mt={1}>
             <Typography variant="body1" gutterBottom component="div">
@@ -57,19 +56,10 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt 
             </Box>
             )}
 
-            <Box mb={2} display="flex">
-
-              <InfoButton
-                label="111"
-                icon={ChatBubbleOutlineIcon}
-                onClick={() => { toogleShow(); }}
-              />
+            <Box mb={2} display="flex" style={{ color: '#999' }}>
+              <InfoButton label="111" icon={ChatBubbleOutlineIcon} onClick={() => { toogleShow(); }} />
               <Box mr={5} />
-              <InfoButton
-                label="111"
-                icon={ThumbUpIcon}
-                onClick={() => { toogleShow(); }}
-              />
+              <InfoButton label="111" icon={ThumbUpIcon} onClick={() => { toogleShow(); }} />
             </Box>
           </Box>
 

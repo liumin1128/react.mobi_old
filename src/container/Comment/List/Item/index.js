@@ -2,15 +2,18 @@ import React, { useState, Fragment } from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import ThumbUpIcon from '@material-ui/icons/ThumbUpOutlined';
-import DeleteIcon from '@material-ui/icons/Delete';
+// import IconButton from '@material-ui/core/IconButton';
+import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+// import DeleteIcon from '@material-ui/icons/Delete';
 import ModeCommentIcon from '@material-ui/icons/ModeCommentOutlined';
-import Badge from '@material-ui/core/Badge';
+// import Badge from '@material-ui/core/Badge';
 import { DELETE_COMMENT, COMMENT_LIST } from '@/graphql/schema/comment';
 import { ZAN } from '@/graphql/schema/zan';
 import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
+import InfoButton from '@/components/Button/Info';
+
 import { getTimeAgo } from '@/utils/common';
 import { text2html } from '@/container/Dynamic/utils';
 import Create from '../../Create/Reply';
@@ -19,7 +22,7 @@ import useStyles from './styles';
 function Comment({ commentTo, session, data: { _id, user = {}, content, createdAt, replyTo, replyCount, zanCount, zanStatus } }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
-  const deleteComment = useMutation(DELETE_COMMENT, { _id });
+  // const deleteComment = useMutation(DELETE_COMMENT, { _id });
   const zan = useMutation(ZAN, { _id }, {
     optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
     update: (store, { data: { result: { status: code, message } } }) => {
@@ -87,10 +90,9 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
         {/* 正文部分 */}
 
 
-        <Box mb={-1} display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="body2">{getTimeAgo(createdAt)}</Typography>
-          <Typography variant="body2" component="div">
-            <IconButton
+        <Box display="flex" alignItems="center" style={{ color: '#999' }}>
+          <Typography variant="body2" color="inherit">{getTimeAgo(createdAt)}</Typography>
+          {/* <IconButton
               aria-label="Delete"
               color="inherit"
               className={`${classes['delete-comment']} delete-comment`}
@@ -99,35 +101,17 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
               }}
             >
               <DeleteIcon fontSize="small" style={{ fontSize: 14 }} />
-            </IconButton>
-            <Box px={0.5} display="inline" />
-            <IconButton
-              aria-label="Comment"
-              color="inherit"
-              onClick={toogleShow}
-            >
-              <Badge badgeContent={replyCount} classes={{ badge: classes.Badge }}>
-                <ModeCommentIcon
-                  fontSize="small"
-                  style={{ fontSize: 14 }}
-                />
-              </Badge>
-            </IconButton>
-            <Box px={0.5} display="inline" />
-            <IconButton
-              aria-label="Zan"
-              color="inherit"
-              onClick={() => { zan(); }}
-            >
-              <Badge badgeContent={zanCount} classes={{ badge: classes.Badge }}>
-                <ThumbUpIcon
-                  color={zanStatus ? 'secondary' : undefined}
-                  fontSize="small"
-                  style={{ fontSize: 14 }}
-                />
-              </Badge>
-            </IconButton>
-          </Typography>
+            </IconButton> */}
+          <Box ml={4} />
+          <InfoButton label={replyCount} icon={ModeCommentIcon} onClick={() => { toogleShow(); }} />
+          <Box ml={4} />
+          <InfoButton
+            label={zanCount || null}
+            icon={zanStatus ? ThumbUpIcon : ThumbUpOutlinedIcon}
+            onClick={() => { zan(); }}
+            className={zanStatus ? classes.primary : ''}
+          />
+
         </Box>
 
         {isShow && (
