@@ -11,4 +11,14 @@ export default makeStyles(theme => ({
     // borderRadius: theme.spacing(0.5),
     margin: 4,
   },
+  html: {
+    position: 'relative',
+    color: '#666',
+    cursor: 'pointer',
+    '& .emoji': {
+      width: '1.5em',
+      height: '1.5em',
+      'vertical-align': -4,
+    },
+  },
 }));

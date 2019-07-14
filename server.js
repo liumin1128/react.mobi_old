@@ -31,6 +31,8 @@ app.prepare()
       '/bxgif/detail',
       '/mzitu',
       '/mzitu/detail',
+      '/news',
+      '/news/detail',
       '/meizitu',
       '/meizitu/detail',
     ].map((i) => {

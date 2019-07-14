@@ -18,6 +18,8 @@ import Loading from '@/components/Loading';
 import Html from '@/components/Html';
 import { formatTime, getTimeAgo } from '@/utils/common';
 import Comment from '@/container/Comment';
+import { text2html } from '../utils';
+
 import useStyles from './styles';
 
 function DynamicDetail({ router }) {
@@ -35,7 +37,14 @@ function DynamicDetail({ router }) {
     );
   }
 
-  const { data: { user, pictures, content, createdAt, _id } } = data;
+  const { data: { user, pictures, content, createdAt, topics = [], _id } } = data;
+
+  let html = text2html(content);
+
+  topics.map((i) => {
+    const reg = new RegExp(`#${i.title}#`);
+    html = html.replace(reg, `<a href="/dynamic?topic=${i.number}" class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary">#${i.title}#</a>`);
+  });
 
   return (
     <div>
@@ -71,7 +80,9 @@ function DynamicDetail({ router }) {
       <br />
       <Card>
         <CardContent>
-          <Typography variant="body2">{content}</Typography>
+          <Typography variant="body1" gutterBottom component="div">
+            <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
+          </Typography>
           {pictures.length > 0 && pictures.map(i => <img alt="" key={i} className={classes.picture} src={i} />)}
         </CardContent>
       </Card>
