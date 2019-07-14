@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ThumbUpIcon from '@material-ui/icons/ThumbUpOutlined';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-// import Comment from '@/container/Comment';
+import InfoButton from '@/components/Button/Info';
 import { getTimeAgo } from '@/utils/common';
 import CreateComment from '@/container/Comment/Create';
 import CommentList from '@/container/Comment/List';
@@ -58,22 +58,18 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt 
             )}
 
             <Box mb={2} display="flex">
-              <Box
-                style={{ display: 'flex', alignItems: 'center', color: '#999' }}
-                className
-                onClick={() => {
-                  toogleShow();
-                }}
-              >
-                <ChatBubbleOutlineIcon style={{ width: 16, marginTop: 2, marginRight: 8 }} />
-                11
-              </Box>
+
+              <InfoButton
+                label="111"
+                icon={ChatBubbleOutlineIcon}
+                onClick={() => { toogleShow(); }}
+              />
               <Box mr={5} />
-              <Box style={{ display: 'flex', alignItems: 'center', color: '#999' }}>
-                <ThumbUpIcon style={{ width: 16, marginTop: 2, marginRight: 8 }} />
-                <img src="" alt="" />
-              11
-              </Box>
+              <InfoButton
+                label="111"
+                icon={ThumbUpIcon}
+                onClick={() => { toogleShow(); }}
+              />
             </Box>
           </Box>
 
