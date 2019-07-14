@@ -56,9 +56,6 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
     },
   });
 
-  console.log('zanStatus');
-  console.log(zanStatus);
-
   return (
     <Fragment key={_id}>
       <Card className={classes.card}>
