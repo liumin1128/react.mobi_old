@@ -25,9 +25,6 @@ function DynamicList({ session }) {
 
   const { list, meta } = data;
 
-  console.log('list');
-  console.log(list);
-
   return (
     <Fragment>
       <Box>
