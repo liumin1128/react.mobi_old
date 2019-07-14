@@ -9,11 +9,11 @@ import List from './List';
 
 export default nossr(({ _id }) => (
   <Card>
-    <Box px={4} pt={2} pb={3}>
+    <Box p={3}>
       <Create session={_id} />
     </Box>
     <Divider />
-    <Box px={4} py={3}>
+    <Box px={3}>
       <List session={_id} />
     </Box>
   </Card>
