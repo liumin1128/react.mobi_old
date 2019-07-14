@@ -1,39 +1,43 @@
-// import React from 'react';
-// import DynamicList from '@/container/Dynamic/List';
-// import DynamicCreate from '@/container/Dynamic/Create';
-
-// function Index() {
-//   return (
-//     <DynamicList />
-//   );
-// }
-
-// Index.Sider = DynamicCreate;
-
-// export default Index;
-
-
 import React, { Fragment } from 'react';
-import GridList from '@/container/News/List/GridList';
+import Card from '@material-ui/core/Card';
+import Box from '@material-ui/core/Box';
+import DynamicList from '@/container/Dynamic/List';
+import DynamicCreate from '@/container/Dynamic/Create';
 import NavTabs from '@/components/NavTabs';
-// import FlatList from '@/container/News/List/FlatList';
 
 function Index() {
   return (
     <Fragment>
-      <NavTabs
-        navList={[
-          { label: 'switch', pathname: '/' },
-          { label: 'ps4', pathname: '/ps4' },
-          { label: 'cosplay', pathname: '/cos' },
-        ]}
-      />
-      <br />
-      <GridList />
+      <Card>
+        <Box p={2}>
+          <DynamicCreate />
+        </Box>
+      </Card>
+      <Box mb={1.5} />
+      <Card>
+        <Box px={1}>
+          <NavTabs
+            navList={[
+              // { label: '推荐', pathname: '/' },
+              { label: '最新', pathname: '/' },
+              { label: '最热', pathname: '/2' },
+              // { label: '前端', pathname: '/web' },
+              // { label: '后端', pathname: '/node' },
+              // { label: '游戏', pathname: '/game' },
+              // { label: '动画', pathname: '/cartoon' },
+              // { label: '电影', pathname: '/movie' },
+              // { label: '读书', pathname: '/book' },
+              // { label: '生活', pathname: '/life' },
+            ]}
+          />
+        </Box>
+      </Card>
+      <Box mb={1.5} />
+      <DynamicList />
     </Fragment>
   );
 }
 
-// Index.Sider = FlatList;
+Index.Sider = Fragment;
 
 export default Index;
