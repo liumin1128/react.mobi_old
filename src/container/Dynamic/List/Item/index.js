@@ -9,8 +9,9 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ThumbUpIcon from '@material-ui/icons/ThumbUpOutlined';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+// import ThumbUpSvg from './images/icon_likegood';
 
 // import Link from '@/components/Link';
 import { getTimeAgo } from '@/utils/common';
@@ -59,6 +60,7 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, createdAt,
             <Box mr={5} />
             <Box style={{ display: 'flex', alignItems: 'center', color: '#999' }}>
               <ThumbUpIcon style={{ width: 16, marginTop: 2, marginRight: 8 }} />
+              <img src="" alt="" />
               11
             </Box>
           </Box>
