@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from 'react';
+import Router from 'next/router';
+
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 // import ButtonBase from '@material-ui/core/ButtonBase';
@@ -14,6 +16,7 @@ import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import InfoButton from '@/components/Button/Info';
+// import Link from '@/components/Link';
 import { getTimeAgo } from '@/utils/common';
 import CreateComment from '@/container/Comment/Create';
 import CommentList from '@/container/Comment/List';
@@ -68,14 +71,22 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
             subheader={getTimeAgo(createdAt)}
           />
           <Box ml={8} mt={1}>
-            <Typography variant="body1" gutterBottom component="div">
-              <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
-            </Typography>
+
+            <Box
+              onClick={() => {
+                Router.push(`/dynamic/detail?_id=${_id}`);
+              }}
+            >
+              <Typography variant="body1" gutterBottom component="div">
+                <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
+              </Typography>
+            </Box>
+
 
             {pictures.length > 0 && (
-            <Box display="flex" m={-0.5} mt={1} mb={1}>
-              {pictures.map(i => <CardMedia key={i} className={classes.picture} image={i} />)}
-            </Box>
+              <Box display="flex" m={-0.5} mt={1} mb={1}>
+                {pictures.map(i => <CardMedia key={i} className={classes.picture} image={i} />)}
+              </Box>
             )}
 
             <Box mb={2} display="flex" style={{ color: '#999' }}>
