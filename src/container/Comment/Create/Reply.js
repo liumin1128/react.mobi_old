@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useRef } from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@/components/Button/Loading';
@@ -192,7 +193,13 @@ function ReplyCreate({ commentTo, replyTo, session, callback, autoFocus }) {
       />
       <Box mt={1} display="flex" alignItems="center">
         <Box display="flex" flexGrow={1}>
-          <Popper content={(<Box p={1}><Emoticon onClick={insetEmoji} /></Box>)}>
+          <Popper
+            content={(
+              <Paper>
+                <Box p={1}><Emoticon onClick={insetEmoji} /></Box>
+              </Paper>
+            )}
+          >
             <img style={{ width: 28, height: 28 }} src="https://imgs.react.mobi/emoticon/xjh/00.gif" alt="" />
           </Popper>
           {/* <FormControlLabel

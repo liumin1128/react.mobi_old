@@ -2,6 +2,7 @@ import React, { Fragment, useState, useRef } from 'react';
 import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import Paper from '@material-ui/core/Paper';
 import CloseIcon from '@material-ui/icons/Close';
 // import Icon from '@material-ui/core/Icon';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -215,11 +216,23 @@ function DynamicCreate({ router }) {
             </ButtonBase>
           </UpPicture>
           <Box ml={1} />
-          <Popper content={(<Box p={1}><SelectTopic onClick={(topic) => { insetText(`#${topic.title}#`); }} /></Box>)}>
+          <Popper
+            content={(
+              <Paper>
+                <Box p={1}><SelectTopic onClick={({ title }) => { insetText(`#${title}#`); }} /></Box>
+              </Paper>
+            )}
+          >
             <Box style={{ width: 28, height: 28, textAlign: 'center', lineHeight: '28px', fontSize: 28, color: '#999' }}>#</Box>
           </Popper>
           <Box ml={1} />
-          <Popper content={(<Box p={1}><Emoticon onClick={insetEmoji} /></Box>)}>
+          <Popper
+            content={(
+              <Paper>
+                <Box p={1}><Emoticon onClick={insetEmoji} /></Box>
+              </Paper>
+            )}
+          >
             <img style={{ width: 28, height: 28 }} src="https://imgs.react.mobi/emoticon/xjh/00.gif" alt="" />
           </Popper>
         </Box>
