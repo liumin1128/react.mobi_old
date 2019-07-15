@@ -63,15 +63,40 @@ export default class user extends PureComponent {
     const { data: { loading, error, userInfo = {} } } = this.props;
 
     if (loading) return null;
-    if (error) {
-      // console.log(error);
+    if (userInfo._id) {
+      const { anchorEl } = this.state;
       return (
         <Fragment>
-          <Link href="/login/register"><Button color="inherit">注册</Button></Link>
-          <Link href="/login"><Button style={{ background: 'rgba(255,255,255,0.1)' }} color="inherit">登录</Button></Link>
+          <ButtonBase
+            centerRipple
+            aria-owns={anchorEl ? 'simple-menu' : undefined}
+            aria-haspopup="true"
+            onClick={this.handleClick}
+          >
+            <Avatar style={{ background: 'rgba(0,0,0,0.1)' }} src={userInfo.avatarUrl}>{userInfo.nickname}</Avatar>
+          </ButtonBase>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={this.handleClose}
+          >
+            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+            <MenuItem onClick={this.handleClose}>My account</MenuItem>
+            <MenuItem onClick={this.handleLgout}>Logout</MenuItem>
+          </Menu>
+        </Fragment>
+
+      );
+    }
+    // console.log(error);
+    return (
+      <Fragment>
+        <Link href="/login/register"><Button color="inherit">注册</Button></Link>
+        <Link href="/login"><Button style={{ background: 'rgba(255,255,255,0.1)' }} color="inherit">登录</Button></Link>
 
 
-          {
+        {
           // <Button
           //   color="inherit"
           //   style={{ background: 'rgba(255,255,255,0.1)' }}
@@ -80,32 +105,7 @@ export default class user extends PureComponent {
           //   登录
           // </Button>
           }
-        </Fragment>
-      );
-    }
-    const { anchorEl } = this.state;
-    return (
-      <Fragment>
-        <ButtonBase
-          centerRipple
-          aria-owns={anchorEl ? 'simple-menu' : undefined}
-          aria-haspopup="true"
-          onClick={this.handleClick}
-        >
-          <Avatar style={{ background: 'rgba(0,0,0,0.1)' }} src={userInfo.avatarUrl}>{userInfo.nickname}</Avatar>
-        </ButtonBase>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-        >
-          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleClose}>My account</MenuItem>
-          <MenuItem onClick={this.handleLgout}>Logout</MenuItem>
-        </Menu>
       </Fragment>
-
     );
   }
 
