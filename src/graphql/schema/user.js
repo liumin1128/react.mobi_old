@@ -59,6 +59,12 @@ export const USER_LOGIN_BY_PHONENUMBER_CODE = gql`
       __typename
       status
       message
+      token
+      userInfo {
+        _id
+        nickname
+        avatarUrl
+      }
     }
   }
 `;
