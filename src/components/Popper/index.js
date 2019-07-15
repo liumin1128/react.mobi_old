@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
-import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+// import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -29,11 +30,9 @@ export default function MyPopper({ children, content }) {
 
   return (
     <Fragment>
-
-
-      <ButtonBase aria-describedby={id} variant="contained" onClick={handleClick}>
+      <Box onClick={handleClick}>
         {children}
-      </ButtonBase>
+      </Box>
       {open && (
         <ClickAwayListener onClickAway={handleClickAway}>
           <Popper
@@ -57,9 +56,9 @@ export default function MyPopper({ children, content }) {
           >
             {({ TransitionProps }) => (
               <Fade {...TransitionProps} timeout={350}>
-                <Paper className={classes.root}>
+                <div>
                   {content}
-                </Paper>
+                </div>
               </Fade>
             )}
           </Popper>
