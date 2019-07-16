@@ -1,8 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import Hidden from '@material-ui/core/Hidden';
 import Grid from '@material-ui/core/Grid';
-import Side from '@/container/side';
 import { withStyles } from '@material-ui/core/styles';
+import Side from '@/container/Side';
 import Header from '../Header';
 
 const styles = theme => ({

@@ -3,7 +3,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import Side from '@/container/side';
+import Side from '@/container/Side';
 
 function Layout({ children }) {
   return (

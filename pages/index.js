@@ -5,6 +5,7 @@ import DynamicList from '@/container/Dynamic/List';
 import DynamicCreate from '@/container/Dynamic/Create';
 import DynamicTopics from '@/container/Dynamic/Topics';
 import NavTabs from '@/components/NavTabs';
+import Blogrol from '@/container/Side/Blogrol';
 
 function Index() {
   return (
@@ -39,6 +40,16 @@ function Index() {
   );
 }
 
-Index.Sider = DynamicTopics;
+Index.Sider = () => (
+  <Fragment>
+    <DynamicTopics />
+    <Box mt={2} />
+    <Card>
+      <Box p={2}>
+        <Blogrol />
+      </Box>
+    </Card>
+  </Fragment>
+);
 
 export default Index;
