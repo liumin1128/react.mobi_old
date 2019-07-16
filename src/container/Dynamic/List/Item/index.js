@@ -24,6 +24,7 @@ import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import { ZAN } from '@/graphql/schema/zan';
 import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
+import Pictures from '../../components/Pictures';
 import useStyles from './styles';
 import { text2html } from '../../utils';
 
@@ -82,12 +83,7 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
               </Typography>
             </Box>
 
-
-            {pictures.length > 0 && (
-              <Box display="flex" m={-0.5} mt={1} mb={1}>
-                {pictures.map(i => <CardMedia key={i} className={classes.picture} image={i} />)}
-              </Box>
-            )}
+            <Pictures pictures={pictures} />
 
             <Box mb={2} display="flex" style={{ color: '#999' }}>
               <InfoButton
