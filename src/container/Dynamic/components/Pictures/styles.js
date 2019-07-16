@@ -1,6 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(theme => ({
+  root: {
+    [theme.breakpoints.down('xs')]: {
+      // marginTop: theme.spacing(1),
+    },
+  },
   pictures: {
     maxWidth: theme.spacing(42),
   },
@@ -11,6 +16,10 @@ export default makeStyles(theme => ({
     margin: theme.spacing(0.25),
     '&:hover': {
       cursor: 'zoom-in', // zoom-out;
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: theme.spacing(11.5),
+      height: theme.spacing(11.5),
     },
   },
   picturebig: {
@@ -29,6 +38,7 @@ export default makeStyles(theme => ({
     '&:hover': {
       cursor: 'zoom-in', // zoom-out;
     },
+
   },
 
   bigpictures: {

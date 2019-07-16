@@ -71,8 +71,7 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
             title={<Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>}
             subheader={getTimeAgo(createdAt)}
           />
-          <Box ml={8} mt={1}>
-
+          <Box mt={1} className={classes.content}>
             <Box
               onClick={() => {
                 Router.push(`/dynamic/detail?_id=${_id}`);

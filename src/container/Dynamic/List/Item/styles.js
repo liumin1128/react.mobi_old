@@ -3,6 +3,9 @@ import { makeStyles, fade } from '@material-ui/core/styles';
 export default makeStyles(theme => ({
   header: {
     padding: 0,
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: theme.spacing(2)
+    },
   },
   avatar: {
     width: 48,
@@ -12,13 +15,10 @@ export default makeStyles(theme => ({
     fontSize: '1.125em',
   },
   content: {
-    // border: '1px red solid',
-    // paddingLeft: theme.spacing(10),
-    marginTop: theme.spacing(-1),
-    paddingTop: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingBottom: theme.spacing(1),
+    marginLeft: theme.spacing(8),
+    [theme.breakpoints.down('xs')]: {
+      marginLeft: theme.spacing(0)
+    },
   },
   picture: {
     width: theme.spacing(13),
