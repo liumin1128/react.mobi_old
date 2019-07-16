@@ -1,36 +1,37 @@
-import React from 'react';
-import Box from '@material-ui/core/Box';
-import CardMedia from '@material-ui/core/CardMedia';
-import useStyles from './styles';
+import React, { useState, Fragment } from 'react';
+import Big from './Big';
+import Small from './Small';
+// import useStyles from './styles';
 
 function Pictures({ pictures }) {
-  const classes = useStyles();
+  const [ show, setShow ] = useState(false);
+  const [ index, setIndex ] = useState(0);
+
   if (!pictures || pictures.length === 0) return null;
-  if (pictures.length === 1) {
-    return (
-      <CardMedia
-        className={classes.pictureone}
-        image={pictures[0]}
-      />
-    );
-  }
+
   return (
-    <Box
-      m={-0.25}
-      mt={1}
-      mb={1}
-      display="flex"
-      flexWrap="wrap"
-      className={classes.pictures}
-    >
-      {pictures.map(i => (
-        <CardMedia
-          key={i}
-          className={classes.picture}
-          image={i}
+    <Fragment>
+      {show ? (
+        <Big
+          index={index}
+          pictures={pictures}
+          setIndex={(idx) => {
+            setIndex(idx);
+          }}
+          onClose={() => {
+            setShow(false);
+          }}
         />
-      ))}
-    </Box>
+      ) : (
+        <Small
+          pictures={pictures}
+          onShow={(idx) => {
+            setShow(true);
+            setIndex(idx);
+          }}
+        />
+      )}
+    </Fragment>
   );
 }
 
