@@ -6,6 +6,8 @@ import DynamicCreate from '@/container/Dynamic/Create';
 import DynamicTopics from '@/container/Dynamic/Topics';
 import NavTabs from '@/components/NavTabs';
 import Blogrol from '@/container/Side/Blogrol';
+import Code from '@/container/Side/Code';
+import Footer from '@/container/Side/Footer';
 
 function Index() {
   return (
@@ -47,6 +49,18 @@ Index.Sider = () => (
     <Card>
       <Box p={2}>
         <Blogrol />
+      </Box>
+    </Card>
+    <Box mt={2} />
+    <Card>
+      <Box p={2}>
+        <Code />
+      </Box>
+    </Card>
+    <Box mt={2} />
+    <Card>
+      <Box p={2}>
+        <Footer />
       </Box>
     </Card>
   </Fragment>
