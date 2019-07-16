@@ -30,5 +30,8 @@ export default makeStyles(theme => ({
       borderColor: 'transparent transparent '+(theme.palette.type === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.03)')+' transparent',
       display: 'block',
     },
+    [theme.breakpoints.down('xs')]: {
+      marginLeft: theme.spacing(0)
+    },
   },
 }));

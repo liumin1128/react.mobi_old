@@ -105,7 +105,7 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
             <Box>
               <Divider />
               <Box mt={3} />
-              <Box ml={8}>
+              <Box ml={8} className={classes.content}>
                 <CreateComment
                   session={_id}
                   autoFocus
