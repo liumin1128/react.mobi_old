@@ -16,6 +16,7 @@ export default makeStyles(theme => ({
   picturebig: {
     width: '100%',
     paddingTop: '100%',
+    marginBottom: theme.spacing(1.5),
     '&:hover': {
       cursor: 'zoom-out', // zoom-out;
     },
@@ -25,9 +26,13 @@ export default makeStyles(theme => ({
     height: theme.spacing(27),
     borderRadius: theme.spacing(0.5),
     marginBottom: theme.spacing(1.5),
+    '&:hover': {
+      cursor: 'zoom-in', // zoom-out;
+    },
   },
 
   bigpictures: {
+    marginTop: theme.spacing(-1.25),
     maxWidth: theme.spacing(100),
   },
   bigpicture: {
@@ -36,7 +41,7 @@ export default makeStyles(theme => ({
     borderRadius: theme.spacing(0.5),
     margin: theme.spacing(0.25),
     '&:hover': {
-      cursor: 'zoom-in', // zoom-out;
+      cursor: 'pointer', // zoom-out;
     },
   },
 }));

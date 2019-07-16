@@ -14,6 +14,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           onClose();
         }}
       />
+      {pictures.length > 1 && (
       <Box
         m={-0.25}
         mt={1}
@@ -33,6 +34,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           />
         ))}
       </Box>
+      )}
     </Fragment>
   );
 }
