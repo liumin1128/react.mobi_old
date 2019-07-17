@@ -229,7 +229,12 @@ function DynamicCreate({ router }) {
           <Popper
             content={(
               <Paper>
-                <Box p={1}><Emoticon onClick={insetEmoji} /></Box>
+                <Box p={1}>
+                  <Emoticon
+                    insetEmoji={insetEmoji}
+                    insetText={insetText}
+                  />
+                </Box>
               </Paper>
             )}
           >

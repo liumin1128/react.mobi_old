@@ -32,7 +32,6 @@ function Topics({ onClick }) {
                 {`#${i.title}#`}
               </Button>
             </Link>
-
           ))}
         </Box>
       </Box>

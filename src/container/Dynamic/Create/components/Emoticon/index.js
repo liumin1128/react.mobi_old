@@ -6,8 +6,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import useStyles from './styles';
 import emojiList from './data'
+import ywzlist from './ywz'
 
-function Topics({ onClick }) {
+function Topics({ insetEmoji, insetText }) {
   const classes = useStyles();
   const [ emoji, setEmoji ] = useState('xjh');
   function handleChange(_,value) {
@@ -24,7 +25,7 @@ function Topics({ onClick }) {
         alignContent="flex-start"
       >
         {
-          i.list.map(j => (<ButtonBase key={j.url} onClick={() => {onClick(j)}}>
+          i.list.map(j => (<ButtonBase key={j.url} onClick={() => {insetEmoji(j)}}>
             <figure 
               className={classes.item} 
               style={{backgroundImage: `url(${j.url})`, backgroundSize: i.size }} 
@@ -33,6 +34,9 @@ function Topics({ onClick }) {
         }
       </Box> : null)
       }
+      {emoji === 'ywz' && <Box display="flex" flexWrap="wrap" className={classes.box} style={{overflowY: 'scroll'}}>
+        {ywzlist.map(i => <Box p={1} onClick={() => {insetText(i)}}>{i}</Box>)}
+      </Box>}
       <Box mt={1}></Box>
       <Divider></Divider>
       <Tabs value={emoji} onChange={handleChange}>
@@ -45,6 +49,12 @@ function Topics({ onClick }) {
             icon={<figure style={{backgroundImage: `url(${i.cover})`,border: 'none' }}  />}
           />)
         }
+        <Tab 
+            value="ywz"
+            label="(￣^￣)"
+            className={classes.tab}
+            // icon={<figure style={{backgroundImage: `url(${i.cover})`,border: 'none' }}  />}
+          />
       </Tabs>
     </Fragment>
   );

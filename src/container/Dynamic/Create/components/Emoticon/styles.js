@@ -21,7 +21,8 @@ export default makeStyles(theme => ({
   },
   tab: {
     minWidth: 'auto',
-    padding: 0,
+    // padding: 0,
+
     // border: '1px red solid',
     '& figure': {
       margin: 0,
