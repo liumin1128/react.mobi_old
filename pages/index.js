@@ -6,6 +6,7 @@ import DynamicCreate from '@/container/Dynamic/Create';
 import DynamicTopics from '@/container/Dynamic/Topics';
 import NavTabs from '@/components/NavTabs';
 import Blogrol from '@/container/Side/Blogrol';
+import Project from '@/container/Side/Project';
 import Code from '@/container/Side/Code';
 import Footer from '@/container/Side/Footer';
 
@@ -49,6 +50,12 @@ Index.Sider = () => (
     <Card>
       <Box p={2}>
         <Blogrol />
+      </Box>
+    </Card>
+    <Box mt={2} />
+    <Card>
+      <Box p={2}>
+        <Project />
       </Box>
     </Card>
     <Box mt={2} />
