@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import NavTabs from '@/components/NavTabs';
+import DynamicList from '@/container/Dynamic/List';
 import useStyles from './styles';
 
 
@@ -11,23 +13,21 @@ function Profile() {
 
   return (
     <Box>
-      <Box className={classes.root} p={2}>
-        <Typography variant="h6">111212</Typography>
-      </Box>
-      <NavTabs
-        navList={[
-          // { label: '推荐', pathname: '/' },
-          { label: '最新', pathname: '/' },
-          { label: '最热', pathname: '/2' },
-          // { label: '前端', pathname: '/web' },
-          // { label: '后端', pathname: '/node' },
-          // { label: '游戏', pathname: '/game' },
-          // { label: '动画', pathname: '/cartoon' },
-          // { label: '电影', pathname: '/movie' },
-          // { label: '读书', pathname: '/book' },
-          // { label: '生活', pathname: '/life' },
-        ]}
-      />
+      <Card>
+        <Box className={classes.root} p={2}>
+          <Typography variant="h6">111212</Typography>
+        </Box>
+        <NavTabs
+          navList={[
+            { label: '动态', pathname: '/' },
+            { label: '关注', pathname: '/2' },
+            { label: '收藏', pathname: '/3' },
+          ]}
+        />
+      </Card>
+
+      <Box mt={2} />
+      <DynamicList />
     </Box>
   );
 }
