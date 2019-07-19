@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
+import Router from 'next/router';
 import Link from 'next/link';
 import { Query, graphql } from 'react-apollo';
 import dynamic from 'next/dynamic';
@@ -36,6 +37,11 @@ export default class user extends PureComponent {
     await clearStorage();
     await refetch();
     console.log('xx');
+  }
+
+  handleProfile = async () => {
+    this.handleClose();
+    Router.push('/user/profile');
   }
 
   refetch = () => {}
@@ -81,7 +87,7 @@ export default class user extends PureComponent {
             open={Boolean(anchorEl)}
             onClose={this.handleClose}
           >
-            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+            <MenuItem onClick={this.handleProfile}>Profile</MenuItem>
             <MenuItem onClick={this.handleClose}>My account</MenuItem>
             <MenuItem onClick={this.handleLgout}>Logout</MenuItem>
           </Menu>
