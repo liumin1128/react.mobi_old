@@ -11,7 +11,7 @@ const styles = theme => ({
       margin: 'auto',
     },
     '& a': {
-      color: 'inherit',
+      color: theme.palette.primary.main,
       textDecoration: 'none',
     },
     '& figure': {

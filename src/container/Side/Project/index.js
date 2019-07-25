@@ -10,10 +10,10 @@ export default class index extends PureComponent {
           代码相关
         </Typography>
         <Typography variant="body2" gutterBottom>
-          <Link href="/about/dev">进度与开发计划</Link>
+          <Link href="/about/progress">进度与开发计划</Link>
         </Typography>
         <Typography variant="body2" gutterBottom>
-          <Link href="/about/dev">开源项目整理</Link>
+          <Link href="/about/develop">开源项目整理</Link>
         </Typography>
       </div>
     );
