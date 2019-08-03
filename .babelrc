@@ -1,17 +1,24 @@
 {
   "presets": [
-    "@babel/preset-env",
     "next/babel"
   ],
   "plugins": [
     "@babel/transform-runtime",
-    ["@babel/plugin-proposal-decorators", { "legacy": true } ],
-    ["module-resolver", { "alias": { "@": "./src/" } }]
+    ["@babel/plugin-proposal-decorators", {
+      "legacy": true
+    }],
+    ["module-resolver", {
+      "alias": {
+        "@": "./src/"
+      }
+    }]
   ],
   "env": {
     "production": {
       "presets": [
-        ["minify", { "builtIns": false }]
+        ["minify", {
+          "builtIns": false
+        }]
       ],
       "plugins": [
         "transform-remove-console"
