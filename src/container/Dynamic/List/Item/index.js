@@ -43,7 +43,7 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
     html = html.replace(reg, `<a href="/dynamic?topic=${i.number}" class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary">#${i.title}#</a>`);
   });
 
-  const zan = useMutation(ZAN, { _id }, {
+  const [ zan ] = useMutation(ZAN, { _id }, {
     optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
     update: (store, { data: { result: { status: code, message } } }) => {
       if (code === 200 || code === 201) {

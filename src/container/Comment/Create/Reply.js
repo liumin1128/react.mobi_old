@@ -21,7 +21,7 @@ function ReplyCreate({ commentTo, replyTo, session, callback, autoFocus }) {
   const input = useRef();
   const classes = useStyles();
   const [ lastEditRange, setLastEditRange ] = useState();
-  const createReply = useMutation(CREATE_REPLY, { commentTo, replyTo, session });
+  const [ createReply ] = useMutation(CREATE_REPLY, { commentTo, replyTo, session });
 
   useOnMount(() => {
     const edit = input.current;

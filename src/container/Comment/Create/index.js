@@ -21,8 +21,10 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
   const input = useRef();
   const classes = useStyles();
   const [ lastEditRange, setLastEditRange ] = useState();
-  const createComment = useMutation(CREATE_COMMENT, { commentTo, replyTo, session });
+  const [ createComment, { loading } ] = useMutation(CREATE_COMMENT, { commentTo, replyTo, session });
 
+  console.log('CommentCreate loading');
+  console.log(loading);
   useOnMount(() => {
     const edit = input.current;
     edit.addEventListener('click', getCursor);
@@ -36,6 +38,7 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
       edit.focus();
     }
   });
+
 
   useOnUnmount(() => {
     const edit = input.current;

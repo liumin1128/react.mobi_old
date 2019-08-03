@@ -15,7 +15,7 @@ import useStyles from './styles';
 
 function Topics({ onClick }) {
   const [ topics, setTopics ] = useState([]);
-  const getTopics = useMutation(DYNAMIC_TOPIC_LIST, {}, {
+  const [ getTopics ] = useMutation(DYNAMIC_TOPIC_LIST, {}, {
     update: (_, { data }) => {
       setTopics(data.list);
     },

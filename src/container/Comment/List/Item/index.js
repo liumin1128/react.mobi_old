@@ -23,7 +23,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
   // const deleteComment = useMutation(DELETE_COMMENT, { _id });
-  const zan = useMutation(ZAN, { _id }, {
+  const [ zan ] = useMutation(ZAN, { _id }, {
     optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
     update: (store, { data: { result: { status: code, message } } }) => {
       if (code === 200 || code === 201) {

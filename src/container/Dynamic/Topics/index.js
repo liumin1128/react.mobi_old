@@ -1,5 +1,5 @@
 
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
@@ -8,16 +8,14 @@ import Link from '@/components/Link';
 import { useMutation } from '@/hooks/graphql';
 import { DYNAMIC_TOPIC_LIST } from '@/graphql/schema/dynamic';
 import { useOnMount } from '@/hooks';
-import useStyles from './styles';
 
-function Topics({ onClick }) {
+function Topics() {
   const [ topics, setTopics ] = useState([]);
-  const getTopics = useMutation(DYNAMIC_TOPIC_LIST, {}, {
+  const [ getTopics ] = useMutation(DYNAMIC_TOPIC_LIST, {}, {
     update: (_, { data }) => {
       setTopics(data.list);
     },
   });
-  const classes = useStyles();
   useOnMount(() => {
     getTopics();
   });

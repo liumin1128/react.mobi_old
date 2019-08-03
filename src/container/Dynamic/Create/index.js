@@ -29,7 +29,8 @@ function DynamicCreate({ router }) {
   const [ lastEditRange, setLastEditRange ] = useState();
   const createDynamic = useMutation(DYNAMIC_CREATE);
   // const getTopic = useMutation(DYNAMIC_TOPIC);
-  const { data: { data: topic } } = useQuery(DYNAMIC_TOPIC, router.query);
+  const res = useQuery(DYNAMIC_TOPIC, router.query);
+  const topic = (res.data || {}).data;
 
   // if (topic) {
   //   const edit = input.current;
