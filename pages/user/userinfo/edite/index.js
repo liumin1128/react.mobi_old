@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import TextField from '@/components/Form/TextField';
 import UploadPictureField from '@/components/Form/Upload/Picture';
+import SexField from '@/components/Form/Field/Sex';
 import { useMutation } from '@/hooks/graphql';
 import { USERINFO } from '@/graphql/schema/user';
 import { useOnMount } from '@/hooks';
@@ -43,6 +44,8 @@ function EditeUserInfo() {
               render={({ handleSubmit }) => (
 
                 <form onSubmit={handleSubmit}>
+
+
                   <Field
                     fullWidth
                     margin="normal"
@@ -50,10 +53,10 @@ function EditeUserInfo() {
                     label="头像"
                     component={pp(UploadPictureField, { width: 160 })}
                   />
+
                   <Field
                     fullWidth
                     margin="normal"
-                // variant="outlined"
                     name="usename"
                     label="用户名"
                     component={TextField}
@@ -62,7 +65,6 @@ function EditeUserInfo() {
                   <Field
                     fullWidth
                     margin="normal"
-                // variant="outlined"
                     name="nickname"
                     label="用户昵称"
                     component={TextField}
@@ -71,31 +73,52 @@ function EditeUserInfo() {
                   <Field
                     fullWidth
                     margin="normal"
-                // variant="outlined"
                     name="phone"
                     label="手机号"
                     type="tel"
                     component={TextField}
                   />
+
                   <Field
                     fullWidth
                     margin="normal"
-                // variant="outlined"
                     name="email"
                     label="邮箱"
                     type="email"
                     component={TextField}
                   />
+
                   <Field
                     fullWidth
                     margin="normal"
                     variant="outlined"
-                    name="bio"
-                    label="个人简介"
+                    name="sign"
+                    label="个性签名"
                     multiline
                     rows="4"
                     component={TextField}
                   />
+
+                  <Field
+                    fullWidth
+                    margin="normal"
+                    type="date"
+                    name="usename"
+                    label="生日"
+                    InputLabelProps={{ shrink: true }}
+                    component={TextField}
+                  />
+
+                  <Field
+                    fullWidth
+                    margin="normal"
+                    type="date"
+                    name="usename"
+                    label="性别"
+                    InputLabelProps={{ shrink: true }}
+                    component={SexField}
+                  />
+
 
                   <Box mt={2} />
 
@@ -110,7 +133,6 @@ function EditeUserInfo() {
               )}
             />
           </Box>
-
         </Box>
       </Card>
     </div>
