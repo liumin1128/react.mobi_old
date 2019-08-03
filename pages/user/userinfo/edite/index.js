@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import TextField from '@/components/Form/TextField';
+import UploadPictureField from '@/components/Form/Upload/Picture';
 import { useMutation } from '@/hooks/graphql';
 import { USERINFO } from '@/graphql/schema/user';
 import { useOnMount } from '@/hooks';
+import pp from '@/hoc/pp';
 
 function EditeUserInfo() {
   const [ getUserInfo, { called, data, error, hasError, loading } ] = useMutation(USERINFO);
@@ -37,7 +39,7 @@ function EditeUserInfo() {
               margin="normal"
               name="avatarUrl"
               label="头像"
-              component={TextField}
+              component={pp(UploadPictureField, { width: 160 })}
             />
             <Field
               fullWidth
