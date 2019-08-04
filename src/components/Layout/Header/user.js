@@ -34,15 +34,16 @@ export default class user extends PureComponent {
   handleLgout = async () => {
     const { data: { refetch } } = this.props;
     this.handleClose();
-    await clearStorage();
-    await refetch();
-    console.log('xx');
+    clearStorage();
+    // refetch();
+    window.location.href = '/';
   }
 
   handleProfile = async () => {
     this.handleClose();
     Router.push('/user/profile');
   }
+
 
   refetch = () => {}
 
@@ -87,9 +88,15 @@ export default class user extends PureComponent {
             open={Boolean(anchorEl)}
             onClose={this.handleClose}
           >
-            <MenuItem onClick={this.handleProfile}>Profile</MenuItem>
-            <MenuItem onClick={this.handleClose}>My account</MenuItem>
-            <MenuItem onClick={this.handleLgout}>Logout</MenuItem>
+            <MenuItem onClick={this.handleProfile}>个人中心</MenuItem>
+            <MenuItem onClick={() => {
+              this.handleClose();
+              Router.push('/user/setting/info');
+            }}
+            >
+              我的资料
+            </MenuItem>
+            <MenuItem onClick={this.handleLgout}>注销登录</MenuItem>
           </Menu>
         </Fragment>
 
