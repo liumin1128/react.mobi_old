@@ -54,13 +54,6 @@ function EditeUserInfo() {
                     component={pp(UploadPictureField, { width: 160 })}
                   />
 
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    name="usename"
-                    label="用户名"
-                    component={TextField}
-                  />
 
                   <Field
                     fullWidth
@@ -70,34 +63,17 @@ function EditeUserInfo() {
                     component={TextField}
                   />
 
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    name="phone"
-                    label="手机号"
-                    type="tel"
-                    component={TextField}
-                  />
 
                   <Field
                     fullWidth
                     margin="normal"
-                    name="email"
-                    label="邮箱"
-                    type="email"
-                    component={TextField}
+                    type="date"
+                    name="usename"
+                    label="性别"
+                    InputLabelProps={{ shrink: true }}
+                    component={SexField}
                   />
 
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    variant="outlined"
-                    name="sign"
-                    label="个性签名"
-                    multiline
-                    rows="4"
-                    component={TextField}
-                  />
 
                   <Field
                     fullWidth
@@ -112,11 +88,12 @@ function EditeUserInfo() {
                   <Field
                     fullWidth
                     margin="normal"
-                    type="date"
-                    name="usename"
-                    label="性别"
-                    InputLabelProps={{ shrink: true }}
-                    component={SexField}
+                    variant="outlined"
+                    name="sign"
+                    label="个性签名"
+                    multiline
+                    rows="4"
+                    component={TextField}
                   />
 
 

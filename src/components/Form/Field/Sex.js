@@ -32,8 +32,6 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
   const classes = useStyles();
   const helperText = meta.touched ? meta.error : undefined;
   const error = meta.error && meta.touched;
-  console.log('value');
-  console.log(value);
   const _value = value || 0;
   return (
     <FormControl margin={margin} style={{ width: '100%' }}>
@@ -54,7 +52,7 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
           classes={{ label: _value === 1 ? classes.menLabel : classes.defaultLabel }}
 
         />
-        <Box ml={8} />
+        <Box ml={3} />
         <FormControlLabel
           control={(
             <Checkbox
@@ -71,7 +69,7 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
 
 
         />
-        <Box ml={8} />
+        <Box ml={3} />
         <FormControlLabel
           control={(
             <Checkbox
