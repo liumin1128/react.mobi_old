@@ -30,6 +30,9 @@ function EditeUserInfo() {
   const initialValues = userInfo._id ? {
     nickname: userInfo.nickname,
     avatarUrl: userInfo.avatarUrl,
+    sex: userInfo.sex,
+    birthday: userInfo.birthday,
+    sign: userInfo.sign,
   } : {};
 
   function handleSubmit(params) {
@@ -71,7 +74,6 @@ function EditeUserInfo() {
                   <Field
                     fullWidth
                     margin="normal"
-                    type="date"
                     name="sex"
                     label="性别"
                     InputLabelProps={{ shrink: true }}

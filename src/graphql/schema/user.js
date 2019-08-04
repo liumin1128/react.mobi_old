@@ -19,22 +19,25 @@ export const USER_LOGIN = gql`
 export const USERINFO = gql`
   query userInfo {
     userInfo: userInfo {
-        __typename
-        _id
-        nickname
-        avatarUrl
+      __typename
+      _id
+      nickname
+      avatarUrl
+      sign
+      sex
+      birthday
     }
   }
 `;
 
 export const UPDATE_USERINFO = gql`
-mutation updateUserInfo($input: UpdateUserInfoInput) {
-  result: updateUserInfo(input: $input) {
-    __typename
-    status
-    message
+  mutation updateUserInfo($input: UpdateUserInfoInput) {
+    result: updateUserInfo(input: $input) {
+      __typename
+      status
+      message
+    }
   }
-}
 `;
 
 export const USER_PHONENUMBER_CODE = gql`
