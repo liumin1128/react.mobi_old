@@ -4,6 +4,7 @@
   ],
   "plugins": [
     "@babel/transform-runtime",
+    "inline-react-svg",
     ["@babel/plugin-proposal-decorators", {
       "legacy": true
     }],
