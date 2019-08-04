@@ -27,6 +27,16 @@ export const USERINFO = gql`
   }
 `;
 
+export const UPDATE_USERINFO = gql`
+mutation updateUserInfo($input: UpdateUserInfoInput) {
+  result: updateUserInfo(input: $input) {
+    __typename
+    status
+    message
+  }
+}
+`;
+
 export const USER_PHONENUMBER_CODE = gql`
   mutation getPhoneNumberCode($purePhoneNumber: String!, $countryCode: String!) {
     result: getPhoneNumberCode(purePhoneNumber: $purePhoneNumber, countryCode: $countryCode) {

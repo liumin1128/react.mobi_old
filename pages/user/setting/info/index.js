@@ -7,25 +7,23 @@ import TextField from '@/components/Form/TextField';
 import UploadPictureField from '@/components/Form/Upload/Picture';
 import SexField from '@/components/Form/Field/Sex';
 import { useMutation } from '@/hooks/graphql';
-import { USERINFO } from '@/graphql/schema/user';
+import { USERINFO, UPDATE_USERINFO } from '@/graphql/schema/user';
 import { useOnMount } from '@/hooks';
 import pp from '@/hoc/pp';
 
 function EditeUserInfo() {
-  const [ getUserInfo, { called, data, error, hasError, loading } ] = useMutation(USERINFO);
+  const [ getUserInfo, getUserInfoData ] = useMutation(USERINFO);
+  const [ updateUserInfo, updateUserInfoData ] = useMutation(UPDATE_USERINFO);
   useOnMount(async () => {
-    if (!called) {
+    if (!getUserInfoData.called) {
       await getUserInfo();
     }
   });
 
-  if (!called || loading) return 'loading';
-  if (hasError) return error;
+  if (!getUserInfoData.called || getUserInfoData.loading) return 'loading';
+  if (getUserInfoData.hasError) return getUserInfoData.error;
 
-  console.log('data');
-  console.log(data);
-
-  const { userInfo } = data;
+  const { userInfo } = getUserInfoData.data;
 
   console.log(userInfo);
 
@@ -34,6 +32,10 @@ function EditeUserInfo() {
     avatarUrl: userInfo.avatarUrl,
   } : {};
 
+  function handleSubmit(params) {
+    updateUserInfo({ input: params });
+  }
+
 
   return (
     <div>
@@ -41,10 +43,7 @@ function EditeUserInfo() {
         <Box p={4} display="flex" justifyContent="center">
           <Box maxWidth={400}>
             <Form
-              onSubmit={(values) => {
-                console.log('values');
-                console.log(values);
-              }}
+              onSubmit={handleSubmit}
               initialValues={initialValues}
               render={({ handleSubmit }) => (
 
