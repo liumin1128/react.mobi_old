@@ -9,13 +9,21 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import LockIcon from '@material-ui/icons/Lock';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import Icon from '@material-ui/core/Icon';
+import MenSvg from './men.svg';
+import WoMenSvg from './women.svg';
 
 export default ({ input: { onChange, value }, meta, margin, label, width, max }) => {
   const helperText = meta.touched ? meta.error : undefined;
   const error = meta.error && meta.touched;
+  console.log('value');
+  console.log(value);
+  const _value = value || 0;
   return (
     <FormControl margin={margin} style={{ width: '100%' }}>
       <InputLabel shrink>{label}</InputLabel>
@@ -24,9 +32,11 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
         <FormControlLabel
           control={(
             <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite />}
-              value="checkedH"
+              icon={<SvgIcon size="large"><MenSvg width="100%" height="100%" /></SvgIcon>}
+              checkedIcon={<SvgIcon size="large"><MenSvg width="100%" height="100%" /></SvgIcon>}
+              value="men"
+              checked={_value === 1}
+              onClick={() => { onChange(1); }}
             />
           )}
           label="男"
@@ -35,9 +45,12 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
         <FormControlLabel
           control={(
             <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite />}
-              value="checkedH"
+              color="secondary"
+              icon={<SvgIcon size="large"><WoMenSvg width="100%" height="100%" /></SvgIcon>}
+              checkedIcon={<SvgIcon size="large"><WoMenSvg width="100%" height="100%" /></SvgIcon>}
+              value="women"
+              checked={_value === 2}
+              onClick={() => { onChange(2); }}
             />
           )}
           label="女"
@@ -46,9 +59,11 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
         <FormControlLabel
           control={(
             <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite />}
+              icon={<LockOpenIcon />}
+              checkedIcon={<LockIcon />}
               value="checkedH"
+              checked={_value === 0}
+              onClick={() => { onChange(0); }}
             />
           )}
           label="保密"
