@@ -6,6 +6,7 @@ import Box from '@material-ui/core/Box';
 import TextField from '@/components/Form/TextField';
 import UploadPictureField from '@/components/Form/Upload/Picture';
 import SexField from '@/components/Form/Field/Sex';
+import Snackbar from '@/components/Snackbar';
 import { useMutation } from '@/hooks/graphql';
 import { USERINFO, UPDATE_USERINFO } from '@/graphql/schema/user';
 import { useOnMount } from '@/hooks';
@@ -35,8 +36,15 @@ function EditeUserInfo() {
     sign: userInfo.sign,
   } : {};
 
-  function handleSubmit(params) {
-    updateUserInfo({ input: params });
+  async function handleSubmit(params) {
+    const res = await updateUserInfo({ input: params });
+    console.log('res');
+    console.log(res);
+    if (res.data.result.status === 200) {
+      Snackbar.success('更新成功');
+    } else {
+      Snackbar.success(res.data.result.message);
+    }
   }
 
 
