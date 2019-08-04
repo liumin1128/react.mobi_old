@@ -1,24 +1,35 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
-import ThreeSixtyIcon from '@material-ui/icons/ThreeSixty';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import LockIcon from '@material-ui/icons/Lock';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import SvgIcon from '@material-ui/core/SvgIcon';
-import Icon from '@material-ui/core/Icon';
 import MenSvg from './men.svg';
 import WoMenSvg from './women.svg';
 
+const useStyles = makeStyles(theme => ({
+  lockLabel: {
+    // color: '#789',
+  },
+  womenLabel: {
+    color: '#ff61bc',
+  },
+  menLabel: {
+    color: '#75b9eb',
+  },
+  defaultLabel: {
+    color: '#666',
+  },
+}));
+
 export default ({ input: { onChange, value }, meta, margin, label, width, max }) => {
+  const classes = useStyles();
   const helperText = meta.touched ? meta.error : undefined;
   const error = meta.error && meta.touched;
   console.log('value');
@@ -40,8 +51,10 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
             />
           )}
           label="男"
+          classes={{ label: _value === 1 ? classes.menLabel : classes.defaultLabel }}
+
         />
-        <Box ml={2} />
+        <Box ml={8} />
         <FormControlLabel
           control={(
             <Checkbox
@@ -54,8 +67,11 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
             />
           )}
           label="女"
+          classes={{ label: _value === 2 ? classes.womenLabel : classes.defaultLabel }}
+
+
         />
-        <Box ml={2} />
+        <Box ml={8} />
         <FormControlLabel
           control={(
             <Checkbox
@@ -68,6 +84,7 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
             />
           )}
           label="保密"
+          classes={{ label: _value === 0 ? classes.lockLabel : classes.defaultLabel }}
         />
       </FormGroup>
       {error && <FormHelperText error>{helperText}</FormHelperText>}
