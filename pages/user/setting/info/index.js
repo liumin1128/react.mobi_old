@@ -7,6 +7,7 @@ import TextField from '@/components/Form/TextField';
 import UploadPictureField from '@/components/Form/Upload/Picture';
 import SexField from '@/components/Form/Field/Sex';
 import Snackbar from '@/components/Snackbar';
+import Loading from '@/components/Loading';
 import { useMutation } from '@/hooks/graphql';
 import { USERINFO, UPDATE_USERINFO } from '@/graphql/schema/user';
 import { useOnMount } from '@/hooks';
@@ -22,7 +23,7 @@ function EditeUserInfo() {
     }
   });
 
-  if (!getUserInfoData.called || getUserInfoData.loading) return 'loading';
+  if (!getUserInfoData.called || getUserInfoData.loading) return <Loading />;
   if (getUserInfoData.hasError) return getUserInfoData.error;
 
   const { userInfo } = getUserInfoData.data;
