@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import RcUpload from 'rc-upload';
 import Wrapper from '@/components/Loading/Wrapper';
 import uploadToQiniu from './uploadToQiniu';
@@ -10,7 +9,7 @@ function getFileItem(file, fileList) {
 }
 
 @uploadToQiniu
-export default class picture extends PureComponent {
+export default class PictureUploadWrapper extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,6 +26,7 @@ export default class picture extends PureComponent {
     }
   }
 
+
   onChange = ({ fileList }, updateState = true) => {
     if (!('fileList' in this.props) && updateState) {
       this.setState({ fileList });
@@ -34,11 +34,12 @@ export default class picture extends PureComponent {
     const { onChange, qiniuUrl } = this.props;
     if (fileList.findIndex(i => i.status !== 'done') === -1) {
       const value = fileList.map(i => `${qiniuUrl}/${i.response.key}`);
-      if (onChange) {
-        onChange(value);
-      }
       this.setState({
         fileList: [],
+      }, () => {
+        if (onChange) {
+          onChange(value);
+        }
       });
     }
   }
@@ -52,10 +53,16 @@ export default class picture extends PureComponent {
   //   }
   // }
 
+
   destroy = () => {
     this.setState({
       destroyed: true,
     });
+  }
+
+  componentDidUnMount() {
+    this.destroy();
+    this.clearProgressTimer();
   }
 
   clearProgressTimer() {

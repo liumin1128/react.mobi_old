@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import InputLabel from '@material-ui/core/InputLabel';
 import Picture from '@/components/Upload/Picture';
 
-export default ({ input: { onChange, value }, meta, label, width }) => {
+export default function PictureField({ input: { onChange, value }, meta, label, width }) {
   const helperText = meta.touched ? meta.error : undefined;
   const error = meta.error && meta.touched;
   return (
@@ -15,4 +15,4 @@ export default ({ input: { onChange, value }, meta, label, width }) => {
       {error && <FormHelperText error>{helperText}</FormHelperText>}
     </Box>
   );
-};
+}
