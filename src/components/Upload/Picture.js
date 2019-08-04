@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 export default ({ onChange, value, width }) => {
   const classes = useStyles();
   return (
-    <Box>
+    <Box display="inline-block">
       <Wrapper
         onChange={val => {
           onChange(val[0]);

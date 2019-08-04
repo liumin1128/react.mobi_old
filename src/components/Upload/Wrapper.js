@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import RcUpload from 'rc-upload';
+import Wrapper from '@/components/Loading/Wrapper';
 import uploadToQiniu from './uploadToQiniu';
 
 function getFileItem(file, fileList) {
@@ -74,7 +75,7 @@ export default class picture extends PureComponent {
       ...props
     } = this.props;
 
-    if (loading) return null;
+    if (loading) return <Wrapper loading>{children}</Wrapper>;
 
     const { token } = qiniuToken;
 
