@@ -29,18 +29,23 @@ function EditeUserInfo() {
 
   console.log(userInfo);
 
+  const initialValues = userInfo._id ? {
+    nickname: userInfo.nickname,
+    avatarUrl: userInfo.avatarUrl,
+  } : {};
+
 
   return (
     <div>
       <Card>
-        <Box p={2} display="flex" justifyContent="center">
-          <Box maxWidth={500}>
+        <Box p={4} display="flex" justifyContent="center">
+          <Box maxWidth={400}>
             <Form
               onSubmit={(values) => {
                 console.log('values');
                 console.log(values);
               }}
-              initialValues={userInfo}
+              initialValues={initialValues}
               render={({ handleSubmit }) => (
 
                 <form onSubmit={handleSubmit}>
@@ -68,7 +73,7 @@ function EditeUserInfo() {
                     fullWidth
                     margin="normal"
                     type="date"
-                    name="usename"
+                    name="sex"
                     label="性别"
                     InputLabelProps={{ shrink: true }}
                     component={SexField}
@@ -79,7 +84,7 @@ function EditeUserInfo() {
                     fullWidth
                     margin="normal"
                     type="date"
-                    name="usename"
+                    name="birthday"
                     label="生日"
                     InputLabelProps={{ shrink: true }}
                     component={TextField}
@@ -103,6 +108,7 @@ function EditeUserInfo() {
                     variant="outlined"
                     color="primary"
                     fullWidth
+                    type="submit"
                   >
                     保存
                   </Button>
