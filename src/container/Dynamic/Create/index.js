@@ -27,7 +27,7 @@ function DynamicCreate({ router }) {
   const classes = useStyles();
   const [ pictures, setPictures ] = useState([]);
   const [ lastEditRange, setLastEditRange ] = useState();
-  const createDynamic = useMutation(DYNAMIC_CREATE);
+  const [ createDynamic ] = useMutation(DYNAMIC_CREATE);
   // const getTopic = useMutation(DYNAMIC_TOPIC);
   const res = useQuery(DYNAMIC_TOPIC, router.query);
   const topic = (res.data || {}).data;

@@ -18,7 +18,7 @@ import useStyles from './styles';
 function DynamicList({ session }) {
   const classes = useStyles();
   const { data, error, loading, isLoadingMore, loadMore } = useQuery(COMMENT_LIST, { session });
-  const fetchMoreReplys = useMutation(REPLY_LIST);
+  const [ fetchMoreReplys ] = useMutation(REPLY_LIST);
 
   if (loading) return <Loading />;
   if (error) return <div>{error.message}</div>;
