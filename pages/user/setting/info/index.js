@@ -11,6 +11,7 @@ import { useMutation } from '@/hooks/graphql';
 import { USERINFO, UPDATE_USERINFO } from '@/graphql/schema/user';
 import { useOnMount } from '@/hooks';
 import pp from '@/hoc/pp';
+import { formatTime } from '@/utils/common';
 
 function EditeUserInfo() {
   const [ getUserInfo, getUserInfoData ] = useMutation(USERINFO);
@@ -32,9 +33,10 @@ function EditeUserInfo() {
     nickname: userInfo.nickname,
     avatarUrl: userInfo.avatarUrl,
     sex: userInfo.sex,
-    birthday: userInfo.birthday,
+    birthday: userInfo.birthday ? formatTime(userInfo.birthday, 'YYYY-MMM-DD') : null,
     sign: userInfo.sign,
   } : {};
+
 
   async function handleSubmit(params) {
     const res = await updateUserInfo({ input: params });

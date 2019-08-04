@@ -70,6 +70,7 @@ export function formatTime(tm, conf = 'YYYY年MM月DD日 HH:mm:ss 星期') {
   const t = new Date(tm);
   return conf
     .replace(/YYYY/g, t.getFullYear())
+    .replace(/MMM/g, (`0${t.getMonth()}`).slice(-2))
     .replace(/MM/g, t.getMonth() + 1)
     .replace(/DD/g, t.getDate())
     .replace(/HH/g, t.getHours())
