@@ -32,8 +32,8 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
         <FormControlLabel
           control={(
             <Checkbox
-              icon={<SvgIcon size="large"><MenSvg width="100%" height="100%" /></SvgIcon>}
-              checkedIcon={<SvgIcon size="large"><MenSvg width="100%" height="100%" /></SvgIcon>}
+              icon={<SvgIcon><MenSvg width="100%" height="100%" /></SvgIcon>}
+              checkedIcon={<SvgIcon htmlColor="#75b9eb"><MenSvg width="100%" height="100%" /></SvgIcon>}
               value="men"
               checked={_value === 1}
               onClick={() => { onChange(1); }}
@@ -46,8 +46,8 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
           control={(
             <Checkbox
               color="secondary"
-              icon={<SvgIcon size="large"><WoMenSvg width="100%" height="100%" /></SvgIcon>}
-              checkedIcon={<SvgIcon size="large"><WoMenSvg width="100%" height="100%" /></SvgIcon>}
+              icon={<SvgIcon><WoMenSvg width="100%" height="100%" /></SvgIcon>}
+              checkedIcon={<SvgIcon htmlColor="#ff61bc"><WoMenSvg width="100%" height="100%" /></SvgIcon>}
               value="women"
               checked={_value === 2}
               onClick={() => { onChange(2); }}
@@ -59,8 +59,9 @@ export default ({ input: { onChange, value }, meta, margin, label, width, max })
         <FormControlLabel
           control={(
             <Checkbox
-              icon={<LockOpenIcon />}
-              checkedIcon={<LockIcon />}
+              color="default"
+              icon={<LockOpenIcon style={{ width: 20, height: 20 }} />}
+              checkedIcon={<LockIcon style={{ width: 20, height: 20 }} />}
               value="checkedH"
               checked={_value === 0}
               onClick={() => { onChange(0); }}
