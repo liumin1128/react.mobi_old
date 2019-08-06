@@ -6,8 +6,6 @@ import { Waypoint } from 'react-waypoint';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => {
-  console.log('theme');
-  console.log(theme);
   return {
     tip: {
       width: '100%',
