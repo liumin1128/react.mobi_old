@@ -176,10 +176,16 @@ function DynamicCreate({ router }) {
   }
 
   function onSubmit() {
-    setStatus('loading');
     const edit = input.current;
     const content = html2text(edit.innerHTML);
 
+    if (!content) {
+      edit.focus();
+      Snackbar.error('忘了写内容啦');
+      return;
+    }
+
+    setStatus('loading');
     createDynamic({ input: { content, pictures } }, {
       update: (store, { data: { result: { status: code, message, data: result } } }) => {
         setStatus('default');
@@ -251,6 +257,7 @@ function DynamicCreate({ router }) {
           color="primary"
           className={classes.submit}
           loading={status === 'loading'}
+          // loading
           onClick={onSubmit}
         >
           发布

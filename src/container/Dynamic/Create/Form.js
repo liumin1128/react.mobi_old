@@ -168,6 +168,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
         placeholder="有什么想和大家分享的？"
         className={classes.input}
         ref={input}
+        required
       />
       <Box mt={1} display="flex" justifyContent="space-between" alignItems="flex-start">
         <Box>
