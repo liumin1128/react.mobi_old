@@ -6,6 +6,7 @@ import {
 
 export function useLoadMore(fetchMore, data, variables) {
   const [ isLoadingMore, setIsLoadingMore ] = useState(false);
+  const [ isEnd, setIsEnd ] = useState(false);
 
   function loadMore() {
     setIsLoadingMore(true);
@@ -19,6 +20,10 @@ export function useLoadMore(fetchMore, data, variables) {
         if (!fetchMoreResult) {
           return previousResult;
         }
+        // 如果查到列表是空的，设置为isEnd
+        if (fetchMoreResult.list.length === 0) {
+          setIsEnd(true);
+        }
         return {
           ...fetchMoreResult,
           list: [
@@ -30,14 +35,14 @@ export function useLoadMore(fetchMore, data, variables) {
     });
   }
 
-  return [ isLoadingMore, loadMore ];
+  return [ isLoadingMore, isEnd, loadMore ];
 }
 
 export function useQuery(schema, variables, options) {
   const { fetchMore, data, ...other } = _useQuery(schema, { variables, ...options });
-  const [ isLoadingMore, loadMore ] = useLoadMore(fetchMore, data, variables);
+  const [ isLoadingMore, isEnd, loadMore ] = useLoadMore(fetchMore, data, variables);
 
-  return { isLoadingMore, loadMore, fetchMore, data, ...other };
+  return { isLoadingMore, isEnd, loadMore, fetchMore, data, ...other };
 }
 
 
