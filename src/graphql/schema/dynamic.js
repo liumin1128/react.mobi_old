@@ -101,3 +101,13 @@ export const DYNAMIC_TOPIC = gql`
     }
   }
 `;
+
+export const CHECK_NEW_DYNAMIC = gql`
+  mutation CheckNewDynamic($latest: String!) {
+    result: CheckNewDynamic(latest: $latest) {
+      __typename
+      status
+      message
+    }
+  }
+`;
