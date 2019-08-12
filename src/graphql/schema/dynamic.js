@@ -19,6 +19,7 @@ export const DYNAMIC_DETAIL = gql`
       user {
         nickname
         avatarUrl
+        sign
       }
     }
   }

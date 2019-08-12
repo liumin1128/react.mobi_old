@@ -12,13 +12,23 @@ import Collapse from '@material-ui/core/Collapse';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { DYNAMIC_DETAIL } from '@/graphql/schema/dynamic';
 import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import Html from '@/components/Html';
 import { formatTime, getTimeAgo } from '@/utils/common';
 import Comment from '@/container/Comment';
+import InfoButton from '@/components/Button/Info';
+import CreateComment from '@/container/Comment/Create';
+import CommentList from '@/container/Comment/List';
+import Pictures from '../components/Pictures';
 import { text2html } from '../utils';
+import Item from '../List/Item';
 
 import useStyles from './styles';
 
@@ -37,7 +47,7 @@ function DynamicDetail({ router }) {
     );
   }
 
-  const { data: { user, pictures, content, createdAt, topics = [], _id } } = data;
+  const { data: { user, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount } } = data;
 
   let html = text2html(content);
 
@@ -46,49 +56,68 @@ function DynamicDetail({ router }) {
     html = html.replace(reg, `<a href="/dynamic?topic=${i.number}" class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary">#${i.title}#</a>`);
   });
 
+  console.log(user);
+
   return (
     <div>
-      <Card>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={12} md={8}>
-            <CardContent>
-              <Typography variant="h6">{content}</Typography>
-              <Typography variant="body2" component="p">{`${getTimeAgo(createdAt)}发布`}</Typography>
-              <Typography variant="body2" component="p">技术 / 前端 / React</Typography>
-            </CardContent>
-          </Grid>
-          <Divider />
-          <Grid item xs={12} sm={12} md={4}>
-            <CardContent>
-              <Box display="flex" alignItems="center">
-                <Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>
-                <Box mr={2} />
+      <Box display="flex" justifyContent="center">
+        <Box style={{ width: '100%' }} maxWidth={600}>
+          <Card>
+            <Box p={3} pb={1}>
+              <CardHeader
+                className={classes.header}
+                avatar={(<Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>)}
+                action={(<IconButton aria-label="Settings"><MoreVertIcon /></IconButton>)}
+                title={<Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>}
+                subheader={getTimeAgo(createdAt)}
+              />
+              <Box mt={1} ml={8}>
                 <Box>
-                  <Typography variant="h6">{user.nickname}</Typography>
-                  <Typography variant="body2" component="p">华人生活网 | 前端</Typography>
-                  <Box mt={1} display="flex">
-                    <Button variant="contained" size="small" color="primary">关注</Button>
-                    <Box mr={2} />
-                    <Button variant="outlined" size="small" color="primary">私信</Button>
-                  </Box>
+                  <Typography variant="body1" gutterBottom component="div">
+                    <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
+                  </Typography>
+                </Box>
+
+                <Pictures pictures={pictures} />
+
+                <Box mb={2} display="flex" style={{ color: '#999' }}>
+                  <InfoButton
+                    label={commentCount || null}
+                    icon={ChatBubbleOutlineIcon}
+                    onClick={() => { toogleShow(); }}
+                  />
+                  <Box mr={5} />
+                  <InfoButton
+                    label={zanCount || null}
+                    icon={zanStatus ? ThumbUpIcon : ThumbUpOutlinedIcon}
+                    onClick={() => { zan(); }}
+                    className={zanStatus ? classes.primary : ''}
+                  />
                 </Box>
               </Box>
-            </CardContent>
-          </Grid>
-        </Grid>
-      </Card>
-      <br />
-      <Card>
-        <CardContent>
-          <Typography variant="body1" gutterBottom component="div">
-            <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
-          </Typography>
-          {pictures.length > 0 && pictures.map(i => <img alt="" key={i} className={classes.picture} src={i} />)}
-        </CardContent>
-      </Card>
+            </Box>
+            <Divider />
+            <Box p={3} mt={1}>
+              <Box ml={8}>
+                <CreateComment
+                  session={_id}
+                  // update={(store) => {
+                  //   const data = store.readQuery({ query: DYNAMIC_LIST });
+                  //   const idx = data.list.findIndex(i => i._id === _id);
+                  //   data.list[idx].commentCount += 1;
+                  //   store.writeQuery({ query: DYNAMIC_LIST, data });
+                  // }}
+                />
+                <Box my={3} />
+                <Divider />
+              </Box>
+              <CommentList session={_id} />
+            </Box>
 
-      <br />
-      <Comment _id={_id} />
+          </Card>
+
+        </Box>
+      </Box>
     </div>
   );
 }
