@@ -18,17 +18,16 @@ import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { DYNAMIC_DETAIL } from '@/graphql/schema/dynamic';
-import { useQuery } from '@/hooks/graphql';
+import { ZAN } from '@/graphql/schema/zan';
+import { useQuery, useMutation } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
-import Html from '@/components/Html';
-import { formatTime, getTimeAgo } from '@/utils/common';
-import Comment from '@/container/Comment';
+import { getTimeAgo } from '@/utils/common';
 import InfoButton from '@/components/Button/Info';
 import CreateComment from '@/container/Comment/Create';
 import CommentList from '@/container/Comment/List';
+import Snackbar from '@/components/Snackbar';
 import Pictures from '../components/Pictures';
 import { text2html } from '../utils';
-import Item from '../List/Item';
 
 import useStyles from './styles';
 
@@ -49,6 +48,8 @@ function DynamicDetail({ router }) {
 
   const { data: { user, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount } } = data;
 
+  console.log(data.data);
+
   let html = text2html(content);
 
   topics.map((i) => {
@@ -56,7 +57,22 @@ function DynamicDetail({ router }) {
     html = html.replace(reg, `<a href="/dynamic?topic=${i.number}" class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary">#${i.title}#</a>`);
   });
 
-  console.log(user);
+  const [ zan ] = useMutation(ZAN, { _id }, {
+    optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
+    update: (store, { data: { result: { status: code, message } } }) => {
+      console.log('code', code);
+      if (code === 200 || code === 201) {
+        const temp = store.readQuery({ query: DYNAMIC_DETAIL, variables: router.query });
+        const num = { 200: 1, 201: -1 };
+        const sta = { 200: true, 201: false };
+        temp.data.zanCount += num[code];
+        temp.data.zanStatus = sta[code];
+        store.writeQuery({ query: DYNAMIC_DETAIL, data: temp, variables: router.query });
+      } else {
+        Snackbar.error(message);
+      }
+    },
+  });
 
   return (
     <div>
@@ -84,7 +100,7 @@ function DynamicDetail({ router }) {
                   <InfoButton
                     label={commentCount || null}
                     icon={ChatBubbleOutlineIcon}
-                    onClick={() => { toogleShow(); }}
+                    // onClick={() => { toogleShow(); }}
                   />
                   <Box mr={5} />
                   <InfoButton
@@ -101,12 +117,11 @@ function DynamicDetail({ router }) {
               <Box ml={8}>
                 <CreateComment
                   session={_id}
-                  // update={(store) => {
-                  //   const data = store.readQuery({ query: DYNAMIC_LIST });
-                  //   const idx = data.list.findIndex(i => i._id === _id);
-                  //   data.list[idx].commentCount += 1;
-                  //   store.writeQuery({ query: DYNAMIC_LIST, data });
-                  // }}
+                  update={(store) => {
+                    const temp = store.readQuery({ query: DYNAMIC_DETAIL, variables: router.query });
+                    temp.data.commentCount += 1;
+                    store.writeQuery({ query: DYNAMIC_DETAIL, data: temp, variables: router.query });
+                  }}
                 />
                 <Box my={3} />
                 <Divider />

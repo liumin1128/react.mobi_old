@@ -23,8 +23,8 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
   const [ lastEditRange, setLastEditRange ] = useState();
   const [ createComment, { loading } ] = useMutation(CREATE_COMMENT, { commentTo, replyTo, session });
 
-  console.log('CommentCreate loading');
-  console.log(loading);
+  // console.log('CommentCreate loading');
+  // console.log(loading);
   useOnMount(() => {
     const edit = input.current;
     edit.addEventListener('click', getCursor);
