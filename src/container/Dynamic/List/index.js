@@ -14,7 +14,7 @@ function DynamicList({ router }) {
   const [ hasNewData, setNewData ] = useState(true);
   const { data, error, loading, isLoadingMore, isEnd, loadMore, refetch } = useQuery(DYNAMIC_LIST, router.query);
 
-  const [ check ] = useMutation(CHECK_NEW_DYNAMIC);
+  // const [ check ] = useMutation(CHECK_NEW_DYNAMIC);
 
 
   if (loading) return <Loading />;
@@ -40,26 +40,26 @@ function DynamicList({ router }) {
 
   // const [ loop ] = useLoop();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      console.log(list[0].content);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     console.log(list[0].content);
 
-      check({ latest: list[0].createdAt }, {
-        update: (_, { data: { result: { status: code, message } } }) => {
-          console.log(code, message);
-          if (code === 200) {
-            setNewData(true);
-            clearTimeout(timer);
-          }
-        },
-      });
-    }, 5000);
+  //     check({ latest: list[0].createdAt }, {
+  //       update: (_, { data: { result: { status: code, message } } }) => {
+  //         console.log(code, message);
+  //         if (code === 200) {
+  //           setNewData(true);
+  //           clearTimeout(timer);
+  //         }
+  //       },
+  //     });
+  //   }, 5000);
 
 
-    return function cleanup() {
-      clearTimeout(timer);
-    };
-  });
+  //   return function cleanup() {
+  //     clearTimeout(timer);
+  //   };
+  // });
 
 
   return (
