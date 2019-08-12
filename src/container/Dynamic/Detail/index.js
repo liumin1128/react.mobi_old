@@ -48,8 +48,6 @@ function DynamicDetail({ router }) {
 
   const { data: { user, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount } } = data;
 
-  console.log(data.data);
-
   let html = text2html(content);
 
   topics.map((i) => {
@@ -57,6 +55,7 @@ function DynamicDetail({ router }) {
     html = html.replace(reg, `<a href="/dynamic?topic=${i.number}" class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary">#${i.title}#</a>`);
   });
 
+  // 赞状态异常
   const [ zan ] = useMutation(ZAN, { _id }, {
     optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
     update: (store, { data: { result: { status: code, message } } }) => {
