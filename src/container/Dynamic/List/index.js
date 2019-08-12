@@ -11,7 +11,7 @@ import Loadmore from '@/components/Loading/Loadmore';
 import Item from './Item';
 
 function DynamicList({ router }) {
-  const [ hasNewData, setNewData ] = useState(true);
+  // const [ hasNewData, setNewData ] = useState(true);
   const { data, error, loading, isLoadingMore, isEnd, loadMore, refetch } = useQuery(DYNAMIC_LIST, router.query);
 
   // const [ check ] = useMutation(CHECK_NEW_DYNAMIC);
@@ -65,7 +65,7 @@ function DynamicList({ router }) {
   return (
     <Fragment>
 
-      {hasNewData && (
+      {/* {hasNewData && (
         <Button
           color="primary"
           variant="outlined"
@@ -79,7 +79,7 @@ function DynamicList({ router }) {
         >
           有新动态，点击查看
         </Button>
-      )}
+      )} */}
 
       <Box mt={1.5} />
 
