@@ -82,6 +82,8 @@ export default class PictureUploadWrapper extends PureComponent {
       ...props
     } = this.props;
 
+    // return children;
+
     if (loading) return <Wrapper loading>{children}</Wrapper>;
 
     const { token } = qiniuToken;
