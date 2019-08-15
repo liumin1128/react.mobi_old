@@ -21,7 +21,8 @@ import InfoButton from '@/components/Button/Info';
 import CreateComment from '@/container/Comment/Create';
 import CommentList from '@/container/Comment/List';
 import Snackbar from '@/components/Snackbar';
-import Pictures from '../components/Pictures';
+import Pictures from '@/container/Dynamic/components/Pictures';
+import Iframe from '@/container/Dynamic/components/Iframe';
 import { text2html, topics2Html } from '../utils';
 
 import useStyles from './styles';
@@ -35,7 +36,7 @@ function DynamicDetail({ router }) {
 
   if (loading) return <Loading />;
 
-  const { data: { user, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount } } = data;
+  const { data: { user, iframe, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount } } = data;
 
   if (error) {
     return (
@@ -71,7 +72,10 @@ function DynamicDetail({ router }) {
 
                 <Pictures pictures={pictures} />
 
-                <Box mb={2} display="flex" style={{ color: '#999' }}>
+                {iframe && <Iframe iframe={iframe} />}
+
+
+                <Box mt={2} mb={2} display="flex" style={{ color: '#999' }}>
                   <InfoButton
                     label={commentCount || null}
                     icon={ChatBubbleOutlineIcon}
