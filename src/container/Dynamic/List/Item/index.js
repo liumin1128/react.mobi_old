@@ -69,8 +69,12 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
           />
           <Box mt={1} className={classes.content}>
             <Box
-              onClick={() => {
-                Router.push(`/dynamic/detail?_id=${_id}`);
+              onClick={(e) => {
+                if (e.target.nodeName === 'A') {
+                  e.stopPropagation();
+                } else {
+                  Router.push(`/dynamic/detail?_id=${_id}`);
+                }
               }}
             >
               <Typography variant="body1" gutterBottom component="div">
