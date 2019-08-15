@@ -5,7 +5,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Paper from '@material-ui/core/Paper';
 import CloseIcon from '@material-ui/icons/Close';
 import CardMedia from '@material-ui/core/CardMedia';
-import CameraIcon from '@material-ui/icons/Photo';
+import CameraIcon from '@material-ui/icons/CameraAlt';
 import VideoIcon from '@material-ui/icons/Movie';
 import Typography from '@material-ui/core/Typography';
 import Iframe from '@/container/Dynamic/components/Iframe';
