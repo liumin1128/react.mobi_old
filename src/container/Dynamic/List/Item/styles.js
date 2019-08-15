@@ -15,6 +15,7 @@ export default makeStyles(theme => ({
     fontSize: '1.125em',
   },
   content: {
+    // border: '1px red solid',
     marginLeft: theme.spacing(8),
     [theme.breakpoints.down('xs')]: {
       marginLeft: theme.spacing(0)

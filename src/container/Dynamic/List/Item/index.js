@@ -58,6 +58,14 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user, za
 
   const html = topics2Html(text2html(content), topics);
 
+  function goToDeatil(e) {
+    if (e.target.nodeName === 'A') {
+      e.stopPropagation();
+    } else {
+      Router.push(`/dynamic/detail?_id=${_id}`);
+    }
+  }
+
   return (
     <Fragment key={_id}>
       <Card className={classes.card}>
@@ -69,26 +77,22 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user, za
             title={<Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>}
             subheader={getTimeAgo(createdAt)}
           />
-          <Box mt={1} className={classes.content}>
-            <Box
-              onClick={(e) => {
-                if (e.target.nodeName === 'A') {
-                  e.stopPropagation();
-                } else {
-                  Router.push(`/dynamic/detail?_id=${_id}`);
-                }
-              }}
-            >
-              <Typography variant="body1" gutterBottom component="div">
-                <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
-              </Typography>
-            </Box>
+          <Box className={classes.content}>
+
+            {html && (
+              <Box my={1.5} onClick={goToDeatil}>
+                <Typography variant="body1" component="div">
+                  <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
+                </Typography>
+              </Box>
+            )}
+
 
             <Pictures pictures={pictures} />
 
             {iframe && (
               <Fragment>
-                <Box my={2}>
+                <Box my={1.5}>
                   <Iframe iframe={iframe} />
                 </Box>
               </Fragment>
