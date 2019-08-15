@@ -221,7 +221,7 @@ function ReplyCreate({ commentTo, replyTo, session, callback, autoFocus }) {
           color="primary"
           className={classes.submit}
           loading={status === 'loading'}
-          onClick={onSubmit}
+          onClick={() => onSubmit()}
           size="small"
         >
           发表评论

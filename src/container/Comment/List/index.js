@@ -80,7 +80,7 @@ function DynamicList({ session }) {
         {list.length < meta.commentCount && (
           <Button
             fullWidth
-            onClick={loadMore}
+            onClick={() => loadMore()}
             disabled={isLoadingMore}
           >
             查看更多回复 - 剩余

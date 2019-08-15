@@ -258,7 +258,7 @@ function DynamicCreate({ router }) {
           className={classes.submit}
           loading={status === 'loading'}
           // loading
-          onClick={onSubmit}
+          onClick={() => onSubmit()}
         >
           发布
         </Button>

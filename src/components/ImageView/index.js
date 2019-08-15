@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import { domRender } from '@/utils/react';
 import { getScrollTop } from '@/utils/common';
-import { withStyles } from '@material-ui/core/styles';
 import withStyle from '@/hoc/material-ui';
 
 const styles = theme => ({
