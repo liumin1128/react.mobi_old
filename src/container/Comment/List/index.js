@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 // import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
-// import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 // import Avatar from '@material-ui/core/Avatar';
@@ -24,6 +24,14 @@ function DynamicList({ session }) {
   if (error) return <div>{error.message}</div>;
 
   const { list, meta } = data;
+
+  if (list.length === 0) {
+    return (
+      <Box ml={8} p={2} display="flex" justifyContent="center" style={{ background: 'rgba(0,0,0,0.01)' }}>
+        <Typography variant="caption">沙发还空着，不抢一下吗？</Typography>
+      </Box>
+    );
+  }
 
   return (
     <Fragment>
