@@ -4,10 +4,9 @@ import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Paper from '@material-ui/core/Paper';
 import CloseIcon from '@material-ui/icons/Close';
-// import Icon from '@material-ui/core/Icon';
 import CardMedia from '@material-ui/core/CardMedia';
-import CameraIcon from '@material-ui/icons/Camera';
-// import IconButton from '@material-ui/core/IconButton';
+import CameraIcon from '@material-ui/icons/Photo';
+import VideoIcon from '@material-ui/icons/Movie';
 import Typography from '@material-ui/core/Typography';
 import Button from '@/components/Button/Loading';
 import UpPicture from '@/components/Upload/Wrapper';
@@ -19,6 +18,8 @@ import Snackbar from '@/components/Snackbar';
 import useStyles from './styles';
 import SelectTopic from './components/SelectTopic';
 import Emoticon from './components/Emoticon';
+import Iframe from './components/Iframe';
+import Input from './components/Input';
 import { html2text, text2html } from '../utils';
 
 function DynamicCreate({ router }) {
@@ -26,6 +27,7 @@ function DynamicCreate({ router }) {
   const input = useRef();
   const classes = useStyles();
   const [ pictures, setPictures ] = useState([]);
+  const [ iframe, setIframe ] = useState();
   const [ lastEditRange, setLastEditRange ] = useState();
   const [ createDynamic ] = useMutation(DYNAMIC_CREATE);
   // const getTopic = useMutation(DYNAMIC_TOPIC);
@@ -236,14 +238,38 @@ function DynamicCreate({ router }) {
       >
         {topic ? `#${topic.title}#` : ''}
       </div>
+
+
       <Box mt={2} display="flex" alignItems="center">
         <Box display="flex" flexGrow={1}>
+
           <UpPicture multiple onChange={onUpPictureSuccess}>
             <ButtonBase aria-label="Camera">
               <CameraIcon style={{ width: 28, height: 28, color: '#999' }} />
             </ButtonBase>
           </UpPicture>
-          <Box ml={1} />
+
+          <Box ml={2} />
+
+          <Popper
+            content={(
+              <Paper>
+                <Box p={1}>
+                  <Input
+                    value={iframe}
+                    onChange={setIframe}
+                  />
+                </Box>
+              </Paper>
+            )}
+          >
+            <ButtonBase aria-label="Camera">
+              <VideoIcon style={{ width: 28, height: 28, color: '#999' }} />
+            </ButtonBase>
+          </Popper>
+
+          <Box ml={2} />
+
           <Popper
             content={(
               <Paper>
@@ -253,7 +279,9 @@ function DynamicCreate({ router }) {
           >
             <Box style={{ width: 28, height: 28, textAlign: 'center', lineHeight: '28px', fontSize: 28, color: '#999' }}>#</Box>
           </Popper>
-          <Box ml={1} />
+
+          <Box ml={2} />
+
           <Popper
             content={(
               <Paper>
@@ -268,6 +296,8 @@ function DynamicCreate({ router }) {
           >
             <img style={{ width: 28, height: 28 }} src="https://imgs.react.mobi/emoticon/xjh/00.gif" alt="" />
           </Popper>
+
+
         </Box>
         <Box mx={2}>
           <Typography variant="caption" style={{ color: '#999' }}>233</Typography>
@@ -286,6 +316,7 @@ function DynamicCreate({ router }) {
       </Box>
 
       <Box mt={1} />
+
       <Box display="flex" m={-0.5}>
         {pictures.map((i, idx) => (
           <Box key={i} className={classes.item}>
@@ -299,6 +330,15 @@ function DynamicCreate({ router }) {
           </Box>
         ))}
       </Box>
+
+      {iframe && (
+        <Box mt={1}>
+          <Iframe
+            iframe={iframe}
+          />
+        </Box>
+      )}
+
     </Fragment>
   );
 }
