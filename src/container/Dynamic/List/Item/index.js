@@ -86,7 +86,13 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user, za
 
             <Pictures pictures={pictures} />
 
-            {iframe && <Iframe iframe={iframe} />}
+            {iframe && (
+              <Fragment>
+                <Box my={2}>
+                  <Iframe iframe={iframe} />
+                </Box>
+              </Fragment>
+            )}
 
             <Box mt={2} mb={2} display="flex" style={{ color: '#999' }}>
               <InfoButton

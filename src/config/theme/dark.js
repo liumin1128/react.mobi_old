@@ -28,6 +28,21 @@ const theme = createMuiTheme({
       },
     },
 
+    MuiTypography: {
+      body1: {
+        font: `14px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif`,
+        color: 'rgba(255,255,255,.875)',
+      },
+      body2: {
+        font: `14px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif`,
+        color: 'rgba(255,255,255,.75)',
+      },
+      caption: {
+        font: `10px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif`,
+        color: 'rgba(255,255,255,.5)',
+      },
+    },
+
     // MuiOutlinedInput: {
     //   focused: {
     //     notchedOutline: {
@@ -56,6 +71,7 @@ const theme = createMuiTheme({
       default: '#252525',
     },
   },
+  
   typography: {
     fontFamily: [
       '-apple-system',
