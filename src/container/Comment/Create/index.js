@@ -36,7 +36,9 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
     // }
 
     if (autoFocus) {
-      edit.focus();
+      setTimeout(() => {
+        edit.focus();
+      }, 300);
     }
   });
 
