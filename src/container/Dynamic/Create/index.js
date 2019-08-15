@@ -41,6 +41,7 @@ function DynamicCreate({ router }) {
     const edit = input.current;
     edit.addEventListener('click', getCursor);
     edit.addEventListener('keyup', getCursor);
+    edit.addEventListener('paste', onPastePureText);
 
     // if (_content) {
     //   edit.innerHTML = text2html(_content);
@@ -51,6 +52,7 @@ function DynamicCreate({ router }) {
     const edit = input.current;
     edit.removeEventListener('click', getCursor);
     edit.removeEventListener('keyup', getCursor);
+    edit.removeEventListener('paste', onPastePureText);
   });
 
   function getCursor() {
@@ -164,6 +166,25 @@ function DynamicCreate({ router }) {
 
     // 无论如何都要记录最后光标对象
     getCursor();
+  }
+
+  function onPastePureText(e) {
+    if (e.clipboardData) {
+      // 阻止默认行为
+      e.preventDefault();
+      // 获取剪贴板的文本
+      const text = e.clipboardData.getData('text');
+      if (window.getSelection && text !== '' && text !== null) {
+        // 创建文本节点
+        const textNode = document.createTextNode(text);
+        // 在当前的光标处插入文本节点
+        const range = window.getSelection().getRangeAt(0);
+        // 删除选中文本
+        range.deleteContents();
+        // 插入文本
+        range.insertNode(textNode);
+      }
+    }
   }
 
   function onUpPictureSuccess(data) {

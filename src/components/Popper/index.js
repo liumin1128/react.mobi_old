@@ -30,7 +30,7 @@ export default function MyPopper({ children, content }) {
 
   return (
     <Fragment>
-      <Box onClick={() => { handleClick(); }}>
+      <Box onClick={handleClick}>
         {children}
       </Box>
       {open && (
