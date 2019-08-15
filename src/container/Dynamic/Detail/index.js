@@ -2,13 +2,8 @@ import React from 'react';
 import { withRouter } from 'next/router';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
@@ -72,6 +67,7 @@ function DynamicDetail({ router }) {
                 title={<Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>}
                 subheader={getTimeAgo(createdAt)}
               />
+
               <Box mt={1} ml={8}>
                 <Box>
                   <Typography variant="body1" gutterBottom component="div">
@@ -97,7 +93,6 @@ function DynamicDetail({ router }) {
                         {
                           optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
                           update: (store, { data: { result: { status: code, message } } }) => {
-                            console.log('code', code);
                             if (code === 200 || code === 201) {
                               const temp = store.readQuery({ query: DYNAMIC_DETAIL, variables: router.query });
                               const num = { 200: 1, 201: -1 };
@@ -133,9 +128,7 @@ function DynamicDetail({ router }) {
               </Box>
               <CommentList session={_id} />
             </Box>
-
           </Card>
-
         </Box>
       </Box>
     </div>
