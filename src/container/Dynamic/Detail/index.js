@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { withRouter } from 'next/router';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -63,19 +63,27 @@ function DynamicDetail({ router }) {
                 subheader={getTimeAgo(createdAt)}
               />
 
-              <Box mt={1} ml={8}>
-                <Box>
-                  <Typography variant="body1" gutterBottom component="div">
-                    <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
-                  </Typography>
-                </Box>
+              <Box ml={8}>
+                {html && (
+                  <Box my={1.5}>
+                    <Typography variant="body1" component="div">
+                      <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
+                    </Typography>
+                  </Box>
+                )}
 
                 <Pictures pictures={pictures} />
 
-                {iframe && <Iframe iframe={iframe} />}
+                {iframe && (
+                  <Fragment>
+                    <Box my={1.5}>
+                      <Iframe iframe={iframe} />
+                    </Box>
+                  </Fragment>
+                )}
 
 
-                <Box mt={2} mb={2} display="flex" style={{ color: '#999' }}>
+                <Box my={2.5} display="flex" style={{ color: '#999' }}>
                   <InfoButton
                     label={commentCount || null}
                     icon={ChatBubbleOutlineIcon}
