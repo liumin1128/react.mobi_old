@@ -52,11 +52,11 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
     setShow(!isShow);
   }
 
-  let html = text2html(content);
+  const html = text2html(content);
 
-  if (replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname) {
-    html = `回复 <b>${replyTo.user.nickname}</b> ： ${html}`;
-  }
+  // if (replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname) {
+  //   html = `回复 <b>${replyTo.user.nickname}</b> ： ${html}`;
+  // }
 
   return (
     <Box display="flex" className={classes.root}>
@@ -67,10 +67,24 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
         </Avatar>
       </Box>
       <Box flexGrow={1}>
-        <Box display="flex">
+        <Box display="flex" alignItems="center">
           <Typography variant="h6" className={classes.name}>
             {user.nickname}
           </Typography>
+
+          {
+            (replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname) && (
+              <Fragment>
+                <Box px={1}>
+
+                  <Typography variant="body2">回复</Typography>
+                </Box>
+                <Typography variant="h6" className={classes.name}>
+                  {replyTo.user.nickname}
+                </Typography>
+              </Fragment>
+            )
+          }
         </Box>
 
         {/* 正文部分 */}

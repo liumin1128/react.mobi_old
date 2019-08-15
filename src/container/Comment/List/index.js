@@ -27,7 +27,7 @@ function DynamicList({ session }) {
 
   if (list.length === 0) {
     return (
-      <Box ml={8} p={2} display="flex" justifyContent="center" style={{ background: 'rgba(0,0,0,0.01)' }}>
+      <Box ml={8} p={2} display="flex" justifyContent="center">
         <Typography variant="caption">沙发还空着，不抢一下吗？</Typography>
       </Box>
     );
