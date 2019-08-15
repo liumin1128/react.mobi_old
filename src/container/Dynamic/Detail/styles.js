@@ -20,5 +20,9 @@ export default makeStyles(theme => ({
       height: '1.5em',
       'vertical-align': -4,
     },
+    '& a': {
+      color: '#fd4c86',
+      textDecoration: 'none',
+    },
   },
 }));

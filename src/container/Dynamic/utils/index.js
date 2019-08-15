@@ -9,7 +9,8 @@ export function text2html(str) {
   return str
     .replace(/(.*?)\[(.*?)_(.*?)]/ig, '$1<img src="https://imgs.react.mobi/emoticon/$2/$3.gif" class="emoji" alt="[$2_$3]">')
     .replace(/(.*?)\n(.*?)/ig, '$1<div>$2</div>')
-    .replace(/^((https?|ftp):\/\/)?([\da-z.-]+)\.([a-z.]{2,6})(\/\w\.-]*)*\/?/, '$1,$2,$3,$4,$5,xxxxxxxxxxx');
+    // ([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#]) 参数
+    .replace(/^((https?|ftp):\/\/)?([\da-z.-]+)\.([a-z.]{2,6})(\/\w\.-]*)*\/+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/, '<a href="$1$3.$4/$5$6" target="_blank">$1$3.$4/$5$6</a>');
 }
 
 
