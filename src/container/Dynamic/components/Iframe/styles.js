@@ -5,7 +5,7 @@ export default makeStyles(theme => ({
     width: '100%',
     // maxWidth: 300,
     height: 0,
-    paddingTop: '50%',
+    paddingTop: '58%',
     position: 'relative',
     backgroundColor: 'rgba(0,0,0,0.05)',
     borderRadius: 4,
