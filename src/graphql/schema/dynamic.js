@@ -7,6 +7,7 @@ export const DYNAMIC_DETAIL = gql`
       _id
       content
       pictures
+      iframe
       createdAt
       zanCount
       zanStatus
@@ -33,6 +34,7 @@ export const DYNAMIC_LIST = gql`
       _id
       content
       pictures
+      iframe
       zanCount
       zanStatus
       commentCount
@@ -62,6 +64,7 @@ export const DYNAMIC_CREATE = gql`
         _id
         content
         pictures
+        iframe
         zanCount
         zanStatus
         commentCount

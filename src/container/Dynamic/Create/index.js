@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CameraIcon from '@material-ui/icons/Photo';
 import VideoIcon from '@material-ui/icons/Movie';
 import Typography from '@material-ui/core/Typography';
+import Iframe from '@/container/Dynamic/components/Iframe';
 import Button from '@/components/Button/Loading';
 import UpPicture from '@/components/Upload/Wrapper';
 import Popper from '@/components/Popper';
@@ -18,7 +19,6 @@ import Snackbar from '@/components/Snackbar';
 import useStyles from './styles';
 import SelectTopic from './components/SelectTopic';
 import Emoticon from './components/Emoticon';
-import Iframe from './components/Iframe';
 import Input from './components/Input';
 import { html2text, text2html } from '../utils';
 
@@ -202,14 +202,15 @@ function DynamicCreate({ router }) {
     const edit = input.current;
     const content = html2text(edit.innerHTML);
 
-    if (!content) {
+
+    if (!iframe && (!pictures || pictures.length === 0) && !content) {
       edit.focus();
       Snackbar.error('忘了写内容啦');
       return;
     }
 
     setStatus('loading');
-    createDynamic({ input: { content, pictures } }, {
+    createDynamic({ input: { content, iframe, pictures } }, {
       update: (store, { data: { result: { status: code, message, data: result } } }) => {
         setStatus('default');
         if (code === 200) {

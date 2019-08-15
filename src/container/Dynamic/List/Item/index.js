@@ -15,6 +15,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import Pictures from '@/container/Dynamic/components/Pictures';
+import Iframe from '@/container/Dynamic/components/Iframe';
 import InfoButton from '@/components/Button/Info';
 // import Link from '@/components/Link';
 import { getTimeAgo } from '@/utils/common';
@@ -24,12 +26,12 @@ import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import { ZAN } from '@/graphql/schema/zan';
 import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
-import Pictures from '../../components/Pictures';
+
 import useStyles from './styles';
 import { text2html, topics2Html } from '../../utils';
 
 
-function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, zanStatus, commentCount, createdAt }) {
+function DynamicListItem({ _id, content, pictures = [], iframe, topics, user, zanCount, zanStatus, commentCount, createdAt }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
 
@@ -84,7 +86,9 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
 
             <Pictures pictures={pictures} />
 
-            <Box mb={2} display="flex" style={{ color: '#999' }}>
+            {iframe && <Iframe iframe={iframe} />}
+
+            <Box mt={2} mb={2} display="flex" style={{ color: '#999' }}>
               <InfoButton
                 label={commentCount || null}
                 icon={ChatBubbleOutlineIcon}
