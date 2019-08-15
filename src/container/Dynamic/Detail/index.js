@@ -35,6 +35,9 @@ function DynamicDetail({ router }) {
   const classes = useStyles();
   const { data, error, loading, refetch } = useQuery(DYNAMIC_DETAIL, router.query);
 
+  // 赞状态异常
+  const [ zan ] = useMutation(ZAN);
+
   if (loading) return <Loading />;
 
   if (error) {
@@ -55,23 +58,6 @@ function DynamicDetail({ router }) {
     html = html.replace(reg, `<a href="/dynamic?topic=${i.number}" class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary">#${i.title}#</a>`);
   });
 
-  // 赞状态异常
-  const [ zan ] = useMutation(ZAN, { _id }, {
-    optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
-    update: (store, { data: { result: { status: code, message } } }) => {
-      console.log('code', code);
-      if (code === 200 || code === 201) {
-        const temp = store.readQuery({ query: DYNAMIC_DETAIL, variables: router.query });
-        const num = { 200: 1, 201: -1 };
-        const sta = { 200: true, 201: false };
-        temp.data.zanCount += num[code];
-        temp.data.zanStatus = sta[code];
-        store.writeQuery({ query: DYNAMIC_DETAIL, data: temp, variables: router.query });
-      } else {
-        Snackbar.error(message);
-      }
-    },
-  });
 
   return (
     <div>
@@ -105,7 +91,27 @@ function DynamicDetail({ router }) {
                   <InfoButton
                     label={zanCount || null}
                     icon={zanStatus ? ThumbUpIcon : ThumbUpOutlinedIcon}
-                    onClick={() => { zan(); }}
+                    onClick={() => {
+                      zan(
+                        { _id },
+                        {
+                          optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
+                          update: (store, { data: { result: { status: code, message } } }) => {
+                            console.log('code', code);
+                            if (code === 200 || code === 201) {
+                              const temp = store.readQuery({ query: DYNAMIC_DETAIL, variables: router.query });
+                              const num = { 200: 1, 201: -1 };
+                              const sta = { 200: true, 201: false };
+                              temp.data.zanCount += num[code];
+                              temp.data.zanStatus = sta[code];
+                              store.writeQuery({ query: DYNAMIC_DETAIL, data: temp, variables: router.query });
+                            } else {
+                              Snackbar.error(message);
+                            }
+                          },
+                        },
+                      );
+                    }}
                     className={zanStatus ? classes.primary : ''}
                   />
                 </Box>
