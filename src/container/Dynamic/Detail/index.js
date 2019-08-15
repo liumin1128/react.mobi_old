@@ -22,7 +22,7 @@ import CreateComment from '@/container/Comment/Create';
 import CommentList from '@/container/Comment/List';
 import Snackbar from '@/components/Snackbar';
 import Pictures from '../components/Pictures';
-import { text2html } from '../utils';
+import { text2html, topics2Html } from '../utils';
 
 import useStyles from './styles';
 
@@ -35,24 +35,18 @@ function DynamicDetail({ router }) {
 
   if (loading) return <Loading />;
 
+  const { data: { user, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount } } = data;
+
   if (error) {
     return (
       <div>
         {`Error! ${error.message}`}
-        <Button onClick={() => { refetch({ _id: id }); }}>refetch</Button>
+        <Button onClick={() => { refetch({ _id }); }}>refetch</Button>
       </div>
     );
   }
 
-  const { data: { user, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount } } = data;
-
-  let html = text2html(content);
-
-  topics.map((i) => {
-    const reg = new RegExp(`#${i.title}#`);
-    html = html.replace(reg, `<a href="/dynamic?topic=${i.number}" class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary">#${i.title}#</a>`);
-  });
-
+  const html = topics2Html(text2html(content), topics);
 
   return (
     <div>
