@@ -98,7 +98,7 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user, za
               </Fragment>
             )}
 
-            <Box mt={2} mb={2} display="flex" style={{ color: '#999' }}>
+            <Box my={2.5} display="flex" style={{ color: '#999' }}>
               <InfoButton
                 label={commentCount || null}
                 icon={ChatBubbleOutlineIcon}
@@ -118,8 +118,7 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user, za
           {isShow && (
             <Box>
               <Divider />
-              <Box mt={3} />
-              <Box ml={8} className={classes.content}>
+              <Box ml={8} mt={3} className={classes.content}>
                 <CreateComment
                   session={_id}
                   autoFocus
@@ -133,7 +132,9 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user, za
                 <Box my={3} />
                 <Divider />
               </Box>
-              <CommentList session={_id} />
+              <Box my={2}>
+                <CommentList session={_id} />
+              </Box>
             </Box>
           )}
         </Box>
