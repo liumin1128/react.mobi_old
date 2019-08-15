@@ -18,7 +18,7 @@ import Loading from '@/components/Loading';
 import Html from '@/components/Html';
 import { formatTime, getTimeAgo } from '@/utils/common';
 import Comment from '@/container/Comment';
-import { text2html } from '../utils';
+import { text2html, topics2Html } from '../utils';
 
 import useStyles from './styles';
 
@@ -39,14 +39,7 @@ function DynamicDetail({ router }) {
 
   const { data: { user, pictures, content, createdAt, topics = [], _id } } = data;
 
-  let html = text2html(content);
-
-  topics.map((i) => {
-    const reg = new RegExp(`#${i.title}#`);
-    html = html.replace(reg, `<a href="/dynamic?topic=${i.number}" class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary">#${i.title}#</a>`);
-  });
-
-  console.log(user);
+  const html = topics2Html(text2html(content), topics);
 
   return (
     <div>

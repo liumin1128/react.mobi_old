@@ -26,22 +26,16 @@ import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
 import Pictures from '../../components/Pictures';
 import useStyles from './styles';
-import { text2html } from '../../utils';
+import { text2html, topics2Html } from '../../utils';
 
 
 function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, zanStatus, commentCount, createdAt }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
+
   function toogleShow() {
     setShow(!isShow);
   }
-
-  let html = text2html(content);
-
-  topics.map((i) => {
-    const reg = new RegExp(`#${i.title}#`);
-    html = html.replace(reg, `<a href="/dynamic?topic=${i.number}" class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary">#${i.title}#</a>`);
-  });
 
   const [ zan ] = useMutation(ZAN, { _id }, {
     optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
@@ -59,6 +53,8 @@ function DynamicListItem({ _id, content, pictures = [], topics, user, zanCount, 
       }
     },
   });
+
+  const html = topics2Html(text2html(content), topics);
 
   return (
     <Fragment key={_id}>
