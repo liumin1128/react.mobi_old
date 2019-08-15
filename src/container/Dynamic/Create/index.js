@@ -216,7 +216,7 @@ function DynamicCreate({ router }) {
         if (code === 200) {
           edit.innerHTML = '';
           setPictures([]);
-
+          setIframe();
           const data = store.readQuery({ query: DYNAMIC_LIST, variables: router.query });
           data.list.unshift(result);
           store.writeQuery({ query: DYNAMIC_LIST, data, variables: router.query });
