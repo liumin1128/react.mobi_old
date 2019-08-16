@@ -4,8 +4,6 @@ import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
-    alignItems: 'center',
     color: 'inherit',
     '&:hover': {
       color: theme.palette.primary.main,
@@ -13,7 +11,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   icon: {
-    width: 16,
+    width: 18,
+    height: 18,
     marginTop: 2,
     marginRight: 8,
   },
@@ -23,7 +22,12 @@ export default function InfoButton({ label, icon: Icon, onClick, className }) {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root + (className ? ` ${className}` : '')} onClick={onClick}>
+    <Box
+      display="flex"
+      alignItems="center"
+      className={classes.root + (className ? ` ${className}` : '')}
+      onClick={onClick}
+    >
       <Icon className={classes.icon} />
       {label}
     </Box>

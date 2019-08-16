@@ -38,7 +38,7 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
     if (autoFocus) {
       setTimeout(() => {
         // edit.focus();
-        insetText('');
+        insetText('111');
       }, 300);
     }
   });
@@ -226,7 +226,7 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
               </Paper>
             )}
           >
-            <img style={{ width: 28, height: 28 }} src="https://imgs.react.mobi/emoticon/xjh/00.gif" alt="" />
+            <img style={{ width: 32, height: 32 }} src="https://imgs.react.mobi/emoticon/xjh/00.gif" alt="" />
           </Popper>
           {/* <FormControlLabel
             value="end"
