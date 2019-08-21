@@ -6,10 +6,10 @@ import useStyles from './styles';
 const trans = {
   0: 'rotate(0deg) translate(0px, 0px)',
   90: 'rotate(90deg) translate(0px, -100%)',
-  180: 'rotate(180deg) translate(100%, 100%)',
+  180: 'rotate(180deg) translate(-100%, -100%)',
   270: 'rotate(270deg) translate(-100%, 0px)',
   '-90': 'rotate(-90deg) translate(-100%, 0px)',
-  '-180': 'rotate(-180deg) translate(0px, 0px)',
+  '-180': 'rotate(-180deg) translate(-100%, -100%)',
   '-270': 'rotate(-270deg) translate(0px, -100%)',
 };
 
@@ -17,8 +17,14 @@ function Pictures({ index, pictures, onClose, setIndex }) {
   const classes = useStyles();
 
   const [ rotate, setRotate ] = useState(0);
+  const [isRotated, setIsRotated] = useState(false);
 
   const img = useRef();
+
+  function handleRotate(reg) {
+    setIsRotated(true)
+    setRotate((rotate + reg) % 360);
+  }
 
   return (
     <Fragment>
@@ -51,7 +57,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           py={0.5}
           className={classes.toolbtn}
           onClick={() => {
-            setRotate((rotate - 90) % 360);
+            handleRotate(-90)
           }}
         >
           向左旋转
@@ -61,7 +67,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           py={0.5}
           className={classes.toolbtn}
           onClick={() => {
-            setRotate((rotate + 90) % 360);
+            handleRotate(90)
           }}
         >
           向右旋转
@@ -72,27 +78,30 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           onClose();
         }}
         className={classes.rotateBox}
-        style={(rotate / 90 % 2 !== 0) ? {
+        // style={(rotate / 90 % 2 !== 0) ? {
+          style={isRotated ? {
           position: 'relative',
           height: 0,
-          paddingTop: `${img.current.width / img.current.height * 100 }%`,
+          paddingTop: (rotate / 90 % 2 !== 0) 
+            ? `${img.current.width / img.current.height * 100}%` 
+            : `${img.current.height / img.current.width * 100}%` ,
         } : {
-          transition: 'none'
+          // transition: 'none'
         }}
       >
         <img
           ref={img}
           className={classes.picturebig}
           src={pictures[index]}
-          style={(rotate / 90 % 2 !== 0) ? {
+          style={isRotated ? {
             'transform-origin': 'left top',
             position: 'absolute',
             top: 0,
             left: 0,
-            width: `${img.current.width / img.current.height * img.current.width }px`,
+            width: (rotate / 90 % 2 !== 0) ? `${img.current.width / img.current.height * img.current.width}px` : '100%',
             transform: trans[`${rotate}`],
           } : {
-            transform: trans[`${rotate}`],
+            // transform: trans[`${rotate}`],
           }}
           alt=""
         />
