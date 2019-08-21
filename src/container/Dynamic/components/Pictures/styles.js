@@ -61,7 +61,7 @@ export default makeStyles(theme => ({
     border: `1px ${theme.palette.primary.main } solid`,
   },
   rotateBox: {
-    transition: 'padding-top .3s ease-out'
+    transition: 'padding-top .25s ease-out'
   },
   toolbtn: {
     '&:hover': {

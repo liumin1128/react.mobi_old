@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { Fragment, useState, useRef, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import CardMedia from '@material-ui/core/CardMedia';
 import useStyles from './styles';
@@ -18,10 +18,19 @@ function Pictures({ index, pictures, onClose, setIndex }) {
 
   const [ rotate, setRotate ] = useState(0);
   const [isRotated, setIsRotated] = useState(false);
-
   const img = useRef();
 
+  // 当index 改变时，清空旋转状态
+  useEffect(() => {
+    if(isRotated) {
+      setRotate(0)
+      setIsRotated(false)
+    }
+  }, [index])
+
+
   function handleRotate(reg) {
+    if(!img || !img.current || !img.current.width || !img.current.height) return;
     setIsRotated(true)
     setRotate((rotate + reg) % 360);
   }
@@ -86,7 +95,6 @@ function Pictures({ index, pictures, onClose, setIndex }) {
             ? `${img.current.width / img.current.height * 100}%` 
             : `${img.current.height / img.current.width * 100}%` ,
         } : {
-          // transition: 'none'
         }}
       >
         <img
@@ -101,7 +109,6 @@ function Pictures({ index, pictures, onClose, setIndex }) {
             width: (rotate / 90 % 2 !== 0) ? `${img.current.width / img.current.height * img.current.width}px` : '100%',
             transform: trans[`${rotate}`],
           } : {
-            // transform: trans[`${rotate}`],
           }}
           alt=""
         />
