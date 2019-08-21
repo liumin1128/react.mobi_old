@@ -31,6 +31,17 @@ function Pictures({ index, pictures, onClose, setIndex }) {
     setRotate((rotate + reg) % 360);
   }
 
+  function handlePrev(e) {
+    e.preventDefault();
+    if(!index || index < 1) return
+    setIndex(index - 1);
+  }
+
+  function handleNext(e) {
+    e.preventDefault();
+    setIndex((index + 1) % pictures.length);
+  }
+
   return (
     <Fragment>
       <Box
@@ -94,9 +105,9 @@ function Pictures({ index, pictures, onClose, setIndex }) {
         </Box>
       </Box>
       <Box
-        onClick={() => {
-          onClose();
-        }}
+        // onClick={() => {
+        //   onClose();
+        // }}
         className={classes.rotateBox}
         // style={(rotate / 90 % 2 !== 0) ? {
           style={isRotated ? {
@@ -107,6 +118,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
             ? `${img.current.width / img.current.height * 100}%` 
             : `${img.current.height / img.current.width * 100}%` ,
         } : {
+          position: 'relative'
         }}
       >
         <img
@@ -123,7 +135,40 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           } : {
           }}
           alt=""
+          onClick={() => {onClose()}}
         />
+
+        {index > 0 && <Box 
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            height: '100%',
+            width: '30%',
+            zIndex: 1,
+            background: 'rgba(0,0,0,0)',
+            cursor: 'url(https://imgs.react.mobi/Fsf7mnTtolDXXD82po62XUgdKGK5),auto'
+          }}
+          onClick={handlePrev}
+        >
+
+        </Box>}
+
+        {index < pictures.length - 1 && <Box 
+          style={{
+            position: 'absolute',
+            right: 0,
+            top: 0,
+            height: '100%',
+            width: '30%',
+            zIndex: 1,
+            background: 'rgba(0,0,0,0)',
+            cursor: 'url(https://imgs.react.mobi/FiQd_o8R1l4e-vtnDb2l_WkDGBRT),auto'
+          }}
+          onClick={handleNext}
+        >
+
+        </Box>}
       </Box>
 
       {pictures.length > 1 && (
