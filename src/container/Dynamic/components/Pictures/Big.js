@@ -20,15 +20,6 @@ function Pictures({ index, pictures, onClose, setIndex }) {
   const [isRotated, setIsRotated] = useState(false);
   const img = useRef();
 
-  // 当index 改变时，清空旋转状态
-  useEffect(() => {
-    if(isRotated) {
-      setRotate(0)
-      setIsRotated(false)
-    }
-  }, [index])
-
-
   function handleRotate(reg) {
     if(!img || !img.current || !img.current.width || !img.current.height) return;
     setIsRotated(true)
@@ -91,7 +82,8 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           style={isRotated ? {
           position: 'relative',
           height: 0,
-          paddingTop: (rotate / 90 % 2 !== 0) 
+          transition: 'padding-top .25s ease-out',
+          'padding-top': (rotate / 90 % 2 !== 0) 
             ? `${img.current.width / img.current.height * 100}%` 
             : `${img.current.height / img.current.width * 100}%` ,
         } : {
@@ -118,8 +110,6 @@ function Pictures({ index, pictures, onClose, setIndex }) {
         <Box
           m={-0.25}
           mt={0.25}
-          // mt={1}
-          // mb={1}
           display="flex"
           flexWrap="wrap"
           className={classes.bigpictures}
@@ -130,6 +120,8 @@ function Pictures({ index, pictures, onClose, setIndex }) {
               className={`${classes.bigpicture} ${index === idx ? classes.bigpictureactive : ''}`}
               image={i}
               onClick={() => {
+                setIsRotated(false)
+                setRotate(0)
                 setIndex(idx);
               }}
             />
