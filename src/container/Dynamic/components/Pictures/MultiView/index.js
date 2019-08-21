@@ -37,10 +37,10 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           window.open(pictures[index], '_blank');
         }}
         onRouteRight={() => {
-          handleRotate(-90);
+          handleRotate(90);
         }}
         onRouteLeft={() => {
-          handleRotate(90);
+          handleRotate(-90);
         }}
       />
 
