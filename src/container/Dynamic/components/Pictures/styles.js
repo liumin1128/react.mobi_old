@@ -60,7 +60,9 @@ export default makeStyles(theme => ({
     opacity: 1,
     border: `1px ${theme.palette.primary.main } solid`,
   },
-
+  rotateBox: {
+    transition: 'padding-top .3s ease-out'
+  },
   toolbtn: {
     '&:hover': {
       cursor: 'pointer', // zoom-out;

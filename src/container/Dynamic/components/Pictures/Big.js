@@ -1,7 +1,17 @@
-import React, { Fragment, useState, useRef} from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import Box from '@material-ui/core/Box';
 import CardMedia from '@material-ui/core/CardMedia';
 import useStyles from './styles';
+
+const trans = {
+  0: 'rotate(0deg) translate(0px, 0px)',
+  90: 'rotate(90deg) translate(0px, -100%)',
+  180: 'rotate(180deg) translate(100%, 100%)',
+  270: 'rotate(270deg) translate(-100%, 0px)',
+  '-90': 'rotate(-90deg) translate(-100%, 0px)',
+  '-180': 'rotate(-180deg) translate(0px, 0px)',
+  '-270': 'rotate(-270deg) translate(0px, -100%)',
+};
 
 function Pictures({ index, pictures, onClose, setIndex }) {
   const classes = useStyles();
@@ -61,29 +71,28 @@ function Pictures({ index, pictures, onClose, setIndex }) {
         onClick={() => {
           onClose();
         }}
-        style={(rotate / 90 % 2 !== 0)  ? {
+        className={classes.rotateBox}
+        style={(rotate / 90 % 2 !== 0) ? {
           position: 'relative',
-          // border: '1px red solid',
           height: 0,
-          paddingTop: (img.current.width / img.current.height * 100) +'%',
-        } : {}}
+          paddingTop: `${img.current.width / img.current.height * 100 }%`,
+        } : {
+          transition: 'none'
+        }}
       >
         <img
           ref={img}
           className={classes.picturebig}
           src={pictures[index]}
           style={(rotate / 90 % 2 !== 0) ? {
-            transform: `rotate(${rotate}deg) scale(${img.current.width / img.current.height})`,
+            'transform-origin': 'left top',
             position: 'absolute',
             top: 0,
             left: 0,
-            bottom: 0,
-            right: 0,
-            margin: 'auto',
-            // width: 
-            // width: 
+            width: `${img.current.width / img.current.height * img.current.width }px`,
+            transform: trans[`${rotate}`],
           } : {
-            transform: `rotate(${rotate}deg)`,
+            transform: trans[`${rotate}`],
           }}
           alt=""
         />
