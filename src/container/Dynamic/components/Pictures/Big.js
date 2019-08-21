@@ -1,6 +1,11 @@
 import React, { Fragment, useState, useRef, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import CardMedia from '@material-ui/core/CardMedia';
+import SearchIcon from '@material-ui/icons/Search';
+import RotateRightIcon from '@material-ui/icons/RotateRight';
+import RotateLeftIcon from '@material-ui/icons/RotateLeft';
+import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
+
 import useStyles from './styles';
 
 const trans = {
@@ -32,43 +37,60 @@ function Pictures({ index, pictures, onClose, setIndex }) {
         bgcolor="#ddd"
         color="text.hint"
         display="flex"
-        px={1}
+        flexWrap="wrap"
+        p={1}
       >
         <Box
-          p={1}
+          px={1.5}
+          // py={0.5}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           className={classes.toolbtn}
           onClick={() => {
             onClose();
           }}
         >
-          收起
+          <FullscreenExitIcon fontSize="small"></FullscreenExitIcon>收起
         </Box>
         <Box
-          p={1}
+          px={1.5}
+          // py={0.5}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           className={classes.toolbtn}
           onClick={() => {
             window.open(pictures[index], "_blank");       
           }}
         >
-          查看原图
+          <SearchIcon fontSize="small"></SearchIcon>查看原图
         </Box>
         <Box
-          p={1}
+          px={1.5}
+          // py={0.5}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           className={classes.toolbtn}
           onClick={() => {
             handleRotate(-90)
           }}
         >
-          向左旋转
+          <RotateLeftIcon fontSize="small"></RotateLeftIcon>向左旋转
         </Box>
         <Box
-          p={1}
+          px={1.5}
+          // py={0.5}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           className={classes.toolbtn}
           onClick={() => {
             handleRotate(90)
           }}
         >
-          向右旋转
+          <RotateRightIcon fontSize="small"></RotateRightIcon>向右旋转
         </Box>
       </Box>
       <Box
