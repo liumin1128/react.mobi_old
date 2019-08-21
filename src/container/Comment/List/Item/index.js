@@ -88,7 +88,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
         </Box>
 
         {/* 正文部分 */}
-        <Box mt={0.5}>
+        <Box my={1}>
           <Typography variant="body1" component="div" className={classes.content}>
             <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
           </Typography>
