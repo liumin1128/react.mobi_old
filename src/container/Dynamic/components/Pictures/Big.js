@@ -35,8 +35,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
         px={1}
       >
         <Box
-          px={1}
-          py={0.5}
+          p={1}
           className={classes.toolbtn}
           onClick={() => {
             onClose();
@@ -45,16 +44,16 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           收起
         </Box>
         <Box
-          px={1}
-          py={0.5}
+          p={1}
           className={classes.toolbtn}
-
+          onClick={() => {
+            window.open(pictures[index], "_blank");       
+          }}
         >
           查看原图
         </Box>
         <Box
-          px={1}
-          py={0.5}
+          p={1}
           className={classes.toolbtn}
           onClick={() => {
             handleRotate(-90)
@@ -63,8 +62,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           向左旋转
         </Box>
         <Box
-          px={1}
-          py={0.5}
+          p={1}
           className={classes.toolbtn}
           onClick={() => {
             handleRotate(90)
