@@ -83,7 +83,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           position: 'relative',
           height: 0,
           transition: 'padding-top .25s ease-out',
-          'padding-top': (rotate / 90 % 2 !== 0) 
+          paddingTop: (rotate / 90 % 2 !== 0) 
             ? `${img.current.width / img.current.height * 100}%` 
             : `${img.current.height / img.current.width * 100}%` ,
         } : {
@@ -94,7 +94,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           className={classes.picturebig}
           src={pictures[index]}
           style={isRotated ? {
-            'transform-origin': 'left top',
+            transformOrigin: 'left top',
             position: 'absolute',
             top: 0,
             left: 0,
