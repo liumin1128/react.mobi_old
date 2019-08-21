@@ -1,40 +1,36 @@
-import React, { useState, Fragment } from 'react';
-import Box from '@material-ui/core/Box';
-import Big from './Big';
-import Small from './Small';
-import useStyles from './styles';
+import React, { useState } from 'react';
+import MultiView from './MultiView';
+import Preview from './Preview';
+
 
 function Pictures({ pictures }) {
   const [ show, setShow ] = useState(false);
   const [ index, setIndex ] = useState(0);
-  const classes = useStyles();
   if (!pictures || pictures.length === 0) return null;
 
+  if (show) {
+    return (
+      <MultiView
+        index={index}
+        pictures={pictures}
+        setIndex={(idx) => {
+          setIndex(idx);
+        }}
+        onClose={() => {
+          setShow(false);
+        }}
+      />
+    );
+  }
+
   return (
-    <Fragment>
-      <Box className={classes.root}>
-        {show ? (
-          <Big
-            index={index}
-            pictures={pictures}
-            setIndex={(idx) => {
-              setIndex(idx);
-            }}
-            onClose={() => {
-              setShow(false);
-            }}
-          />
-        ) : (
-          <Small
-            pictures={pictures}
-            onShow={(idx) => {
-              setShow(true);
-              setIndex(idx);
-            }}
-          />
-        )}
-      </Box>
-    </Fragment>
+    <Preview
+      pictures={pictures}
+      onShow={(idx) => {
+        setShow(true);
+        setIndex(idx);
+      }}
+    />
   );
 }
 
