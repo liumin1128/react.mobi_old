@@ -23,6 +23,7 @@ function Pictures({ pictures }) {
     );
   }
 
+
   return (
     <Preview
       pictures={pictures}
