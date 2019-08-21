@@ -25,8 +25,6 @@ function Pictures({ pictures, onShow }) {
   return (
     <Box
       m={-0.25}
-      mt={1}
-      mb={1}
       display="flex"
       flexWrap="wrap"
       className={classes.pictures}

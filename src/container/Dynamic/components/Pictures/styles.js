@@ -23,9 +23,9 @@ export default makeStyles(theme => ({
     },
   },
   picturebig: {
+    display: 'block',
     width: '100%',
-    paddingTop: '100%',
-    marginBottom: theme.spacing(1.5),
+    // transform: 'rotate(90deg)',
     '&:hover': {
       cursor: 'zoom-out', // zoom-out;
     },
@@ -34,7 +34,7 @@ export default makeStyles(theme => ({
     width: theme.spacing(27),
     height: theme.spacing(27),
     borderRadius: theme.spacing(0.5),
-    marginBottom: theme.spacing(1.5),
+    // marginBottom: theme.spacing(1.5),
     '&:hover': {
       cursor: 'zoom-in', // zoom-out;
     },
@@ -42,16 +42,28 @@ export default makeStyles(theme => ({
   },
 
   bigpictures: {
-    marginTop: theme.spacing(-1.25),
     maxWidth: theme.spacing(100),
   },
+
   bigpicture: {
     width: theme.spacing(6),
     height: theme.spacing(6),
-    borderRadius: theme.spacing(0.5),
+    // borderRadius: theme.spacing(0.5),
     margin: theme.spacing(0.25),
+    display: 'block',
+    opacity: 0.5,
     '&:hover': {
       cursor: 'pointer', // zoom-out;
     },
   },
+  bigpictureactive: {
+    opacity: 1,
+    border: `1px ${theme.palette.primary.main } solid`,
+  },
+
+  toolbtn: {
+    '&:hover': {
+      cursor: 'pointer', // zoom-out;
+    },
+  }
 }));

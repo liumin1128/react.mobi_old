@@ -88,7 +88,9 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user, za
             )}
 
 
-            <Pictures pictures={pictures} />
+            <Box my={1.5}>
+              <Pictures pictures={pictures} />
+            </Box>
 
             {iframe && (
               <Fragment>

@@ -13,7 +13,6 @@ function Pictures({ pictures }) {
   return (
     <Fragment>
       <Box className={classes.root}>
-
         {show ? (
           <Big
             index={index}
@@ -35,7 +34,6 @@ function Pictures({ pictures }) {
           />
         )}
       </Box>
-
     </Fragment>
   );
 }
