@@ -34,7 +34,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
   return (
     <Fragment>
       <Box
-        bgcolor="#ddd"
+        bgcolor="#eee"
         color="text.hint"
         display="flex"
         flexWrap="wrap"
