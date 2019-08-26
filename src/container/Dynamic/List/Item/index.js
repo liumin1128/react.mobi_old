@@ -31,7 +31,7 @@ import useStyles from './styles';
 import { text2html, topics2Html } from '../../utils';
 
 
-function DynamicListItem({ _id, content, pictures = [], iframe, topics, user, zanCount, zanStatus, commentCount, createdAt }) {
+function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {}, zanCount, zanStatus, commentCount, createdAt }) {
   const classes = useStyles();
   const [ isShow, setShow ] = useState(false);
 
@@ -66,15 +66,17 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user, za
     }
   }
 
+  const { avatarUrl, nickname } = user || { nickname: ' 遁入虚空的用户' };
+
   return (
     <Fragment key={_id}>
       <Card className={classes.card}>
         <Box p={3} pb={0}>
           <CardHeader
             className={classes.header}
-            avatar={(<Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>)}
+            avatar={(<Avatar aria-label="Avatar" src={avatarUrl} className={classes.avatar}>{nickname[0]}</Avatar>)}
             action={(<IconButton aria-label="Settings"><MoreVertIcon /></IconButton>)}
-            title={<Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>}
+            title={<Typography variant="h6" className={classes.nickname}>{nickname}</Typography>}
             subheader={getTimeAgo(createdAt)}
           />
           <Box className={classes.content}>
