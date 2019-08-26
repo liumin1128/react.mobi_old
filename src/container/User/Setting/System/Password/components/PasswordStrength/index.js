@@ -8,10 +8,10 @@ function PasswordStrength({ password = '' }) {
   const strength = checkPasswordStrength(password);
   const color = {
     0: '#a8071a',
-    1: '#ffe58f',
-    2: '#5cdbd3',
-    3: '#d3f261',
-    4: '#73d13d',
+    1: '#ffec3d',
+    2: '#bae637',
+    3: '#73d13d',
+    4: '#52c41a',
   };
   const strList = {
     0: '',
