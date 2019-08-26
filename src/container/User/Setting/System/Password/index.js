@@ -14,6 +14,20 @@ import { useOnMount } from '@/hooks';
 import pp from '@/hoc/pp';
 import { formatTime } from '@/utils/common';
 
+const validate = (values) => {
+  const errors = {};
+  if (!values.oldPassword) {
+    errors.oldPassword = '原密码不可以为空';
+  }
+  if (!values.password) {
+    errors.password = '新密码不可以为空';
+  }
+  if (!values.confirmPassword) {
+    errors.confirmPassword = '确认密码不可以为空';
+  }
+  return errors;
+};
+
 function EditeUserInfo() {
   const [ getUserInfo, getUserInfoData ] = useMutation(USERINFO);
   const [ updateUserInfo, updateUserInfoData ] = useMutation(UPDATE_USERINFO);
@@ -40,14 +54,16 @@ function EditeUserInfo() {
 
 
   async function onSubmit(params) {
-    const res = await updateUserInfo({ input: params });
-    console.log('res');
-    console.log(res);
-    if (res.data.result.status === 200) {
-      Snackbar.success('更新成功');
-    } else {
-      Snackbar.success(res.data.result.message);
-    }
+    console.log('params');
+    console.log(params);
+    // const res = await updateUserInfo({ input: params });
+    // console.log('res');
+    // console.log(res);
+    // if (res.data.result.status === 200) {
+    //   Snackbar.success('更新成功');
+    // } else {
+    //   Snackbar.success(res.data.result.message);
+    // }
   }
 
 
@@ -58,63 +74,35 @@ function EditeUserInfo() {
           <Box maxWidth={400}>
             <Form
               onSubmit={onSubmit}
-              initialValues={initialValues}
+              validate={validate}
               render={({ handleSubmit }) => (
-
                 <form onSubmit={handleSubmit}>
 
-
                   <Field
                     fullWidth
                     margin="normal"
-                    name="avatarUrl"
-                    label="头像"
-                    component={pp(UploadPictureField, { width: 160 })}
-                  />
-
-
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    name="nickname"
-                    label="用户昵称"
-                    component={TextField}
-                  />
-
-
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    name="sex"
-                    label="性别"
-                    InputLabelProps={{ shrink: true }}
-                    component={SexField}
-                  />
-
-
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    type="date"
-                    name="birthday"
-                    label="生日"
-                    InputLabelProps={{ shrink: true }}
+                    name="oldPassword"
+                    label="原密码"
                     component={TextField}
                   />
 
                   <Field
                     fullWidth
                     margin="normal"
-                    variant="outlined"
-                    name="sign"
-                    label="个性签名"
-                    multiline
-                    rows="4"
+                    name="password"
+                    label="新密码"
                     component={TextField}
                   />
 
+                  <Field
+                    fullWidth
+                    margin="normal"
+                    name="confirmPassword"
+                    label="确认密码"
+                    component={TextField}
+                  />
 
-                  <Box mt={2} />
+                  <Box mt={4} />
 
                   <Button
                     variant="outlined"
@@ -122,7 +110,7 @@ function EditeUserInfo() {
                     fullWidth
                     type="submit"
                   >
-                    保存
+                    确认修改
                   </Button>
                 </form>
               )}
