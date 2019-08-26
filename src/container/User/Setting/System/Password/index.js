@@ -1,69 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Field } from 'react-final-form';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import TextField from '@/components/Form/TextField';
-import UploadPictureField from '@/components/Form/Upload/Picture';
-import SexField from '@/components/Form/Field/Sex';
-import Snackbar from '@/components/Snackbar';
-import Loading from '@/components/Loading';
 import { useMutation } from '@/hooks/graphql';
-import { USERINFO, UPDATE_USERINFO } from '@/graphql/schema/user';
-import { useOnMount } from '@/hooks';
-import pp from '@/hoc/pp';
-import { formatTime } from '@/utils/common';
+import { UPDATE_PASSWORD } from '@/graphql/schema/user';
+import Snackbar from '@/components/Snackbar';
+import PasswordStrength from './components/PasswordStrength';
 
 const validate = (values) => {
   const errors = {};
-  if (!values.oldPassword) {
-    errors.oldPassword = '原密码不可以为空';
-  }
+  // if (!values.oldPassword) {
+  //   errors.oldPassword = '原密码不可以为空';
+  // }
   if (!values.password) {
     errors.password = '新密码不可以为空';
   }
   if (!values.confirmPassword) {
     errors.confirmPassword = '确认密码不可以为空';
+  } else if (values.confirmPassword !== values.password) {
+    errors.confirmPassword = '两次密码不一样';
   }
   return errors;
 };
 
 function EditeUserInfo() {
-  const [ getUserInfo, getUserInfoData ] = useMutation(USERINFO);
-  const [ updateUserInfo, updateUserInfoData ] = useMutation(UPDATE_USERINFO);
-  useOnMount(async () => {
-    if (!getUserInfoData.called) {
-      await getUserInfo();
+  const [ updateUserPassword ] = useMutation(UPDATE_PASSWORD);
+
+  async function onSubmit({ oldPassword, password }) {
+    const res = await updateUserPassword({ input: { oldPassword, password } });
+    console.log('res');
+    console.log(res);
+    if (res.data.result.status === 200) {
+      Snackbar.success('更新成功');
+    } else {
+      Snackbar.success(res.data.result.message);
     }
-  });
-
-  if (!getUserInfoData.called || getUserInfoData.loading) return <Loading />;
-  if (getUserInfoData.hasError) return getUserInfoData.error;
-
-  const { userInfo } = getUserInfoData.data;
-
-  console.log(userInfo);
-
-  const initialValues = userInfo._id ? {
-    nickname: userInfo.nickname,
-    avatarUrl: userInfo.avatarUrl,
-    sex: userInfo.sex,
-    birthday: userInfo.birthday ? formatTime(userInfo.birthday, 'YYYY-MMM-DD') : null,
-    sign: userInfo.sign,
-  } : {};
-
-
-  async function onSubmit(params) {
-    console.log('params');
-    console.log(params);
-    // const res = await updateUserInfo({ input: params });
-    // console.log('res');
-    // console.log(res);
-    // if (res.data.result.status === 200) {
-    //   Snackbar.success('更新成功');
-    // } else {
-    //   Snackbar.success(res.data.result.message);
-    // }
   }
 
 
@@ -75,7 +48,7 @@ function EditeUserInfo() {
             <Form
               onSubmit={onSubmit}
               validate={validate}
-              render={({ handleSubmit }) => (
+              render={({ handleSubmit, values }) => (
                 <form onSubmit={handleSubmit}>
 
                   <Field
@@ -83,7 +56,9 @@ function EditeUserInfo() {
                     margin="normal"
                     name="oldPassword"
                     label="原密码"
+                    type="password"
                     component={TextField}
+                    helperText="首次设置，无需填写原密码"
                   />
 
                   <Field
@@ -91,7 +66,11 @@ function EditeUserInfo() {
                     margin="normal"
                     name="password"
                     label="新密码"
+                    type="password"
                     component={TextField}
+                    InputProps={{
+                      endAdornment: values.password ? <PasswordStrength password={values.password} /> : null,
+                    }}
                   />
 
                   <Field
@@ -99,6 +78,7 @@ function EditeUserInfo() {
                     margin="normal"
                     name="confirmPassword"
                     label="确认密码"
+                    type="password"
                     component={TextField}
                   />
 

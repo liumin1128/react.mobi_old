@@ -16,7 +16,7 @@ import { formatTime } from '@/utils/common';
 
 function EditeUserInfo() {
   const [ getUserInfo, getUserInfoData ] = useMutation(USERINFO);
-  const [ updateUserInfo, updateUserInfoData ] = useMutation(UPDATE_USERINFO);
+  const [ updateUserInfo ] = useMutation(UPDATE_USERINFO);
   useOnMount(async () => {
     if (!getUserInfoData.called) {
       await getUserInfo();

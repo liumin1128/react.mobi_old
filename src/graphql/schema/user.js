@@ -40,6 +40,16 @@ export const UPDATE_USERINFO = gql`
   }
 `;
 
+export const UPDATE_PASSWORD = gql`
+  mutation updateUserPassword($input: UpdateUserPasswordInput) {
+    result: updateUserPassword(input: $input) {
+      __typename
+      status
+      message
+    }
+  }
+`;
+
 export const USER_PHONENUMBER_CODE = gql`
   mutation getPhoneNumberCode($purePhoneNumber: String!, $countryCode: String!) {
     result: getPhoneNumberCode(purePhoneNumber: $purePhoneNumber, countryCode: $countryCode) {
