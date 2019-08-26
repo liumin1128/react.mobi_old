@@ -89,12 +89,21 @@ export default class user extends PureComponent {
             onClose={this.handleClose}
           >
             <MenuItem onClick={this.handleProfile}>个人中心</MenuItem>
-            <MenuItem onClick={() => {
-              this.handleClose();
-              Router.push('/user/setting/info');
-            }}
+            <MenuItem
+              onClick={() => {
+                this.handleClose();
+                Router.push('/user/setting/info');
+              }}
             >
               我的资料
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                this.handleClose();
+                Router.push('/user/setting/system');
+              }}
+            >
+              设置
             </MenuItem>
             <MenuItem onClick={this.handleLgout}>注销登录</MenuItem>
           </Menu>
