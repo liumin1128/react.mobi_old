@@ -16,6 +16,8 @@ const validate = (values) => {
   // }
   if (!values.password) {
     errors.password = '新密码不可以为空';
+  } else if (values.password.length < 8) {
+    errors.password = '新密码太短了';
   }
   if (!values.confirmPassword) {
     errors.confirmPassword = '确认密码不可以为空';
