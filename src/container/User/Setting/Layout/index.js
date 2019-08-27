@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter, withRouter } from 'next/router';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -6,9 +7,10 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 
 const list = [
-  { label: '修改密码', value: 'password' },
-  { label: '绑定邮箱', value: 'email' },
-  { label: '绑定手机号', value: 'phone' },
+  { label: '用户信息', value: '/user/setting' },
+  { label: '修改密码', value: '/user/setting/password' },
+  { label: '绑定邮箱', value: '/user/setting/email' },
+  { label: '绑定手机号', value: '/user/setting/phone' },
 ];
 
 const useStyles = makeStyles((theme) => {
@@ -29,8 +31,9 @@ const useStyles = makeStyles((theme) => {
 
 function SystemSettings({ children }) {
   const classes = useStyles();
-  const [ value, setValue ] = useState('password');
-
+  const router = useRouter()
+  const {pathname} = router;
+  const [ value, setValue ] = useState(pathname);
   return (
     <Card>
       <Box display="flex">
@@ -43,6 +46,8 @@ function SystemSettings({ children }) {
             aria-label="Vertical tabs example"
             onChange={(_, path) => {
               setValue(path);
+              console.log(path);
+              router.push(path)
             }}
           >
             {list.map(i => (

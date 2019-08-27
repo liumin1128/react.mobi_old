@@ -1,6 +1,6 @@
 import React from 'react';
-import Password from '@/container/User/Setting/System/Password';
-import Layout from '@/container/User/Setting/System/Layout';
+import Layout from '@/container/User/Setting/Layout';
+import Password from '@/container/User/Setting/UserInfo';
 
 function SystemSettings() {
   return (
