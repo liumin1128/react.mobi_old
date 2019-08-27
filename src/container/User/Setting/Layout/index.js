@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => {
   return {
     tabs: {
       // borderRight: `1px solid ${theme.palette.divider}`,
-      boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.05)',
+      // boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.05) inset',
     },
     tab: {
       alignItems: 'flex-end',
@@ -64,7 +64,12 @@ function SystemSettings({ children }) {
           </Tabs>
         </Box>
 
-        <Box width={1}>
+        <Box
+          width={1}
+          style={{
+            boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.1)',
+          }}
+        >
           {children}
         </Box>
       </Box>
