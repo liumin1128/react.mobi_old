@@ -43,7 +43,7 @@ function EditeUserInfo() {
 
 
   return (
-    <Box p={4} display="flex" justifyContent="center">
+    <Box p={4} width={1} display="flex" justifyContent="center">
       <Box maxWidth={400}>
         <Form
           onSubmit={onSubmit}
@@ -90,7 +90,7 @@ function EditeUserInfo() {
                 fullWidth
                 type="submit"
               >
-                    确认修改
+                确认修改
               </Button>
             </form>
           )}

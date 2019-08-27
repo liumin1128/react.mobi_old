@@ -16,9 +16,7 @@ const list = [
   { label: '绑定手机号', value: 'phone' },
 ];
 
-
 const useStyles = makeStyles((theme) => {
-  console.log(theme);
   return {
     tabs: {
       borderRight: `1px solid ${theme.palette.divider}`,
@@ -29,6 +27,7 @@ const useStyles = makeStyles((theme) => {
     },
     selected: {
       backgroundColor: theme.palette.primary.a100,
+      color: theme.palette.primary.main
     },
   };
 });
@@ -39,36 +38,35 @@ function SystemSettings() {
 
   return (
     <Card>
-    <Box display="flex">
-      <Box width={200} py={4} className={classes.tabs}>
-        <Tabs
-          orientation="vertical"
-          variant="scrollable"
-          indicatorColor="primary"
-          value={value}
-          aria-label="Vertical tabs example"
-          onChange={(_, path) => {
-            setValue(path);
-          }}
-        >
-          {list.map(i => (
-            <Tab
-              key={i.value}
-              label={i.label}
-              value={i.value}
-              id={`vertical-tab-${i.value}`}
-              aria-controls={`vertical-tabpanel-${i.value}`}
-              classes={{ wrapper: classes.tab, selected: classes.selected }}
-            />
-          ))}
-        </Tabs>
+      <Box display="flex">
+        <Box width={240} py={4} className={classes.tabs}>
+          <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            indicatorColor="primary"
+            value={value}
+            aria-label="Vertical tabs example"
+            onChange={(_, path) => {
+              setValue(path);
+            }}
+          >
+            {list.map(i => (
+              <Tab
+                key={i.value}
+                label={i.label}
+                value={i.value}
+                id={`vertical-tab-${i.value}`}
+                aria-controls={`vertical-tabpanel-${i.value}`}
+                classes={{ wrapper: classes.tab, selected: classes.selected }}
+              />
+            ))}
+          </Tabs>
+        </Box>
 
+        <Box width={1}>
+          <Password />
+        </Box>
       </Box>
-
-      <Box>
-        <Password />
-      </Box>
-    </Box>
     </Card>
 
   );

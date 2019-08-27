@@ -5,6 +5,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 // const palette = { primary: { main: '#FF4081', contrastText: '#ffffff' } };
 const themeName = 'Wild Strawberry Razzmatazz Malayan Tiger';
 const palette = { 
+  divider: '#eeeeee',
   primary: { 
     main: '#fd4c86', 
     contrastText: '#ffffff',
