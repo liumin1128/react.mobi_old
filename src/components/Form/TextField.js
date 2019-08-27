@@ -4,14 +4,15 @@ import TextField from '@material-ui/core/TextField';
 export default ({
   input,
   meta,
+  helperText,
   ...rest
 }) => {
   return (
     <TextField
-      helperText={meta.touched ? meta.error : undefined}
-      error={meta.error && meta.touched}
       {...input}
       {...rest}
+      helperText={meta.touched ? meta.error : helperText}
+      error={meta.error && meta.touched}
     />
   );
 };
