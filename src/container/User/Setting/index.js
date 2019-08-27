@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic'
 import { useRouter, withRouter } from 'next/router';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
-import Email from './Email'
-import Phone from './Phone'
-import Password from './Password'
-import UserInfo from './UserInfo'
+import Loading from '@/components/Loading'
 
 const list = [
   { label: '用户信息', value: '/' },
@@ -16,6 +14,11 @@ const list = [
   { label: '绑定邮箱', value: '/email' },
   { label: '绑定手机号', value: '/phone' },
 ];
+
+const Email = dynamic(() => import('./Email'), { loading: Loading, ssr: false });
+const Phone = dynamic(() => import('./Phone'), { loading: Loading, ssr: false })
+const Password = dynamic(() => import('./Password'), { loading: Loading, ssr: false })
+const UserInfo = dynamic(() => import('./UserInfo'), { loading: Loading, ssr: false })
 
 const useStyles = makeStyles((theme) => {
   return {
