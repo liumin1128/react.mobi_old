@@ -54,7 +54,7 @@ function EditeUserInfo() {
   console.log(userInfo);
 
   const initialValues = getUserInfo ? {
-    countryCode: userInfo.countryCode,
+    countryCode: userInfo.countryCode || '+86',
     purePhoneNumber: userInfo.purePhoneNumber,
   } : {};
 
