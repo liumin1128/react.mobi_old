@@ -16,7 +16,8 @@ const list = [
 const useStyles = makeStyles((theme) => {
   return {
     tabs: {
-      borderRight: `1px solid ${theme.palette.divider}`,
+      // borderRight: `1px solid ${theme.palette.divider}`,
+      boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.05)',
     },
     tab: {
       alignItems: 'flex-end',
@@ -24,15 +25,15 @@ const useStyles = makeStyles((theme) => {
     },
     selected: {
       backgroundColor: theme.palette.primary.a100,
-      color: theme.palette.primary.main
+      color: theme.palette.primary.main,
     },
   };
 });
 
 function SystemSettings({ children }) {
   const classes = useStyles();
-  const router = useRouter()
-  const {pathname} = router;
+  const router = useRouter();
+  const { pathname } = router;
   const [ value, setValue ] = useState(pathname);
   return (
     <Card>
@@ -47,7 +48,7 @@ function SystemSettings({ children }) {
             onChange={(_, path) => {
               setValue(path);
               console.log(path);
-              router.push(path)
+              router.push(path);
             }}
           >
             {list.map(i => (

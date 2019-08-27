@@ -52,85 +52,83 @@ function EditeUserInfo() {
 
 
   return (
-    <div>
-      <Card>
-        <Box p={4} display="flex" justifyContent="center">
-          <Box maxWidth={400}>
-            <Form
-              onSubmit={onSubmit}
-              initialValues={initialValues}
-              render={({ handleSubmit }) => (
 
-                <form onSubmit={handleSubmit}>
+    <Box p={4} display="flex" justifyContent="center">
+      <Box maxWidth={400}>
+        <Form
+          onSubmit={onSubmit}
+          initialValues={initialValues}
+          render={({ handleSubmit }) => (
 
-
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    name="avatarUrl"
-                    label="头像"
-                    component={pp(UploadPictureField, { width: 160 })}
-                  />
+            <form onSubmit={handleSubmit}>
 
 
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    name="nickname"
-                    label="用户昵称"
-                    component={TextField}
-                  />
+              <Field
+                fullWidth
+                margin="normal"
+                name="avatarUrl"
+                label="头像"
+                component={pp(UploadPictureField, { width: 160 })}
+              />
 
 
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    name="sex"
-                    label="性别"
-                    InputLabelProps={{ shrink: true }}
-                    component={SexField}
-                  />
+              <Field
+                fullWidth
+                margin="normal"
+                name="nickname"
+                label="用户昵称"
+                component={TextField}
+              />
 
 
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    type="date"
-                    name="birthday"
-                    label="生日"
-                    InputLabelProps={{ shrink: true }}
-                    component={TextField}
-                  />
-
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    variant="outlined"
-                    name="sign"
-                    label="个性签名"
-                    multiline
-                    rows="4"
-                    component={TextField}
-                  />
+              <Field
+                fullWidth
+                margin="normal"
+                name="sex"
+                label="性别"
+                InputLabelProps={{ shrink: true }}
+                component={SexField}
+              />
 
 
-                  <Box mt={2} />
+              <Field
+                fullWidth
+                margin="normal"
+                type="date"
+                name="birthday"
+                label="生日"
+                InputLabelProps={{ shrink: true }}
+                component={TextField}
+              />
 
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    fullWidth
-                    type="submit"
-                  >
+              <Field
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                name="sign"
+                label="个性签名"
+                multiline
+                rows="4"
+                component={TextField}
+              />
+
+
+              <Box mt={2} />
+
+              <Button
+                variant="outlined"
+                color="primary"
+                fullWidth
+                type="submit"
+              >
                     保存
-                  </Button>
-                </form>
-              )}
-            />
-          </Box>
-        </Box>
-      </Card>
-    </div>
+              </Button>
+            </form>
+          )}
+        />
+      </Box>
+    </Box>
+
   );
 }
 
