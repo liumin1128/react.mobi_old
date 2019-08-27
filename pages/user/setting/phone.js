@@ -1,11 +1,11 @@
 import React from 'react';
 import Layout from '@/container/User/Setting/Layout';
-import Password from '@/container/User/Setting/UserInfo';
+import Phone from '@/container/User/Setting/Phone';
 
 function SystemSettings() {
   return (
     <Layout>
-      <Password />
+      <Phone />
     </Layout>
   );
 }
