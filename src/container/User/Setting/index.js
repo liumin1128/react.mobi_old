@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
 import Loading from '@/components/Loading'
 
 const list = [
@@ -47,6 +48,10 @@ function SystemSettings({ children, router }) {
     <Card>
       <Box display="flex">
         <Box width={248} minHeight={500} py={4} className={classes.tabs}>
+
+          <Box align="right" pr={3} pb={2}>
+            <Typography variant="h6">设置</Typography>
+          </Box>
           <Tabs
             orientation="vertical"
             variant="scrollable"
@@ -74,7 +79,7 @@ function SystemSettings({ children, router }) {
           </Tabs>
         </Box>
 
-        <Box width={1}>
+        <Box width={1} >
           {value === '/' && <UserInfo />}
           {value === '/password' && <Password />}
           {value === '/email' && <Email />}

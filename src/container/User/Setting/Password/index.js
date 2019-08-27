@@ -41,7 +41,7 @@ function EditeUserInfo() {
 
   return (
     <Box p={4} width={1} display="flex" justifyContent="center">
-      <Box maxWidth={360}>
+      <Box maxWidth={360} minWidth={200} width={1}>
         <Form
           onSubmit={onSubmit}
           validate={validate}
