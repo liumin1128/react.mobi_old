@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => {
   return {
     tabs: {
       borderRight: `1px solid ${theme.palette.divider}`,
-      // boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.05) inset',
     },
     tab: {
       alignItems: 'flex-end',
@@ -35,22 +34,22 @@ const useStyles = makeStyles((theme) => {
 });
 
 function SystemSettings({ children, router }) {
+  const { path } = router.query
   const classes = useStyles();
-  const { pathname } = router;
-  const [ value, setValue ] = useState('/');
+  const [ value, setValue ] = useState(path);
   return (
     <Card>
       <Box display="flex">
         <Box width={248} minHeight={500} py={4} className={classes.tabs}>
-            {value}
           <Tabs
             orientation="vertical"
             variant="scrollable"
             indicatorColor="primary"
             value={value}
             aria-label="Vertical tabs example"
-            onChange={(_, path) => {
-              setValue(path);
+            onChange={(_, _path) => {
+              setValue(_path);
+              router.push('/user/setting?_path='+_path, '/user/setting'+_path);
             }}
           >
             {list.map(i => (
@@ -60,7 +59,10 @@ function SystemSettings({ children, router }) {
                 value={i.value}
                 id={`vertical-tab-${i.value}`}
                 aria-controls={`vertical-tabpanel-${i.value}`}
-                classes={{ wrapper: classes.tab, selected: classes.selected }}
+                classes={{ 
+                  wrapper: classes.tab,
+                  selected: classes.selected 
+                }}
               />
             ))}
           </Tabs>

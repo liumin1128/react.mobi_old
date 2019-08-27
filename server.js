@@ -43,25 +43,10 @@ app.prepare()
 
     server.use(express.static('public'));
 
-    // server.get('/user/setting/:type?', (req, res, next) => {
-    //   const { activity, step = '', theme = 't1' } = req.params;
-
-    //   let pathname = '/h5';
-
-    //   if ([ 't1', 't2', 't3' ].findIndex(i => i === theme) !== -1) {
-    //     pathname += `/${theme}`;
-    //   }
-
-    //   if ([ 'step2', 'step3', 'step4' ].findIndex(i => i === step) !== -1) {
-    //     pathname += `/${step}`;
-    //   }
-
-    //   if (activity) {
-    //     app.render(req, res, pathname, { activity, theme });
-    //   } else {
-    //     return res.send('活动不存在或已过期');
-    //   }
-    // });
+    server.get('/user/setting/:path?', (req, res, next) => {
+      const { path = '' } = req.params;
+      app.render(req, res, '/user/setting', { path: `/${path}` });
+    });
 
     server.get('*', (req, res) => {
       return handle(req, res);

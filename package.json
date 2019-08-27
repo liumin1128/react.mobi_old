@@ -2,7 +2,7 @@
   "scripts": {
     "build": "next build",
     "pm2": "pm2 start ./process.json",
-    "start": "next -p 8000",
+    "start": "node server.js",
     "local": "next build && next start",
     "analyze": "BUNDLE_ANALYZE=both next build",
     "analyze:server": "BUNDLE_ANALYZE=server next build",
