@@ -28,7 +28,7 @@ function EditeUserInfo() {
 
   const { userInfo } = getUserInfoData.data;
 
-  console.log(userInfo);
+  // console.log(userInfo);
 
   const initialValues = userInfo._id ? {
     nickname: userInfo.nickname,

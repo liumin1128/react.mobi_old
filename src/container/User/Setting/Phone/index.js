@@ -51,7 +51,7 @@ function EditeUserInfo() {
 
   const { userInfo } = userInfoData.data;
 
-  console.log(userInfo);
+  // console.log(userInfo);
 
   const initialValues = getUserInfo ? {
     countryCode: userInfo.countryCode || '+86',

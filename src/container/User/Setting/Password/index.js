@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import TextField from '@/components/Form/TextField';
@@ -32,8 +31,6 @@ function EditeUserInfo() {
 
   async function onSubmit({ oldPassword, password }) {
     const res = await updateUserPassword({ input: { oldPassword, password } });
-    console.log('res');
-    console.log(res);
     if (res.data.result.status === 200) {
       Snackbar.success('更新成功');
     } else {
