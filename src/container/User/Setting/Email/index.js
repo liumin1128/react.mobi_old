@@ -36,7 +36,7 @@ function EditeUserInfo() {
 
   const { userInfo } = userInfoData.data;
 
-  console.log(userInfo);
+  // console.log(userInfo);
 
   const initialValues = getUserInfo ? {
     email: userInfo.email || userInfo.unverified_email,

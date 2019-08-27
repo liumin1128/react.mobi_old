@@ -33,10 +33,13 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
+
 function SystemSettings({ children, router }) {
-  const { path } = router.query
+  // console.log(router)
+  const { path = '/' } = router.query
   const classes = useStyles();
   const [ value, setValue ] = useState(path);
+
   return (
     <Card>
       <Box display="flex">
@@ -49,7 +52,7 @@ function SystemSettings({ children, router }) {
             aria-label="Vertical tabs example"
             onChange={(_, _path) => {
               setValue(_path);
-              router.push('/user/setting?_path='+_path, '/user/setting'+_path);
+              router.push('/user/setting?path='+_path, '/user/setting'+_path);
             }}
           >
             {list.map(i => (
