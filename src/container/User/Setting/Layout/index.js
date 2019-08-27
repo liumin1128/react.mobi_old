@@ -37,7 +37,7 @@ function SystemSettings({ children, router }) {
   return (
     <Card>
       <Box display="flex">
-        <Box width={240} minHeight={500} py={4} className={classes.tabs}>
+        <Box width={248} minHeight={500} py={4} className={classes.tabs}>
           <Tabs
             orientation="vertical"
             variant="scrollable"

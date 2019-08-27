@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import { Form, Field } from 'react-final-form';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import TextField from '@/components/Form/TextField';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import TextField from '@/components/Form/TextField';
 import { isPhoneNumber } from '@/utils/validate';
 import SelectField from '../SelectField';
 import CodeBtn from '../CodeBtn';
@@ -52,7 +52,7 @@ export default class phone extends PureComponent {
     const formData = {
       // nickname: '本王今年八岁',
       countryCode: '+86',
-      purePhoneNumber: '18629974148',
+      // purePhoneNumber: '18629974148',
       // code: '434772',
     };
     return (

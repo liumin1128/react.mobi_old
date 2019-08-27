@@ -28,7 +28,9 @@ export const USERINFO = gql`
       birthday
       email
       unverified_email
-      phone
+      countryCode
+      purePhoneNumber
+      phoneNumber
     }
   }
 `;
@@ -56,6 +58,16 @@ export const UPDATE_USER_EMAIL = gql`
 export const UPDATE_PASSWORD = gql`
   mutation updateUserPassword($input: UpdateUserPasswordInput) {
     result: updateUserPassword(input: $input) {
+      __typename
+      status
+      message
+    }
+  }
+`;
+
+export const UPDATE_USER_PHONE = gql`
+  mutation updateUserPhonenumber($purePhoneNumber: String!, $countryCode: String!, $code: String!) {
+    result: updateUserPhonenumber(purePhoneNumber: $purePhoneNumber, countryCode: $countryCode, code: $code) {
       __typename
       status
       message
