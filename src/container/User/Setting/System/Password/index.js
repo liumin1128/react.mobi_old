@@ -43,64 +43,60 @@ function EditeUserInfo() {
 
 
   return (
-    <div>
-      <Card>
-        <Box p={4} display="flex" justifyContent="center">
-          <Box maxWidth={400}>
-            <Form
-              onSubmit={onSubmit}
-              validate={validate}
-              render={({ handleSubmit, values }) => (
-                <form onSubmit={handleSubmit}>
+    <Box p={4} display="flex" justifyContent="center">
+      <Box maxWidth={400}>
+        <Form
+          onSubmit={onSubmit}
+          validate={validate}
+          render={({ handleSubmit, values }) => (
+            <form onSubmit={handleSubmit}>
 
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    name="oldPassword"
-                    label="原密码"
-                    type="password"
-                    component={TextField}
-                    helperText="首次设置，无需填写原密码"
-                  />
+              <Field
+                fullWidth
+                margin="normal"
+                name="oldPassword"
+                label="原密码"
+                type="password"
+                component={TextField}
+                helperText="首次设置，无需填写原密码"
+              />
 
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    name="password"
-                    label="新密码"
-                    type="password"
-                    component={TextField}
-                    InputProps={{
-                      endAdornment: values.password ? <PasswordStrength password={values.password} /> : null,
-                    }}
-                  />
+              <Field
+                fullWidth
+                margin="normal"
+                name="password"
+                label="新密码"
+                type="password"
+                component={TextField}
+                InputProps={{
+                  endAdornment: values.password ? <PasswordStrength password={values.password} /> : null,
+                }}
+              />
 
-                  <Field
-                    fullWidth
-                    margin="normal"
-                    name="confirmPassword"
-                    label="确认密码"
-                    type="password"
-                    component={TextField}
-                  />
+              <Field
+                fullWidth
+                margin="normal"
+                name="confirmPassword"
+                label="确认密码"
+                type="password"
+                component={TextField}
+              />
 
-                  <Box mt={4} />
+              <Box mt={4} />
 
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    fullWidth
-                    type="submit"
-                  >
+              <Button
+                variant="outlined"
+                color="primary"
+                fullWidth
+                type="submit"
+              >
                     确认修改
-                  </Button>
-                </form>
-              )}
-            />
-          </Box>
-        </Box>
-      </Card>
-    </div>
+              </Button>
+            </form>
+          )}
+        />
+      </Box>
+    </Box>
   );
 }
 

@@ -4,7 +4,13 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 // const palette = { primary: { main: '#FF4081', contrastText: '#ffffff' } };
 const themeName = 'Wild Strawberry Razzmatazz Malayan Tiger';
-const palette = { primary: { main: '#fd4c86', contrastText: '#ffffff' } };
+const palette = { 
+  primary: { 
+    main: '#fd4c86', 
+    contrastText: '#ffffff',
+    // a100: Color('#fd4c86').lighten(0.6)+''
+  }
+};
 const overrides = {
   MuiAppBar: {
     root: {
