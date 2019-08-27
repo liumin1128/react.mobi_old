@@ -91,7 +91,7 @@ export const randomString = (len = 32) => {
 };
 
 
-export const checkPasswordStrength = (password) => {
+export function checkPasswordStrength(password) {
   if (password.length < 8) {
     return 0;
   }
@@ -115,4 +115,9 @@ export const checkPasswordStrength = (password) => {
   //   strength += 1;
   // }
   return strength;
-};
+}
+
+export function checkEmail(str) {
+  const re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+  return re.test(str);
+}

@@ -26,6 +26,9 @@ export const USERINFO = gql`
       sign
       sex
       birthday
+      email
+      unverified_email
+      phone
     }
   }
 `;
@@ -33,6 +36,16 @@ export const USERINFO = gql`
 export const UPDATE_USERINFO = gql`
   mutation updateUserInfo($input: UpdateUserInfoInput) {
     result: updateUserInfo(input: $input) {
+      __typename
+      status
+      message
+    }
+  }
+`;
+
+export const UPDATE_USER_EMAIL = gql`
+  mutation updateUserEmail($email: String!) {
+    result: updateUserEmail(email: $email) {
       __typename
       status
       message

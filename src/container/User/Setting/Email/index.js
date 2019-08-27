@@ -4,34 +4,50 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import TextField from '@/components/Form/TextField';
 import { useMutation } from '@/hooks/graphql';
-import { UPDATE_PASSWORD } from '@/graphql/schema/user';
+import { UPDATE_USER_EMAIL, USERINFO } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
+import { checkEmail } from '@/utils/common';
+import Loading from '@/components/Loading';
+import { useOnMount } from '@/hooks';
+
 
 const validate = (values) => {
   const errors = {};
-  // if (!values.oldPassword) {
-  //   errors.oldPassword = '原密码不可以为空';
-  // }
-  if (!values.password) {
-    errors.password = '新密码不可以为空';
-  } else if (values.password.length < 8) {
-    errors.password = '新密码太短了';
-  }
-  if (!values.confirmPassword) {
-    errors.confirmPassword = '确认密码不可以为空';
-  } else if (values.confirmPassword !== values.password) {
-    errors.confirmPassword = '两次密码不一样';
+  if (!values.email) {
+    errors.email = '邮箱不可以为空';
+  } else if (!checkEmail(values.email)) {
+    errors.email = '邮箱格式不正确';
   }
   return errors;
 };
 
 function EditeUserInfo() {
-  const [ updateUserPassword ] = useMutation(UPDATE_PASSWORD);
+  const [ getUserInfo, userInfoData ] = useMutation(USERINFO, { ssr: false });
+  const [ updateUserPassword ] = useMutation(UPDATE_USER_EMAIL);
 
-  async function onSubmit({ oldPassword, password }) {
-    const res = await updateUserPassword({ input: { oldPassword, password } });
-    console.log('res');
-    console.log(res);
+  useOnMount(async () => {
+    if (!userInfoData.called) {
+      await getUserInfo();
+    }
+  });
+
+  if (!userInfoData.called || userInfoData.loading) return <Loading />;
+  if (userInfoData.hasError) return userInfoData.error;
+
+  const { userInfo } = userInfoData.data;
+
+  const initialValues = getUserInfo ? {
+    email: userInfo.email || userInfo.unverified_email,
+  } : {};
+
+  async function onSubmit({ email }) {
+    console.log('email');
+    console.log(email);
+    const res = await updateUserPassword({ email });
+    if (res.hasError) {
+      Snackbar.success('系统异常');
+      return;
+    }
     if (res.data.result.status === 200) {
       Snackbar.success('更新成功');
     } else {
@@ -42,21 +58,20 @@ function EditeUserInfo() {
 
   return (
     <Box p={4} width={1} display="flex" justifyContent="center">
-      <Box maxWidth={400}>
+      <Box maxWidth={400} width={1}>
         <Form
           onSubmit={onSubmit}
           validate={validate}
+          initialValues={initialValues}
           render={({ handleSubmit, values }) => (
             <form onSubmit={handleSubmit}>
 
               <Field
                 fullWidth
                 margin="normal"
-                name="oldPassword"
-                label="原密码"
-                type="password"
+                name="email"
+                label="邮箱"
                 component={TextField}
-                helperText="首次设置，无需填写原密码"
               />
 
               <Box mt={4} />
@@ -67,7 +82,7 @@ function EditeUserInfo() {
                 fullWidth
                 type="submit"
               >
-                确认修改
+                确认
               </Button>
             </form>
           )}

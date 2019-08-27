@@ -30,9 +30,8 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-function SystemSettings({ children }) {
+function SystemSettings({ children, router }) {
   const classes = useStyles();
-  const router = useRouter();
   const { pathname } = router;
   const [ value, setValue ] = useState(pathname);
   return (
@@ -78,4 +77,4 @@ function SystemSettings({ children }) {
   );
 }
 
-export default SystemSettings;
+export default withRouter(SystemSettings);
