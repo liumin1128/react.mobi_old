@@ -41,15 +41,13 @@ function EditeUserInfo() {
   } : {};
 
   async function onSubmit({ email }) {
-    console.log('email');
-    console.log(email);
     const res = await updateUserPassword({ email });
     if (res.hasError) {
       Snackbar.success('系统异常');
       return;
     }
     if (res.data.result.status === 200) {
-      Snackbar.success('更新成功');
+      Snackbar.success(`验证邮件已发送到您的邮箱 ${email}，请查收`);
     } else {
       Snackbar.success(res.data.result.message);
     }
