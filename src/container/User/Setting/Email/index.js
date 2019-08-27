@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -54,6 +54,7 @@ function EditeUserInfo() {
       Snackbar.success(res.data.result.message);
     }
   }
+  const disabled = Boolean(userInfo.email);
 
 
   return (
@@ -72,18 +73,25 @@ function EditeUserInfo() {
                 name="email"
                 label="邮箱"
                 component={TextField}
+                disabled={disabled}
               />
 
-              <Box mt={4} />
+              {!disabled && (
+                <Fragment>
 
-              <Button
-                variant="outlined"
-                color="primary"
-                fullWidth
-                type="submit"
-              >
-                确认
-              </Button>
+                  <Box mt={4} />
+
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    fullWidth
+                    type="submit"
+                  >
+                    确认
+                  </Button>
+                </Fragment>
+              )}
+
             </form>
           )}
         />

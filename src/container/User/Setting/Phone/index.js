@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -71,6 +71,8 @@ function EditeUserInfo() {
     }
   }
 
+  const disabled = Boolean(userInfo.phoneNumber);
+
 
   return (
     <Box p={4} width={1} display="flex" justifyContent="center">
@@ -92,6 +94,7 @@ function EditeUserInfo() {
                     label="国家"
                     margin="normal"
                     component={SelectCountries}
+                    disabled={disabled}
                   />
                 </Grid>
                 <Grid item xs={8}>
@@ -103,36 +106,46 @@ function EditeUserInfo() {
                     label="手机号"
                     margin="normal"
                     component={TextField}
+                    disabled={disabled}
+
                   />
                 </Grid>
               </Grid>
 
-              <Field
-                fullWidth
-                key="code"
-                name="code"
-                label="验证码"
-                component={TextField}
-                type="text"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment variant="filled" position="end">
-                      <CodeBtn values={values} />
-                    </InputAdornment>
-                  ),
-                }}
-              />
+              {!disabled && (
+                <Fragment>
+                  <Field
+                    fullWidth
+                    key="code"
+                    name="code"
+                    label="验证码"
+                    component={TextField}
+                    disabled={disabled}
 
-              <Box mt={4} />
+                    type="text"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment variant="filled" position="end">
+                          <CodeBtn values={values} />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  <Box mt={4} />
 
-              <Button
-                variant="outlined"
-                color="primary"
-                fullWidth
-                type="submit"
-              >
-                确认
-              </Button>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    fullWidth
+                    type="submit"
+                    disabled={disabled}
+                  >
+                    确认
+                  </Button>
+                </Fragment>
+
+              )}
+
             </form>
           )}
         />
