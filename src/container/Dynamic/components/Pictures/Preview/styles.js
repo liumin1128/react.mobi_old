@@ -4,28 +4,27 @@ export default makeStyles(theme => ({
   pictures: {
     maxWidth: theme.spacing(42),
   },
-  picture: {
-    width: theme.spacing(13),
-    height: theme.spacing(13),
+  
+  item: {
     borderRadius: theme.spacing(0.5),
-    margin: theme.spacing(0.25),
+    backgroundColor: 'rgba(0,0,0,0.05)',
     '&:hover': {
       cursor: 'zoom-in', // zoom-out;
-    },
-    [theme.breakpoints.down('xs')]: {
-      width: theme.spacing(11.5),
-      height: theme.spacing(11.5),
     },
   },
 
-  pictureone: {
-    width: theme.spacing(27),
-    height: theme.spacing(27),
-    borderRadius: theme.spacing(0.5),
-    // marginBottom: theme.spacing(1.5),
-    '&:hover': {
-      cursor: 'zoom-in', // zoom-out;
-    },
+  item_1_1: {
+    width: '100%',
+    paddingTop: '100%',
+  },
 
+  item_1_2: {
+    width: '100%',
+    paddingTop: `calc(200% + ${theme.spacing(0.5)}px)`,
+  },
+
+  item_2_3: {
+    width: '100%',
+    paddingTop: `calc(150% + ${theme.spacing(0.25)}px)`,
   },
 }));
