@@ -8,7 +8,7 @@ function PicturesMarsk({ list, current, onChange }) {
   return (
     <Box
       m={-0.25}
-      mt={0.25}
+      mb={0.25}
       display="flex"
       flexWrap="wrap"
       className={classes.root}

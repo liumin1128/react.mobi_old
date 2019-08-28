@@ -29,6 +29,17 @@ function Pictures({ index, pictures, onClose, setIndex }) {
   return (
     <Fragment>
 
+      {pictures.length > 1 && (
+        <NavBottom
+          list={pictures}
+          current={index}
+          onChange={(idx) => {
+            setIsRotated(false);
+            setRotate(0);
+            setIndex(idx);
+          }}
+        />
+      )}
       <Toolbar
         onClose={() => {
           onClose();
@@ -60,17 +71,6 @@ function Pictures({ index, pictures, onClose, setIndex }) {
         />
       </Marsk>
 
-      {pictures.length > 1 && (
-        <NavBottom
-          list={pictures}
-          current={index}
-          onChange={(idx) => {
-            setIsRotated(false);
-            setRotate(0);
-            setIndex(idx);
-          }}
-        />
-      )}
     </Fragment>
   );
 }
