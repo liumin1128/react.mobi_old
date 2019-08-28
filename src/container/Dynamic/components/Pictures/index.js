@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import LazyLoad from 'react-lazyload';
+import Box from '@material-ui/core/Box';
 import MultiView from './MultiView';
 import Preview from './Preview';
 
@@ -25,13 +27,22 @@ function Pictures({ pictures }) {
 
 
   return (
-    <Preview
-      pictures={pictures}
-      onShow={(idx) => {
-        setShow(true);
-        setIndex(idx);
-      }}
-    />
+
+
+    <LazyLoad
+      debounce={100}
+      // unmountIfInvisible
+      placeholder={<Box width={1} pt={'100%'} />}
+    >
+      <Preview
+        pictures={pictures}
+        onShow={(idx) => {
+          setShow(true);
+          setIndex(idx);
+        }}
+      />
+
+    </LazyLoad>
   );
 }
 
