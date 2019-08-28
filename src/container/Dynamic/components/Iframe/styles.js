@@ -7,7 +7,7 @@ export default makeStyles(theme => ({
     height: 0,
     paddingTop: '58%',
     position: 'relative',
-    backgroundColor: 'rgba(0,0,0,0.05)',
+    backgroundColor: '#f8f8f8',
     borderRadius: 4,
     overflow: 'hidden',
     boxShadow: '0 10px 20px 0 rgba(0,0,0,0.3)',

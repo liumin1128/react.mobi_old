@@ -32,7 +32,7 @@ function Pictures({ pictures }) {
     <LazyLoad
       debounce={100}
       // unmountIfInvisible
-      placeholder={<Box width={1} pt={'100%'} />}
+      placeholder={<Box width={1} pt={'100%'} bgcolor="#f8f8f8" borderRadius={4} />}
     >
       <Preview
         pictures={pictures}
