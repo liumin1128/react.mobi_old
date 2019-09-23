@@ -13,7 +13,7 @@ function Pictures({ pictures, onShow }) {
   if (pictures.length === 1) {
     return (
       <CardMedia
-        className={[ classes.item, classes.item_1_1 ]}
+        className={`${classes.item} ${classes.item_1_1}`}
         image={pictures[0]}
         onClick={() => {
           wiewPicture(0);
@@ -27,7 +27,7 @@ function Pictures({ pictures, onShow }) {
       <Box display="flex" m={-0.25}>
         <Box p={0.25} width={1 / 2}>
           <CardMedia
-            className={[ classes.item, classes.item_1_2 ]}
+            className={`${classes.item} ${classes.item_1_2}`}
             image={pictures[0]}
             onClick={() => {
               wiewPicture(0);
@@ -36,7 +36,7 @@ function Pictures({ pictures, onShow }) {
         </Box>
         <Box p={0.25} width={1 / 2}>
           <CardMedia
-            className={[ classes.item, classes.item_1_2 ]}
+            className={`${classes.item} ${classes.item_1_2}`}
             image={pictures[1]}
             onClick={() => {
               wiewPicture(1);
@@ -52,7 +52,7 @@ function Pictures({ pictures, onShow }) {
       <Box display="flex" m={-0.25}>
         <Box p={0.25} width={1 / 2}>
           <CardMedia
-            className={[ classes.item, classes.item_1_2 ]}
+            className={`${classes.item} ${classes.item_1_2}`}
             image={pictures[0]}
             onClick={() => {
               wiewPicture(0);
@@ -63,7 +63,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 2}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[1]}
               onClick={() => {
                 wiewPicture(1);
@@ -72,7 +72,7 @@ function Pictures({ pictures, onShow }) {
           </Box>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[2]}
               onClick={() => {
                 wiewPicture(2);
@@ -90,7 +90,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={2 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_2_3 ]}
+              className={`${classes.item} ${classes.item_2_3}`}
               image={pictures[0]}
               onClick={() => {
                 wiewPicture(0);
@@ -103,7 +103,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[1]}
               onClick={() => {
                 wiewPicture(1);
@@ -113,7 +113,7 @@ function Pictures({ pictures, onShow }) {
 
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[2]}
               onClick={() => {
                 wiewPicture(2);
@@ -123,7 +123,7 @@ function Pictures({ pictures, onShow }) {
 
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[3]}
               onClick={() => {
                 wiewPicture(3);
@@ -144,7 +144,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={2 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[0]}
               onClick={() => {
                 wiewPicture(0);
@@ -157,7 +157,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_2 ]}
+              className={`${classes.item} ${classes.item_1_2}`}
               image={pictures[1]}
               onClick={() => {
                 wiewPicture(1);
@@ -168,7 +168,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[2]}
               onClick={() => {
                 wiewPicture(2);
@@ -179,7 +179,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[3]}
               onClick={() => {
                 wiewPicture(3);
@@ -190,7 +190,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[4]}
               onClick={() => {
                 wiewPicture(4);
@@ -208,7 +208,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={2 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[0]}
               onClick={() => {
                 wiewPicture(0);
@@ -220,7 +220,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[1]}
               onClick={() => {
                 wiewPicture(1);
@@ -230,7 +230,7 @@ function Pictures({ pictures, onShow }) {
 
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[2]}
               onClick={() => {
                 wiewPicture(2);
@@ -243,7 +243,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[3]}
               onClick={() => {
                 wiewPicture(3);
@@ -255,7 +255,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[4]}
               onClick={() => {
                 wiewPicture(4);
@@ -267,7 +267,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[5]}
               onClick={() => {
                 wiewPicture(5);
@@ -289,7 +289,7 @@ function Pictures({ pictures, onShow }) {
           <Box width={1 / 2}>
             <Box p={0.25}>
               <CardMedia
-                className={[ classes.item, classes.item_1_2 ]}
+                className={`${classes.item} ${classes.item_1_2}`}
                 image={pictures[0]}
                 onClick={() => {
                   wiewPicture(0);
@@ -301,7 +301,7 @@ function Pictures({ pictures, onShow }) {
           <Box width={1 / 2}>
             <Box p={0.25}>
               <CardMedia
-                className={[ classes.item, classes.item_1_2 ]}
+                className={`${classes.item} ${classes.item_1_2}`}
                 image={pictures[1]}
                 onClick={() => {
                   wiewPicture(1);
@@ -315,7 +315,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[2]}
               onClick={() => {
                 wiewPicture(2);
@@ -325,7 +325,7 @@ function Pictures({ pictures, onShow }) {
 
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[3]}
               onClick={() => {
                 wiewPicture(3);
@@ -338,7 +338,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[4]}
               onClick={() => {
                 wiewPicture(4);
@@ -350,7 +350,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[5]}
               onClick={() => {
                 wiewPicture(5);
@@ -362,7 +362,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[6]}
               onClick={() => {
                 wiewPicture(6);
@@ -384,7 +384,7 @@ function Pictures({ pictures, onShow }) {
           <Box width={1 / 2}>
             <Box p={0.25}>
               <CardMedia
-                className={[ classes.item, classes.item_1_2 ]}
+                className={`${classes.item} ${classes.item_1_2}`}
                 image={pictures[0]}
                 onClick={() => {
                   wiewPicture(0);
@@ -396,7 +396,7 @@ function Pictures({ pictures, onShow }) {
           <Box width={1 / 2}>
             <Box p={0.25}>
               <CardMedia
-                className={[ classes.item, classes.item_1_1 ]}
+                className={`${classes.item} ${classes.item_1_1}`}
                 image={pictures[1]}
                 onClick={() => {
                   wiewPicture(1);
@@ -406,7 +406,7 @@ function Pictures({ pictures, onShow }) {
 
             <Box p={0.25}>
               <CardMedia
-                className={[ classes.item, classes.item_1_1 ]}
+                className={`${classes.item} ${classes.item_1_1}`}
                 image={pictures[2]}
                 onClick={() => {
                   wiewPicture(2);
@@ -420,7 +420,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[3]}
               onClick={() => {
                 wiewPicture(3);
@@ -430,7 +430,7 @@ function Pictures({ pictures, onShow }) {
 
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[4]}
               onClick={() => {
                 wiewPicture(4);
@@ -443,7 +443,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[5]}
               onClick={() => {
                 wiewPicture(5);
@@ -455,7 +455,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[6]}
               onClick={() => {
                 wiewPicture(6);
@@ -467,7 +467,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={pictures[7]}
               onClick={() => {
                 wiewPicture(7);
@@ -491,7 +491,7 @@ function Pictures({ pictures, onShow }) {
         <Box width={1 / 3} key={i}>
           <Box p={0.25}>
             <CardMedia
-              className={[ classes.item, classes.item_1_1 ]}
+              className={`${classes.item} ${classes.item_1_1}`}
               image={i}
               onClick={() => {
                 wiewPicture(idx);
