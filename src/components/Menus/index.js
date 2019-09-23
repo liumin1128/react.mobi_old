@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -23,7 +23,7 @@ class LongMenu extends React.Component {
     const open = Boolean(anchorEl);
 
     return (
-      <Fragment>
+      <>
         <span onClick={this.handleClick}>
           {children || (
             <IconButton
@@ -72,7 +72,7 @@ class LongMenu extends React.Component {
             );
           })}
         </Menu>
-      </Fragment>
+      </>
     );
   }
 }

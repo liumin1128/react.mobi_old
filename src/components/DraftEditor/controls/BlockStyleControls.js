@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { RichUtils } from 'draft-js';
 import LooksOneIcon from '@material-ui/icons/LooksOne';
 import LooksTwoIcon from '@material-ui/icons/LooksTwo';
@@ -35,15 +35,15 @@ export default ({ editorState, onChange }) => {
     .getBlockForKey(selection.getStartKey())
     .getType();
 
-  const onToggle = newblockType => onChange(RichUtils.toggleBlockType(
+  const onToggle = (newblockType) => onChange(RichUtils.toggleBlockType(
     editorState,
     newblockType,
   ));
 
 
   return (
-    <Fragment>
-      {BLOCK_TYPES.map(type => (
+    <>
+      {BLOCK_TYPES.map((type) => (
         <StyleButton
           key={type.label}
           icon={type.icon}
@@ -53,6 +53,6 @@ export default ({ editorState, onChange }) => {
           style={type.style}
         />
       ))}
-    </Fragment>
+    </>
   );
 };

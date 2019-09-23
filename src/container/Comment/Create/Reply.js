@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -167,7 +167,7 @@ function ReplyCreate({ commentTo, replyTo, session, callback, autoFocus }) {
         if (code === 200) {
           edit.innerHTML = '';
           const data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
-          const idx = data.list.findIndex(i => i._id === commentTo);
+          const idx = data.list.findIndex((i) => i._id === commentTo);
 
           data.list[idx].replys.unshift(result);
           data.list[idx].replyCount += 1;
@@ -182,7 +182,7 @@ function ReplyCreate({ commentTo, replyTo, session, callback, autoFocus }) {
   }
 
   return (
-    <Fragment>
+    <>
       <div
         contentEditable
         suppressContentEditableWarning
@@ -227,7 +227,7 @@ function ReplyCreate({ commentTo, replyTo, session, callback, autoFocus }) {
           发表评论
         </Button>
       </Box>
-    </Fragment>
+    </>
   );
 }
 

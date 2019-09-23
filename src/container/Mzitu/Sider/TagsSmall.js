@@ -1,14 +1,15 @@
-import React, { Fragment, PureComponent } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Link from '@/components/Link';
 import { MZITU_TAGS } from '@/graphql/schema/mzitu';
 import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
     paddingTop: '100%',
@@ -31,8 +32,8 @@ const useStyles = makeStyles(theme => ({
     marginTop: 4,
     fontSize: 10,
     textAlign: 'center',
-    whiteSpace:'nowrap'
-  }
+    whiteSpace: 'nowrap',
+  },
 }));
 
 
@@ -56,19 +57,21 @@ function MzituTags() {
   return (
     <Grid container spacing={2}>
       {
-        list.map(i => (<Grid item xs={4} key={i.tag}>
-          <Link href={`/mzitu?tag=${i.tag}`}>
-            <Fragment>
-              <CardMedia className={classes.media} image={i.cover} title={i.title} />
-              <Typography className={classes.name} color="textSecondary" component="p">
-                {i.title}
-              </Typography>
-            </Fragment>
-          </Link>
-        </Grid>))
+        list.map((i) => (
+          <Grid item xs={4} key={i.tag}>
+            <Link href={`/mzitu?tag=${i.tag}`}>
+              <>
+                <CardMedia className={classes.media} image={i.cover} title={i.title} />
+                <Typography className={classes.name} color="textSecondary" component="p">
+                  {i.title}
+                </Typography>
+              </>
+            </Link>
+          </Grid>
+        ))
       }
     </Grid>
   );
-};
+}
 
 export default MzituTags;

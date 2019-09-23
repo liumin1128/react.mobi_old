@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { withRouter } from 'next/router';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -75,11 +75,11 @@ function DynamicDetail({ router }) {
                 <Pictures pictures={pictures} />
 
                 {iframe && (
-                  <Fragment>
+                  <>
                     <Box my={1.5}>
                       <Iframe iframe={iframe} />
                     </Box>
-                  </Fragment>
+                  </>
                 )}
 
 

@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
@@ -6,7 +6,7 @@ import Html from '@/components/Html';
 import Link from '@/components/Link';
 import { getStrFromHtml } from '@/utils/common';
 
-const styles = theme => ({
+const styles = (theme) => ({
   title: {
     paddingTop: 8,
     paddingBottom: 0,
@@ -23,7 +23,7 @@ export default class Content extends PureComponent {
   render() {
     const { _id, title, html, isExpanded, classes, toggleExpanded } = this.props;
     return (
-      <Fragment>
+      <>
         <CardContent className={classes.title}>
           <Link href={`/article/detail?_id=${_id}`}>
             <Typography variant="h6" component="h3">
@@ -42,7 +42,7 @@ export default class Content extends PureComponent {
               )
           }
         </CardContent>
-      </Fragment>
+      </>
     );
   }
 }

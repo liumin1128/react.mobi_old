@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { withRouter } from 'next/router';
-import { Waypoint } from 'react-waypoint';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -27,7 +26,7 @@ function NewsList({ router }) {
   const { list } = data;
 
   return (
-    <Fragment>
+    <>
       <List className={classes.root}>
         {list.map((i, index) => (
           <Link key={i._id} href={`/news/detail?_id=${i._id}`}>
@@ -47,7 +46,7 @@ function NewsList({ router }) {
       {
         // isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />
       }
-    </Fragment>
+    </>
   );
 }
 

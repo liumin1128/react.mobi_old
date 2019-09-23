@@ -1,11 +1,11 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import Hidden from '@material-ui/core/Hidden';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Side from '@/container/Side';
 import Header from '../Header';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: theme.container,
   header: {
     marginBottom: 16,
@@ -18,7 +18,7 @@ export default class index extends PureComponent {
   render() {
     const { children, classes } = this.props;
     return (
-      <Fragment>
+      <>
         <div className={classes.header}>
           <Header />
         </div>
@@ -34,7 +34,7 @@ export default class index extends PureComponent {
             </Grid>
           </Grid>
         </div>
-      </Fragment>
+      </>
     );
   }
 }

@@ -1,7 +1,6 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React from 'react';
 import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import { DYNAMIC_LIST, CHECK_NEW_DYNAMIC } from '@/graphql/schema/dynamic';
 import { useQuery, useMutation } from '@/hooks/graphql';
 // import { useOnMount, useOnUnmount } from '@/hooks';

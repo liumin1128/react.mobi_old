@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { Entity, RichUtils, EditorState, Modifier } from 'draft-js';
 import LinkIcon from '@material-ui/icons/Link';
 import LinkOffIcon from '@material-ui/icons/LinkOff';
@@ -17,9 +17,12 @@ const formKeys = [
 ];
 
 export default class MediaButton extends Component {
-  state = {
-    visible: false,
-    confirmLoading: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      confirmLoading: false,
+    };
   }
 
   onSubmit = ({ text, href }) => {
@@ -122,7 +125,7 @@ export default class MediaButton extends Component {
     // console.log(editorState.getSelection());
 
     return (
-      <Fragment>
+      <>
         <StyleButton
           key="link"
           icon={LinkIcon}
@@ -159,7 +162,7 @@ export default class MediaButton extends Component {
             onSubmit={this.onSubmit}
           />
         </Modal>
-      </Fragment>
+      </>
     );
   }
 }

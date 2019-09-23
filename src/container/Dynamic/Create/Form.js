@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import CloseIcon from '@material-ui/icons/Close';
@@ -182,7 +182,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     setPictures([ ...pictures ]);
   }
   return (
-    <Fragment>
+    <>
       <div
         contentEditable
         suppressContentEditableWarning
@@ -238,7 +238,7 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
           </Box>
         ))}
       </Box>
-    </Fragment>
+    </>
   );
 }
 

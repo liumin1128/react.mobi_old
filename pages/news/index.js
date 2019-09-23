@@ -1,12 +1,12 @@
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import GridList from '@/container/News/List/GridList';
 import NavTabs from '@/components/NavTabs';
 // import FlatList from '@/container/News/List/FlatList';
 
 function Index() {
   return (
-    <Fragment>
+    <>
       <NavTabs
         navList={[
           { label: 'switch', pathname: '/' },
@@ -16,7 +16,7 @@ function Index() {
       />
       <br />
       <GridList />
-    </Fragment>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import InputBase from '@material-ui/core/InputBase';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -25,7 +25,7 @@ function Topics({ onClick }) {
   //   getTopics();
   // });
   return (
-    <Fragment>
+    <>
       <InputBase
         classes={{
           root: classes.root,
@@ -38,7 +38,7 @@ function Topics({ onClick }) {
       {
         topics.length > 0 && (
         <List component="nav" aria-label="Main mailbox folders">
-          {topics.map(i => (
+          {topics.map((i) => (
             <ListItem key={i._id} button onClick={() => onClick(i)}>
               <ListItemText primary={`#${i.title}#`} />
             </ListItem>
@@ -47,7 +47,7 @@ function Topics({ onClick }) {
         )
       }
 
-    </Fragment>
+    </>
   );
 }
 

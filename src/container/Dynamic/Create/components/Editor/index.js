@@ -1,10 +1,9 @@
 
-import React, { Fragment, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Box from '@material-ui/core/Box';
 import Icon from '@material-ui/core/Icon';
 import { useOnMount } from '@/hooks';
 import Popper from '@/components/Popper';
-import SelectTopic from '../SelectTopic';
 import Emoticon from '../Emoticon';
 import useStyles from './styles';
 
@@ -26,7 +25,7 @@ function Topics({ onClick, content }) {
     });
   });
   return (
-    <Fragment>
+    <>
       {JSON.stringify(selection, 0, false)}
       <div
         contentEditable
@@ -46,11 +45,11 @@ function Topics({ onClick, content }) {
               }}
             />
           </Box>
-                )}
+        )}
       >
         <Icon>@</Icon>
       </Popper>
-    </Fragment>
+    </>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
@@ -228,7 +228,7 @@ function DynamicCreate({ router }) {
   }
 
   return (
-    <Fragment>
+    <>
       <div
         contentEditable
         suppressContentEditableWarning
@@ -340,7 +340,7 @@ function DynamicCreate({ router }) {
         </Box>
       )}
 
-    </Fragment>
+    </>
   );
 }
 

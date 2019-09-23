@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { Mutation } from 'react-apollo';
 import Button from '@material-ui/core/Button';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
@@ -7,8 +7,11 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { LIKE } from '@/graphql/schema/like';
 
 export default class Like extends PureComponent {
-  state = {
-    active: '',
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: '',
+    };
   }
 
   render() {
@@ -34,7 +37,7 @@ export default class Like extends PureComponent {
             }
           };
           return (
-            <Fragment>
+            <>
               <Button
                 onClick={() => onLike()}
                 className={className}
@@ -54,7 +57,7 @@ export default class Like extends PureComponent {
               >
                 {(loading && active === 'unlike') ? <CircularProgress color="inherit" size={24} thickness={5} /> : <ArrowDropDownIcon />}
               </Button>
-            </Fragment>
+            </>
           );
         }}
       </Mutation>

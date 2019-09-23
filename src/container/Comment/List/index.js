@@ -34,7 +34,7 @@ function DynamicList({ session }) {
   }
 
   return (
-    <Fragment>
+    <>
       <Box>
         {list.map((i, idx) => (
           <Fragment key={i._id}>
@@ -66,7 +66,7 @@ function DynamicList({ session }) {
                       fetchMoreReplys({ commentTo: i._id, skip: i.replys.length }, {
                         update: (store, { data: { list: _list } }) => {
                           const _data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
-                          const jdx = _data.list.findIndex(j => j._id === i._id);
+                          const jdx = _data.list.findIndex((j) => j._id === i._id);
                           if (jdx === -1) return;
                           _data.list[jdx].replys = [ ..._data.list[jdx].replys, ..._list ];
                           store.writeQuery({ query: COMMENT_LIST, variables: { session }, data: _data });
@@ -97,7 +97,7 @@ function DynamicList({ session }) {
           </Button>
         )}
       </Box>
-    </Fragment>
+    </>
   );
 }
 

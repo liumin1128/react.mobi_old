@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { withRouter } from 'next/router';
 import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
@@ -21,9 +21,9 @@ function NewsList({ router }) {
   const { list } = data;
 
   return (
-    <Fragment>
+    <>
       <Grid container spacing={3}>
-        {list.map(i => (
+        {list.map((i) => (
           <Grid key={i._id} item xs={12} sm={6} md={4}>
             <Link href={`/news/detail?_id=${i._id}`}>
               <CardMedia className={classes.cover} image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''} />
@@ -33,7 +33,7 @@ function NewsList({ router }) {
         ))}
       </Grid>
       {isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />}
-    </Fragment>
+    </>
   );
 }
 

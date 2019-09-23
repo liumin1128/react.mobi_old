@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 import DynamicList from '@/container/Dynamic/List';
@@ -12,7 +12,7 @@ import Footer from '@/container/Side/Footer';
 
 function Index() {
   return (
-    <Fragment>
+    <>
       <Card>
         <Box p={2}>
           <DynamicCreate />
@@ -39,12 +39,12 @@ function Index() {
       </Card>
       <Box mb={1.5} />
       <DynamicList />
-    </Fragment>
+    </>
   );
 }
 
 Index.Sider = () => (
-  <Fragment>
+  <>
     <DynamicTopics />
     <Box mt={2} />
     <Card>
@@ -70,7 +70,7 @@ Index.Sider = () => (
         <Footer />
       </Box>
     </Card>
-  </Fragment>
+  </>
 );
 
 export default Index;

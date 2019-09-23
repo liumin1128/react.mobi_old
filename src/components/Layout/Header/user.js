@@ -1,7 +1,7 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import Router from 'next/router';
 import Link from 'next/link';
-import { Query, graphql } from 'react-apollo';
+import { graphql } from 'react-apollo';
 import dynamic from 'next/dynamic';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -73,7 +73,7 @@ export default class user extends PureComponent {
     if (userInfo._id) {
       const { anchorEl } = this.state;
       return (
-        <Fragment>
+        <>
           <ButtonBase
             centerRipple
             aria-owns={anchorEl ? 'simple-menu' : undefined}
@@ -107,13 +107,13 @@ export default class user extends PureComponent {
             </MenuItem>
             <MenuItem onClick={this.handleLgout}>注销登录</MenuItem>
           </Menu>
-        </Fragment>
+        </>
 
       );
     }
     // console.log(error);
     return (
-      <Fragment>
+      <>
         <Link href="/login/register"><Button color="inherit">注册</Button></Link>
         <Link href="/login"><Button style={{ background: 'rgba(255,255,255,0.1)' }} color="inherit">登录</Button></Link>
 
@@ -127,7 +127,7 @@ export default class user extends PureComponent {
           //   登录
           // </Button>
           }
-      </Fragment>
+      </>
     );
   }
 
@@ -135,10 +135,10 @@ export default class user extends PureComponent {
     // console.log(this.props);
     const { showLoginModal } = this.state;
     return (
-      <Fragment>
+      <>
         {this.renderUser()}
         {showLoginModal && this.renderLoginForm()}
-      </Fragment>
+      </>
     );
   }
 }

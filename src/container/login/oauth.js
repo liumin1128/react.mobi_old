@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { API_URL } from '@/config/base';
 import { useTheme } from '@/hoc/theme';
 import OauthButton from './components/OauthButton';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     marginBottom: 64,
   },
@@ -39,7 +39,7 @@ function Oauth() {
   const classes = useStyles();
   const { theme } = useTheme();
   return (
-    <Fragment>
+    <>
       <div className={classes.root}>
         <div className={classes.orLine}>
           <div className={classes.line} />
@@ -88,7 +88,7 @@ function Oauth() {
           `}
         </style>
       }
-    </Fragment>
+    </>
   );
 }
 

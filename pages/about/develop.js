@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 import marked from 'marked';
@@ -78,7 +78,7 @@ function Home() {
 }
 
 Home.Sider = () => (
-  <Fragment>
+  <>
     <Card>
       <Box p={2}>
         <Blogrol />
@@ -102,7 +102,7 @@ Home.Sider = () => (
         <Footer />
       </Box>
     </Card>
-  </Fragment>
+  </>
 );
 
 export default Home;

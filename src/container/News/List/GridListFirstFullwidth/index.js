@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
 import { Query } from 'react-apollo';
@@ -11,9 +11,10 @@ import Avatar from '@material-ui/core/Avatar';
 import CardMedia from '@material-ui/core/CardMedia';
 import { NEWS_LIST } from '@/graphql/schema/news';
 import { updateQuery } from '@/graphql/utils';
-import { getLessStr, formatTime } from '@/utils/common';
-import Link from '@/components/Link'
-const styles = theme => ({
+import { formatTime } from '@/utils/common';
+import Link from '@/components/Link';
+
+const styles = (theme) => ({
   media: {
     display: 'block',
     width: 64,
@@ -31,65 +32,69 @@ export default class NewsList extends PureComponent {
     const { router, classes } = this.props;
     const { search, tag, type } = router.query;
     return (
-        <Query
-          query={NEWS_LIST}
-          variables={{ search, tag, type }}
-        >
-          {({ loading, error, data = {}, fetchMore, refetch }) => {
-            if (loading) return <CircularProgress
-            color="secondary"
-            // className={classes.progress}
-          />
-            if (error) {
-              return (
-                <div>
-                  {`Error! ${error.message}`}
-                  <a onClick={() => { refetch({ search, tag }); }}>refetch</a>
-                </div>
-              );
-            }
-
-            console.log('data')
-            console.log(data)
-
-            const { list = [] } = data;
-
-            const loadMore = () => fetchMore({
-              variables: {
-                skip: list.length,
-                search,
-              },
-              updateQuery,
-            });
-
+      <Query
+        query={NEWS_LIST}
+        variables={{ search, tag, type }}
+      >
+        {({ loading, error, data = {}, fetchMore, refetch }) => {
+          if (loading) {
             return (
-              <Fragment>
+              <CircularProgress
+                color="secondary"
+              />
+            );
+          }
+          if (error) {
+            return (
+              <div>
+                {`Error! ${error.message}`}
+                <a onClick={() => { refetch({ search, tag }); }}>refetch</a>
+              </div>
+            );
+          }
 
-                <Grid container className={classes.root} spacing={2}>
+          console.log('data');
+          console.log(data);
+
+          const { list = [] } = data;
+
+          const loadMore = () => fetchMore({
+            variables: {
+              skip: list.length,
+              search,
+            },
+            updateQuery,
+          });
+
+          return (
+            <>
+
+              <Grid container className={classes.root} spacing={2}>
                   {list
                     // .slice(0, 4)
                     .map((i, index) => (
-                    <Grid key={i._id} item xs={12} md={index === 0 ? 12 : 4}>
-                    <Link to={"/news/detail?_id="+i._id}>
+                      <Grid key={i._id} item xs={12} md={index === 0 ? 12 : 4}>
+                        <Link to={`/news/detail?_id=${i._id}`}>
 
 
-                      <Grid container spacing={2}>
+                          <Grid container spacing={2}>
 
-                        <Grid item xs={12} md={index === 0 ? 8 : 12}>
-                          <CardMedia
+                            <Grid item xs={12} md={index === 0 ? 8 : 12}>
+                            <CardMedia
                             style={{
                               paddingTop: index === 0 ? '45%' : '55%',
-                              backgroundColor: 'rgba(0,0,0,0.05)'
+                              backgroundColor: 'rgba(0,0,0,0.05)',
                             }}
-                            image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''  }
+                            image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''}
                           />
-                        </Grid>
-                        <Grid item xs={12} md={index === 0 ? 4 : 12}>
+                          </Grid>
+                            <Grid item xs={12} md={index === 0 ? 4 : 12}>
 
-                          <div
+                            <div
                             style={{
                               // height: index === 0 ? 260 :140
-                            }}>
+                            }}
+                          >
                             <Typography variant="h6">{i.title}</Typography>
                             {
                             //   <Typography variant="body1" gutterBottom>{
@@ -98,7 +103,7 @@ export default class NewsList extends PureComponent {
                             // }</Typography>
                           }
                           </div>
-                          <CardHeader
+                            <CardHeader
                             avatar={(
                               <Avatar aria-label="Recipe">
                                 {i.appName[0]}
@@ -108,21 +113,21 @@ export default class NewsList extends PureComponent {
                             subheader={formatTime(i.createdAt, 'MM月DD日 HH:mm 星期')}
                             style={{ paddingLeft: 0 }}
                           />
-                        </Grid>
+                          </Grid>
+                          </Grid>
+                        </Link>
                       </Grid>
-                      </Link>
-                    </Grid>
-                  ))}
+                    ))}
                 </Grid>
-                <CircularProgress
+              <CircularProgress
                   color="secondary"
                   className={classes.progress}
                 />
-                <Waypoint onEnter={loadMore} />
-              </Fragment>
-            );
-          }}
-        </Query>
+              <Waypoint onEnter={loadMore} />
+            </>
+          );
+        }}
+      </Query>
     );
   }
 }

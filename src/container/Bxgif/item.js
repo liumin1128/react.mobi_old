@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Link from '@/components/Link';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import Link from '@/components/Link';
 
 const styles = {
   cover: {
@@ -45,33 +45,32 @@ class RecipeReviewCard extends React.Component {
     } = this.props;
 
     return (
-          <Link key={_id} href={`/bxgif/detail?_id=${_id}`}>
-            <Card>
-              <CardMedia
-                className={classes.cover}
-                image={cover}
-                title={title}
-                style={{
-                  paddingBottom: `${(height / 195) * 100}%`,
-                }}
-              />
-              <CardContent>
-              <Typography
-                className={classes.title}
-                variant="body2"
+      <Link key={_id} href={`/bxgif/detail?_id=${_id}`}>
+        <Card>
+          <CardMedia
+            className={classes.cover}
+            image={cover}
+            title={title}
+            style={{
+              paddingBottom: `${(height / 195) * 100}%`,
+            }}
+          />
+          <CardContent>
+            <Typography
+              className={classes.title}
+              variant="body2"
                 // component="p"
-                color="textPrimary"
-                // color="textSecondary"
-              >
-                {title.substring(14, title.length)}
-              </Typography>
-              <Typography className={classes.meta} color="textSecondary">
-                <span>{`${total}`}</span>
-                <span>{createdAt}</span>
-              </Typography>
-              </CardContent>
-            </Card>
-          </Link>
+              color="textPrimary"
+            >
+              {title.substring(14, title.length)}
+            </Typography>
+            <Typography className={classes.meta} color="textSecondary">
+              <span>{`${total}`}</span>
+              <span>{createdAt}</span>
+            </Typography>
+          </CardContent>
+        </Card>
+      </Link>
     );
   }
 }

@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React from 'react';
 import Hidden from '@material-ui/core/Hidden';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';

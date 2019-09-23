@@ -1,5 +1,5 @@
 
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -9,7 +9,7 @@ function Input({ onChange, value }) {
   const [ _value, setValue ] = useState(value);
   const classes = useStyles();
   return (
-    <Fragment>
+    <>
       <Box display="flex" justifyContent="center">
         <InputBase
           placeholder="请填写视频网站iframe代码"
@@ -34,7 +34,7 @@ function Input({ onChange, value }) {
           确定
         </Button>
       </Box>
-    </Fragment>
+    </>
   );
 }
 

@@ -1,20 +1,13 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
 import Box from '@material-ui/core/Box';
 // import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    position: 'relative',
-  },
-}));
 
 export default function MyPopper({ children, content }) {
-  const classes = useStyles();
   const [ anchorEl, setAnchorEl ] = React.useState(null);
 
   function handleClick(event) {
@@ -29,7 +22,7 @@ export default function MyPopper({ children, content }) {
   const id = open ? 'simple-popper' : undefined;
 
   return (
-    <Fragment>
+    <>
       <Box onClick={handleClick}>
         {children}
       </Box>
@@ -64,6 +57,6 @@ export default function MyPopper({ children, content }) {
           </Popper>
         </ClickAwayListener>
       )}
-    </Fragment>
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { withRouter } from 'next/router';
 import { Waypoint } from 'react-waypoint';
 import Grid from '@material-ui/core/Grid';
@@ -19,16 +19,16 @@ function MzituList({ router }) {
   const { list } = data;
 
   return (
-    <Fragment>
+    <>
       <Grid spacing={2} container>
-        {list.map(i => (
+        {list.map((i) => (
           <Grid key={i._id} item xs={6} sm={4}>
             <Item {...i} />
           </Grid>
         ))}
       </Grid>
       {isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />}
-    </Fragment>
+    </>
   );
 }
 

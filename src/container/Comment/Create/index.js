@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -206,7 +206,7 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
   }
 
   return (
-    <Fragment>
+    <>
       <div
         contentEditable
         suppressContentEditableWarning
@@ -250,7 +250,7 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
           发表评论
         </Button>
       </Box>
-    </Fragment>
+    </>
   );
 }
 

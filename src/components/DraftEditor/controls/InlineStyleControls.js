@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { RichUtils } from 'draft-js';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
@@ -15,14 +15,14 @@ const INLINE_STYLES = [
 export default ({ editorState, onChange }) => {
   const currentStyle = editorState.getCurrentInlineStyle();
 
-  const onToggle = inlineStyle => onChange(RichUtils.toggleInlineStyle(
+  const onToggle = (inlineStyle) => onChange(RichUtils.toggleInlineStyle(
     editorState,
     inlineStyle,
   ));
 
   return (
-    <Fragment>
-      {INLINE_STYLES.map(type => (
+    <>
+      {INLINE_STYLES.map((type) => (
         <StyleButton
           key={type.label}
           icon={type.icon}
@@ -32,6 +32,6 @@ export default ({ editorState, onChange }) => {
           style={type.style}
         />
       ))}
-    </Fragment>
+    </>
   );
 };

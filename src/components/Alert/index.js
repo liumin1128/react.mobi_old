@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React from 'react';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Card from '@material-ui/core/Card';
@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 function Alert({ type, onClose, message, description, closable }) {
   return (
-    <Fragment>
+    <>
       <Card color="red" style={{ background: 'rgba(0,0,0,0.1)' }}>
         <ButtonBase style={{ width: '100%' }}>
           <Box p={1} display="flex" justifyContent="center">
@@ -16,7 +16,7 @@ function Alert({ type, onClose, message, description, closable }) {
           </Box>
         </ButtonBase>
       </Card>
-    </Fragment>
+    </>
   );
 }
 

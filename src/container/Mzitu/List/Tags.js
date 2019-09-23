@@ -1,9 +1,8 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'next/router';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
 
 @withRouter
 export default class Tags extends PureComponent {
@@ -16,7 +15,7 @@ export default class Tags extends PureComponent {
     const { router } = this.props;
     const { type } = router.query;
     return (
-      <Fragment>
+      <>
         {
           // <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           //   <Typography style={{ marginBottom: 0 }} variant="h5" gutterBottom>
@@ -40,7 +39,7 @@ export default class Tags extends PureComponent {
           // </div>
         }
         <Divider style={{ marginTop: -1 }} />
-      </Fragment>
+      </>
     );
   }
 }

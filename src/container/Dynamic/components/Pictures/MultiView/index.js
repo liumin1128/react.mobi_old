@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Toolbar from './Toolbar';
 import Marsk from './Marsk';
 import NavBottom from './NavBottom';
@@ -27,7 +27,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
   }
 
   return (
-    <Fragment>
+    <>
 
       {pictures.length > 1 && (
         <NavBottom
@@ -72,7 +72,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
         />
       </Marsk>
 
-    </Fragment>
+    </>
   );
 }
 

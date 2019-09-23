@@ -1,11 +1,11 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import { listQuery } from '@/graphql/utils';
 import Item from './ListItem';
 import Placeholder from './Placeholder';
 
-const styles = theme => ({
+const styles = (theme) => ({
   card: {
     maxWidth: 500,
     marginBottom: theme.spacing(3),
@@ -22,21 +22,21 @@ export default class test extends PureComponent {
 
     if (loading) {
       return (
-        <Fragment>
+        <>
           <Placeholder />
           <div style={{ marginBottom: 16 }} />
           <Placeholder />
-        </Fragment>
+        </>
       );
     }
     if (error) return `Error! ${error.message}`;
 
     return (
-      <Fragment>
-        {list.map(i => (
+      <>
+        {list.map((i) => (
           <Item key={i._id} {...i} />
         ))}
-      </Fragment>
+      </>
     );
   }
 }

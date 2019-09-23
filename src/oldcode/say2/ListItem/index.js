@@ -1,4 +1,4 @@
-import React, { PureComponent, createRef, Fragment } from 'react';
+import React, { PureComponent, createRef } from 'react';
 // import { Waypoint } from 'react-waypoint';
 import { withRouter } from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
@@ -13,9 +13,6 @@ import Button from '@material-ui/core/Button';
 import ShareIcon from '@material-ui/icons/Share';
 import StarIcon from '@material-ui/icons/Star';
 import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
-import { formatTime, getScrollTop } from '@/utils/common';
-import Menus from '@/components/Menus';
-import Comments from '@/container/comments';
 import Dialog from '@material-ui/core/Dialog';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -23,12 +20,15 @@ import ListItemText from '@material-ui/core/ListItemText';
 import EditIcon from '@material-ui/icons/Edit';
 // import Hidden from '@material-ui/core/Hidden';
 import withWidth, { isWidthUp, isWidthDown } from '@material-ui/core/withWidth';
+import Comments from '@/container/comments';
+import Menus from '@/components/Menus';
+import { formatTime, getScrollTop } from '@/utils/common';
 import ShareMenu from '@/components/ShareMenu';
 import Delete from './Delete';
 import Like from './Like';
 import Content from './Content';
 
-const styles = theme => ({
+const styles = (theme) => ({
   grow: {
     flexGrow: 1,
   },
@@ -66,14 +66,17 @@ const styles = theme => ({
 @withStyles(styles)
 @withRouter
 export default class ListItem extends PureComponent {
-  state = {
-    isFixed: false,
-    toolbarWidth: 0,
-    isExpanded: false,
-    showComments: false,
-  }
-
   content = createRef()
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isFixed: false,
+      toolbarWidth: 0,
+      isExpanded: false,
+      showComments: false,
+    };
+  }
 
   componentDidMount() {
     if (this.content) {
@@ -116,7 +119,7 @@ export default class ListItem extends PureComponent {
   }
 
   toggleShowComments = () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       showComments: !state.showComments,
     }));
   }
@@ -160,11 +163,11 @@ export default class ListItem extends PureComponent {
         options={[
           {
             key: 'delete',
-            render: props => <Delete {...props} key={{ key: 'delete' }} id={_id} />,
+            render: (props) => <Delete {...props} key={{ key: 'delete' }} id={_id} />,
           },
           {
             key: 'edite',
-            render: props => (
+            render: (props) => (
               <MenuItem
                 {...props}
                 onClick={() => {
@@ -230,7 +233,7 @@ export default class ListItem extends PureComponent {
               </Button>
 
               {isWidthUp('sm', width) && (
-                <Fragment>
+                <>
                   <ShareMenu
                     title={title}
                     nickname={user.nickname}
@@ -250,17 +253,17 @@ export default class ListItem extends PureComponent {
                   {
                     this.renderMenus()
                   }
-                </Fragment>
+                </>
               )}
 
             </div>
 
             {!isExpanded && isWidthDown('xs', width) && (
-              <Fragment>
+              <>
                 {
                   this.renderMenus()
                 }
-              </Fragment>
+              </>
             )}
 
             {isExpanded && (

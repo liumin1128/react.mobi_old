@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -72,9 +72,9 @@ export default class MeizituDetail extends PureComponent {
       },
     ];
     return (
-      <Fragment>
+      <>
         {
-          list.map(i => (
+          list.map((i) => (
             <Card className={classes.card}>
               <CardMedia
                 className={classes.media}
@@ -98,7 +98,7 @@ export default class MeizituDetail extends PureComponent {
           ))
         }
 
-      </Fragment>
+      </>
     );
   }
 }

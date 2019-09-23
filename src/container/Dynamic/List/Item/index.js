@@ -46,7 +46,7 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
         const data = store.readQuery({ query: DYNAMIC_LIST });
         const num = { 200: 1, 201: -1 };
         const sta = { 200: true, 201: false };
-        const idx = data.list.findIndex(i => i._id === _id);
+        const idx = data.list.findIndex((i) => i._id === _id);
         data.list[idx].zanCount += num[code];
         data.list[idx].zanStatus = sta[code];
         store.writeQuery({ query: DYNAMIC_LIST, data });
@@ -95,11 +95,11 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
             </Box>
 
             {iframe && (
-              <Fragment>
+              <>
                 <Box my={1.5}>
                   <Iframe iframe={iframe} />
                 </Box>
-              </Fragment>
+              </>
             )}
 
             <Box my={2.5} display="flex" style={{ color: '#999' }}>
@@ -128,7 +128,7 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
                   autoFocus
                   update={(store) => {
                     const data = store.readQuery({ query: DYNAMIC_LIST });
-                    const idx = data.list.findIndex(i => i._id === _id);
+                    const idx = data.list.findIndex((i) => i._id === _id);
                     data.list[idx].commentCount += 1;
                     store.writeQuery({ query: DYNAMIC_LIST, data });
                   }}

@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent, createRef } from 'react';
+import React, { PureComponent, createRef } from 'react';
 import { Editor, EditorState, RichUtils, convertFromRaw } from 'draft-js';
 import InlineStyleControls from './controls/InlineStyleControls';
 import MediaControls from './controls/MediaControls';
@@ -75,10 +75,10 @@ export default class DraftEditor extends PureComponent {
 
   render() {
     return (
-      <Fragment>
+      <>
         {this.renderMenus()}
         {this.renderEditor()}
-      </Fragment>
+      </>
     );
   }
 }

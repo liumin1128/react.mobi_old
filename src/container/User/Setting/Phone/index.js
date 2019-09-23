@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -113,7 +113,7 @@ function EditeUserInfo() {
               </Grid>
 
               {!disabled && (
-                <Fragment>
+                <>
                   <Field
                     fullWidth
                     key="code"
@@ -142,7 +142,7 @@ function EditeUserInfo() {
                   >
                     确认
                   </Button>
-                </Fragment>
+                </>
 
               )}
 

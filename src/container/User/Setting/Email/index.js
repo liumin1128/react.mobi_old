@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -77,7 +77,7 @@ function EditeUserInfo() {
               />
 
               {!disabled && (
-                <Fragment>
+                <>
 
                   <Box mt={4} />
 
@@ -89,7 +89,7 @@ function EditeUserInfo() {
                   >
                     确认
                   </Button>
-                </Fragment>
+                </>
               )}
 
             </form>

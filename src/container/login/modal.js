@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -14,7 +14,7 @@ function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     background: 'none',
   },
@@ -57,7 +57,7 @@ export default class LoginModal extends PureComponent {
   renderLogin = () => {
     const { classes, onLoginSuccess } = this.props;
     return (
-      <Fragment>
+      <>
         {
           <CardMedia
             className={classes.media}
@@ -76,14 +76,14 @@ export default class LoginModal extends PureComponent {
             <a onClick={() => { this.switchMode('phone'); }}>手机号登录</a>
           </span>
         </DialogContent>
-      </Fragment>
+      </>
     );
   }
 
   renderRegister = () => {
     const { classes, onLoginSuccess } = this.props;
     return (
-      <Fragment>
+      <>
 
         <DialogContent>
           <Register onLoginSuccess={onLoginSuccess} />
@@ -97,14 +97,14 @@ export default class LoginModal extends PureComponent {
             <a onClick={() => { this.switchMode('phone'); }}>手机号登录</a>
           </span>
         </DialogContent>
-      </Fragment>
+      </>
     );
   }
 
   renderPhone = () => {
     const { classes, onLoginSuccess } = this.props;
     return (
-      <Fragment>
+      <>
         {
           <CardMedia
             className={classes.media}
@@ -123,7 +123,7 @@ export default class LoginModal extends PureComponent {
             <a onClick={() => { this.switchMode('login'); }}>用户名密码登录</a>
           </span>
         </DialogContent>
-      </Fragment>
+      </>
     );
   }
 

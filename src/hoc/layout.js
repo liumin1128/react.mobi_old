@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Header from '@/components/Layout/Header';
 
-export default WrappedComponent => ({ Component, ...props }) => {
+export default (WrappedComponent) => ({ Component, ...props }) => {
   /* eslint-disable no-param-reassign */
   if (!Component.Layout) Component.Layout = Fragment;
   if (!Component.Header) Component.Header = Header;

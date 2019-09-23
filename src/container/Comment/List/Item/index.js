@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
@@ -32,12 +32,12 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
         const sta = { 200: true, 201: false };
         if (replyTo) {
           // 如果是回复
-          const idx = data.list.findIndex(i => i._id === commentTo);
-          const jdx = data.list[idx].replys.findIndex(j => j._id === _id);
+          const idx = data.list.findIndex((i) => i._id === commentTo);
+          const jdx = data.list[idx].replys.findIndex((j) => j._id === _id);
           data.list[idx].replys[jdx].zanCount += num[code];
           data.list[idx].replys[jdx].zanStatus = sta[code];
         } else {
-          const idx = data.list.findIndex(i => i._id === commentTo);
+          const idx = data.list.findIndex((i) => i._id === commentTo);
           data.list[idx].zanCount += num[code];
           data.list[idx].zanStatus = sta[code];
         }
@@ -74,7 +74,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
 
           {
             (replyTo && replyTo._id !== commentTo && replyTo.user && replyTo.user.nickname) && (
-              <Fragment>
+              <>
                 <Box px={1}>
 
                   <Typography variant="body2">回复</Typography>
@@ -82,7 +82,7 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
                 <Typography variant="h6" className={classes.name}>
                   {replyTo.user.nickname}
                 </Typography>
-              </Fragment>
+              </>
             )
           }
         </Box>
