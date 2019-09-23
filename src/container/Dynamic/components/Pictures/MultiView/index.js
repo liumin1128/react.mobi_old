@@ -40,6 +40,7 @@ function Pictures({ index, pictures, onClose, setIndex }) {
           }}
         />
       )}
+
       <Toolbar
         onClose={() => {
           onClose();

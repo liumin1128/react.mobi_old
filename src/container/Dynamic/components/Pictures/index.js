@@ -28,21 +28,22 @@ function Pictures({ pictures }) {
 
   return (
 
-
-    <LazyLoad
-      debounce={100}
+    <Box maxWidth={360}>
+      <LazyLoad
+        debounce={100}
       // unmountIfInvisible
-      placeholder={<Box width={1} pt={'100%'} bgcolor="#f8f8f8" borderRadius={4} />}
-    >
-      <Preview
-        pictures={pictures}
-        onShow={(idx) => {
-          setShow(true);
-          setIndex(idx);
-        }}
-      />
+        placeholder={<Box width={1} pt={'100%'} bgcolor="#f8f8f8" borderRadius={4} />}
+      >
+        <Preview
+          pictures={pictures}
+          onShow={(idx) => {
+            setShow(true);
+            setIndex(idx);
+          }}
+        />
+      </LazyLoad>
+    </Box>
 
-    </LazyLoad>
   );
 }
 
