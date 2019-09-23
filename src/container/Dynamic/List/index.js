@@ -63,7 +63,7 @@ function DynamicList({ router }) {
 
 
   return (
-    <Fragment>
+    <>
 
       {/* {hasNewData && (
         <Button
@@ -83,14 +83,14 @@ function DynamicList({ router }) {
 
       <Box mt={1.5} />
 
-      {list.map(i => <Item key={i._id} {...i} />)}
+      {list.map((i) => <Item key={i._id} {...i} />)}
 
       <Loadmore
         isEnd={isEnd}
         isLoading={isLoadingMore}
         loadMore={loadMore}
       />
-    </Fragment>
+    </>
   );
 }
 
