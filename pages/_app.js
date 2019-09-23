@@ -21,34 +21,32 @@ export default class MyApp extends App {
     if (!Component.Footer) Component.Footer = Fragment;
 
     return (
-      <NextContainer>
-        <ApolloProvider client={apolloClient}>
-          <ApolloHooksProvider client={apolloClient}>
-            <ThemeContextProvider>
-              <Component.Layout>
-                <Component.Header />
-                <Container maxWidth="md">
-                  <Box my={2}>
-                    {Component.Sider ? (
-                      <Grid container spacing={3}>
-                        <Grid item xs={12} sm={12} md={8}>
-                          <Component />
-                        </Grid>
-                        <Grid item xs={12} sm={12} md={4}>
-                          <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
-                            <Component.Sider />
-                          </Hidden>
-                        </Grid>
+      <ApolloProvider client={apolloClient}>
+        <ApolloHooksProvider client={apolloClient}>
+          <ThemeContextProvider>
+            <Component.Layout>
+              <Component.Header />
+              <Container maxWidth="md">
+                <Box my={2}>
+                  {Component.Sider ? (
+                    <Grid container spacing={3}>
+                      <Grid item xs={12} sm={12} md={8}>
+                        <Component />
                       </Grid>
-                    ) : <Component />}
-                  </Box>
-                </Container>
-                <Component.Footer />
-              </Component.Layout>
-            </ThemeContextProvider>
-          </ApolloHooksProvider>
-        </ApolloProvider>
-      </NextContainer>
+                      <Grid item xs={12} sm={12} md={4}>
+                        <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
+                          <Component.Sider />
+                        </Hidden>
+                      </Grid>
+                    </Grid>
+                  ) : <Component />}
+                </Box>
+              </Container>
+              <Component.Footer />
+            </Component.Layout>
+          </ThemeContextProvider>
+        </ApolloHooksProvider>
+      </ApolloProvider>
     );
   }
 }
