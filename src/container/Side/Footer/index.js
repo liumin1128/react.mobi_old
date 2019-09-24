@@ -1,6 +1,5 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Link from '@/components/Link';
 import useStyles from './styles';
 
 export default function () {
@@ -17,6 +16,7 @@ export default function () {
           }}
           style={{ textDecoration: 'none', color: '#999' }}
           href="#"
+          className={classes.a}
         >
             投诉建议
         </a>
@@ -24,7 +24,14 @@ export default function () {
       <Typography style={{ color: '#999' }} variant="body2" gutterBottom>
           盗火 -
         {' '}
-        <Link target="_blank" href="http://www.miitbeian.gov.cn">吉ICP备15006191号-2</Link>
+        <a
+          className={classes.a}
+          rel="noopener noreferrer"
+          target="_blank"
+          href="http://www.miitbeian.gov.cn"
+        >
+吉ICP备15006191号-2
+        </a>
       </Typography>
     </div>
   );

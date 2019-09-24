@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import useStyles from './styles';
 
