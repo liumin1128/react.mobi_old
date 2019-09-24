@@ -5,7 +5,7 @@ import uploadToQiniu from './uploadToQiniu';
 
 function getFileItem(file, fileList) {
   const matchKey = file.uid !== undefined ? 'uid' : 'name';
-  return fileList.filter(item => item[matchKey] === file[matchKey])[0];
+  return fileList.filter((item) => item[matchKey] === file[matchKey])[0];
 }
 
 @uploadToQiniu
@@ -18,22 +18,21 @@ export default class PictureUploadWrapper extends PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('fileList' in nextProps) {
-      this.setState({
-        fileList: nextProps.fileList || [],
-      });
-    }
-  }
-
+  // componentDidUpdate(nextProps) {
+  //   if ('fileList' in nextProps) {
+  //     this.setState({
+  //       fileList: nextProps.fileList || [],
+  //     });
+  //   }
+  // }
 
   onChange = ({ fileList }, updateState = true) => {
     if (!('fileList' in this.props) && updateState) {
       this.setState({ fileList });
     }
     const { onChange, qiniuUrl } = this.props;
-    if (fileList.findIndex(i => i.status !== 'done') === -1) {
-      const value = fileList.map(i => `${qiniuUrl}/${i.response.key}`);
+    if (fileList.findIndex((i) => i.status !== 'done') === -1) {
+      const value = fileList.map((i) => `${qiniuUrl}/${i.response.key}`);
       this.setState({
         fileList: [],
       }, () => {
