@@ -5,10 +5,16 @@ import DynamicList from '@/container/Dynamic/List';
 import DynamicCreate from '@/container/Dynamic/Create';
 import DynamicTopics from '@/container/Dynamic/Topics';
 import NavTabs from '@/components/NavTabs';
+import BackToTop from '@/components/BackToTop';
 
 function Index() {
   return (
     <>
+    1110
+    1110
+    1110
+      <BackToTop />
+
       <Card>
         <Box p={2}>
           <DynamicCreate />

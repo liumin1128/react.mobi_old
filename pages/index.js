@@ -5,14 +5,13 @@ import DynamicList from '@/container/Dynamic/List';
 import DynamicCreate from '@/container/Dynamic/Create';
 import DynamicTopics from '@/container/Dynamic/Topics';
 import NavTabs from '@/components/NavTabs';
-import Blogrol from '@/container/Side/Blogrol';
-import Project from '@/container/Side/Project';
-import Code from '@/container/Side/Code';
-import Footer from '@/container/Side/Footer';
+import BackToTop from '@/components/BackToTop';
 
 function Index() {
   return (
     <>
+      <BackToTop />
+
       <Card>
         <Box p={2}>
           <DynamicCreate />
@@ -23,16 +22,8 @@ function Index() {
         <Box px={1}>
           <NavTabs
             navList={[
-              // { label: '推荐', pathname: '/' },
               { label: '最新', pathname: '/' },
               { label: '最热', pathname: '/2' },
-              // { label: '前端', pathname: '/web' },
-              // { label: '后端', pathname: '/node' },
-              // { label: '游戏', pathname: '/game' },
-              // { label: '动画', pathname: '/cartoon' },
-              // { label: '电影', pathname: '/movie' },
-              // { label: '读书', pathname: '/book' },
-              // { label: '生活', pathname: '/life' },
             ]}
           />
         </Box>
@@ -43,34 +34,6 @@ function Index() {
   );
 }
 
-Index.Sider = () => (
-  <>
-    <DynamicTopics />
-    <Box mt={2} />
-    <Card>
-      <Box p={2}>
-        <Blogrol />
-      </Box>
-    </Card>
-    <Box mt={2} />
-    <Card>
-      <Box p={2}>
-        <Project />
-      </Box>
-    </Card>
-    <Box mt={2} />
-    <Card>
-      <Box p={2}>
-        <Code />
-      </Box>
-    </Card>
-    <Box mt={2} />
-    <Card>
-      <Box p={2}>
-        <Footer />
-      </Box>
-    </Card>
-  </>
-);
+Index.Sider = DynamicTopics;
 
 export default Index;
