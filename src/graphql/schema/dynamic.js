@@ -83,6 +83,35 @@ export const DYNAMIC_CREATE = gql`
   }
 `;
 
+export const DYNAMIC_UPDATE = gql`
+  mutation DynamicUpdate($input: DynamicInput, $_id: String!) {
+    result: DynamicUpdate(input: $input, _id: $_id) {
+      status
+      message
+      data {
+        __typename
+        _id
+        content
+        pictures
+        iframe
+        zanCount
+        zanStatus
+        commentCount
+        topics {
+          _id
+          title
+          number
+        }
+        createdAt
+        user {
+          nickname
+          avatarUrl
+        }
+      }
+    }
+  }
+`;
+
 
 export const DYNAMIC_TOPIC_LIST = gql`
   query DynamicTopicList($first: Int, $skip: Int, $title: String) {
