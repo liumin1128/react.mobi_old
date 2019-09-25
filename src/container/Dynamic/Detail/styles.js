@@ -19,6 +19,8 @@ export default makeStyles((theme) => ({
       width: '1.5em',
       height: '1.5em',
       'vertical-align': -4,
+      // width: '5em',
+      // height: '5em',
     },
     '& a': {
       color: '#fd4c86',
