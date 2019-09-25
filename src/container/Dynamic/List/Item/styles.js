@@ -1,10 +1,10 @@
 import { makeStyles, fade } from '@material-ui/core/styles';
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   header: {
     padding: 0,
     [theme.breakpoints.down('xs')]: {
-      marginBottom: theme.spacing(2)
+      marginBottom: theme.spacing(2),
     },
   },
   avatar: {
@@ -18,7 +18,7 @@ export default makeStyles(theme => ({
     // border: '1px red solid',
     marginLeft: theme.spacing(8),
     [theme.breakpoints.down('xs')]: {
-      marginLeft: theme.spacing(0)
+      marginLeft: theme.spacing(0),
     },
   },
   picture: {
@@ -39,9 +39,13 @@ export default makeStyles(theme => ({
     '& a': {
       color: '#fd4c86',
       textDecoration: 'none',
-    }
+    },
   },
   primary: {
-    color: `${theme.palette.primary.main} !important`
+    color: `${theme.palette.primary.main} !important`,
+  },
+
+  MenuItem: {
+    minWidth: 100,
   },
 }));

@@ -8,11 +8,16 @@ import CardHeader from '@material-ui/core/CardHeader';
 // import CardMedia from '@material-ui/core/CardMedia';
 // import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
+import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+// import Popper from '@material-ui/core/Popper';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
+
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import Pictures from '@/container/Dynamic/components/Pictures';
@@ -26,6 +31,7 @@ import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import { ZAN } from '@/graphql/schema/zan';
 import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
+import Popper from '@/components/Popper';
 
 import useStyles from './styles';
 import { text2html, topics2Html } from '../../utils';
@@ -33,10 +39,10 @@ import { text2html, topics2Html } from '../../utils';
 
 function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {}, zanCount, zanStatus, commentCount, createdAt }) {
   const classes = useStyles();
-  const [ isShow, setShow ] = useState(false);
+  const [ showComment, setShowComment ] = useState(false);
 
   function toogleShow() {
-    setShow(!isShow);
+    setShowComment(!showComment);
   }
 
   const [ zan ] = useMutation(ZAN, { _id }, {
@@ -66,6 +72,10 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
     }
   }
 
+  function edit(_id) {
+    Router.push(`/dynamic/detail?_id=${_id}`);
+  }
+
   const { avatarUrl, nickname } = user || { nickname: ' 遁入虚空的用户' };
 
   return (
@@ -75,7 +85,31 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
           <CardHeader
             className={classes.header}
             avatar={(<Avatar aria-label="Avatar" src={avatarUrl} className={classes.avatar}>{nickname[0]}</Avatar>)}
-            action={(<IconButton aria-label="Settings"><MoreVertIcon /></IconButton>)}
+            action={(
+              <Popper
+                placement="bottom-end"
+                content={(
+                  <Paper elevation={2}>
+                    <MenuList>
+                      <MenuItem className={classes.MenuItem} onClick={() => { edit(_id); }}>编辑</MenuItem>
+                      <MenuItem className={classes.MenuItem} onClick={() => { edit(_id); }}>删除</MenuItem>
+                      <MenuItem
+                        className={classes.MenuItem}
+                        onClick={() => {
+                          alert('coming soon...');
+                        }}
+                      >
+举报
+                      </MenuItem>
+                    </MenuList>
+                  </Paper>
+                )}
+              >
+                <IconButton aria-label="Settings">
+                  <MoreVertIcon />
+                </IconButton>
+              </Popper>
+            )}
             title={<Typography variant="h6" className={classes.nickname}>{nickname}</Typography>}
             subheader={getTimeAgo(createdAt)}
           />
@@ -119,7 +153,7 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
           </Box>
 
 
-          {isShow && (
+          {showComment && (
             <Box>
               <Divider />
               <Box ml={8} mt={3} className={classes.content}>
