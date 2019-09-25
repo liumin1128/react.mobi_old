@@ -15,7 +15,7 @@ function DynamicDetail({ router }) {
 
   if (loading) return <Loading />;
 
-  const { data: { user, iframe, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount } } = data;
+  const { data: { iframe, pictures, content, _id } } = data;
 
   if (error) {
     return (
@@ -26,15 +26,10 @@ function DynamicDetail({ router }) {
     );
   }
 
-  function _onSubmit(values, cb) {
+  function _onSubmit(values) {
     update({ input: values, _id }, {
-      update: (store, { data: { result: { status: code, message, data: result } } }) => {
+      update: (store, { data: { result: { status: code, message } } }) => {
         if (code === 200) {
-          // cb();
-          // const _data = store.readQuery({ query: DYNAMIC_LIST, variables: router.query });
-          // _data.list.unshift(result);
-          // store.writeQuery({ query: DYNAMIC_LIST, data: _data, variables: router.query });
-          // Router.push(`/dynamic/detail?_id=${_id}`);
           window.location.href = `/dynamic/detail?_id=${_id}`;
         } else {
           Snackbar.error(message);
@@ -47,9 +42,8 @@ function DynamicDetail({ router }) {
     <div>
       <Box display="flex" justifyContent="center">
         <Box style={{ width: '100%' }} maxWidth={600}>
-          {content}
           <Editor
-            initialValue={content}
+            initialValues={{ iframe, pictures, content }}
             onSubmit={_onSubmit}
           />
         </Box>

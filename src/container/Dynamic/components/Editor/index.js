@@ -20,13 +20,13 @@ import Emoticon from '../Emoticon';
 import Input from '../Input';
 import { html2text, text2html } from '../../utils';
 
-function DynamicEditor({ initialValue = '', onSubmit }) {
+function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: undefined }, onSubmit }) {
   const input = useRef();
   const classes = useStyles();
-  const [ pictures, setPictures ] = useState([]);
-  const [ iframe, setIframe ] = useState();
+  const [ pictures, setPictures ] = useState(initialValues.pictures);
+  const [ iframe, setIframe ] = useState(initialValues.iframe);
   const [ lastEditRange, setLastEditRange ] = useState();
-  const _html = text2html(initialValue);
+  const _html = text2html(initialValues.content);
 
 
   useOnMount(() => {
