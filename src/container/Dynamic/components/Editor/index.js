@@ -1,36 +1,39 @@
 import React, { useState, useRef } from 'react';
+import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import Paper from '@material-ui/core/Paper';
 import CloseIcon from '@material-ui/icons/Close';
-import Icon from '@material-ui/core/Icon';
 import CardMedia from '@material-ui/core/CardMedia';
-import PhotoIcon from '@material-ui/icons/Photo';
-import IconButton from '@material-ui/core/IconButton';
+import CameraIcon from '@material-ui/icons/CameraAlt';
+import VideoIcon from '@material-ui/icons/Movie';
+import Typography from '@material-ui/core/Typography';
+import Iframe from '@/container/Dynamic/components/Iframe';
 import Button from '@/components/Button/Loading';
 import UpPicture from '@/components/Upload/Wrapper';
 import Popper from '@/components/Popper';
 import { useOnMount, useOnUnmount } from '@/hooks';
+import Snackbar from '@/components/Snackbar';
 import useStyles from './styles';
-import SelectTopic from './components/SelectTopic';
-import Emoticon from './components/Emoticon';
-import { html2text, text2html } from '../utils';
+import SelectTopic from '../SelectTopic';
+import Emoticon from '../Emoticon';
+import Input from '../Input';
+import { html2text, text2html } from '../../utils';
 
-function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
-  const { content: _content, pictures: _pictures = [] } = initialValues;
-  const classes = useStyles();
+function DynamicEditor({ initialValue = '', onSubmit }) {
   const input = useRef();
-  const [ pictures, setPictures ] = useState(_pictures);
+  const classes = useStyles();
+  const [ pictures, setPictures ] = useState([]);
+  const [ iframe, setIframe ] = useState();
   const [ lastEditRange, setLastEditRange ] = useState();
+  const _html = text2html(initialValue);
+
 
   useOnMount(() => {
     const edit = input.current;
     edit.addEventListener('click', getCursor);
     edit.addEventListener('keyup', getCursor);
     edit.addEventListener('paste', onPastePureText);
-
-    if (_content) {
-      edit.innerHTML = text2html(_content);
-    }
   });
 
   useOnUnmount(() => {
@@ -39,26 +42,6 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     edit.removeEventListener('keyup', getCursor);
     edit.removeEventListener('paste', onPastePureText);
   });
-
-  function onPastePureText(e) {
-    if (e.clipboardData) {
-      // 阻止默认行为
-      e.preventDefault();
-      // 获取剪贴板的文本
-      const text = e.clipboardData.getData('text');
-      if (window.getSelection && text !== '' && text !== null) {
-        // 创建文本节点
-        const textNode = document.createTextNode(text);
-        // 在当前的光标处插入文本节点
-        const range = window.getSelection().getRangeAt(0);
-        // 删除选中文本
-        range.deleteContents();
-        // 插入文本
-        range.insertNode(textNode);
-      }
-    }
-  }
-
 
   function getCursor() {
     try {
@@ -173,6 +156,25 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     getCursor();
   }
 
+  function onPastePureText(e) {
+    if (e.clipboardData) {
+      // 阻止默认行为
+      e.preventDefault();
+      // 获取剪贴板的文本
+      const text = e.clipboardData.getData('text');
+      if (window.getSelection && text !== '' && text !== null) {
+        // 创建文本节点
+        const textNode = document.createTextNode(text);
+        // 在当前的光标处插入文本节点
+        const range = window.getSelection().getRangeAt(0);
+        // 删除选中文本
+        range.deleteContents();
+        // 插入文本
+        range.insertNode(textNode);
+      }
+    }
+  }
+
   function onUpPictureSuccess(data) {
     setPictures([ ...pictures, ...data ]);
   }
@@ -181,6 +183,30 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
     pictures.splice(idx, 1);
     setPictures([ ...pictures ]);
   }
+
+  function _onSubmit() {
+    const edit = input.current;
+    const text = html2text(edit.innerHTML);
+
+
+    if (!iframe && (!pictures || pictures.length === 0) && !text) {
+      edit.focus();
+      Snackbar.error('忘了写内容啦');
+      return;
+    }
+
+
+    if (typeof onSubmit === 'function') {
+      onSubmit({
+        content: text, iframe, pictures,
+      }, () => {
+        edit.innerHTML = '';
+        setPictures([]);
+        setIframe();
+      });
+    }
+  }
+
   return (
     <>
       <div
@@ -190,41 +216,87 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
         placeholder="有什么想和大家分享的？"
         className={classes.input}
         ref={input}
-        required
+        dangerouslySetInnerHTML={{ __html: _html }}
       />
-      <Box mt={1} display="flex" justifyContent="space-between" alignItems="flex-start">
-        <Box>
+
+
+      <Box mt={2} display="flex" alignItems="center">
+        <Box display="flex" flexGrow={1}>
+
           <UpPicture multiple onChange={onUpPictureSuccess}>
-            <IconButton aria-label="Photo">
-              <PhotoIcon />
-            </IconButton>
+            <ButtonBase aria-label="Camera">
+              <CameraIcon style={{ width: 28, height: 28, color: '#999' }} />
+            </ButtonBase>
           </UpPicture>
 
-          <Popper content={(<Box p={1}><SelectTopic onClick={(topic) => { insetText(`#${topic.title}#`); }} /></Box>)}>
-            <Icon>#</Icon>
+          <Box ml={2} />
+
+          <Popper
+            content={(
+              <Paper>
+                <Box p={1}>
+                  <Input
+                    value={iframe}
+                    onChange={setIframe}
+                  />
+                </Box>
+              </Paper>
+            )}
+          >
+            <ButtonBase aria-label="Camera">
+              <VideoIcon style={{ width: 28, height: 28, color: '#999' }} />
+            </ButtonBase>
           </Popper>
 
-          <Popper content={(<Box p={1}><Emoticon onClick={insetEmoji} /></Box>)}>
-            <Icon>@</Icon>
+          <Box ml={2} />
+
+          <Popper
+            content={(
+              <Paper>
+                <Box p={1}><SelectTopic onClick={({ title }) => { insetText(`#${title}#`); }} /></Box>
+              </Paper>
+            )}
+          >
+            <Box style={{ width: 28, height: 28, textAlign: 'center', lineHeight: '28px', fontSize: 28, color: '#999' }}>#</Box>
           </Popper>
+
+          <Box ml={2} />
+
+          <Popper
+            content={(
+              <Paper>
+                <Box p={1}>
+                  <Emoticon
+                    insetEmoji={insetEmoji}
+                    insetText={insetText}
+                  />
+                </Box>
+              </Paper>
+            )}
+          >
+            <img style={{ width: 28, height: 28 }} src="https://imgs.react.mobi/emoticon/xjh/00.gif" alt="" />
+          </Popper>
+
+
+        </Box>
+        <Box mx={2}>
+          <Typography variant="caption" style={{ color: '#999' }}>233</Typography>
         </Box>
         <Button
           type="submit"
           variant="contained"
           color="primary"
           className={classes.submit}
-          loading={status === 'loading'}
-          onClick={() => {
-            const edit = input.current;
-            const result = html2text(edit.innerHTML);
-            onSubmit({ content: result, pictures });
-          }}
+          // loading={status === 'loading'}
+          // loading
+          onClick={_onSubmit}
         >
           发布
         </Button>
       </Box>
 
       <Box mt={1} />
+
       <Box display="flex" m={-0.5}>
         {pictures.map((i, idx) => (
           <Box key={i} className={classes.item}>
@@ -238,8 +310,17 @@ function CreateCommentForm({ onSubmit, initialValues = {}, status }) {
           </Box>
         ))}
       </Box>
+
+      {iframe && (
+        <Box mt={1}>
+          <Iframe
+            iframe={iframe}
+          />
+        </Box>
+      )}
+
     </>
   );
 }
 
-export default CreateCommentForm;
+export default DynamicEditor;

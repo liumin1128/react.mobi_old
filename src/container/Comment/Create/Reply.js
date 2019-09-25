@@ -12,7 +12,7 @@ import { CREATE_REPLY, COMMENT_LIST } from '@/graphql/schema/comment';
 import { useOnMount, useOnUnmount } from '@/hooks';
 import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
-import Emoticon from '@/container/Dynamic/Create/components/Emoticon';
+import Emoticon from '@/container/Dynamic/components/Emoticon';
 import { html2text } from '@/container/Dynamic/utils';
 import useStyles from './styles';
 

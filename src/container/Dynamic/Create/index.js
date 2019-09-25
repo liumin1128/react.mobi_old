@@ -17,9 +17,9 @@ import { useOnMount, useOnUnmount } from '@/hooks';
 import { useMutation, useQuery } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
 import useStyles from './styles';
-import SelectTopic from './components/SelectTopic';
-import Emoticon from './components/Emoticon';
-import Input from './components/Input';
+import SelectTopic from '../components/SelectTopic';
+import Emoticon from '../components/Emoticon';
+import Input from '../components/Input';
 import { html2text, text2html } from '../utils';
 
 function DynamicCreate({ router }) {

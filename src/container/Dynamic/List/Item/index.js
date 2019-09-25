@@ -72,8 +72,8 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
     }
   }
 
-  function edit(_id) {
-    Router.push(`/dynamic/detail?_id=${_id}`);
+  function edit() {
+    Router.push(`/dynamic/edit?_id=${_id}`);
   }
 
   const { avatarUrl, nickname } = user || { nickname: ' 遁入虚空的用户' };
@@ -91,8 +91,8 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
                 content={(
                   <Paper elevation={2}>
                     <MenuList>
-                      <MenuItem className={classes.MenuItem} onClick={() => { edit(_id); }}>编辑</MenuItem>
-                      <MenuItem className={classes.MenuItem} onClick={() => { edit(_id); }}>删除</MenuItem>
+                      <MenuItem className={classes.MenuItem} onClick={edit}>编辑</MenuItem>
+                      <MenuItem className={classes.MenuItem} onClick={edit}>删除</MenuItem>
                       <MenuItem
                         className={classes.MenuItem}
                         onClick={() => {
