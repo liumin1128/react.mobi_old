@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'next/router';
+import Router, { withRouter } from 'next/router';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
@@ -12,6 +12,9 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import Paper from '@material-ui/core/Paper';
 import { DYNAMIC_DETAIL } from '@/graphql/schema/dynamic';
 import { ZAN } from '@/graphql/schema/zan';
 import { useQuery, useMutation } from '@/hooks/graphql';
@@ -23,8 +26,8 @@ import CommentList from '@/container/Comment/List';
 import Snackbar from '@/components/Snackbar';
 import Pictures from '@/container/Dynamic/components/Pictures';
 import Iframe from '@/container/Dynamic/components/Iframe';
+import Popper from '@/components/Popper';
 import { text2html, topics2Html } from '../utils';
-
 import useStyles from './styles';
 
 function DynamicDetail({ router }) {
@@ -49,6 +52,11 @@ function DynamicDetail({ router }) {
 
   const html = topics2Html(text2html(content), topics);
 
+  function edit() {
+    Router.push(`/dynamic/edit?_id=${_id}`);
+  }
+
+
   return (
     <div>
       <Box display="flex" justifyContent="center">
@@ -58,7 +66,32 @@ function DynamicDetail({ router }) {
               <CardHeader
                 className={classes.header}
                 avatar={(<Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>)}
-                action={(<IconButton aria-label="Settings"><MoreVertIcon /></IconButton>)}
+                // action={(<IconButton aria-label="Settings"><MoreVertIcon /></IconButton>)}
+                action={(
+                  <Popper
+                    placement="bottom-end"
+                    content={(
+                      <Paper elevation={2}>
+                        <MenuList>
+                          <MenuItem className={classes.MenuItem} onClick={edit}>编辑</MenuItem>
+                          <MenuItem className={classes.MenuItem} onClick={edit}>删除</MenuItem>
+                          <MenuItem
+                            className={classes.MenuItem}
+                            onClick={() => {
+                              alert('coming soon...');
+                            }}
+                          >
+                            举报
+                          </MenuItem>
+                        </MenuList>
+                      </Paper>
+                    )}
+                  >
+                    <IconButton aria-label="Settings">
+                      <MoreVertIcon />
+                    </IconButton>
+                  </Popper>
+                )}
                 title={<Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>}
                 subheader={getTimeAgo(createdAt)}
               />

@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   avatar: {
     width: 48,
     height: 48,
@@ -24,5 +24,9 @@ export default makeStyles(theme => ({
       color: '#fd4c86',
       textDecoration: 'none',
     },
+  },
+
+  MenuItem: {
+    minWidth: 100,
   },
 }));

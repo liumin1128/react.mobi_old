@@ -99,7 +99,7 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
                           alert('coming soon...');
                         }}
                       >
-举报
+                        举报
                       </MenuItem>
                     </MenuList>
                   </Paper>
