@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import throttle from 'lodash/throttle';
 import Box from '@material-ui/core/Box';
+import Fab from '@material-ui/core/Fab';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import Grow from '@material-ui/core/Grow';
 import useStyles from './styles';
 import { scrollToTopEaseing, getScrollTop } from '@/utils/common';
 
@@ -23,16 +26,25 @@ export default function () {
     };
   });
 
-  if (!visible) return null;
 
   return (
     <Box
       className={classes.root}
-      onClick={() => {
-        scrollToTopEaseing();
-      }}
+
     >
-      返回顶部
+      <Grow in={visible}>
+        <Fab
+          size="small"
+          color="inherit"
+          aria-label="add"
+          className={classes.fab}
+          onClick={() => {
+            scrollToTopEaseing();
+          }}
+        >
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </Grow>
     </Box>
   );
 }
