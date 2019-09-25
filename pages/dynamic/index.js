@@ -1,19 +1,20 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 import DynamicList from '@/container/Dynamic/List';
 import DynamicCreate from '@/container/Dynamic/Create';
 import DynamicTopics from '@/container/Dynamic/Topics';
 import NavTabs from '@/components/NavTabs';
-import BackToTop from '@/components/BackToTop';
+
+const BackToTopWithNoSSR = dynamic(
+  () => import('@/components/BackToTop'),
+  { ssr: false },
+);
 
 function Index() {
   return (
     <>
-    1110
-    1110
-    1110
-      <BackToTop />
 
       <Card>
         <Box p={2}>
@@ -33,6 +34,9 @@ function Index() {
       </Card>
       <Box mb={1.5} />
       <DynamicList />
+
+      <BackToTopWithNoSSR />
+
     </>
   );
 }
