@@ -144,3 +144,13 @@ export const CHECK_NEW_DYNAMIC = gql`
     }
   }
 `;
+
+export const REMOVE_DYNAMIC = gql`
+  mutation RemoveDynamic($_id: String!) {
+    result: RemoveDynamic(_id: $_id) {
+      __typename
+      status
+      message
+    }
+  }
+`;

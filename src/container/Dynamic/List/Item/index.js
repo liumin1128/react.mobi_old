@@ -27,7 +27,7 @@ import InfoButton from '@/components/Button/Info';
 import { getTimeAgo } from '@/utils/common';
 import CreateComment from '@/container/Comment/Create';
 import CommentList from '@/container/Comment/List';
-import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
+import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
 import { ZAN } from '@/graphql/schema/zan';
 import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
@@ -62,6 +62,20 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
     },
   });
 
+  const [ deleteDynamic ] = useMutation(REMOVE_DYNAMIC, { _id }, {
+    optimisticResponse: { result: { status: 200, message: '删除成功', __typename: 'Result' } },
+    update: (store, { data: { result: { status: code, message } } }) => {
+      if (code === 200) {
+        const data = store.readQuery({ query: DYNAMIC_LIST });
+        const idx = data.list.findIndex((i) => i._id === _id);
+        data.list.splice(idx, 1);
+        store.writeQuery({ query: DYNAMIC_LIST, data });
+      } else {
+        Snackbar.error(message);
+      }
+    },
+  });
+
   const html = topics2Html(text2html(content), topics);
 
   function goToDeatil(e) {
@@ -74,6 +88,10 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
 
   function edit() {
     Router.push(`/dynamic/edit?_id=${_id}`);
+  }
+
+  function del() {
+    deleteDynamic();
   }
 
   const { avatarUrl, nickname } = user || { nickname: ' 遁入虚空的用户' };
@@ -92,7 +110,7 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
                   <Paper elevation={2}>
                     <MenuList>
                       <MenuItem className={classes.MenuItem} onClick={edit}>编辑</MenuItem>
-                      <MenuItem className={classes.MenuItem} onClick={edit}>删除</MenuItem>
+                      <MenuItem className={classes.MenuItem} onClick={del}>删除</MenuItem>
                       <MenuItem
                         className={classes.MenuItem}
                         onClick={() => {
