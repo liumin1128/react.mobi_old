@@ -220,7 +220,7 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
 
     if (!iframe && (!pictures || pictures.length === 0) && !text) {
       edit.focus();
-      Snackbar.error('忘了写内容啦');
+      Snackbar.error('什么都没写，别想蒙混过关！');
       return;
     }
 
@@ -305,6 +305,7 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
                       />
                     </Box>
                   )}
+                  <Button fullWidth onClick={() => { setIframe(''); }}>清除视频</Button>
                 </Box>
               </Paper>
             )}
