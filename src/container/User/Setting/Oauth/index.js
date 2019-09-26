@@ -1,6 +1,7 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -85,11 +86,13 @@ function EditeUserInfo() {
                     primary={i.title}
                     secondary={i.hasBind ? i.desc : '未绑定'}
                   />
-                  {!i.hasBind && (
+                  {!i.hasBind ? (
                     <ListItemSecondaryAction>
-                      <IconButton edge="end" aria-label="comments">
-                        <LinkIcon />
-                      </IconButton>
+                      <Button size="small" variant="contained" color="primary">立即绑定</Button>
+                    </ListItemSecondaryAction>
+                  ) : (
+                    <ListItemSecondaryAction>
+                      <Button size="small" color="inherit">解除绑定</Button>
                     </ListItemSecondaryAction>
                   )}
                 </ListItem>
