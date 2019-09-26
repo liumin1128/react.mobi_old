@@ -18,6 +18,7 @@ export const DYNAMIC_DETAIL = gql`
         number
       }
       user {
+        _id
         nickname
         avatarUrl
         sign
@@ -44,6 +45,7 @@ export const DYNAMIC_LIST = gql`
         number
       }
       user {
+        _id
         nickname
         avatarUrl
       }
@@ -75,6 +77,7 @@ export const DYNAMIC_CREATE = gql`
         }
         createdAt
         user {
+          _id
           nickname
           avatarUrl
         }
@@ -104,6 +107,7 @@ export const DYNAMIC_UPDATE = gql`
         }
         createdAt
         user {
+          _id
           nickname
           avatarUrl
         }

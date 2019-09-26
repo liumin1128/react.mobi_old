@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
+import { USERINFO } from '@/graphql/schema/user';
 import { useQuery, useMutation } from '@/hooks/graphql';
 // import { useOnMount, useOnUnmount } from '@/hooks';
 // import useLoop from '@/hooks/loop';
@@ -15,11 +16,14 @@ import Item from './Item';
 function DynamicList({ router }) {
   // const [ hasNewData, setNewData ] = useState(true);
   const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(DYNAMIC_LIST, router.query);
+  const { data: userInfoData } = useQuery(USERINFO);
+
 
   // const [ check ] = useMutation(CHECK_NEW_DYNAMIC);
 
   const [ zan ] = useMutation(ZAN);
   const [ deleteDynamic ] = useMutation(REMOVE_DYNAMIC);
+
 
   function onZan(_id, zanStatus) {
     zan({ _id }, {
@@ -59,6 +63,8 @@ function DynamicList({ router }) {
   if (loading) return <Loading />;
 
   if (error) return <div>{error.message}</div>;
+
+  const userInfo = userInfoData ? userInfoData.userInfo : undefined;
 
   const { list } = data;
 
@@ -127,6 +133,7 @@ function DynamicList({ router }) {
           key={i._id}
           zan={onZan}
           del={onDelete}
+          userInfo={userInfo}
           {...i}
         />
       ))}

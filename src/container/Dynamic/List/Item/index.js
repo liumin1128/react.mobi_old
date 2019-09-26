@@ -34,7 +34,7 @@ import useStyles from './styles';
 import { text2html, topics2Html } from '../../utils';
 
 
-function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {}, zanCount, zanStatus, commentCount, createdAt, zan, del }) {
+function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {}, zanCount, zanStatus, commentCount, createdAt, zan, del, userInfo = {} }) {
   const classes = useStyles();
   const [ showComment, setShowComment ] = useState(false);
 
@@ -71,15 +71,20 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
                 content={(
                   <Paper elevation={2}>
                     <MenuList>
-                      <MenuItem className={classes.MenuItem} onClick={edit}>编辑</MenuItem>
-                      <MenuItem
-                        className={classes.MenuItem}
-                        onClick={() => {
-                          del(_id);
-                        }}
-                      >
-                        删除
-                      </MenuItem>
+                      {user._id === userInfo._id && (
+                        <>
+                          <MenuItem className={classes.MenuItem} onClick={edit}>编辑</MenuItem>
+                          <MenuItem
+                            className={classes.MenuItem}
+                            onClick={() => {
+                              del(_id);
+                            }}
+                          >
+                          删除
+                          </MenuItem>
+                        </>
+                      )}
+
                       <MenuItem
                         className={classes.MenuItem}
                         onClick={() => {
