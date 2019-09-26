@@ -116,7 +116,7 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
             )}
 
             {pictures && pictures.length > 0 && (
-              <Box my={1.5} maxWidth={360}>
+              <Box my={1.5}>
                 <Pictures pictures={pictures} />
               </Box>
             )}
