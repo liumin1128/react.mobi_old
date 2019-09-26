@@ -299,13 +299,17 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
                     onChange={setIframe}
                   />
                   {iframe && (
-                    <Box mt={1}>
-                      <Iframe
-                        iframe={iframe}
-                      />
-                    </Box>
+                    <>
+                      <Box mt={1}>
+                        <Iframe
+                          iframe={iframe}
+                        />
+                      </Box>
+                      <Box mt={1}>
+                        <Button fullWidth onClick={() => { setIframe(''); }}>清除视频</Button>
+                      </Box>
+                    </>
                   )}
-                  <Button fullWidth onClick={() => { setIframe(''); }}>清除视频</Button>
                 </Box>
               </Paper>
             )}
