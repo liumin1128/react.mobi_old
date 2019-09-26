@@ -3,12 +3,12 @@ import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
 import { USERINFO } from '@/graphql/schema/user';
+import { ZAN } from '@/graphql/schema/zan';
 import { useQuery, useMutation } from '@/hooks/graphql';
 // import { useOnMount, useOnUnmount } from '@/hooks';
 // import useLoop from '@/hooks/loop';
 import Loading from '@/components/Loading';
 import Loadmore from '@/components/Loading/Loadmore';
-import { ZAN } from '@/graphql/schema/zan';
 import Snackbar from '@/components/Snackbar';
 
 import Item from './Item';
@@ -22,8 +22,17 @@ function DynamicList({ router }) {
   // const [ check ] = useMutation(CHECK_NEW_DYNAMIC);
 
   const [ zan ] = useMutation(ZAN);
+
   const [ deleteDynamic ] = useMutation(REMOVE_DYNAMIC);
 
+
+  if (loading) return <Loading />;
+
+  if (error) return <div>{error.message}</div>;
+
+  const userInfo = userInfoData ? userInfoData.userInfo : undefined;
+
+  const { list } = data;
 
   function onZan(_id, zanStatus) {
     zan({ _id }, {
@@ -59,14 +68,6 @@ function DynamicList({ router }) {
       },
     });
   }
-
-  if (loading) return <Loading />;
-
-  if (error) return <div>{error.message}</div>;
-
-  const userInfo = userInfoData ? userInfoData.userInfo : undefined;
-
-  const { list } = data;
 
   // function checkNewDynamic(latest) {
   //   return async function () {
