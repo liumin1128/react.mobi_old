@@ -15,7 +15,8 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
-import { DYNAMIC_DETAIL } from '@/graphql/schema/dynamic';
+import { DYNAMIC_DETAIL, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
+import { USERINFO } from '@/graphql/schema/user';
 import { ZAN } from '@/graphql/schema/zan';
 import { useQuery, useMutation } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
@@ -33,9 +34,23 @@ import useStyles from './styles';
 function DynamicDetail({ router }) {
   const classes = useStyles();
   const { data, error, loading, refetch } = useQuery(DYNAMIC_DETAIL, router.query);
+  const { data: userInfoData } = useQuery(USERINFO);
 
   // 赞状态异常
   const [ zan ] = useMutation(ZAN);
+  const [ deleteDynamic ] = useMutation(REMOVE_DYNAMIC);
+
+  function del(_id) {
+    deleteDynamic({ _id }, {
+      update: (store, { data: { result: { status: code, message } } }) => {
+        if (code === 200) {
+          Router.push('/');
+        } else {
+          Snackbar.error(message);
+        }
+      },
+    });
+  }
 
   if (loading) return <Loading />;
 
@@ -49,6 +64,8 @@ function DynamicDetail({ router }) {
       </div>
     );
   }
+
+  const userInfo = userInfoData ? userInfoData.userInfo : {};
 
   const html = topics2Html(text2html(content), topics);
 
@@ -73,8 +90,12 @@ function DynamicDetail({ router }) {
                     content={(
                       <Paper elevation={2}>
                         <MenuList>
-                          <MenuItem className={classes.MenuItem} onClick={edit}>编辑</MenuItem>
-                          <MenuItem className={classes.MenuItem} onClick={edit}>删除</MenuItem>
+                          {user._id === userInfo._id && (
+                            <>
+                              <MenuItem className={classes.MenuItem} onClick={edit}>编辑</MenuItem>
+                              <MenuItem className={classes.MenuItem} onClick={() => { del(_id); }}>删除</MenuItem>
+                            </>
+                          )}
                           <MenuItem
                             className={classes.MenuItem}
                             onClick={() => {
