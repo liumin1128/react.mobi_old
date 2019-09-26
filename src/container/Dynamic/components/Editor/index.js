@@ -20,7 +20,7 @@ import Emoticon from '../Emoticon';
 import Input from '../Input';
 import { html2text, text2html, getByteLen } from '../../utils';
 
-const MAX_TEXT_LENGTH = 140;
+const MAX_TEXT_LENGTH = 233;
 
 function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: undefined }, onSubmit }) {
   const input = useRef();
@@ -224,6 +224,12 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
       return;
     }
 
+    if (contentLength > MAX_TEXT_LENGTH) {
+      edit.focus();
+      Snackbar.error('字数超出限制啦，长内容请使用文章进行发布！');
+      return;
+    }
+
 
     if (typeof onSubmit === 'function') {
       onSubmit({
@@ -340,8 +346,8 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
 
         </Box>
         <Box mx={2}>
-          <Typography variant="caption" style={{ color: '#999' }}>
-            {`${contentLength}/${MAX_TEXT_LENGTH}`}
+          <Typography variant="caption" style={{ color: contentLength > MAX_TEXT_LENGTH ? 'red' : '#999' }}>
+            {MAX_TEXT_LENGTH - contentLength}
           </Typography>
         </Box>
         <Button
