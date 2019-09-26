@@ -220,6 +220,31 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
       />
 
 
+      {pictures.length > 0 && (
+        <Box display="flex" m={-0.5} mt={1.5}>
+          {pictures.map((i, idx) => (
+            <Box key={i} className={classes.item}>
+              <CardMedia className={classes.picture} image={i} />
+              <ButtonBase
+                className={`${classes.close} pictures-close-btn`}
+                onClick={() => { onDeletePictures(idx); }}
+              >
+                <CloseIcon />
+              </ButtonBase>
+            </Box>
+          ))}
+        </Box>
+      )}
+
+      {iframe && (
+        <Box mt={2}>
+          <Iframe
+            iframe={iframe}
+          />
+        </Box>
+      )}
+
+
       <Box mt={2} display="flex" alignItems="center">
         <Box display="flex" flexGrow={1}>
 
@@ -295,29 +320,6 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
         </Button>
       </Box>
 
-      <Box mt={1} />
-
-      <Box display="flex" m={-0.5}>
-        {pictures.map((i, idx) => (
-          <Box key={i} className={classes.item}>
-            <CardMedia className={classes.picture} image={i} />
-            <ButtonBase
-              className={`${classes.close} pictures-close-btn`}
-              onClick={() => { onDeletePictures(idx); }}
-            >
-              <CloseIcon />
-            </ButtonBase>
-          </Box>
-        ))}
-      </Box>
-
-      {iframe && (
-        <Box mt={1}>
-          <Iframe
-            iframe={iframe}
-          />
-        </Box>
-      )}
 
     </>
   );
