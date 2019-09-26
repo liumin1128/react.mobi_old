@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 import { useRouter, withRouter } from 'next/router';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -7,19 +7,21 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import Loading from '@/components/Loading'
+import Loading from '@/components/Loading';
 
 const list = [
   { label: '用户信息', value: '/' },
   { label: '修改密码', value: '/password' },
   { label: '绑定邮箱', value: '/email' },
   { label: '绑定手机号', value: '/phone' },
+  { label: '第三方帐号', value: '/oauth' },
 ];
 
 const Email = dynamic(() => import('./Email'), { loading: Loading, ssr: false });
-const Phone = dynamic(() => import('./Phone'), { loading: Loading, ssr: false })
-const Password = dynamic(() => import('./Password'), { loading: Loading, ssr: false })
-const UserInfo = dynamic(() => import('./UserInfo'), { loading: Loading, ssr: false })
+const Phone = dynamic(() => import('./Phone'), { loading: Loading, ssr: false });
+const Password = dynamic(() => import('./Password'), { loading: Loading, ssr: false });
+const UserInfo = dynamic(() => import('./UserInfo'), { loading: Loading, ssr: false });
+const Oauth = dynamic(() => import('./Oauth'), { loading: Loading, ssr: false });
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -40,7 +42,7 @@ const useStyles = makeStyles((theme) => {
 
 function SystemSettings({ children, router }) {
   // console.log(router)
-  const { path = '/' } = router.query
+  const { path = '/' } = router.query;
   const classes = useStyles();
   const [ value, setValue ] = useState(path);
 
@@ -60,30 +62,31 @@ function SystemSettings({ children, router }) {
             aria-label="Vertical tabs example"
             onChange={(_, _path) => {
               setValue(_path);
-              router.push('/user/setting?path='+_path, '/user/setting'+_path);
+              router.push(`/user/setting?path=${_path}`, `/user/setting${_path}`);
             }}
           >
-            {list.map(i => (
+            {list.map((i) => (
               <Tab
                 key={i.value}
                 label={i.label}
                 value={i.value}
                 id={`vertical-tab-${i.value}`}
                 aria-controls={`vertical-tabpanel-${i.value}`}
-                classes={{ 
+                classes={{
                   wrapper: classes.tab,
-                  selected: classes.selected 
+                  selected: classes.selected,
                 }}
               />
             ))}
           </Tabs>
         </Box>
 
-        <Box width={1} >
+        <Box width={1}>
           {value === '/' && <UserInfo />}
           {value === '/password' && <Password />}
           {value === '/email' && <Email />}
           {value === '/phone' && <Phone />}
+          {value === '/oauth' && <Oauth />}
         </Box>
       </Box>
     </Card>

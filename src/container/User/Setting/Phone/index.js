@@ -5,7 +5,6 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@/components/Form/TextField';
-
 import { useMutation } from '@/hooks/graphql';
 import { UPDATE_USER_PHONE, USERINFO } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
@@ -83,7 +82,6 @@ function EditeUserInfo() {
           initialValues={initialValues}
           render={({ handleSubmit, values }) => (
             <form onSubmit={handleSubmit}>
-
               <Grid container spacing={2}>
                 <Grid item xs>
                   <Field
@@ -107,11 +105,9 @@ function EditeUserInfo() {
                     margin="normal"
                     component={TextField}
                     disabled={disabled}
-
                   />
                 </Grid>
               </Grid>
-
               {!disabled && (
                 <>
                   <Field
@@ -121,7 +117,6 @@ function EditeUserInfo() {
                     label="验证码"
                     component={TextField}
                     disabled={disabled}
-
                     type="text"
                     InputProps={{
                       endAdornment: (
@@ -132,7 +127,6 @@ function EditeUserInfo() {
                     }}
                   />
                   <Box mt={4} />
-
                   <Button
                     variant="outlined"
                     color="primary"
@@ -143,9 +137,7 @@ function EditeUserInfo() {
                     确认
                   </Button>
                 </>
-
               )}
-
             </form>
           )}
         />

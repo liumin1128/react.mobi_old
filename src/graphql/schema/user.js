@@ -35,6 +35,22 @@ export const USERINFO = gql`
   }
 `;
 
+export const USERINFOWITHOAUTH = gql`
+  query userInfo {
+    userInfo: userInfo {
+      __typename
+      _id
+      nickname
+      avatarUrl
+      oauths {
+        from
+        userInfo
+      }
+    }
+  }
+`;
+
+
 export const UPDATE_USERINFO = gql`
   mutation updateUserInfo($input: UpdateUserInfoInput) {
     result: updateUserInfo(input: $input) {
