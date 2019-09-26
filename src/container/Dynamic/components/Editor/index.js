@@ -18,7 +18,9 @@ import useStyles from './styles';
 import SelectTopic from '../SelectTopic';
 import Emoticon from '../Emoticon';
 import Input from '../Input';
-import { html2text, text2html } from '../../utils';
+import { html2text, text2html, getByteLen } from '../../utils';
+
+const MAX_TEXT_LENGTH = 140;
 
 function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: undefined }, onSubmit }) {
   const input = useRef();
@@ -26,6 +28,7 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
   const [ pictures, setPictures ] = useState(initialValues.pictures);
   const [ iframe, setIframe ] = useState(initialValues.iframe);
   const [ lastEditRange, setLastEditRange ] = useState();
+  const [ contentLength, setContentLength ] = useState(0);
   const _html = text2html(initialValues.content);
 
 
@@ -34,6 +37,8 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
     edit.addEventListener('click', getCursor);
     edit.addEventListener('keyup', getCursor);
     edit.addEventListener('paste', onPastePureText);
+
+    updateContentLength();
   });
 
   useOnUnmount(() => {
@@ -50,9 +55,17 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
       // 设置最后光标对象
       const range = selection.getRangeAt(0);
       setLastEditRange(range);
+
+      updateContentLength();
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function updateContentLength() {
+    const edit = input.current;
+    // console.log(getByteLen(edit.innerHTML).length);
+    setContentLength(getByteLen(edit.innerHTML).length);
   }
 
   function insetText(text) {
@@ -160,17 +173,33 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
     if (e.clipboardData) {
       // 阻止默认行为
       e.preventDefault();
+      // 获取输入框对象
+      const edit = input.current;
+      // 编辑框设置焦点
+      edit.focus();
       // 获取剪贴板的文本
       const text = e.clipboardData.getData('text');
+
+      // insetText(text);
       if (window.getSelection && text !== '' && text !== null) {
         // 创建文本节点
         const textNode = document.createTextNode(text);
         // 在当前的光标处插入文本节点
         const range = window.getSelection().getRangeAt(0);
+        const selection = getSelection();
+
         // 删除选中文本
         range.deleteContents();
         // 插入文本
         range.insertNode(textNode);
+        // 设置光标位置
+        range.setStart(textNode, text.length);
+        // 闭合选区
+        range.collapse(true);
+        // 清除选定对象的所有光标对象
+        selection.removeAllRanges();
+        // 插入新的光标对象
+        selection.addRange(range);
       }
     }
   }
@@ -311,7 +340,9 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
 
         </Box>
         <Box mx={2}>
-          <Typography variant="caption" style={{ color: '#999' }}>233</Typography>
+          <Typography variant="caption" style={{ color: '#999' }}>
+            {`${contentLength}/${MAX_TEXT_LENGTH}`}
+          </Typography>
         </Box>
         <Button
           type="submit"
