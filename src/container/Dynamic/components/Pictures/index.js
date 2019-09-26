@@ -28,7 +28,7 @@ function Pictures({ pictures }) {
 
   return (
 
-    <Box maxWidth={360}>
+    <Box>
       <LazyLoad
         debounce={100}
       // unmountIfInvisible
