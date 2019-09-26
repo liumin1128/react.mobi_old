@@ -12,9 +12,10 @@ export default makeStyles((theme) => ({
     },
   },
   picture: {
-    width: theme.spacing(8),
-    height: theme.spacing(8),
+    width: theme.spacing(16),
+    height: theme.spacing(16),
     borderRadius: theme.spacing(0.5),
+    display: 'block',
     margin: 4,
   },
   close: {

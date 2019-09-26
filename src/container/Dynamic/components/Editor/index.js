@@ -221,7 +221,7 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
 
 
       {pictures.length > 0 && (
-        <Box display="flex" m={-0.5} mt={1.5}>
+        <Box display="flex" m={-0.5} mt={1.5} flexWrap="wrap">
           {pictures.map((i, idx) => (
             <Box key={i} className={classes.item}>
               <CardMedia className={classes.picture} image={i} />

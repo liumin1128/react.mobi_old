@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   iframe: {
     width: '100%',
     // maxWidth: 300,
@@ -10,7 +10,7 @@ export default makeStyles(theme => ({
     backgroundColor: '#f8f8f8',
     borderRadius: 4,
     overflow: 'hidden',
-    boxShadow: '0 10px 20px 0 rgba(0,0,0,0.3)',
+    // boxShadow: '0 10px 20px 0 rgba(0,0,0,0.3)',
     '& iframe': {
       width: '100%',
       height: '100%',

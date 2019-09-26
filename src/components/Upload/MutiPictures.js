@@ -1,13 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Wrapper from '@/components/Upload/Wrapper';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import CardMedia from '@material-ui/core/CardMedia';
 import Box from '@material-ui/core/Box';
 import CloseIcon from '@material-ui/icons/Close';
 import PhotoIcon from '@material-ui/icons/Add';
+import Wrapper from '@/components/Upload/Wrapper';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   add: {
     border: `1px ${theme.palette.primary.main} dashed`,
   },
