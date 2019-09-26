@@ -27,54 +27,20 @@ import InfoButton from '@/components/Button/Info';
 import { getTimeAgo } from '@/utils/common';
 import CreateComment from '@/container/Comment/Create';
 import CommentList from '@/container/Comment/List';
-import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
-import { ZAN } from '@/graphql/schema/zan';
-import { useMutation } from '@/hooks/graphql';
-import Snackbar from '@/components/Snackbar';
+import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import Popper from '@/components/Popper';
 
 import useStyles from './styles';
 import { text2html, topics2Html } from '../../utils';
 
 
-function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {}, zanCount, zanStatus, commentCount, createdAt }) {
+function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {}, zanCount, zanStatus, commentCount, createdAt, zan, del }) {
   const classes = useStyles();
   const [ showComment, setShowComment ] = useState(false);
 
   function toogleShow() {
     setShowComment(!showComment);
   }
-
-  const [ zan ] = useMutation(ZAN, { _id }, {
-    optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
-    update: (store, { data: { result: { status: code, message } } }) => {
-      if (code === 200 || code === 201) {
-        const data = store.readQuery({ query: DYNAMIC_LIST });
-        const num = { 200: 1, 201: -1 };
-        const sta = { 200: true, 201: false };
-        const idx = data.list.findIndex((i) => i._id === _id);
-        data.list[idx].zanCount += num[code];
-        data.list[idx].zanStatus = sta[code];
-        store.writeQuery({ query: DYNAMIC_LIST, data });
-      } else {
-        Snackbar.error(message);
-      }
-    },
-  });
-
-  const [ deleteDynamic ] = useMutation(REMOVE_DYNAMIC, { _id }, {
-    optimisticResponse: { result: { status: 200, message: '删除成功', __typename: 'Result' } },
-    update: (store, { data: { result: { status: code, message } } }) => {
-      if (code === 200) {
-        const data = store.readQuery({ query: DYNAMIC_LIST });
-        const idx = data.list.findIndex((i) => i._id === _id);
-        data.list.splice(idx, 1);
-        store.writeQuery({ query: DYNAMIC_LIST, data });
-      } else {
-        Snackbar.error(message);
-      }
-    },
-  });
 
   const html = topics2Html(text2html(content), topics);
 
@@ -88,10 +54,6 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
 
   function edit() {
     Router.push(`/dynamic/edit?_id=${_id}`);
-  }
-
-  function del() {
-    deleteDynamic();
   }
 
   const { avatarUrl, nickname } = user || { nickname: ' 遁入虚空的用户' };
@@ -110,7 +72,14 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
                   <Paper elevation={2}>
                     <MenuList>
                       <MenuItem className={classes.MenuItem} onClick={edit}>编辑</MenuItem>
-                      <MenuItem className={classes.MenuItem} onClick={del}>删除</MenuItem>
+                      <MenuItem
+                        className={classes.MenuItem}
+                        onClick={() => {
+                          del(_id);
+                        }}
+                      >
+                        删除
+                      </MenuItem>
                       <MenuItem
                         className={classes.MenuItem}
                         onClick={() => {
@@ -164,7 +133,7 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
               <InfoButton
                 label={zanCount || null}
                 icon={zanStatus ? ThumbUpIcon : ThumbUpOutlinedIcon}
-                onClick={() => { zan(); }}
+                onClick={() => { zan(_id, zanStatus); }}
                 className={zanStatus ? classes.primary : ''}
               />
             </Box>

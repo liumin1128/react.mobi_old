@@ -1,60 +1,20 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
-import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
-import { useQuery, useMutation } from '@/hooks/graphql';
+import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
+import { useQuery } from '@/hooks/graphql';
 // import { useOnMount, useOnUnmount } from '@/hooks';
 // import useLoop from '@/hooks/loop';
 import Loading from '@/components/Loading';
 import Loadmore from '@/components/Loading/Loadmore';
-import { ZAN } from '@/graphql/schema/zan';
-import Snackbar from '@/components/Snackbar';
-
 import Item from './Item';
 
 function DynamicList({ router }) {
   // const [ hasNewData, setNewData ] = useState(true);
-  const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(DYNAMIC_LIST, router.query);
+  const { data, error, loading, isLoadingMore, isEnd, loadMore, refetch } = useQuery(DYNAMIC_LIST, router.query);
 
   // const [ check ] = useMutation(CHECK_NEW_DYNAMIC);
 
-  const [ zan ] = useMutation(ZAN);
-  const [ deleteDynamic ] = useMutation(REMOVE_DYNAMIC);
-
-  function onZan(_id, zanStatus) {
-    zan({ _id }, {
-      optimisticResponse: { result: { status: zanStatus ? 201 : 200, message: '创建成功', __typename: 'Result' } },
-      update: (store, { data: { result: { status: code, message } } }) => {
-        if (code === 200 || code === 201) {
-          const temp = store.readQuery({ query: DYNAMIC_LIST });
-          const num = { 200: 1, 201: -1 };
-          const sta = { 200: true, 201: false };
-          const idx = temp.list.findIndex((i) => i._id === _id);
-          temp.list[idx].zanCount += num[code];
-          temp.list[idx].zanStatus = sta[code];
-          store.writeQuery({ query: DYNAMIC_LIST, data: temp });
-        } else {
-          Snackbar.error(message);
-        }
-      },
-    });
-  }
-
-  function onDelete(_id) {
-    deleteDynamic({ _id }, {
-      optimisticResponse: { result: { status: 200, message: '删除成功', __typename: 'Result' } },
-      update: (store, { data: { result: { status: code, message } } }) => {
-        if (code === 200) {
-          const temp = store.readQuery({ query: DYNAMIC_LIST });
-          const idx = temp.list.findIndex((i) => i._id === _id);
-          temp.list.splice(idx, 1);
-          store.writeQuery({ query: DYNAMIC_LIST, data: temp });
-        } else {
-          Snackbar.error(message);
-        }
-      },
-    });
-  }
 
   if (loading) return <Loading />;
 
@@ -122,14 +82,7 @@ function DynamicList({ router }) {
 
       <Box mt={1.5} />
 
-      {list.map((i) => (
-        <Item
-          key={i._id}
-          zan={onZan}
-          del={onDelete}
-          {...i}
-        />
-      ))}
+      {list.map((i) => <Item key={i._id} {...i} />)}
 
       <Loadmore
         isEnd={isEnd}
