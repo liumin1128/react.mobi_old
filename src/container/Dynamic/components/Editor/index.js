@@ -236,14 +236,13 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
         </Box>
       )}
 
-      {iframe && (
+      {/* {iframe && (
         <Box mt={2}>
           <Iframe
             iframe={iframe}
           />
         </Box>
-      )}
-
+      )} */}
 
       <Box mt={2} display="flex" alignItems="center">
         <Box display="flex" flexGrow={1}>
@@ -258,18 +257,25 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
 
           <Popper
             content={(
-              <Paper>
+              <Paper elevation={2}>
                 <Box p={1}>
                   <Input
                     value={iframe}
                     onChange={setIframe}
                   />
+                  {iframe && (
+                    <Box mt={1}>
+                      <Iframe
+                        iframe={iframe}
+                      />
+                    </Box>
+                  )}
                 </Box>
               </Paper>
             )}
           >
-            <ButtonBase aria-label="Camera">
-              <VideoIcon style={{ width: 28, height: 28, color: '#999' }} />
+            <ButtonBase style={{ color: '#999' }} aria-label="Camera">
+              <VideoIcon color={iframe ? 'primary' : 'inherit'} style={{ width: 28, height: 28 }} />
             </ButtonBase>
           </Popper>
 
@@ -277,7 +283,7 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
 
           <Popper
             content={(
-              <Paper>
+              <Paper elevation={2}>
                 <Box p={1}><SelectTopic onClick={({ title }) => { insetText(`#${title}#`); }} /></Box>
               </Paper>
             )}
@@ -289,7 +295,7 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
 
           <Popper
             content={(
-              <Paper>
+              <Paper elevation={2}>
                 <Box p={1}>
                   <Emoticon
                     insetEmoji={insetEmoji}
