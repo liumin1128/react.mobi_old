@@ -122,7 +122,7 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
 
             {iframe && (
               <>
-                <Box my={1.5}>
+                <Box my={1.5} style={{ boxShadow: '0 10px 20px 0 rgba(0,0,0,0.3)' }}>
                   <Iframe iframe={iframe} />
                 </Box>
               </>
