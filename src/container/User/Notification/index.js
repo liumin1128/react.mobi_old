@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { NOTIFACATION_LIST } from '@/graphql/schema/notification';
 import { useQuery, useMutation } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
+import Link from '@/components/Link';
 import { getTimeAgo } from '@/utils/common';
 import useStyles from './styles';
 
@@ -21,7 +22,10 @@ function Profile() {
     <>
       <Box display="flex" justifyContent="center">
         <Box maxWidth={500} width="100%">
-          {list.map(({ _id, actionor, user, createdAt, actionShowText, actionorShowText, userShowText }) => {
+          {list.map(({
+            _id, actionor, user, createdAt, path,
+            actionShowText, actionorShowText, userShowText,
+          }) => {
             return (
               <Box mb={2} key={_id}>
                 <Card
@@ -40,13 +44,14 @@ function Profile() {
                       <span style={{ fontWeight: 'bold' }}>{actionShowText}</span>
                       {actionorShowText ? `： ${actionorShowText}` : ''}
                     </Typography>
-
                     {userShowText && (
-                      <Box p={1} px={2} mt={1} bgcolor="rgba(0, 0, 0, 0.03)">
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          {`@${user.nickname}: ${userShowText}`}
-                        </Typography>
-                      </Box>
+                      <Link href={path || '/'}>
+                        <Box p={1} px={2} mt={1} bgcolor="rgba(0, 0, 0, 0.03)">
+                          <Typography variant="body2" color="inherit" component="p">
+                            {`@${user.nickname}: ${userShowText}`}
+                          </Typography>
+                        </Box>
+                      </Link>
                     )}
                   </Box>
                 </Card>
