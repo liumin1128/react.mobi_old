@@ -13,10 +13,8 @@ import { useQuery, useMutation } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import Link from '@/components/Link';
 import { getTimeAgo } from '@/utils/common';
-
-import NavTabs from '@/components/NavTabs';
-
-
+import { FOLLOW } from '@/graphql/schema/follow';
+import Snackbar from '@/components/Snackbar';
 import useStyles from './styles';
 
 const navList = [
@@ -29,7 +27,7 @@ const navList = [
 function Profile({ router }) {
   const classes = useStyles();
   const { query } = router;
-  const { type } = query;
+  const { type = 'all' } = query;
 
   let params = {};
   if (type === 'unread') {
@@ -43,9 +41,23 @@ function Profile({ router }) {
   }
 
   const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(NOTIFACATION_LIST, params, { ssr: false });
+  const [ follow ] = useMutation(FOLLOW);
+
+  function onFollow(_id, followStatus) {
+    follow({ _id }, {
+      optimisticResponse: { result: { status: followStatus ? 201 : 200, message: '关注成功', __typename: 'Result' } },
+      update: (store, { data: { result: { status: code, message } } }) => {
+        if (code === 200 || code === 201) {
+          Snackbar.error(message);
+        } else {
+          Snackbar.error(message);
+        }
+      },
+    });
+  }
+
   if (loading) return <Loading />;
   const { list, meta } = data;
-  console.log(data);
   return (
     <>
       <Box display="flex" justifyContent="center">
@@ -85,15 +97,13 @@ function Profile({ router }) {
             }) => {
               return (
                 <Box mb={2} key={_id}>
-                  <Card
-                    className={classes.card}
-                  >
+                  <Card className={classes.card}>
                     <CardHeader
                       className={classes.header}
                       avatar={(<Avatar src={actionor.avatarUrl}>{actionor.nickname}</Avatar>)}
                       title={<Typography variant="h6" style={{ fontSize: 14 }}>{actionor.nickname}</Typography>}
                       subheader={<Typography variant="caption" style={{ fontSize: 12 }}>{getTimeAgo(createdAt)}</Typography>}
-                      action={<Button color="primary" variant="outlined" size="small">关注</Button>}
+                      action={<Button color="primary" variant={actionor.followStatus ? 'outlined' : 'contained'} size="small" onClick={() => { onFollow(actionor._id, actionor.followStatus); }}>{actionor.followStatus ? '取消关注' : '关注'}</Button>}
                     />
                     <Box ml={10} mb={3} mt={1} mr={3}>
                       <Typography variant="body2" color="textSecondary" component="p">
@@ -121,7 +131,7 @@ function Profile({ router }) {
                 onClick={() => loadMore()}
                 disabled={isLoadingMore}
               >
-                {`查看更多回复 - 剩余${meta.count - list.length}条`}
+                {`查看更多 - 剩余${meta.count - list.length}条`}
               </Button>
             ) : <Typography align="center">~ 这是人家的底线 ~</Typography>}
           </>

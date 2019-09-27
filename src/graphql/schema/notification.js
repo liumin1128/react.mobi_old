@@ -6,8 +6,7 @@ export const NOTIFACATION_LIST = gql`
       __typename
       createdAt
       _id
-
-
+      
       user {
         _id
         nickname
@@ -18,6 +17,7 @@ export const NOTIFACATION_LIST = gql`
         _id
         nickname
         avatarUrl
+        followStatus
       }
       
       actionShowText
