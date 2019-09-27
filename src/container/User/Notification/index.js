@@ -44,7 +44,7 @@ function Profile({ router }) {
 
   const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(NOTIFACATION_LIST, params, { ssr: false });
   if (loading) return <Loading />;
-  const { list } = data;
+  const { list, meta } = data;
   console.log(data);
   return (
     <>
@@ -76,42 +76,57 @@ function Profile({ router }) {
 
           <Box py={1} />
 
-          {list.map(({
-            _id, actionor, user, createdAt, path,
-            actionShowText, actionorShowText, userShowText,
-          }) => {
-            return (
-              <Box mb={2} key={_id}>
-                <Card
-                  className={classes.card}
-                  // elevation={2}
-                >
-                  <CardHeader
-                    className={classes.header}
-                    avatar={(<Avatar src={actionor.avatarUrl}>{actionor.nickname}</Avatar>)}
-                    title={<Typography variant="h6" style={{ fontSize: 14 }}>{actionor.nickname}</Typography>}
-                    subheader={<Typography variant="caption" style={{ fontSize: 12 }}>{getTimeAgo(createdAt)}</Typography>}
-                    action={<Button color="primary" variant="outlined" size="small">关注</Button>}
-                  />
-                  <Box ml={10} mb={3} mt={1} mr={3}>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                      <span style={{ fontWeight: 'bold' }}>{actionShowText}</span>
-                      {actionorShowText ? `： ${actionorShowText}` : ''}
-                    </Typography>
-                    {userShowText && (
-                      <Link href={path || '/'}>
-                        <Box p={1} px={2} mt={1} bgcolor="rgba(0, 0, 0, 0.03)">
-                          <Typography variant="body2" color="inherit" component="p">
-                            {`@${user.nickname}: ${userShowText}`}
-                          </Typography>
-                        </Box>
-                      </Link>
-                    )}
-                  </Box>
-                </Card>
-              </Box>
-            );
-          })}
+          {list.length > 0 && (
+          <>
+
+            {list.map(({
+              _id, actionor, user, createdAt, path,
+              actionShowText, actionorShowText, userShowText,
+            }) => {
+              return (
+                <Box mb={2} key={_id}>
+                  <Card
+                    className={classes.card}
+                  >
+                    <CardHeader
+                      className={classes.header}
+                      avatar={(<Avatar src={actionor.avatarUrl}>{actionor.nickname}</Avatar>)}
+                      title={<Typography variant="h6" style={{ fontSize: 14 }}>{actionor.nickname}</Typography>}
+                      subheader={<Typography variant="caption" style={{ fontSize: 12 }}>{getTimeAgo(createdAt)}</Typography>}
+                      action={<Button color="primary" variant="outlined" size="small">关注</Button>}
+                    />
+                    <Box ml={10} mb={3} mt={1} mr={3}>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                        <span style={{ fontWeight: 'bold' }}>{actionShowText}</span>
+                        {actionorShowText ? `： ${actionorShowText}` : ''}
+                      </Typography>
+                      {userShowText && (
+                        <Link href={path || '/'}>
+                          <Box p={1} px={2} mt={1} bgcolor="rgba(0, 0, 0, 0.03)">
+                            <Typography variant="body2" color="inherit" component="p">
+                              {`@${user.nickname}: ${userShowText}`}
+                            </Typography>
+                          </Box>
+                        </Link>
+                      )}
+                    </Box>
+                  </Card>
+                </Box>
+              );
+            })}
+
+            {list.length < meta.count ? (
+              <Button
+                fullWidth
+                onClick={() => loadMore()}
+                disabled={isLoadingMore}
+              >
+                {`查看更多回复 - 剩余${meta.count - list.length}条`}
+              </Button>
+            ) : <Typography align="center">~ 这是人家的底线 ~</Typography>}
+          </>
+          )}
+
         </Box>
       </Box>
     </>
