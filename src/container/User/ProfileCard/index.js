@@ -38,15 +38,17 @@ function EditeUserInfo() {
 
         <Divider />
 
-        <Box p={2} py={1} display="flex" justifyContent="space-around">
+        <Box p={2} py={1} display="flex" justifyContent="space-around" alignItems="center">
           <Box>
             <Typography align="center" style={{ fontSize: 10, color: '#789', fontWeight: 300 }}>动态</Typography>
             <Typography align="center" style={{ fontSize: 18, color: '#666', fontWeight: 500 }}>998</Typography>
           </Box>
+          <Divider orientation="vertical" style={{ height: 24 }} />
           <Box>
             <Typography align="center" style={{ fontSize: 10, color: '#789', fontWeight: 300 }}>关注</Typography>
             <Typography align="center" style={{ fontSize: 18, color: '#666', fontWeight: 500 }}>233</Typography>
           </Box>
+          <Divider orientation="vertical" style={{ height: 24 }} />
           <Box>
             <Typography align="center" style={{ fontSize: 10, color: '#789', fontWeight: 300 }}>粉丝</Typography>
             <Typography align="center" style={{ fontSize: 18, color: '#666', fontWeight: 500 }}>999+</Typography>
