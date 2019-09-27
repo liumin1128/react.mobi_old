@@ -10,6 +10,7 @@ import Blogrol from '@/container/Side/Blogrol';
 import Project from '@/container/Side/Project';
 import Code from '@/container/Side/Code';
 import Footer from '@/container/Side/Footer';
+import ProfileCard from '@/container/User/ProfileCard';
 
 const BackToTopWithNoSSR = dynamic(
   () => import('@/components/BackToTop'),
@@ -52,6 +53,10 @@ function Index() {
 
 Index.Sider = () => (
   <>
+
+    <ProfileCard />
+    <Box mb={2} />
+
     <DynamicTopics />
     <Box mt={2} />
     <Card>
