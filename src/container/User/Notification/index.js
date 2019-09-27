@@ -49,6 +49,11 @@ function Profile({ router }) {
       update: (store, { data: { result: { status: code, message } } }) => {
         if (code === 200 || code === 201) {
           Snackbar.error(message);
+          const sta = { 200: true, 201: false };
+          const temp = store.readQuery({ query: NOTIFACATION_LIST });
+          const idx = temp.list.findIndex((i) => i.actionor._id === _id);
+          temp.list[idx].actionor.followStatus = sta[code];
+          store.writeQuery({ query: NOTIFACATION_LIST, data: temp });
         } else {
           Snackbar.error(message);
         }
@@ -92,7 +97,7 @@ function Profile({ router }) {
           <>
 
             {list.map(({
-              _id, actionor, user, createdAt, path,
+              _id, actionor, user, createdAt, path, type,
               actionShowText, actionorShowText, userShowText,
             }) => {
               return (
@@ -103,7 +108,7 @@ function Profile({ router }) {
                       avatar={(<Avatar src={actionor.avatarUrl}>{actionor.nickname}</Avatar>)}
                       title={<Typography variant="h6" style={{ fontSize: 14 }}>{actionor.nickname}</Typography>}
                       subheader={<Typography variant="caption" style={{ fontSize: 12 }}>{getTimeAgo(createdAt)}</Typography>}
-                      action={<Button color="primary" variant={actionor.followStatus ? 'outlined' : 'contained'} size="small" onClick={() => { onFollow(actionor._id, actionor.followStatus); }}>{actionor.followStatus ? '取消关注' : '关注'}</Button>}
+                      action={type === 'follow' ? <Button color="primary" variant={actionor.followStatus ? 'outlined' : 'contained'} size="small" onClick={() => { onFollow(actionor._id, actionor.followStatus); }}>{actionor.followStatus ? '取消关注' : '关注'}</Button> : null}
                     />
                     <Box ml={10} mb={3} mt={1} mr={3}>
                       <Typography variant="body2" color="textSecondary" component="p">

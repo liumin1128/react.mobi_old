@@ -6,7 +6,7 @@ export const NOTIFACATION_LIST = gql`
       __typename
       createdAt
       _id
-      
+      type
       user {
         _id
         nickname
