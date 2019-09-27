@@ -34,7 +34,16 @@ import useStyles from './styles';
 import { text2html, topics2Html } from '../../utils';
 
 
-function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {}, zanCount, zanStatus, commentCount, createdAt, zan, del, userInfo = {} }) {
+function DynamicListItem({
+  // 详情
+  _id, content, pictures = [], iframe, topics, user = {}, createdAt,
+  // 互动数据
+  zanCount, zanStatus, commentCount,
+  // 互动操作
+  zan, del, follow,
+  // 用户信息
+  userInfo = {},
+}) {
   const classes = useStyles();
   const [ showComment, setShowComment ] = useState(false);
 
@@ -52,8 +61,16 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
     }
   }
 
-  function edit() {
+  function onEdit() {
     Router.push(`/dynamic/edit?_id=${_id}`);
+  }
+
+  function onDel() {
+    del(_id);
+  }
+
+  function onFollow() {
+    follow(_id);
   }
 
   const { avatarUrl, nickname } = user || { nickname: ' 遁入虚空的用户' };
@@ -71,17 +88,15 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
                 content={(
                   <Paper elevation={2}>
                     <MenuList>
-                      {user._id === userInfo._id && (
+
+                      {user._id === userInfo._id ? (
                         <>
-                          <MenuItem className={classes.MenuItem} onClick={edit}>编辑</MenuItem>
-                          <MenuItem
-                            className={classes.MenuItem}
-                            onClick={() => {
-                              del(_id);
-                            }}
-                          >
-                          删除
-                          </MenuItem>
+                          <MenuItem className={classes.MenuItem} onClick={onEdit}>编辑</MenuItem>
+                          <MenuItem className={classes.MenuItem} onClick={onDel}>删除</MenuItem>
+                        </>
+                      ) : (
+                        <>
+                          <MenuItem className={classes.MenuItem} onClick={onFollow}>关注</MenuItem>
                         </>
                       )}
 
@@ -122,11 +137,9 @@ function DynamicListItem({ _id, content, pictures = [], iframe, topics, user = {
             )}
 
             {iframe && (
-              <>
-                <Box my={1.5} style={{ boxShadow: '0 10px 20px 0 rgba(0,0,0,0.3)' }}>
-                  <Iframe iframe={iframe} />
-                </Box>
-              </>
+              <Box my={1.5} style={{ boxShadow: '0 10px 20px 0 rgba(0,0,0,0.3)' }}>
+                <Iframe iframe={iframe} />
+              </Box>
             )}
 
             <Box my={2.5} display="flex" style={{ color: '#999' }}>

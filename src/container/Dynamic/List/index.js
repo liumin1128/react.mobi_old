@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
 import { USERINFO } from '@/graphql/schema/user';
 import { ZAN } from '@/graphql/schema/zan';
+import { FOLLOW } from '@/graphql/schema/follow';
 import { useQuery, useMutation } from '@/hooks/graphql';
 // import { useOnMount, useOnUnmount } from '@/hooks';
 // import useLoop from '@/hooks/loop';
@@ -17,21 +18,16 @@ function DynamicList({ router }) {
   // const [ hasNewData, setNewData ] = useState(true);
   const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(DYNAMIC_LIST, router.query);
   const { data: userInfoData } = useQuery(USERINFO);
-
-
   // const [ check ] = useMutation(CHECK_NEW_DYNAMIC);
 
   const [ zan ] = useMutation(ZAN);
-
+  const [ follow ] = useMutation(FOLLOW);
   const [ deleteDynamic ] = useMutation(REMOVE_DYNAMIC);
 
-
   if (loading) return <Loading />;
-
   if (error) return <div>{error.message}</div>;
 
   const userInfo = userInfoData ? userInfoData.userInfo : undefined;
-
   const { list } = data;
 
   function onZan(_id, zanStatus) {
@@ -46,6 +42,18 @@ function DynamicList({ router }) {
           temp.list[idx].zanCount += num[code];
           temp.list[idx].zanStatus = sta[code];
           store.writeQuery({ query: DYNAMIC_LIST, data: temp });
+        } else {
+          Snackbar.error(message);
+        }
+      },
+    });
+  }
+
+  function onFollow(_id, followStatus) {
+    follow({ _id }, {
+      optimisticResponse: { result: { status: followStatus ? 201 : 200, message: '关注成功', __typename: 'Result' } },
+      update: (store, { data: { result: { status: code, message } } }) => {
+        if (code === 200 || code === 201) {
         } else {
           Snackbar.error(message);
         }
@@ -134,6 +142,7 @@ function DynamicList({ router }) {
           key={i._id}
           zan={onZan}
           del={onDelete}
+          follow={onFollow}
           userInfo={userInfo}
           {...i}
         />
