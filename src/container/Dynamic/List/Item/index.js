@@ -137,7 +137,7 @@ function DynamicListItem({
             )}
 
             {iframe && (
-              <Box my={1.5} style={{ boxShadow: '0 10px 20px 0 rgba(0,0,0,0.3)' }}>
+              <Box my={1.5}>
                 <Iframe iframe={iframe} />
               </Box>
             )}
