@@ -10,6 +10,8 @@ import { useQuery, useMutation } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import Link from '@/components/Link';
 import { getTimeAgo } from '@/utils/common';
+import NavTabs from '@/components/NavTabs';
+
 import useStyles from './styles';
 
 function Profile() {
@@ -20,8 +22,31 @@ function Profile() {
   console.log(data);
   return (
     <>
-      <Box display="flex" justifyContent="center">
+      <Box
+        display="flex"
+        justifyContent="center"
+        // alignItems="center"
+        // flexDirection="column"
+      >
+
+
+        <br />
+
         <Box maxWidth={500} width="100%">
+          <Card style={{ width: '100%' }}>
+            <Box px={2}>
+              <NavTabs
+                navList={[
+                  { label: '未读', pathname: '/' },
+                  { label: '全部', pathname: '/2' },
+                  { label: '系统消息', pathname: '/3' },
+                ]}
+              />
+            </Box>
+          </Card>
+
+          <Box py={1} />
+
           {list.map(({
             _id, actionor, user, createdAt, path,
             actionShowText, actionorShowText, userShowText,
