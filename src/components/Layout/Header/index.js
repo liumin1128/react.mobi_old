@@ -9,6 +9,8 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import Hidden from '@material-ui/core/Hidden';
 import Link from '@/components/Link';
@@ -23,7 +25,7 @@ const DynamicUserInfoWithNoSSR = dynamic(() => import('./user'), {
   loading: () => <span />,
 });
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     height: 64,
     [theme.breakpoints.down('xs')]: {
@@ -65,6 +67,11 @@ export default class Header extends PureComponent {
             <IconButton color="inherit" onClick={setTheme}>
               <ColorLensIcon />
             </IconButton>
+            <Link href="/user/notification">
+              <IconButton color="inherit">
+                <NotificationsIcon />
+              </IconButton>
+            </Link>
             <DynamicUserInfoWithNoSSR />
           </Toolbar>
         </AppBar>
