@@ -14,4 +14,18 @@ export default makeStyles((theme) => ({
   card: {
     // border: '1px solid red',
   },
+  tab: {
+    textTransform: 'none',
+    minWidth: 'auto',
+  },
+  indicator: {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    '& > div': {
+      maxWidth: 36,
+      width: '100%',
+      backgroundColor: theme.palette.text.primary,
+    },
+  },
 }));

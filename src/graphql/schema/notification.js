@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const NOTIFACATION_LIST = gql`
-  query NotificationList($first: Int, $skip: Int) {
-    list: notifications(first: $first, skip: $skip) {
+  query NotificationList($first: Int, $skip: Int, $unread: Boolean, $type: String) {
+    list: notifications(first: $first, skip: $skip, unread: $unread, type: $type) {
       __typename
       createdAt
       _id

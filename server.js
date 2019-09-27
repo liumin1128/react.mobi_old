@@ -48,6 +48,11 @@ app.prepare()
       app.render(req, res, '/user/setting', { path: `/${path}` });
     });
 
+    server.get('/user/notification/:type?', (req, res, next) => {
+      const { type = 'all' } = req.params;
+      app.render(req, res, '/user/notification', { type });
+    });
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });
@@ -96,7 +101,7 @@ function renderAndCache(req, res, pagePath, queryParams) {
 
   // If not let's render the page into HTML
   app.renderToHTML(req, res, pagePath, queryParams)
-    .then(html => minify(html, {
+    .then((html) => minify(html, {
       // 引号
       removeAttributeQuotes: true,
       // 注释

@@ -8,7 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import { useOnMount, useOnUnmount } from '@/hooks';
 
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   tab: {
     textTransform: 'none',
     minWidth: 'auto',
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SimpleTabs({ navList = [], router }) {
+function SimpleTabs({ navList = [], router, onChange }) {
   const classes = useStyles();
 
   const [ value, setValue ] = useState(isInNavList(router.pathname) ? router.pathname : '/');
@@ -47,10 +47,11 @@ function SimpleTabs({ navList = [], router }) {
   function handleChange(event, pathname) {
     setValue(pathname);
     // router.push(pathname);
+    onChange(pathname);
   }
 
   function isInNavList(pathname) {
-    return navList.findIndex(i => i.pathname === pathname) !== -1;
+    return navList.findIndex((i) => i.pathname === pathname) !== -1;
   }
 
   return (
@@ -63,7 +64,7 @@ function SimpleTabs({ navList = [], router }) {
 
       TabIndicatorProps={{ children: <div /> }}
     >
-      {navList.map(i => (
+      {navList.map((i) => (
         <Tab
           key={i.key || i.label}
           label={i.label}
