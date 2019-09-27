@@ -70,7 +70,7 @@ function DynamicListItem({
   }
 
   function onFollow() {
-    follow(_id);
+    follow(user._id);
   }
 
   const { avatarUrl, nickname } = user || { nickname: ' 遁入虚空的用户' };

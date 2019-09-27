@@ -4,13 +4,13 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 // const palette = { primary: { main: '#FF4081', contrastText: '#ffffff' } };
 const themeName = 'Wild Strawberry Razzmatazz Malayan Tiger';
-const palette = { 
+const palette = {
   divider: '#eeeeee',
-  primary: { 
-    main: '#fd4c86', 
+  primary: {
+    main: '#fd4c86',
     contrastText: '#ffffff',
     // a100: Color('#fd4c86').lighten(0.6)+''
-  }
+  },
 };
 const overrides = {
   MuiAppBar: {
@@ -27,13 +27,13 @@ const overrides = {
   },
   MuiDivider: {
     root: {
-      'background-color': 'rgba(0,0,0,0.07)'
-    }
+      'background-color': 'rgba(0,0,0,0.07)',
+    },
   },
   MuiPaper: {
     root: {
       color: '#333',
-      font: `14px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif`
+      font: '14px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
     },
     elevation1: {
       // boxShadow: 'none',
@@ -43,34 +43,34 @@ const overrides = {
       //   boxShadow: '0 10px 20px 0 rgba(168,182,191,0.6)',
       //   transform: 'translateY(-1px)'
       // }
-    }
+    },
   },
   MuiTypography: {
     body1: {
-      font: `16px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif`,
+      font: '16px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
       color: '#666',
     },
     body2: {
-      font: `14px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif`,
+      font: '14px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
       color: '#666',
     },
     caption: {
-      font: `10px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif`,
+      font: '10px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
       color: '#999',
     },
   },
   MuiButton: {
     contained: {
       boxShadow: `0 4px 8px 0px ${Color(palette.primary.main).alpha(0.3)}, 0 3px 5px -2px ${Color(palette.primary.main).alpha(0.5)}`,
-    }
+    },
   },
   MuiLink: {
     root: {
-      "&:hover": {
-        color: '#fd4c86'
-      }
+      '&:hover': {
+        color: '#fd4c86',
+      },
     },
-  }
-}
+  },
+};
 
 export default createMuiTheme({ themeName, palette, overrides });
