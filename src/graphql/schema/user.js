@@ -31,6 +31,10 @@ export const USERINFO = gql`
       countryCode
       purePhoneNumber
       phoneNumber
+
+      follow
+      fans
+      dynamic
     }
   }
 `;
