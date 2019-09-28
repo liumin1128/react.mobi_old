@@ -20,7 +20,6 @@ function EditeUserInfo() {
     }
   });
 
-
   if (!getUserInfoData.called || getUserInfoData.loading) {
     return (
       <Skeleton />
