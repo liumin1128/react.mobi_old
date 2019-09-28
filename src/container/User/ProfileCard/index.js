@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import ContentLoader from 'react-content-loader';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import Avatar from '@material-ui/core/Avatar';
@@ -10,6 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import { useMutation } from '@/hooks/graphql';
 import { USERINFO } from '@/graphql/schema/user';
 import { useOnMount } from '@/hooks';
+import Skeleton from './Skeleton';
 
 function EditeUserInfo() {
   const [ getUserInfo, getUserInfoData ] = useMutation(USERINFO);
@@ -23,30 +23,7 @@ function EditeUserInfo() {
 
   if (!getUserInfoData.called || getUserInfoData.loading) {
     return (
-      <Card>
-        <ContentLoader
-          width={282}
-          height={152}
-        // speed={10}
-          primaryColor="#f3f3f3"
-          secondaryColor="#ecebeb"
-        >
-          <circle cx={`${32 + 32}px`} cy={`${16 + 32}px`} r={`${32}px`} />
-
-          <rect x={`${24 + 32 + 32 + 16}px`} y={`${32}px`} rx={`${4}px`} ry={`${4}px`} width={`${80}px`} height={`${14}px`} />
-
-          <rect x={`${24 + 32 + 32 + 16}px`} y={`${32 + 24}px`} rx={`${4}px`} ry={`${4}px`} width={`${120}px`} height={`${10}px`} />
-
-          <rect x={0} y={16 + 32 + 32 + 16} rx={1} ry={1} width={'100%'} height={1} />
-
-          <rect x={16} y={16 + 32 + 32 + 24 + 16} rx={4} ry={4} width={50} height={20} />
-
-          <rect x={16 + 90} y={16 + 32 + 32 + 24 + 16} rx={4} ry={4} width={50} height={20} />
-
-          <rect x={16 + 170} y={16 + 32 + 32 + 24 + 16} rx={4} ry={4} width={50} height={20} />
-
-        </ContentLoader>
-      </Card>
+      <Skeleton />
     );
   }
 
