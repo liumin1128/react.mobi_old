@@ -14,9 +14,8 @@ import Snackbar from '@/components/Snackbar';
 
 import Item from './Item';
 
-function DynamicList({ router }) {
-  // const [ hasNewData, setNewData ] = useState(true);
-  const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(DYNAMIC_LIST, router.query);
+function DynamicList({ query }) {
+  const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(DYNAMIC_LIST, query);
   const { data: userInfoData } = useQuery(USERINFO);
   // const [ check ] = useMutation(CHECK_NEW_DYNAMIC);
 
@@ -28,6 +27,7 @@ function DynamicList({ router }) {
   if (error) return <div>{error.message}</div>;
 
   const userInfo = userInfoData ? userInfoData.userInfo : undefined;
+
   const { list } = data;
 
   function onZan(_id, zanStatus) {

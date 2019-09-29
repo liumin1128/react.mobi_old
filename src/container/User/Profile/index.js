@@ -1,30 +1,24 @@
-import Link from 'next/link';
 import Box from '@material-ui/core/Box';
-import { useRouter, withRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Card from '@material-ui/core/Card';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import DynamicList from '@/container/Dynamic/List';
-import NavTabs from '@/components/NavTabs';
 import Loading from '@/components/Loading';
 import { useMutation } from '@/hooks/graphql';
 import { USERINFO } from '@/graphql/schema/user';
 import { useOnMount } from '@/hooks';
 import useStyles from './styles';
 
-
 function Profile() {
   const classes = useStyles();
-
   const router = useRouter();
   const { query } = router;
-  const { type = 'dynamic' } = query;
-
+  const { path = 'dynamic' } = query;
   const [ getUserInfo, getUserInfoData ] = useMutation(USERINFO);
 
   useOnMount(async () => {
@@ -63,15 +57,13 @@ function Profile() {
             <Typography variant="caption">{userInfo.sign}</Typography>
           </Box>
           <Divider />
-          <Box px={2}>
+          <Box px={1}>
             <Tabs
-              value={type}
+              value={path}
               onChange={(e, val) => {
-              // router.push(`/user/notification?type=${val}`, `/user/notification/${val}`);
+                router.push(`/user/profile?path=${val}`, `/user/profile/${val}`);
               }}
-              classes={{
-                indicator: classes.indicator,
-              }}
+              classes={{ indicator: classes.indicator }}
               TabIndicatorProps={{ children: <div /> }}
             >
               {navList.map((i) => (
@@ -92,7 +84,9 @@ function Profile() {
         </Card>
 
         <Box mt={2} />
-        <DynamicList />
+
+        {path === 'dynamic' && <DynamicList query={{ user: userInfo._id }} />}
+        {/* {path === 'dynamic' && <DynamicList />} */}
       </Box>
 
     </Box>

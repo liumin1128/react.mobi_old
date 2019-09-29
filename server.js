@@ -53,6 +53,11 @@ app.prepare()
       app.render(req, res, '/user/notification', { type });
     });
 
+    server.get('/user/profile/:path?', (req, res, next) => {
+      const { path = 'dynamic' } = req.params;
+      app.render(req, res, '/user/profile', { path });
+    });
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });

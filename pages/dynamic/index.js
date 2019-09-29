@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
@@ -13,6 +14,9 @@ const BackToTopWithNoSSR = dynamic(
 );
 
 function Index() {
+  const router = useRouter();
+  const { query } = router;
+
   return (
     <>
 
@@ -33,7 +37,8 @@ function Index() {
         </Box>
       </Card>
       <Box mb={1.5} />
-      <DynamicList />
+
+      <DynamicList query={query} />
 
       <BackToTopWithNoSSR />
 
