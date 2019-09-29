@@ -21,6 +21,7 @@ export default makeStyles((theme) => ({
   tab: {
     textTransform: 'none',
     minWidth: theme.spacing(10),
+    overflow: 'auto',
     // fontSize: 16,
   },
   selected: {
@@ -30,8 +31,10 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    height: 3,
+    height: 2,
+    // marginBottom: -2,
     '& > div': {
+      borderRadius: 4,
       maxWidth: 36,
       width: '100%',
       backgroundColor: theme.palette.primary.main,
