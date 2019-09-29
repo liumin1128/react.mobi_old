@@ -89,14 +89,18 @@ function DynamicListItem({
                   <Paper elevation={2}>
                     <MenuList>
 
-                      {user._id === userInfo._id ? (
+                      {user && user._id && (
                         <>
-                          <MenuItem className={classes.MenuItem} onClick={onEdit}>编辑</MenuItem>
-                          <MenuItem className={classes.MenuItem} onClick={onDel}>删除</MenuItem>
-                        </>
-                      ) : (
-                        <>
-                          <MenuItem className={classes.MenuItem} onClick={onFollow}>关注</MenuItem>
+                          {user._id === userInfo._id ? (
+                            <>
+                              <MenuItem className={classes.MenuItem} onClick={onEdit}>编辑</MenuItem>
+                              <MenuItem className={classes.MenuItem} onClick={onDel}>删除</MenuItem>
+                            </>
+                          ) : (
+                            <>
+                              <MenuItem className={classes.MenuItem} onClick={onFollow}>关注</MenuItem>
+                            </>
+                          )}
                         </>
                       )}
 

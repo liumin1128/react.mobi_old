@@ -14,7 +14,27 @@ export default makeStyles((theme) => ({
     width: 100,
     height: 100,
     marginTop: -50,
-    marginLeft: 50,
+    marginLeft: theme.spacing(2),
+    // position: 'absolute',
     // margin: 'auto',
+  },
+  tab: {
+    textTransform: 'none',
+    minWidth: theme.spacing(10),
+    // fontSize: 16,
+  },
+  selected: {
+    color: theme.palette.primary.main,
+  },
+  indicator: {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    height: 3,
+    '& > div': {
+      maxWidth: 36,
+      width: '100%',
+      backgroundColor: theme.palette.primary.main,
+    },
   },
 }));
