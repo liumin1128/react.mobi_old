@@ -23,13 +23,12 @@ import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import Pictures from '@/container/Dynamic/components/Pictures';
 import Iframe from '@/container/Dynamic/components/Iframe';
 import InfoButton from '@/components/Button/Info';
-// import Link from '@/components/Link';
 import { getTimeAgo } from '@/utils/common';
 import CreateComment from '@/container/Comment/Create';
 import CommentList from '@/container/Comment/List';
 import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import Popper from '@/components/Popper';
-
+import Link from '@/components/Link';
 import useStyles from './styles';
 import { text2html, topics2Html } from '../../utils';
 
@@ -81,7 +80,30 @@ function DynamicListItem({
         <Box p={3} pb={0}>
           <CardHeader
             className={classes.header}
-            avatar={(<Avatar aria-label="Avatar" src={avatarUrl} className={classes.avatar}>{nickname[0]}</Avatar>)}
+            avatar={(
+              <Link
+                href={`/user/profile?path=dynamic&user=${user._id}`}
+                as={`/user/profile/dynamic/${user._id}`}
+              >
+                <Avatar
+                  aria-label="Avatar"
+                  src={avatarUrl}
+                  className={classes.avatar}
+                >
+                  {nickname[0]}
+                </Avatar>
+              </Link>
+            )}
+            title={(
+              <Link
+                href={`/user/profile?path=dynamic&user=${user._id}`}
+                as={`/user/profile/dynamic/${user._id}`}
+              >
+                <Typography variant="h6" className={classes.nickname}>{nickname}</Typography>
+
+              </Link>
+            )}
+            subheader={getTimeAgo(createdAt)}
             action={(
               <Popper
                 placement="bottom-end"
@@ -103,7 +125,6 @@ function DynamicListItem({
                           )}
                         </>
                       )}
-
                       <MenuItem
                         className={classes.MenuItem}
                         onClick={() => {
@@ -121,8 +142,7 @@ function DynamicListItem({
                 </IconButton>
               </Popper>
             )}
-            title={<Typography variant="h6" className={classes.nickname}>{nickname}</Typography>}
-            subheader={getTimeAgo(createdAt)}
+
           />
           <Box className={classes.content}>
 
