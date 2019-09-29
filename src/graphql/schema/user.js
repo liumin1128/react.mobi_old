@@ -39,6 +39,29 @@ export const USERINFO = gql`
   }
 `;
 
+export const USERINFO_BY_ID = gql`
+  query userInfoById($_id: String!) {
+    userInfo: userInfoById(_id: $_id) {
+      __typename
+      _id
+      nickname
+      avatarUrl
+      sign
+      sex
+      birthday
+      email
+      unverified_email
+      countryCode
+      purePhoneNumber
+      phoneNumber
+
+      follow
+      fans
+      dynamic
+    }
+  }
+`;
+
 export const USERINFOWITHOAUTH = gql`
   query userInfo {
     userInfo: userInfo {

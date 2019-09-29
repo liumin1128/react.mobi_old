@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import Avatar from '@material-ui/core/Avatar';
@@ -9,6 +9,8 @@ import Divider from '@material-ui/core/Divider';
 import { useMutation } from '@/hooks/graphql';
 import { USERINFO } from '@/graphql/schema/user';
 import { useOnMount } from '@/hooks';
+import Link from '@/components/Link';
+
 import Skeleton from './Skeleton';
 
 function EditeUserInfo() {
@@ -44,10 +46,13 @@ function EditeUserInfo() {
     <Card>
       <Box>
         <Box p={2} px={4} display="flex" justifyContent="center" alignItems="center">
-          <Avatar
-            src={userInfo.avatarUrl}
-            style={{ border: '1px #fff solid', boxShadow: '1px 2px 3px rgba(0,0,0,0.2)', width: 64, height: 64 }}
-          />
+          <Link href={`/user/profile/dynamic/?user=${userInfo._id}`} as={`/user/profile/dynamic/${userInfo._id}`}>
+            <Avatar
+              src={userInfo.avatarUrl}
+              style={{ border: '1px #fff solid', boxShadow: '1px 2px 3px rgba(0,0,0,0.2)', width: 64, height: 64 }}
+            />
+          </Link>
+
           <Box flex={1} ml={1}>
             <Typography style={{ fontSize: 14, fontWeight: 'bold', padding: 0 }}>{userInfo.nickname}</Typography>
             <Typography variant="caption">{userInfo.sign || '这是懒人~'}</Typography>

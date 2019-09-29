@@ -12,7 +12,7 @@ import Follow from '@/container/User/Follow';
 import Fans from '@/container/User/Fans';
 import Loading from '@/components/Loading';
 import { useMutation } from '@/hooks/graphql';
-import { USERINFO } from '@/graphql/schema/user';
+import { USERINFO, USERINFO_BY_ID } from '@/graphql/schema/user';
 import { useOnMount } from '@/hooks';
 import useStyles from './styles';
 
@@ -20,8 +20,8 @@ function Profile() {
   const classes = useStyles();
   const router = useRouter();
   const { query } = router;
-  const { path = 'dynamic' } = query;
-  const [ getUserInfo, getUserInfoData ] = useMutation(USERINFO);
+  const { path = 'dynamic', user } = query;
+  const [ getUserInfo, getUserInfoData ] = useMutation(USERINFO_BY_ID, { _id: user });
 
   useOnMount(async () => {
     if (!getUserInfoData.called) {
@@ -63,7 +63,7 @@ function Profile() {
             <Tabs
               value={path}
               onChange={(e, val) => {
-                router.push(`/user/profile?path=${val}`, `/user/profile/${val}`);
+                router.push(`/user/profile?path=${val}&user=${user}`, `/user/profile/${val}/${user}`);
               }}
               classes={{ indicator: classes.indicator }}
               TabIndicatorProps={{ children: <div /> }}
