@@ -42,6 +42,7 @@ export default class user extends PureComponent {
   handleProfile = async () => {
     this.handleClose();
     const { data: { userInfo = {} } } = this.props;
+    // console.log(`/user/profile?path=dynamic&user=${userInfo._id}`, `/user/profile/dynamic/${userInfo._id}`);
     Router.push(`/user/profile?path=dynamic&user=${userInfo._id}`, `/user/profile/dynamic/${userInfo._id}`);
   }
 
