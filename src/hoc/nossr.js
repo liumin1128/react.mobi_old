@@ -3,9 +3,12 @@ import { isServerSide } from '@/utils/common';
 
 export default (WrappedComponent) => {
   return class NossrComponent extends PureComponent {
-    state = {
-      show: false,
-      skip: false,
+    constructor(props) {
+      super(props);
+      this.state = {
+        show: false,
+        skip: false,
+      };
     }
 
     componentDidMount() {
@@ -23,7 +26,7 @@ export default (WrappedComponent) => {
       const { ...other } = this.props;
       const { show } = this.state;
       if (!show) {
-        return 'nossr loading';
+        return null;
       }
       return (
         <WrappedComponent {...other} />

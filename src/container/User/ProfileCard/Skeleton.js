@@ -1,8 +1,9 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 import Card from '@material-ui/core/Card';
+// import nossr from '@/hoc/nossr';
 
-export default function Skeleton() {
+function Skeleton() {
   return (
     <Card>
       <ContentLoader
@@ -11,6 +12,7 @@ export default function Skeleton() {
         // speed={10}
         primaryColor="#f3f3f3"
         secondaryColor="#ecebeb"
+        uniquekey="skeleton-uniquekey"
       >
         <circle cx={`${32 + 32}px`} cy={`${16 + 32}px`} r={`${32}px`} />
         <rect x={`${24 + 32 + 32 + 16}px`} y={`${32}px`} rx={`${4}px`} ry={`${4}px`} width={`${80}px`} height={`${14}px`} />
@@ -23,3 +25,5 @@ export default function Skeleton() {
     </Card>
   );
 }
+
+export default Skeleton;
