@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import DynamicList from '@/container/Dynamic/List';
 import DynamicCreate from '@/container/Dynamic/Create';
 import DynamicTopics from '@/container/Dynamic/Topics';
-import NavTabs from '@/components/NavTabs';
+// import NavTabs from '@/components/NavTabs';
 import Blogrol from '@/container/Side/Blogrol';
 import Project from '@/container/Side/Project';
 import Code from '@/container/Side/Code';
@@ -26,7 +26,7 @@ function Index() {
         </Box>
       </Card>
       <Box mb={1.5} />
-      <Card>
+      {/* <Card>
         <Box px={1}>
           <NavTabs
             navList={[
@@ -43,7 +43,7 @@ function Index() {
             ]}
           />
         </Box>
-      </Card>
+      </Card> */}
       <Box mb={1.5} />
       <DynamicList />
       <BackToTopWithNoSSR />
