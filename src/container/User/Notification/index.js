@@ -108,7 +108,16 @@ function Profile({ router }) {
                       avatar={(<Avatar src={actionor.avatarUrl}>{actionor.nickname}</Avatar>)}
                       title={<Typography variant="h6" style={{ fontSize: 14 }}>{actionor.nickname}</Typography>}
                       subheader={<Typography variant="caption" style={{ fontSize: 12 }}>{getTimeAgo(createdAt)}</Typography>}
-                      action={type === 'follow' ? <Button color="primary" variant={actionor.followStatus ? 'outlined' : 'contained'} size="small" onClick={() => { onFollow(actionor._id, actionor.followStatus); }}>{actionor.followStatus ? '取消关注' : '关注'}</Button> : null}
+                      action={type === 'follow' ? (
+                        <Button
+                          color="primary"
+                          variant={actionor.followStatus ? 'outlined' : 'contained'}
+                          size="small"
+                          onClick={() => { onFollow(actionor._id, actionor.followStatus); }}
+                        >
+                          {actionor.followStatus ? '取消关注' : '关注'}
+                        </Button>
+                      ) : null}
                     />
                     <Box ml={10} mb={3} mt={1} mr={3}>
                       <Typography variant="body2" color="textSecondary" component="p">

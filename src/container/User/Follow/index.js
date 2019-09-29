@@ -12,16 +12,37 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Avatar from '@material-ui/core/Avatar';
 import { useRouter, withRouter } from 'next/router';
-import { useQuery } from '@/hooks/graphql';
+import { useQuery, useMutation } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
-import { FOLLOW_LIST } from '@/graphql/schema/follow';
+import { FOLLOW_LIST, FOLLOW } from '@/graphql/schema/follow';
+import Snackbar from '@/components/Snackbar';
 
 
 function Follow({ query }) {
   const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(FOLLOW_LIST, query, { ssr: false });
+  const [ follow ] = useMutation(FOLLOW);
 
   if (loading) return <Loading />;
   const { list = [], meta } = data;
+
+
+  function onFollow(_id, followStatus) {
+    follow({ _id }, {
+      optimisticResponse: { result: { status: followStatus ? 201 : 200, message: '关注成功', __typename: 'Result' } },
+      update: (store, { data: { result: { status: code, message } } }) => {
+        if (code === 200 || code === 201) {
+          Snackbar.error(message);
+          const sta = { 200: true, 201: false };
+          const temp = store.readQuery({ query: FOLLOW_LIST, variables: query });
+          const idx = temp.list.findIndex((i) => i.user._id === _id);
+          temp.list[idx].user.followStatus = sta[code];
+          store.writeQuery({ query: FOLLOW_LIST, variables: query, data: temp });
+        } else {
+          Snackbar.error(message);
+        }
+      },
+    });
+  }
 
   return (
     <>
@@ -42,7 +63,15 @@ function Follow({ query }) {
                         secondary={follow.sign || '这家伙什么都没说~'}
                       />
                       <ListItemSecondaryAction>
-                        <Button variant="contained" color="primary" size="small">关注</Button>
+                        <Button
+                        // variant="contained"
+                          color="primary"
+                          size="small"
+                          variant={follow.followStatus ? 'outlined' : 'contained'}
+                          onClick={() => { onFollow(follow._id, follow.followStatus); }}
+                        >
+                          {follow.followStatus ? '取消关注' : '关注'}
+                        </Button>
                       </ListItemSecondaryAction>
                     </ListItem>
                     <Divider variant="inset" component="li" />
