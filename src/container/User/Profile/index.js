@@ -8,6 +8,8 @@ import Divider from '@material-ui/core/Divider';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import DynamicList from '@/container/Dynamic/List';
+import Follow from '@/container/User/Follow';
+import Fans from '@/container/User/Fans';
 import Loading from '@/components/Loading';
 import { useMutation } from '@/hooks/graphql';
 import { USERINFO } from '@/graphql/schema/user';
@@ -86,7 +88,8 @@ function Profile() {
         <Box mt={2} />
 
         {path === 'dynamic' && <DynamicList query={{ user: userInfo._id }} />}
-        {/* {path === 'dynamic' && <DynamicList />} */}
+        {path === 'follow' && <Follow query={{ user: userInfo._id }} />}
+        {path === 'fans' && <Fans query={{ user: userInfo._id }} />}
       </Box>
 
     </Box>
