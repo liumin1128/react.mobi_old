@@ -55,6 +55,7 @@ export const USERINFO_BY_ID = gql`
       purePhoneNumber
       phoneNumber
 
+      followStatus
       follow
       fans
       dynamic
