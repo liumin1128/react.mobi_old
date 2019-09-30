@@ -40,7 +40,7 @@ function Profile({ router }) {
     params = { type: 'system' };
   }
 
-  const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(NOTIFACATION_LIST, params, { ssr: false });
+  const { data, loading, isLoadingMore, isEnd, loadMore } = useQuery(NOTIFACATION_LIST, params, { ssr: false });
   const [ follow ] = useMutation(FOLLOW);
 
   function onFollow(_id, followStatus) {
@@ -62,7 +62,8 @@ function Profile({ router }) {
   }
 
   if (loading) return <Loading />;
-  const { list, meta } = data;
+  const { list = [], meta } = data;
+
   return (
     <>
       <Box display="flex" justifyContent="center">
@@ -93,62 +94,61 @@ function Profile({ router }) {
 
           <Box py={1} />
 
-          {list.length > 0 && (
-          <>
+          {list && list.length > 0 && (
+            <>
+              {list.map(({
+                _id, actionor, user, createdAt, path, type,
+                actionShowText, actionorShowText, userShowText,
+              }) => {
+                return (
+                  <Box mb={2} key={_id}>
+                    <Card className={classes.card}>
+                      <CardHeader
+                        className={classes.header}
+                        avatar={(<Avatar src={actionor.avatarUrl}>{actionor.nickname}</Avatar>)}
+                        title={<Typography variant="h6" style={{ fontSize: 14 }}>{actionor.nickname}</Typography>}
+                        subheader={<Typography variant="caption" style={{ fontSize: 12 }}>{getTimeAgo(createdAt)}</Typography>}
+                        action={type === 'follow' ? (
+                          <Button
+                            color="primary"
+                            variant={actionor.followStatus ? 'outlined' : 'contained'}
+                            size="small"
+                            onClick={() => { onFollow(actionor._id, actionor.followStatus); }}
+                          >
+                            {actionor.followStatus ? '取消关注' : '关注'}
+                          </Button>
+                        ) : null}
+                      />
+                      <Box ml={10} mb={3} mt={1} mr={3}>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                          <span style={{ fontWeight: 'bold' }}>{actionShowText}</span>
+                          {actionorShowText ? `： ${actionorShowText}` : ''}
+                        </Typography>
+                        {userShowText && (
+                          <Link href={path || '/'}>
+                            <Box p={1} px={2} mt={1} bgcolor="rgba(0, 0, 0, 0.03)">
+                              <Typography variant="body2" color="inherit" component="p">
+                                {`@${user.nickname}: ${userShowText}`}
+                              </Typography>
+                            </Box>
+                          </Link>
+                        )}
+                      </Box>
+                    </Card>
+                  </Box>
+                );
+              })}
 
-            {list.map(({
-              _id, actionor, user, createdAt, path, type,
-              actionShowText, actionorShowText, userShowText,
-            }) => {
-              return (
-                <Box mb={2} key={_id}>
-                  <Card className={classes.card}>
-                    <CardHeader
-                      className={classes.header}
-                      avatar={(<Avatar src={actionor.avatarUrl}>{actionor.nickname}</Avatar>)}
-                      title={<Typography variant="h6" style={{ fontSize: 14 }}>{actionor.nickname}</Typography>}
-                      subheader={<Typography variant="caption" style={{ fontSize: 12 }}>{getTimeAgo(createdAt)}</Typography>}
-                      action={type === 'follow' ? (
-                        <Button
-                          color="primary"
-                          variant={actionor.followStatus ? 'outlined' : 'contained'}
-                          size="small"
-                          onClick={() => { onFollow(actionor._id, actionor.followStatus); }}
-                        >
-                          {actionor.followStatus ? '取消关注' : '关注'}
-                        </Button>
-                      ) : null}
-                    />
-                    <Box ml={10} mb={3} mt={1} mr={3}>
-                      <Typography variant="body2" color="textSecondary" component="p">
-                        <span style={{ fontWeight: 'bold' }}>{actionShowText}</span>
-                        {actionorShowText ? `： ${actionorShowText}` : ''}
-                      </Typography>
-                      {userShowText && (
-                        <Link href={path || '/'}>
-                          <Box p={1} px={2} mt={1} bgcolor="rgba(0, 0, 0, 0.03)">
-                            <Typography variant="body2" color="inherit" component="p">
-                              {`@${user.nickname}: ${userShowText}`}
-                            </Typography>
-                          </Box>
-                        </Link>
-                      )}
-                    </Box>
-                  </Card>
-                </Box>
-              );
-            })}
-
-            {list.length < meta.count ? (
-              <Button
-                fullWidth
-                onClick={() => loadMore()}
-                disabled={isLoadingMore}
-              >
-                {`查看更多 - 剩余${meta.count - list.length}条`}
-              </Button>
-            ) : <Typography align="center">~ 这是人家的底线 ~</Typography>}
-          </>
+              {list.length < meta.count ? (
+                <Button
+                  fullWidth
+                  onClick={() => loadMore()}
+                  disabled={isLoadingMore}
+                >
+                  {`查看更多 - 剩余${meta.count - list.length}条`}
+                </Button>
+              ) : <Typography align="center">~ 这是人家的底线 ~</Typography>}
+            </>
           )}
 
         </Box>
