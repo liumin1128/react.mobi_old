@@ -67,11 +67,6 @@ export default class Header extends PureComponent {
             <IconButton color="inherit" onClick={setTheme}>
               <ColorLensIcon />
             </IconButton>
-            <Link href="/user/notification" style={{ color: '#fff' }}>
-              <IconButton color="inherit">
-                <NotificationsIcon />
-              </IconButton>
-            </Link>
             <DynamicUserInfoWithNoSSR />
           </Toolbar>
         </AppBar>

@@ -4,10 +4,13 @@ import Link from 'next/link';
 import { graphql } from 'react-apollo';
 import dynamic from 'next/dynamic';
 import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import { clearStorage } from '@/utils/store';
 import { USERINFO } from '@/graphql/schema/user';
 
@@ -18,10 +21,14 @@ const DynamicComponentWithCustomLoading = dynamic(() => import('@/container/logi
 
 @graphql(USERINFO, { ssr: false })
 export default class user extends PureComponent {
-  state = {
-    showLoginModal: false,
-    anchorEl: null,
+  constructor(props) {
+    super(props);
+    this.state = {
+      showLoginModal: false,
+      anchorEl: null,
+    };
   }
+
 
   handleClick = (event) => {
     this.setState({ anchorEl: event.currentTarget });
@@ -76,6 +83,11 @@ export default class user extends PureComponent {
       const { anchorEl } = this.state;
       return (
         <>
+          <Link href="/user/notification" style={{ color: '#fff' }}>
+            <IconButton color="inherit">
+              <NotificationsIcon />
+            </IconButton>
+          </Link>
           <ButtonBase
             centerRipple
             aria-owns={anchorEl ? 'simple-menu' : undefined}
