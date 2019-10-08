@@ -2,8 +2,9 @@ import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
+import { ThemeContextProvider } from '@/hoc/theme';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     // background: 'red',
     // height: 36,
@@ -57,26 +58,29 @@ export default class MySnackbar extends PureComponent {
     </Button> ];
 
     return (
-      <Snackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        open={this.state.open}
-        autoHideDuration={2000}
-        onClose={this.handleClose}
-        onExited={this.handleExited}
-        // SnackbarContentProps={{
-        //   className: classes.root,
-        //   'aria-describedby': 'message-id',
-        // }}
-        snackbarcontentprops={{
-          className: classes.root,
-          'aria-describedby': 'message-id',
-        }}
-        message={message}
-        action={action}
-      />
+      <ThemeContextProvider>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.open}
+          autoHideDuration={5000}
+          onClose={this.handleClose}
+          onExited={this.handleExited}
+          // SnackbarContentProps={{
+          //   className: classes.root,
+          //   'aria-describedby': 'message-id',
+          // }}
+          snackbarcontentprops={{
+            className: classes.root,
+            'aria-describedby': 'message-id',
+          }}
+          message={message}
+          action={action}
+        />
+      </ThemeContextProvider>
+
     );
   }
 }
