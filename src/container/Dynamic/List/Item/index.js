@@ -37,6 +37,8 @@ function DynamicListItem({
   // 用户信息
   userInfo = {},
 }) {
+  const _user = (user && user._id) ? user : { nickname: ' 遁入虚空的用户' };
+
   const classes = useStyles();
   const [ showComment, setShowComment ] = useState(false);
 
@@ -63,10 +65,9 @@ function DynamicListItem({
   }
 
   function onFollow() {
-    follow(user._id);
+    follow(_user._id);
   }
 
-  const { avatarUrl, nickname } = user || { nickname: ' 遁入虚空的用户' };
 
   return (
     <Fragment key={_id}>
@@ -76,22 +77,22 @@ function DynamicListItem({
             className={classes.header}
             avatar={(
               <Link
-                href={`/user/profile?path=dynamic&user=${user._id}`}
-                as={`/user/profile/dynamic/${user._id}`}
+                href={`/user/profile?path=dynamic&user=${_user._id}`}
+                as={`/user/profile/dynamic/${_user._id}`}
               >
                 <Avatar
                   size={48}
-                  avatarUrl={avatarUrl}
-                  nickname={nickname}
+                  avatarUrl={_user.avatarUrl}
+                  nickname={_user.nickname}
                 />
               </Link>
             )}
             title={(
               <Link
-                href={`/user/profile?path=dynamic&user=${user._id}`}
-                as={`/user/profile/dynamic/${user._id}`}
+                href={`/user/profile?path=dynamic&user=${_user._id}`}
+                as={`/user/profile/dynamic/${_user._id}`}
               >
-                <Typography variant="h6" className={classes.nickname}>{nickname}</Typography>
+                <Typography variant="h6" className={classes.nickname}>{_user.nickname}</Typography>
 
               </Link>
             )}
@@ -103,9 +104,9 @@ function DynamicListItem({
                   <Paper elevation={2}>
                     <MenuList>
 
-                      {user && user._id && (
+                      {user && _user._id && (
                         <>
-                          {user._id === userInfo._id ? (
+                          {_user._id === userInfo._id ? (
                             <>
                               <MenuItem className={classes.MenuItem} onClick={onEdit}>编辑</MenuItem>
                               <MenuItem className={classes.MenuItem} onClick={onDel}>删除</MenuItem>
