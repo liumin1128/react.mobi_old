@@ -7,12 +7,13 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
 import CardHeader from '@material-ui/core/CardHeader';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 import CardMedia from '@material-ui/core/CardMedia';
 import { NEWS_LIST } from '@/graphql/schema/news';
 import { updateQuery } from '@/graphql/utils';
 import { formatTime } from '@/utils/common';
 import Link from '@/components/Link';
+import Avatar from '@/components/Avatar';
 
 const styles = (theme) => ({
   media: {
@@ -70,59 +71,64 @@ export default class NewsList extends PureComponent {
             <>
 
               <Grid container className={classes.root} spacing={2}>
-                  {list
-                    // .slice(0, 4)
-                    .map((i, index) => (
-                      <Grid key={i._id} item xs={12} md={index === 0 ? 12 : 4}>
-                        <Link to={`/news/detail?_id=${i._id}`}>
+                {list
+                // .slice(0, 4)
+                  .map((i, index) => (
+                    <Grid key={i._id} item xs={12} md={index === 0 ? 12 : 4}>
+                      <Link to={`/news/detail?_id=${i._id}`}>
 
 
-                          <Grid container spacing={2}>
+                        <Grid container spacing={2}>
 
-                            <Grid item xs={12} md={index === 0 ? 8 : 12}>
+                          <Grid item xs={12} md={index === 0 ? 8 : 12}>
                             <CardMedia
-                            style={{
-                              paddingTop: index === 0 ? '45%' : '55%',
-                              backgroundColor: 'rgba(0,0,0,0.05)',
-                            }}
-                            image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''}
-                          />
+                              style={{
+                                paddingTop: index === 0 ? '45%' : '55%',
+                                backgroundColor: 'rgba(0,0,0,0.05)',
+                              }}
+                              image={i.cover || Array.isArray(i.photos) ? i.photos[0] : ''}
+                            />
                           </Grid>
-                            <Grid item xs={12} md={index === 0 ? 4 : 12}>
+                          <Grid item xs={12} md={index === 0 ? 4 : 12}>
 
                             <div
-                            style={{
-                              // height: index === 0 ? 260 :140
-                            }}
-                          >
-                            <Typography variant="h6">{i.title}</Typography>
-                            {
+                              style={{
+                                // height: index === 0 ? 260 :140
+                              }}
+                            >
+                              <Typography variant="h6">{i.title}</Typography>
+                              {
                             //   <Typography variant="body1" gutterBottom>{
                             //   getLessStr(i.content, index === 0 ? 180 : 60)
                             //   // i.content
                             // }</Typography>
                           }
-                          </div>
+                            </div>
                             <CardHeader
-                            avatar={(
-                              <Avatar aria-label="Recipe">
-                                {i.appName[0]}
-                              </Avatar>
+                              avatar={(
+                                // <Avatar aria-label="Recipe">
+                                //   {i.appName[0]}
+                                // </Avatar>
+                                <Avatar
+                                  size={48}
+                                  nickname={i.appName}
+                                  // avatarUrl={user.avatarUrl}
+                                />
                             )}
-                            title={i.appName}
-                            subheader={formatTime(i.createdAt, 'MM月DD日 HH:mm 星期')}
-                            style={{ paddingLeft: 0 }}
-                          />
+                              title={i.appName}
+                              subheader={formatTime(i.createdAt, 'MM月DD日 HH:mm 星期')}
+                              style={{ paddingLeft: 0 }}
+                            />
                           </Grid>
-                          </Grid>
-                        </Link>
-                      </Grid>
-                    ))}
-                </Grid>
+                        </Grid>
+                      </Link>
+                    </Grid>
+                  ))}
+              </Grid>
               <CircularProgress
-                  color="secondary"
-                  className={classes.progress}
-                />
+                color="secondary"
+                className={classes.progress}
+              />
               <Waypoint onEnter={loadMore} />
             </>
           );

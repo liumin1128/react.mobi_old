@@ -3,16 +3,15 @@ import Router from 'next/router';
 import Link from 'next/link';
 import { graphql } from 'react-apollo';
 import dynamic from 'next/dynamic';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import { clearStorage } from '@/utils/store';
 import { USERINFO } from '@/graphql/schema/user';
+import Avatar from '@/components/Avatar';
 
 const DynamicComponentWithCustomLoading = dynamic(() => import('@/container/login/modal'), {
   loading: () => null,
@@ -94,7 +93,10 @@ export default class user extends PureComponent {
             aria-haspopup="true"
             onClick={this.handleClick}
           >
-            <Avatar style={{ background: 'rgba(0,0,0,0.1)' }} src={userInfo.avatarUrl}>{userInfo.nickname}</Avatar>
+            <Avatar
+              nickname={userInfo.nickname}
+              avatarUrl={userInfo.avatarUrl}
+            />
           </ButtonBase>
           <Menu
             id="simple-menu"

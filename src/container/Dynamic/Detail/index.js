@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import Divider from '@material-ui/core/Divider';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -28,6 +28,7 @@ import Snackbar from '@/components/Snackbar';
 import Pictures from '@/container/Dynamic/components/Pictures';
 import Iframe from '@/container/Dynamic/components/Iframe';
 import Popper from '@/components/Popper';
+import Avatar from '@/components/Avatar';
 import { text2html, topics2Html } from '../utils';
 import useStyles from './styles';
 
@@ -82,7 +83,13 @@ function DynamicDetail({ router }) {
             <Box p={3} pb={1}>
               <CardHeader
                 className={classes.header}
-                avatar={(<Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>)}
+                avatar={(
+                  <Avatar
+                    size={48}
+                    nickname={user.nickname}
+                    avatarUrl={user.avatarUrl}
+                  />
+                )}
                 // action={(<IconButton aria-label="Settings"><MoreVertIcon /></IconButton>)}
                 action={(
                   <Popper

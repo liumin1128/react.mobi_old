@@ -1,12 +1,13 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { NEWS_DETAIL } from '@/graphql/schema/news';
 import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import Html from '@/components/Html';
+import Avatar from '@/components/Avatar';
 import Comment from '@/container/Comment';
 import { formatTime, getTimeAgo } from '@/utils/common';
 // import useStyles from './styles';
@@ -41,9 +42,14 @@ function NewsDetail({ router }) {
       <br />
       <div style={{ display: 'flex', alignItems: 'center', fontSize: 12, color: '#666', opacity: 0.8 }}>
         <a href={url} target="_blank" rel="noopener noreferrer" style={{ margin: 0, display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-          <Avatar aria-label="Recipe" src={appLogo[appCode]} style={{ maxWidth: 18, maxHeight: 18, fontSize: 10, marginRight: 8 }}>
-            {appName[0]}
-          </Avatar>
+          <Avatar
+            size={18}
+            nickname={appName}
+            avatarUrl={appLogo[appCode]}
+            style={{
+              fontSize: 10, marginRight: 8,
+            }}
+          />
           <p style={{ margin: 0, color: '#666', marginRight: 8 }}>
             {appName}
           </p>

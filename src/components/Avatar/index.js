@@ -2,12 +2,13 @@ import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { getSmallImg } from '@/utils/common';
 
-export default ({ nickname, src, size, ...props }) => {
+export default ({ nickname, avatarUrl, size = 40, style, ...props }) => {
   return (
     <Avatar
-      {...props}
       aria-label="Avatar"
-      src={getSmallImg(src, size * 2, size * 2)}
+      src={avatarUrl ? getSmallImg(avatarUrl, size * 2, size * 2) : ''}
+      style={{ width: size, height: size, backgroundColor: '#ddd', ...style }}
+      {...props}
     >
       {nickname[0]}
     </Avatar>

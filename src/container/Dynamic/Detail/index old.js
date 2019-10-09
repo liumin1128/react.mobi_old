@@ -10,11 +10,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Divider from '@material-ui/core/Divider';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { DYNAMIC_DETAIL } from '@/graphql/schema/dynamic';
 import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
+import Avatar from '@/components/Avatar';
 import Html from '@/components/Html';
 import { formatTime, getTimeAgo } from '@/utils/common';
 import Comment from '@/container/Comment';
@@ -51,7 +52,7 @@ function DynamicDetail({ router }) {
               <Typography variant="body1" gutterBottom component="div">
                 <div className={classes.html} dangerouslySetInnerHTML={{ __html: html }} />
               </Typography>
-              {pictures.length > 0 && pictures.map(i => <img alt="" key={i} className={classes.picture} src={i} />)}
+              {pictures.length > 0 && pictures.map((i) => <img alt="" key={i} className={classes.picture} src={i} />)}
             </CardContent>
           </Card>
           <Box mt={2} />
@@ -63,7 +64,11 @@ function DynamicDetail({ router }) {
           <Card>
             <CardContent>
               <Box display="flex" alignItems="center">
-                <Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>{user.nickname}</Avatar>
+                <Avatar
+                  size={48}
+                  nickname={user.nickname}
+                  avatarUrl={user.avatarUrl}
+                />
                 <Box mr={2} />
                 <Box>
                   <Typography variant="h6">{user.nickname}</Typography>

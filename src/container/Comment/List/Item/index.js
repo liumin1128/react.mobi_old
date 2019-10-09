@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 // import IconButton from '@material-ui/core/IconButton';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
@@ -13,6 +13,7 @@ import { ZAN } from '@/graphql/schema/zan';
 import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
 import InfoButton from '@/components/Button/Info';
+import Avatar from '@/components/Avatar';
 
 import { getTimeAgo } from '@/utils/common';
 import { text2html } from '@/container/Dynamic/utils';
@@ -62,9 +63,11 @@ function Comment({ commentTo, session, data: { _id, user = {}, content, createdA
     <Box display="flex" className={classes.root}>
 
       <Box mr={2}>
-        <Avatar aria-label="Avatar" src={user.avatarUrl} className={classes.avatar}>
-          {user.nickname}
-        </Avatar>
+        <Avatar
+          size={48}
+          nickname={user.nickname}
+          avatarUrl={user.avatarUrl}
+        />
       </Box>
       <Box flexGrow={1}>
         <Box display="flex" alignItems="center">

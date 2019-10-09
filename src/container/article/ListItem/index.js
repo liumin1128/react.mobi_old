@@ -201,6 +201,7 @@ export default class ListItem extends PureComponent {
       >
         {user.nickname}
       </Avatar>
+
     );
   }
 

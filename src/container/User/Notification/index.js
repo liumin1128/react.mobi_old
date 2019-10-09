@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { useRouter, withRouter } from 'next/router';
 import Tabs from '@material-ui/core/Tabs';
@@ -15,6 +15,7 @@ import Link from '@/components/Link';
 import { getTimeAgo } from '@/utils/common';
 import { FOLLOW } from '@/graphql/schema/follow';
 import Snackbar from '@/components/Snackbar';
+import Avatar from '@/components/Avatar';
 import useStyles from './styles';
 
 const navList = [
@@ -105,7 +106,7 @@ function Profile({ router }) {
                     <Card className={classes.card}>
                       <CardHeader
                         className={classes.header}
-                        avatar={(<Avatar src={actionor.avatarUrl}>{actionor.nickname}</Avatar>)}
+                        avatar={(<Avatar nickname={actionor.nickname} avatarUrl={actionor.avatarUrl} />)}
                         title={<Typography variant="h6" style={{ fontSize: 14 }}>{actionor.nickname}</Typography>}
                         subheader={<Typography variant="caption" style={{ fontSize: 12 }}>{getTimeAgo(createdAt)}</Typography>}
                         action={type === 'follow' ? (

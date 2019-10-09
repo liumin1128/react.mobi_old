@@ -81,8 +81,7 @@ function DynamicListItem({
               >
                 <Avatar
                   size={48}
-                  src={avatarUrl}
-                  className={classes.avatar}
+                  avatarUrl={avatarUrl}
                   nickname={nickname}
                 />
               </Link>
