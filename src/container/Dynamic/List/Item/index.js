@@ -1,23 +1,16 @@
 import React, { Fragment, useState } from 'react';
 import Router from 'next/router';
-
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
-// import ButtonBase from '@material-ui/core/ButtonBase';
 import CardHeader from '@material-ui/core/CardHeader';
-// import CardMedia from '@material-ui/core/CardMedia';
-// import CardContent from '@material-ui/core/CardContent';
-import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-// import Popper from '@material-ui/core/Popper';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
-
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import Pictures from '@/container/Dynamic/components/Pictures';
@@ -28,6 +21,7 @@ import CreateComment from '@/container/Comment/Create';
 import CommentList from '@/container/Comment/List';
 import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import Popper from '@/components/Popper';
+import Avatar from '@/components/Avatar';
 import Link from '@/components/Link';
 import useStyles from './styles';
 import { text2html, topics2Html } from '../../utils';
@@ -86,12 +80,11 @@ function DynamicListItem({
                 as={`/user/profile/dynamic/${user._id}`}
               >
                 <Avatar
-                  aria-label="Avatar"
+                  size={48}
                   src={avatarUrl}
                   className={classes.avatar}
-                >
-                  {nickname[0]}
-                </Avatar>
+                  nickname={nickname}
+                />
               </Link>
             )}
             title={(
