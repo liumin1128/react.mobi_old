@@ -14,7 +14,8 @@ import Snackbar from '@/components/Snackbar';
 
 import Item from './Item';
 
-function DynamicList({ query }) {
+function DynamicList({ router }) {
+  const { query } = router;
   const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(DYNAMIC_LIST, query);
   const { data: userInfoData } = useQuery(USERINFO);
   // const [ check ] = useMutation(CHECK_NEW_DYNAMIC);
