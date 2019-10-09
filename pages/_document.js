@@ -22,7 +22,8 @@ class MyDocument extends Document {
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+            // href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+            href="https://fonts.loli.net/css?family=Roboto:300,400,500&display=swap"
           />
           <link rel="icon" href="https://imgs.react.mobi/FjpmLe9it1pTemLeB2w5XgDhv1D-" type="image/x-icon" />
           <link rel="shortcut icon" href="https://imgs.react.mobi/FjpmLe9it1pTemLeB2w5XgDhv1D-" type="image/x-icon" />
