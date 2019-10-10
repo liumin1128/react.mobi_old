@@ -99,12 +99,6 @@ Home.Sider = () => (
     <Box mt={2} />
     <Card>
       <Box p={2}>
-        <Code />
-      </Box>
-    </Card>
-    <Box mt={2} />
-    <Card>
-      <Box p={2}>
         <Footer />
       </Box>
     </Card>
