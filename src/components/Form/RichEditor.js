@@ -38,7 +38,6 @@ export default class RichEditor extends PureComponent {
       return <Skeleton />;
     }
 
-    console.log(this.props);
     return (
       <DynamicComponent
         {...this.props}
