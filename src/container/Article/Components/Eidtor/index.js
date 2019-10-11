@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-// import ReactDOM from 'react-dom';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { Editor, EditorState, RichUtils, convertFromRaw } from 'draft-js';
@@ -12,9 +11,15 @@ import options from './options';
 import { state2json, state2html } from './utils';
 import './index.less';
 
-function MyEditor({ placeholder = '请输入...', debug, ...props }) {
+function MyEditor({ placeholder = '请输入...', initialValue, debug, ...props }) {
+  console.log('initialValue');
+  console.log(initialValue);
   const [ editorState, setEditorState ] = useState(
-    EditorState.createEmpty(decorators),
+    initialValue
+      ? EditorState.set(
+        EditorState.createWithContent(convertFromRaw(initialValue)), { decorator: decorators },
+      )
+      : EditorState.createEmpty(decorators),
   );
 
   const editor = useRef();
@@ -76,6 +81,7 @@ function MyEditor({ placeholder = '请输入...', debug, ...props }) {
           <Button
             onClick={() => {
               console.log(state2json(editorState));
+              console.log(JSON.stringify(state2json(editorState)));
             }}
           >
           state2json
