@@ -82,7 +82,7 @@ export default class user extends PureComponent {
       const { anchorEl } = this.state;
       return (
         <>
-          <Link href="/user/notification" style={{ color: '#fff' }}>
+          <Link href="/user/notification">
             <IconButton color="inherit">
               <NotificationsIcon />
             </IconButton>
