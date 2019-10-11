@@ -56,8 +56,8 @@ export default class Affix extends PureComponent {
     // this.updatePosition();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.target !== nextProps.target) {
+  componentDidUpdate(nextProps, prevState) {
+    if (prevState.target !== nextProps.target) {
       this.clearEventListeners();
       this.setTargetEventListeners(nextProps.target);
 
@@ -65,8 +65,8 @@ export default class Affix extends PureComponent {
       this.updatePosition({});
     }
     if (
-      this.props.offsetTop !== nextProps.offsetTop
-      || this.props.offsetBottom !== nextProps.offsetBottom
+      prevState.offsetTop !== nextProps.offsetTop
+      || prevState.offsetBottom !== nextProps.offsetBottom
     ) {
       this.updatePosition({});
     }

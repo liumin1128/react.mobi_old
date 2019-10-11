@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { Editor, EditorState, RichUtils, convertFromRaw } from 'draft-js';
-// import Affix from '@/components/Affix';
+import Affix from '@/components/Affix';
 import { state2json, state2html } from './utils';
 import './index.less';
 
@@ -47,6 +47,12 @@ function MyEditor({ placeholder = '请输入...', ...props }) {
   return (
     <Box onClick={focusEditor} bgcolor="#ddd" p={4}>
 
+      <Affix offsetTop={64}>
+        <div className="RichEditor-menus">
+          111
+        </div>
+      </Affix>
+
 
       <div className="RichEditor-root">
         <div className={className}>
@@ -74,6 +80,8 @@ function MyEditor({ placeholder = '请输入...', ...props }) {
       >
         state2html
       </Button>
+
+
     </Box>
   );
 }
