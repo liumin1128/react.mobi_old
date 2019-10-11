@@ -19,7 +19,7 @@ function Index() {
         <Paper>
           <EidtorWithNoSSR
             initialValue={JSON.parse(json)}
-            debug
+            // debug
           />
         </Paper>
       </Box>

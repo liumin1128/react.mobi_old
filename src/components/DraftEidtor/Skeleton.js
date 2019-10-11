@@ -8,7 +8,7 @@ function Skeleton() {
   return (
     <Box>
       <Paper>
-        <Box width={580} maxWidth={580}>
+        <Box width={580} maxWidth={580} style={{ overflow: 'hidden' }}>
           <ContentLoader
             width={580}
             height={300}
