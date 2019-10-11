@@ -1,11 +1,11 @@
 
 import React from 'react';
-import Eidtor from '@/container/Article/Components/Eidtor';
+// import FlatList from '@/container/News/List/FlatList';
 
 function Index() {
   return (
     <>
-      <Eidtor />
+      Editor
     </>
   );
 }
