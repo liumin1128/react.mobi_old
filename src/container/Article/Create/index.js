@@ -57,6 +57,7 @@ function Index() {
                       {
                         formKeys.map((i) => (
                           <Field
+                            {...i}
                             key={i.key}
                             name={i.key}
                             label={i.label}
@@ -64,7 +65,6 @@ function Index() {
                             type="text"
                             margin="normal"
                             fullWidth
-                            // {...i.props}
                           />
                         ))
                       }
@@ -73,9 +73,8 @@ function Index() {
                         size="large"
                         color="primary"
                         type="submit"
-                        className={classes.submitButton}
+                        // className={classes.submitButton}
                       >
-                        <span style={{ width: 16 }} />
                         保存
                       </Button>
                     </Box>

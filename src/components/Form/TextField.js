@@ -9,10 +9,10 @@ export default ({
 }) => {
   return (
     <TextField
-      {...input}
-      {...rest}
       helperText={meta.touched ? meta.error : helperText}
       error={meta.error && meta.touched}
+      {...input}
+      {...rest}
     />
   );
 };
