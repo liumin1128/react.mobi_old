@@ -16,9 +16,10 @@ export default class MyApp extends App {
     const { Component, apolloClient } = this.props;
 
     /* eslint-disable no-param-reassign */
-    if (!Component.Layout) Component.Layout = Fragment;
-    if (!Component.Header) Component.Header = Header;
-    if (!Component.Footer) Component.Footer = Fragment;
+    if (typeof Component.Layout === 'undefined') Component.Layout = Fragment;
+    if (typeof Component.Header === 'undefined') Component.Header = Header;
+    if (typeof Component.Footer === 'undefined') Component.Footer = Fragment;
+    if (typeof Component.maxWidth === 'undefined') Component.maxWidth = 'md';
 
     return (
       <ApolloProvider client={apolloClient}>
@@ -26,9 +27,9 @@ export default class MyApp extends App {
           <ThemeContextProvider>
             <Component.Layout>
               <Component.Header />
-              <Container maxWidth="md">
+              <Container maxWidth={Component.maxWidth}>
                 <Box my={2}>
-                  {Component.Sider ? (
+                  {typeof Component.Sider !== 'undefined' ? (
                     <Grid container spacing={3}>
                       <Grid item xs={12} sm={12} md={8}>
                         <Component />

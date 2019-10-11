@@ -6,26 +6,12 @@ function Index() {
   return (
     <>
       <ArticleCreate />
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
-      <h1>11111</h1>
     </>
   );
 }
 
+Index.Header = () => null;
+Index.maxWidth = 'lg';
+// Index.Sider = () => null;
 
 export default Index;
