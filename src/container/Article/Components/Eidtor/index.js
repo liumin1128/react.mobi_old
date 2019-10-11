@@ -12,8 +12,6 @@ import { state2json, state2html } from './utils';
 import './index.less';
 
 function MyEditor({ placeholder = '请输入...', initialValue, debug, ...props }) {
-  console.log('initialValue');
-  console.log(initialValue);
   const [ editorState, setEditorState ] = useState(
     initialValue
       ? EditorState.set(

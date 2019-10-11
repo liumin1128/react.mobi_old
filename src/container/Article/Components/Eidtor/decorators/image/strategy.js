@@ -1,14 +1,9 @@
-import { Entity } from 'draft-js';
-
-export default (contentBlock, callback) => {
+export default (contentBlock, callback, contentState) => {
   contentBlock.findEntityRanges(
     (character) => {
       const entityKey = character.getEntity();
-
-      return (
-        entityKey !== null
-        && Entity.get(entityKey).getType() === 'IMAGE'
-      );
+      if (entityKey === null) return false;
+      return contentState.getEntity(entityKey).getType() === 'IMAGE';
     },
     callback,
   );
