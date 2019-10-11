@@ -1,27 +1,31 @@
 
-import React from 'react';
+import React, { useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import { Form, Field } from 'react-final-form';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import Skeleton from '@/components/DraftEidtor/Skeleton';
+// import Skeleton from '@/components/DraftEidtor/Skeleton';
 import TextField from '@/components/Form/TextField';
+import RichEditor from '@/components/Form/RichEditor';
+
 import useStyles from './styles';
 import formKeys from './formKeys';
 import validate from './validate';
 
-const EidtorWithNoSSR = dynamic(
-  () => import('@/components/DraftEidtor'),
-  { ssr: false, loading: Skeleton },
-);
+// const EidtorWithNoSSR = dynamic(
+//   () => import('@/components/DraftEidtor'),
+//   { ssr: false, loading: Skeleton },
+// );
 
 
 const json = '{"blocks":[{"key":"fnng1","text":"2121","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"798as","text":" ","type":"atomic","depth":0,"inlineStyleRanges":[],"entityRanges":[{"offset":0,"length":1,"key":0}],"data":{}},{"key":"49cc7","text":"212121","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{"0":{"type":"image","mutability":"IMMUTABLE","data":{"src":"https://imgs.react.mobi/FlWDA30s6yWJNLdf3t1PFQDLRueF"}}}}';
 
 function Index() {
   const classes = useStyles();
+
+  const editor = useRef();
 
   function onSubmit() {
 
@@ -38,8 +42,9 @@ function Index() {
               <Grid item md={8} xs={12}>
                 <Box>
                   <Paper>
-                    <EidtorWithNoSSR
+                    <RichEditor
                       initialValue={JSON.parse(json)}
+                      ref={editor}
                       // debug
                     />
                   </Paper>
@@ -81,6 +86,14 @@ function Index() {
           </form>
         )}
       />
+      <Button
+        onClick={() => {
+          console.log('editor');
+          console.log(editor.current.getJSON());
+        }}
+      >
+Button
+      </Button>
     </>
   );
 }

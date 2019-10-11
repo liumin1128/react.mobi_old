@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { Editor, EditorState, RichUtils, convertFromRaw } from 'draft-js';
@@ -98,3 +98,9 @@ function MyEditor({ placeholder = '请输入...', initialValue, debug, ...props 
 }
 
 export default MyEditor;
+
+// export default forwardRef(MyEditor);
+
+// export default forwardRef((props, ref) => {
+//   return <MyEditor {...props} ref={ref} />;
+// });

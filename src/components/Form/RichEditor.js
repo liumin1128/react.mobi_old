@@ -1,7 +1,6 @@
 import React, { PureComponent, createRef } from 'react';
-import { getJSON, getHTML } from '@/components/DraftEditor/utils';
-import CircularProgress from '@material-ui/core/CircularProgress';
-
+import { state2json, state2html } from '@/components/DraftEditor/utils';
+import Skeleton from '@/components/DraftEditor/Skeleton';
 
 export default class RichEditor extends PureComponent {
   constructor(props) {
@@ -16,37 +15,34 @@ export default class RichEditor extends PureComponent {
     // if your component use export default, use val.default,
     // else use val[yourComponentName]
     import('@/components/DraftEditor')
-      .then(val => this.setState({ DynamicComponent: val.default }));
+      .then((val) => this.setState({ DynamicComponent: val.default }));
   }
 
 
   getJSON = () => {
-    const { editorState } = this.editor.state;
-    return getJSON(editorState);
+    if (!this.editor || !this.editor.current) return;
+    const { editorState } = this.editor.current.state;
+    return state2json(editorState);
   }
 
   getHTML = () => {
-    const { editorState } = this.editor.state;
-    return getHTML(editorState);
+    if (!this.editor || !this.editor.current) return;
+    const { editorState } = this.editor.current.state;
+    return state2html(editorState);
   }
 
   render() {
     const { DynamicComponent } = this.state;
 
     if (!DynamicComponent) {
-      return (
-        <div style={{ padding: 16, minHeight: 302 }}>
-          <CircularProgress
-            size={20}
-            style={{ margin: 'auto', display: 'block' }}
-          />
-        </div>
-      );
+      return <Skeleton />;
     }
+
+    console.log(this.props);
     return (
       <DynamicComponent
         {...this.props}
-        ref={(c) => { this.editor = c; }}
+        ref={this.editor}
       />
     );
   }
