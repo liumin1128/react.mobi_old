@@ -30,6 +30,6 @@ function Index() {
   );
 }
 
-// Index.Sider = FlatList;
+Index.Sider = () => <>11</>;
 
 export default Index;
