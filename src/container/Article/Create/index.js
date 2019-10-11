@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 
 const EidtorWithNoSSR = dynamic(
-  () => import('@/container/Article/Components/Eidtor'),
+  () => import('@/components/DraftEidtor'),
   { ssr: false, loading: () => 'loading' },
 );
 
