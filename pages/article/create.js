@@ -1,11 +1,11 @@
 
 import React from 'react';
-// import FlatList from '@/container/News/List/FlatList';
+import ArticleCreate from '@/container/Article/Create';
 
 function Index() {
   return (
     <>
-      创建文章
+      <ArticleCreate />
     </>
   );
 }
