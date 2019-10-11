@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import { Form, Field } from 'react-final-form';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-// import Skeleton from '@/components/DraftEidtor/Skeleton';
+import Affix from '@/components/Affix';
 import TextField from '@/components/Form/TextField';
 import RichEditor from '@/components/Form/RichEditor';
 
@@ -51,10 +51,12 @@ function Index() {
                 </Box>
               </Grid>
               <Grid item md={4} xs={12}>
-                <Box>
-                  <Paper>
-                    <Box p={2}>
-                      {
+                <Affix offsetTop={64}>
+
+                  <Box>
+                    <Paper>
+                      <Box p={2}>
+                        {
                         formKeys.map((i) => (
                           <Field
                             {...i}
@@ -68,18 +70,18 @@ function Index() {
                           />
                         ))
                       }
-                      <Button
-                        variant="contained"
-                        size="large"
-                        color="primary"
-                        type="submit"
-                        // className={classes.submitButton}
-                      >
+                        <Button
+                          variant="contained"
+                          size="large"
+                          color="primary"
+                          type="submit"
+                        >
                         保存
-                      </Button>
-                    </Box>
-                  </Paper>
-                </Box>
+                        </Button>
+                      </Box>
+                    </Paper>
+                  </Box>
+                </Affix>
               </Grid>
             </Grid>
           </form>
