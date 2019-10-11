@@ -7,13 +7,14 @@ import Affix from '@/components/Affix';
 import InlineStyleControls from './controls/InlineStyleControls';
 import BlockStyleControls from './controls/BlockStyleControls';
 import MediaControls from './controls/MediaControls';
-
+import decorators from './decorators';
+import options from './options';
 import { state2json, state2html } from './utils';
 import './index.less';
 
-function MyEditor({ placeholder = '请输入...', ...props }) {
+function MyEditor({ placeholder = '请输入...', debug, ...props }) {
   const [ editorState, setEditorState ] = useState(
-    EditorState.createEmpty(),
+    EditorState.createEmpty(decorators),
   );
 
   const editor = useRef();
@@ -49,7 +50,7 @@ function MyEditor({ placeholder = '请输入...', ...props }) {
   }
 
   return (
-    <Box onClick={focusEditor} bgcolor="#ddd" p={4}>
+    <Box onClick={focusEditor}>
 
       <Affix offsetTop={64}>
         <div className="RichEditor-menus">
@@ -68,26 +69,29 @@ function MyEditor({ placeholder = '请输入...', ...props }) {
             ref={editor}
             editorState={editorState}
             onChange={onChange}
+            {...options}
+            {...props}
           />
         </div>
       </div>
-
-      <Button
-        onClick={() => {
-          console.log(state2json(editorState));
-        }}
-      >
-        state2json
-      </Button>
-      <Button
-        onClick={() => {
-          console.log(state2html(editorState));
-        }}
-      >
-        state2html
-      </Button>
-
-
+      {debug && (
+        <>
+          <Button
+            onClick={() => {
+              console.log(state2json(editorState));
+            }}
+          >
+          state2json
+          </Button>
+          <Button
+            onClick={() => {
+              console.log(state2html(editorState));
+            }}
+          >
+          state2html
+          </Button>
+        </>
+      )}
     </Box>
   );
 }
