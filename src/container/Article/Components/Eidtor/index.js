@@ -4,6 +4,10 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { Editor, EditorState, RichUtils, convertFromRaw } from 'draft-js';
 import Affix from '@/components/Affix';
+import InlineStyleControls from './controls/InlineStyleControls';
+import BlockStyleControls from './controls/BlockStyleControls';
+import MediaControls from './controls/MediaControls';
+
 import { state2json, state2html } from './utils';
 import './index.less';
 
@@ -26,8 +30,8 @@ function MyEditor({ placeholder = '请输入...', ...props }) {
     setEditorState(state);
   }
 
-  function handleKeyCommand(command, state) {
-    const newState = RichUtils.handleKeyCommand(state, command);
+  function handleKeyCommand(command, nextState) {
+    const newState = RichUtils.handleKeyCommand(nextState, command);
     if (newState) {
       onChange(newState);
       return true;
@@ -49,7 +53,9 @@ function MyEditor({ placeholder = '请输入...', ...props }) {
 
       <Affix offsetTop={64}>
         <div className="RichEditor-menus">
-          111
+          <BlockStyleControls editorState={editorState} onChange={onChange} />
+          <InlineStyleControls editorState={editorState} onChange={onChange} />
+          <MediaControls editorState={editorState} onChange={onChange} />
         </div>
       </Affix>
 
