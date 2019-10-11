@@ -59,8 +59,6 @@ function MyEditor({ placeholder = '请输入...', debug, ...props }) {
           <MediaControls editorState={editorState} onChange={onChange} />
         </div>
       </Affix>
-
-
       <div className="RichEditor-root">
         <div className={className}>
           <Editor
