@@ -51,7 +51,6 @@ function MyEditor({ placeholder = '请输入...', debug, ...props }) {
 
   return (
     <Box onClick={focusEditor}>
-
       <Affix offsetTop={64}>
         <div className="RichEditor-menus">
           <BlockStyleControls editorState={editorState} onChange={onChange} />
