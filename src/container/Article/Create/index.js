@@ -1,4 +1,6 @@
 import React from 'react';
+import Router from 'next/router';
+
 import Container from './container';
 import { useMutation, useQuery } from '@/hooks/graphql';
 import { CREATE_ARTICLE } from '@/graphql/schema/article';
@@ -13,13 +15,17 @@ export default function () {
   async function onSubmit(values) {
     console.log(values);
 
-    const res = await createArticle({ input: values });
-
-    if (res.data.result.status === 200) {
-      Snackbar.success(res.data.result.message);
-    } else {
-      Snackbar.success(res.data.result.message);
-    }
+    const res = await createArticle({ input: values }, {
+      refetchQueries: [ 'ArticleList' ],
+      update: (store, { data: { result: { status: code, message, data: result } } }) => {
+        if (code === 200) {
+          Snackbar.success(message);
+          Router.push('/article');
+        } else {
+          Snackbar.error(message);
+        }
+      },
+    });
   }
   return (
     <Container
