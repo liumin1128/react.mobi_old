@@ -46,7 +46,7 @@ export default function PersistentDrawerRight() {
 
   const initialValues = {
     title: '信息',
-    description: '信息',
+    description: 'descriptiondescriptiondescriptiondescriptiondescription',
     type: '开发者',
     cover: 'https://imgs.react.mobi/FlWDA30s6yWJNLdf3t1PFQDLRueF',
     tags: [ '11', '22' ],
