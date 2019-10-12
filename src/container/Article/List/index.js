@@ -15,6 +15,7 @@ import Loading from '@/components/Loading';
 import Link from '@/components/Link';
 import { getTimeAgo } from '@/utils/common';
 import Avatar from '@/components/Avatar';
+import Popper from '@/components/Popper';
 import Item from './ListItem';
 import useStyles from './styles';
 
@@ -56,6 +57,10 @@ function Profile({ router }) {
                 }}
                 onShare={() => {
                   console.log('onShare');
+                }}
+                onEdit={() => {
+                  console.log('onEdit');
+                  router.push(`/article/update?_id=${i._id}`);
                 }}
               />
               <Divider />

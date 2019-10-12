@@ -2,6 +2,8 @@ import React, { PureComponent, createRef } from 'react';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
@@ -12,10 +14,14 @@ import StarIcon from '@material-ui/icons/Star';
 import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import IconButton from '@material-ui/core/IconButton';
 import withWidth, { isWidthUp, isWidthDown } from '@material-ui/core/withWidth';
 import { formatTime, getScrollTop } from '@/utils/common';
 import ShareMenu from '@/components/ShareMenu';
 import Avatar from '@/components/Avatar';
+import Popper from '@/components/Popper';
+
 import Content from './Content';
 import styles from './styles';
 
@@ -211,7 +217,10 @@ export default class ListItem extends PureComponent {
   }
 
   renderHeader = () => {
-    const { user: _user, createdAt, classes } = this.props;
+    const {
+      user: _user, createdAt, classes,
+      onEdit,
+    } = this.props;
 
     let user;
     if (!_user || !_user._id) {
@@ -226,6 +235,26 @@ export default class ListItem extends PureComponent {
         title={<Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>}
         subheader={formatTime(createdAt, 'MM月DD日')}
         className={classes.header}
+        action={(
+          <Popper
+            content={(
+              <Paper elevation={2}>
+                <Box p={1} display="flex" flexDirection="column">
+                  <Button>关注</Button>
+                  <Divider />
+                  <Button onClick={onEdit}>编辑</Button>
+                  <Button>删除</Button>
+                  <Divider />
+                  <Button>举报</Button>
+                </Box>
+              </Paper>
+            )}
+          >
+            <IconButton>
+              <MoreHorizIcon />
+            </IconButton>
+          </Popper>
+        )}
       />
     );
   }

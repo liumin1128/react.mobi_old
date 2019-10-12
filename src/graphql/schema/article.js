@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const ARTICLE_DETAIL = gql`
   query ArticleDetail($_id: String!) {
-    article: article(_id: $_id) {
+    data: article(_id: $_id) {
       __typename
       _id
       title
@@ -63,7 +63,7 @@ export const DELETE_ARTICLE = gql`
 
 export const ARTICLE_CONTENT = gql`
   query ArticleDetail($_id: String!) {
-    article: article(_id: $_id) {
+    data: article(_id: $_id) {
       __typename
       _id
       title
