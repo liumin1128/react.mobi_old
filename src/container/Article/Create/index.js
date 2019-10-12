@@ -38,9 +38,20 @@ export default function PersistentDrawerRight() {
 
   const editor = useRef();
 
-  function onSubmit() {
-
+  function onSubmit(values) {
+    const json2 = editor.current.getJSON();
+    console.log('values');
+    console.log(values);
+    console.log(json2);
   }
+
+  const initialValues = {
+    title: '信息',
+    description: '信息',
+    type: '开发者',
+    cover: 'https://imgs.react.mobi/FlWDA30s6yWJNLdf3t1PFQDLRueF',
+    tags: [ '11', '22' ],
+  };
 
   return (
     <div className={classes.root}>
@@ -96,41 +107,35 @@ export default function PersistentDrawerRight() {
           </IconButton>
         </div>
         <Divider />
-
         <Form
           onSubmit={onSubmit}
-        // initialValues={initialValues}
+          initialValues={initialValues}
           validate={validate}
           render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
             <form id="createArticleForm" onSubmit={handleSubmit}>
-
-              <Box>
-                <Paper>
-                  <Box p={2}>
-                    {
-                        formKeys.map((i) => (
-                          <Field
-                            {...i}
-                            key={i.key}
-                            name={i.key}
-                            label={i.label}
-                            component={TextField}
-                            type="text"
-                            margin="normal"
-                            fullWidth
-                          />
-                        ))
-                      }
-                    <Button
-                      variant="contained"
-                      size="large"
-                      color="primary"
-                      type="submit"
-                    >
-                        保存
-                    </Button>
-                  </Box>
-                </Paper>
+              <Box p={3}>
+                {
+                  formKeys.map((i) => (
+                    <Field
+                      {...i}
+                      key={i.key}
+                      name={i.key}
+                      label={i.label}
+                      component={TextField}
+                      type="text"
+                      margin="normal"
+                      fullWidth
+                    />
+                  ))
+                }
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="primary"
+                  type="submit"
+                >
+                      保存
+                </Button>
               </Box>
             </form>
           )}
