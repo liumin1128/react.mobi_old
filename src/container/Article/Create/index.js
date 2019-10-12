@@ -114,16 +114,18 @@ export default function PersistentDrawerRight() {
             <form id="createArticleForm" onSubmit={handleSubmit}>
               <Box p={3}>
                 {
-                  formKeys.map((i) => (
-                    <Field
-                      {...i}
-                      key={i.key}
-                      name={i.key}
-                      label={i.label}
-                      margin="normal"
-                      // fullWidth
-                    />
-                  ))
+                  formKeys.map((i) => {
+                    if (i.render) return i.render();
+                    return (
+                      <Field
+                        {...i}
+                        key={i.key}
+                        name={i.key}
+                        label={i.label}
+                        margin="normal"
+                      />
+                    );
+                  })
                 }
                 <Button
                   variant="contained"

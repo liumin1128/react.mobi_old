@@ -1,3 +1,5 @@
+import Box from '@material-ui/core/Box';
+import Divider from '@material-ui/core/Divider';
 import TextField from '@/components/Form/TextField';
 import Picture from '@/components/Form/Upload/Picture';
 import Switch from '@/components/Form/Field/Switch';
@@ -44,6 +46,9 @@ export default [
     component: TextField,
   },
   {
+    render: () => <Box py={2} key={'xxx'}><Divider /></Box>,
+  },
+  {
     disabled: true,
     key: 'allowComment',
     label: '是否允许评论',
@@ -65,10 +70,10 @@ export default [
     label: '同时转发到动态',
     component: Checkbox,
   },
-  {
-    fullWidth: true,
-    key: 'time1',
-    label: '定时发布',
-    component: TextField,
-  },
+  // {
+  //   fullWidth: true,
+  //   key: 'time1',
+  //   label: '定时发布',
+  //   component: TextField,
+  // },
 ];
