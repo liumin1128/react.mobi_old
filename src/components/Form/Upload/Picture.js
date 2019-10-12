@@ -8,7 +8,7 @@ export default function PictureField({ input: { onChange, value }, meta, label, 
   const helperText = meta.touched ? meta.error : undefined;
   const error = meta.error && meta.touched;
   return (
-    <Box mb={2}>
+    <Box mb={1}>
       <InputLabel shrink>{label}</InputLabel>
       <Box mt={1} />
       <Picture value={value} onChange={onChange} size={size} style={style} />

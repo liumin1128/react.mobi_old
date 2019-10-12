@@ -127,13 +127,15 @@ export default function PersistentDrawerRight() {
                     );
                   })
                 }
+                <Box mt={2} />
                 <Button
                   variant="contained"
                   size="large"
                   color="primary"
                   type="submit"
+                  fullWidth
                 >
-                      保存
+                  保存
                 </Button>
               </Box>
             </form>
