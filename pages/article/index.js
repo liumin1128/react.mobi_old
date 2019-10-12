@@ -18,8 +18,9 @@ function Index() {
 Index.Sider = () => (
   <Box>
     <ProfileCard />
+    <Box mt={2} />
     <Link href="/article/create">
-      <Button>写文章</Button>
+      <Button variant="contained" fullWidth color="primary">写文章</Button>
     </Link>
   </Box>
 );
