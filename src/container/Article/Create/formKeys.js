@@ -44,18 +44,23 @@ export default [
     component: TextField,
   },
   {
+    disabled: true,
     key: 'allowComment',
     label: '是否允许评论',
     component: Switch,
     type: 'boolean',
   },
   {
+    disabled: true,
+
     key: 'needComment',
     label: '是否设置回复可见',
     component: Switch,
     type: 'boolean',
   },
   {
+    disabled: true,
+    // required: true,
     key: 'dynamic',
     label: '同时转发到动态',
     component: Checkbox,
