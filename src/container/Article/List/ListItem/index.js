@@ -127,39 +127,46 @@ export default class ListItem extends PureComponent {
         <div {...fixedOptions}>
           <Toolbar className={classes.toolbar}>
 
-            <Box style={{ width: '100%' }} display="flex" alignItems="center" justifyContent="flex-start">
+            <div className={classes.grow}>
 
-              <Button
-                onClick={onLike}
-                className={clsx(classes.minWidth0, classes.likeBtn)}
-                size="small"
-                variant={likeStatus === 'like' ? 'contained' : 'outlined'}
-                color="primary"
+              <Box
+              // style={{ width: '100%' }}
+                display="flex"
+                alignItems="center"
+                justifyContent="flex-start"
               >
-                <ArrowDropUpIcon />
-                {likeCount ? ` like ${likeCount || 0}` : 'like'}
-              </Button>
 
-              <Box ml={1} />
+                <Button
+                  onClick={onLike}
+                  className={clsx(classes.minWidth0, classes.likeBtn)}
+                  size="small"
+                  variant={likeStatus === 'like' ? 'contained' : 'outlined'}
+                  color="primary"
+                >
+                  <ArrowDropUpIcon />
+                  {likeCount ? ` like ${likeCount || 0}` : 'like'}
+                </Button>
 
-              <Button
-                onClick={onDislike}
-                className={clsx(classes.minWidth0, classes.dislikeBtn)}
-                size="small"
-                variant={likeStatus === 'unlike' ? 'contained' : 'outlined'}
-                color="primary"
-              >
-                <ArrowDropDownIcon />
-              </Button>
+                <Box ml={1} />
 
-              <Box ml={1} />
+                <Button
+                  onClick={onDislike}
+                  className={clsx(classes.minWidth0, classes.dislikeBtn)}
+                  size="small"
+                  variant={likeStatus === 'unlike' ? 'contained' : 'outlined'}
+                  color="primary"
+                >
+                  <ArrowDropDownIcon />
+                </Button>
 
-              <Button onClick={onToogleComment} className={classes.btn} size="small">
-                <SpeakerNotesIcon className={classes.btnIcon} />
-                {showComments ? '收起评论' : `${commentCount || 0} 条评论`}
-              </Button>
+                <Box ml={1} />
 
-              {isWidthUp('sm', width) && (
+                <Button onClick={onToogleComment} className={classes.btn} size="small">
+                  <SpeakerNotesIcon className={classes.btnIcon} />
+                  {showComments ? '收起评论' : `${commentCount || 0} 条评论`}
+                </Button>
+
+                {isWidthUp('sm', width) && (
                 <>
                   <Button className={classes.btn} size="small">
                     <StarIcon className={classes.btnIcon} />
@@ -178,11 +185,11 @@ export default class ListItem extends PureComponent {
                     </Button>
                   </ShareMenu>
                 </>
-              )}
+                )}
 
-              <Box flex={1} />
+                <Box flex={1} />
 
-              {isExpanded && (
+                {isExpanded && (
                 <Button
                   disableRipple
                   disableTouchRipple
@@ -193,8 +200,10 @@ export default class ListItem extends PureComponent {
                   收起
                   <KeyboardArrowUpIcon />
                 </Button>
-              )}
-            </Box>
+                )}
+              </Box>
+            </div>
+
           </Toolbar>
         </div>
       </div>
@@ -202,7 +211,6 @@ export default class ListItem extends PureComponent {
   }
 
   renderHeader = () => {
-    console.log(this.props);
     const { user: _user, createdAt, classes } = this.props;
 
     let user;

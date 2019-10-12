@@ -16,6 +16,9 @@ export default (theme) => ({
     overflow: 'hidden',
     transition: 'box-shadow 1s',
   },
+  grow: {
+    flexGrow: 1,
+  },
   toolbar: {
     background: '#fff',
     height: 64,
