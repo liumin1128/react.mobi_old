@@ -12,7 +12,6 @@ import StarIcon from '@material-ui/icons/Star';
 import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import Dialog from '@material-ui/core/Dialog';
 import withWidth, { isWidthUp, isWidthDown } from '@material-ui/core/withWidth';
 import { formatTime, getScrollTop } from '@/utils/common';
 import ShareMenu from '@/components/ShareMenu';
@@ -73,14 +72,6 @@ export default class ListItem extends PureComponent {
       window.removeEventListener('scroll', this.onScroll);
       window.removeEventListener('resize', this.onResize);
     }
-  }
-
-  toggleShowComments = () => {
-    // this.setState((state) => ({
-    //   showComments: !state.showComments,
-    // }));
-    const { onToogleComment } = this.props;
-    onToogleComment();
   }
 
   onScroll = () => {
@@ -231,24 +222,9 @@ export default class ListItem extends PureComponent {
     );
   }
 
-  // renderCommentsModel = () => {
-  //   // const { _id } = this.props;
-  //   return (
-  //     <Dialog
-  //       open
-  //       fullWidth
-  //       onClose={this.toggleShowComments}
-  //       aria-labelledby="alert-dialog-title"
-  //       aria-describedby="alert-dialog-description"
-  //     >
-  //       1111
-  //     </Dialog>
-  //   );
-  // }
-
   render() {
     const { html, title, _id } = this.props;
-    const { isExpanded, showComments } = this.state;
+    const { isExpanded } = this.state;
 
     return (
       <div ref={(c) => { this.content = c; }}>
@@ -265,7 +241,6 @@ export default class ListItem extends PureComponent {
 
         {this.renderToobar()}
 
-        {/* {showComments && this.renderCommentsModel()} */}
       </div>
     );
   }
