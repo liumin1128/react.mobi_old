@@ -19,7 +19,7 @@ export default ({
   // console.log('value');
   // console.log(value);
   return (
-    <Box mt={2} display="flex" justifyContent="space-between" alignItems="center">
+    <Box display="flex" justifyContent="space-between" alignItems="center">
       <InputLabel shrink>{label}</InputLabel>
       <Switch
         checked={!!value}

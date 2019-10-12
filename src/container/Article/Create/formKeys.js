@@ -1,6 +1,7 @@
 import TextField from '@/components/Form/TextField';
 import Picture from '@/components/Form/Upload/Picture';
 import Switch from '@/components/Form/Field/Switch';
+import Checkbox from '@/components/Form/Field/Checkbox';
 import pp from '@/hoc/pp';
 
 export default [
@@ -55,10 +56,9 @@ export default [
     type: 'boolean',
   },
   {
-    fullWidth: true,
     key: 'dynamic',
     label: '同时转发到动态',
-    component: TextField,
+    component: Checkbox,
   },
   {
     fullWidth: true,
