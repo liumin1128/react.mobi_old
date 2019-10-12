@@ -44,8 +44,17 @@ export const ARTICLE_LIST = gql`
 `;
 
 export const CREATE_ARTICLE = gql`
-  mutation createArticle($input: ArticleInput) {
+  mutation createArticle($input: ArticleInput!) {
     result: createArticle(input: $input) {
+      status
+      message
+    }
+  }
+`;
+
+export const UPDATE_ARTICLE = gql`
+  mutation updateArticle($input: ArticleInput!, $_id: String!) {
+    result: updateArticle(input: $input, _id: $_id) {
       status
       message
     }

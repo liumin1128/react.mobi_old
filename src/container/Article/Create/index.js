@@ -21,7 +21,7 @@ export default function () {
   async function onSubmit(values) {
     console.log(values);
 
-    const data = await createArticle(values);
+    const data = await createArticle({ input: values });
 
     console.log('data');
     console.log(data);

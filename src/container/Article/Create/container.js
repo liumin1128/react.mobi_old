@@ -20,7 +20,6 @@ import useStyles from './styles';
 import formKeys from './formKeys';
 import validate from './validate';
 
-
 export default function ArticleCreateContainer({
   values: { json, ...initialValues }, onSubmit,
 }) {
@@ -40,8 +39,10 @@ export default function ArticleCreateContainer({
 
   function _onSubmit(values) {
     const _json = editor.current.getJSON();
+    const _html = editor.current.getHTML();
     onSubmit({
-      josn: JSON.stringify(_json),
+      json: JSON.stringify(_json),
+      html: _html,
       ...values,
     });
   }

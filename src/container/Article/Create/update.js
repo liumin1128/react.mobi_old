@@ -1,8 +1,9 @@
 import React from 'react';
-import { useRouter, withRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Container from './container';
 import { useMutation, useQuery } from '@/hooks/graphql';
-import { CREATE_ARTICLE, ARTICLE_CONTENT } from '@/graphql/schema/article';
+import { UPDATE_ARTICLE, ARTICLE_CONTENT } from '@/graphql/schema/article';
+import Snackbar from '@/components/Snackbar';
 
 
 function ArticleUpdate() {
@@ -13,20 +14,22 @@ function ArticleUpdate() {
 
   const { data, loading } = useQuery(ARTICLE_CONTENT, { _id }, { ssr: false });
 
-  console.log(data);
+  const [ createArticle ] = useMutation(UPDATE_ARTICLE);
 
-  const [ createArticle ] = useMutation(CREATE_ARTICLE);
+
+  if (loading) return 'Loading';
 
   async function onSubmit(values) {
     console.log(values);
 
-    const data = await createArticle(values);
+    const res = await createArticle({ input: values, _id });
 
-    console.log('data');
-    console.log(data);
+    if (res.data.result.status === 200) {
+      Snackbar.success(res.data.result.message);
+    } else {
+      Snackbar.success(res.data.result.message);
+    }
   }
-
-  if (loading) return 'Loading';
 
   const { cover, json, description, title, tags, type } = data.data;
 
