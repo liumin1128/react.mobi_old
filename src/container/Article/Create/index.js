@@ -100,47 +100,72 @@ export default function PersistentDrawerRight() {
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <Form
-          onSubmit={onSubmit}
-          initialValues={initialValues}
-          validate={validate}
-          render={({ handleSubmit, reset, submitting, pristine, change, values }) => (
-            <form id="createArticleForm" onSubmit={handleSubmit}>
-              <Box p={3}>
-                {
-                  formKeys.map((i) => {
-                    if (i.render) return i.render();
-                    return (
-                      <Field
-                        {...i}
-                        key={i.key}
-                        name={i.key}
-                        label={i.label}
-                        margin="normal"
-                      />
-                    );
-                  })
-                }
-                <Box mt={2} />
-                <Button
-                  variant="contained"
-                  size="large"
-                  color="primary"
-                  type="submit"
-                  fullWidth
+        <Box
+          display="flex"
+          flexDirection="column"
+          height={'100%'}
+        >
+          <Box>
+            <div className={classes.drawerHeader}>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              </IconButton>
+            </div>
+            <Divider />
+          </Box>
+          <Box flex={1}>
+            <Form
+              onSubmit={onSubmit}
+              initialValues={initialValues}
+              validate={validate}
+              render={({ handleSubmit }) => (
+                <form
+                  style={{ height: '100%' }}
+                  // id="createArticleForm"
+                  onSubmit={handleSubmit}
                 >
-                  保存
-                </Button>
-              </Box>
-            </form>
-          )}
-        />
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    height={'100%'}
+                    p={3}
+                  >
+                    <Box flex={1}>
+                      {
+                        formKeys.map((i) => {
+                          if (i.render) return i.render();
+                          return (
+                            <Field
+                              {...i}
+                              key={i.key}
+                              name={i.key}
+                              label={i.label}
+                              margin="normal"
+                            />
+                          );
+                        })
+                      }
+                    </Box>
+
+                    <Box>
+                      <Box mt={2} />
+                      <Button
+                        variant="contained"
+                        size="large"
+                        color="primary"
+                        type="submit"
+                        fullWidth
+                      >
+                      保存
+                      </Button>
+                    </Box>
+                  </Box>
+
+                </form>
+              )}
+            />
+          </Box>
+        </Box>
       </Drawer>
     </div>
   );
