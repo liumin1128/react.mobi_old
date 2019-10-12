@@ -79,7 +79,7 @@ export default function ArticleCreateContainer({
         <Box>
           <Paper>
             <RichEditor
-              initialValue={JSON.parse(json)}
+              initialValue={json ? JSON.parse(json) : json}
               ref={editor}
             />
           </Paper>

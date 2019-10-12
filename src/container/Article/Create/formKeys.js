@@ -10,7 +10,7 @@ export default [
   {
     key: 'cover',
     label: '文章封面',
-    required: true,
+    // required: true,
     component: pp(Picture, { style: { width: 16 * 15, height: 9 * 15 } }),
     fullWidth: true,
   },
