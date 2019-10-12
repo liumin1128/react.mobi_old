@@ -7,7 +7,7 @@ export default [
     key: 'cover',
     label: '文章封面',
     required: true,
-    component: pp(Picture, { style: { display: 'block', width: 200, height: 150 } }),
+    component: pp(Picture, { style: { width: 16 * 15, height: 9 * 15 } }),
   },
   {
     key: 'title',
@@ -22,6 +22,7 @@ export default [
     multiline: true,
     rows: 3,
     component: TextField,
+    variant: 'outlined',
   },
   {
     key: 'type',

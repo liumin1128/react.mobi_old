@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     // borderRadius: 8,
     // border: `1px ${theme.palette.primary.main} dashed`,
+    border: '1px #ddd dashed',
     '&:hover': {
       '& > .pictures-close-btn': {
         display: 'block',
