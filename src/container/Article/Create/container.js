@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Box from '@material-ui/core/Box';
@@ -16,6 +17,7 @@ import Paper from '@material-ui/core/Paper';
 import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
 import RichEditor from '@/components/Form/RichEditor';
+import Link from '@/components/Link';
 import useStyles from './styles';
 import formKeys from './formKeys';
 import validate from './validate';
@@ -57,6 +59,17 @@ export default function ArticleCreateContainer({
         })}
       >
         <Toolbar>
+          <Link href="/article">
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="end"
+              style={{ marginRight: 16 }}
+            >
+              <HomeIcon />
+            </IconButton>
+          </Link>
+
           <Typography variant="h6" noWrap className={classes.title}>
             Persistent drawer
           </Typography>

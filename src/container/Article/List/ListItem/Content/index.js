@@ -29,14 +29,18 @@ export default class Content extends PureComponent {
             {title}
           </Typography>
         </Box>
-        <Box px={3} my={'-1em'} onClick={toggleExpanded} className={classes.content}>
+        <Box px={3}>
           {
             isExpanded
               ? <Html html={html} />
               : (
-                <Typography component="div" style={{ fontSize: 16 }}>
-                  <p>{getStrFromHtml(html)}</p>
-                </Typography>
+                <Box my={'-1em'} onClick={toggleExpanded} className={classes.content}>
+
+                  <Typography component="div" style={{ fontSize: 16 }}>
+                    <p>{getStrFromHtml(html)}</p>
+                  </Typography>
+                </Box>
+
               )
           }
         </Box>
