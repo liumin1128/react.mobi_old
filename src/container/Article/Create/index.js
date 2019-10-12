@@ -15,7 +15,6 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
-import TextField from '@/components/Form/TextField';
 import RichEditor from '@/components/Form/RichEditor';
 import useStyles from './styles';
 import formKeys from './formKeys';
@@ -121,7 +120,6 @@ export default function PersistentDrawerRight() {
                       key={i.key}
                       name={i.key}
                       label={i.label}
-                      component={TextField}
                       type="text"
                       margin="normal"
                       fullWidth

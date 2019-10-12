@@ -1,12 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Wrapper from '@/components/Upload/Wrapper';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Box from '@material-ui/core/Box';
 import CloseIcon from '@material-ui/icons/Close';
 import PhotoIcon from '@material-ui/icons/Add';
+import Wrapper from '@/components/Upload/Wrapper';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: 240,
     height: 240,
@@ -41,19 +41,19 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default ({ onChange, value, width }) => {
+export default ({ onChange, value, size = 200, style }) => {
   const classes = useStyles();
   return (
     <Box display="inline-block">
       <Wrapper
-        onChange={val => {
+        onChange={(val) => {
           onChange(val[0]);
         }}
       >
         <ButtonBase>
           <Box
             className={classes.root}
-            style={{ backgroundImage: `url(${value})`, width, height: width }}
+            style={{ backgroundImage: `url(${value})`, width: size, height: size, ...style }}
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -61,7 +61,7 @@ export default ({ onChange, value, width }) => {
             {value ? (
               <Box
                 className={`${classes.close} pictures-close-btn`}
-                onClick={e => {
+                onClick={(e) => {
                   e.stopPropagation();
                   onChange(null);
                 }}
