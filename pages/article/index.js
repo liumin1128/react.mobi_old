@@ -1,15 +1,15 @@
 
 import React from 'react';
-// import FlatList from '@/container/News/List/FlatList';
+import ArticleList from '@/container/Article/List';
 
 function Index() {
   return (
     <>
-      文章列表
+      <ArticleList />
     </>
   );
 }
 
-// Index.Sider = FlatList;
+Index.Sider = () => '111';
 
 export default Index;

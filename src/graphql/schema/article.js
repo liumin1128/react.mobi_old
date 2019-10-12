@@ -10,6 +10,7 @@ export const ARTICLE_DETAIL = gql`
       cover
       createdAt
       user {
+        _id
         nickname
         avatarUrl
       }
@@ -31,6 +32,7 @@ export const ARTICLE_LIST = gql`
       likeCount
       likeStatus
       user {
+        _id
         nickname
         avatarUrl
       }
