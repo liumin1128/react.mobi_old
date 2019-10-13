@@ -22,6 +22,7 @@ import { formatTime, getScrollTop } from '@/utils/common';
 import ShareMenu from '@/components/ShareMenu';
 import Avatar from '@/components/Avatar';
 import Popper from '@/components/Popper';
+import Link from '@/components/Link';
 import CommentList from '@/container/Comment/List';
 import CreateComment from '@/container/Comment/Create';
 import Content from './Content';
@@ -237,8 +238,25 @@ export default class ListItem extends PureComponent {
 
     return (
       <CardHeader
-        avatar={<Avatar nickname={user.nickname} avatarUrl={user.avatarUrl} />}
-        title={<Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>}
+        avatar={(
+          <Link
+            href={`/user/profile?path=dynamic&user=${user._id}`}
+            as={`/user/profile/dynamic/${user._id}`}
+          >
+            <Avatar
+              avatarUrl={user.avatarUrl}
+              nickname={user.nickname}
+            />
+          </Link>
+        )}
+        title={(
+          <Link
+            href={`/user/profile?path=dynamic&user=${user._id}`}
+            as={`/user/profile/dynamic/${user._id}`}
+          >
+            <Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>
+          </Link>
+        )}
         subheader={formatTime(createdAt, 'MM月DD日')}
         className={classes.header}
         action={(
