@@ -146,7 +146,7 @@ export default class ListItem extends PureComponent {
                   onClick={onLike}
                   className={clsx(classes.minWidth0, classes.likeBtn)}
                   size="small"
-                  variant={likeStatus === 'like' ? 'contained' : 'outlined'}
+                  variant={likeStatus === 1 ? 'contained' : 'outlined'}
                   color="primary"
                 >
                   <ArrowDropUpIcon />
@@ -159,7 +159,7 @@ export default class ListItem extends PureComponent {
                   onClick={onDislike}
                   className={clsx(classes.minWidth0, classes.dislikeBtn)}
                   size="small"
-                  variant={likeStatus === 'unlike' ? 'contained' : 'outlined'}
+                  variant={likeStatus === 2 ? 'contained' : 'outlined'}
                   color="primary"
                 >
                   <ArrowDropDownIcon />

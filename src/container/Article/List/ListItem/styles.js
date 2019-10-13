@@ -25,13 +25,18 @@ export default (theme) => ({
   },
   minWidth0: {
     minWidth: 0,
+    height: 34,
   },
 
   likeBtn: {
-    paddingRight: theme.spacing(1.5),
+    // paddingRight: theme.spacing(1.5),
+    minWidth: 80,
+    textAlign: 'left',
+    justifyContent: 'flex-start',
   },
   dislikeBtn: {
-    padding: theme.spacing(0.5),
+    height: 34,
+    width: 34,
   },
   btn: {
     minWidth: 0,

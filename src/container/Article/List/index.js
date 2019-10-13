@@ -11,6 +11,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { ARTICLE_LIST, DELETE_ARTICLE } from '@/graphql/schema/article';
 import { USERINFO } from '@/graphql/schema/user';
+import { LIKE } from '@/graphql/schema/like';
 
 import { useQuery, useMutation } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
@@ -34,10 +35,15 @@ function Profile({ router }) {
   const classes = useStyles();
   const { query } = router;
 
+  // 获取文章列表数据
   const { data, loading, isLoadingMore, isEnd, loadMore } = useQuery(ARTICLE_LIST, {}, { ssr: false });
+  // 获取用户数据
   const { data: userData } = useQuery(USERINFO);
 
+  // 注册删除事件
   const [ deleteArticle ] = useMutation(DELETE_ARTICLE);
+  // 注册like事件
+  const [ likeArticle ] = useMutation(LIKE);
 
 
   if (loading) return <Loading />;
@@ -52,12 +58,45 @@ function Profile({ router }) {
           if (idx === -1) return;
           temp.list.splice(idx, 1);
           store.writeQuery({ query: ARTICLE_LIST, data: temp });
-        } else {
-          Snackbar.error(message);
         }
+        Snackbar.error(message);
       },
     });
   }
+
+  function onLike(id, nextLikeStatus) {
+    likeArticle({ id, status: nextLikeStatus }, {
+      optimisticResponse: { result: { status: 200, message: '操作成功', __typename: 'Result' } },
+      update: (store, { data: { result: { status: code, message } } }) => {
+        if (code === 200) {
+          const temp = store.readQuery({ query: ARTICLE_LIST });
+          const idx = temp.list.findIndex((i) => i._id === id);
+          if (idx === -1) return;
+
+          // temp.list[idx].likeCount = nextLikeStatu;
+          if (temp.list[idx].likeStatus === 0 && nextLikeStatus === 1) {
+            temp.list[idx].likeCount += 1;
+          } else if (temp.list[idx].likeStatus === 0 && nextLikeStatus === 2) {
+            console.log('xxx');
+          } else if (temp.list[idx].likeStatus === 1 && nextLikeStatus === 1) {
+            temp.list[idx].likeCount -= 1;
+          } else if (temp.list[idx].likeStatus === 1 && nextLikeStatus === 2) {
+            temp.list[idx].likeCount -= 1;
+          } else if (temp.list[idx].likeStatus === 2 && nextLikeStatus === 1) {
+            temp.list[idx].likeCount += 1;
+          } else if (temp.list[idx].likeStatus === 2 && nextLikeStatus === 2) {
+            // temp.list[idx].likeCount += 1;
+            console.log('xxx');
+          }
+          temp.list[idx].likeStatus = temp.list[idx].likeStatus === nextLikeStatus ? 0 : nextLikeStatus;
+
+          store.writeQuery({ query: ARTICLE_LIST, data: temp });
+        }
+        // Snackbar.error(message);
+      },
+    });
+  }
+
 
   return (
     <>
@@ -70,12 +109,8 @@ function Profile({ router }) {
               <Item
                 {...i}
                 isMine={isMine}
-                onLike={() => {
-                  console.log('onLike');
-                }}
-                onDislike={() => {
-                  console.log('onDislike');
-                }}
+
+
                 onToogleComment={() => {
                   console.log('onToogleComment');
                 }}
@@ -86,9 +121,9 @@ function Profile({ router }) {
                   console.log('onEdit');
                   router.push(`/article/update?_id=${i._id}`);
                 }}
-                onDelete={() => {
-                  onDelete(_id);
-                }}
+                onDelete={() => { onDelete(_id); }}
+                onLike={() => { onLike(_id, 1); }}
+                onDislike={() => { onLike(_id, 2); }}
               />
               <Divider />
             </Box>
