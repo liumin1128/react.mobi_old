@@ -219,7 +219,7 @@ export default class ListItem extends PureComponent {
   renderHeader = () => {
     const {
       user: _user, createdAt, classes,
-      onEdit, isMine,
+      onEdit, isMine, onDelete,
     } = this.props;
 
     let user;
@@ -244,7 +244,7 @@ export default class ListItem extends PureComponent {
                   {isMine ? (
                     <>
                       <Button onClick={onEdit}>编辑</Button>
-                      <Button>删除</Button>
+                      <Button onClick={onDelete}>删除</Button>
                     </>
                   ) : (
                     <>

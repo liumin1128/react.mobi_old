@@ -32,7 +32,6 @@ const navList = [
 function Profile({ router }) {
   const classes = useStyles();
   const { query } = router;
-  const { type = 'all' } = query;
 
   const { data, loading, isLoadingMore, isEnd, loadMore } = useQuery(ARTICLE_LIST, {}, { ssr: false });
   const { data: userData } = useQuery(USERINFO);
@@ -45,7 +44,6 @@ function Profile({ router }) {
     <>
       <Paper>
         {list && list.length > 0 && list.map((i) => {
-          console.log(i);
           const isMine = !!(userData && userData.userInfo && i.user && userData.userInfo._id === i.user._id);
           return (
             <Box key={i._id}>
@@ -67,6 +65,9 @@ function Profile({ router }) {
                 onEdit={() => {
                   console.log('onEdit');
                   router.push(`/article/update?_id=${i._id}`);
+                }}
+                onDelete={() => {
+                  console.log('Delete');
                 }}
               />
               <Divider />
