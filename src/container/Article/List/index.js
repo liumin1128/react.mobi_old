@@ -142,7 +142,7 @@ function Profile({ router }) {
           >
             {`查看更多 - 剩余${meta.count - list.length}条`}
           </Button>
-        ) : <Typography align="center">~ 这是人家的底线 ~</Typography>}
+        ) : <Typography align="center" variant="caption" component="p">~ 这是人家的底线 ~</Typography>}
       </Box>
 
     </>
