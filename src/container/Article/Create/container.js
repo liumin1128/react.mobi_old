@@ -71,7 +71,7 @@ export default function ArticleCreateContainer({
           </Link>
 
           <Typography variant="h6" noWrap className={classes.title}>
-            Persistent drawer
+            RichEditor beta 1
           </Typography>
           <IconButton
             color="inherit"
