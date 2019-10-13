@@ -62,8 +62,8 @@ export const UPDATE_ARTICLE = gql`
 `;
 
 export const DELETE_ARTICLE = gql`
-  mutation deleteArticle($id: String) {
-    result: deleteArticle(id: $id) {
+  mutation deleteArticle($_id: String) {
+    result: deleteArticle(_id: $_id) {
       status
       message
     }

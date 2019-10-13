@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { useRouter, withRouter } from 'next/router';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { ARTICLE_LIST } from '@/graphql/schema/article';
+import { ARTICLE_LIST, DELETE_ARTICLE } from '@/graphql/schema/article';
 import { USERINFO } from '@/graphql/schema/user';
 
 import { useQuery, useMutation } from '@/hooks/graphql';
@@ -18,6 +18,7 @@ import Link from '@/components/Link';
 import { getTimeAgo } from '@/utils/common';
 import Avatar from '@/components/Avatar';
 import Popper from '@/components/Popper';
+import Snackbar from '@/components/Snackbar';
 import Item from './ListItem';
 import useStyles from './styles';
 
@@ -36,14 +37,33 @@ function Profile({ router }) {
   const { data, loading, isLoadingMore, isEnd, loadMore } = useQuery(ARTICLE_LIST, {}, { ssr: false });
   const { data: userData } = useQuery(USERINFO);
 
+  const [ deleteArticle ] = useMutation(DELETE_ARTICLE);
+
 
   if (loading) return <Loading />;
   const { list = [], meta } = data;
+
+  function onDelete(_id) {
+    deleteArticle({ _id }, {
+      update: (store, { data: { result: { status: code, message } } }) => {
+        if (code === 200) {
+          const temp = store.readQuery({ query: ARTICLE_LIST });
+          const idx = temp.list.findIndex((i) => i._id === _id);
+          if (idx === -1) return;
+          temp.list.splice(idx, 1);
+          store.writeQuery({ query: ARTICLE_LIST, data: temp });
+        } else {
+          Snackbar.error(message);
+        }
+      },
+    });
+  }
 
   return (
     <>
       <Paper>
         {list && list.length > 0 && list.map((i) => {
+          const { _id } = i;
           const isMine = !!(userData && userData.userInfo && i.user && userData.userInfo._id === i.user._id);
           return (
             <Box key={i._id}>
@@ -67,7 +87,7 @@ function Profile({ router }) {
                   router.push(`/article/update?_id=${i._id}`);
                 }}
                 onDelete={() => {
-                  console.log('Delete');
+                  onDelete(_id);
                 }}
               />
               <Divider />
