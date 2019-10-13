@@ -10,12 +10,19 @@ const styles = (theme) => ({
   content: {
     cursor: 'pointer',
   },
+  cover: {
+    width: 120,
+    height: 120,
+    marginTop: 16,
+    marginLeft: 8,
+    borderRadius: 4,
+  },
 });
 
 @withStyles(styles)
 export default class Content extends PureComponent {
   render() {
-    const { _id, title, html, isExpanded, classes, toggleExpanded } = this.props;
+    const { _id, title, html, cover, isExpanded, classes, toggleExpanded } = this.props;
     return (
       <>
         <Box px={3} pb={1}>
@@ -34,10 +41,11 @@ export default class Content extends PureComponent {
             isExpanded
               ? <Html html={html} />
               : (
-                <Box onClick={toggleExpanded} className={classes.content}>
+                <Box display="flex" onClick={toggleExpanded} className={classes.content}>
                   <Typography component="div" style={{ fontSize: 16 }}>
                     <p>{getStrFromHtml(html)}</p>
                   </Typography>
+                  {cover && <img className={classes.cover} src={cover} alt="" />}
                 </Box>
               )
           }

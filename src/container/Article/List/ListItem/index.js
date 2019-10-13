@@ -299,7 +299,7 @@ export default class ListItem extends PureComponent {
   }
 
   render() {
-    const { html, title, _id } = this.props;
+    const { html, title, cover, _id } = this.props;
     const { isExpanded, showComments } = this.state;
 
     return (
@@ -313,6 +313,7 @@ export default class ListItem extends PureComponent {
           html={html}
           isExpanded={isExpanded}
           toggleExpanded={this.toggleExpanded}
+          cover={cover}
         />
 
         {this.renderToobar()}
