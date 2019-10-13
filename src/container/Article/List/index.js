@@ -91,6 +91,8 @@ function Profile({ router }) {
           temp.list[idx].likeStatus = temp.list[idx].likeStatus === nextLikeStatus ? 0 : nextLikeStatus;
 
           store.writeQuery({ query: ARTICLE_LIST, data: temp });
+        } else {
+          Snackbar.error(message);
         }
         // Snackbar.error(message);
       },
