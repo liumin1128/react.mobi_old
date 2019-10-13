@@ -133,15 +133,18 @@ function Profile({ router }) {
         })}
       </Paper>
 
-      {list.length < meta.count ? (
-        <Button
-          fullWidth
-          onClick={() => loadMore()}
-          disabled={isLoadingMore}
-        >
-          {`查看更多 - 剩余${meta.count - list.length}条`}
-        </Button>
-      ) : <Typography align="center">~ 这是人家的底线 ~</Typography>}
+      <Box p={2}>
+        {list.length < meta.count ? (
+          <Button
+            fullWidth
+            onClick={() => loadMore()}
+            disabled={isLoadingMore}
+          >
+            {`查看更多 - 剩余${meta.count - list.length}条`}
+          </Button>
+        ) : <Typography align="center">~ 这是人家的底线 ~</Typography>}
+      </Box>
+
     </>
   );
 }
