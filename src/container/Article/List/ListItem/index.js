@@ -219,7 +219,7 @@ export default class ListItem extends PureComponent {
   renderHeader = () => {
     const {
       user: _user, createdAt, classes,
-      onEdit,
+      onEdit, isMine,
     } = this.props;
 
     let user;
@@ -240,12 +240,19 @@ export default class ListItem extends PureComponent {
             content={(
               <Paper elevation={2}>
                 <Box p={1} display="flex" flexDirection="column">
-                  <Button>关注</Button>
-                  <Divider />
-                  <Button onClick={onEdit}>编辑</Button>
-                  <Button>删除</Button>
-                  <Divider />
-                  <Button>举报</Button>
+
+                  {isMine ? (
+                    <>
+                      <Button onClick={onEdit}>编辑</Button>
+                      <Button>删除</Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button>关注</Button>
+                      <Button>举报</Button>
+                    </>
+                  )}
+
                 </Box>
               </Paper>
             )}

@@ -10,6 +10,8 @@ import { useRouter, withRouter } from 'next/router';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { ARTICLE_LIST } from '@/graphql/schema/article';
+import { USERINFO } from '@/graphql/schema/user';
+
 import { useQuery, useMutation } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import Link from '@/components/Link';
@@ -33,6 +35,7 @@ function Profile({ router }) {
   const { type = 'all' } = query;
 
   const { data, loading, isLoadingMore, isEnd, loadMore } = useQuery(ARTICLE_LIST, {}, { ssr: false });
+  const { data: userData } = useQuery(USERINFO);
 
 
   if (loading) return <Loading />;
@@ -42,10 +45,13 @@ function Profile({ router }) {
     <>
       <Paper>
         {list && list.length > 0 && list.map((i) => {
+          console.log(i);
+          const isMine = !!(userData && userData.userInfo && i.user && userData.userInfo._id === i.user._id);
           return (
             <Box key={i._id}>
               <Item
                 {...i}
+                isMine={isMine}
                 onLike={() => {
                   console.log('onLike');
                 }}
