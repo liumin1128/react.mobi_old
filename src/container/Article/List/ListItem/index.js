@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
+import Dialog from '@material-ui/core/Dialog';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
@@ -21,7 +22,8 @@ import { formatTime, getScrollTop } from '@/utils/common';
 import ShareMenu from '@/components/ShareMenu';
 import Avatar from '@/components/Avatar';
 import Popper from '@/components/Popper';
-
+import CommentList from '@/container/Comment/List';
+import CreateComment from '@/container/Comment/Create';
 import Content from './Content';
 import styles from './styles';
 
@@ -51,33 +53,6 @@ export default class ListItem extends PureComponent {
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll);
     window.removeEventListener('resize', this.onResize);
-  }
-
-  toggleExpanded = (e) => {
-    e.preventDefault();
-    const { isExpanded } = this.state;
-    this.setState({
-      isExpanded: !isExpanded,
-      showComments: false,
-      isFixed: false,
-    }, () => {
-      // 如果环境允许，创建自定义事件，触发滚动，以调整所有卡片状态
-      if (document.createEvent) {
-        // 创建event的对象实例。
-        const event = document.createEvent('HTMLEvents');
-        // 3个参数：事件类型，是否冒泡，是否阻止浏览器的默认行为
-        event.initEvent('scroll', true, false);
-        // 触发自定义事件oneating
-        document.dispatchEvent(event);
-      }
-    });
-    if (!isExpanded) {
-      window.addEventListener('scroll', this.onScroll);
-      window.addEventListener('resize', this.onResize);
-    } else {
-      window.removeEventListener('scroll', this.onScroll);
-      window.removeEventListener('resize', this.onResize);
-    }
   }
 
   onScroll = () => {
@@ -110,6 +85,37 @@ export default class ListItem extends PureComponent {
     this.setState({
       toolbarWidth: this.content.offsetWidth,
     });
+  }
+
+  toggleExpanded = (e) => {
+    e.preventDefault();
+    const { isExpanded } = this.state;
+    this.setState({
+      isExpanded: !isExpanded,
+      showComments: false,
+      isFixed: false,
+    }, () => {
+      // 如果环境允许，创建自定义事件，触发滚动，以调整所有卡片状态
+      if (document.createEvent) {
+        // 创建event的对象实例。
+        const event = document.createEvent('HTMLEvents');
+        // 3个参数：事件类型，是否冒泡，是否阻止浏览器的默认行为
+        event.initEvent('scroll', true, false);
+        // 触发自定义事件oneating
+        document.dispatchEvent(event);
+      }
+    });
+    if (!isExpanded) {
+      window.addEventListener('scroll', this.onScroll);
+      window.addEventListener('resize', this.onResize);
+    } else {
+      window.removeEventListener('scroll', this.onScroll);
+      window.removeEventListener('resize', this.onResize);
+    }
+  }
+
+  toggleShowComments = () => {
+    this.setState(({ showComments }) => ({ showComments: !showComments }));
   }
 
   renderToobar = () => {
@@ -167,7 +173,7 @@ export default class ListItem extends PureComponent {
 
                 <Box ml={1} />
 
-                <Button onClick={onToogleComment} className={classes.btn} size="small">
+                <Button onClick={this.toggleShowComments} className={classes.btn} size="small">
                   <SpeakerNotesIcon className={classes.btnIcon} />
                   {showComments ? '收起评论' : `${commentCount || 0} 条评论`}
                 </Button>
@@ -266,9 +272,35 @@ export default class ListItem extends PureComponent {
     );
   }
 
+  renderComments = () => {
+    const { _id } = this.props;
+    return (
+      <Dialog
+        open
+        fullWidth
+        onClose={this.toggleShowComments}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <>
+          <Box p={3} mt={1}>
+
+            <CreateComment session={_id} />
+            <Box my={2} />
+            <Divider />
+            <Box my={2} />
+            <Box>
+              <CommentList session={_id} />
+            </Box>
+          </Box>
+        </>
+      </Dialog>
+    );
+  }
+
   render() {
     const { html, title, _id } = this.props;
-    const { isExpanded } = this.state;
+    const { isExpanded, showComments } = this.state;
 
     return (
       <div ref={(c) => { this.content = c; }}>
@@ -284,6 +316,8 @@ export default class ListItem extends PureComponent {
         />
 
         {this.renderToobar()}
+
+        {showComments && this.renderComments()}
 
       </div>
     );
