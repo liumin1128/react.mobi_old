@@ -13,9 +13,7 @@ export default function () {
   const [ createArticle ] = useMutation(CREATE_ARTICLE);
 
   async function onSubmit(values) {
-    console.log(values);
-
-    const res = await createArticle({ input: values }, {
+    await createArticle({ input: values }, {
       refetchQueries: [ 'ArticleList' ],
       update: (store, { data: { result: { status: code, message, data: result } } }) => {
         if (code === 200) {
