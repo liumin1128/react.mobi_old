@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Hidden from '@material-ui/core/Hidden';
 import Html from '@/components/Html';
 import Link from '@/components/Link';
 import { getStrFromHtml } from '@/utils/common';
@@ -11,8 +12,8 @@ const styles = (theme) => ({
     cursor: 'pointer',
   },
   cover: {
-    width: 120,
-    height: 120,
+    width: 70,
+    height: 70,
     marginTop: 16,
     marginLeft: 8,
     borderRadius: 4,
@@ -43,9 +44,13 @@ export default class Content extends PureComponent {
               : (
                 <Box display="flex" onClick={toggleExpanded} className={classes.content}>
                   <Typography component="div" style={{ fontSize: 16 }}>
-                    <p>{getStrFromHtml(html)}</p>
+                    <p>{getStrFromHtml(html, 80)}</p>
                   </Typography>
-                  {cover && <img className={classes.cover} src={cover} alt="" />}
+
+                  <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
+                    {cover && <img className={classes.cover} src={cover} alt="" />}
+                  </Hidden>
+
                 </Box>
               )
           }
