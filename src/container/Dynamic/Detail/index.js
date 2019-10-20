@@ -55,7 +55,16 @@ function DynamicDetail({ router }) {
 
   if (loading) return <Loading />;
 
+  console.log('data');
+  console.log(data);
+
+  console.log('error');
+  console.log(error);
+
+  if (error) return 'error';
+
   const { data: { user, iframe, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount } } = data;
+
 
   if (error) {
     return (
