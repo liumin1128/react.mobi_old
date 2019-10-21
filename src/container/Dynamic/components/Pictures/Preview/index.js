@@ -17,13 +17,28 @@ function Pictures({ pictures, onShow }) {
 
   if (pictures.length === 1) {
     return (
-      <CardMedia
-        className={[ classes.item, classes.item_1_1 ]}
-        image={getSmallImg(pictures[0], w * 3, w * 3)}
+      <img
+        alt=""
+        className={[ classes.item ]}
+        style={{
+          // width: '100%',
+          // height: '100%',
+          maxWidth: 300,
+          maxHeight: 300,
+          display: 'inline-block',
+        }}
         onClick={() => {
           wiewPicture(0);
         }}
+        src={pictures[0]}
       />
+    // <CardMedia
+    //   className={[ classes.item, classes.item_1_1 ]}
+    //   image={getSmallImg(pictures[0], w * 3, w * 3)}
+    //   onClick={() => {
+    //     wiewPicture(0);
+    //   }}
+    // />
     );
   }
 
