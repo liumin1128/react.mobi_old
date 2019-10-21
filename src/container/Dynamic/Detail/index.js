@@ -35,7 +35,7 @@ import useStyles from './styles';
 function DynamicDetail({ router }) {
   const classes = useStyles();
   const { data, error, loading, refetch } = useQuery(DYNAMIC_DETAIL, router.query);
-  const { data: userInfoData } = useQuery(USERINFO);
+  const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO);
 
   // 赞状态异常
   const [ zan ] = useMutation(ZAN);
@@ -53,13 +53,7 @@ function DynamicDetail({ router }) {
     });
   }
 
-  if (loading) return <Loading />;
-
-  console.log('data');
-  console.log(data);
-
-  console.log('error');
-  console.log(error);
+  if (loading || userInfoLoading) return <Loading />;
 
   if (error) return 'error';
 
@@ -83,7 +77,6 @@ function DynamicDetail({ router }) {
     Router.push(`/dynamic/edit?_id=${_id}`);
   }
 
-
   return (
     <div>
       <Box display="flex" justifyContent="center">
@@ -106,7 +99,7 @@ function DynamicDetail({ router }) {
                     content={(
                       <Paper elevation={2}>
                         <MenuList>
-                          {user._id === userInfo._id && (
+                          {userInfo && user._id === userInfo._id && (
                             <>
                               <MenuItem className={classes.MenuItem} onClick={edit}>编辑</MenuItem>
                               <MenuItem className={classes.MenuItem} onClick={() => { del(_id); }}>删除</MenuItem>
