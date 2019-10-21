@@ -5,7 +5,6 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import Divider from '@material-ui/core/Divider';
-// import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -29,6 +28,8 @@ import Pictures from '@/container/Dynamic/components/Pictures';
 import Iframe from '@/container/Dynamic/components/Iframe';
 import Popper from '@/components/Popper';
 import Avatar from '@/components/Avatar';
+import PageError from '@/components/StatusPage/error';
+import Page404 from '@/components/StatusPage/404';
 import { text2html, topics2Html } from '../utils';
 import useStyles from './styles';
 
@@ -55,19 +56,11 @@ function DynamicDetail({ router }) {
 
   if (loading || userInfoLoading) return <Loading />;
 
-  if (error) return 'error';
+  if (error) return <PageError />;
 
   const { data: { user, iframe, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount } } = data;
 
-
-  if (error) {
-    return (
-      <div>
-        {`Error! ${error.message}`}
-        <Button onClick={() => { refetch({ _id }); }}>refetch</Button>
-      </div>
-    );
-  }
+  if (!_id) return <Page404 />;
 
   const userInfo = userInfoData ? userInfoData.userInfo : {};
 
