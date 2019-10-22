@@ -8,9 +8,9 @@ import useStyles from './styles';
 
 const defaultTitle = 'ERROR';
 const defaultContent = '啊哦，出现了意料之外的错误';
-const defaultAction = () => <Link href="/"><Button>返回首页</Button></Link>;
+const defaultAction = <Link href="/"><Button>返回首页</Button></Link>;
 
-export default ({ title = defaultTitle, content = defaultContent, Action = defaultAction }) => {
+export default ({ title = defaultTitle, content = defaultContent, action = defaultAction }) => {
   const classes = useStyles();
   return (
     <>
@@ -21,7 +21,7 @@ export default ({ title = defaultTitle, content = defaultContent, Action = defau
         <Typography align="center" variant="h6">{title}</Typography>
         <Typography align="center" variant="body2">{content}</Typography>
         <Box mt={2} />
-        <Action />
+        {action}
       </Box>
     </>
   );

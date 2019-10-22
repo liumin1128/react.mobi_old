@@ -21,9 +21,11 @@ function Error({ statusCode, ...props }) {
 }
 
 Error.getInitialProps = async ({ res, err }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-  console.log('statusCode');
-  console.log(statusCode);
+  const statusCode = res ? res.statusCode : err ? err.statusCode : undefined;
+  console.log('res.statusCode');
+  console.log(res.originalUrl);
+  console.log('err.statusCode');
+  console.log(err.statusCode);
   return { statusCode };
 };
 

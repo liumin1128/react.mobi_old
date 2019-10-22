@@ -1,4 +1,5 @@
 import React from 'react';
+import { withApollo } from '@/lib/apollo';
 import Content from '@/container/Dynamic/Detail';
 
 function DynamicDetail() {
@@ -7,4 +8,4 @@ function DynamicDetail() {
   );
 }
 
-export default DynamicDetail;
+export default withApollo(DynamicDetail);
