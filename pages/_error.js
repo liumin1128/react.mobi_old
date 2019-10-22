@@ -22,10 +22,7 @@ function Error({ statusCode, ...props }) {
 
 Error.getInitialProps = async ({ res, err }) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : undefined;
-  console.log('res.statusCode');
-  console.log(res.originalUrl);
-  console.log('err.statusCode');
-  console.log(err.statusCode);
+  console.log(`${statusCode}: ${res.req.url}`);
   return { statusCode };
 };
 
