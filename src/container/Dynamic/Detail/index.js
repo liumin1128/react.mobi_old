@@ -11,9 +11,9 @@ function DynamicDetail() {
   const router = useRouter();
   const { _id } = router.query;
   const { data, error, loading, refetch } = useQuery(DYNAMIC_DETAIL, { variables: { _id } });
-  const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO);
+  const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO, { ssr: false });
 
-  if (loading || userInfoLoading) return <Loading />;
+  if (loading) return <Loading />;
   if (error) return <GraphQLErrors error={error} />;
 
   const userInfo = userInfoData ? userInfoData.userInfo : undefined;

@@ -1,41 +1,37 @@
-import React from 'react';
-import { withRouter } from 'next/router';
+import React, { Fragment } from 'react';
+import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/react-hooks';
 import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
-import PageError from '@/components/StatusPage/error';
+import { USERINFO } from '@/graphql/schema/user';
 import Link from '@/components/Link';
-import Page404 from '@/components/StatusPage/404';
+import Loading from '@/components/Loading';
+import GraphQLErrors from '@/components/StatusPage/GraphQLErrors';
+import Item from './Item';
 
-function DynamicList({ router }) {
-  const { loading, error, data, fetchMore, networkStatus } = useQuery(
-    DYNAMIC_LIST,
-    {
-      // variables: allPostsQueryVars,
-      notifyOnNetworkStatusChange: true,
-      ssr: true,
-    },
-  );
+function DynamicList() {
+  const router = useRouter();
+  const { _id } = router.query;
+  const { data, error, loading, refetch } = useQuery(DYNAMIC_LIST, { variables: { _id } });
+  const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO, { ssr: false });
 
-  // console.log('data');
-  // console.log(data);
+  if (loading) return <Loading />;
+  if (error) return <GraphQLErrors error={error} />;
 
-  if (loading) return 'loading...';
-  if (error) return <PageError />;
+  // const userInfo = userInfoData ? userInfoData.userInfo : undefined;
 
   const { list } = data;
+
 
   return (
     <>
       {list.map((i) => (
-        <div key={i._id}>
-          <Link href={`/dynamic/detail?_id=${i._id}`}>
-            {i.content}
-          </Link>
-        </div>
+        <Fragment key={i._id}>
+          <Item {...i} />
+        </Fragment>
       ))}
     </>
   );
 }
 
 
-export default withRouter(DynamicList);
+export default DynamicList;
