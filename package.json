@@ -7,7 +7,8 @@
     "analyze": "BUNDLE_ANALYZE=both next build",
     "analyze:server": "BUNDLE_ANALYZE=server next build",
     "analyze:browser": "BUNDLE_ANALYZE=browser next build",
-    "test": "jest --colors --coverage"
+    "test": "jest",
+    "test2": "jest --colors --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -16,6 +17,7 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/register": "^7.6.2",
     "@babel/runtime": "^7.6.3",
+    "@testing-library/react": "^9.3.0",
     "@zeit/next-bundle-analyzer": "^0.1.2",
     "@zeit/next-less": "^1.0.1",
     "babel-eslint": "^10.0.3",
@@ -36,6 +38,7 @@
     "https-proxy-agent": "^3.0.0",
     "jest": "^24.9.0",
     "less": "^3.10.3",
+    "next-server": "^9.0.5",
     "react-test-renderer": "^16.10.2"
   },
   "dependencies": {

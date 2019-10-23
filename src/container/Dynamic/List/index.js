@@ -10,8 +10,9 @@ import Item from './Item';
 
 function DynamicList() {
   const router = useRouter();
-  const { _id } = router.query;
-  const { data, error, loading, refetch } = useQuery(DYNAMIC_LIST, { variables: { _id } });
+  console.log('router');
+  console.log(router);
+  const { data, error, loading, refetch } = useQuery(DYNAMIC_LIST);
   const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO, { ssr: false });
 
   if (loading) return <Loading />;
@@ -24,11 +25,12 @@ function DynamicList() {
 
   return (
     <>
-      {list.map((i) => (
+      <div>XxxYyy</div>
+      {/* {list.map((i) => (
         <Fragment key={i._id}>
           <Item {...i} />
         </Fragment>
-      ))}
+      ))} */}
     </>
   );
 }
