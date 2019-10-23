@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Side from '@/container/Side';
 
 function Layout({ children }) {
+  console.log('xxxx');
   return (
     <Container>
       <Box>
@@ -13,11 +14,11 @@ function Layout({ children }) {
           <Grid item xs={12} sm={12} md={8}>
             {children}
           </Grid>
-          <Grid item xs={12} sm={12} md={4}>
+          {/* <Grid item xs={12} sm={12} md={4}>
             <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
               <Side />
             </Hidden>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Box>
     </Container>

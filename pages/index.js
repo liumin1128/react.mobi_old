@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { withApollo } from '@/lib/apollo';
 import DynamicList from '@/container/Dynamic/List';
+import withLayout from '@/components/Layout/withLayout';
 
 function Index() {
   return (
@@ -18,4 +19,4 @@ Index.Sider = () => (
   </>
 );
 
-export default withApollo(Index);
+export default withApollo(withLayout(Index));

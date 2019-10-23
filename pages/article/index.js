@@ -10,19 +10,20 @@ import Link from '@/components/Link';
 function Index() {
   return (
     <>
-      <ArticleList />
+      {/* <ArticleList /> */}
+      ArticleList
     </>
   );
 }
 
-Index.Sider = () => (
-  <Box>
-    <ProfileCard />
-    <Box mt={2} />
-    <Link href="/article/create">
-      <Button variant="contained" fullWidth color="primary">写文章</Button>
-    </Link>
-  </Box>
-);
+// Index.Sider = () => (
+//   <Box>
+//     <ProfileCard />
+//     <Box mt={2} />
+//     <Link href="/article/create">
+//       <Button variant="contained" fullWidth color="primary">写文章</Button>
+//     </Link>
+//   </Box>
+// );
 
 export default Index;
