@@ -5,16 +5,23 @@ import Button from '@material-ui/core/Button';
 import ArticleList from '@/container/Article/List';
 import ProfileCard from '@/container/User/ProfileCard';
 import Link from '@/components/Link';
-
+import { withApollo } from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
 function Index() {
   return (
     <>
       {/* <ArticleList /> */}
-      ArticleList
+      ArticleList222
     </>
   );
 }
+
+Index.Sider = () => (
+  <>
+    222
+  </>
+);
 
 // Index.Sider = () => (
 //   <Box>
@@ -26,4 +33,5 @@ function Index() {
 //   </Box>
 // );
 
-export default Index;
+
+export default withApollo(withLayout(Index));
