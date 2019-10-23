@@ -13,9 +13,9 @@ import { clearStorage } from '@/utils/store';
 import { USERINFO } from '@/graphql/schema/user';
 import Avatar from '@/components/Avatar';
 
-const DynamicComponentWithCustomLoading = dynamic(() => import('@/container/login/modal'), {
-  loading: () => null,
-});
+// const DynamicComponentWithCustomLoading = dynamic(() => import('@/container/login/modal'), {
+//   loading: () => null,
+// });
 
 
 @graphql(USERINFO, { ssr: false })
@@ -65,14 +65,14 @@ export default class user extends PureComponent {
     this.setState(({ showLoginModal }) => ({ showLoginModal: !showLoginModal }));
   }
 
-  renderLoginForm() {
-    return (
-      <DynamicComponentWithCustomLoading
-        onLoginSuccess={this.onLoginSuccess}
-        onClose={this.toogleModal}
-      />
-    );
-  }
+  // renderLoginForm() {
+  //   return (
+  //     <DynamicComponentWithCustomLoading
+  //       onLoginSuccess={this.onLoginSuccess}
+  //       onClose={this.toogleModal}
+  //     />
+  //   );
+  // }
 
   renderUser() {
     const { data: { loading, error, userInfo = {} } } = this.props;
@@ -153,7 +153,7 @@ export default class user extends PureComponent {
     return (
       <>
         {this.renderUser()}
-        {showLoginModal && this.renderLoginForm()}
+        {/* {showLoginModal && this.renderLoginForm()} */}
       </>
     );
   }
