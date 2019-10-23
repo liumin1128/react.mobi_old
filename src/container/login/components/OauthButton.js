@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Link from '@/components/Link';
 
-const styles = theme => ({
+const styles = (theme) => ({
   button: {
     textTransform: 'capitalize',
     height: 48,
@@ -26,8 +26,11 @@ const styles = theme => ({
 export default class OauthButton extends PureComponent {
   render() {
     const { text = 'Button', color = '#333', icon, url, classes } = this.props;
+
+    console.log('color');
+    console.log(color);
     return (
-      <Link href={url}>
+      <Link href={url} prefetch={false}>
         <Button
           variant="outlined"
           size="large"

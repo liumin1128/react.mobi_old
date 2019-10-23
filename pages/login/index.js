@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import Link from '@/components/Link';
 import Login from '@/container/login/login';
 import Oauth from '@/container/login/oauth';
-import Typography from '@material-ui/core/Typography';
+import { withApollo } from '@/lib/apollo';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     maxWidth: 414,
     padding: '0 36px',
@@ -32,6 +33,7 @@ const styles = theme => ({
 });
 
 
+@withApollo
 @withStyles(styles)
 export default class LoginPage extends PureComponent {
   render() {
@@ -47,8 +49,8 @@ export default class LoginPage extends PureComponent {
             盗火，一个年轻的知识社区
           </Typography>
         </div>
-
         <Login />
+
 
         <div className={classes.help}>
           <span>
