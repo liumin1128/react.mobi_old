@@ -7,24 +7,26 @@ import nossr from '@/hoc/nossr';
 @nossr
 @withRouter
 export default class oauth extends PureComponent {
-  async componentDidMount() {
-    const { router } = this.props;
-    const { token } = router.query || {};
-    if (token) {
-      let path = await getStorage(PATH_BEFORELOGIN);
-      if (path) {
-        await removeStorage(PATH_BEFORELOGIN);
-      } else {
-        path = '/';
-      }
-      await setStorage(USER_TOKEN, token);
-      router.push(path);
-    }
-  }
+  // async componentDidMount() {
+  //   const { router } = this.props;
+  //   const { token } = router.query || {};
+  //   console.log('token');
+  //   console.log(token);
+  //   if (token) {
+  //     let path = await getStorage(PATH_BEFORELOGIN);
+  //     if (path) {
+  //       await removeStorage(PATH_BEFORELOGIN);
+  //     } else {
+  //       path = '/';
+  //     }
+  //     await setStorage(USER_TOKEN, token);
+  //     router.push(path);
+  //   }
+  // }
 
   render() {
     return (
-      <div />
+      <h1>111111</h1>
     );
   }
 }

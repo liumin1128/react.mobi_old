@@ -20,7 +20,6 @@ function DynamicList() {
 
   const { list } = data;
 
-
   return (
     <>
       {list.map((i) => (

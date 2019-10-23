@@ -17,8 +17,8 @@ import Pictures from '@/container/Dynamic/components/Pictures';
 import Iframe from '@/container/Dynamic/components/Iframe';
 import InfoButton from '@/components/Button/Info';
 import { getTimeAgo } from '@/utils/common';
-import CreateComment from '@/container/Comment/Create';
-import CommentList from '@/container/Comment/List';
+// import CreateComment from '@/container/Comment/Create';
+// import CommentList from '@/container/Comment/List';
 import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import Popper from '@/components/Popper';
 import Avatar from '@/components/Avatar';
@@ -176,7 +176,7 @@ function DynamicListItem({
           </Box>
 
 
-          {showComment && (
+          {/* {showComment && (
             <Box>
               <Divider />
               <Box ml={8} mt={3} className={classes.content}>
@@ -197,7 +197,7 @@ function DynamicListItem({
                 <CommentList session={_id} />
               </Box>
             </Box>
-          )}
+          )} */}
         </Box>
 
 

@@ -8,8 +8,8 @@ import DynamicList from '@/container/Dynamic/List';
 
 
 // import DynamicList from '@/container/Dynamic/List';
-import DynamicCreate from '@/container/Dynamic/Create';
-import DynamicTopics from '@/container/Dynamic/Topics';
+// import DynamicCreate from '@/container/Dynamic/Create';
+// import DynamicTopics from '@/container/Dynamic/Topics';
 // import NavTabs from '@/components/NavTabs';
 import Blogrol from '@/container/Side/Blogrol';
 import Project from '@/container/Side/Project';
