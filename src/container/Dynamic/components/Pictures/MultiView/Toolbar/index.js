@@ -10,7 +10,7 @@ function PicturesToolbar({ onClose, onView, onRouteRight, onRouteLeft }) {
   const classes = useStyles();
   return (
     <Box
-      bgcolor="#eee"
+      bgcolor="rgba(0, 0, 0, 0.1)"
       color="text.hint"
       display="flex"
       flexWrap="wrap"
@@ -73,3 +73,4 @@ function PicturesToolbar({ onClose, onView, onRouteRight, onRouteLeft }) {
 }
 
 export default PicturesToolbar;
+

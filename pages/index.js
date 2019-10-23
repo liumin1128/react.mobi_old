@@ -1,19 +1,65 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
+import Card from '@material-ui/core/Card';
+import Box from '@material-ui/core/Box';
 import { withApollo } from '@/lib/apollo';
 import withLayout from '@/hoc/layout';
 import DynamicList from '@/container/Dynamic/List';
+
+
+// import DynamicList from '@/container/Dynamic/List';
+import DynamicCreate from '@/container/Dynamic/Create';
+import DynamicTopics from '@/container/Dynamic/Topics';
+// import NavTabs from '@/components/NavTabs';
+import Blogrol from '@/container/Side/Blogrol';
+import Project from '@/container/Side/Project';
+import Code from '@/container/Side/Code';
+import Footer from '@/container/Side/Footer';
+// import ProfileCard from '@/container/User/ProfileCard';
+
+const BackToTopWithNoSSR = dynamic(
+  () => import('@/components/BackToTop'),
+  { ssr: false },
+);
 
 function Index() {
   return (
     <>
       <DynamicList />
+      <BackToTopWithNoSSR />
     </>
   );
 }
 
+
 Index.Sider = () => (
   <>
-    222
+
+    {/* <ProfileCard /> */}
+    {/* <DynamicTopics /> */}
+    <Card>
+      <Box p={2}>
+        <Blogrol />
+      </Box>
+    </Card>
+    <Box mt={1.5} />
+    <Card>
+      <Box p={2}>
+        <Project />
+      </Box>
+    </Card>
+    <Box mt={1.5} />
+    <Card>
+      <Box p={2}>
+        <Code />
+      </Box>
+    </Card>
+    <Box mt={1.5} />
+    <Card>
+      <Box p={2}>
+        <Footer />
+      </Box>
+    </Card>
   </>
 );
 
