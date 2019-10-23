@@ -23,7 +23,6 @@ function DynamicList() {
 
   return (
     <>
-      <div>XxxYyy</div>
       {list.map((i) => (
         <Fragment key={i._id}>
           <Item {...i} />

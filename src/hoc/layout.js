@@ -1,5 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Header from '@/components/Layout/Header';
@@ -16,6 +17,7 @@ export default (WrappedComponent) => class extends PureComponent {
       return (
         <Container maxWidth="md">
           <WrappedComponent.Header />
+          <Box mt={2} />
           <WrappedComponent {...this.props} />
         </Container>
       );
@@ -24,7 +26,7 @@ export default (WrappedComponent) => class extends PureComponent {
     return (
       <Container maxWidth="md">
         <WrappedComponent.Header />
-
+        <Box mt={2} />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={8}>
             <WrappedComponent {...this.props} />
@@ -35,7 +37,6 @@ export default (WrappedComponent) => class extends PureComponent {
             </Hidden>
           </Grid>
         </Grid>
-
       </Container>
     );
   }
