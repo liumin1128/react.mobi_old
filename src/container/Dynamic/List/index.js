@@ -10,10 +10,8 @@ import Item from './Item';
 
 function DynamicList() {
   const router = useRouter();
-  console.log('router');
-  console.log(router);
   const { data, error, loading, refetch } = useQuery(DYNAMIC_LIST);
-  const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO, { ssr: false });
+  // const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO, { ssr: false });
 
   if (loading) return <Loading />;
   if (error) return <GraphQLErrors error={error} />;
@@ -26,11 +24,11 @@ function DynamicList() {
   return (
     <>
       <div>XxxYyy</div>
-      {/* {list.map((i) => (
+      {list.map((i) => (
         <Fragment key={i._id}>
           <Item {...i} />
         </Fragment>
-      ))} */}
+      ))}
     </>
   );
 }
