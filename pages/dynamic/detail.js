@@ -1,5 +1,5 @@
 import React from 'react';
-import { withApollo } from '@/lib/apollo';
+import withApollo from '@/lib/apollo';
 import Content from '@/container/Dynamic/Detail';
 
 function DynamicDetail() {

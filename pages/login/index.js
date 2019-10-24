@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@/components/Link';
 import Login from '@/container/login/login';
 import Oauth from '@/container/login/oauth';
-import { withApollo } from '@/lib/apollo';
+import withApollo from '@/lib/apollo';
 
 const styles = (theme) => ({
   root: {

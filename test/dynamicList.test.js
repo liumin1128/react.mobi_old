@@ -19,7 +19,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { createRouter } from 'next/router';
 import { RouterContext } from 'next-server/dist/lib/router-context';
-import { withApollo } from '@/lib/apollo';
+import withApollo from '@/lib/apollo';
 
 
 describe('Basic test', () => {

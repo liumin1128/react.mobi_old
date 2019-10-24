@@ -2,7 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
-import { withApollo } from '@/lib/apollo';
+import withApollo from '@/lib/apollo';
 import withLayout from '@/hoc/layout';
 import DynamicList from '@/container/Dynamic/List';
 import DynamicCreate from '@/container/Dynamic/Create';

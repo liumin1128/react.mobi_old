@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import ArticleList from '@/container/Article/List';
 import ProfileCard from '@/container/User/ProfileCard';
 import Link from '@/components/Link';
-import { withApollo } from '@/lib/apollo';
+import withApollo from '@/lib/apollo';
 import withLayout from '@/hoc/layout';
 
 function Index() {

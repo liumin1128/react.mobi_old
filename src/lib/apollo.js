@@ -19,7 +19,7 @@ let apolloClient = null;
  * @param {Object} [config]
  * @param {Boolean} [config.ssr=true]
  */
-export function withApollo(PageComponent, { ssr = true } = {}) {
+ function withApollo(PageComponent, { ssr = true } = {}) {
   const WithApollo = ({ apolloClient, apolloState, ...pageProps }) => {
     const client = apolloClient || initApolloClient(apolloState);
     return (
@@ -101,7 +101,6 @@ export function withApollo(PageComponent, { ssr = true } = {}) {
   return WithApollo;
 }
 
-
 /**
  * Always creates a new apollo client on the server
  * Creates or reuses apollo client in the browser.
@@ -164,3 +163,4 @@ function createApolloClient(initialState = {}) {
   });
 }
  
+export default withApollo
