@@ -81,14 +81,14 @@ function getCacheKey(req) {
   const { path } = req.route;
   switch (path) {
     case '/': return path;
-    case '/news/detail': {
-      const { id } = req.query;
-      if (id) {
-        return `${path}?id=${id}`;
-      } else {
-        return req.url;
-      }
-    }
+    // case '/news/detail': {
+    //   const { id } = req.query;
+    //   if (id) {
+    //     return `${path}?id=${id}`;
+    //   } else {
+    //     return req.url;
+    //   }
+    // }
     default: return req.url;
   }
 }
