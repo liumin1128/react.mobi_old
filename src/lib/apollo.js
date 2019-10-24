@@ -4,8 +4,10 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
+import { setContext } from 'apollo-link-context'
 import fetch from 'isomorphic-unfetch';
 import { USER_TOKEN, API_URL } from '@/config/base';
+import { getStorage } from '@/utils/store';
 
 let apolloClient = null;
 
@@ -125,15 +127,40 @@ function initApolloClient(initialState) {
  * @param  {Object} [initialState={}]
  */
 function createApolloClient(initialState = {}) {
+
+
+  // const token = await getStorage(USER_TOKEN) || {};
+
+  const httpLink = new HttpLink({
+    uri: `${API_URL}/graphql`, // Server URL (must be absolute)
+    credentials: 'same-origin',
+    fetch,
+    // fetchOptions
+  })
+
+  const authLink = setContext(async (request, { headers }) => {
+    const token = await getStorage(USER_TOKEN);
+    console.log('token')
+    console.log(token)
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    }
+  })
+
   // Check out https://github.com/zeit/next.js/pull/4611 if you want to use the AWSAppSyncClient
   return new ApolloClient({
     ssrMode: typeof window === 'undefined', // Disables forceFetch on the server (so queries are only run once)
-    link: new HttpLink({
-      uri: `${API_URL}/graphql`, // Server URL (must be absolute)
-      //   uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn', // Server URL (must be absolute)
-      credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
-      fetch,
-    }),
+    link: authLink.concat(httpLink),
+    // link: new HttpLink({
+    //   uri: `${API_URL}/graphql`, // Server URL (must be absolute)
+    //   //   uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn', // Server URL (must be absolute)
+    //   credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+    //   fetch,
+    // }),
     cache: new InMemoryCache().restore(initialState),
   });
 }
+ 
