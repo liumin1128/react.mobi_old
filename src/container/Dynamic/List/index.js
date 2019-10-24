@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
-import { useRouter } from 'next/router';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@/hooks/graphql';
 import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
 import { USERINFO } from '@/graphql/schema/user';
 import Link from '@/components/Link';
@@ -11,13 +10,11 @@ import Item from './Item';
 function DynamicList({ variables }) {
   // const router = useRouter();
   // const { user } = router.query;
-  const { data, error, loading, refetch } = useQuery(DYNAMIC_LIST, { variables });
+  const { data, error, loading } = useQuery(DYNAMIC_LIST, { variables, ssr: false });
   // const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO, { ssr: false });
 
   if (loading) return <Loading />;
   if (error) return <GraphQLErrors error={error} />;
-
-  // const userInfo = userInfoData ? userInfoData.userInfo : undefined;
 
   const { list } = data;
 

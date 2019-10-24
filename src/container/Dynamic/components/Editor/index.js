@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { withRouter } from 'next/router';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Paper from '@material-ui/core/Paper';
@@ -22,7 +21,9 @@ import { html2text, text2html, getByteLen } from '../../utils';
 
 const MAX_TEXT_LENGTH = 233;
 
-function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: undefined }, onSubmit }) {
+const DEFAULT_VALUE = { content: '', pictures: [], iframe: undefined };
+
+function DynamicEditor({ initialValues = DEFAULT_VALUE, loading, onSubmit }) {
   const input = useRef();
   const classes = useStyles();
   const [ pictures, setPictures ] = useState(initialValues.pictures);
@@ -361,7 +362,7 @@ function DynamicEditor({ initialValues = { content: '', pictures: [], iframe: un
           color="primary"
           className={classes.submit}
           // loading={status === 'loading'}
-          // loading
+          loading={loading}
           onClick={_onSubmit}
         >
           发布

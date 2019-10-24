@@ -7,7 +7,7 @@ import Snackbar from '@/components/Snackbar';
 import Editor from '../components/Editor';
 
 function DynamicCreate({ router }) {
-  const [ createDynamic ] = useMutation(DYNAMIC_CREATE);
+  const [ createDynamic, { loading } ] = useMutation(DYNAMIC_CREATE);
 
   const res = useQuery(DYNAMIC_TOPIC, router.query);
   const topic = (res.data || {}).data;
@@ -18,9 +18,13 @@ function DynamicCreate({ router }) {
       update: (store, { data: { result: { status: code, message, data: result } } }) => {
         if (code === 200) {
           cb();
-          const data = store.readQuery({ query: DYNAMIC_LIST, variables: router.query });
-          data.list.unshift(result);
-          store.writeQuery({ query: DYNAMIC_LIST, data, variables: router.query });
+          const _data = store.readQuery({ query: DYNAMIC_LIST, variables: router.query });
+          const data = {
+            meta: { ..._data.meta, count: _data.meta.count + 1 },
+            list: [ result, ..._data.list ],
+          };
+          store.writeQuery({ query: DYNAMIC_LIST, variables: router.query, data });
+          // Snackbar.error(message);
         } else {
           Snackbar.error(message);
         }
@@ -35,6 +39,7 @@ function DynamicCreate({ router }) {
           <Editor
             initialValues={{ content: defaultContent, pictures: [] }}
             onSubmit={_onSubmit}
+            loading={loading}
           />
         </Box>
       </Box>
