@@ -6,7 +6,7 @@ import ProfileCard from './ProfileCard';
 import Sign from './Sign';
 
 function EditeUserInfo() {
-  const { data, loading, error } = useQuery(USERINFO);
+  const { data, loading, error } = useQuery(USERINFO, { ssr: false });
 
   if (loading) return <Skeleton />;
 
