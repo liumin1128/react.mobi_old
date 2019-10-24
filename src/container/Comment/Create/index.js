@@ -4,13 +4,13 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import Checkbox from '@material-ui/core/Checkbox';
+import { useMutation } from '@apollo/react-hooks';
 import Button from '@/components/Button/Loading';
 import Popper from '@/components/Popper';
 // import { DYNAMIC_CREATE, DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import { CREATE_COMMENT, COMMENT_LIST } from '@/graphql/schema/comment';
 
 import { useOnMount, useOnUnmount } from '@/hooks';
-import { useMutation } from '@/hooks/graphql';
 import Snackbar from '@/components/Snackbar';
 import Emoticon from '@/container/Dynamic/components/Emoticon';
 import { html2text } from '@/container/Dynamic/utils';
@@ -21,7 +21,7 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
   const input = useRef();
   const classes = useStyles();
   const [ lastEditRange, setLastEditRange ] = useState();
-  const [ createComment, { loading } ] = useMutation(CREATE_COMMENT, { commentTo, replyTo, session });
+  const [ createComment, { loading } ] = useMutation(CREATE_COMMENT, { variables: { commentTo, replyTo, session } });
 
   // console.log('CommentCreate loading');
   // console.log(loading);
@@ -188,16 +188,22 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
     const edit = input.current;
     const content = html2text(edit.innerHTML);
 
-    createComment({ content }, {
+    createComment({
+      variables: { content },
       update: (store, { data: { result: { status: code, message, data: result } } }) => {
         setStatus('default');
         if (code === 200) {
           edit.innerHTML = '';
-          const data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
-          data.list.unshift(result);
-          data.meta.count += 1;
+
+          const _data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
+
+          const data = {
+            meta: { ..._data.meta, count: _data.meta.count + 1 },
+            list: [ result, ..._data.list ],
+          };
+
           store.writeQuery({ query: COMMENT_LIST, variables: { session }, data });
-          if (update) update(store);
+          // if (update) update(store);
         } else {
           Snackbar.error(message);
         }

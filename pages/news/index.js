@@ -2,7 +2,8 @@
 import React from 'react';
 import GridList from '@/container/News/List/GridList';
 import NavTabs from '@/components/NavTabs';
-// import FlatList from '@/container/News/List/FlatList';
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
 function Index() {
   return (
@@ -20,6 +21,5 @@ function Index() {
   );
 }
 
-// Index.Sider = FlatList;
+export default withApollo(withLayout(Index));
 
-export default Index;

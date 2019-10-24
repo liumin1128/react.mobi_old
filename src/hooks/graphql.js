@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {
   useQuery as _useQuery,
   useMutation as _useMutation,
+  useLazyQuery as _useLazyQuery,
 } from '@apollo/react-hooks';
 
 
@@ -49,6 +50,14 @@ export function useQuery(schema, variables, options) {
 
 export function useMutation(schema, variables, options) {
   const [ f1, ...other ] = _useMutation(schema, { variables, ...options });
+  function f2(variables2, opt) {
+    return f1({ variables: { ...variables, ...variables2 }, ...options, ...opt });
+  }
+  return [ f2, ...other ];
+}
+
+export function useLazyQuery(schema, variables, options) {
+  const [ f1, ...other ] = _useLazyQuery(schema, { variables, ...options });
   function f2(variables2, opt) {
     return f1({ variables: { ...variables, ...variables2 }, ...options, ...opt });
   }

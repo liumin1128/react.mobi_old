@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 // import ModeCommentIcon from '@material-ui/icons/ModeComment';
 import Loading from '@/components/Loading';
 import { COMMENT_LIST, REPLY_LIST } from '@/graphql/schema/comment';
-import { useQuery, useMutation } from '@/hooks/graphql';
+import { useQuery, useLazyQuery } from '@/hooks/graphql';
 // import { getTimeAgo } from '@/utils/common';
 import Item from './Item';
 import useStyles from './styles';
@@ -18,7 +18,7 @@ import useStyles from './styles';
 function DynamicList({ session }) {
   const classes = useStyles();
   const { data, error, loading, isLoadingMore, loadMore } = useQuery(COMMENT_LIST, { session });
-  const [ fetchMoreReplys ] = useMutation(REPLY_LIST);
+  const [ fetchMoreReplys ] = useLazyQuery(REPLY_LIST);
 
   if (loading) return <Loading />;
   if (error) return <div>{error.message}</div>;
@@ -47,6 +47,8 @@ function DynamicList({ session }) {
               />
               {i.replys && i.replys.length > 0 && (
                 <Box ml={8} mt={3} p={3} className={classes.replay}>
+
+
                   {i.replys.map((j, jdx) => (
                     <Fragment key={j._id}>
                       {jdx !== 0 && (

@@ -1,13 +1,9 @@
-import React from 'react';
-import Content from '@/container/News/Detail';
+import Index from '@/container/News/Detail';
 import FlatList from '@/container/News/List/FlatList';
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
-function NewsDetail() {
-  return (
-    <Content />
-  );
-}
+Index.Sider = FlatList;
 
-NewsDetail.Sider = FlatList;
+export default withApollo(withLayout(Index));
 
-export default NewsDetail;
