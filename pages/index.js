@@ -5,17 +5,13 @@ import Box from '@material-ui/core/Box';
 import { withApollo } from '@/lib/apollo';
 import withLayout from '@/hoc/layout';
 import DynamicList from '@/container/Dynamic/List';
-
-
-// import DynamicList from '@/container/Dynamic/List';
-// import DynamicCreate from '@/container/Dynamic/Create';
-// import DynamicTopics from '@/container/Dynamic/Topics';
-// import NavTabs from '@/components/NavTabs';
+import DynamicCreate from '@/container/Dynamic/Create';
+import DynamicTopics from '@/container/Dynamic/Topics';
 import Blogrol from '@/container/Side/Blogrol';
 import Project from '@/container/Side/Project';
 import Code from '@/container/Side/Code';
 import Footer from '@/container/Side/Footer';
-// import ProfileCard from '@/container/User/ProfileCard';
+import ProfileCard from '@/container/User/ProfileCard';
 
 const BackToTopWithNoSSR = dynamic(
   () => import('@/components/BackToTop'),
@@ -25,6 +21,12 @@ const BackToTopWithNoSSR = dynamic(
 function Index() {
   return (
     <>
+      <Card>
+        <Box p={2}>
+          <DynamicCreate />
+        </Box>
+      </Card>
+      <Box mt={2} />
       <DynamicList />
       <BackToTopWithNoSSR />
     </>
@@ -35,8 +37,10 @@ function Index() {
 Index.Sider = () => (
   <>
 
-    {/* <ProfileCard /> */}
-    {/* <DynamicTopics /> */}
+    <ProfileCard />
+    <Box mt={1.5} />
+    <DynamicTopics />
+    <Box mt={1.5} />
     <Card>
       <Box p={2}>
         <Blogrol />

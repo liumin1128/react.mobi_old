@@ -1,10 +1,5 @@
-import React from 'react';
 import Notification from '@/container/User/Notification';
+import { withApollo } from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
-function MyNotification() {
-  return (
-    <Notification />
-  );
-}
-
-export default MyNotification;
+export default withApollo(withLayout(Notification));

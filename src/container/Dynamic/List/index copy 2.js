@@ -5,7 +5,7 @@ import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
 import { USERINFO } from '@/graphql/schema/user';
 import { ZAN } from '@/graphql/schema/zan';
 import { FOLLOW } from '@/graphql/schema/follow';
-import { useQuery, useMutation } from '@/hooks/graphql';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 // import { useOnMount, useOnUnmount } from '@/hooks';
 // import useLoop from '@/hooks/loop';
 import Loading from '@/components/Loading';

@@ -1,10 +1,8 @@
 import { useState } from 'react';
-
 import {
   useQuery as _useQuery,
   useMutation as _useMutation,
-} from '@apollo/react-hooks';
-
+} from 'react-apollo-hooks';
 
 export function useLoadMore(fetchMore, data, variables) {
   const [ isLoadingMore, setIsLoadingMore ] = useState(false);
@@ -48,9 +46,9 @@ export function useQuery(schema, variables, options) {
 }
 
 export function useMutation(schema, variables, options) {
-  const [ f1, ...other ] = _useMutation(schema, { variables, ...options });
+  const [ f1, other ] = _useMutation(schema, { variables, ...options });
   function f2(variables2, opt) {
     return f1({ variables: { ...variables, ...variables2 }, ...options, ...opt });
   }
-  return [ f2, ...other ];
+  return [ f2, other ];
 }
