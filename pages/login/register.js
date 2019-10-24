@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import Link from '@/components/Link';
 import Register from '@/container/login/register';
 import Oauth from '@/container/login/oauth';
-import Typography from '@material-ui/core/Typography';
+import { withApollo } from '@/lib/apollo';
 
-
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     maxWidth: 414,
     padding: '0 36px',
@@ -33,6 +33,7 @@ const styles = theme => ({
 });
 
 
+@withApollo
 @withStyles(styles)
 export default class RegisterPage extends PureComponent {
   render() {
