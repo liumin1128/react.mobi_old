@@ -3,9 +3,8 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-// import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import { useRouter, withRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { NOTIFACATION_LIST } from '@/graphql/schema/notification';
@@ -24,9 +23,10 @@ const navList = [
   { label: '系统消息', value: 'system' },
 ];
 
-
-function Profile({ router }) {
+function Profile() {
   const classes = useStyles();
+
+  const router = useRouter();
   const { query } = router;
   const { type = 'all' } = query;
 
@@ -158,4 +158,4 @@ function Profile({ router }) {
   );
 }
 
-export default withRouter(Profile);
+export default Profile;
