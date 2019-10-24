@@ -2,8 +2,8 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import { useMutation } from '@apollo/react-hooks';
 import TextField from '@/components/Form/TextField';
-import { useMutation } from '@/hooks/graphql';
 import { UPDATE_PASSWORD } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
 import PasswordStrength from './components/PasswordStrength';
@@ -30,14 +30,13 @@ function EditeUserInfo() {
   const [ updateUserPassword ] = useMutation(UPDATE_PASSWORD);
 
   async function onSubmit({ oldPassword, password }) {
-    const res = await updateUserPassword({ input: { oldPassword, password } });
+    const res = await updateUserPassword({ variables: { input: { oldPassword, password } } });
     if (res.data.result.status === 200) {
       Snackbar.success('更新成功');
     } else {
       Snackbar.success(res.data.result.message);
     }
   }
-
 
   return (
     <Box p={4} width={1} display="flex" justifyContent="center">

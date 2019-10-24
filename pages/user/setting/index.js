@@ -1,10 +1,5 @@
-import React from 'react';
 import Setting from '@/container/User/Setting';
+import { withApollo } from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
-function SystemSettings() {
-  return (
-    <Setting />
-  );
-}
-
-export default SystemSettings;
+export default withApollo(withLayout(Setting));

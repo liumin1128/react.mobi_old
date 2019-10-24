@@ -7,15 +7,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import ImageIcon from '@material-ui/icons/Image';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import IconButton from '@material-ui/core/IconButton';
-import LinkIcon from '@material-ui/icons/Link';
-
-import { useMutation } from '@/hooks/graphql';
+import { useQuery } from '@apollo/react-hooks';
 import { USERINFOWITHOAUTH } from '@/graphql/schema/user';
 import Loading from '@/components/Loading';
-import { useOnMount } from '@/hooks';
 
 const oauthList = [
   { key: 'github', title: 'Github', icon: 'https://imgs.react.mobi/FitOmAQE-Ulzbzg3ba2cNRohbhCk' },
@@ -25,20 +20,12 @@ const oauthList = [
   { key: 'outlook', title: '微软', icon: 'https://imgs.react.mobi/FsRmgY99IhggoAUEEGPWG7JMnkWO' },
 ];
 
-
 function EditeUserInfo() {
-  const [ getUserInfo, userInfoData ] = useMutation(USERINFOWITHOAUTH, { ssr: false });
+  const { data, loading } = useQuery(USERINFOWITHOAUTH, { ssr: false });
 
-  useOnMount(async () => {
-    if (!userInfoData.called) {
-      await getUserInfo();
-    }
-  });
+  if (loading) return <Loading />;
 
-  if (!userInfoData.called || userInfoData.loading) return <Loading />;
-  if (userInfoData.hasError) return userInfoData.error;
-
-  const { userInfo } = userInfoData.data;
+  const { userInfo } = data;
 
   const list = oauthList.map((i) => {
     const idx = userInfo.oauths.findIndex((j = {}) => j.from === i.key);

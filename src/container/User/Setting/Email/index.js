@@ -2,14 +2,12 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import TextField from '@/components/Form/TextField';
-import { useMutation } from '@/hooks/graphql';
 import { UPDATE_USER_EMAIL, USERINFO } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
 import { checkEmail } from '@/utils/common';
 import Loading from '@/components/Loading';
-import { useOnMount } from '@/hooks';
-
 
 const validate = (values) => {
   const errors = {};
@@ -22,28 +20,20 @@ const validate = (values) => {
 };
 
 function EditeUserInfo() {
-  const [ getUserInfo, userInfoData ] = useMutation(USERINFO, { ssr: false });
+  const { data, loading } = useQuery(USERINFO, { ssr: false });
+
   const [ updateUserPassword ] = useMutation(UPDATE_USER_EMAIL);
 
-  useOnMount(async () => {
-    if (!userInfoData.called) {
-      await getUserInfo();
-    }
-  });
+  if (loading) return <Loading />;
 
-  if (!userInfoData.called || userInfoData.loading) return <Loading />;
-  if (userInfoData.hasError) return userInfoData.error;
+  const { userInfo } = data;
 
-  const { userInfo } = userInfoData.data;
-
-  // console.log(userInfo);
-
-  const initialValues = getUserInfo ? {
+  const initialValues = userInfo ? {
     email: userInfo.email || userInfo.unverified_email,
   } : {};
 
   async function onSubmit({ email }) {
-    const res = await updateUserPassword({ email });
+    const res = await updateUserPassword({ variables: { email } });
     if (res.hasError) {
       Snackbar.success('系统异常');
       return;
@@ -54,6 +44,7 @@ function EditeUserInfo() {
       Snackbar.success(res.data.result.message);
     }
   }
+
   const disabled = Boolean(userInfo.email);
 
 
@@ -78,9 +69,7 @@ function EditeUserInfo() {
 
               {!disabled && (
                 <>
-
                   <Box mt={4} />
-
                   <Button
                     variant="outlined"
                     color="primary"
@@ -91,7 +80,6 @@ function EditeUserInfo() {
                   </Button>
                 </>
               )}
-
             </form>
           )}
         />

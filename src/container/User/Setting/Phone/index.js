@@ -4,13 +4,12 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import TextField from '@/components/Form/TextField';
-import { useMutation } from '@/hooks/graphql';
 import { UPDATE_USER_PHONE, USERINFO } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
 import { isPhoneNumber } from '@/utils/validate';
 import Loading from '@/components/Loading';
-import { useOnMount } from '@/hooks';
 import SelectCountries from '@/container/login/components/SelectField';
 import CodeBtn from '@/container/login/components/CodeBtn';
 
@@ -36,29 +35,21 @@ const validate = (values) => {
 
 
 function EditeUserInfo() {
-  const [ getUserInfo, userInfoData ] = useMutation(USERINFO, { ssr: false });
+  const { data, loading } = useQuery(USERINFO, { ssr: false });
+
   const [ updateUserPassword ] = useMutation(UPDATE_USER_PHONE);
 
-  useOnMount(async () => {
-    if (!userInfoData.called) {
-      await getUserInfo();
-    }
-  });
+  if (loading) return <Loading />;
 
-  if (!userInfoData.called || userInfoData.loading) return <Loading />;
-  if (userInfoData.hasError) return userInfoData.error;
+  const { userInfo } = data;
 
-  const { userInfo } = userInfoData.data;
-
-  // console.log(userInfo);
-
-  const initialValues = getUserInfo ? {
+  const initialValues = userInfo ? {
     countryCode: userInfo.countryCode || '+86',
     purePhoneNumber: userInfo.purePhoneNumber,
   } : {};
 
   async function onSubmit(values) {
-    const res = await updateUserPassword(values);
+    const res = await updateUserPassword({ variables: values });
     if (res.hasError) {
       Snackbar.success('系统异常');
       return;

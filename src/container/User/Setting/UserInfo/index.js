@@ -1,35 +1,25 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import TextField from '@/components/Form/TextField';
 import UploadPictureField from '@/components/Form/Upload/Picture';
 import SexField from '@/components/Form/Field/Sex';
 import Snackbar from '@/components/Snackbar';
 import Loading from '@/components/Loading';
-import { useMutation } from '@/hooks/graphql';
 import { USERINFO, UPDATE_USERINFO } from '@/graphql/schema/user';
-import { useOnMount } from '@/hooks';
 import pp from '@/hoc/pp';
 import { formatTime } from '@/utils/common';
 
 function EditeUserInfo() {
-  const [ getUserInfo, getUserInfoData ] = useMutation(USERINFO);
+  const { data, loading } = useQuery(USERINFO, { ssr: false });
+
   const [ updateUserInfo ] = useMutation(UPDATE_USERINFO);
 
-  useOnMount(async () => {
-    if (!getUserInfoData.called) {
-      await getUserInfo();
-    }
-  });
+  if (loading) return <Loading />;
 
-  if (!getUserInfoData.called || getUserInfoData.loading) return <Loading />;
-  if (getUserInfoData.hasError) return getUserInfoData.error;
-
-  const { userInfo } = getUserInfoData.data;
-
-  // console.log(userInfo);
+  const { userInfo } = data;
 
   const initialValues = userInfo._id ? {
     nickname: userInfo.nickname,
@@ -39,18 +29,14 @@ function EditeUserInfo() {
     sign: userInfo.sign,
   } : {};
 
-
   async function onSubmit(params) {
-    const res = await updateUserInfo({ input: params });
-    console.log('res');
-    console.log(res);
+    const res = await updateUserInfo({ variables: { input: params } });
     if (res.data.result.status === 200) {
       Snackbar.success('更新成功');
     } else {
       Snackbar.success(res.data.result.message);
     }
   }
-
 
   return (
 
@@ -63,7 +49,6 @@ function EditeUserInfo() {
 
             <form onSubmit={handleSubmit}>
 
-
               <Field
                 fullWidth
                 margin="normal"
@@ -71,7 +56,6 @@ function EditeUserInfo() {
                 label="头像"
                 component={pp(UploadPictureField, { width: 160 })}
               />
-
 
               <Field
                 fullWidth
@@ -81,7 +65,6 @@ function EditeUserInfo() {
                 component={TextField}
               />
 
-
               <Field
                 fullWidth
                 margin="normal"
@@ -90,7 +73,6 @@ function EditeUserInfo() {
                 InputLabelProps={{ shrink: true }}
                 component={SexField}
               />
-
 
               <Field
                 fullWidth
@@ -122,7 +104,7 @@ function EditeUserInfo() {
                 fullWidth
                 type="submit"
               >
-                    保存
+                保存
               </Button>
             </form>
           )}
