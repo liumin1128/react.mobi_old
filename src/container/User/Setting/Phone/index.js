@@ -61,7 +61,7 @@ function EditeUserInfo() {
     }
   }
 
-  const disabled = Boolean(userInfo.phoneNumber);
+  // const disabled = Boolean(userInfo.phoneNumber);
 
 
   return (
@@ -83,7 +83,7 @@ function EditeUserInfo() {
                     label="国家"
                     margin="normal"
                     component={SelectCountries}
-                    disabled={disabled}
+                    // disabled={disabled}
                   />
                 </Grid>
                 <Grid item xs={8}>
@@ -95,40 +95,40 @@ function EditeUserInfo() {
                     label="手机号"
                     margin="normal"
                     component={TextField}
-                    disabled={disabled}
+                    // disabled={disabled}
                   />
                 </Grid>
               </Grid>
-              {!disabled && (
-                <>
-                  <Field
-                    fullWidth
-                    key="code"
-                    name="code"
-                    label="验证码"
-                    component={TextField}
-                    disabled={disabled}
-                    type="text"
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment variant="filled" position="end">
-                          <CodeBtn values={values} />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                  <Box mt={4} />
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    fullWidth
-                    type="submit"
-                    disabled={disabled}
-                  >
+              {/* {!disabled && (
+                <> */}
+              <Field
+                fullWidth
+                key="code"
+                name="code"
+                label="验证码"
+                component={TextField}
+                // disabled={disabled}
+                type="text"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment variant="filled" position="end">
+                      <CodeBtn values={values} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <Box mt={4} />
+              <Button
+                variant="outlined"
+                color="primary"
+                fullWidth
+                type="submit"
+                // disabled={disabled}
+              >
                     确认
-                  </Button>
-                </>
-              )}
+              </Button>
+              {/* </>
+              )} */}
             </form>
           )}
         />
