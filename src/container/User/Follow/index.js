@@ -11,15 +11,18 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Avatar from '@material-ui/core/Avatar';
-import { useRouter, withRouter } from 'next/router';
-import { useQuery, useMutation } from '@/hooks/graphql';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import Loading from '@/components/Loading';
 import { FOLLOW_LIST, FOLLOW } from '@/graphql/schema/follow';
 import Snackbar from '@/components/Snackbar';
 
+function Follow({ variables }) {
+  const { data, error, loading, isLoadingMore, loadMore } = useQuery(FOLLOW_LIST,
+    {
+      variables,
+      ssr: false,
+    });
 
-function Follow({ query }) {
-  const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(FOLLOW_LIST, query, { ssr: false });
   const [ follow ] = useMutation(FOLLOW);
 
   if (loading) return <Loading />;
@@ -27,16 +30,17 @@ function Follow({ query }) {
 
 
   function onFollow(_id, followStatus) {
-    follow({ _id }, {
+    follow({
+      variables: { _id },
       optimisticResponse: { result: { status: followStatus ? 201 : 200, message: '关注成功', __typename: 'Result' } },
       update: (store, { data: { result: { status: code, message } } }) => {
         if (code === 200 || code === 201) {
           Snackbar.error(message);
           const sta = { 200: true, 201: false };
-          const temp = store.readQuery({ query: FOLLOW_LIST, variables: query });
-          const idx = temp.list.findIndex((i) => i.user._id === _id);
-          temp.list[idx].user.followStatus = sta[code];
-          store.writeQuery({ query: FOLLOW_LIST, variables: query, data: temp });
+          const temp = store.readQuery({ query: FOLLOW_LIST, variables });
+          const idx = temp.list.findIndex((i) => i.follow._id === _id);
+          temp.list[idx].follow.followStatus = sta[code];
+          store.writeQuery({ query: FOLLOW_LIST, variables, data: temp });
         } else {
           Snackbar.error(message);
         }
@@ -51,26 +55,26 @@ function Follow({ query }) {
 
           {list.length > 0 && (
             <>
-              {list.map(({ follow = {}, _id }) => {
+              {list.map(({ follow: item = {}, _id }) => {
                 return (
                   <Fragment key={_id}>
                     <ListItem alignItems="flex-start">
                       <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src={follow.avatarUrl} />
+                        <Avatar alt="Remy Sharp" src={item.avatarUrl} />
                       </ListItemAvatar>
                       <ListItemText
-                        primary={follow.nickname}
-                        secondary={follow.sign || '这家伙什么都没说~'}
+                        primary={item.nickname}
+                        secondary={item.sign || '这家伙什么都没说~'}
                       />
                       <ListItemSecondaryAction>
                         <Button
                         // variant="contained"
                           color="primary"
                           size="small"
-                          variant={follow.followStatus ? 'outlined' : 'contained'}
-                          onClick={() => { onFollow(follow._id, follow.followStatus); }}
+                          variant={item.followStatus ? 'outlined' : 'contained'}
+                          onClick={() => { onFollow(item._id, item.followStatus); }}
                         >
-                          {follow.followStatus ? '取消关注' : '关注'}
+                          {item.followStatus ? '取消关注' : '关注'}
                         </Button>
                       </ListItemSecondaryAction>
                     </ListItem>
@@ -86,7 +90,11 @@ function Follow({ query }) {
                 >
                   {`查看更多 - 剩余${meta.count - list.length}条`}
                 </Button>
-              ) : <Box p={2} display="flex" justifyContent="center"><Typography variant="caption" align="center">~ 这是人家的底线 ~</Typography></Box>}
+              ) : (
+                <Box p={2} display="flex" justifyContent="center">
+                  <Typography variant="caption" align="center">~ 这是人家的底线 ~</Typography>
+                </Box>
+              )}
             </>
           )}
         </List>
@@ -95,4 +103,4 @@ function Follow({ query }) {
   );
 }
 
-export default withRouter(Follow);
+export default Follow;

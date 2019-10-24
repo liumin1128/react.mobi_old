@@ -8,9 +8,10 @@ import Loading from '@/components/Loading';
 import GraphQLErrors from '@/components/StatusPage/GraphQLErrors';
 import Item from './Item';
 
-function DynamicList() {
-  const router = useRouter();
-  const { data, error, loading, refetch } = useQuery(DYNAMIC_LIST);
+function DynamicList({ variables }) {
+  // const router = useRouter();
+  // const { user } = router.query;
+  const { data, error, loading, refetch } = useQuery(DYNAMIC_LIST, { variables });
   // const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO, { ssr: false });
 
   if (loading) return <Loading />;

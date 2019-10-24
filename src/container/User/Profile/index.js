@@ -12,19 +12,24 @@ import DynamicList from '@/container/Dynamic/List';
 import Follow from '@/container/User/Follow';
 import Fans from '@/container/User/Fans';
 import Loading from '@/components/Loading';
-import { useMutation, useQuery } from '@/hooks/graphql';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { USERINFO_BY_ID } from '@/graphql/schema/user';
 import { FOLLOW } from '@/graphql/schema/follow';
 import Snackbar from '@/components/Snackbar';
 import useStyles from './styles';
 
 function Profile() {
+  
   const classes = useStyles();
   const router = useRouter();
   const { query } = router;
   const { path = 'dynamic', user } = query;
 
-  const data = useQuery(USERINFO_BY_ID, { _id: user }, { ssr: false });
+  const data = useQuery(USERINFO_BY_ID, { 
+    variables: { _id: user }, 
+    ssr: false 
+  });
+
   const [ follow ] = useMutation(FOLLOW);
 
   if (data.loading) return <Loading />;
@@ -39,7 +44,8 @@ function Profile() {
   ];
 
   function onFollow(_id, followStatus) {
-    follow({ _id }, {
+    follow({ 
+      variables: { _id },
       optimisticResponse: { result: { status: followStatus ? 201 : 200, message: '关注成功', __typename: 'Result' } },
       update: (store, { data: { result: { status: code, message } } }) => {
         try {
@@ -111,9 +117,9 @@ function Profile() {
 
         <Box mt={2} />
 
-        {path === 'dynamic' && <DynamicList query={{ user: userInfo._id }} />}
-        {path === 'follow' && <Follow query={{ user: userInfo._id }} />}
-        {path === 'fans' && <Fans query={{ user: userInfo._id }} />}
+        {path === 'dynamic' && <DynamicList variables={{ user: userInfo._id }} />}
+        {path === 'follow' && <Follow variables={{ user: userInfo._id }} />}
+        {path === 'fans' && <Fans variables={{ user: userInfo._id }} />}
       </Box>
 
     </Box>
