@@ -169,11 +169,18 @@ function ReplyCreate({ commentTo, replyTo, session, callback, autoFocus }) {
           const data = store.readQuery({ query: COMMENT_LIST, variables: { session } });
           const idx = data.list.findIndex((i) => i._id === commentTo);
 
-          data.list[idx].replys.unshift(result);
-          data.list[idx].replyCount += 1;
-          data.meta.count += 1;
+          const _list = [ ...data.list ];
+          _list[idx].replys = [ result, ..._list[idx].replys ];
+          _list[idx].replyCount += 1;
+          const _data = {
+            list: _list,
+            meta: {
+              ...data.meta,
+              count: data.meta.count + 1,
+            },
+          };
 
-          store.writeQuery({ query: COMMENT_LIST, variables: { session }, data });
+          store.writeQuery({ query: COMMENT_LIST, variables: { session }, data: _data });
         } else {
           Snackbar.error(message);
         }
