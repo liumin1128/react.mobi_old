@@ -11,21 +11,20 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Avatar from '@material-ui/core/Avatar';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 import { FANS_LIST, FOLLOW } from '@/graphql/schema/follow';
 import Snackbar from '@/components/Snackbar';
 
 function Fans({ variables }) {
-  const { data, error, loading, isLoadingMore, isEnd, loadMore } = useQuery(FANS_LIST, { variables, ssr: false });
+  const { data, loading, isLoadingMore, loadMore } = useQuery(FANS_LIST, variables, { ssr: false });
   const [ follow ] = useMutation(FOLLOW);
 
   if (loading) return <Loading />;
   const { list = [], meta } = data;
 
   function onFollow(_id, followStatus) {
-    follow({
-      variables: { _id },
+    follow({ _id }, {
       optimisticResponse: { result: { status: followStatus ? 201 : 200, message: '关注成功', __typename: 'Result' } },
       update: (store, { data: { result: { status: code, message } } }) => {
         if (code === 200 || code === 201) {

@@ -8,7 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@/hooks/graphql';
 import { USERINFOWITHOAUTH } from '@/graphql/schema/user';
 import Loading from '@/components/Loading';
 
@@ -21,7 +21,7 @@ const oauthList = [
 ];
 
 function EditeUserInfo() {
-  const { data, loading } = useQuery(USERINFOWITHOAUTH, { ssr: false });
+  const { data, loading } = useQuery(USERINFOWITHOAUTH, {}, { ssr: false });
 
   if (loading) return <Loading />;
 

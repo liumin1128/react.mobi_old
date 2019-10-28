@@ -12,7 +12,7 @@ import DynamicList from '@/container/Dynamic/List';
 import Follow from '@/container/User/Follow';
 import Fans from '@/container/User/Fans';
 import Loading from '@/components/Loading';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@/hooks/graphql';
 import { USERINFO_BY_ID } from '@/graphql/schema/user';
 import { FOLLOW } from '@/graphql/schema/follow';
 import Snackbar from '@/components/Snackbar';
@@ -25,10 +25,7 @@ function Profile() {
   const { query } = router;
   const { path = 'dynamic', user } = query;
 
-  const data = useQuery(USERINFO_BY_ID, { 
-    variables: { _id: user }, 
-    ssr: false 
-  });
+  const data = useQuery(USERINFO_BY_ID, { _id: user }, { ssr: false });
 
   const [ follow ] = useMutation(FOLLOW);
 
@@ -44,8 +41,7 @@ function Profile() {
   ];
 
   function onFollow(_id, followStatus) {
-    follow({ 
-      variables: { _id },
+    follow({ _id }, {
       optimisticResponse: { result: { status: followStatus ? 201 : 200, message: '关注成功', __typename: 'Result' } },
       update: (store, { data: { result: { status: code, message } } }) => {
         try {

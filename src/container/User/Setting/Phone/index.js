@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@/hooks/graphql';
 import TextField from '@/components/Form/TextField';
 import { UPDATE_USER_PHONE, USERINFO } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
@@ -49,7 +49,7 @@ function EditeUserInfo() {
   } : {};
 
   async function onSubmit(values) {
-    const res = await updateUserPassword({ variables: values });
+    const res = await updateUserPassword(values);
     if (res.hasError) {
       Snackbar.success('系统异常');
       return;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@/hooks/graphql';
 import TextField from '@/components/Form/TextField';
 import UploadPictureField from '@/components/Form/Upload/Picture';
 import SexField from '@/components/Form/Field/Sex';
@@ -13,7 +13,7 @@ import pp from '@/hoc/pp';
 import { formatTime } from '@/utils/common';
 
 function EditeUserInfo() {
-  const { data, loading } = useQuery(USERINFO, { ssr: false });
+  const { data, loading } = useQuery(USERINFO, {}, { ssr: false });
 
   const [ updateUserInfo ] = useMutation(UPDATE_USERINFO);
 
@@ -30,7 +30,7 @@ function EditeUserInfo() {
   } : {};
 
   async function onSubmit(params) {
-    const res = await updateUserInfo({ variables: { input: params } });
+    const res = await updateUserInfo({ input: params });
     if (res.data.result.status === 200) {
       Snackbar.success('更新成功');
     } else {

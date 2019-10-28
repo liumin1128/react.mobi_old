@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@/hooks/graphql';
 import TextField from '@/components/Form/TextField';
 import { UPDATE_USER_EMAIL, USERINFO } from '@/graphql/schema/user';
 import Snackbar from '@/components/Snackbar';
@@ -20,7 +20,7 @@ const validate = (values) => {
 };
 
 function EditeUserInfo() {
-  const { data, loading } = useQuery(USERINFO, { ssr: false });
+  const { data, loading } = useQuery(USERINFO, {}, { ssr: false });
 
   const [ updateUserPassword ] = useMutation(UPDATE_USER_EMAIL);
 
@@ -33,7 +33,7 @@ function EditeUserInfo() {
   } : {};
 
   async function onSubmit({ email }) {
-    const res = await updateUserPassword({ variables: { email } });
+    const res = await updateUserPassword({ email });
     if (res.hasError) {
       Snackbar.success('系统异常');
       return;
