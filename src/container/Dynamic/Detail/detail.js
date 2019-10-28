@@ -30,7 +30,10 @@ import useStyles from './styles';
 function DynamicDetail({ data, userInfo }) {
   const classes = useStyles();
 
-  const { user, iframe, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount } = data;
+  const {
+    user, iframe, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount, title, likeCount, likeStatus,
+    onDel, onEdit,
+  } = data;
 
   const html = topics2Html(text2html(content), topics);
 
@@ -57,8 +60,8 @@ function DynamicDetail({ data, userInfo }) {
                       <MenuList>
                         {userInfo && user._id === userInfo._id && (
                           <>
-                            <MenuItem className={classes.MenuItem} onClick={edit}>编辑</MenuItem>
-                            <MenuItem className={classes.MenuItem} onClick={() => { del(_id); }}>删除</MenuItem>
+                            <MenuItem className={classes.MenuItem} onClick={() => { onEdit(_id); }}>编辑</MenuItem>
+                            <MenuItem className={classes.MenuItem} onClick={() => { onDel(_id); }}>删除</MenuItem>
                           </>
                         )}
                         <MenuItem

@@ -4,12 +4,11 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import Checkbox from '@material-ui/core/Checkbox';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@/hooks/graphql';
 import Button from '@/components/Button/Loading';
 import Popper from '@/components/Popper';
 // import { DYNAMIC_CREATE, DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import { CREATE_COMMENT, COMMENT_LIST } from '@/graphql/schema/comment';
-
 import { useOnMount, useOnUnmount } from '@/hooks';
 import Snackbar from '@/components/Snackbar';
 import Emoticon from '@/container/Dynamic/components/Emoticon';
@@ -21,7 +20,7 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
   const input = useRef();
   const classes = useStyles();
   const [ lastEditRange, setLastEditRange ] = useState();
-  const [ createComment, { loading } ] = useMutation(CREATE_COMMENT, { variables: { commentTo, replyTo, session } });
+  const [ createComment, { loading } ] = useMutation(CREATE_COMMENT, { commentTo, replyTo, session });
 
   // console.log('CommentCreate loading');
   // console.log(loading);
@@ -188,8 +187,7 @@ function CommentCreate({ commentTo, replyTo, session, update, autoFocus }) {
     const edit = input.current;
     const content = html2text(edit.innerHTML);
 
-    createComment({
-      variables: { content },
+    createComment({ content }, {
       update: (store, { data: { result: { status: code, message, data: result } } }) => {
         setStatus('default');
         if (code === 200) {
