@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react';
+import { Waypoint } from 'react-waypoint';
+// import Box from '@material-ui/core/Box';
+// import Button from '@material-ui/core/Button';
+// import Typography from '@material-ui/core/Typography';
 import { useQuery, useMutation } from '@/hooks/graphql';
 import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
 import { USERINFO } from '@/graphql/schema/user';
 import { ZAN } from '@/graphql/schema/zan';
 import { FOLLOW } from '@/graphql/schema/follow';
-import Link from '@/components/Link';
 import Loading from '@/components/Loading';
 import GraphQLErrors from '@/components/StatusPage/GraphQLErrors';
 import Snackbar from '@/components/Snackbar';
@@ -12,9 +15,7 @@ import Snackbar from '@/components/Snackbar';
 import Item from './Item';
 
 function DynamicList({ variables }) {
-  // const router = useRouter();
-  // const { user } = router.query;
-  const { data, error, loading } = useQuery(DYNAMIC_LIST, variables);
+  const { data, error, loading, loadMore, isLoadingMore } = useQuery(DYNAMIC_LIST, variables);
   const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO, {}, { ssr: false });
 
   const [ zan ] = useMutation(ZAN);
@@ -73,7 +74,7 @@ function DynamicList({ variables }) {
     });
   }
 
-  const { list } = data;
+  const { list, meta } = data;
 
   const { userInfo } = userInfoData || {};
 
@@ -90,6 +91,21 @@ function DynamicList({ variables }) {
           />
         </Fragment>
       ))}
+
+      {/* <Box>
+        {list.length < meta.count ? (
+          <Button
+            fullWidth
+            onClick={() => loadMore()}
+            disabled={isLoadingMore}
+          >
+            {`查看更多 - 剩余${meta.count - list.length}条`}
+          </Button>
+        ) : <Typography align="center" variant="caption" component="p">~ 这是人家的底线 ~</Typography>}
+      </Box> */}
+
+      {isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />}
+
     </>
   );
 }
