@@ -1,14 +1,15 @@
 import React from 'react';
-import Box from '@material-ui/core/Box';
 import Content from '@/container/Mzitu/Detail';
 import Sider from '@/container/Mzitu/Sider';
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
-function NewsDetail() {
+function Index() {
   return (
     <Content />
   );
 }
 
-NewsDetail.Sider = Sider;
+Index.Sider = Sider;
 
-export default NewsDetail;
+export default withApollo(withLayout(Index));

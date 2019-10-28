@@ -3,8 +3,10 @@ import Box from '@material-ui/core/Box';
 import Content from '@/container/Mzitu/List';
 import Tags from '@/container/Mzitu/List/Tags';
 import Sider from '@/container/Mzitu/Sider';
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
-function NewsDetail() {
+function Index() {
   return (
     <Box>
       <Tags />
@@ -14,6 +16,6 @@ function NewsDetail() {
   );
 }
 
-NewsDetail.Sider = Sider;
+Index.Sider = Sider;
 
-export default NewsDetail;
+export default withApollo(withLayout(Index));

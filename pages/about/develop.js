@@ -8,6 +8,8 @@ import Blogrol from '@/container/Side/Blogrol';
 import Project from '@/container/Side/Project';
 import Code from '@/container/Side/Code';
 import Footer from '@/container/Side/Footer';
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
 // marked.setOptions({
 //   highlight: function(code, lang, callback) {
@@ -58,7 +60,7 @@ https://github.com/liumin1128/dynamic-file
 `;
 
 
-function Home() {
+function Index() {
   return (
     <div>
 
@@ -77,7 +79,7 @@ function Home() {
   );
 }
 
-Home.Sider = () => (
+Index.Sider = () => (
   <>
     <Card>
       <Box p={2}>
@@ -105,4 +107,4 @@ Home.Sider = () => (
   </>
 );
 
-export default Home;
+export default withApollo(withLayout(Index));

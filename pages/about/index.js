@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { withRouter } from 'next/router';
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
-function Home({ router }) {
+function Index({ router }) {
   console.log('router');
   console.log(router);
   return (
@@ -18,4 +19,4 @@ function Home({ router }) {
   );
 }
 
-export default withRouter(Home);
+export default withApollo(withLayout(Index));

@@ -11,6 +11,8 @@ import Project from '@/container/Side/Project';
 import Code from '@/container/Side/Code';
 import Footer from '@/container/Side/Footer';
 import ProfileCard from '@/container/User/ProfileCard';
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
 const BackToTopWithNoSSR = dynamic(
   () => import('@/components/BackToTop'),
@@ -85,4 +87,4 @@ Index.Sider = () => (
   </>
 );
 
-export default Index;
+export default withApollo(withLayout(Index));

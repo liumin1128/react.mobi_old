@@ -1,12 +1,15 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import Link from '@/components/Link';
 import Login from '@/container/login/phone';
 import Oauth from '@/container/login/oauth';
-import Typography from '@material-ui/core/Typography';
+
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     maxWidth: 414,
     padding: '0 36px',
@@ -33,6 +36,8 @@ const styles = theme => ({
 });
 
 
+@withApollo
+@withLayout
 @withStyles(styles)
 export default class LoginPage extends PureComponent {
   render() {

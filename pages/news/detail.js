@@ -6,4 +6,3 @@ import withLayout from '@/hoc/layout';
 Index.Sider = FlatList;
 
 export default withApollo(withLayout(Index));
-

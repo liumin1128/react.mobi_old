@@ -1,11 +1,12 @@
 import React from 'react';
 import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 import Content from '@/container/Dynamic/Detail';
 
-function DynamicDetail() {
+function Index() {
   return (
     <Content />
   );
 }
 
-export default withApollo(DynamicDetail);
+export default withApollo(withLayout(Index));

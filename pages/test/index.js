@@ -9,7 +9,11 @@ import Typography from '@material-ui/core/Typography';
 import UpPicture from '@/components/Upload/Wrapper';
 import Layout from '@/components/Layout/Base';
 import modal from '@/hoc/modal';
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
+@withApollo
+@withLayout
 export default class index extends PureComponent {
   onUpPictureSuccess = (values) => {
     console.log(values);
@@ -17,7 +21,7 @@ export default class index extends PureComponent {
       <Card>
         <CardContent>
           <ul>
-            {values.map(i => <li key={i}>{i}</li>)}
+            {values.map((i) => <li key={i}>{i}</li>)}
           </ul>
         </CardContent>
         <CardActions>
@@ -32,7 +36,7 @@ export default class index extends PureComponent {
       <Layout>
 
         <Grid container spacing={3}>
-          <Grid item xs={3}>
+          <Grid item xs={6}>
             <Card>
               <CardContent>
                 <Typography color="textSecondary">
@@ -48,7 +52,7 @@ export default class index extends PureComponent {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6}>
             <Paper />
           </Grid>
         </Grid>

@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 import Layout from '@/components/Layout/Base';
 import List from '@/container/explore/list';
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
-export default class Dynamics extends PureComponent {
+class Index extends PureComponent {
   render() {
     return (
       <Layout>
@@ -11,3 +13,5 @@ export default class Dynamics extends PureComponent {
     );
   }
 }
+
+export default withApollo(withLayout(Index));

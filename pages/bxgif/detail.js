@@ -1,5 +1,7 @@
 import React from 'react';
 import Content from '@/container/Bxgif/Detail';
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
 function Index() {
   return (
@@ -7,4 +9,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default withApollo(withLayout(Index));
