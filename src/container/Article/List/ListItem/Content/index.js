@@ -42,14 +42,14 @@ export default class Content extends PureComponent {
             isExpanded
               ? <Html html={html} />
               : (
-                <Box display="flex" onClick={toggleExpanded} className={classes.content}>
+                <Box display="flex" justifyContent="space-between" alignItems="flex-start" onClick={toggleExpanded} className={classes.content}>
                   <Typography component="div" style={{ fontSize: 16 }}>
                     <p>{getStrFromHtml(html, 80)}</p>
                   </Typography>
 
-                  <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
+                  {/* <Hidden implementation="css" only={[ 'sm', 'xs' ]}>
                     {cover && <img className={classes.cover} src={cover} alt="" />}
-                  </Hidden>
+                  </Hidden> */}
 
                 </Box>
               )
