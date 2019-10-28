@@ -11,7 +11,7 @@ import { BXGIF_DETAIL } from '@/graphql/schema/bxgif';
 import { useQuery } from '@/hooks/graphql';
 import Loading from '@/components/Loading';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   card: {
     maxWidth: 500,
     marginBottom: theme.spacing(3),
@@ -52,7 +52,7 @@ function NewsDetail({ router }) {
 
   return (
     <div className={classes.root}>
-      <h3>{detail.title}</h3>
+      <Typography align="center" variant="h6">{detail.title}</Typography>
       <br />
       {detail.list.map((i) => {
         const paddingTop = `${Math.floor((i.height / i.width) * 100)}%`;
