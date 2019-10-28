@@ -8,13 +8,13 @@ import withLayout from '@/hoc/layout';
 function Index() {
   return (
     <>
-      <NavTabs
+      {/* <NavTabs
         navList={[
           { label: 'switch', pathname: '/' },
           { label: 'ps4', pathname: '/ps4' },
           { label: 'cosplay', pathname: '/cos' },
         ]}
-      />
+      /> */}
       <br />
       <GridList />
     </>
@@ -22,4 +22,3 @@ function Index() {
 }
 
 export default withApollo(withLayout(Index));
-
