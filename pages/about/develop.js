@@ -35,7 +35,7 @@ https://github.com/liumin1128/api.react.mobi
 
 **ReactMobiFlutter**：本站flutter实现
 
-https://github.com/liumin1128/api.react.mobi
+https://github.com/liumin1128/mobi.react.eight.flutter
 
 **ReactMobiFlutter**：本站RN实现
 
