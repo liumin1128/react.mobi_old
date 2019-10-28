@@ -1,6 +1,8 @@
 
 import React from 'react';
 import ArticleCreate from '@/container/Article/Create/update';
+import withApollo from '@/lib/apollo';
+import withLayout from '@/hoc/layout';
 
 function Index() {
   return (
@@ -12,6 +14,5 @@ function Index() {
 
 Index.Header = () => null;
 Index.maxWidth = 'lg';
-// Index.Sider = () => null;
 
-export default Index;
+export default withApollo(withLayout(Index));

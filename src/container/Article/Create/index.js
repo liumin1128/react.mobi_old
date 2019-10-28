@@ -15,6 +15,7 @@ export default function () {
   async function onSubmit(values) {
     await createArticle({ input: values }, {
       refetchQueries: [ 'ArticleList' ],
+      awaitRefetchQueries: true,
       update: (store, { data: { result: { status: code, message, data: result } } }) => {
         if (code === 200) {
           Snackbar.success(message);
