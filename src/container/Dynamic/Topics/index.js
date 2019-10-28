@@ -4,13 +4,13 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@/hooks/graphql';
 import Link from '@/components/Link';
 import { DYNAMIC_TOPIC_LIST } from '@/graphql/schema/dynamic';
 import Skeleton from './Skeleton';
 
 function Topics() {
-  const { data, loading } = useQuery(DYNAMIC_TOPIC_LIST);
+  const { data, loading } = useQuery(DYNAMIC_TOPIC_LIST, {}, { ssr: false });
 
   if (loading) {
     return (
@@ -23,6 +23,7 @@ function Topics() {
       </Card>
     );
   }
+
   const { list } = data;
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
-import Card from '@material-ui/core/Card';
+// import Card from '@material-ui/core/Card';
 // import nossr from '@/hoc/nossr';
 
 function Skeleton() {
@@ -8,10 +8,9 @@ function Skeleton() {
     <ContentLoader
       width={300}
       height={48}
-        // speed={10}
       primaryColor="#f3f3f3"
       secondaryColor="#ecebeb"
-      uniquekey="skeleton-uniquekey"
+      uniquekey="topics-skeleton-uniquekey"
     >
       <rect x={0} y={0} rx={4} ry={4} width={50} height={20} />
       <rect x={0 + 50 + 16} y={0} rx={4} ry={4} width={80} height={20} />
