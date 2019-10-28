@@ -15,7 +15,7 @@ export default (WrappedComponent) => class extends PureComponent {
 
     if (!WrappedComponent.Sider) {
       return (
-        <Container maxWidth="md">
+        <Container maxWidth={WrappedComponent.maxWidth}>
           <WrappedComponent.Header />
           <Box mt={2} />
           <WrappedComponent {...this.props} />
@@ -24,7 +24,7 @@ export default (WrappedComponent) => class extends PureComponent {
     }
 
     return (
-      <Container maxWidth="md">
+      <Container maxWidth={WrappedComponent.maxWidth}>
         <WrappedComponent.Header />
         <Box mt={2} />
         <Grid container spacing={2}>
