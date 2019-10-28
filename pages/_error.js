@@ -1,6 +1,7 @@
 import React from 'react';
 import Page404 from '@/components/StatusPage/404';
 import PageError from '@/components/StatusPage/error';
+import withLayout from '@/hoc/layout';
 
 function Error({ statusCode, ...props }) {
   if (statusCode == 404) {
@@ -26,4 +27,4 @@ Error.getInitialProps = async ({ res, err }) => {
   return { statusCode };
 };
 
-export default Error;
+export default withLayout(Error);
