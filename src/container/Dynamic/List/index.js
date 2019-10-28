@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Waypoint } from 'react-waypoint';
-// import Box from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box';
 // import Button from '@material-ui/core/Button';
-// import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';
 import { useQuery, useMutation } from '@/hooks/graphql';
 import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
 import { USERINFO } from '@/graphql/schema/user';
@@ -15,17 +15,15 @@ import Snackbar from '@/components/Snackbar';
 import Item from './Item';
 
 function DynamicList({ variables }) {
-  const { data, error, loading, loadMore, isLoadingMore } = useQuery(DYNAMIC_LIST, variables);
-  const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO, {}, { ssr: false });
+  const { data, error, loading, loadMore } = useQuery(DYNAMIC_LIST, variables);
+  const { data: userInfoData } = useQuery(USERINFO, {}, { ssr: false });
 
   const [ zan ] = useMutation(ZAN);
   const [ follow ] = useMutation(FOLLOW);
   const [ deleteDynamic ] = useMutation(REMOVE_DYNAMIC);
 
-
   if (loading) return <Loading />;
   if (error) return <GraphQLErrors error={error} />;
-
 
   function onZan(_id, zanStatus) {
     zan({ _id }, {
@@ -92,20 +90,16 @@ function DynamicList({ variables }) {
         </Fragment>
       ))}
 
-      {/* <Box>
-        {list.length < meta.count ? (
-          <Button
-            fullWidth
-            onClick={() => loadMore()}
-            disabled={isLoadingMore}
-          >
-            {`查看更多 - 剩余${meta.count - list.length}条`}
-          </Button>
-        ) : <Typography align="center" variant="caption" component="p">~ 这是人家的底线 ~</Typography>}
-      </Box> */}
-
-      {isLoadingMore ? <Loading /> : <Waypoint onEnter={loadMore} />}
-
+      <Box>
+        {list.length < meta.count
+          ? (
+            <Box>
+              <Loading />
+              <Waypoint onEnter={loadMore} />
+            </Box>
+          )
+          : <Typography align="center" variant="caption" component="p">~ 这是人家的底线 ~</Typography>}
+      </Box>
     </>
   );
 }
