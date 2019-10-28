@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { API_URL } from '@/config/base';
-// import { useTheme } from '@/hoc/theme';
+import { useTheme } from '@/hoc/theme';
 import OauthButton from './components/OauthButton';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Oauth() {
   const classes = useStyles();
-  // const { theme } = useTheme();
+  const { theme } = useTheme();
   return (
     <>
       <div className={classes.root}>
@@ -48,7 +48,7 @@ function Oauth() {
         <OauthButton
           text="使用Github账号登录"
           color={'#ffffff'}
-          // color={theme.palette.type === 'dark' ? '#ffffff' : '#24292e'}
+          color={theme.palette.type === 'dark' ? '#ffffff' : '#24292e'}
           icon="https://imgs.react.mobi/FitOmAQE-Ulzbzg3ba2cNRohbhCk"
           url={`${API_URL}/oauth/github`}
         />

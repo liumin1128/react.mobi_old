@@ -6,7 +6,7 @@ import Login from '@/container/login/phone';
 import Oauth from '@/container/login/oauth';
 
 import withApollo from '@/lib/apollo';
-import withLayout from '@/hoc/layout';
+// import withLayout from '@/hoc/layout';
 
 
 const styles = (theme) => ({
@@ -37,7 +37,6 @@ const styles = (theme) => ({
 
 
 @withApollo
-@withLayout
 @withStyles(styles)
 export default class LoginPage extends PureComponent {
   render() {

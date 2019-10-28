@@ -5,7 +5,6 @@ import Link from '@/components/Link';
 import Register from '@/container/login/register';
 import Oauth from '@/container/login/oauth';
 import withApollo from '@/lib/apollo';
-import withLayout from '@/hoc/layout';
 
 const styles = (theme) => ({
   root: {
@@ -35,7 +34,6 @@ const styles = (theme) => ({
 
 
 @withApollo
-@withLayout
 @withStyles(styles)
 export default class RegisterPage extends PureComponent {
   render() {
