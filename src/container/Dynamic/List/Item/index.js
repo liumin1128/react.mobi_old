@@ -17,8 +17,8 @@ import Pictures from '@/container/Dynamic/components/Pictures';
 import Iframe from '@/container/Dynamic/components/Iframe';
 import InfoButton from '@/components/Button/Info';
 import { getTimeAgo } from '@/utils/common';
-// import CreateComment from '@/container/Comment/Create';
-// import CommentList from '@/container/Comment/List';
+import CreateComment from '@/container/Comment/Create';
+import CommentList from '@/container/Comment/List';
 import { DYNAMIC_LIST } from '@/graphql/schema/dynamic';
 import Popper from '@/components/Popper';
 import Avatar from '@/components/Avatar';
@@ -33,11 +33,11 @@ function DynamicListItem({
   // 互动数据
   zanCount, zanStatus, commentCount,
   // 互动操作
-  zan, del, follow,
+  onZan, onDel, onFollow,
   // 用户信息
   userInfo = {},
 }) {
-  const _user = (user && user._id) ? user : { nickname: ' 遁入虚空的用户' };
+  const _user = user && user._id ? user : { nickname: ' 遁入虚空的用户' };
 
   const classes = useStyles();
   const [ showComment, setShowComment ] = useState(false);
@@ -59,15 +59,6 @@ function DynamicListItem({
   function onEdit() {
     Router.push(`/dynamic/edit?_id=${_id}`);
   }
-
-  function onDel() {
-    del(_id);
-  }
-
-  function onFollow() {
-    follow(_user._id);
-  }
-
 
   return (
     <Fragment key={_id}>
@@ -109,11 +100,11 @@ function DynamicListItem({
                           {_user._id === userInfo._id ? (
                             <>
                               <MenuItem className={classes.MenuItem} onClick={onEdit}>编辑</MenuItem>
-                              <MenuItem className={classes.MenuItem} onClick={onDel}>删除</MenuItem>
+                              <MenuItem className={classes.MenuItem} onClick={() => { onDel(_id); }}>删除</MenuItem>
                             </>
                           ) : (
                             <>
-                              <MenuItem className={classes.MenuItem} onClick={onFollow}>关注</MenuItem>
+                              <MenuItem className={classes.MenuItem} onClick={() => { onFollow(_user._id); }}>关注</MenuItem>
                             </>
                           )}
                         </>
@@ -169,14 +160,14 @@ function DynamicListItem({
               <InfoButton
                 label={zanCount || null}
                 icon={zanStatus ? ThumbUpIcon : ThumbUpOutlinedIcon}
-                onClick={() => { zan(_id, zanStatus); }}
+                onClick={() => { onZan(_id, zanStatus); }}
                 className={zanStatus ? classes.primary : ''}
               />
             </Box>
           </Box>
 
 
-          {/* {showComment && (
+          {showComment && (
             <Box>
               <Divider />
               <Box ml={8} mt={3} className={classes.content}>
@@ -197,7 +188,7 @@ function DynamicListItem({
                 <CommentList session={_id} />
               </Box>
             </Box>
-          )} */}
+          )}
         </Box>
 
 
