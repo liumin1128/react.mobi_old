@@ -22,9 +22,11 @@ export default makeStyles(theme => ({
     position: 'relative',
     color: '#666',
     '& .emoji': {
-      width: '1.5em',
-      height: '1.5em',
-      'vertical-align': -4,
+      // width: '1.5em',
+      // height: '1.5em',
+      width: '5em',
+      height: '5em',
+      'vertical-align': '-0.5em',
     },
   },
   'delete-comment': {

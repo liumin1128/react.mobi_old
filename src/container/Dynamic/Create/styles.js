@@ -86,7 +86,7 @@ export default makeStyles((theme) => ({
     '& .emoji': {
       width: '5em',
       height: '5em',
-      // 'vertical-align': -4,
+      'vertical-align': '-0.5em',
     },
   },
 }));

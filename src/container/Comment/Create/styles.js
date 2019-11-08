@@ -51,9 +51,11 @@ export default makeStyles(theme => ({
     },
 
     '& .emoji': {
-      width: '1.25em',
-      height: '1.25em',
-      'vertical-align': -4
+      // width: '1.25em',
+      // height: '1.25em',
+      'vertical-align': '-0.5em',
+      width: '5em',
+      height: '5em',
     }
   },
 }));
