@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { Waypoint } from 'react-waypoint';
 import Box from '@material-ui/core/Box';
-// import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useQuery, useMutation } from '@/hooks/graphql';
 import { DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
@@ -11,7 +10,6 @@ import { FOLLOW } from '@/graphql/schema/follow';
 import Loading from '@/components/Loading';
 import GraphQLErrors from '@/components/StatusPage/GraphQLErrors';
 import Snackbar from '@/components/Snackbar';
-
 import Item from './Item';
 
 function DynamicList({ variables }) {

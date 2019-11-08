@@ -16,7 +16,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
-import { DYNAMIC_DETAIL } from '@/graphql/schema/dynamic';
+import { DYNAMIC_DETAIL, DYNAMIC_LIST, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
 import { getTimeAgo } from '@/utils/common';
 import { useMutation } from '@/hooks/graphql';
 import { ZAN } from '@/graphql/schema/zan';
@@ -36,15 +36,12 @@ function DynamicDetail({ data, userInfo }) {
   const classes = useStyles();
 
   const {
-    user, iframe, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount, title, likeCount, likeStatus,
-    onDel, onEdit,
+    user, iframe, pictures, content, createdAt, topics = [], _id, zanCount, zanStatus, commentCount,
   } = data;
 
   const [ zan ] = useMutation(ZAN);
-
+  const [ deleteDynamic ] = useMutation(REMOVE_DYNAMIC);
   const html = topics2Html(text2html(content), topics);
-
-  console.log(user);
 
   function onZan(_id, zanStatus) {
     zan({ _id }, {
@@ -64,6 +61,27 @@ function DynamicDetail({ data, userInfo }) {
     });
   }
 
+  function onEdit() {
+    Router.push(`/dynamic/edit?_id=${_id}`);
+  }
+
+  function onDelete(_id) {
+    deleteDynamic({ _id }, {
+      optimisticResponse: { result: { status: 200, message: '删除成功', __typename: 'Result' } },
+      update: (store, { data: { result: { status: code, message } } }) => {
+        if (code === 200) {
+          const temp = store.readQuery({ query: DYNAMIC_LIST });
+          const idx = temp.list.findIndex((i) => i._id === _id);
+          temp.list.splice(idx, 1);
+          store.writeQuery({ query: DYNAMIC_LIST, data: temp });
+          Router.push('/');
+        } else {
+          Snackbar.error(message);
+        }
+      },
+    });
+  }
+
   return (
 
     <Container maxWidth="md">
@@ -75,14 +93,7 @@ function DynamicDetail({ data, userInfo }) {
                 <Box p={3} pb={1}>
                   <CardHeader
                     className={classes.header}
-                    avatar={(
-                      <Avatar
-                        size={48}
-                        nickname={user.nickname}
-                        avatarUrl={user.avatarUrl}
-                      />
-                )}
-                // action={(<IconButton aria-label="Settings"><MoreVertIcon /></IconButton>)}
+                    avatar={(<Avatar size={48} nickname={user.nickname} avatarUrl={user.avatarUrl} />)}
                     action={(
                       <Popper
                         placement="bottom-end"
@@ -91,8 +102,8 @@ function DynamicDetail({ data, userInfo }) {
                             <MenuList>
                               {userInfo && user._id === userInfo._id && (
                                 <>
-                                  <MenuItem className={classes.MenuItem} onClick={() => { onEdit(_id); }}>编辑</MenuItem>
-                                  <MenuItem className={classes.MenuItem} onClick={() => { onDel(_id); }}>删除</MenuItem>
+                                  <MenuItem className={classes.MenuItem} onClick={onEdit}>编辑</MenuItem>
+                                  <MenuItem className={classes.MenuItem} onClick={() => { onDelete(_id); }}>删除</MenuItem>
                                 </>
                               )}
                               <MenuItem
@@ -101,17 +112,17 @@ function DynamicDetail({ data, userInfo }) {
                                   alert('coming soon...');
                                 }}
                               >
-                            举报
+                                举报
                               </MenuItem>
                             </MenuList>
                           </Paper>
-                    )}
+                        )}
                       >
                         <IconButton aria-label="Settings">
                           <MoreVertIcon />
                         </IconButton>
                       </Popper>
-                )}
+                    )}
                     title={<Typography variant="h6" className={classes.nickname}>{user.nickname}</Typography>}
                     subheader={getTimeAgo(createdAt)}
                   />

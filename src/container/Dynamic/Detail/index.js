@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@/hooks/graphql';
-import { DYNAMIC_DETAIL, REMOVE_DYNAMIC } from '@/graphql/schema/dynamic';
+import { DYNAMIC_DETAIL } from '@/graphql/schema/dynamic';
 import { USERINFO } from '@/graphql/schema/user';
 import Loading from '@/components/Loading';
 import GraphQLErrors from '@/components/StatusPage/GraphQLErrors';
@@ -10,8 +10,8 @@ import Detail from './detail';
 function DynamicDetail() {
   const router = useRouter();
   const { _id } = router.query;
-  const { data, error, loading, refetch } = useQuery(DYNAMIC_DETAIL, { _id }, { sss: false });
-  const { data: userInfoData, loading: userInfoLoading } = useQuery(USERINFO, {}, { ssr: false });
+  const { data, error, loading } = useQuery(DYNAMIC_DETAIL, { _id }, { sss: false });
+  const { data: userInfoData } = useQuery(USERINFO, {}, { ssr: false });
 
   if (loading) return <Loading />;
   if (error) return <GraphQLErrors error={error} />;
