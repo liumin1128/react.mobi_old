@@ -13,6 +13,6 @@ export default ({ children, title }) => (
         <Divider />
       </>
     )}
-    <Box p={2}>{children}</Box>
+    {children}
   </Card>
 );

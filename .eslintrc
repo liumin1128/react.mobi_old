@@ -46,7 +46,8 @@
     "comma-spacing": ["error", {
       "before": false,
       "after": true
-    }]
+    }],
+    "jsx-quotes": 2
   },
   "parserOptions": {
     "ecmaFeatures": {
