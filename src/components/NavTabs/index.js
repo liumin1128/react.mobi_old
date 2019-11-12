@@ -7,7 +7,6 @@ import Tab from '@material-ui/core/Tab';
 
 import { useOnMount, useOnUnmount } from '@/hooks';
 
-
 const useStyles = makeStyles((theme) => ({
   tab: {
     textTransform: 'none',
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     backgroundColor: 'transparent',
     '& > div': {
-      maxWidth: 36,
+      maxWidth: 24,
       width: '100%',
       backgroundColor: theme.palette.text.primary,
     },
@@ -28,7 +27,9 @@ const useStyles = makeStyles((theme) => ({
 function SimpleTabs({ navList = [], router, onChange }) {
   const classes = useStyles();
 
-  const [ value, setValue ] = useState(isInNavList(router.pathname) ? router.pathname : '/');
+  const [ value, setValue ] = useState(
+    isInNavList(router.pathname) ? router.pathname : '/',
+  );
 
   useOnMount(() => {
     Router.events.on('routeChangeStart', onRouteChange);
@@ -47,7 +48,7 @@ function SimpleTabs({ navList = [], router, onChange }) {
   function handleChange(event, pathname) {
     setValue(pathname);
     // router.push(pathname);
-    onChange(pathname);
+    if (onChange) onChange(pathname);
   }
 
   function isInNavList(pathname) {
@@ -61,7 +62,6 @@ function SimpleTabs({ navList = [], router, onChange }) {
       classes={{
         indicator: classes.indicator,
       }}
-
       TabIndicatorProps={{ children: <div /> }}
     >
       {navList.map((i) => (

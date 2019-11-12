@@ -13,6 +13,7 @@ import withApollo from '@/lib/apollo';
 import Header from '@/components/Layout/Header';
 import Card from '@/components/Card';
 import HeaderNavTabs from '@/components/Header/NavTabs';
+import NavTabs from '@/components/NavTabs';
 
 @withApollo
 export default class index extends PureComponent {
@@ -21,8 +22,10 @@ export default class index extends PureComponent {
       <>
         <Box display="flex" justifyContent="center">
           <Box width="100%" maxWidth={400}>
-            <Card title="1111">
-              <Box p={2} bgcolor="#ddd">
+            <Box mt={2} />
+
+            <Card title="顶部导航tabs">
+              <Box p={2} bgcolor="#eee">
                 <HeaderNavTabs
                   navList={[
                     { pathname: '/', label: '动态' },
@@ -34,6 +37,23 @@ export default class index extends PureComponent {
                 />
               </Box>
             </Card>
+
+            <Box mt={2} />
+
+            <Card title="tabs">
+              <Box p={2} bgcolor="#eee">
+                <NavTabs
+                  navList={[
+                    { pathname: '/', label: '动态' },
+                    { pathname: '/article', label: '文章' },
+                    { pathname: '/news', label: '资讯' },
+                    { pathname: '/bxgif/list', label: '囧图' },
+                    { pathname: '/about/download', label: '下载' },
+                  ]}
+                />
+              </Box>
+            </Card>
+
             <Box mt={2} />
             <Card title="1111">2222</Card>
 
