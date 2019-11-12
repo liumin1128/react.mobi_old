@@ -13,7 +13,7 @@ function NavTabs({ navList = [] }) {
   const router = useRouter();
 
   const [ value, setValue ] = useState(
-    isInNavList(router.pathname) ? router.pathname : undefined,
+    isInNavList(router.pathname) ? router.pathname : '/',
   );
 
   useOnMount(() => {
@@ -43,6 +43,9 @@ function NavTabs({ navList = [] }) {
     <Tabs
       value={value}
       onChange={handleChange}
+      TabIndicatorProps={{ children: <div /> }}
+      indicatorColor="primary"
+      textColor="primary"
       classes={{
         indicator: classes.indicator,
       }}
@@ -54,6 +57,7 @@ function NavTabs({ navList = [] }) {
           value={i.pathname}
           classes={{
             root: classes.tab,
+            selected: classes.selected,
           }}
         />
       ))}
