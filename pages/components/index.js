@@ -13,6 +13,7 @@ import withApollo from '@/lib/apollo';
 import Header from '@/components/Layout/Header';
 import Card from '@/components/Card';
 import HeaderNavTabs from '@/components/Header/NavTabs';
+import HeaderSearch from '@/components/Header/Search';
 import NavTabs from '@/components/NavTabs';
 
 @withApollo
@@ -50,6 +51,23 @@ export default class index extends PureComponent {
                     { pathname: '/bxgif/list', label: '囧图' },
                     { pathname: '/about/download', label: '下载' },
                   ]}
+                />
+              </Box>
+            </Card>
+
+            <Box mt={2} />
+
+            <Card title="搜索">
+              <Box
+                p={2}
+                bgcolor="#eee"
+                display="flex"
+                justifyContent="flex-end"
+              >
+                <HeaderSearch
+                  onSubmit={value => {
+                    console.log(value);
+                  }}
                 />
               </Box>
             </Card>

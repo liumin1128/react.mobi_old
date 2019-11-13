@@ -13,7 +13,7 @@ function NavTabs({ navList = [] }) {
   const router = useRouter();
 
   const [ value, setValue ] = useState(
-    isInNavList(router.pathname) ? router.pathname : '/',
+    isInNavList(router.pathname) ? router.pathname : false,
   );
 
   useOnMount(() => {

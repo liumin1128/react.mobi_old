@@ -28,7 +28,7 @@ function SimpleTabs({ navList = [], router, onChange }) {
   const classes = useStyles();
 
   const [ value, setValue ] = useState(
-    isInNavList(router.pathname) ? router.pathname : '/',
+    isInNavList(router.pathname) ? router.pathname : false,
   );
 
   useOnMount(() => {
