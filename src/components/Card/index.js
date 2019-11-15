@@ -8,7 +8,9 @@ export default ({ children, title }) => (
     {title && (
       <>
         <Box p={2}>
-          <Typography>{title}</Typography>
+          <Typography variant="h6" style={{ fontWeight: 'bold', fontSize: 14 }}>
+            {title}
+          </Typography>
         </Box>
         <Divider />
       </>

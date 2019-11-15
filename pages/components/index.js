@@ -26,7 +26,7 @@ export default class index extends PureComponent {
             <Box mt={2} />
 
             <Card title="顶部导航tabs">
-              <Box p={2} bgcolor="#eee">
+              <Box p={2} bgcolor="#fff" color="#fff">
                 <HeaderNavTabs
                   navList={[
                     { pathname: '/', label: '动态' },
@@ -42,7 +42,7 @@ export default class index extends PureComponent {
             <Box mt={2} />
 
             <Card title="tabs">
-              <Box p={2} bgcolor="#eee">
+              <Box p={2} bgcolor="#666" color="#fff">
                 <NavTabs
                   navList={[
                     { pathname: '/', label: '动态' },
@@ -60,12 +60,13 @@ export default class index extends PureComponent {
             <Card title="搜索">
               <Box
                 p={2}
-                bgcolor="#eee"
+                bgcolor="#fede32"
+                color="#fff"
                 display="flex"
                 justifyContent="flex-end"
               >
                 <HeaderSearch
-                  onSubmit={value => {
+                  onSubmit={(value) => {
                     console.log(value);
                   }}
                 />
@@ -76,7 +77,7 @@ export default class index extends PureComponent {
             <Card title="1111">2222</Card>
 
             <Box mt={2} />
-            <Card>333</Card>
+            <Card>fff</Card>
           </Box>
         </Box>
       </>
