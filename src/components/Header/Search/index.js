@@ -4,10 +4,10 @@ import InputBase from '@material-ui/core/InputBase';
 
 import useStyles from './styles';
 
-function NavTabs() {
+function SearchInput({ onChange }) {
   const classes = useStyles();
 
-  const [ value, setValue ] = useState();
+  // const [ value, setValue ] = useState();
 
   return (
     <div className={classes.search}>
@@ -21,9 +21,12 @@ function NavTabs() {
           input: classes.inputInput,
         }}
         inputProps={{ 'aria-label': 'search' }}
+        onChange={(e) => {
+          if (typeof onChange === 'function') onChange(e);
+        }}
       />
     </div>
   );
 }
 
-export default NavTabs;
+export default SearchInput;

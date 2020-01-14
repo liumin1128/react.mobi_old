@@ -15,6 +15,7 @@ import Card from '@/components/Card';
 import HeaderNavTabs from '@/components/Header/NavTabs';
 import HeaderSearch from '@/components/Header/Search';
 import NavTabs from '@/components/NavTabs';
+import Algolia from '@/components/Algolia';
 
 @withApollo
 export default class index extends PureComponent {
@@ -60,16 +61,30 @@ export default class index extends PureComponent {
             <Card title="搜索">
               <Box
                 p={2}
-                bgcolor="#fede32"
+                bgcolor="#789"
                 color="#fff"
                 display="flex"
                 justifyContent="flex-end"
               >
                 <HeaderSearch
-                  onSubmit={(value) => {
+                  onSubmit={value => {
                     console.log(value);
                   }}
                 />
+              </Box>
+            </Card>
+
+            <Box mt={2} />
+
+            <Card title="搜索">
+              <Box
+                p={2}
+                bgcolor="#789"
+                color="#fff"
+                // display="flex"
+                // justifyContent="flex-end"
+              >
+                <Algolia />
               </Box>
             </Card>
 
