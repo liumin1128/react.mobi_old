@@ -36,8 +36,8 @@ const overrides = {
       font: '14px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
     },
     elevation1: {
-      // boxShadow: 'none',
-      boxShadow: '0 3px 5px 0 rgba(168,182,191,0.1)',
+      boxShadow: 'none',
+      // boxShadow: '0 3px 5px 0 rgba(168,182,191,0.1)',
       // transition: 'all .25s ease-out',
       // '&:hover': {
       //   boxShadow: '0 10px 20px 0 rgba(168,182,191,0.6)',
