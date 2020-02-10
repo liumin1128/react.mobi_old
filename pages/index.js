@@ -28,15 +28,18 @@ function Index() {
       </Card>
       <Box mt={2} />
       <DynamicList />
+      <DynamicList />
+      <DynamicList />
+      <DynamicList />
+      <DynamicList />
+      <DynamicList />
       <BackToTopWithNoSSR />
     </>
   );
 }
 
-
 Index.Sider = () => (
   <>
-
     <ProfileCard />
     <Box mt={1.5} />
     <DynamicTopics />

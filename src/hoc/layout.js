@@ -1,9 +1,27 @@
 import React, { Fragment, PureComponent } from 'react';
 import Container from '@material-ui/core/Container';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Header from '@/components/Layout/Header';
+
+
+function ElevationScroll(props) {
+  const { children, window } = props;
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined,
+  });
+
+  return React.cloneElement(children, {
+    elevation: trigger ? 4 : 0,
+  });
+}
 
 export default (WrappedComponent) => class extends PureComponent {
   render() {
@@ -25,7 +43,9 @@ export default (WrappedComponent) => class extends PureComponent {
 
     return (
       <Container maxWidth={WrappedComponent.maxWidth}>
-        <WrappedComponent.Header />
+        <ElevationScroll>
+          <WrappedComponent.Header />
+        </ElevationScroll>
         <Box mt={2} />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={8}>

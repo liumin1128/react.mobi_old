@@ -7,19 +7,34 @@ import Tab from '@material-ui/core/Tab';
 
 import { useOnMount, useOnUnmount } from '@/hooks';
 
-
 const useStyles = makeStyles(theme => ({
+  // tab: {
+  //   height: 64,
+  //   minWidth: 80,
+  //   // fontWeight: 'bold',
+  //   // [theme.breakpoints.down('xs')]: {
+  //   //   minWidth: 70,
+  //   //   height: 56,
+  //   // },
+  // },
+  // indicator: {
+  //   backgroundColor: '#ffffff',
+  // },
+
   tab: {
+    textTransform: 'none',
+    minWidth: 64,
     height: 64,
-    minWidth: 80,
-    fontWeight: 'bold',
-    [theme.breakpoints.down('xs')]: {
-      minWidth: 70,
-      height: 56,
-    },
   },
   indicator: {
-    backgroundColor: '#ffffff',
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    '& > div': {
+      maxWidth: 32,
+      width: '100%',
+      backgroundColor: theme.palette.primary.main,
+    },
   },
 }));
 
@@ -58,6 +73,7 @@ function SimpleTabs({ navList = [], router }) {
       classes={{
         indicator: classes.indicator,
       }}
+      TabIndicatorProps={{ children: <div /> }}
     >
       {navList.map(i => (
         <Tab
