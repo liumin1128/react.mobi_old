@@ -18,8 +18,8 @@ export default ({ title = defaultTitle, content = defaultContent, action = defau
         <Box maxWidth={600} maxHeight={600} py={12} className={classes.root}>
           <Image className={classes.image} />
         </Box>
-        <Typography align="center" variant="h6">{title}</Typography>
-        <Typography align="center" variant="body2">{content}</Typography>
+        <Typography align="center" variant="h6">{content}</Typography>
+        <Typography align="center" variant="body2">{title}</Typography>
         <Box mt={2} />
         {action}
       </Box>
