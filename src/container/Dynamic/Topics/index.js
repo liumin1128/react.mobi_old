@@ -24,14 +24,14 @@ function Topics() {
     );
   }
 
-  const { list } = data;
+  const { list = [] } = data;
 
   return (
     <Card>
       <Box p={2}>
         <Typography variant="subtitle2" gutterBottom>热门话题</Typography>
         <Box mx={-1.2}>
-          {list.length > 0 && list.map((i) => (
+          {Array.isArray(list) && list.length > 0 && list.map((i) => (
             <Link key={i._id} href={`/dynamic?topic=${i.number}`}>
               <Button size="small" color="primary">
                 {`#${i.title}#`}

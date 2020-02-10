@@ -29,3 +29,8 @@ qq: 970568830
 [版本依赖](/docs/版本依赖.md)
 
 [文档地址](/docs/文档地址.md)
+
+
+docker pull ubuntu
+
+docker run -it ubuntu /bin/bash
