@@ -43,7 +43,6 @@ function getVcfData(list) {
   let string = ''
   list.map(i => {
     string+=`
-
 BEGIN:VCARD
 VERSION:3.0
 FN;CHARSET=UTF-8:${i.firstname}
@@ -51,7 +50,6 @@ N;CHARSET=UTF-8:;${i.firstname};;;
 TEL;TYPE=WORK,VOICE:${i.phone}
 REV:2019-11-20T10:27:13.060Z
 END:VCARD
-
     `
   })
 
@@ -90,7 +88,7 @@ class Index extends PureComponent {
 
     if(status === 'loading') return (
     <Box p={4} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-    
+
     <CircularProgress />
 
     </Box>)
