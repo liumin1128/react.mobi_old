@@ -11,8 +11,8 @@ export default class Placeholder extends PureComponent {
           uniquekey="aaaa" // 应对ssr
           // speed={5}
           // animate={false}
-          // primaryColor="#f3f3f3"
-          // secondaryColor="#ecebeb"
+          // primarycolor="#f3f3f3"
+          // secondarycolor="#ecebeb"
           // preserveAspectRatio=""
         >
           <circle cx="44" cy="40" r="22" />

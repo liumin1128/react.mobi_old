@@ -8,8 +8,8 @@ function Skeleton() {
     <ContentLoader
       width={300}
       height={48}
-      primaryColor="#f3f3f3"
-      secondaryColor="#ecebeb"
+      primarycolor="#f3f3f3"
+      secondarycolor="#ecebeb"
       uniquekey="topics-skeleton-uniquekey"
     >
       <rect x={0} y={0} rx={4} ry={4} width={50} height={20} />

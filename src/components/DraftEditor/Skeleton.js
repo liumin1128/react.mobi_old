@@ -12,8 +12,8 @@ function Skeleton() {
           <ContentLoader
             width={580}
             height={300}
-            primaryColor="#f3f3f3"
-            secondaryColor="#ecebeb"
+            primarycolor="#f3f3f3"
+            secondarycolor="#ecebeb"
             uniquekey="skeleton-uniquekey"
           >
             {[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ].map((i, index) => <rect key={i} x={26 + index * 36} y={18} rx={4} ry={4} width={16} height={16} />)}

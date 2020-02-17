@@ -12,8 +12,8 @@ function Skeleton() {
           width={282}
           height={158}
           // speed={10}
-          primaryColor="#f3f3f3"
-          secondaryColor="#ecebeb"
+          primarycolor="#f3f3f3"
+          secondarycolor="#ecebeb"
           uniquekey="skeleton-uniquekey"
         >
           <circle cx={`${32 + 32}px`} cy={`${16 + 32}px`} r={`${32}px`} />
