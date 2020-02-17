@@ -26,13 +26,11 @@ function Index() {
           <DynamicCreate />
         </Box>
       </Card>
+
       <Box mt={2} />
+
       <DynamicList />
-      <DynamicList />
-      <DynamicList />
-      <DynamicList />
-      <DynamicList />
-      <DynamicList />
+
       <BackToTopWithNoSSR />
     </>
   );
