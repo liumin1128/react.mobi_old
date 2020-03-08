@@ -1,44 +1,51 @@
-import React, { PureComponent, createContext, useReducer, useContext, useState } from 'react';
-import { ThemeProvider } from '@material-ui/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import defaultTheme from '@/config/theme/default';
-import darkTheme from '@/config/theme/dark';
-import { useOnMount } from '@/hooks';
-import { getStorage, setStorage } from '@/utils/store';
-import { USER_SETTING_THEME } from '@/config/base';
+import React, {
+  PureComponent,
+  createContext,
+  useReducer,
+  useContext,
+  useState
+} from "react";
+import { ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import defaultTheme from "@/config/theme/default";
+import darkTheme from "@/config/theme/dark";
+import { useOnMount } from "@/hooks";
+import { getStorage, setStorage } from "@/utils/store";
+import { USER_SETTING_THEME } from "@/config/base";
 
 const themes = {
   default: defaultTheme,
-  dark: darkTheme,
+  dark: darkTheme
 };
 
-const defaultStr = 'default';
-
+const defaultStr = "default";
 
 export const ThemeContext = createContext(darkTheme);
 
 // // ThemeProvider的hoc用法
 export function withThemeProvider(WrappedComponent) {
   return class ThemeContextProvider extends PureComponent {
-      state = {
-        theme: defaultStr,
-      }
+    state = {
+      theme: defaultStr
+    };
 
-      setTheme = () => {
-        const { theme } = this.state;
-        this.setState({
-          theme: theme === 'default' ? 'dark' : 'default',
-        });
-      }
+    setTheme = () => {
+      const { theme } = this.state;
+      this.setState({
+        theme: theme === "default" ? "dark" : "default"
+      });
+    };
 
-      render() {
-        const { theme } = this.state;
-        return (
-          <ThemeContext.Provider value={{ theme: themes[theme], setTheme: this.setTheme }}>
-            <WrappedComponent {...this.props} />
-          </ThemeContext.Provider>
-        );
-      }
+    render() {
+      const { theme } = this.state;
+      return (
+        <ThemeContext.Provider
+          value={{ theme: themes[theme], setTheme: this.setTheme }}
+        >
+          <WrappedComponent {...this.props} />
+        </ThemeContext.Provider>
+      );
+    }
   };
 }
 
@@ -55,13 +62,13 @@ export function withThemeConsumer(WrappedComponent) {
 export default function HookThemeProvider({ children }) {
   function reducer(state, action) {
     switch (action.type) {
-      case 'switch':
-        return { theme: state.theme === 'default' ? 'dark' : 'default' };
+      case "switch":
+        return { theme: state.theme === "default" ? "dark" : "default" };
       default:
         return state;
     }
   }
-  const [ state, dispatch ] = useReducer(reducer, { count: 0 });
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
   return (
     <ThemeContext.Provider value={{ state, dispatch }}>
       {children}
@@ -73,10 +80,10 @@ export default function HookThemeProvider({ children }) {
 export function ThemeContextProvider({ children }) {
   const themeStr = getStorage(USER_SETTING_THEME) || defaultStr;
 
-  const [ state, setState ] = useState(themeStr);
+  const [state, setState] = useState(themeStr);
 
   useOnMount(() => {
-    const jssStyles = document.querySelector('#jss-server-side');
+    const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
@@ -84,7 +91,7 @@ export function ThemeContextProvider({ children }) {
 
   const theme = themes[state];
   const setTheme = () => {
-    const str = state === 'default' ? 'dark' : 'default';
+    const str = state === "default" ? "dark" : "default";
     setStorage(USER_SETTING_THEME, str);
     setState(str);
   };

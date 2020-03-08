@@ -1,10 +1,10 @@
-const express = require('express');
-const next = require('next');
-const LRUCache = require('lru-cache');
-const { minify } = require('html-minifier');
+const express = require("express");
+const next = require("next");
+const LRUCache = require("lru-cache");
+const { minify } = require("html-minifier");
 
-const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dir: '.', dev });
+const dev = process.env.NODE_ENV !== "production";
+const app = next({ dir: ".", dev });
 const handle = app.getRequestHandler();
 
 const port = dev ? 8000 : 3102;
@@ -12,66 +12,8 @@ const port = dev ? 8000 : 3102;
 // This is where we cache our rendered HTML pages
 const ssrCache = new LRUCache({
   max: 100,
-  maxAge: 1000 * 60 * 60 * 3, // 1分钟
+  maxAge: 1000 * 60 * 60 * 3 // 1分钟
 });
-
-app.prepare()
-  .then(() => {
-    const server = express();
-
-
-    // Use the `renderAndCache` utility defined below to serve pages
-    [
-      // '/',
-      // '/dynamic',
-      // '/dynamic/detail',
-      '/article',
-      '/article/detail',
-      '/bxgif',
-      '/bxgif/detail',
-      '/mzitu',
-      '/mzitu/detail',
-      '/news',
-      '/news/detail',
-      '/meizitu',
-      '/meizitu/detail',
-    ].map((i) => {
-      return server.get(i, (req, res) => {
-        renderAndCache(req, res, i, req.query);
-      });
-    });
-
-    server.use(express.static('public'));
-
-    server.get('/user/setting/:path?', (req, res, next) => {
-      const { path = '' } = req.params;
-      app.render(req, res, '/user/setting', { path: `/${path}` });
-    });
-
-    server.get('/user/notification/:type?', (req, res, next) => {
-      const { type = 'all' } = req.params;
-      app.render(req, res, '/user/notification', { type });
-    });
-
-    server.get('/user/profile/:path?/:user?', (req, res, next) => {
-      const { path = 'dynamic', user } = req.params;
-      app.render(req, res, '/user/profile', { path, user });
-    });
-
-    server.get('*', (req, res) => {
-      return handle(req, res);
-    });
-
-    server.listen(port, (err) => {
-      if (err) throw err;
-      console.log(`> Ready on http://localhost:${port}`);
-    });
-  })
-  .catch((err) => {
-    ssrCache.reset();
-    console.log('server.js err');
-    console.log(err);
-  });
 
 /*
  * NB: make sure to modify this to take into account anything that should trigger
@@ -80,7 +22,8 @@ app.prepare()
 function getCacheKey(req) {
   const { path } = req.route;
   switch (path) {
-    case '/': return path;
+    case "/":
+      return path;
     // case '/news/detail': {
     //   const { id } = req.query;
     //   if (id) {
@@ -89,10 +32,10 @@ function getCacheKey(req) {
     //     return req.url;
     //   }
     // }
-    default: return req.url;
+    default:
+      return req.url;
   }
 }
-
 
 function renderAndCache(req, res, pagePath, queryParams) {
   const key = getCacheKey(req);
@@ -105,25 +48,28 @@ function renderAndCache(req, res, pagePath, queryParams) {
   }
 
   // If not let's render the page into HTML
-  app.renderToHTML(req, res, pagePath, queryParams)
-    .then((html) => minify(html, {
-      // 引号
-      removeAttributeQuotes: true,
-      // 注释
-      removeComments: true,
-      // 空格
-      collapseWhitespace: true,
-      // 压缩html里的css
-      minifyCSS: true,
-      // 压缩html里的js
-      minifyJS: true,
-    }))
-    .then((html) => {
-      if (html.indexOf('ERROR_0120_ERROR') === -1) {
+  app
+    .renderToHTML(req, res, pagePath, queryParams)
+    .then(html =>
+      minify(html, {
+        // 引号
+        removeAttributeQuotes: true,
+        // 注释
+        removeComments: true,
+        // 空格
+        collapseWhitespace: true,
+        // 压缩html里的css
+        minifyCSS: true,
+        // 压缩html里的js
+        minifyJS: true
+      })
+    )
+    .then(html => {
+      if (html.indexOf("ERROR_0120_ERROR") === -1) {
         console.log(`新建存缓: ${key}`);
         ssrCache.set(key, html);
       } else {
-        console.log('发现错误！！！！！！！！！！');
+        console.log("发现错误！！！！！！！！！！");
         // const shpath = '/root/react.mobi/auto_build.sh';
         // console.log(`将运行自启动脚本：${shpath}`);
         ssrCache.reset();
@@ -136,10 +82,10 @@ function renderAndCache(req, res, pagePath, queryParams) {
       // ssrCache.set(key, html);
       // res.send(html);
     })
-    .catch((err) => {
+    .catch(err => {
       ssrCache.reset();
       app.renderError(err, req, res, pagePath, queryParams);
-      console.log('server.js err');
+      console.log("server.js err");
       console.log(err);
     });
 }
@@ -161,3 +107,61 @@ function renderAndCache(req, res, pagePath, queryParams) {
 //     console.log(`Exit: ${code}`);
 //   });
 // }
+
+app
+  .prepare()
+  .then(() => {
+    const server = express();
+
+    // Use the `renderAndCache` utility defined below to serve pages
+    [
+      // '/',
+      // '/dynamic',
+      // '/dynamic/detail',
+      "/article",
+      "/article/detail",
+      "/bxgif",
+      "/bxgif/detail",
+      "/mzitu",
+      "/mzitu/detail",
+      "/news",
+      "/news/detail",
+      "/meizitu",
+      "/meizitu/detail"
+    ].map(i => {
+      return server.get(i, (req, res) => {
+        renderAndCache(req, res, i, req.query);
+      });
+    });
+
+    server.use(express.static("public"));
+
+    server.get("/user/setting/:path?", (req, res, next) => {
+      const { path = "" } = req.params;
+      app.render(req, res, "/user/setting", { path: `/${path}` });
+    });
+
+    server.get("/user/notification/:type?", (req, res, next) => {
+      const { type = "all" } = req.params;
+      app.render(req, res, "/user/notification", { type });
+    });
+
+    server.get("/user/profile/:path?/:user?", (req, res, next) => {
+      const { path = "dynamic", user } = req.params;
+      app.render(req, res, "/user/profile", { path, user });
+    });
+
+    server.get("*", (req, res) => {
+      return handle(req, res);
+    });
+
+    server.listen(port, err => {
+      if (err) throw err;
+      console.log(`> Ready on http://localhost:${port}`);
+    });
+  })
+  .catch(err => {
+    ssrCache.reset();
+    console.log("server.js err");
+    console.log(err);
+  });

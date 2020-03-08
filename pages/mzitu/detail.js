@@ -1,13 +1,11 @@
-import React from 'react';
-import Content from '@/container/Mzitu/Detail';
-import Sider from '@/container/Mzitu/Sider';
-import withApollo from '@/lib/apollo';
-import withLayout from '@/hoc/layout';
+import React from "react";
+import Content from "@/container/Mzitu/Detail";
+import Sider from "@/container/Mzitu/Sider";
+import withApollo from "@/hoc/apollo";
+import withLayout from "@/hoc/layout";
 
 function Index() {
-  return (
-    <Content />
-  );
+  return <Content />;
 }
 
 Index.Sider = Sider;

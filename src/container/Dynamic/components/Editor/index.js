@@ -1,52 +1,51 @@
-import React, { useState, useRef } from 'react';
-import Box from '@material-ui/core/Box';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Paper from '@material-ui/core/Paper';
-import CloseIcon from '@material-ui/icons/Close';
-import CardMedia from '@material-ui/core/CardMedia';
-import CameraIcon from '@material-ui/icons/CameraAlt';
-import VideoIcon from '@material-ui/icons/Movie';
-import Typography from '@material-ui/core/Typography';
-import Iframe from '@/container/Dynamic/components/Iframe';
-import Button from '@/components/Button/Loading';
-import UpPicture from '@/components/Upload/Wrapper';
-import Popper from '@/components/Popper';
-import { useOnMount, useOnUnmount } from '@/hooks';
-import Snackbar from '@/components/Snackbar';
-import useStyles from './styles';
-import SelectTopic from '../SelectTopic';
-import Emoticon from '../Emoticon';
-import Input from '../Input';
-import { html2text, text2html, getByteLen } from '../../utils';
+import React, { useState, useRef } from "react";
+import Box from "@material-ui/core/Box";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import Paper from "@material-ui/core/Paper";
+import CloseIcon from "@material-ui/icons/Close";
+import CardMedia from "@material-ui/core/CardMedia";
+import CameraIcon from "@material-ui/icons/CameraAlt";
+import VideoIcon from "@material-ui/icons/Movie";
+import Typography from "@material-ui/core/Typography";
+import Iframe from "@/container/Dynamic/components/Iframe";
+import Button from "@/components/Button/Loading";
+import UpPicture from "@/components/Upload/Wrapper";
+import Popper from "@/components/Popper";
+import { useOnMount, useOnUnmount } from "@/hooks";
+import Snackbar from "@/components/Snackbar";
+import useStyles from "./styles";
+import SelectTopic from "../SelectTopic";
+import Emoticon from "../Emoticon";
+import Input from "../Input";
+import { html2text, text2html, getByteLen } from "../../utils";
 
 const MAX_TEXT_LENGTH = 233;
 
-const DEFAULT_VALUE = { content: '', pictures: [], iframe: undefined };
+const DEFAULT_VALUE = { content: "", pictures: [], iframe: undefined };
 
 function DynamicEditor({ initialValues = DEFAULT_VALUE, loading, onSubmit }) {
   const input = useRef();
   const classes = useStyles();
-  const [ pictures, setPictures ] = useState(initialValues.pictures);
-  const [ iframe, setIframe ] = useState(initialValues.iframe);
-  const [ lastEditRange, setLastEditRange ] = useState();
-  const [ contentLength, setContentLength ] = useState(0);
+  const [pictures, setPictures] = useState(initialValues.pictures);
+  const [iframe, setIframe] = useState(initialValues.iframe);
+  const [lastEditRange, setLastEditRange] = useState();
+  const [contentLength, setContentLength] = useState(0);
   const _html = text2html(initialValues.content);
-
 
   useOnMount(() => {
     const edit = input.current;
-    edit.addEventListener('click', getCursor);
-    edit.addEventListener('keyup', getCursor);
-    edit.addEventListener('paste', onPastePureText);
+    edit.addEventListener("click", getCursor);
+    edit.addEventListener("keyup", getCursor);
+    edit.addEventListener("paste", onPastePureText);
 
     updateContentLength();
   });
 
   useOnUnmount(() => {
     const edit = input.current;
-    edit.removeEventListener('click', getCursor);
-    edit.removeEventListener('keyup', getCursor);
-    edit.removeEventListener('paste', onPastePureText);
+    edit.removeEventListener("click", getCursor);
+    edit.removeEventListener("keyup", getCursor);
+    edit.removeEventListener("paste", onPastePureText);
   });
 
   function getCursor() {
@@ -87,7 +86,7 @@ function DynamicEditor({ initialValues = DEFAULT_VALUE, loading, onSubmit }) {
 
     // setContent(`${content}[xxxxx]`);
     // 判断选定对象范围是编辑框还是文本节点
-    if (selection.anchorNode.nodeName !== '#text') {
+    if (selection.anchorNode.nodeName !== "#text") {
       // 如果是编辑框范围。则创建表情文本节点进行插入
       const emojiText = document.createTextNode(text);
 
@@ -156,7 +155,9 @@ function DynamicEditor({ initialValues = DEFAULT_VALUE, loading, onSubmit }) {
     // 如果是文本节点则先获取光标对象
     const range = selection.getRangeAt(0);
     // 创建需追加到光标处节点的文档片段
-    const fragment = range.createContextualFragment(`<img src="${url}"  class="emoji" alt="${name}">`);
+    const fragment = range.createContextualFragment(
+      `<img src="${url}"  class="emoji" alt="${name}">`
+    );
     // 将创建的文档片段插入到光标处
     range.insertNode(fragment.lastChild);
     // 光标开始和光标结束重叠
@@ -179,10 +180,10 @@ function DynamicEditor({ initialValues = DEFAULT_VALUE, loading, onSubmit }) {
       // 编辑框设置焦点
       edit.focus();
       // 获取剪贴板的文本
-      const text = e.clipboardData.getData('text');
+      const text = e.clipboardData.getData("text");
 
       // insetText(text);
-      if (window.getSelection && text !== '' && text !== null) {
+      if (window.getSelection && text !== "" && text !== null) {
         // 创建文本节点
         const textNode = document.createTextNode(text);
         // 在当前的光标处插入文本节点
@@ -206,40 +207,43 @@ function DynamicEditor({ initialValues = DEFAULT_VALUE, loading, onSubmit }) {
   }
 
   function onUpPictureSuccess(data) {
-    setPictures([ ...pictures, ...data ]);
+    setPictures([...pictures, ...data]);
   }
 
   function onDeletePictures(idx) {
     pictures.splice(idx, 1);
-    setPictures([ ...pictures ]);
+    setPictures([...pictures]);
   }
 
   function _onSubmit() {
     const edit = input.current;
     const text = html2text(edit.innerHTML);
 
-
     if (!iframe && (!pictures || pictures.length === 0) && !text) {
       edit.focus();
-      Snackbar.error('什么都没写，别想蒙混过关！');
+      Snackbar.error("什么都没写，别想蒙混过关！");
       return;
     }
 
     if (contentLength > MAX_TEXT_LENGTH) {
       edit.focus();
-      Snackbar.error('字数超出限制啦，长内容请使用文章进行发布！');
+      Snackbar.error("字数超出限制啦，长内容请使用文章进行发布！");
       return;
     }
 
-
-    if (typeof onSubmit === 'function') {
-      onSubmit({
-        content: text, iframe, pictures,
-      }, () => {
-        edit.innerHTML = '';
-        setPictures([]);
-        setIframe();
-      });
+    if (typeof onSubmit === "function") {
+      onSubmit(
+        {
+          content: text,
+          iframe,
+          pictures
+        },
+        () => {
+          edit.innerHTML = "";
+          setPictures([]);
+          setIframe();
+        }
+      );
     }
   }
 
@@ -255,7 +259,6 @@ function DynamicEditor({ initialValues = DEFAULT_VALUE, loading, onSubmit }) {
         dangerouslySetInnerHTML={{ __html: _html }}
       />
 
-
       {pictures.length > 0 && (
         <Box display="flex" m={-0.5} mt={1.5} flexWrap="wrap">
           {pictures.map((i, idx) => (
@@ -263,7 +266,9 @@ function DynamicEditor({ initialValues = DEFAULT_VALUE, loading, onSubmit }) {
               <CardMedia className={classes.picture} image={i} />
               <ButtonBase
                 className={`${classes.close} pictures-close-btn`}
-                onClick={() => { onDeletePictures(idx); }}
+                onClick={() => {
+                  onDeletePictures(idx);
+                }}
               >
                 <CloseIcon />
               </ButtonBase>
@@ -282,77 +287,100 @@ function DynamicEditor({ initialValues = DEFAULT_VALUE, loading, onSubmit }) {
 
       <Box mt={2} display="flex" alignItems="center">
         <Box display="flex" flexGrow={1}>
-
           <UpPicture multiple onChange={onUpPictureSuccess}>
             <ButtonBase aria-label="Camera">
-              <CameraIcon style={{ width: 28, height: 28, color: '#999' }} />
+              <CameraIcon style={{ width: 20, height: 20, color: "#999" }} />
             </ButtonBase>
           </UpPicture>
 
           <Box ml={2} />
 
           <Popper
-            content={(
+            content={
               <Paper elevation={2}>
                 <Box p={1}>
-                  <Input
-                    value={iframe}
-                    onChange={setIframe}
-                  />
+                  <Input value={iframe} onChange={setIframe} />
                   {iframe && (
                     <>
                       <Box mt={1}>
-                        <Iframe
-                          iframe={iframe}
-                        />
+                        <Iframe iframe={iframe} />
                       </Box>
                       <Box mt={1}>
-                        <Button fullWidth onClick={() => { setIframe(''); }}>清除视频</Button>
+                        <Button
+                          fullWidth
+                          onClick={() => {
+                            setIframe("");
+                          }}
+                        >
+                          清除视频
+                        </Button>
                       </Box>
                     </>
                   )}
                 </Box>
               </Paper>
-            )}
+            }
           >
-            <ButtonBase style={{ color: '#999' }} aria-label="Camera">
-              <VideoIcon color={iframe ? 'primary' : 'inherit'} style={{ width: 28, height: 28 }} />
+            <ButtonBase style={{ color: "#999" }} aria-label="Camera">
+              <VideoIcon
+                color={iframe ? "primary" : "inherit"}
+                style={{ width: 20, height: 20 }}
+              />
             </ButtonBase>
           </Popper>
 
-          <Box ml={2} />
+          {/* <Box ml={2} />
 
           <Popper
-            content={(
-              <Paper elevation={2}>
-                <Box p={1}><SelectTopic onClick={({ title }) => { insetText(`#${title}#`); }} /></Box>
-              </Paper>
-            )}
-          >
-            <Box style={{ width: 28, height: 28, textAlign: 'center', lineHeight: '28px', fontSize: 28, color: '#999' }}>#</Box>
-          </Popper>
-
-          <Box ml={2} />
-
-          <Popper
-            content={(
+            content={
               <Paper elevation={2}>
                 <Box p={1}>
-                  <Emoticon
-                    insetEmoji={insetEmoji}
-                    insetText={insetText}
+                  <SelectTopic
+                    onClick={({ title }) => {
+                      insetText(`#${title}#`);
+                    }}
                   />
                 </Box>
               </Paper>
-            )}
+            }
           >
-            <img style={{ width: 28, height: 28 }} src="https://imgs.react.mobi/emoticon/xjh/00.gif" alt="" />
+            <Box
+              style={{
+                width: 20,
+                height: 20,
+                textAlign: "center",
+                lineHeight: "20px",
+                fontSize: 20,
+                color: "#999"
+              }}
+            >
+              #
+            </Box>
+          </Popper> */}
+
+          <Box ml={2} />
+
+          <Popper
+            content={
+              <Paper elevation={2}>
+                <Box p={1}>
+                  <Emoticon insetEmoji={insetEmoji} insetText={insetText} />
+                </Box>
+              </Paper>
+            }
+          >
+            <img
+              style={{ width: 20, height: 20 }}
+              src="https://imgs.react.mobi/emoticon/xjh/00.gif"
+              alt=""
+            />
           </Popper>
-
-
         </Box>
         <Box mx={2}>
-          <Typography variant="caption" style={{ color: contentLength > MAX_TEXT_LENGTH ? 'red' : '#999' }}>
+          <Typography
+            variant="caption"
+            style={{ color: contentLength > MAX_TEXT_LENGTH ? "red" : "#999" }}
+          >
             {MAX_TEXT_LENGTH - contentLength}
           </Typography>
         </Box>
@@ -368,8 +396,6 @@ function DynamicEditor({ initialValues = DEFAULT_VALUE, loading, onSubmit }) {
           发布
         </Button>
       </Box>
-
-
     </>
   );
 }

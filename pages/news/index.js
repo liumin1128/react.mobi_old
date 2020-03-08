@@ -1,20 +1,19 @@
-
-import React from 'react';
-import GridList from '@/container/News/List/GridList';
-import NavTabs from '@/components/NavTabs';
-import withApollo from '@/lib/apollo';
-import withLayout from '@/hoc/layout';
+import React from "react";
+import GridList from "@/container/News/List/GridList";
+import NavTabs from "@/components/NavTabs";
+import withApollo from "@/hoc/apollo";
+import withLayout from "@/hoc/layout";
 
 function Index() {
   return (
     <>
-      {/* <NavTabs
+      <NavTabs
         navList={[
-          { label: 'switch', pathname: '/' },
-          { label: 'ps4', pathname: '/ps4' },
-          { label: 'cosplay', pathname: '/cos' },
+          { label: "switch", pathname: "/" },
+          { label: "ps4", pathname: "/ps4" },
+          { label: "cosplay", pathname: "/cos" }
         ]}
-      /> */}
+      />
       <br />
       <GridList />
     </>

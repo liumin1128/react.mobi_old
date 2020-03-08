@@ -1,9 +1,9 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import Box from '@material-ui/core/Box';
-import Content from '@/container/Dynamic/Edit';
-import withApollo from '@/lib/apollo';
-import withLayout from '@/hoc/layout';
+import React from "react";
+import Card from "@material-ui/core/Card";
+import Box from "@material-ui/core/Box";
+import Content from "@/container/Dynamic/Edit";
+import withApollo from "@/hoc/apollo";
+import withLayout from "@/hoc/layout";
 
 function Index() {
   return (

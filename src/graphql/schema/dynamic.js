@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const DYNAMIC_DETAIL = gql`
   query DynamicDetail($_id: String!) {
@@ -116,8 +116,18 @@ export const DYNAMIC_UPDATE = gql`
   }
 `;
 
-
 export const DYNAMIC_TOPIC_LIST = gql`
+  mutation DynamicTopicList($first: Int, $skip: Int, $title: String) {
+    list: DynamicTopics(first: $first, skip: $skip, title: $title) {
+      __typename
+      _id
+      title
+      number
+    }
+  }
+`;
+
+export const QUERY_DYNAMIC_TOPIC_LIST = gql`
   query DynamicTopicList($first: Int, $skip: Int, $title: String) {
     list: DynamicTopics(first: $first, skip: $skip, title: $title) {
       __typename

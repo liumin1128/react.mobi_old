@@ -1,37 +1,36 @@
-import React, { PureComponent } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Link from '@/components/Link';
-import Register from '@/container/login/register';
-import Oauth from '@/container/login/oauth';
-import withApollo from '@/lib/apollo';
+import React, { PureComponent } from "react";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Link from "@/components/Link";
+import Register from "@/container/login/register";
+import Oauth from "@/container/login/oauth";
+import withApollo from "@/hoc/apollo";
 
-const styles = (theme) => ({
+const styles = theme => ({
   root: {
     maxWidth: 414,
-    padding: '0 36px',
-    margin: '0 auto',
+    padding: "0 36px",
+    margin: "0 auto"
   },
   subline: {
-    color: '#999',
+    color: "#999"
   },
   head: {
-    margin: '48px 0',
+    margin: "48px 0"
   },
   help: {
     fontSize: 12,
     marginTop: 20,
     marginBottom: 48,
-    color: '#666',
-    display: 'flex',
-    justifyContent: 'space-between',
-    '& a': {
-      color: '#666',
-      textDecoration: 'none',
-    },
-  },
+    color: "#666",
+    display: "flex",
+    justifyContent: "space-between",
+    "& a": {
+      color: "#666",
+      textDecoration: "none"
+    }
+  }
 });
-
 
 @withApollo
 @withStyles(styles)
@@ -40,12 +39,15 @@ export default class RegisterPage extends PureComponent {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-
         <div className={classes.head}>
           <Typography className={classes.title} variant="h5" gutterBottom>
             注册
           </Typography>
-          <Typography className={classes.subline} variant="subtitle1" gutterBottom>
+          <Typography
+            className={classes.subline}
+            variant="subtitle1"
+            gutterBottom
+          >
             盗火，成为知识的分享者
           </Typography>
         </div>
@@ -59,8 +61,7 @@ export default class RegisterPage extends PureComponent {
           </span>
           <span>
             注册即代表同意《
-            <Link href="/login/terms">用户协议</Link>
-            》
+            <Link href="/login/terms">用户协议</Link>》
           </span>
         </div>
         <Oauth />

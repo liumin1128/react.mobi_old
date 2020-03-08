@@ -1,23 +1,22 @@
-import React from 'react';
-import dynamic from 'next/dynamic';
-import Card from '@material-ui/core/Card';
-import Box from '@material-ui/core/Box';
-import DynamicList from '@/container/Dynamic/List';
-import DynamicCreate from '@/container/Dynamic/Create';
-import DynamicTopics from '@/container/Dynamic/Topics';
+import React from "react";
+import dynamic from "next/dynamic";
+import Card from "@material-ui/core/Card";
+import Box from "@material-ui/core/Box";
+import DynamicList from "@/container/Dynamic/List";
+import DynamicCreate from "@/container/Dynamic/Create";
+import DynamicTopics from "@/container/Dynamic/Topics";
 // import NavTabs from '@/components/NavTabs';
-import Blogrol from '@/container/Side/Blogrol';
-import Project from '@/container/Side/Project';
-import Code from '@/container/Side/Code';
-import Footer from '@/container/Side/Footer';
-import ProfileCard from '@/container/User/ProfileCard';
-import withApollo from '@/lib/apollo';
-import withLayout from '@/hoc/layout';
+import Blogrol from "@/container/Side/Blogrol";
+import Project from "@/container/Side/Project";
+import Code from "@/container/Side/Code";
+import Footer from "@/container/Side/Footer";
+import ProfileCard from "@/container/User/ProfileCard";
+import withApollo from "@/hoc/apollo";
+import withLayout from "@/hoc/layout";
 
-const BackToTopWithNoSSR = dynamic(
-  () => import('@/components/BackToTop'),
-  { ssr: false },
-);
+const BackToTopWithNoSSR = dynamic(() => import("@/components/BackToTop"), {
+  ssr: false
+});
 
 function Index() {
   return (
@@ -55,7 +54,6 @@ function Index() {
 
 Index.Sider = () => (
   <>
-
     <ProfileCard />
     <Box mb={2} />
 

@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const NEWS_DETAIL = gql`
   query NewsDetail($_id: String!) {
@@ -33,6 +33,9 @@ export const NEWS_LIST = gql`
       photos
       cover
       tags
+    }
+    meta: _newsMeta {
+      count
     }
   }
 `;

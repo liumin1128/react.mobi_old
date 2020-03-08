@@ -1,29 +1,34 @@
 {
-  "presets": [
-    "next/babel"
-  ],
+  "presets": ["next/babel"],
   "plugins": [
-    "@babel/transform-runtime",
     "inline-react-svg",
-    ["@babel/plugin-proposal-decorators", {
-      "legacy": true
-    }],
-    ["module-resolver", {
-      "alias": {
-        "@": "./src/"
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
       }
-    }]
+    ],
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@": "./src",
+          "src": "./src"
+        }
+      }
+    ]
   ],
   "env": {
     "production": {
       "presets": [
-        ["minify", {
-          "builtIns": false
-        }]
+        [
+          "minify",
+          {
+            "builtIns": false
+          }
+        ]
       ],
-      "plugins": [
-        "transform-remove-console"
-      ]
+      "plugins": ["transform-remove-console"]
     }
   }
 }

@@ -1,8 +1,7 @@
-import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/styles';
-// import theme from '../src/theme';
-import theme from '@/config/theme/default';
+import React from "react";
+import Document, { Head, Main, NextScript } from "next/document";
+import { ServerStyleSheets } from "@material-ui/core/styles";
+import theme from "@/config/theme/default";
 
 class MyDocument extends Document {
   render() {
@@ -30,13 +29,14 @@ class MyDocument extends Document {
   }
 }
 
-MyDocument.getInitialProps = async (ctx) => {
+MyDocument.getInitialProps = async ctx => {
   const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
 
-  ctx.renderPage = () => originalRenderPage({
-    enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
-  });
+  ctx.renderPage = () =>
+    originalRenderPage({
+      enhanceApp: App => props => sheets.collect(<App {...props} />)
+    });
 
   const initialProps = await Document.getInitialProps(ctx);
 
@@ -47,8 +47,8 @@ MyDocument.getInitialProps = async (ctx) => {
       <React.Fragment key="styles">
         {initialProps.styles}
         {sheets.getStyleElement()}
-      </React.Fragment>,
-    ],
+      </React.Fragment>
+    ]
   };
 };
 

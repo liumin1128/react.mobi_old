@@ -1,15 +1,15 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import Box from '@material-ui/core/Box';
-import marked from 'marked';
-import Comment from '@/container/Comment';
+import React from "react";
+import Card from "@material-ui/core/Card";
+import Box from "@material-ui/core/Box";
+import marked from "marked";
+import Comment from "@/container/Comment";
 // import Html from '@/components/Html';
-import Blogrol from '@/container/Side/Blogrol';
-import Project from '@/container/Side/Project';
-import Code from '@/container/Side/Code';
-import Footer from '@/container/Side/Footer';
-import withApollo from '@/lib/apollo';
-import withLayout from '@/hoc/layout';
+import Blogrol from "@/container/Side/Blogrol";
+import Project from "@/container/Side/Project";
+import Code from "@/container/Side/Code";
+import Footer from "@/container/Side/Footer";
+import withApollo from "@/hoc/apollo";
+import withLayout from "@/hoc/layout";
 
 // marked.setOptions({
 //   highlight: function(code, lang, callback) {
@@ -90,13 +90,15 @@ const md2 = `
 
 `;
 
-
 function Index() {
   return (
     <div>
-
       <Card>
-        <img src="https://imgs.react.mobi/FpkanCXBRCWL5fMicEoGVgoJ6_TM" style={{ width: '100%' }} alt="" />
+        <img
+          src="https://imgs.react.mobi/FpkanCXBRCWL5fMicEoGVgoJ6_TM"
+          style={{ width: "100%" }}
+          alt=""
+        />
         <Box p={4}>
           <div dangerouslySetInnerHTML={{ __html: marked(md2) }} />
         </Box>
@@ -105,7 +107,6 @@ function Index() {
       <Box mt={2} />
 
       <Comment _id="/pages/progress" />
-
     </div>
   );
 }
@@ -137,6 +138,5 @@ Index.Sider = () => (
     </Card>
   </>
 );
-
 
 export default withApollo(withLayout(Index));
