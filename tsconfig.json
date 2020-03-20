@@ -4,6 +4,7 @@
     "paths": {
       "src/*": ["src/*"],
       "@/*": ["src/*"],
+
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -20,6 +21,6 @@
     "experimentalDecorators": true,
     "jsx": "preserve"
   },
-  "include": ["src/**/*"],
+  "include": ["."],
   "exclude": ["node_modules"]
 }

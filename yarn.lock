@@ -3689,6 +3689,19 @@ eslint-config-airbnb@^18.1.0:
     object.assign "^4.1.0"
     object.entries "^1.1.1"
 
+eslint-import-resolver-alias@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npm.taobao.org/eslint-import-resolver-alias/download/eslint-import-resolver-alias-1.1.2.tgz#297062890e31e4d6651eb5eba9534e1f6e68fc97"
+  integrity sha1-KXBiiQ4x5NZlHrXrqVNOH25o/Jc=
+
+eslint-import-resolver-babel-module@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.npm.taobao.org/eslint-import-resolver-babel-module/download/eslint-import-resolver-babel-module-5.1.2.tgz#3d5599d49f641f9c832f001ccf7087a70a3c8c1b"
+  integrity sha1-PVWZ1J9kH5yDLwAcz3CHpwo8jBs=
+  dependencies:
+    pkg-up "^2.0.0"
+    resolve "^1.10.0"
+
 eslint-import-resolver-node@^0.3.2:
   version "0.3.3"
   resolved "https://registry.npm.taobao.org/eslint-import-resolver-node/download/eslint-import-resolver-node-0.3.3.tgz#dbaa52b6b2816b50bc6711af75422de808e98404"
@@ -6569,6 +6582,13 @@ pkg-dir@^4.1.0:
   integrity sha1-8JkTPfft5CLoHR2ESCcO6z5CYfM=
   dependencies:
     find-up "^4.0.0"
+
+pkg-up@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/pkg-up/download/pkg-up-2.0.0.tgz#c819ac728059a461cab1c3889a2be3c49a004d7f"
+  integrity sha1-yBmscoBZpGHKscOImivjxJoATX8=
+  dependencies:
+    find-up "^2.1.0"
 
 pkg-up@^3.0.1, pkg-up@^3.1.0:
   version "3.1.0"

@@ -8,7 +8,13 @@
   },
   "settings": {
     "import/resolver": {
-      "babel-module": {}
+      "babel-module": {},
+      "alias": {
+        "map": [
+          ["@", "./src"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
     }
   },
   "rules": {
