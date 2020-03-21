@@ -1,6 +1,6 @@
 import withApollo from '@/hoc/apollo'
-// import withLayout from '@/hoc/layout'
+import withLayout from '@/hoc/layout'
 
 const Index = () => <>hello world!</>
 
-export default withApollo(Index)
+export default withApollo(withLayout(Index))
