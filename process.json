@@ -1,0 +1,11 @@
+{
+  "apps": [{
+    "name": "react.mobi",
+    "script": "server.js",
+    "log_date_format": "YYYY-MM-DD HH:mm Z",
+    "instances": 2,
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }]
+}
