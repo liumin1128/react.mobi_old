@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box'
 import withApollo from '@/hoc/apollo'
 import withLayout from '@/hoc/layout'
 import DynamicList from '@/container/Dynamic/List'
-// import DynamicCreate from '@/container/Dynamic/Create'
+import DynamicCreate from '@/container/Dynamic/Create'
 import DynamicTopics from '@/container/Dynamic/Topics'
 import Blogrol from '@/container/Side/Blogrol'
 import Project from '@/container/Side/Project'
@@ -18,11 +18,11 @@ const BackToTopWithNoSSR = dynamic(() => import('@/components/BackToTop'), { ssr
 function Index() {
   return (
     <>
-      {/* <Card>
+      <Card>
         <Box p={2}>
           <DynamicCreate />
         </Box>
-      </Card> */}
+      </Card>
       <Box mt={2} />
       <DynamicList />
       <BackToTopWithNoSSR />
