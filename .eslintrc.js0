@@ -1,0 +1,25 @@
+const path = require('path')
+
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  extends: ['eslint:recommended', 'airbnb', 'airbnb/hooks', 'prettier'],
+  // settings: {
+  //   'import/resolver': {
+  //     'babel-module': {},
+  //   },
+  // },
+  env: {
+    es6: true,
+    node: true,
+  },
+  parserOptions: {
+    // 支持最新 JavaScript
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+  rules: {
+    // 如果有不适合的规则，可以在此调整
+    // ...
+  },
+}

@@ -3,8 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "src/*": ["src/*"],
-      "@/*": ["src/*"],
-
+      "@/*": ["src/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -21,6 +20,6 @@
     "experimentalDecorators": true,
     "jsx": "preserve"
   },
-  "include": ["."],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
