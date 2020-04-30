@@ -1,7 +1,7 @@
 import React from 'react'
 import Placeholder from '@/components/PlaceholderFigure'
 
-function Error({ statusCode }) {
+function Error() {
   return (
     <>
       <Placeholder.Error />
