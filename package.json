@@ -8,9 +8,7 @@
     "start": "node server.js",
     "lint": "eslint --fix 'src/**/*.{js,ts,tsx}' 'pages/**/*.{js,ts,tsx}'",
     "format": "eslint --fix 'src/**/*.{js,ts,tsx}'",
-    "pm2": "pm2 start ./process.json",
-    "precommit": "lint-staged",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "pm2": "pm2 start ./process.json"
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
