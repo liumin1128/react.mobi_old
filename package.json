@@ -13,7 +13,7 @@
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "lint-staged": {
-    "app/**/*.{js,jsx}": [
+    "src/**/*.{js,jsx}": [
       "prettier --tab-width 2 --write",
       "eslint --fix"
     ]
