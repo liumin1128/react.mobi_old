@@ -4,7 +4,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import Hidden from '@material-ui/core/Hidden'
-import Header from '@/components/Layout/Header'
+// import Header from '@/components/Layout/Header'
 
 function ElevationScroll(props) {
   const { children, window } = props
@@ -24,7 +24,7 @@ export default WrappedComponent =>
     render() {
       /* eslint-disable no-param-reassign */
       if (typeof WrappedComponent.Layout === 'undefined') WrappedComponent.Layout = Fragment
-      if (typeof WrappedComponent.Header === 'undefined') WrappedComponent.Header = Header
+      if (typeof WrappedComponent.Header === 'undefined') WrappedComponent.Header = Fragment
       if (typeof WrappedComponent.Footer === 'undefined') WrappedComponent.Footer = Fragment
       if (typeof WrappedComponent.maxWidth === 'undefined') WrappedComponent.maxWidth = 'md'
 
