@@ -113,7 +113,7 @@ export function ThemeContextProvider({ children }) {
 }
 
 ThemeContextProvider.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.arrayOf(PropTypes.element),
 }
 
 ThemeContextProvider.defaultProps = {

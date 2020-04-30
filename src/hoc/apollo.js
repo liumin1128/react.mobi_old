@@ -92,8 +92,13 @@ function withApollo(PageComponent, { ssr = true } = {}) {
   }
 
   WithApollo.propTypes = {
-    apolloClient: PropTypes.instanceOf(ApolloClient).isRequired,
-    apolloState: PropTypes.instanceOf(ApolloClient).isRequired,
+    apolloClient: PropTypes.instanceOf(ApolloClient),
+    apolloState: PropTypes.instanceOf(Object),
+  }
+
+  WithApollo.defaultProps = {
+    apolloClient: undefined,
+    apolloState: undefined,
   }
 
   // Set the correct displayName in development
