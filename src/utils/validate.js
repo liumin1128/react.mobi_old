@@ -54,7 +54,7 @@ export function isPhoneNumber(countryCode, purePhoneNumber) {
   }
   if (!reg.test(purePhoneNumber)) {
     return false;
-  } else {
+  } 
     return true;
-  }
+  
 }

@@ -6,9 +6,9 @@ export function isWeixin() {
   const ua = navigator.userAgent.toLowerCase();
   if (ua.indexOf('micromessenger') !== -1) {
     return true;
-  } else {
+  } 
     return false;
-  }
+  
 }
 
 export function isServerSide() {
@@ -20,9 +20,9 @@ export function isTel(Tel) {
   const retu = Tel.match(re);
   if (retu) {
     return true;
-  } else {
+  } 
     return false;
-  }
+  
 }
 
 /* eslint-disable prefer-destructuring */
@@ -49,9 +49,9 @@ export function isElementInViewport(el, offset = 0) {
 export function getLessStr(str, end = 15, start = 0) {
   if (str && str.length > end) {
     return `${str.substring(start, end)}...`;
-  } else {
+  } 
     return str;
-  }
+  
 }
 
 export function getStrFromHtml(html, max = 140) {

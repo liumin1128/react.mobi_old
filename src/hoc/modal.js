@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import Dialog from '@material-ui/core/Dialog'
 import Slide from '@material-ui/core/Slide'
-import withStyle from './material-ui'
 import { domRender } from '@/utils/react'
+import withStyle from '@/hoc/material-ui'
 
 function Transition(props) {
   return <Slide direction='up' {...props} />
@@ -12,13 +13,17 @@ export default function (WrappedComponent, modalProps) {
   @domRender
   @withStyle
   class Modal extends PureComponent {
-    state = {
-      open: true,
+    constructor(props) {
+      super(props)
+      this.state = {
+        open: true,
+      }
     }
 
     handleClose = () => {
       this.setState({ open: false })
     }
+
     handleExited = () => {
       const { destory } = this.props
       if (destory) destory()
@@ -42,5 +47,14 @@ export default function (WrappedComponent, modalProps) {
       )
     }
   }
+
+  Modal.propTypes = {
+    destory: PropTypes.func,
+  }
+
+  Modal.defaultProps = {
+    destory: () => {},
+  }
+
   return Modal
 }

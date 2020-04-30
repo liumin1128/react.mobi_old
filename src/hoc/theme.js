@@ -1,4 +1,12 @@
-import React, { PureComponent, createContext, useReducer, useContext, useState } from 'react'
+import React, {
+  PureComponent,
+  createContext,
+  useReducer,
+  useContext,
+  useState,
+  Fragment,
+} from 'react'
+import PropTypes from 'prop-types'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import defaultTheme from '@/config/theme/default'
@@ -18,9 +26,12 @@ export const ThemeContext = createContext(darkTheme)
 
 // // ThemeProvider的hoc用法
 export function withThemeProvider(WrappedComponent) {
-  return class ThemeContextProvider extends PureComponent {
-    state = {
-      theme: defaultStr,
+  return class Provider extends PureComponent {
+    constructor(props) {
+      super(props)
+      this.state = {
+        theme: defaultStr,
+      }
     }
 
     setTheme = () => {
@@ -64,7 +75,14 @@ export default function HookThemeProvider({ children }) {
   return <ThemeContext.Provider value={{ state, dispatch }}>{children}</ThemeContext.Provider>
 }
 
-//
+HookThemeProvider.propTypes = {
+  children: PropTypes.element,
+}
+
+HookThemeProvider.defaultProps = {
+  children: Fragment,
+}
+
 export function ThemeContextProvider({ children }) {
   const themeStr = getStorage(USER_SETTING_THEME) || defaultStr
 
@@ -92,6 +110,14 @@ export function ThemeContextProvider({ children }) {
       </ThemeProvider>
     </ThemeContext.Provider>
   )
+}
+
+ThemeContextProvider.propTypes = {
+  children: PropTypes.element,
+}
+
+ThemeContextProvider.defaultProps = {
+  children: Fragment,
 }
 
 // theme的hook用法

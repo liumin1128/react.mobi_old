@@ -7,6 +7,7 @@ const logo = `
 ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚═╝
 
 Bingo！ 970568830@qq.com
-`;
+`
 
-console.log(`%c${logo}`, 'color: #00a1d6');
+/* eslint-disable no-console */
+console.log(`%c${logo}`, 'color: #00a1d6')

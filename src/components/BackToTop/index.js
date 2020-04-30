@@ -4,8 +4,8 @@ import Box from '@material-ui/core/Box'
 import Fab from '@material-ui/core/Fab'
 import Grow from '@material-ui/core/Grow'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
-import useStyles from './styles'
 import { scrollToTopEaseing, getScrollTop } from '@/utils/common'
+import useStyles from './styles'
 
 export default function () {
   const classes = useStyles()

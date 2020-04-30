@@ -17,6 +17,7 @@
       "extensions": [".js", ".jsx", ".ts", ".tsx"]
     }],
     "no-underscore-dangle": [0],
-    "react/jsx-wrap-multilines": [0]
+    "react/jsx-wrap-multilines": [0],
+    "import/prefer-default-export": [0]
   }
 }

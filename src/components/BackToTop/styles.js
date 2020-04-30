@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
-export default makeStyles((theme) => ({
+export default makeStyles(() => ({
   root: {
     position: 'fixed',
     right: 48,
@@ -15,4 +15,4 @@ export default makeStyles((theme) => ({
     boxShadow: '3px 3px 5px rgba(0, 0, 0, 0.1)',
     color: '#999',
   },
-}));
+}))

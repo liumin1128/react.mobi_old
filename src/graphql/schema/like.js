@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const LIKE = gql`
   mutation like($id: String!, $status: Int) {
@@ -7,4 +7,4 @@ export const LIKE = gql`
       message
     }
   }
-`;
+`
