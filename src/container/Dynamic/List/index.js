@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { Waypoint } from 'react-waypoint'
 import Box from '@material-ui/core/Box'
+import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import { useQuery } from '@/hooks/graphql'
 import { DYNAMIC_LIST } from '@/graphql/schema/dynamic'
@@ -26,9 +27,29 @@ function DynamicList({ variables }) {
   const onFollow = useFollow()
   const onDelete = useDelete()
 
-  if (loading) return <Loading />
-  if (error) return <Placeholder.Error />
-  if (list.length === 0) return <Placeholder.Empty />
+  if (loading) {
+    return (
+      <Paper>
+        <Loading />
+      </Paper>
+    )
+  }
+
+  if (error) {
+    return (
+      <Paper>
+        <Placeholder.Error />
+      </Paper>
+    )
+  }
+
+  if (list.length === 0) {
+    return (
+      <Paper>
+        <Placeholder.Empty />
+      </Paper>
+    )
+  }
 
   return (
     <>
