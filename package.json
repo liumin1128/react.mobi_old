@@ -9,7 +9,8 @@
     "lint": "eslint --fix 'src/**/*.{js,ts,tsx}' 'pages/**/*.{js,ts,tsx}'",
     "format": "eslint --fix 'src/**/*.{js,ts,tsx}'",
     "pm2": "pm2 start ./process.json",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "lint-staged": {
     "app/**/*.{js,jsx}": [
@@ -60,6 +61,8 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/register": "^7.9.0",
     "@babel/runtime": "^7.9.6",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@zeit/next-bundle-analyzer": "^0.1.2",
     "@zeit/next-less": "^1.0.1",
     "babel-eslint": "^10.1.0",
