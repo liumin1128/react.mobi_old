@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "node server.js",
     "dev": "next dev -p 8000",
     "build": "next build",
-    "start": "node server.js",
     "lint": "eslint --fix 'src/**/*.{js,ts,tsx}' 'pages/**/*.{js,ts,tsx}'",
     "format": "eslint --fix 'src/**/*.{js,ts,tsx}'",
     "pm2": "pm2 start ./process.json"
