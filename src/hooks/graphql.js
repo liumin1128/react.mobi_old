@@ -43,7 +43,14 @@ export function useQuery(schema, variables, options) {
   })
   const [isLoadingMore, isEnd, loadMore] = useLoadMore(fetchMore, data, variables)
 
-  return { isLoadingMore, isEnd, loadMore, fetchMore, data, ...other }
+  return {
+    isLoadingMore,
+    isEnd,
+    loadMore,
+    fetchMore,
+    data,
+    ...other,
+  }
 }
 
 export function useMutation(schema, variables, options) {

@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const MEIZITU_DETAIL = gql`
   query meizituPictures($_id: String!) {
@@ -9,7 +9,7 @@ export const MEIZITU_DETAIL = gql`
       pictures
     }
   }
-`;
+`
 
 export const MEIZITU_LIST = gql`
   query meizituList($page: Int!) {
@@ -21,4 +21,4 @@ export const MEIZITU_LIST = gql`
       url
     }
   }
-`;
+`

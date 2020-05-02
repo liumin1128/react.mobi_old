@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const NOTIFACATION_LIST = gql`
   query NotificationList($first: Int, $skip: Int, $unread: Boolean, $type: String) {
@@ -19,7 +19,7 @@ export const NOTIFACATION_LIST = gql`
         avatarUrl
         followStatus
       }
-      
+
       actionShowText
       userShowText
       actionorShowText
@@ -28,4 +28,4 @@ export const NOTIFACATION_LIST = gql`
       count
     }
   }
-`;
+`

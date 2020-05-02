@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const TODAY_IN_HISTORY = gql`
   query todayInHistory($date: String) {
@@ -10,4 +10,4 @@ export const TODAY_IN_HISTORY = gql`
       img
     }
   }
-`;
+`

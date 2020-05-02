@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const ARTICLE_DETAIL = gql`
   query ArticleDetail($_id: String!) {
@@ -16,7 +16,7 @@ export const ARTICLE_DETAIL = gql`
       }
     }
   }
-`;
+`
 
 export const ARTICLE_LIST = gql`
   query ArticleList($first: Int, $skip: Int) {
@@ -41,7 +41,7 @@ export const ARTICLE_LIST = gql`
       count
     }
   }
-`;
+`
 
 export const CREATE_ARTICLE = gql`
   mutation createArticle($input: ArticleInput!) {
@@ -50,7 +50,7 @@ export const CREATE_ARTICLE = gql`
       message
     }
   }
-`;
+`
 
 export const UPDATE_ARTICLE = gql`
   mutation updateArticle($input: ArticleInput!, $_id: String!) {
@@ -59,7 +59,7 @@ export const UPDATE_ARTICLE = gql`
       message
     }
   }
-`;
+`
 
 export const DELETE_ARTICLE = gql`
   mutation deleteArticle($_id: String) {
@@ -68,7 +68,7 @@ export const DELETE_ARTICLE = gql`
       message
     }
   }
-`;
+`
 
 export const ARTICLE_CONTENT = gql`
   query ArticleDetail($_id: String!) {
@@ -83,4 +83,4 @@ export const ARTICLE_CONTENT = gql`
       createdAt
     }
   }
-`;
+`

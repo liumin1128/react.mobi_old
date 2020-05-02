@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const COMMENT_LIST = gql`
   query CommentList($first: Int, $skip: Int, $session: String!) {
@@ -43,8 +43,7 @@ export const COMMENT_LIST = gql`
       commentCount
     }
   }
-`;
-
+`
 
 export const REPLY_LIST = gql`
   query ReplyList($first: Int, $skip: Int, $commentTo: String!) {
@@ -70,12 +69,21 @@ export const REPLY_LIST = gql`
       }
     }
   }
-`;
-
+`
 
 export const CREATE_COMMENT = gql`
-  mutation createComment($content: String!, $session: String!, $replyTo: String, $commentTo: String) {
-    result: createComment(content: $content, session: $session, replyTo: $replyTo, commentTo: $commentTo) {
+  mutation createComment(
+    $content: String!
+    $session: String!
+    $replyTo: String
+    $commentTo: String
+  ) {
+    result: createComment(
+      content: $content
+      session: $session
+      replyTo: $replyTo
+      commentTo: $commentTo
+    ) {
       status
       message
       data {
@@ -98,11 +106,21 @@ export const CREATE_COMMENT = gql`
       }
     }
   }
-`;
+`
 
 export const CREATE_REPLY = gql`
-  mutation createComment($content: String!, $session: String!, $replyTo: String, $commentTo: String) {
-    result: createComment(content: $content, session: $session, replyTo: $replyTo, commentTo: $commentTo) {
+  mutation createComment(
+    $content: String!
+    $session: String!
+    $replyTo: String
+    $commentTo: String
+  ) {
+    result: createComment(
+      content: $content
+      session: $session
+      replyTo: $replyTo
+      commentTo: $commentTo
+    ) {
       status
       message
       data {
@@ -128,8 +146,7 @@ export const CREATE_REPLY = gql`
       }
     }
   }
-`;
-
+`
 
 export const DELETE_COMMENT = gql`
   mutation deleteComment($_id: String!) {
@@ -138,4 +155,4 @@ export const DELETE_COMMENT = gql`
       message
     }
   }
-`;
+`

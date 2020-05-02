@@ -20,7 +20,7 @@ export default function withRoot(App) {
     }
 
     render() {
-      const { theme, setTheme, ...props } = this.props
+      const { theme, ...props } = this.props
       return (
         <ThemeProvider theme={theme}>
           <CssBaseline />
@@ -32,12 +32,10 @@ export default function withRoot(App) {
 
   WithRoot.propTypes = {
     theme: PropTypes.string,
-    setTheme: PropTypes.func,
   }
 
   WithRoot.defaultProps = {
     theme: 'default',
-    setTheme: () => {},
   }
 
   return WithRoot

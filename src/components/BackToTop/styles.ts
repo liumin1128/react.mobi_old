@@ -6,9 +6,6 @@ export default makeStyles(() => ({
     right: 48,
     bottom: 48,
     zIndex: 9,
-    // background: '#fff',
-    // boxShadow: '3px 3px 5px rgba(0, 0, 0, 0.5)',
-    // borderRadius: 8,
   },
   fab: {
     background: '#fff',

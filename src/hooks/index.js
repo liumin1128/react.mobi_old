@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react'
 
 // 第二个参数是[], 返回onUnmount函数, 类似componentWillUnmount
-export const useOnUnmount = onUnmount =>
-  useEffect(() => {
-    return () => onUnmount && onUnmount()
-    // eslint-disable-next-line
-  }, [])
+// export const useOnUnmount = onUnmount =>
+//   useEffect(
+//     () => () => onUnmount && onUnmount(),
+//     // eslint-disable-next-line
+//   , [])
 
 // 第二个参数是[], 返回onMount函数, 类似componentDidMount
 export const useOnMount = onMount =>

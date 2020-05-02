@@ -49,12 +49,10 @@ export default function (WrappedComponent, modalProps) {
   }
 
   Modal.propTypes = {
-    destory: PropTypes.func,
+    destory: PropTypes.func.isRequired,
   }
 
-  Modal.defaultProps = {
-    destory: () => {},
-  }
+  Modal.defaultProps = {}
 
   return Modal
 }

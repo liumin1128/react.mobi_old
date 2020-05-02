@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const DOYOGIF_DETAIL = gql`
   query doyogifDetail($_id: String!, $skip: Int) {
@@ -8,7 +8,7 @@ export const DOYOGIF_DETAIL = gql`
       title
     }
   }
-`;
+`
 
 export const DOYOGIF_LIST = gql`
   query doyogifList($skip: Int!) {
@@ -19,4 +19,4 @@ export const DOYOGIF_LIST = gql`
       cover
     }
   }
-`;
+`

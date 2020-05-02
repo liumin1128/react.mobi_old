@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const USER_LOGIN = gql`
   mutation userLogin($username: String!, $password: String!) {
@@ -14,7 +14,7 @@ export const USER_LOGIN = gql`
       }
     }
   }
-`;
+`
 
 export const USERINFO = gql`
   query userInfo {
@@ -37,7 +37,7 @@ export const USERINFO = gql`
       dynamic
     }
   }
-`;
+`
 
 export const USERINFO_BY_ID = gql`
   query userInfoById($_id: String!) {
@@ -61,7 +61,7 @@ export const USERINFO_BY_ID = gql`
       dynamic
     }
   }
-`;
+`
 
 export const USERINFOWITHOAUTH = gql`
   query userInfo {
@@ -76,8 +76,7 @@ export const USERINFOWITHOAUTH = gql`
       }
     }
   }
-`;
-
+`
 
 export const UPDATE_USERINFO = gql`
   mutation updateUserInfo($input: UpdateUserInfoInput) {
@@ -87,7 +86,7 @@ export const UPDATE_USERINFO = gql`
       message
     }
   }
-`;
+`
 
 export const UPDATE_USER_EMAIL = gql`
   mutation updateUserEmail($email: String!) {
@@ -97,7 +96,7 @@ export const UPDATE_USER_EMAIL = gql`
       message
     }
   }
-`;
+`
 
 export const UPDATE_PASSWORD = gql`
   mutation updateUserPassword($input: UpdateUserPasswordInput) {
@@ -107,17 +106,21 @@ export const UPDATE_PASSWORD = gql`
       message
     }
   }
-`;
+`
 
 export const UPDATE_USER_PHONE = gql`
   mutation updateUserPhonenumber($purePhoneNumber: String!, $countryCode: String!, $code: String!) {
-    result: updateUserPhonenumber(purePhoneNumber: $purePhoneNumber, countryCode: $countryCode, code: $code) {
+    result: updateUserPhonenumber(
+      purePhoneNumber: $purePhoneNumber
+      countryCode: $countryCode
+      code: $code
+    ) {
       __typename
       status
       message
     }
   }
-`;
+`
 
 export const USER_PHONENUMBER_CODE = gql`
   mutation getPhoneNumberCode($purePhoneNumber: String!, $countryCode: String!) {
@@ -127,7 +130,7 @@ export const USER_PHONENUMBER_CODE = gql`
       message
     }
   }
-`;
+`
 
 export const USER_REGISTER = gql`
   mutation userRegister($input: UserRegisterInput) {
@@ -143,11 +146,19 @@ export const USER_REGISTER = gql`
       }
     }
   }
-`;
+`
 
 export const USER_LOGIN_BY_PHONENUMBER_CODE = gql`
-  mutation userLoginByPhonenumberCode($purePhoneNumber: String!, $countryCode: String!, $code: String!) {
-    result: userLoginByPhonenumberCode(purePhoneNumber: $purePhoneNumber, countryCode: $countryCode, code: $code) {
+  mutation userLoginByPhonenumberCode(
+    $purePhoneNumber: String!
+    $countryCode: String!
+    $code: String!
+  ) {
+    result: userLoginByPhonenumberCode(
+      purePhoneNumber: $purePhoneNumber
+      countryCode: $countryCode
+      code: $code
+    ) {
       __typename
       status
       message
@@ -159,4 +170,4 @@ export const USER_LOGIN_BY_PHONENUMBER_CODE = gql`
       }
     }
   }
-`;
+`

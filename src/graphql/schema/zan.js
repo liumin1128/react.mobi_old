@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const ZAN = gql`
   mutation zan($_id: String!) {
@@ -7,4 +7,4 @@ export const ZAN = gql`
       message
     }
   }
-`;
+`

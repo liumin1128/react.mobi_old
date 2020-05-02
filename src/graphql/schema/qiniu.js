@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const QINIU_TOKEN = gql`
   query qiniuToken {
@@ -7,4 +7,4 @@ export const QINIU_TOKEN = gql`
       expires
     }
   }
-`;
+`

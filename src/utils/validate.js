@@ -35,26 +35,26 @@ const phoneRegs = {
   'vi-VN': /^(\+?84|0)?((1(2([0-9])|6([2-9])|88|99))|(9((?!5)[0-9])))([0-9]{7})$/,
   'zh-CN': /^(\+?0?86\-?)?1[345789]\d{9}$/,
   'zh-TW': /^(\+?886\-?|0)?9\d{8}$/,
-};
+}
 
 /* eslint-enable */
 
 export function isPhoneNumber(countryCode, purePhoneNumber) {
-  let reg;
+  let reg
   switch (countryCode) {
-  case '+1': {
-    reg = phoneRegs['en-US'];
-    break;
-  }
-  case '+86': {
-    reg = phoneRegs['zh-CN'];
-    break;
-  }
-  default: return false;
+    case '+1': {
+      reg = phoneRegs['en-US']
+      break
+    }
+    case '+86': {
+      reg = phoneRegs['zh-CN']
+      break
+    }
+    default:
+      return false
   }
   if (!reg.test(purePhoneNumber)) {
-    return false;
-  } 
-    return true;
-  
+    return false
+  }
+  return true
 }

@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const BXGIF_DETAIL = gql`
   query bxgifDetail($_id: String!) {
@@ -14,7 +14,7 @@ export const BXGIF_DETAIL = gql`
       }
     }
   }
-`;
+`
 
 export const BXGIF_LIST = gql`
   query bxgifList($skip: Int) {
@@ -29,4 +29,4 @@ export const BXGIF_LIST = gql`
       height
     }
   }
-`;
+`

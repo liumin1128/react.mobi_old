@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag'
 
 export const NEWS_DETAIL = gql`
   query NewsDetail($_id: String!) {
@@ -17,7 +17,7 @@ export const NEWS_DETAIL = gql`
       url
     }
   }
-`;
+`
 
 export const NEWS_LIST = gql`
   query NewsList($first: Int, $skip: Int) {
@@ -38,4 +38,4 @@ export const NEWS_LIST = gql`
       count
     }
   }
-`;
+`

@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag'
 
 export const DYNAMIC_DETAIL = gql`
   query DynamicDetail($_id: String!) {
@@ -25,7 +25,7 @@ export const DYNAMIC_DETAIL = gql`
       }
     }
   }
-`;
+`
 
 export const DYNAMIC_LIST = gql`
   query DynamicList($first: Int, $skip: Int, $topic: String, $user: String) {
@@ -54,7 +54,7 @@ export const DYNAMIC_LIST = gql`
       count
     }
   }
-`;
+`
 
 export const DYNAMIC_CREATE = gql`
   mutation DynamicCreate($input: DynamicInput) {
@@ -84,7 +84,7 @@ export const DYNAMIC_CREATE = gql`
       }
     }
   }
-`;
+`
 
 export const DYNAMIC_UPDATE = gql`
   mutation DynamicUpdate($input: DynamicInput, $_id: String!) {
@@ -114,7 +114,7 @@ export const DYNAMIC_UPDATE = gql`
       }
     }
   }
-`;
+`
 
 export const DYNAMIC_TOPIC_LIST = gql`
   mutation DynamicTopicList($first: Int, $skip: Int, $title: String) {
@@ -125,7 +125,7 @@ export const DYNAMIC_TOPIC_LIST = gql`
       number
     }
   }
-`;
+`
 
 export const QUERY_DYNAMIC_TOPIC_LIST = gql`
   query DynamicTopicList($first: Int, $skip: Int, $title: String) {
@@ -136,7 +136,7 @@ export const QUERY_DYNAMIC_TOPIC_LIST = gql`
       number
     }
   }
-`;
+`
 
 export const DYNAMIC_TOPIC = gql`
   query DynamicTopic($topic: String) {
@@ -147,7 +147,7 @@ export const DYNAMIC_TOPIC = gql`
       number
     }
   }
-`;
+`
 
 export const CHECK_NEW_DYNAMIC = gql`
   mutation CheckNewDynamic($latest: String!) {
@@ -157,7 +157,7 @@ export const CHECK_NEW_DYNAMIC = gql`
       message
     }
   }
-`;
+`
 
 export const REMOVE_DYNAMIC = gql`
   mutation RemoveDynamic($_id: String!) {
@@ -167,4 +167,4 @@ export const REMOVE_DYNAMIC = gql`
       message
     }
   }
-`;
+`

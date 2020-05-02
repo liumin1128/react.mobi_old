@@ -1,7 +1,7 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const MZITU_LIST = gql`
-  query mzituList($skip: Int, $search: String, $tag: String, $type: String ) {
+  query mzituList($skip: Int, $search: String, $tag: String, $type: String) {
     list: mzituList(skip: $skip, search: $search, tag: $tag, type: $type) {
       __typename
       _id
@@ -14,7 +14,7 @@ export const MZITU_LIST = gql`
       url
     }
   }
-`;
+`
 
 export const MZITU_TAGS = gql`
   query mzituTags {
@@ -28,7 +28,7 @@ export const MZITU_TAGS = gql`
       type
     }
   }
-`;
+`
 
 export const MZITU_DETAIL = gql`
   query mzituPictures($_id: String!) {
@@ -39,4 +39,4 @@ export const MZITU_DETAIL = gql`
       pictures
     }
   }
-`;
+`

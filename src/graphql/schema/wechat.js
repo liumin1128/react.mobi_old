@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const WECHAT_DETAIL = gql`
   query wechatDetail($_id: String!) {
@@ -8,7 +8,7 @@ export const WECHAT_DETAIL = gql`
       content
     }
   }
-`;
+`
 
 export const WECHAT_LIST = gql`
   query wechat($name: String) {
@@ -21,4 +21,4 @@ export const WECHAT_LIST = gql`
       digest
     }
   }
-`;
+`
