@@ -3,7 +3,6 @@ import pp from '@/hoc/pp'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import useStyles from './styles'
-// import images from './images.json'
 
 /* eslint-disable */
 const images = {
