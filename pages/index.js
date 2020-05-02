@@ -1,6 +1,6 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-// import withApollo from '@/hoc/apollo'
+import withApollo from '@/hoc/apollo'
 import withLayout from '@/hoc/layout'
 
 const BackToTopWithNoSSR = dynamic(() => import('@/components/BackToTop'), { ssr: false })
@@ -107,4 +107,4 @@ const Index = () => (
   </>
 )
 
-export default withLayout(Index)
+export default withApollo(withLayout(Index))

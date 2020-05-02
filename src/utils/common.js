@@ -130,7 +130,7 @@ export function scrollAnimation(currentY, targetY) {
 
   // 计算需要移动的距离
   const needScrollTop = targetY - currentY
-  let _currentY = currentY
+  let _currentY = currentY // eslint-disable-line
   setTimeout(() => {
     // 一次调用滑动帧数，每次调用会不一样
     const dist = Math.ceil(needScrollTop / 10)
@@ -157,6 +157,8 @@ export function scrollToTopEaseing(duration = 750) {
   const originScrollX = window.pageXOffset // Keep abscissa
   const originTime = Date.now()
   let passedTime = 0
+
+  // eslint-disable-next-line
   const _scrollToTop = () => {
     if (passedTime < duration) {
       passedTime = Date.now() - originTime
