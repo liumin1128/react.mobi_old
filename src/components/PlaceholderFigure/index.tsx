@@ -1,12 +1,33 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactNode } from 'react'
 import pp from '@/hoc/pp'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import useStyles from './styles'
-import images from './images.json'
+// import images from './images.json'
 
-function PlaceholderFigure({ image, title, content, action }) {
+/* eslint-disable */
+const images = {
+  welcome: '/images/undraw/undraw_welcome_cats_thqn.svg',
+  on_the_way: '/images/undraw/undraw_on_the_way_ldaq.svg',
+  '404': '/images/undraw/undraw_page_not_found_su7k.svg',
+  people: '/images/undraw/undraw_people_tax5.svg',
+  react: '/images/undraw/undraw_react_y7wq.svg',
+  server_down: '/images/undraw/undraw_server_down_s4lk.svg',
+  feeling_blue: '/images/undraw/undraw_feeling_blue_4b7q.svg',
+  empty: '/images/undraw/undraw_empty_xct9.svg',
+} as {
+  [key: string]: string
+}
+/* eslint-enable */
+
+interface Props {
+  image: string
+  title: string
+  content: string
+  action: ReactNode
+}
+
+function PlaceholderFigure({ image, title, content, action }: Props) {
   const classes = useStyles()
   return (
     <>
@@ -25,20 +46,6 @@ function PlaceholderFigure({ image, title, content, action }) {
       </Box>
     </>
   )
-}
-
-PlaceholderFigure.propTypes = {
-  title: PropTypes.string,
-  image: PropTypes.string,
-  content: PropTypes.string,
-  action: PropTypes.node,
-}
-
-PlaceholderFigure.defaultProps = {
-  title: '',
-  image: 'welcome',
-  content: '',
-  action: null,
 }
 
 const Empty = pp(PlaceholderFigure, {
