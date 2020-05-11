@@ -108,6 +108,4 @@ const Index = () => (
   </>
 )
 
-Index.Header = Header
-
-export default withApollo(withLayout(Index))
+export default withApollo(withLayout(Index, { Header }))
