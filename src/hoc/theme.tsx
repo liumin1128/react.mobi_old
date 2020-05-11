@@ -1,13 +1,6 @@
-import React, {
-  PureComponent,
-  createContext,
-  useReducer,
-  useContext,
-  useState,
-  Fragment,
-} from 'react'
+import React, { PureComponent, createContext, useContext, useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider, Theme } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import defaultTheme from '@/config/theme/default'
 import darkTheme from '@/config/theme/dark'
@@ -15,6 +8,10 @@ import { useOnMount } from '@/hooks'
 import { getStorage, setStorage } from '@/utils/store'
 import { USER_SETTING_THEME } from '@/config/base'
 
+// ThemeContext https://www.jianshu.com/p/21a12320a782
+type ThemeName = 'default' | 'dark'
+
+// themes
 const themes = {
   default: defaultTheme,
   dark: darkTheme,
@@ -22,15 +19,28 @@ const themes = {
 
 const defaultStr = 'default'
 
-export const ThemeContext = createContext(darkTheme)
+// ContextProps
+type ContextProps = {
+  setTheme: () => void
+  theme: Theme
+}
 
-// // ThemeProvider的hoc用法
-export function withThemeProvider(WrappedComponent) {
-  return class Provider extends PureComponent {
-    constructor(props) {
+// ThemeContext
+export const ThemeContext = createContext<Partial<ContextProps>>({
+  theme: darkTheme,
+})
+
+interface ThemeProviderState {
+  theme: ThemeName
+}
+
+// ThemeProvider的hoc用法 https://blog.csdn.net/sinat_17775997/article/details/84203095
+export function withThemeProvider(WrappedComponent: React.ComponentType) {
+  return class Provider extends PureComponent<{}, ThemeProviderState> {
+    constructor(props: {}) {
       super(props)
       this.state = {
-        theme: defaultStr,
+        theme: 'default',
       }
     }
 
@@ -41,8 +51,9 @@ export function withThemeProvider(WrappedComponent) {
       })
     }
 
-    render() {
+    public render() {
       const { theme } = this.state
+
       return (
         <ThemeContext.Provider value={{ theme: themes[theme], setTheme: this.setTheme }}>
           <WrappedComponent {...this.props} />
@@ -53,44 +64,22 @@ export function withThemeProvider(WrappedComponent) {
 }
 
 // // theme的hoc用法
-export function withThemeConsumer(WrappedComponent) {
-  return props => (
+export function withThemeConsumer(WrappedComponent: React.ComponentType) {
+  return (children?: React.ReactNode) => (
     <ThemeContext.Consumer>
-      {value => <WrappedComponent {...props} {...value} />}
+      {value => <WrappedComponent {...value}>{children}</WrappedComponent>}
     </ThemeContext.Consumer>
   )
 }
 
-// // ThemeProvider的hook用法
-export default function HookThemeProvider({ children }) {
-  function reducer(state, action) {
-    switch (action.type) {
-      case 'switch':
-        return { theme: state.theme === 'default' ? 'dark' : 'default' }
-      default:
-        return state
-    }
-  }
-  const [state, dispatch] = useReducer(reducer, { count: 0 })
-  return <ThemeContext.Provider value={{ state, dispatch }}>{children}</ThemeContext.Provider>
-}
-
-HookThemeProvider.propTypes = {
-  children: PropTypes.element,
-}
-
-HookThemeProvider.defaultProps = {
-  children: Fragment,
-}
-
-export function ThemeContextProvider({ children }) {
+export function ThemeContextProvider({ children }: { children: React.ReactNode }) {
   const themeStr = getStorage(USER_SETTING_THEME) || defaultStr
 
-  const [state, setState] = useState(themeStr)
+  const [state, setState] = useState<ThemeName>(themeStr)
 
   useOnMount(() => {
     const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles) {
+    if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles)
     }
   })

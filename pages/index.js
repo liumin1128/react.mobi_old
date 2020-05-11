@@ -2,6 +2,7 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import withApollo from '@/hoc/apollo'
 import withLayout from '@/hoc/layout'
+import Header from '@/components/Layout/Header'
 
 const BackToTopWithNoSSR = dynamic(() => import('@/components/BackToTop'), { ssr: false })
 
@@ -106,5 +107,7 @@ const Index = () => (
     <BackToTopWithNoSSR />
   </>
 )
+
+Index.Header = Header
 
 export default withApollo(withLayout(Index))

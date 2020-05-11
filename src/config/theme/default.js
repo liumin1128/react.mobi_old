@@ -4,6 +4,7 @@ import { createMuiTheme } from '@material-ui/core/styles'
 
 // const palette = { primary: { main: '#FF4081', contrastText: '#ffffff' } };
 const themeName = 'Wild Strawberry Razzmatazz Malayan Tiger'
+
 const palette = {
   divider: '#eeeeee',
   primary: {
@@ -12,6 +13,7 @@ const palette = {
     // a100: Color('#fd4c86').lighten(0.6)+''
   },
 }
+
 const overrides = {
   MuiAppBar: {
     root: {
@@ -75,4 +77,6 @@ const overrides = {
   },
 }
 
-export default createMuiTheme({ themeName, palette, overrides })
+const theme = createMuiTheme({ themeName, palette, overrides })
+
+export default theme
