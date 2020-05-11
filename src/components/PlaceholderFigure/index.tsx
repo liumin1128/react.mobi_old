@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import useStyles from './styles'
 
-/* eslint-disable */
+/* eslint-disable @typescript-eslint/camelcase */
 const images = {
   welcome: '/images/undraw/undraw_welcome_cats_thqn.svg',
   on_the_way: '/images/undraw/undraw_on_the_way_ldaq.svg',
@@ -32,8 +32,6 @@ type ImageName =
   | 'server_down'
   | 'feeling_blue'
   | 'empty'
-
-/* eslint-enable */
 
 function PlaceholderFigure({ image, title, content, action }: Props) {
   const classes = useStyles()
