@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import pp from '@/hoc/pp'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
@@ -14,17 +14,26 @@ const images = {
   server_down: '/images/undraw/undraw_server_down_s4lk.svg',
   feeling_blue: '/images/undraw/undraw_feeling_blue_4b7q.svg',
   empty: '/images/undraw/undraw_empty_xct9.svg',
-} as {
-  [key: string]: string
 }
-/* eslint-enable */
 
 interface Props {
-  image: string
+  image: ImageName
   title: string
   content: string
-  action: ReactNode
+  action: React.ReactNode
 }
+
+type ImageName =
+  | 'welcome'
+  | 'on_the_way'
+  | '404'
+  | 'people'
+  | 'react'
+  | 'server_down'
+  | 'feeling_blue'
+  | 'empty'
+
+/* eslint-enable */
 
 function PlaceholderFigure({ image, title, content, action }: Props) {
   const classes = useStyles()
