@@ -23,6 +23,7 @@
     "@material-ui/icons": "^4.9.1",
     "@types/lodash": "^4.14.150",
     "@types/react-dom": "^16.9.7",
+    "@types/yup": "^0.28.3",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
     "apollo-link-context": "^1.0.20",
@@ -40,6 +41,7 @@
     "lodash": "^4.17.15",
     "lru-cache": "^5.1.1",
     "marked": "^1.0.0",
+    "mui-rff": "^2.1.14",
     "next": "^9.3.6",
     "prop-types": "^15.7.2",
     "rc-upload": "^3.0.4",
@@ -52,7 +54,8 @@
     "react-waypoint": "^9.0.2",
     "recompose": "^0.30.0",
     "store": "^2.0.12",
-    "timeago.js": "^4.0.2"
+    "timeago.js": "^4.0.2",
+    "yup": "^0.28.5"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
