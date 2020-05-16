@@ -2,6 +2,6 @@
 import withApollo from '@/hoc/apollo'
 import withLayout from '@/hoc/layout'
 import Header from '@/components/Layout/Header'
-import UsernameLogin from '@/Container/Login/Password'
+import Index from '@/Container/Login/Phone'
 
-export default withApollo(withLayout(UsernameLogin, { Header }))
+export default withApollo(withLayout(Index, { Header }))
