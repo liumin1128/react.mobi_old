@@ -185,6 +185,10 @@ const countries = [
   { isHot: false, code: '+222', name: '毛里塔尼亚', abbr: 'MR' },
 ]
 
+const countryLabelValueList = countries.map(i => ({ value: i.code, label: i.name, key: i.abbr }))
+
+export { countries, countryLabelValueList }
+
 // const phoneRegs = {
 //   'ar-DZ': /^(\+?213|0)(5|6|7)\d{8}$/,
 //   'ar-SY': /^(!?(\+?963)|0)?9\d{8}$/,

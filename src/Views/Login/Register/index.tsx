@@ -1,23 +1,35 @@
 import React from 'react'
 import { Form } from 'react-final-form'
 import { TextField } from 'mui-rff'
-import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import SelectField from '@/components/Form/Feilds/Select'
+import Button from '@material-ui/core/Button'
 import { countryLabelValueList } from '@/utils/validate'
+import PasswordStrength from '@/components/Form/Feilds/Password/PasswordStrength'
+import SelectField from '@/components/Form/Feilds/Select'
+import InputAdornment from '@material-ui/core/InputAdornment'
 import CodeBtn from '@/components/Form/Feilds/PhoneNumber/Code'
+
 import useStyles from './styles'
 import validate from './validate'
 
-export interface UP {
+export interface RP {
+  code: string
   countryCode: string
   purePhoneNumber: string
-  code: string
+  nickname: string
+  password: string
+  confirmPassword: string
 }
 
 interface Props {
-  onSubmit: ({ countryCode, purePhoneNumber, code }: UP) => void
+  onSubmit: ({
+    code,
+    countryCode,
+    purePhoneNumber,
+    nickname,
+    password,
+    confirmPassword,
+  }: RP) => void
 }
 
 function UsernameLogin({ onSubmit }: Props) {
@@ -27,7 +39,6 @@ function UsernameLogin({ onSubmit }: Props) {
     <Form
       onSubmit={onSubmit}
       validate={validate}
-      initialValues={{ countryCode: '+86', purePhoneNumber: '18629974148', code: '' }}
       render={({ handleSubmit, values }) => {
         return (
           <form id='' onSubmit={handleSubmit}>
@@ -76,6 +87,40 @@ function UsernameLogin({ onSubmit }: Props) {
                 ),
               }}
             />
+
+            <TextField
+              key='nickname'
+              name='nickname'
+              label='昵称'
+              className={classes.item}
+              type='text'
+              fullWidth
+            />
+
+            <TextField
+              key='password'
+              name='password'
+              label='Password'
+              // placeholder="保证不偷看"
+              className={classes.item}
+              type='password'
+              autoComplete='new-password'
+              InputProps={{
+                endAdornment: values.password ? (
+                  <PasswordStrength password={values.password} />
+                ) : null,
+              }}
+              fullWidth
+            />
+
+            <TextField
+              fullWidth
+              margin='normal'
+              name='confirmPassword'
+              label='确认密码'
+              type='password'
+            />
+
             <Button
               variant='contained'
               size='large'
