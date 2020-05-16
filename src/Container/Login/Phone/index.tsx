@@ -1,14 +1,15 @@
 import React from 'react'
 import { useApolloClient } from '@apollo/react-hooks'
 import { USER_LOGIN } from '@/graphql/schema/user'
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
+import Form, { UP } from '@/Views/Login/Phone'
 
 function Login() {
   const client = useApolloClient()
-  async function test() {
+  async function test(up: UP) {
     const data = await client.mutate({
       mutation: USER_LOGIN,
-      variables: { username: '1111', password: '2222' },
+      variables: up,
     })
     console.log('data') // eslint-disable-line
     console.log(data) // eslint-disable-line
@@ -16,7 +17,7 @@ function Login() {
 
   return (
     <>
-      <Button onClick={test}>111</Button>
+      <Form onSubmit={test} />
     </>
   )
 }
