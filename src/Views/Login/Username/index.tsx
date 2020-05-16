@@ -2,19 +2,24 @@ import React from 'react'
 import { Form } from 'react-final-form'
 import { TextField } from 'mui-rff'
 import Button from '@material-ui/core/Button'
-// import TextField from '@material-ui/core/TextField'
 import useStyles from './styles'
 import validate from './validate'
 
-function UsernameLogin() {
+export interface UP {
+  username: string
+  password: string
+}
+
+interface Props {
+  onSubmit: ({ username, password }: UP) => void
+}
+
+function UsernameLogin({ onSubmit }: Props) {
   const classes = useStyles()
 
   return (
     <Form
-      onSubmit={values => {
-        console.log('values') // eslint-disable-line
-        console.log(values) // eslint-disable-line
-      }}
+      onSubmit={onSubmit}
       validate={validate}
       render={({ handleSubmit }) => {
         return (
