@@ -8,7 +8,6 @@ import PasswordStrength from '@/components/Form/Feilds/Password/PasswordStrength
 import SelectField from '@/components/Form/Feilds/Select'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import CodeBtn from '@/components/Form/Feilds/PhoneNumber/Code'
-
 import useStyles from './styles'
 import validate from './validate'
 
@@ -113,13 +112,7 @@ function UsernameLogin({ onSubmit }: Props) {
               fullWidth
             />
 
-            <TextField
-              fullWidth
-              margin='normal'
-              name='confirmPassword'
-              label='确认密码'
-              type='password'
-            />
+            <TextField fullWidth name='confirmPassword' label='确认密码' type='password' />
 
             <Button
               variant='contained'
@@ -130,7 +123,7 @@ function UsernameLogin({ onSubmit }: Props) {
               // disabled={!dirty && !valid}
               fullWidth
             >
-              Login
+              Register
             </Button>
           </form>
         )

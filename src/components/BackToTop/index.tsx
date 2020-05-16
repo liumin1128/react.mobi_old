@@ -7,7 +7,7 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { scrollToTopEaseing, getScrollTop } from '@/utils/common'
 import useStyles from './styles'
 
-export default function () {
+export default function BackToTop() {
   const classes = useStyles()
 
   const [visible, setVisible] = useState(getScrollTop() > 300)

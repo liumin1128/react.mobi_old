@@ -9,7 +9,7 @@ function Transition(props) {
   return <Slide direction='up' {...props} />
 }
 
-export default function (WrappedComponent, modalProps) {
+export default function modal(WrappedComponent, modalProps) {
   @domRender
   @withStyle
   class Modal extends PureComponent {
