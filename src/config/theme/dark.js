@@ -3,31 +3,25 @@ import { createMuiTheme } from '@material-ui/core/styles'
 const theme = createMuiTheme({
   overrides: {
     MuiPaper: {
-      root: {
-        // 'background-color': 'none',
-        // 'background-color': 'rgba(255,255,255,0.05)',
-      },
+      root: {},
       elevation1: {
         'box-shadow': 'none',
       },
     },
     MuiButton: {
-      containedPrimary: {
-        backgroundColor: '#fff',
-        color: '#1b1b1b',
-        '&:hover': {
-          backgroundColor: '#ccc',
-        },
-      },
-      outlinedPrimary: {
-        color: '#fff',
-        borderColor: '#fff',
-        '&:hover': {
-          borderColor: '#ccc',
+      containedPrimary: {},
+      outlinedPrimary: {},
+    },
+
+    MuiInputBase: {
+      input: {
+        '&:-webkit-autofill': {
+          'box-shadow': '0 0 0px 1000px #252525 inset !important',
+          'text-fill-color': 'white',
+          '-webkit-text-fill-color': 'white',
         },
       },
     },
-
     MuiTypography: {
       body1: {
         font:
@@ -61,7 +55,7 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
     secondary: {
-      main: '#19857b',
+      main: '#fff',
     },
     text: {
       primary: 'rgba(255,255,255, 0.75)',
