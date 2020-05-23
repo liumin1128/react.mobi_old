@@ -3,6 +3,7 @@ import { useApolloClient } from '@apollo/react-hooks'
 import { USER_LOGIN } from '@/graphql/schema/user'
 // import Button from '@material-ui/core/Button'
 import Form, { UP } from '@/Views/Login/Username'
+import Oauth from '@/Views/Login/Oauth'
 
 function Login() {
   const client = useApolloClient()
@@ -18,6 +19,7 @@ function Login() {
   return (
     <>
       <Form onSubmit={test} />
+      <Oauth />
     </>
   )
 }
