@@ -12,3 +12,5 @@ export const domRender = (Component: React.ComponentType<{ destory: () => void }
   }
   ReactDOM.render(<Component destory={() => destory()} />, element)
 }
+
+// // @ts-ignore

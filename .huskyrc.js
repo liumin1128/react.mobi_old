@@ -4,6 +4,6 @@ module.exports = {
     'commit-msg': 'commitlint -E HUSKY_GIT_PARAMS',
 
     // commit 之前执行的命令
-    'pre-commit': 'lint-staged',
+    // 'pre-commit': 'lint-staged',
   },
-};
+}

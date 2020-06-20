@@ -1,5 +1,4 @@
 import React, { PureComponent, createContext, useContext, useState, Fragment } from 'react'
-import PropTypes from 'prop-types'
 import { ThemeProvider, Theme } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import defaultTheme from '@/config/theme/default'
@@ -21,7 +20,7 @@ const defaultStr = 'default'
 
 // ContextProps
 type ContextProps = {
-  setTheme: () => void
+  setTheme(): void
   theme: Theme
 }
 
@@ -64,15 +63,19 @@ export function withThemeProvider(WrappedComponent: React.ComponentType) {
 }
 
 // // theme的hoc用法
-export function withThemeConsumer(WrappedComponent: React.ComponentType) {
-  return (children?: React.ReactNode) => (
+export function withThemeConsumer(WrappedComponent: React.ComponentClass<{ theme?: Theme }>) {
+  return (children: React.ComponentClass<{ theme?: Theme }>) => (
     <ThemeContext.Consumer>
-      {value => <WrappedComponent {...value}>{children}</WrappedComponent>}
+      {({ theme }) => <WrappedComponent theme={theme}>{children}</WrappedComponent>}
     </ThemeContext.Consumer>
   )
 }
 
-export function ThemeContextProvider({ children }: { children: React.ReactNode }) {
+export function ThemeContextProvider({
+  children,
+}: {
+  children: React.ComponentType | React.ComponentClass | React.ReactNode
+}) {
   const themeStr = getStorage(USER_SETTING_THEME) || defaultStr
 
   const [state, setState] = useState<ThemeName>(themeStr)
@@ -99,14 +102,6 @@ export function ThemeContextProvider({ children }: { children: React.ReactNode }
       </ThemeProvider>
     </ThemeContext.Provider>
   )
-}
-
-ThemeContextProvider.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element),
-}
-
-ThemeContextProvider.defaultProps = {
-  children: Fragment,
 }
 
 // theme的hook用法

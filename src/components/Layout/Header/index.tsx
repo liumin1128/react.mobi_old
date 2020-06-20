@@ -8,8 +8,9 @@ import ColorLensIcon from '@material-ui/icons/ColorLens'
 import { makeStyles } from '@material-ui/core/styles'
 import { useTheme } from '@/hoc/theme'
 import useElevationScroll from '@/hooks/useElevationScroll'
-// import modal from '@/hoc/modal'
-import { domRender } from '@/utils/react'
+import modal from '@/hoc/modal'
+// import { domRender } from '@/utils/react'
+// import ReactDOM from 'react-dom'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -26,7 +27,8 @@ function Header() {
   const { setTheme } = useTheme()
 
   function handleLogin() {
-    domRender(() => <>1111</>)
+    modal(() => <>1111</>)
+    // domRender(() => <>1111</>)
   }
 
   return (
