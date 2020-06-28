@@ -4,7 +4,6 @@ import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import useStyles from './styles'
 
-/* eslint-disable @typescript-eslint/camelcase */
 const images = {
   welcome: '/images/undraw/undraw_welcome_cats_thqn.svg',
   on_the_way: '/images/undraw/undraw_on_the_way_ldaq.svg',

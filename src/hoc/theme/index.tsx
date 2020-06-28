@@ -24,9 +24,11 @@ type ContextProps = {
   theme: Theme
 }
 
+const themeStr = (getStorage(USER_SETTING_THEME) || defaultStr) as ThemeName
+
 // ThemeContext
 export const ThemeContext = createContext<Partial<ContextProps>>({
-  theme: themes[defaultStr],
+  theme: themes[themeStr],
 })
 
 interface ThemeProviderState {
@@ -35,8 +37,8 @@ interface ThemeProviderState {
 
 // ThemeProvider的hoc用法 https://blog.csdn.net/sinat_17775997/article/details/84203095
 export function withThemeProvider(WrappedComponent: React.ComponentType) {
-  return class Provider extends PureComponent<{}, ThemeProviderState> {
-    constructor(props: {}) {
+  return class Provider extends PureComponent<Record<string, unknown>, ThemeProviderState> {
+    constructor(props: Record<string, unknown>) {
       super(props)
       this.state = {
         theme: 'default',
@@ -63,7 +65,6 @@ export function withThemeProvider(WrappedComponent: React.ComponentType) {
 }
 
 export function ThemeContextProvider({ children }: { children: React.ReactNode }) {
-  const themeStr = getStorage(USER_SETTING_THEME) || defaultStr
   const [state, setState] = useState<ThemeName>(themeStr)
 
   useOnMount(() => {
@@ -80,14 +81,7 @@ export function ThemeContextProvider({ children }: { children: React.ReactNode }
     setState(str)
   }
 
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {/* <ThemeProvider theme={theme}>
-        <CssBaseline /> */}
-      {children}
-      {/* </ThemeProvider> */}
-    </ThemeContext.Provider>
-  )
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>
 }
 
 // theme的hook用法

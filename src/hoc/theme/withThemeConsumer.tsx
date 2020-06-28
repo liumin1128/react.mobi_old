@@ -7,7 +7,7 @@ interface Props {
 }
 
 // // theme的hoc用法
-function withThemeConsumer<P extends object, S extends object>(
+function withThemeConsumer<P extends Record<string, unknown>, S extends Record<string, unknown>>(
   C: React.ComponentType<P> | React.ComponentClass<P, S>
 ) {
   return class Component extends React.PureComponent<P & Props, S> {
