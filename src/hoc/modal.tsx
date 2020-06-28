@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react'
 import Dialog from '@material-ui/core/Dialog'
 import Slide from '@material-ui/core/Slide'
-import { ThemeProvider, Theme } from '@material-ui/core/styles'
 import { domRender } from '@/utils/react'
 // import withStyle from '@/hoc/material-ui'
-import { withThemeConsumer } from '@/hoc/theme'
+// import withThemeConsumer from '@/hoc/theme/withThemeConsumer'
 import { TransitionProps } from '@material-ui/core/transitions'
+import { ThemeProvider } from '@/hoc/theme'
 
 const Transition = React.forwardRef(function Transition(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -21,7 +21,6 @@ interface CreateModalProps {
 
 interface ModalProps {
   destory: () => void
-  theme: Theme
 }
 
 interface ModalState {
@@ -30,9 +29,9 @@ interface ModalState {
 
 export default function createModal(
   WrappedComponent: React.ComponentType<{ close: () => void }>,
-  createModalProps: CreateModalProps
+  createModalProps?: CreateModalProps
 ) {
-  @withThemeConsumer
+  // @withThemeConsumer
   @domRender
   class Modal extends PureComponent<ModalProps, ModalState> {
     constructor(props: ModalProps) {
@@ -53,10 +52,8 @@ export default function createModal(
 
     render() {
       const { open } = this.state
-      // const { theme } = this.props
       return (
-        // <ThemeProvider>
-        <>
+        <ThemeProvider>
           <Dialog
             keepMounted
             open={open}
@@ -67,8 +64,7 @@ export default function createModal(
           >
             <WrappedComponent close={this.handleClose} />
           </Dialog>
-        </>
-        // </ThemeProvider>
+        </ThemeProvider>
       )
     }
   }

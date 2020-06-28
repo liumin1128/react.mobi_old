@@ -1,5 +1,5 @@
-import React, { PureComponent, createContext, useContext, useState, Fragment } from 'react'
-import { ThemeProvider, Theme } from '@material-ui/core/styles'
+import React, { PureComponent, createContext, useContext, useState } from 'react'
+import { ThemeProvider as MaterialThemeProvider, Theme } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import defaultTheme from '@/config/theme/default'
 import darkTheme from '@/config/theme/dark'
@@ -26,7 +26,7 @@ type ContextProps = {
 
 // ThemeContext
 export const ThemeContext = createContext<Partial<ContextProps>>({
-  theme: darkTheme,
+  theme: themes[defaultStr],
 })
 
 interface ThemeProviderState {
@@ -62,22 +62,8 @@ export function withThemeProvider(WrappedComponent: React.ComponentType) {
   }
 }
 
-// // theme的hoc用法
-export function withThemeConsumer(WrappedComponent: React.ComponentClass<{ theme?: Theme }>) {
-  return (children: React.ComponentClass<{ theme?: Theme }>) => (
-    <ThemeContext.Consumer>
-      {({ theme }) => <WrappedComponent theme={theme}>{children}</WrappedComponent>}
-    </ThemeContext.Consumer>
-  )
-}
-
-export function ThemeContextProvider({
-  children,
-}: {
-  children: React.ComponentType | React.ComponentClass | React.ReactNode
-}) {
+export function ThemeContextProvider({ children }: { children: React.ReactNode }) {
   const themeStr = getStorage(USER_SETTING_THEME) || defaultStr
-
   const [state, setState] = useState<ThemeName>(themeStr)
 
   useOnMount(() => {
@@ -96,10 +82,10 @@ export function ThemeContextProvider({
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
+      {/* <ThemeProvider theme={theme}>
+        <CssBaseline /> */}
+      {children}
+      {/* </ThemeProvider> */}
     </ThemeContext.Provider>
   )
 }
@@ -107,4 +93,20 @@ export function ThemeContextProvider({
 // theme的hook用法
 export function useTheme() {
   return useContext(ThemeContext)
+}
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeContext.Consumer>
+      {({ theme }) => {
+        if (!theme) return null
+        return (
+          <MaterialThemeProvider theme={theme}>
+            <CssBaseline />
+            {children}
+          </MaterialThemeProvider>
+        )
+      }}
+    </ThemeContext.Consumer>
+  )
 }

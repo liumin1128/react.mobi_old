@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import { withThemeProvider, withThemeConsumer } from '@/hoc/theme'
+import { withThemeProvider } from '@/hoc/theme'
+import withThemeConsumer from '@/hoc/theme/withThemeConsumer'
 
 export default function withRoot(App) {
   @withThemeProvider
