@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { NextPageContext } from 'next'
 import Head from 'next/head'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ApolloClient } from 'apollo-client'
@@ -10,7 +10,19 @@ import fetch from 'isomorphic-unfetch'
 import { USER_TOKEN, API_URL } from '@/config/base'
 import { getStorage } from '@/utils/store'
 
-let apolloClient = null
+// type Exclude<T, U> = T extends U ? never : T
+// type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+// type HOC<InjectProps> = <Props extends InjectProps>(
+//   Component: React.ComponentType<Props>
+// ) => React.ComponentType<Omit<Props, keyof InjectProps>>
+
+// const { Consumer: GetColor } = React.createContext('#000000')
+
+// const InjectColor: HOC<{ color: string }> = Component => props => (
+//   <GetColor>{color => <Component {...props} color={color} />}</GetColor>
+// )
+
+let apolloClient: ApolloClient<Record<string, unknown>>
 
 /**
  * Creates and configures the ApolloClient
@@ -26,10 +38,8 @@ function createApolloClient(initialState = {}) {
     // fetchOptions
   })
 
-  const authLink = setContext(async (request, { headers }) => {
+  const authLink = setContext(async (_, { headers }) => {
     const token = await getStorage(USER_TOKEN)
-    // console.log('token')
-    // console.log(token)
     return {
       headers: {
         ...headers,
@@ -42,12 +52,6 @@ function createApolloClient(initialState = {}) {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined', // Disables forceFetch on the server (so queries are only run once)
     link: authLink.concat(httpLink),
-    // link: new HttpLink({
-    //   uri: `${API_URL}/graphql`, // Server URL (must be absolute)
-    //   //   uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn', // Server URL (must be absolute)
-    //   credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
-    //   fetch,
-    // }),
     cache: new InMemoryCache().restore(initialState),
   })
 }
@@ -57,7 +61,7 @@ function createApolloClient(initialState = {}) {
  * Creates or reuses apollo client in the browser.
  * @param  {Object} initialState
  */
-function initApolloClient(initialState) {
+function initApolloClient(initialState?: Record<string, unknown>) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (typeof window === 'undefined') {
@@ -72,6 +76,23 @@ function initApolloClient(initialState) {
   return apolloClient
 }
 
+interface WithApolloProps {
+  apolloClient: ApolloClient<Record<string, unknown>>
+  apolloState: Record<string, unknown>
+}
+
+interface Options {
+  ssr: boolean
+}
+
+type HOC<InjectProps> = <Props>(
+  Component: React.ComponentType<Props & InjectProps>
+) => React.ComponentType<Props>
+
+// const injectApollo: HOC<{ color: string }> = Component => props => (
+//   <Component {...props} color='red' />
+// )
+
 /**
  * Creates and provides the apolloContext
  * to a next.js PageTree. Use it by wrapping
@@ -80,25 +101,22 @@ function initApolloClient(initialState) {
  * @param {Object} [config]
  * @param {Boolean} [config.ssr=true]
  */
-function withApollo(PageComponent, { ssr = true } = {}) {
+function withApollo(
+  PageComponent: React.ComponentType & {
+    getInitialProps?: (ctx?: NextPageContext & WithApolloProps) => Record<string, unknown>
+  },
+  options: Options = { ssr: true }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): React.ComponentClass<Pick<unknown, never> & any, any> {
+  const { ssr } = options
   /* eslint-disable no-shadow */
-  const WithApollo = ({ apolloClient, apolloState, ...pageProps }) => {
+  function WithApollo({ apolloClient, apolloState, ...pageProps }: WithApolloProps) {
     const client = apolloClient || initApolloClient(apolloState)
     return (
       <ApolloProvider client={client}>
         <PageComponent {...pageProps} />
       </ApolloProvider>
     )
-  }
-
-  WithApollo.propTypes = {
-    apolloClient: PropTypes.instanceOf(ApolloClient),
-    apolloState: PropTypes.instanceOf(Object),
-  }
-
-  WithApollo.defaultProps = {
-    apolloClient: undefined,
-    apolloState: undefined,
   }
 
   // Set the correct displayName in development
@@ -113,7 +131,7 @@ function withApollo(PageComponent, { ssr = true } = {}) {
   }
 
   if (ssr || PageComponent.getInitialProps) {
-    WithApollo.getInitialProps = async ctx => {
+    WithApollo.getInitialProps = async (ctx: NextPageContext & WithApolloProps) => {
       const { AppTree } = ctx
 
       // Initialize ApolloClient, add it to the ctx object so

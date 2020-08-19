@@ -7,6 +7,10 @@ import { domRender } from '@/utils/react'
 import { TransitionProps } from '@material-ui/core/transitions'
 import { ThemeProvider } from '@/hoc/theme'
 
+import withApollo from '@/hoc/apollo'
+import InjectColor from '@/hoc/test'
+import withDefaultProps from '@/hoc/withDefaultProps'
+
 const Transition = React.forwardRef(function Transition(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -17,6 +21,7 @@ const Transition = React.forwardRef(function Transition(
 
 interface CreateModalProps {
   fullScreen?: boolean
+  maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | false
 }
 
 interface ModalProps {
@@ -32,7 +37,6 @@ export default function createModal(
   createModalProps?: CreateModalProps
 ) {
   // @withThemeConsumer
-  @domRender
   class Modal extends PureComponent<ModalProps, ModalState> {
     constructor(props: ModalProps) {
       super(props)
@@ -69,5 +73,5 @@ export default function createModal(
     }
   }
 
-  return Modal
+  return domRender(withDefaultProps(Modal, { color: 'red' }))
 }

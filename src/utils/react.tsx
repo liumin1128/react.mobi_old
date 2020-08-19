@@ -1,7 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-export const domRender = (Component: React.ComponentType<{ destory: () => void }>) => {
+interface Props {
+  destory: () => void
+}
+
+export function domRender<T>(Component: React.ComponentClass<Omit<T, 'destory'> & Props>) {
   const element = document.createElement('div')
   document.body.appendChild(element)
   function destory() {
