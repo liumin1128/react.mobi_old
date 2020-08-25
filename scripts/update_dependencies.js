@@ -5,6 +5,8 @@ const sh = `
 
 rm -rf ./node_modules
 
+mv package.json package_back.json 
+
 yarn add ${Object.keys(json.dependencies).join(' ')}
 
 yarn add -D ${Object.keys(json.devDependencies).join(' ')}
