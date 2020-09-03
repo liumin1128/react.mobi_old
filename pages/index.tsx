@@ -1,6 +1,5 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-import withApollo from '@/hoc/apollo'
 import withLayout from '@/hoc/layout'
 import Header from '@/components/Layout/Header'
 
@@ -108,4 +107,4 @@ const Index = () => (
   </>
 )
 
-export default withApollo(withLayout(Index, { Header }))
+export default withLayout(Index, { Header })
