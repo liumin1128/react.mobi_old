@@ -7,13 +7,17 @@ import Oauth from '@/Views/Login/Oauth'
 
 function Login() {
   const client = useApolloClient()
+
   async function test(up: UP) {
-    const data = await client.mutate({
-      mutation: USER_LOGIN,
-      variables: up,
-    })
-    console.log('data') // eslint-disable-line
-    console.log(data) // eslint-disable-line
+    try {
+      const data = await client.mutate({
+        mutation: USER_LOGIN,
+        variables: up,
+      })
+      console.log('data', data) // eslint-disable-line
+    } catch (error) {
+      console.log('error', error) // eslint-disable-line
+    }
   }
 
   return (

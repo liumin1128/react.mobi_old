@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import Dialog from '@material-ui/core/Dialog'
-import Slide from '@material-ui/core/Slide'
+import Grow from '@material-ui/core/Grow'
 import { domRender } from '@/utils/react'
 // import withStyle from '@/hoc/material-ui'
 // import withThemeConsumer from '@/hoc/theme/withThemeConsumer'
@@ -8,15 +8,14 @@ import { TransitionProps } from '@material-ui/core/transitions'
 import { ThemeProvider } from '@/hoc/theme'
 
 import withApollo from '@/hoc/apollo'
-import InjectColor from '@/hoc/test'
-import withDefaultProps from '@/hoc/withDefaultProps'
+// import InjectColor from '@/hoc/test'
+// import withDefaultProps from '@/hoc/withDefaultProps'
 
 const Transition = React.forwardRef(function Transition(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   props: TransitionProps & { children?: React.ReactElement<any, any> },
   ref: React.Ref<unknown>
 ) {
-  return <Slide direction='up' ref={ref} {...props} />
+  return <Grow ref={ref} {...props} />
 })
 
 interface CreateModalProps {
@@ -73,5 +72,5 @@ export default function createModal(
     }
   }
 
-  return domRender(withDefaultProps(Modal, { color: 'red' }))
+  return domRender(withApollo(Modal))
 }

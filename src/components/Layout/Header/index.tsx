@@ -14,7 +14,10 @@ import modal from '@/hoc/modal'
 // import { domRender } from '@/utils/react'
 // import ReactDOM from 'react-dom'
 
-const DynamicComponent = dynamic(() => import('@/Container/Login/Password'))
+const DynamicComponent = dynamic(() => import('@/Container/Login/Password'), {
+  ssr: false,
+  loading: () => <Box width={400} height={400} />,
+})
 
 function handleLogin() {
   modal(
