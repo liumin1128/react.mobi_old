@@ -10,18 +10,6 @@ import fetch from 'isomorphic-unfetch'
 import { USER_TOKEN, API_URL } from '@/config/base'
 import { getStorage } from '@/utils/store'
 
-// type Exclude<T, U> = T extends U ? never : T
-// type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-// type HOC<InjectProps> = <Props extends InjectProps>(
-//   Component: React.ComponentType<Props>
-// ) => React.ComponentType<Omit<Props, keyof InjectProps>>
-
-// const { Consumer: GetColor } = React.createContext('#000000')
-
-// const InjectColor: HOC<{ color: string }> = Component => props => (
-//   <GetColor>{color => <Component {...props} color={color} />}</GetColor>
-// )
-
 let apolloClient: ApolloClient<Record<string, unknown>>
 
 /**
@@ -85,22 +73,6 @@ interface Options {
   ssr: boolean
 }
 
-type HOC<InjectProps> = <Props>(
-  Component: React.ComponentType<Props & InjectProps>
-) => React.ComponentType<Props>
-
-// const injectApollo: HOC<{ color: string }> = Component => props => (
-//   <Component {...props} color='red' />
-// )
-
-/**
- * Creates and provides the apolloContext
- * to a next.js PageTree. Use it by wrapping
- * your PageComponent via HOC pattern.
- * @param {Function|Class} PageComponent
- * @param {Object} [config]
- * @param {Boolean} [config.ssr=true]
- */
 function withApollo(
   PageComponent: React.ComponentType & {
     getInitialProps?: (ctx?: NextPageContext & WithApolloProps) => Record<string, unknown>

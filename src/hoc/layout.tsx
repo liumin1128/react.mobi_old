@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, ComponentType } from 'react'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 
-type Component = React.ComponentType | React.ElementType
+type Component = React.ComponentType
 
 interface Props {
   Header?: Component
