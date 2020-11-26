@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // 第二个参数是[], 返回onUnmount函数, 类似componentWillUnmount
 // export const useOnUnmount = onUnmount =>
@@ -72,3 +72,22 @@ export function useInterval(callback, time = 300) {
 //   // you code ...
 // })
 // timer.claer() // 直接清理
+
+export function useStateWithCallbak(dv: any) {
+  const [value, setValue] = useState(dv)
+  const [callback, setCallback] = useState()
+
+  function mySetValue(v: any, cb: () => any) {
+    setValue(v)
+    setCallback(cb)
+  }
+
+  useEffect(() => {
+    if (typeof callback === 'function') {
+      callback()
+      setCallback(undefined)
+    }
+  }, [value, callback])
+
+  return [value, mySetValue]
+}

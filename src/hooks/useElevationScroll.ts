@@ -1,6 +1,6 @@
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 
-export default function useElevationScroll(props) {
+export default function useElevationScroll(props: any) {
   const { window, elevation } = props || {}
   // Note that you normally won't need to set the window ref as useScrollTrigger
   // will default to window.

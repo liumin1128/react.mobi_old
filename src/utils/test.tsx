@@ -14,9 +14,9 @@ export function hoc<T extends Record<string, unknown>, U>(
   }
 }
 class Test extends React.Component {
-    render() {
+  render() {
     return <div>111</div>
-    }
+  }
 }
 interface SSProps {
   color: string

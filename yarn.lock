@@ -1605,6 +1605,11 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
+"@types/store@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.npm.taobao.org/@types/store/download/@types/store-2.0.2.tgz#6263d4f1aab225032ea55b17d94f3b725a21c943"
+  integrity sha1-YmPU8aqyJQMupVsX2U87clohyUM=
+
 "@types/styled-jsx@^2.2.8":
   version "2.2.8"
   resolved "https://registry.npm.taobao.org/@types/styled-jsx/download/@types/styled-jsx-2.2.8.tgz#b50d13d8a3c34036282d65194554cf186bab7234"

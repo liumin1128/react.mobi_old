@@ -1,12 +1,53 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import withLayout from '@/hoc/layout'
 import Header from '@/components/Layout/Header'
 
 const BackToTopWithNoSSR = dynamic(() => import('@/components/BackToTop'), { ssr: false })
 
+function useStateWithCallbak(dv) {
+  const [value, setValue] = useState(dv)
+  const [callback, setCallback] = useState()
+
+  function mySetValue(value, cb) {
+    setValue(value)
+    setCallback(cb)
+  }
+
+  useEffect(() => {
+    if(typeof callback === "function") {
+      callback()
+      setCallback(undefined)
+    }
+  }, [value])
+
+  return [value, mySetValue]
+}
+
+function Test1() {
+  const [value, setValue] = useStateWithCallbak()
+  function handleClick() {
+    setValue(222, () => {
+      console.log("xxxxxx")
+    })
+  }
+
+  function handleClick2() {
+    setValue(333, () => {
+      console.log("bbbbb")
+    })
+  }
+  return <div>
+    <h1>{value}</h1>
+    <br/>
+    <button onClick={handleClick}>test</button>
+    <button onClick={handleClick2}>test2</button>
+    </div>
+}
+
 const Index = () => (
   <>
+  <Test1></Test1>
     <p>
       欲将沉醉换悲凉，清歌莫断肠。这混乱的尘世，究竟充斥了多少绝望和悲伤。你想去做一个勇敢的男子，为爱，为信仰，轰轰烈烈的奋斗一场。你周身充斥着无人可比的灵气和光芒。你有着与伟人比肩的才气和名声，你是那样高傲孤洁的男子。你的一寸狂心未说，已经几度黄昏雨。
       曾经以为，相爱的人一定要相守，只有相守，情感才能长久。可是，此岸和彼岸只不过是空间的差距，却无法拉长心灵的距离。
