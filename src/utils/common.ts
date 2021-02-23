@@ -1,6 +1,6 @@
-import { format } from 'timeago.js'
+// import { format } from 'timeago.js'
 
-export const getTimeAgo = date => format(date, 'zh_CN')
+// export const getTimeAgo = date => format(date, 'zh_CN')
 
 export function isWeixin() {
   const ua = navigator.userAgent.toLowerCase()

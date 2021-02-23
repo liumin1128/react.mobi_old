@@ -1,6 +1,9 @@
 import React from 'react'
-import withApollo from '@/hoc/apollo'
-import withLayout from '@/hoc/layout'
+import dynamic from 'next/dynamic'
+// import withLayout from '@/hoc/layout'
+// import Header from '@/components/Layout/Header'
+
+const BackToTopWithNoSSR = dynamic(() => import('@/components/BackToTop'), { ssr: false })
 
 const Index = () => (
   <>
@@ -99,7 +102,9 @@ const Index = () => (
       人生的路途，经历无数的驿站之后，总会出现陌生或熟悉的风景。时间所说的过客，只是注定走过的人和事，没有太多是刻意要去记住或淡忘的。铺就在黑白交错里的，无非就是忧伤曾穿越过的黑暗，在记忆的角落里，诉说了全部的待续。那些停驻在指尖的薄凉，是曾绽放在年华里的微碎。
       指间年华，渲染着无暇斑驳的彩塑，悲伤的城池依旧提笔挥墨，画下四季风吹过的无痕。微笑掩饰了寂寞过的眼泪，是因为，在婆娑的年华里，聆听着没有人的相伴相知。那些了不断的往事，是梦绕在悲伤情愫深处，盈满心扉的最初和凝眸的叹息。终不过似水流年，清风凄语，唯独旧梦难拾。
     </p>
+
+    <BackToTopWithNoSSR />
   </>
 )
 
-export default withApollo(withLayout(Index))
+export default Index
