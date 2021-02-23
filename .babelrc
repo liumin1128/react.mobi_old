@@ -1,21 +1,7 @@
 {
   "presets": ["next/babel"],
   "plugins": [
-    "inline-react-svg",
-    [
-      "@babel/plugin-proposal-decorators",
-      {
-        "legacy": true
-      }
-    ],
-    [
-      "module-resolver",
-      {
-        "alias": {
-          "@": "./src/"
-        }
-      }
-    ]
+    "inline-react-svg"
   ],
   "env": {
     "production": {

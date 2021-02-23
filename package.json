@@ -27,6 +27,8 @@
     "@types/lodash": "^4.14.168",
     "@types/node": "^14.14.31",
     "@types/store": "^2.0.2",
+    "babel-plugin-inline-react-svg": "^2.0.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "cross-env": "^7.0.3",
     "eslint": "^7.20.0",
     "eslint-import-resolver-babel-module": "^5.2.0",
