@@ -6,17 +6,6 @@ import Divider from "@material-ui/core/Divider";
 import Image from "@/components/Image";
 import { useStyles } from "./styles";
 
-interface RouteItem {
-  title: string;
-  pathname: string;
-}
-
-interface Props {
-  routes: RouteItem[];
-  title: string;
-  onChange?: (pathname: string) => void;
-}
-
 function SimpleTabs() {
   const classes = useStyles();
 
