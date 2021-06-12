@@ -83,6 +83,8 @@ function SimpleTabs() {
               </IconButton>
             </a>
           </Box>
+
+          <Box p={2}></Box>
         </Grid>
         <Grid item xs={12} md={5}>
           <Typography variant="h4">Sign up for the next niche!</Typography>
@@ -95,6 +97,8 @@ function SimpleTabs() {
               variant="outlined"
             />
           </Box>
+
+          <Box p={2}></Box>
         </Grid>
         <Grid item xs={12} md={3}>
           <Typography variant="h4">Contact us</Typography>
@@ -114,9 +118,11 @@ function SimpleTabs() {
             <Typography variant="body2">+86 14795505065</Typography>
           </Box>
         </Grid>
+        <Box p={2}></Box>
       </Grid>
 
-      <Box p={6}></Box>
+      <Box p={4}></Box>
+
       <Divider />
       <Box p={1}></Box>
       <Typography variant="body2" align="right">

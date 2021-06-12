@@ -3,6 +3,8 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import Hidden from "@material-ui/core/Hidden";
+
 import Image from "@/components/Image";
 import { useStyles } from "./styles";
 
@@ -19,6 +21,10 @@ function SimpleTabs() {
           />
         </Grid>
         <Grid item xs={12} md={6}>
+          <Hidden smUp>
+            <Box p={2} />
+          </Hidden>
+
           <Box
             display="flex"
             flexDirection="row"
@@ -55,7 +61,20 @@ function SimpleTabs() {
       <Box p={6} />
 
       <Grid container spacing={3}>
+        <Hidden smUp>
+          <Grid item xs={12} md={6}>
+            <Image
+              src="https://www.dowch.com/wp-content/themes/mml-theme/dist/img/p07/p07-s03-img.jpg"
+              style={{ paddingTop: "85%", borderRadius: 20 }}
+            />
+          </Grid>
+        </Hidden>
+
         <Grid item xs={12} md={6}>
+          <Hidden smUp>
+            <Box p={2} />
+          </Hidden>
+
           <Box
             display="flex"
             flexDirection="row"
@@ -92,12 +111,15 @@ function SimpleTabs() {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Image
-            src="https://www.dowch.com/wp-content/themes/mml-theme/dist/img/p07/p07-s03-img.jpg"
-            style={{ paddingTop: "85%", borderRadius: 20 }}
-          />
-        </Grid>
+
+        <Hidden smDown>
+          <Grid item xs={12} md={6}>
+            <Image
+              src="https://www.dowch.com/wp-content/themes/mml-theme/dist/img/p07/p07-s03-img.jpg"
+              style={{ paddingTop: "85%", borderRadius: 20 }}
+            />
+          </Grid>
+        </Hidden>
       </Grid>
       <Box p={6} />
 
@@ -109,6 +131,10 @@ function SimpleTabs() {
           />
         </Grid>
         <Grid item xs={12} md={6}>
+          <Hidden smUp>
+            <Box p={2} />
+          </Hidden>
+
           <Box
             display="flex"
             flexDirection="row"
@@ -145,7 +171,18 @@ function SimpleTabs() {
       <Box p={6} />
 
       <Grid container spacing={3}>
+        <Hidden smUp>
+          <Grid item xs={12} md={6}>
+            <Image
+              src="https://www.dowch.com/wp-content/themes/mml-theme/dist/img/p07/p07-s05-img.jpg"
+              style={{ paddingTop: "85%", borderRadius: 20 }}
+            />
+          </Grid>
+        </Hidden>
         <Grid item xs={12} md={6}>
+          <Hidden smUp>
+            <Box p={2} />
+          </Hidden>
           <Box
             display="flex"
             flexDirection="row"
@@ -185,12 +222,15 @@ function SimpleTabs() {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Image
-            src="https://www.dowch.com/wp-content/themes/mml-theme/dist/img/p07/p07-s05-img.jpg"
-            style={{ paddingTop: "85%", borderRadius: 20 }}
-          />
-        </Grid>
+
+        <Hidden smDown>
+          <Grid item xs={12} md={6}>
+            <Image
+              src="https://www.dowch.com/wp-content/themes/mml-theme/dist/img/p07/p07-s05-img.jpg"
+              style={{ paddingTop: "85%", borderRadius: 20 }}
+            />
+          </Grid>
+        </Hidden>
       </Grid>
       <Box p={6} />
       <Divider />
