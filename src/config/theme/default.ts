@@ -19,6 +19,13 @@ const typography = {
 };
 
 const overrides = {
+  MuiCssBaseline: {
+    "@global": {
+      body: {
+        background: "red",
+      },
+    },
+  },
   MuiAppBar: {
     root: {
       // background: `linear-gradient(60deg, ${Color(palette.primary.main).lighten(0.1)}, ${Color(palette.primary.main).darken(0)})`,

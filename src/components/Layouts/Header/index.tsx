@@ -1,6 +1,7 @@
 import CardMedia from "@material-ui/core/CardMedia";
 import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
+import Hidden from "@material-ui/core/Hidden";
 import Toolbar from "@material-ui/core/Toolbar";
 import { useStyles } from "./styles";
 import NavTabs from "@/components/NavTabs";
@@ -13,13 +14,16 @@ export default function Header() {
     <AppBar position="static" className={classes.root}>
       <Container>
         <Toolbar className={classes.toolbar}>
-          <CardMedia
-            className={classes.media}
-            image="https://www.dowch.com/wp-content/themes/mml-theme/dist/img/common/common-navigation-logo.jpg"
-            title="Paella dish"
+          <img
+            width={140}
+            height={48}
+            src="https://www.dowch.com/wp-content/themes/mml-theme/dist/img/common/common-footer-logo.jpg"
+            alt=""
           />
           <div className={classes.nav}>
-            <NavTabs navList={NavList} />
+            <Hidden smDown>
+              <NavTabs navList={NavList} />
+            </Hidden>
           </div>
           <Button>Contcat</Button>
         </Toolbar>

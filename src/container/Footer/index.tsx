@@ -116,7 +116,7 @@ function SimpleTabs() {
         </Grid>
       </Grid>
 
-      <Box p={4}></Box>
+      <Box p={6}></Box>
       <Divider />
       <Box p={1}></Box>
       <Typography variant="body2" align="right">
@@ -124,6 +124,7 @@ function SimpleTabs() {
         Reserved.
       </Typography>
       <Box p={1}></Box>
+      <Box p={2}></Box>
     </Box>
   );
 }
