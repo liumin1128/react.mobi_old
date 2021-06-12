@@ -11,6 +11,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       fontStyle: "normal",
     },
     toolbar: {
+      padding: 0,
       height: 90,
     },
     media: {

@@ -49,18 +49,30 @@ const overrides = {
     },
   },
   MuiTypography: {
-    body1: {
-      font: '16px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
-      color: "#666",
+    h1: {
+      //       line-height: 1.2;
+      // font-size: 48px;
+      // font-family: poppins,sans-serif;
+      // font-weight: 700;
+      // font-style: normal;
+      // color: #222c47;
+      lineHeight: 1.2,
+      fontSize: 48,
+      fontWeight: 700,
+      color: "#222c47",
     },
-    body2: {
-      font: '14px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
-      color: "#666",
-    },
-    caption: {
-      font: '10px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
-      color: "#999",
-    },
+    // body1: {
+    //   font: '16px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
+    //   color: "#666",
+    // },
+    // body2: {
+    //   font: '14px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
+    //   color: "#666",
+    // },
+    // caption: {
+    //   font: '10px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
+    //   color: "#999",
+    // },
   },
   MuiButton: {
     // contained: {
@@ -71,7 +83,7 @@ const overrides = {
   MuiLink: {
     root: {
       "&:hover": {
-        color: "#fd4c86",
+        // color: "#fd4c86",
       },
     },
   },

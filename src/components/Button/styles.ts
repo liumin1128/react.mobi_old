@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     button: {
       color: "#fff",
       borderRadius: "100px",
-      padding: "0 24px",
+      padding: "0 32px",
       fontWeight: 500,
       height: 48,
       fontSize: 16,
