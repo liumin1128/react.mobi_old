@@ -5,6 +5,7 @@ import Header from "@/components/Layouts/Header";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import About from "@/container/About";
 import Contact from "@/container/Contact";
+import Footer from "@/container/Footer";
 
 export default function Home() {
   return (
@@ -29,8 +30,9 @@ export default function Home() {
 
         <Contact />
 
-        <Box p={20}></Box>
+        <Footer />
       </Container>
+      {/* <Box p={20}></Box> */}
     </div>
   );
 }

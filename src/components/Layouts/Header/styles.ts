@@ -4,7 +4,6 @@ export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       boxShadow: "0 2px 5px 0 rgb(0 0 0 / 10%)",
-
       color: " rgba(34,44,71,.6)",
       fontFamily: "poppins,sans-serif",
       fontWeight: 500,

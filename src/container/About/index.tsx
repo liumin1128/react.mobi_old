@@ -256,7 +256,7 @@ function SimpleTabs() {
         </Grid>
       </Grid>
 
-      <Box p={8} />
+      {/* <Box p={8} /> */}
     </div>
   );
 }

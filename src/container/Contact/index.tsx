@@ -14,6 +14,7 @@ function SimpleTabs() {
       flexDirection="column"
       color="#fff"
       className={classes.root}
+      mt={16}
       pt={8}
       pb={8}
       pl={2}

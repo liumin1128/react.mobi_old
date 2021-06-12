@@ -61,6 +61,22 @@ const overrides = {
       fontWeight: 700,
       color: "#222c47",
     },
+    h3: {
+      lineHeight: 1.2,
+      fontSize: 38,
+      fontWeight: 700,
+      color: "#222c47",
+    },
+    h4: {
+      fontSize: 20,
+      fontWeight: 700,
+      color: "#222c47",
+    },
+    h5: {
+      fontSize: 16,
+      fontWeight: 700,
+      color: "#222c47",
+    },
     h6: {
       fontSize: 16,
       fontWeight: 700,
@@ -70,6 +86,12 @@ const overrides = {
     body1: {
       fontWeight: "400",
       color: "#747986",
+      fontSize: 16,
+    },
+    body2: {
+      color: "#747986",
+      fontWeight: 300,
+      fontSize: 16,
     },
     // body2: {
     //   font: '14px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
