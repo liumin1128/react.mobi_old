@@ -1,7 +1,13 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import PhoneIcon from "@material-ui/icons/Phone";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import PinterestIcon from "@material-ui/icons/Pinterest";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
@@ -30,6 +36,53 @@ function SimpleTabs() {
           </Box>
 
           <Box p={1}></Box>
+
+          <Box className={classes.links}>
+            <a
+              href="https://www.facebook.com/profile.php?id=100018599551530"
+              target="_blank"
+            >
+              <IconButton style={{ color: "#747986" }}>
+                <InstagramIcon />
+              </IconButton>
+            </a>
+
+            <a
+              href="https://www.facebook.com/profile.php?id=100018599551530"
+              target="_blank"
+            >
+              <IconButton style={{ color: "#747986" }}>
+                <LinkedInIcon />
+              </IconButton>
+            </a>
+
+            <a
+              href="https://www.facebook.com/profile.php?id=100018599551530"
+              target="_blank"
+            >
+              <IconButton style={{ color: "#747986" }}>
+                <TwitterIcon />
+              </IconButton>
+            </a>
+
+            <a
+              href="https://www.facebook.com/profile.php?id=100018599551530"
+              target="_blank"
+            >
+              <IconButton style={{ color: "#747986" }}>
+                <PinterestIcon />
+              </IconButton>
+            </a>
+
+            <a
+              href="https://www.facebook.com/profile.php?id=100018599551530"
+              target="_blank"
+            >
+              <IconButton style={{ color: "#747986" }}>
+                <FacebookIcon />
+              </IconButton>
+            </a>
+          </Box>
         </Grid>
         <Grid item xs={12} md={5}>
           <Typography variant="h4">Sign up for the next niche!</Typography>
