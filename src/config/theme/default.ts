@@ -50,21 +50,27 @@ const overrides = {
   },
   MuiTypography: {
     h1: {
-      //       line-height: 1.2;
-      // font-size: 48px;
-      // font-family: poppins,sans-serif;
-      // font-weight: 700;
-      // font-style: normal;
-      // color: #222c47;
       lineHeight: 1.2,
       fontSize: 48,
       fontWeight: 700,
       color: "#222c47",
     },
-    // body1: {
-    //   font: '16px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
-    //   color: "#666",
-    // },
+    h2: {
+      lineHeight: 1.2,
+      fontSize: 38,
+      fontWeight: 700,
+      color: "#222c47",
+    },
+    h6: {
+      fontSize: 16,
+      fontWeight: 700,
+      color: "#222c47",
+    },
+
+    body1: {
+      fontWeight: "400",
+      color: "#747986",
+    },
     // body2: {
     //   font: '14px/1.5 "sans-serif", "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif',
     //   color: "#666",
