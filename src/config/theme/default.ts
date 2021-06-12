@@ -8,10 +8,14 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const palette = {
   divider: "#eeeeee",
   primary: {
-    main: "#fd4c86",
+    main: "#3097fc",
     contrastText: "#ffffff",
     // a100: Color('#fd4c86').lighten(0.6)+''
   },
+};
+
+const typography = {
+  fontFamily: ["poppins", "sans-serif"].join(","),
 };
 
 const overrides = {
@@ -24,7 +28,7 @@ const overrides = {
     },
     colorPrimary: {
       backgroundColor: "#fff",
-      color: "#fd4c86",
+      color: "#3097fc",
     },
   },
   MuiDivider: {
@@ -59,10 +63,10 @@ const overrides = {
     },
   },
   MuiButton: {
-    contained: {
-      boxShadow: "0 3px 5px 0 rgba(168,182,191,0.1)",
-      // boxShadow: `0 4px 8px 0px ${Color(palette.primary.main).alpha(0.3)}, 0 3px 5px -2px ${Color(palette.primary.main).alpha(0.5)}`,
-    },
+    // contained: {
+    //   boxShadow: "0 3px 5px 0 rgba(168,182,191,0.1)",
+    //   // boxShadow: `0 4px 8px 0px ${Color(palette.primary.main).alpha(0.3)}, 0 3px 5px -2px ${Color(palette.primary.main).alpha(0.5)}`,
+    // },
   },
   MuiLink: {
     root: {
@@ -73,6 +77,6 @@ const overrides = {
   },
 };
 
-const theme = createMuiTheme({ palette, overrides });
+const theme = createMuiTheme({ palette, overrides, typography });
 
 export default theme;
